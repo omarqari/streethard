@@ -78,7 +78,7 @@ class ApifyClient:
         while True:
             resp = self.session.get(
                 f"{self.BASE}/datasets/{dataset_id}/items",
-                params={"offset": offset, "limit": limit, "clean": True},
+                params={"offset": offset, "limit": limit, "clean": "true"},
                 timeout=60,
             )
             resp.raise_for_status()
