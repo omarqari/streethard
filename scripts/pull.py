@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 """
 StreetHard — Apify Pull Script
-Calls Apify memo23/streeteasy-ppr, normalizes output, saves to data/.
+Two-pass strategy:
+  Pass 1 — Search URL → discover all active listing IDs (stub data only)
+  Pass 2 — Individual listing URLs → full data per listing
+
+This is necessary because memo23/streeteasy-ppr returns only minimal fields
+(id, price, beds, baths, sqft) from search result pages. Full fields
+(address, building, fees, taxes, year built, days on market, price history,
+agent contact) require scraping each individual listing page.
 
 Usage:
   python scripts/pull.py [--url URL] [--max-items N] [--dry-run]
@@ -28,10 +35,10 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # ─── Config ────────────────────────────────────────────────────────
-ACTOR_ID     = "memo23/streeteasy-ppr"
-MIN_LISTINGS = 10       # Guard: abort if fewer than this many listings returned
-POLL_INTERVAL_SEC = 5   # How often to poll Apify for run completion
-RUN_TIMEOUT_SEC   = 600 # 10 minutes max wait
+ACTOR_ID          = "memo23/streeteasy-ppr"
+MIN_LISTINGS      = 10       # Guard: abort if fewer than this many listings returned
+POLL_INTERVAL_SEC = 5        # How often to poll Apify for run completion
+RUN_TIMEOUT_SEC   = 600      # 10 minutes max wait per run
 
 DEFAULT_URL = (
     "https://streeteasy.com/for-sale/upper-east-side"
@@ -91,11 +98,56 @@ class ApifyClient:
             offset += limit
         return items
 
+    def run_and_wait(self, start_urls, max_items, label=""):
+        """Start a run, poll until complete, return raw dataset items."""
+        print(f"\n{'─'*50}")
+        print(f"  {label}")
+        print(f"  URLs:      {len(start_urls)}")
+        print(f"  Max items: {max_items}")
+
+        run_input = {
+            "startUrls": [{"url": u} for u in start_urls],
+            "maxItems":  max_items,
+        }
+        try:
+            run = self.start_run(ACTOR_ID, run_input)
+        except requests.HTTPError as e:
+            print(f"ERROR: Failed to start Apify run: {e}", file=sys.stderr)
+            sys.exit(1)
+
+        run_id     = run["id"]
+        dataset_id = run["defaultDatasetId"]
+        print(f"  Run ID:    {run_id}")
+        print(f"  Dataset:   {dataset_id}")
+
+        print("  Waiting for completion…", end="", flush=True)
+        deadline = time.time() + RUN_TIMEOUT_SEC
+        while time.time() < deadline:
+            run_status = self.get_run(run_id)
+            status = run_status.get("status", "")
+            print(f" {status}", end="", flush=True)
+            if status in ("SUCCEEDED", "FAILED", "ABORTED", "TIMED-OUT"):
+                break
+            time.sleep(POLL_INTERVAL_SEC)
+        else:
+            print("\nERROR: Timed out.", file=sys.stderr)
+            sys.exit(1)
+
+        print()
+        if status != "SUCCEEDED":
+            print(f"ERROR: Apify run ended with status {status}.", file=sys.stderr)
+            sys.exit(1)
+
+        items = self.get_dataset_items(dataset_id)
+        print(f"  Items received: {len(items)}")
+        return items
+
 # ─── Field Normalization ───────────────────────────────────────────
 def normalize(raw):
     """
-    Map Apify memo23/streeteasy-ppr fields to StreetHard's clean schema.
-    Returns None if the record is missing critical fields (price).
+    Map Apify memo23/streeteasy-ppr individual listing page fields
+    to StreetHard's clean schema.
+    Returns None if the record is missing a price.
     """
     price = (
         raw.get("pricing_price")
@@ -106,9 +158,9 @@ def normalize(raw):
         return None
 
     # Beds / baths
-    beds  = raw.get("bedroomCount") or raw.get("bedrooms") or raw.get("beds")
-    full  = raw.get("fullBathroomCount") or raw.get("bathrooms") or 0
-    half  = raw.get("halfBathroomCount") or 0
+    beds = raw.get("bedroomCount") or raw.get("bedrooms") or raw.get("beds")
+    full = raw.get("fullBathroomCount") or raw.get("bathrooms") or 0
+    half = raw.get("halfBathroomCount") or 0
     baths = (full or 0) + (half or 0) * 0.5
 
     # Property type
@@ -118,39 +170,50 @@ def normalize(raw):
         or raw.get("buildingType")
         or ""
     ).lower()
-    if "co-op" in btype or "coop" in btype:
-        ptype = "coop"
-    else:
-        ptype = "condo"
+    ptype = "coop" if ("co-op" in btype or "coop" in btype) else "condo"
 
-    # Address
-    street = (
-        raw.get("address_street")
-        or raw.get("addressStreet")
-        or raw.get("address", {}).get("street", "") if isinstance(raw.get("address"), dict) else raw.get("address", "")
-    )
+    # Address — individual listing pages return these fields
+    addr_raw = raw.get("address") or {}
+    if isinstance(addr_raw, dict):
+        street = addr_raw.get("street") or addr_raw.get("streetAddress") or ""
+    else:
+        street = str(addr_raw)
+    street = street or raw.get("address_street") or raw.get("addressStreet") or ""
+
     unit = (
         raw.get("address_unit")
         or raw.get("addressUnit")
         or raw.get("unit")
+        or (addr_raw.get("unit") if isinstance(addr_raw, dict) else "")
         or ""
     )
 
-    # Building
+    # Building name
     building = (
         raw.get("building_title")
         or raw.get("buildingTitle")
         or raw.get("buildingName")
+        or (raw.get("building", {}) or {}).get("name")
+        or (raw.get("building", {}) or {}).get("title")
         or street
+        or ""
     )
 
-    # Fees
-    fees  = raw.get("pricing_monthly_fees") or raw.get("monthlyHoa") or raw.get("commonCharges")
-    taxes = raw.get("pricing_monthly_taxes") or raw.get("monthlyTax") or raw.get("realEstateTaxes")
-    maint = raw.get("pricing_monthly_maintenance") or raw.get("maintenance")
-    # Co-ops use maintenance; condos use fees + taxes
+    # Neighborhood
+    neighborhood = (
+        raw.get("area_name")
+        or raw.get("neighborhood")
+        or raw.get("neighborhoodName")
+        or (raw.get("location", {}) or {}).get("neighborhood")
+        or ""
+    )
+
+    # Monthly costs
+    fees  = raw.get("pricing_monthly_fees")  or raw.get("monthlyHoa")       or raw.get("commonCharges")
+    taxes = raw.get("pricing_monthly_taxes") or raw.get("monthlyTax")       or raw.get("realEstateTaxes")
+    maint = raw.get("pricing_monthly_maintenance") or raw.get("maintenance") or raw.get("monthlyMaintenance")
     if ptype == "coop":
-        maint = maint or fees  # some actors label maintenance as fees for co-ops
+        maint = maint or fees  # co-op maintenance often labelled as fees
         fees  = None
         taxes = None
 
@@ -165,7 +228,7 @@ def normalize(raw):
     for h in (history_raw or []):
         date   = h.get("date") or h.get("eventDate") or h.get("listed_at")
         hprice = h.get("price") or h.get("askingPrice")
-        event  = (h.get("event") or h.get("eventType") or h.get("type") or "").upper()
+        event  = (h.get("event") or h.get("eventType") or h.get("type") or "").upper().replace(" ", "_")
         broker = h.get("broker") or h.get("brokerageName") or h.get("agentFirm")
         if date or hprice:
             history.append({
@@ -181,46 +244,41 @@ def normalize(raw):
     agent_email = raw.get("agent_email") or raw.get("agentEmail")
     agent_firm  = raw.get("agent_firm")  or raw.get("agentFirm") or raw.get("brokerageName")
 
-    listing_id = str(
-        raw.get("id") or raw.get("listingId") or raw.get("streeteasyId") or ""
-    )
+    listing_id = str(raw.get("id") or raw.get("listingId") or raw.get("streeteasyId") or "")
     url = (
         raw.get("url")
         or raw.get("listingUrl")
         or (f"https://streeteasy.com/sale/{listing_id}" if listing_id else "")
     )
 
+    sqft = raw.get("livingAreaSize") or raw.get("sqft") or raw.get("squareFeet")
+    ppsqft = raw.get("price_per_sqft") or raw.get("ppsqft")
+    if not ppsqft and sqft and price:
+        ppsqft = round(int(price) / sqft)
+
     return {
-        "id":            listing_id,
-        "url":           url,
-        "building":      building,
-        "address":       street,
-        "unit":          unit,
-        "neighborhood":  (
-            raw.get("area_name") or raw.get("neighborhood")
-            or raw.get("neighborhoodName") or ""
-        ),
-        "price":         int(price),
-        "sqft":          raw.get("livingAreaSize") or raw.get("sqft") or raw.get("squareFeet"),
-        "beds":          beds,
-        "baths":         baths if baths > 0 else None,
-        "price_per_sqft": raw.get("price_per_sqft") or raw.get("ppsqft"),
-        "type":          ptype,
-        "year_built":    (
-            raw.get("building_year_built") or raw.get("yearBuilt")
-            or raw.get("builtIn")
-        ),
-        "days_on_market": (
-            raw.get("days_on_market") or raw.get("daysOnMarket")
-        ),
-        "monthly_fees":  int(fees)  if fees  else None,
-        "monthly_taxes": int(taxes) if taxes else None,
-        "maintenance":   int(maint) if maint else None,
-        "agent_name":    agent_name,
-        "agent_phone":   agent_phone,
-        "agent_email":   agent_email,
-        "agent_firm":    agent_firm,
-        "price_history": history,
+        "id":             listing_id,
+        "url":            url,
+        "building":       building,
+        "address":        street,
+        "unit":           unit,
+        "neighborhood":   neighborhood,
+        "price":          int(price),
+        "sqft":           sqft,
+        "beds":           beds,
+        "baths":          baths if baths > 0 else None,
+        "price_per_sqft": ppsqft,
+        "type":           ptype,
+        "year_built":     raw.get("building_year_built") or raw.get("yearBuilt") or raw.get("builtIn"),
+        "days_on_market": raw.get("days_on_market") or raw.get("daysOnMarket"),
+        "monthly_fees":   int(fees)  if fees  else None,
+        "monthly_taxes":  int(taxes) if taxes else None,
+        "maintenance":    int(maint) if maint else None,
+        "agent_name":     agent_name,
+        "agent_phone":    agent_phone,
+        "agent_email":    agent_email,
+        "agent_firm":     agent_firm,
+        "price_history":  history,
     }
 
 # ─── Cost Estimate ─────────────────────────────────────────────────
@@ -234,96 +292,92 @@ def main():
 
     token = os.environ.get("APIFY_TOKEN")
     if not token:
-        print("ERROR: APIFY_TOKEN not set. Add it to .env or export it as an env variable.", file=sys.stderr)
+        print("ERROR: APIFY_TOKEN not set.", file=sys.stderr)
         sys.exit(1)
 
-    print(f"StreetHard — Apify Pull")
+    print("StreetHard — Apify Pull (two-pass)")
     print(f"  Actor:     {ACTOR_ID}")
-    print(f"  URL:       {args.url}")
+    print(f"  Search:    {args.url}")
     print(f"  Max items: {args.max_items}")
     print(f"  Dry run:   {args.dry_run}")
-    print()
 
     client = ApifyClient(token)
 
-    # ── Start run
-    print("Starting Apify run…")
-    run_input = {
-        "startUrls": [{"url": args.url}],
-        "maxItems":  args.max_items,
-    }
-    try:
-        run = client.start_run(ACTOR_ID, run_input)
-    except requests.HTTPError as e:
-        print(f"ERROR: Failed to start Apify run: {e}", file=sys.stderr)
+    # ── Pass 1: Search → discover listing IDs
+    search_items = client.run_and_wait(
+        start_urls=[args.url],
+        max_items=args.max_items,
+        label="Pass 1 of 2 — Search (discovering listing IDs)",
+    )
+
+    # Extract IDs and build individual listing URLs
+    listing_urls = []
+    seen_ids = set()
+    for item in search_items:
+        lid = str(item.get("id") or item.get("listingId") or "")
+        url = item.get("url") or (f"https://streeteasy.com/sale/{lid}" if lid else "")
+        if url and lid and lid not in seen_ids:
+            listing_urls.append(url)
+            seen_ids.add(lid)
+
+    print(f"\n  Discovered {len(listing_urls)} unique listing IDs")
+
+    if len(listing_urls) < MIN_LISTINGS:
+        print(
+            f"\nABORT: Only {len(listing_urls)} listings found in search (minimum is {MIN_LISTINGS}).",
+            file=sys.stderr,
+        )
         sys.exit(1)
 
-    run_id     = run["id"]
-    dataset_id = run["defaultDatasetId"]
-    print(f"  Run ID:    {run_id}")
-    print(f"  Dataset:   {dataset_id}")
-    print()
-
-    # ── Poll for completion
-    print("Waiting for run to complete…")
-    deadline = time.time() + RUN_TIMEOUT_SEC
-    while time.time() < deadline:
-        run_status = client.get_run(run_id)
-        status = run_status.get("status", "")
-        print(f"  Status: {status}")
-        if status in ("SUCCEEDED", "FAILED", "ABORTED", "TIMED-OUT"):
-            break
-        time.sleep(POLL_INTERVAL_SEC)
-    else:
-        print("ERROR: Timed out waiting for Apify run.", file=sys.stderr)
-        sys.exit(1)
-
-    if status != "SUCCEEDED":
-        print(f"ERROR: Apify run ended with status {status}.", file=sys.stderr)
-        sys.exit(1)
-
-    # ── Download results
-    print("\nDownloading results…")
-    raw_items = client.get_dataset_items(dataset_id)
-    print(f"  Raw items received: {len(raw_items)}")
+    # ── Pass 2: Individual pages → full data
+    detail_items = client.run_and_wait(
+        start_urls=listing_urls,
+        max_items=len(listing_urls),
+        label="Pass 2 of 2 — Individual listing pages (full data)",
+    )
 
     # ── Normalize
     listings = []
     skipped  = 0
-    for item in raw_items:
+    for item in detail_items:
         normalized = normalize(item)
         if normalized:
             listings.append(normalized)
         else:
             skipped += 1
 
-    print(f"  Normalized:         {len(listings)}")
+    print(f"\n  Normalized:         {len(listings)}")
     print(f"  Skipped (no price): {skipped}")
 
     # ── Guard clause
     if len(listings) < MIN_LISTINGS:
         print(
-            f"\nABORT: Only {len(listings)} listings returned (minimum is {MIN_LISTINGS}).\n"
-            f"data/latest.json was NOT overwritten. Investigate before re-running.",
+            f"\nABORT: Only {len(listings)} listings after normalization (minimum is {MIN_LISTINGS}).\n"
+            f"data/latest.json was NOT overwritten.",
             file=sys.stderr,
         )
         sys.exit(1)
 
+    # ── Sort by price descending (consistent ordering)
+    listings.sort(key=lambda x: x["price"], reverse=True)
+
     # ── Build output payload
-    today = datetime.date.today().isoformat()
+    today        = datetime.date.today().isoformat()
+    total_events = len(search_items) + len(detail_items)
     payload = {
-        "generated_at":   today,
-        "listing_count":  len(listings),
-        "run_cost_usd":   estimate_cost(len(raw_items)),
-        "search_url":     args.url,
-        "listings":       listings,
+        "generated_at":  today,
+        "listing_count": len(listings),
+        "run_cost_usd":  estimate_cost(total_events),
+        "search_url":    args.url,
+        "listings":      listings,
     }
 
-    # ── Write files
     if args.dry_run:
-        print(f"\nDRY RUN — not writing files. Would have written {len(listings)} listings.")
+        print(f"\nDRY RUN — not writing files.")
+        print(f"  Would write {len(listings)} listings, est. cost ${payload['run_cost_usd']:.3f}")
         return
 
+    # ── Write files
     data_dir = Path(__file__).parent.parent / "data"
     data_dir.mkdir(exist_ok=True)
 
@@ -335,11 +389,10 @@ def main():
     with open(dated_path, "w") as f:
         json.dump(payload, f, indent=2)
 
-    cost = payload["run_cost_usd"]
-    print(f"\n✓ Wrote {len(listings)} listings to:")
+    print(f"\n✓ Wrote {len(listings)} listings")
     print(f"  {latest_path}")
     print(f"  {dated_path}")
-    print(f"\nEstimated run cost: ${cost:.3f}")
+    print(f"  Estimated run cost: ${payload['run_cost_usd']:.3f}")
     print("Done.")
 
 if __name__ == "__main__":
