@@ -143,132 +143,200 @@ class ApifyClient:
         return items
 
 # ─── Field Normalization ───────────────────────────────────────────
+# Apify memo23/streeteasy-ppr flattens StreetEasy's federated GraphQL
+# response into top-level keys with these prefixes for Pass 2 (individual
+# listing pages). Pass 1 (search results) uses simple field names.
+_P1 = "saleListingDetailsFederated_data_saleByListingId_"
+_P2 = "saleDetailsToCombineWithFederated_data_sale_"
+_P3 = "saleListingDetailsFederated_data_buildingBySaleListingId_"
+_P4 = "extraListingDetails_data_sale_"
+
 def normalize(raw):
-    """
-    Map Apify memo23/streeteasy-ppr individual listing page fields
-    to StreetHard's clean schema.
-    Returns None if the record is missing a price.
-    """
+    """Map Apify memo23/streeteasy-ppr fields to StreetHard's clean schema.
+    Returns None if the record is missing a price."""
+    # ── Price
     price = (
-        raw.get("pricing_price")
-        or raw.get("price")
+        raw.get(f"{_P1}pricing_price")     # Pass 2
+        or raw.get("pricing_price")
+        or raw.get("price")                # Pass 1
         or raw.get("askingPrice")
         or raw.get("asking_price")
-        or raw.get("listingPrice")
-        or raw.get("listing_price")
-        or raw.get("salePrice")
-        or raw.get("sale_price")
-        or raw.get("currentPrice")
-        or raw.get("current_price")
     )
-    # Handle nested pricing object
-    if not price:
-        pricing_obj = raw.get("pricing") or {}
-        if isinstance(pricing_obj, dict):
-            price = (pricing_obj.get("price")
-                     or pricing_obj.get("askingPrice")
-                     or pricing_obj.get("amount"))
     if not price:
         return None
 
-    # Beds / baths
-    beds = raw.get("bedroomCount") or raw.get("bedrooms") or raw.get("beds")
-    full = raw.get("fullBathroomCount") or raw.get("bathrooms") or 0
-    half = raw.get("halfBathroomCount") or 0
+    # ── Listing ID / URL
+    listing_id = str(
+        raw.get("listingId")
+        or raw.get(f"{_P1}id")
+        or raw.get("id")
+        or ""
+    )
+    url = (
+        raw.get("originalUrl")
+        or raw.get("url")
+        or (f"https://streeteasy.com/sale/{listing_id}" if listing_id else "")
+    )
+
+    # ── Beds / baths
+    beds = (
+        raw.get(f"{_P1}propertyDetails_bedroomCount")
+        or raw.get("bedroomCount")
+        or raw.get("bedrooms")
+        or raw.get("beds")
+    )
+    full = raw.get(f"{_P1}propertyDetails_fullBathroomCount") or raw.get("fullBathroomCount") or raw.get("bathrooms") or 0
+    half = raw.get(f"{_P1}propertyDetails_halfBathroomCount") or raw.get("halfBathroomCount") or 0
     baths = (full or 0) + (half or 0) * 0.5
 
-    # Property type
+    # ── Property type
     btype = (
-        raw.get("building_building_type")
+        raw.get(f"{_P2}building_building_type")    # "coop" / "condo"
+        or raw.get(f"{_P3}type")                   # "CO_OP" / "CONDO"
+        or raw.get("building_building_type")
         or raw.get("propertyType")
         or raw.get("buildingType")
         or ""
     ).lower()
-    ptype = "coop" if ("co-op" in btype or "coop" in btype) else "condo"
+    ptype = "coop" if any(s in btype for s in ("co-op", "coop", "co_op")) else "condo"
 
-    # Address — individual listing pages return these fields
-    addr_raw = raw.get("address") or {}
-    if isinstance(addr_raw, dict):
-        street = addr_raw.get("street") or addr_raw.get("streetAddress") or ""
-    else:
-        street = str(addr_raw)
-    street = street or raw.get("address_street") or raw.get("addressStreet") or ""
+    # ── Address
+    street = (
+        raw.get(f"{_P1}propertyDetails_address_street")
+        or raw.get(f"{_P3}address_street")
+        or raw.get("address_street")
+        or raw.get("addressStreet")
+        or ""
+    )
+    if not street:
+        addr_raw = raw.get("address") or {}
+        if isinstance(addr_raw, dict):
+            street = addr_raw.get("street") or addr_raw.get("streetAddress") or ""
+        elif isinstance(addr_raw, str):
+            street = addr_raw
 
     unit = (
-        raw.get("address_unit")
+        raw.get(f"{_P1}propertyDetails_address_unit")
+        or raw.get("address_unit")
         or raw.get("addressUnit")
         or raw.get("unit")
-        or (addr_raw.get("unit") if isinstance(addr_raw, dict) else "")
         or ""
     )
 
-    # Building name
+    # ── Building name
+    _bldg_obj = raw.get("building")
     building = (
-        raw.get("building_title")
+        raw.get(f"{_P2}building_title")
+        or raw.get(f"{_P3}name")
+        or raw.get("building_title")
         or raw.get("buildingTitle")
         or raw.get("buildingName")
-        or (raw.get("building", {}) or {}).get("name")
-        or (raw.get("building", {}) or {}).get("title")
+        or ((_bldg_obj or {}).get("name") if isinstance(_bldg_obj, dict) else None)
         or street
         or ""
     )
 
-    # Neighborhood
+    # ── Neighborhood
     neighborhood = (
-        raw.get("area_name")
+        raw.get(f"{_P2}area_name")
+        or raw.get(f"{_P3}area_name")
+        or raw.get("area_name")
         or raw.get("neighborhood")
         or raw.get("neighborhoodName")
-        or (raw.get("location", {}) or {}).get("neighborhood")
         or ""
     )
 
-    # Monthly costs
-    fees  = raw.get("pricing_monthly_fees")  or raw.get("monthlyHoa")       or raw.get("commonCharges")
-    taxes = raw.get("pricing_monthly_taxes") or raw.get("monthlyTax")       or raw.get("realEstateTaxes")
-    maint = raw.get("pricing_monthly_maintenance") or raw.get("maintenance") or raw.get("monthlyMaintenance")
-    if ptype == "coop":
-        maint = maint or fees  # co-op maintenance often labelled as fees
-        fees  = None
-        taxes = None
-
-    # Price history
-    history_raw = (
-        raw.get("priceHistory")
-        or raw.get("price_history")
-        or raw.get("listingHistory")
-        or []
+    # ── Sqft / price-per-sqft
+    sqft = (
+        raw.get(f"{_P1}propertyDetails_livingAreaSize")
+        or raw.get("livingAreaSize")
+        or raw.get("sqft")
+        or raw.get("squareFeet")
     )
-    history = []
-    for h in (history_raw or []):
-        date   = h.get("date") or h.get("eventDate") or h.get("listed_at")
-        hprice = h.get("price") or h.get("askingPrice")
-        event  = (h.get("event") or h.get("eventType") or h.get("type") or "").upper().replace(" ", "_")
-        broker = h.get("broker") or h.get("brokerageName") or h.get("agentFirm")
-        if date or hprice:
-            history.append({
-                "date":   date,
-                "price":  int(hprice) if hprice else None,
-                "event":  event,
-                "broker": broker,
-            })
-
-    # Agent
-    agent_name  = raw.get("agent_name")  or raw.get("agentName")
-    agent_phone = raw.get("agent_phone") or raw.get("agentPhone")
-    agent_email = raw.get("agent_email") or raw.get("agentEmail")
-    agent_firm  = raw.get("agent_firm")  or raw.get("agentFirm") or raw.get("brokerageName")
-
-    listing_id = str(raw.get("id") or raw.get("listingId") or raw.get("streeteasyId") or "")
-    url = (
-        raw.get("url")
-        or raw.get("listingUrl")
-        or (f"https://streeteasy.com/sale/{listing_id}" if listing_id else "")
-    )
-
-    sqft = raw.get("livingAreaSize") or raw.get("sqft") or raw.get("squareFeet")
-    ppsqft = raw.get("price_per_sqft") or raw.get("ppsqft")
+    ppsqft = raw.get(f"{_P2}price_per_sqft") or raw.get("price_per_sqft") or raw.get("ppsqft")
     if not ppsqft and sqft and price:
         ppsqft = round(int(price) / sqft)
+
+    # ── Year built / days on market
+    year_built = (
+        raw.get(f"{_P2}building_year_built")
+        or raw.get(f"{_P3}yearBuilt")
+        or raw.get("building_year_built")
+        or raw.get("yearBuilt")
+        or raw.get("builtIn")
+    )
+    days_on_market = (
+        raw.get(f"{_P2}days_on_market")
+        or raw.get("days_on_market")
+        or raw.get("daysOnMarket")
+    )
+
+    # ── Monthly costs
+    # Pass 2: pricing_maintenanceFee = HOA for condos, full maintenance for co-ops
+    #         pricing_taxes = separate tax for condos, 0 for co-ops (included in maintenance)
+    maint_fee = raw.get(f"{_P1}pricing_maintenanceFee")
+    taxes_fee  = raw.get(f"{_P1}pricing_taxes")
+    # Pass 1 fallbacks
+    if maint_fee is None:
+        maint_fee = raw.get("pricing_monthly_fees") or raw.get("monthlyHoa") or raw.get("commonCharges")
+    if taxes_fee is None:
+        taxes_fee = raw.get("pricing_monthly_taxes") or raw.get("monthlyTax") or raw.get("realEstateTaxes")
+    old_maint = raw.get("pricing_monthly_maintenance") or raw.get("maintenance") or raw.get("monthlyMaintenance")
+
+    if ptype == "coop":
+        maint  = maint_fee or old_maint
+        fees   = None
+        taxes  = None
+    else:
+        fees   = maint_fee
+        taxes  = taxes_fee if taxes_fee else None
+        maint  = None
+
+    # ── Agent (Pass 2: JSON string; Pass 1: flat fields)
+    agent_name = agent_phone = agent_email = agent_firm = None
+    contacts_raw = raw.get(f"{_P2}contacts_json")
+    if contacts_raw:
+        try:
+            contacts = json.loads(contacts_raw) if isinstance(contacts_raw, str) else contacts_raw
+            if contacts:
+                c = contacts[0]
+                agent_name  = c.get("name")
+                agent_phone = c.get("primary_phone")
+                agent_email = c.get("email")
+                agent_firm  = (c.get("source_group") or {}).get("label")
+        except (json.JSONDecodeError, AttributeError, IndexError):
+            pass
+    else:
+        agent_name  = raw.get("agent_name")  or raw.get("agentName")
+        agent_phone = raw.get("agent_phone") or raw.get("agentPhone")
+        agent_email = raw.get("agent_email") or raw.get("agentEmail")
+        agent_firm  = raw.get("agent_firm")  or raw.get("agentFirm") or raw.get("brokerageName")
+
+    # ── Price history (Pass 2: JSON string; Pass 1: list or empty)
+    history = []
+    ph_raw = raw.get(f"{_P4}price_histories_json") or raw.get(f"{_P2}price_histories_json")
+    if ph_raw:
+        try:
+            ph_list = json.loads(ph_raw) if isinstance(ph_raw, str) else ph_raw
+            for h in (ph_list or []):
+                date   = h.get("date")
+                hprice = h.get("price")
+                event  = (h.get("event") or "").upper()
+                broker = h.get("source_group_label") or h.get("description")
+                if date or hprice:
+                    history.append({"date": date, "price": int(hprice) if hprice else None,
+                                    "event": event, "broker": broker})
+        except (json.JSONDecodeError, AttributeError):
+            pass
+    else:
+        for h in (raw.get("priceHistory") or raw.get("price_history") or raw.get("listingHistory") or []):
+            date   = h.get("date") or h.get("eventDate")
+            hprice = h.get("price") or h.get("askingPrice")
+            event  = (h.get("event") or h.get("eventType") or "").upper().replace(" ", "_")
+            broker = h.get("broker") or h.get("brokerageName")
+            if date or hprice:
+                history.append({"date": date, "price": int(hprice) if hprice else None,
+                                "event": event, "broker": broker})
 
     return {
         "id":             listing_id,
@@ -283,8 +351,8 @@ def normalize(raw):
         "baths":          baths if baths > 0 else None,
         "price_per_sqft": ppsqft,
         "type":           ptype,
-        "year_built":     raw.get("building_year_built") or raw.get("yearBuilt") or raw.get("builtIn"),
-        "days_on_market": raw.get("days_on_market") or raw.get("daysOnMarket"),
+        "year_built":     year_built,
+        "days_on_market": days_on_market,
         "monthly_fees":   int(fees)  if fees  else None,
         "monthly_taxes":  int(taxes) if taxes else None,
         "maintenance":    int(maint) if maint else None,
