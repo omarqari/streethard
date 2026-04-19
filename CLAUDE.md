@@ -121,6 +121,32 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - `PROJECTPLAN.md` — strategy, architecture, phases
 - `TASKS.md` — concrete next steps
 
+## Bottom-Up Validation Rule — READ THIS BEFORE BUILDING ANYTHING
+
+**Always validate from the smallest unit up before wiring components together.** This rule exists because we wasted significant time building and debugging a rental pipeline top-down, only to discover fundamental assumptions about how the Apify actor handles search URLs were wrong.
+
+The pattern that worked (Sales, first time):
+1. Pick one known listing. Get its ID from StreetEasy.
+2. Hit the API/actor with that single URL. Dump the raw response.
+3. Verify every required field is populated against ground truth (the actual StreetEasy page).
+4. Only after that passes: test with a small batch (5–10 listings).
+5. Only after that passes: wire into the full pipeline.
+
+The pattern that failed (Rentals):
+- Assumed "same actor, different URL" and skipped straight to full pipeline.
+- Built normalization functions with guessed field names.
+- Deployed untested code to GitHub Actions and iterated on live runs.
+- Each failure was a 6-minute CI cycle with no visibility into the actual data.
+
+**Concrete rules:**
+
+Before building any new data source or pipeline step, Claude must:
+1. **Test one item first.** Call the API/actor with a single known URL. Print the raw response in full. Don't write normalization code until the raw response is confirmed.
+2. **Check field names from reality, not assumptions.** Never guess field names from a pattern (e.g., swapping `sale` for `rental` in a namespace). Field names must be read from an actual API response.
+3. **Isolate before integrating.** Test Pass 1 independently. Test Pass 2 independently. Only combine them after both work in isolation.
+4. **Never test architecture in CI.** GitHub Actions is for running validated code. It is not a debugging environment. If something is unvalidated, test it locally or via direct API call first.
+5. **Don't add layers while one is broken.** If Pass 1 isn't returning IDs, don't add delta caching on top of it. Fix the broken layer first.
+
 ## Tone Guidance for Responses
 
 Be direct. When the user asks "what's the best way to do X," give a ranked opinion with reasoning. When they push back, take it seriously and reassess rather than dig in. Admit mistakes cleanly. Skip the reflexive disclaimers.
