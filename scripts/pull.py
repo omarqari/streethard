@@ -542,6 +542,8 @@ def run_two_pass(client, search_url, max_items, listing_type):
     listing_urls = []
     pass1_prices = {}   # {id: price} — used for delta comparison
     seen_ids     = set()
+    listing_url_re = re.compile(r'https?://(?:www\.)?streeteasy\.com/(?:sale|rental)/(\d+)')
+
     for item in search_items:
         lid = str(item.get("id") or item.get("listingId") or "")
         url = (
@@ -549,11 +551,30 @@ def run_two_pass(client, search_url, max_items, listing_type):
             or (f"https://streeteasy.com/{'rental' if is_rental else 'sale'}/{lid}" if lid else "")
         )
         if not lid and url:
-            m = re.search(r'/(?:sale|rental)/(\d+)', url)
+            m = listing_url_re.search(url)
             if m:
                 lid = m.group(1)
+
+        # Also parse urls_json — the actor emits batch items where each item's
+        # urls_json field may contain individual listing URLs discovered from
+        # a search results page (one batch item per search page scraped).
+        if not lid:
+            urls_json_raw = item.get("urls_json", "")
+            if urls_json_raw:
+                try:
+                    batch = json.loads(urls_json_raw) if isinstance(urls_json_raw, str) else urls_json_raw
+                    for entry in (batch if isinstance(batch, list) else []):
+                        candidate = entry.get("url", "")
+                        m = listing_url_re.search(candidate)
+                        if m:
+                            lid = m.group(1)
+                            url = candidate.replace("www.streeteasy.com", "streeteasy.com")
+                            break
+                except (json.JSONDecodeError, TypeError, AttributeError):
+                    pass
+
         if url and lid and lid not in seen_ids:
-            listing_urls.append(url)
+            listing_urls.append(url.replace("www.streeteasy.com", "streeteasy.com"))
             seen_ids.add(lid)
             raw_price = (item.get("price") or item.get("pricing_price")
                          or item.get("askingPrice") or item.get("asking_price"))
@@ -565,15 +586,15 @@ def run_two_pass(client, search_url, max_items, listing_type):
 
     print(f"\n  Discovered {len(listing_urls)} unique {label_tag} listing IDs")
 
-    # Debug dump when 0 IDs extracted — reveals what Pass 1 items actually look like
+    # Debug dump when 0 IDs extracted — dump ALL items so we can see what the
+    # actor actually returns (not just item 0).
     if len(listing_urls) == 0 and search_items:
         print(f"\nDEBUG — 0 IDs extracted from {len(search_items)} Pass 1 {label_tag} items.",
               file=sys.stderr)
-        sample = search_items[0]
-        print(f"  Keys: {sorted(sample.keys())}", file=sys.stderr)
-        id_url_fields = {k: v for k, v in sample.items()
-                         if any(t in k.lower() for t in ["id", "url", "href", "link", "listing"])}
-        print(f"  ID/URL-related fields: {id_url_fields}", file=sys.stderr)
+        for i, item in enumerate(search_items):
+            print(f"\n  Item {i}: keys={sorted(item.keys())}", file=sys.stderr)
+            for k, v in item.items():
+                print(f"    {k}: {repr(v)[:200]}", file=sys.stderr)
 
     if len(listing_urls) < MIN_LISTINGS:
         print(f"\nWARN: Only {len(listing_urls)} {label_tag} listings in search — skipping Pass 2.",
