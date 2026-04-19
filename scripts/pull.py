@@ -153,7 +153,21 @@ def normalize(raw):
         raw.get("pricing_price")
         or raw.get("price")
         or raw.get("askingPrice")
+        or raw.get("asking_price")
+        or raw.get("listingPrice")
+        or raw.get("listing_price")
+        or raw.get("salePrice")
+        or raw.get("sale_price")
+        or raw.get("currentPrice")
+        or raw.get("current_price")
     )
+    # Handle nested pricing object
+    if not price:
+        pricing_obj = raw.get("pricing") or {}
+        if isinstance(pricing_obj, dict):
+            price = (pricing_obj.get("price")
+                     or pricing_obj.get("askingPrice")
+                     or pricing_obj.get("amount"))
     if not price:
         return None
 
@@ -336,18 +350,51 @@ def main():
         label="Pass 2 of 2 — Individual listing pages (full data)",
     )
 
-    # ── Normalize
+    # ── Normalize Pass 2
     listings = []
     skipped  = 0
+    skipped_samples = []
     for item in detail_items:
         normalized = normalize(item)
         if normalized:
             listings.append(normalized)
         else:
             skipped += 1
+            if len(skipped_samples) < 3:
+                skipped_samples.append(item)
 
     print(f"\n  Normalized:         {len(listings)}")
     print(f"  Skipped (no price): {skipped}")
+
+    # ── Debug: dump raw field names when items fail normalization
+    if skipped_samples and len(listings) == 0:
+        print("\nDEBUG — all Pass 2 items failed normalization.", file=sys.stderr)
+        for i, sample in enumerate(skipped_samples):
+            print(f"\n  Item {i+1} keys: {sorted(sample.keys())}", file=sys.stderr)
+            price_candidates = {k: v for k, v in sample.items()
+                                if any(t in k.lower() for t in
+                                       ["price", "ask", "cost", "fee", "tax", "list", "sale", "amount"])}
+            print(f"  Price-related fields: {price_candidates}", file=sys.stderr)
+            print(f"  First 15 fields:", file=sys.stderr)
+            for k, v in list(sample.items())[:15]:
+                print(f"    {k}: {repr(v)[:100]}", file=sys.stderr)
+
+    # ── Fallback: if Pass 2 yields nothing, use Pass 1 (search result) data
+    data_source = "pass2"
+    if len(listings) < MIN_LISTINGS and search_items:
+        print(f"\nPass 2 yielded {len(listings)} listings — falling back to Pass 1 search data.",
+              file=sys.stderr)
+        p1_listings = []
+        for item in search_items:
+            normalized = normalize(item)
+            if normalized:
+                p1_listings.append(normalized)
+        print(f"  Pass 1 normalized: {len(p1_listings)}", file=sys.stderr)
+        if len(p1_listings) >= MIN_LISTINGS:
+            listings = p1_listings
+            data_source = "pass1_fallback"
+            print(f"  Using Pass 1 fallback ({len(listings)} listings — sparse data, no agent/history).",
+                  file=sys.stderr)
 
     # ── Guard clause
     if len(listings) < MIN_LISTINGS:
@@ -369,6 +416,7 @@ def main():
         "listing_count": len(listings),
         "run_cost_usd":  estimate_cost(total_events),
         "search_url":    args.url,
+        "data_source":   data_source,
         "listings":      listings,
     }
 
