@@ -43,9 +43,24 @@ Actionable next steps. Check things off as you go.
 
 ---
 
+## 🔴 Blocked — Manual CI Run Required
+
+Bug fixes committed (`f385827`). Pipeline is broken until Pass 1 ID extraction is fixed.
+Root cause cannot be diagnosed without seeing the actual Apify field structure.
+
+**Manual steps to unblock:**
+
+1. **Trigger CI run:** GitHub → Actions → "Refresh listings" → Run workflow → Mode: `both`, Max items: `500`
+2. **Copy debug output:** In the "Run pull script" step log, find lines starting with `DEBUG —` and copy everything through the `ID/URL-related fields:` line (one block for sale, possibly one for rent)
+3. **Paste to Claude:** Start a new session and paste the debug output — Claude will fix the ID extraction logic in `pull.py` in <5 min
+4. **Also note:** If you see `Skipped N rental items (no price)`, paste that too — means `normalize_rental()` field names need correcting (same fix process as Session 2 sales normalization)
+
+---
+
 ## Phase 2 Enhancements (Post-v1)
 
 - [x] **Rental comp analysis:** Added UES rental listings ($10K–$20K/mo). Mode toggle (For Sale / For Rent / Both) added to app. Pipeline pulls both types in one run.
+- [ ] **Pass 1 ID extraction fix:** Debug dump added — next CI run will reveal actual field structure. Fix `run_two_pass()` ID extraction logic based on output.
 - [ ] **Rental normalize() validation:** First CI run with rentals will dump actual Apify field names if normalization fails. Update `normalize_rental()` in `pull.py` based on that output.
 - [ ] **New/reduced badges:** Compare current pull against previous `data/YYYY-MM-DD.json` to surface new listings and price cuts with visual badges in the app.
 - [ ] **Co-op sqft gap:** Evaluate supplemental pull for co-ops without sqft filter; flag those listings separately.
