@@ -539,10 +539,20 @@ def run_two_pass(client, search_url, max_items, listing_type):
 
     print(f"\n  Discovered {len(listing_urls)} unique {label_tag} listing IDs")
 
+    # Debug dump when 0 IDs extracted — reveals what Pass 1 items actually look like
+    if len(listing_urls) == 0 and search_items:
+        print(f"\nDEBUG — 0 IDs extracted from {len(search_items)} Pass 1 {label_tag} items.",
+              file=sys.stderr)
+        sample = search_items[0]
+        print(f"  Keys: {sorted(sample.keys())}", file=sys.stderr)
+        id_url_fields = {k: v for k, v in sample.items()
+                         if any(t in k.lower() for t in ["id", "url", "href", "link", "listing"])}
+        print(f"  ID/URL-related fields: {id_url_fields}", file=sys.stderr)
+
     if len(listing_urls) < MIN_LISTINGS:
         print(f"\nWARN: Only {len(listing_urls)} {label_tag} listings in search — skipping Pass 2.",
               file=sys.stderr)
-        return [], search_items
+        return [], len(search_items)
 
     # Pass 2: Individual listing pages → full data
     detail_items = client.run_and_wait(

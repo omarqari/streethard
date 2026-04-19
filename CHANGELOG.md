@@ -34,6 +34,14 @@ Added a 3-way segmented control to the filter bar: **[ For Sale ] [ For Rent ] [
 ### Rental normalize() Status
 `normalize_rental()` uses best-guess field name prefixes. On first CI run, if rental normalization fails the existing debug dump will print the actual Apify field names. Update `normalize_rental()` accordingly (same process used for sales in Session 2).
 
+### Bugs Found and Fixed (same session, post-merge CI run)
+
+First CI run with new code (`--mode both`) revealed two bugs:
+
+**Bug 1 — TypeError crash:** `run_two_pass()` early return (when Pass 1 finds < 10 IDs) returned `([], search_items)` where `search_items` is a list. Caller did `total_events += events`, crashing with `TypeError: int += list`. Fixed: return `len(search_items)` instead.
+
+**Bug 2 — 0 IDs from 10 search items:** Pass 1 returned 10 items but extracted 0 unique listing IDs. Root cause unknown — items appear to lack explicit `id`/`listingId` fields AND URLs that match the regex `/(?:sale|rental)/(\d+)`. Added a debug dump (stderr) that fires when 0 IDs are extracted, printing the raw keys and all ID/URL-related fields of the first item. Next CI run will reveal the actual field structure.
+
 ---
 
 ## 2026-04-19 — Pipeline Debugging + Production Launch (Session 2)
