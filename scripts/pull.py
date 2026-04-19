@@ -21,6 +21,7 @@ Guard:
 """
 
 import os
+import re
 import sys
 import json
 import time
@@ -526,6 +527,12 @@ def run_two_pass(client, search_url, max_items, listing_type):
             item.get("url") or item.get("originalUrl")
             or (f"https://streeteasy.com/{'rental' if is_rental else 'sale'}/{lid}" if lid else "")
         )
+        # Fall back to extracting the numeric ID from the URL itself
+        # (handles cases where Apify returns no explicit id/listingId field)
+        if not lid and url:
+            m = re.search(r'/(?:sale|rental)/(\d+)', url)
+            if m:
+                lid = m.group(1)
         if url and lid and lid not in seen_ids:
             listing_urls.append(url)
             seen_ids.add(lid)
