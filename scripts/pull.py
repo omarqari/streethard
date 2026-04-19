@@ -42,7 +42,7 @@ RUN_TIMEOUT_SEC   = 600      # 10 minutes max wait per run
 
 DEFAULT_URL = (
     "https://streeteasy.com/for-sale/upper-east-side"
-    "/price:-5000000%7Csqft:1500-"
+    "/price:2000000-5000000%7Csqft:1500-"
 )
 DEFAULT_MAX_ITEMS = 500
 
