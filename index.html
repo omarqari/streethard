@@ -220,6 +220,40 @@ a:hover { text-decoration: underline; }
 }
 .clear-btn:hover { background: #eef2ff; }
 
+/* ─── Mode Toggle ──────────────────────────────────────────────── */
+.mode-toggle {
+  display: flex;
+  border: 1px solid #d0d5dd;
+  border-radius: 20px;
+  overflow: hidden;
+  flex-shrink: 0;
+  margin-right: 4px;
+}
+.mode-btn {
+  padding: 5px 13px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  cursor: pointer;
+  background: white;
+  border: none;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+  letter-spacing: 0.02em;
+}
+.mode-btn:hover { background: #f0f2f5; color: #333; }
+.mode-btn.mode-active-sale { background: #0E1730; color: #fff; }
+.mode-btn.mode-active-rent { background: #1a7a3c; color: #fff; }
+.mode-btn.mode-active-both { background: #3461D9; color: #fff; }
+
+/* Listing-type pills */
+.pill-sale { background: #e8f0fe; color: #3461D9; }
+.pill-rent { background: #e6f4ec; color: #1a7a3c; }
+
+/* Hide sale-only columns in rent-only view */
+#table-view.mode-rent .col-price,
+#table-view.mode-rent .col-ppsqft { display: none; }
+
 /* ─── Table ────────────────────────────────────────────────────── */
 #table-view { display: block; }
 #card-view  { display: none; }
@@ -522,7 +556,7 @@ td {
 <!-- ─── Summary Bar ─────────────────────────────────────────────── -->
 <div id="summary-bar">
   <div class="sum-stat"><span class="sv" id="s-count">—</span><span class="sl">listings</span></div>
-  <div class="sum-stat"><span class="sv" id="s-median-ask">—</span><span class="sl">median ask</span></div>
+  <div class="sum-stat" id="s-ask-stat"><span class="sv" id="s-median-ask">—</span><span class="sl">median ask</span></div>
   <div class="sum-stat"><span class="sv" id="s-median-pmt">—</span><span class="sl">median monthly</span></div>
   <div class="sum-stat"><span class="sv" id="s-ppsqft">—</span><span class="sl">median $/sqft</span></div>
   <div class="sum-stat"><span class="sv" id="s-types">—</span></div>
@@ -531,7 +565,12 @@ td {
 
 <!-- ─── Filter Bar ──────────────────────────────────────────────── -->
 <div id="filter-bar">
-  <span class="filter-label">Filter</span>
+  <div class="mode-toggle">
+    <button class="mode-btn mode-active-sale" id="mode-btn-sale" onclick="setMode('sale')">For Sale</button>
+    <button class="mode-btn" id="mode-btn-rent" onclick="setMode('rent')">For Rent</button>
+    <button class="mode-btn" id="mode-btn-both" onclick="setMode('both')">Both</button>
+  </div>
+  <span class="filter-label" style="margin-left:6px;">Filter</span>
   <select class="filter-select" id="f-beds" onchange="applyFilters()">
     <option value="0">Beds: All</option>
     <option value="2">2+ beds</option>
@@ -543,15 +582,17 @@ td {
     <option value="condo">Condo</option>
     <option value="coop">Co-op</option>
   </select>
-  <select class="filter-select" id="f-price" onchange="applyFilters()">
-    <option value="0">Max Price: Any</option>
-    <option value="2500000">$2.5M</option>
-    <option value="3000000">$3M</option>
-    <option value="3500000">$3.5M</option>
-    <option value="4000000">$4M</option>
-    <option value="5000000">$5M</option>
-    <option value="6000000">$6M</option>
-  </select>
+  <span id="f-price-wrap">
+    <select class="filter-select" id="f-price" onchange="applyFilters()">
+      <option value="0">Max Price: Any</option>
+      <option value="2500000">$2.5M</option>
+      <option value="3000000">$3M</option>
+      <option value="3500000">$3.5M</option>
+      <option value="4000000">$4M</option>
+      <option value="5000000">$5M</option>
+      <option value="6000000">$6M</option>
+    </select>
+  </span>
   <select class="filter-select" id="f-monthly" onchange="applyFilters()">
     <option value="0">Max Monthly: Any</option>
     <option value="15000">$15K</option>
@@ -575,16 +616,16 @@ td {
       <thead>
         <tr>
           <th></th>
-          <th onclick="sortBy('building')">Building / Unit <span class="sort-arrow" id="arr-building"></span></th>
-          <th onclick="sortBy('monthly')" id="th-monthly">Monthly Pmt <span class="sort-arrow" id="arr-monthly">↓</span></th>
-          <th onclick="sortBy('price')">Ask Price <span class="sort-arrow" id="arr-price"></span></th>
-          <th onclick="sortBy('sqft')">SqFt <span class="sort-arrow" id="arr-sqft"></span></th>
-          <th onclick="sortBy('beds')">Beds / Baths <span class="sort-arrow" id="arr-beds"></span></th>
-          <th onclick="sortBy('ppsqft')">Price/SqFt <span class="sort-arrow" id="arr-ppsqft"></span></th>
-          <th onclick="sortBy('pmtsqft')">PMT/SqFt <span class="sort-arrow" id="arr-pmtsqft"></span></th>
-          <th onclick="sortBy('type')">Type <span class="sort-arrow" id="arr-type"></span></th>
-          <th onclick="sortBy('year')">Yr Built <span class="sort-arrow" id="arr-year"></span></th>
-          <th onclick="sortBy('days')">Days Listed <span class="sort-arrow" id="arr-days"></span></th>
+          <th onclick="sortBy('building')" id="th-building">Building / Unit <span class="sort-arrow" id="arr-building"></span></th>
+          <th onclick="sortBy('monthly')" id="th-monthly"><span id="lbl-monthly">Monthly Pmt</span> <span class="sort-arrow" id="arr-monthly">↓</span></th>
+          <th onclick="sortBy('price')" id="th-price" class="col-price">Ask Price <span class="sort-arrow" id="arr-price"></span></th>
+          <th onclick="sortBy('sqft')" id="th-sqft">SqFt <span class="sort-arrow" id="arr-sqft"></span></th>
+          <th onclick="sortBy('beds')" id="th-beds">Beds / Baths <span class="sort-arrow" id="arr-beds"></span></th>
+          <th onclick="sortBy('ppsqft')" id="th-ppsqft" class="col-ppsqft">Price/SqFt <span class="sort-arrow" id="arr-ppsqft"></span></th>
+          <th onclick="sortBy('pmtsqft')" id="th-pmtsqft">PMT/SqFt <span class="sort-arrow" id="arr-pmtsqft"></span></th>
+          <th onclick="sortBy('type')" id="th-type">Type <span class="sort-arrow" id="arr-type"></span></th>
+          <th onclick="sortBy('year')" id="th-year">Yr Built <span class="sort-arrow" id="arr-year"></span></th>
+          <th onclick="sortBy('days')" id="th-days">Days Listed <span class="sort-arrow" id="arr-days"></span></th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -607,6 +648,7 @@ let allListings = [];
 let filteredListings = [];
 let expandedId = null;
 let currentView = 'table';
+let listingMode = 'sale'; // 'sale' | 'rent' | 'both'
 let sortCol = 'monthly';
 let sortDir = 'desc';
 let mtgCalcTimer = null;
@@ -627,6 +669,8 @@ function calcMortgagePayment(price) {
 }
 
 function calcMonthlyTotal(listing) {
+  // For rentals, price IS the monthly rent — no mortgage math needed
+  if (listing.listing_type === 'rent') return listing.price;
   const mtg = calcMortgagePayment(listing.price);
   if (listing.type === 'coop') {
     return mtg + (listing.maintenance || 0);
@@ -657,8 +701,15 @@ function fmtDate(s) {
   const d = new Date(s + 'T00:00:00');
   return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
 }
-function fmtDays(n) {
+function fmtDays(n, listingType) {
   if (n === null || n === undefined) return { text: '—', cls: '' };
+  // Rental market moves 3-5x faster — tighter thresholds
+  if (listingType === 'rent') {
+    if (n < 3)  return { text: 'NEW · ' + n + 'd', cls: 'days-new' };
+    if (n <= 14) return { text: n + 'd', cls: 'days-green' };
+    if (n <= 30) return { text: n + 'd', cls: 'days-yellow' };
+    return { text: n + 'd', cls: 'days-red' };
+  }
   if (n < 7)   return { text: 'NEW · ' + n + 'd', cls: 'days-new' };
   if (n <= 44)  return { text: n + 'd', cls: 'days-green' };
   if (n <= 120) return { text: n + 'd', cls: 'days-yellow' };
@@ -676,6 +727,10 @@ function median(arr) {
 function typePill(type) {
   if (type === 'coop') return '<span class="type-pill pill-coop">Co-op</span>';
   return '<span class="type-pill pill-condo">Condo</span>';
+}
+function listingTypeBadge(listing) {
+  if (listing.listing_type === 'rent') return '<span class="type-pill pill-rent">Rent</span>';
+  return '<span class="type-pill pill-sale">Sale</span>';
 }
 function eventClass(ev) {
   if (!ev) return 'ev-other';
@@ -715,16 +770,16 @@ async function loadData() {
     const data = await resp.json();
     allListings = data.listings || [];
 
-    // Stamp metadata
     if (data.generated_at) {
       document.getElementById('last-updated').textContent = 'Updated ' + data.generated_at;
       document.getElementById('footer-left').textContent =
         'StreetHard · Data via Apify memo23/streeteasy-ppr · ' + data.generated_at;
     }
-    if (data.run_cost_usd) {
-      document.getElementById('footer-right').textContent =
-        data.listing_count + ' listings · $' + data.run_cost_usd.toFixed(2) + ' this run';
-    }
+    const saleCount = allListings.filter(l => l.listing_type !== 'rent').length;
+    const rentCount = allListings.filter(l => l.listing_type === 'rent').length;
+    const costStr   = data.run_cost_usd ? ' · $' + data.run_cost_usd.toFixed(2) + ' this run' : '';
+    document.getElementById('footer-right').textContent =
+      saleCount + ' for sale · ' + rentCount + ' for rent' + costStr;
 
     document.getElementById('loading-state').style.display = 'none';
     applyFilters();
@@ -734,27 +789,64 @@ async function loadData() {
   }
 }
 
+// ─── Mode Toggle ─────────────────────────────────────────────────────
+function setMode(mode) {
+  listingMode = mode;
+
+  // Mode button active states
+  ['sale', 'rent', 'both'].forEach(m => {
+    const btn = document.getElementById('mode-btn-' + m);
+    btn.classList.remove('mode-active-sale', 'mode-active-rent', 'mode-active-both');
+    if (m === mode) btn.classList.add('mode-active-' + mode);
+  });
+
+  // Mortgage bar: hidden in rent-only mode
+  document.getElementById('mortgage-bar').style.display = mode === 'rent' ? 'none' : '';
+
+  // Max Price filter: irrelevant for rentals
+  document.getElementById('f-price-wrap').style.display = mode === 'rent' ? 'none' : '';
+
+  // Ask Price + Price/SqFt columns: hidden via CSS class in rent-only mode
+  document.getElementById('table-view').classList.toggle('mode-rent', mode === 'rent');
+
+  // Monthly column header label
+  const lbl = document.getElementById('lbl-monthly');
+  if (lbl) {
+    if (mode === 'rent') lbl.textContent = 'Monthly Rent';
+    else if (mode === 'both') lbl.textContent = 'Monthly Cost';
+    else lbl.textContent = 'Monthly Pmt';
+  }
+
+  // Summary bar: hide "median ask" in rent-only mode
+  const askStat = document.getElementById('s-ask-stat');
+  if (askStat) askStat.style.display = mode === 'rent' ? 'none' : '';
+
+  expandedId = null;
+  applyFilters();
+}
+
 // ─── Filters ────────────────────────────────────────────────────────
 function applyFilters() {
-  const beds    = parseInt(document.getElementById('f-beds').value) || 0;
-  const type    = document.getElementById('f-type').value;
-  const maxPx   = parseFloat(document.getElementById('f-price').value) || 0;
-  const maxMo   = parseFloat(document.getElementById('f-monthly').value) || 0;
+  const beds  = parseInt(document.getElementById('f-beds').value) || 0;
+  const type  = document.getElementById('f-type').value;
+  const maxPx = parseFloat(document.getElementById('f-price').value) || 0;
+  const maxMo = parseFloat(document.getElementById('f-monthly').value) || 0;
 
   const hasFilter = beds > 0 || type !== '' || maxPx > 0 || maxMo > 0;
   document.getElementById('clear-btn').style.display = hasFilter ? 'inline-block' : 'none';
 
-  // Mark active filters
   ['f-beds','f-type','f-price','f-monthly'].forEach(id => {
     const el = document.getElementById(id);
-    const val = el.value;
-    el.classList.toggle('active', val !== '0' && val !== '' && val !== '0');
+    el.classList.toggle('active', el.value !== '0' && el.value !== '');
   });
 
   filteredListings = allListings.filter(l => {
+    if (listingMode === 'sale' && l.listing_type === 'rent') return false;
+    if (listingMode === 'rent' && l.listing_type !== 'rent') return false;
     if (beds > 0 && (l.beds || 0) < beds) return false;
     if (type && l.type !== type) return false;
-    if (maxPx > 0 && l.price > maxPx) return false;
+    // Max price filter only applies to sale listings
+    if (maxPx > 0 && l.listing_type !== 'rent' && l.price > maxPx) return false;
     if (maxMo > 0 && calcMonthlyTotal(l) > maxMo) return false;
     return true;
   });
@@ -765,9 +857,9 @@ function applyFilters() {
 }
 
 function clearFilters() {
-  document.getElementById('f-beds').value   = '0';
-  document.getElementById('f-type').value   = '';
-  document.getElementById('f-price').value  = '0';
+  document.getElementById('f-beds').value    = '0';
+  document.getElementById('f-type').value    = '';
+  document.getElementById('f-price').value   = '0';
   document.getElementById('f-monthly').value = '0';
   applyFilters();
 }
@@ -780,7 +872,6 @@ function sortBy(col) {
     sortCol = col;
     sortDir = 'desc';
   }
-  // Reset arrows
   document.querySelectorAll('.sort-arrow').forEach(el => el.textContent = '');
   document.querySelectorAll('thead th').forEach(el => el.classList.remove('sort-active'));
   const arrow = document.getElementById('arr-' + col);
@@ -797,10 +888,14 @@ function sortListings() {
     let av, bv;
     switch (sortCol) {
       case 'monthly':  av = calcMonthlyTotal(a); bv = calcMonthlyTotal(b); break;
-      case 'price':    av = a.price;      bv = b.price;      break;
+      // Ask Price sorts rentals to bottom (no purchase price)
+      case 'price':    av = a.listing_type === 'rent' ? 0 : (a.price || 0);
+                       bv = b.listing_type === 'rent' ? 0 : (b.price || 0); break;
       case 'sqft':     av = a.sqft || 0;  bv = b.sqft || 0;  break;
       case 'beds':     av = a.beds || 0;  bv = b.beds || 0;  break;
-      case 'ppsqft':   av = a.price_per_sqft || 0; bv = b.price_per_sqft || 0; break;
+      // Price/SqFt sorts rentals to bottom
+      case 'ppsqft':   av = a.listing_type === 'rent' ? 0 : (a.price_per_sqft || 0);
+                       bv = b.listing_type === 'rent' ? 0 : (b.price_per_sqft || 0); break;
       case 'pmtsqft':  av = calcPmtPerSqft(a) || 0; bv = calcPmtPerSqft(b) || 0; break;
       case 'year':     av = a.year_built || 0; bv = b.year_built || 0; break;
       case 'days':     av = a.days_on_market ?? 9999; bv = b.days_on_market ?? 9999; break;
@@ -822,23 +917,52 @@ function updateSummary() {
       document.getElementById(id).textContent = '—');
     return;
   }
+
+  const sales = listings.filter(l => l.listing_type !== 'rent');
+  const rents = listings.filter(l => l.listing_type === 'rent');
+
+  // Median ask: sales only; hidden entirely in rent-only mode
   document.getElementById('s-median-ask').textContent =
-    fmtPrice(median(listings.map(l => l.price)));
+    (listingMode !== 'rent' && sales.length)
+      ? fmtPrice(median(sales.map(l => l.price)))
+      : '—';
+
   document.getElementById('s-median-pmt').textContent =
     fmtMoney(median(listings.map(l => calcMonthlyTotal(l)))) + '/mo';
+
+  // Price/SqFt: purchase price metric, sales only
+  const ppsqftData = sales.filter(l => l.price_per_sqft);
   document.getElementById('s-ppsqft').textContent =
-    fmtMoney(median(listings.filter(l => l.price_per_sqft).map(l => l.price_per_sqft))) + '/sqft';
-  const condos = listings.filter(l => l.type === 'condo').length;
-  const coops  = listings.filter(l => l.type === 'coop').length;
-  document.getElementById('s-types').textContent = condos + ' condos · ' + coops + ' co-ops';
-  const newCount = listings.filter(l => (l.days_on_market ?? 999) < 7).length;
+    ppsqftData.length
+      ? fmtMoney(median(ppsqftData.map(l => l.price_per_sqft))) + '/sqft'
+      : '—';
+
+  if (listingMode === 'both') {
+    document.getElementById('s-types').textContent =
+      sales.length + ' for sale · ' + rents.length + ' for rent';
+  } else {
+    const condos = listings.filter(l => l.type === 'condo').length;
+    const coops  = listings.filter(l => l.type === 'coop').length;
+    document.getElementById('s-types').textContent = condos + ' condos · ' + coops + ' co-ops';
+  }
+
+  // "New this week": type-aware threshold
+  const newCount = listings.filter(l => {
+    const d = l.days_on_market ?? 999;
+    return l.listing_type === 'rent' ? d < 3 : d < 7;
+  }).length;
   document.getElementById('s-new').textContent = newCount || '0';
 }
 
 // ─── Render ──────────────────────────────────────────────────────────
 function render() {
+  const modeTotal = allListings.filter(l => {
+    if (listingMode === 'sale') return l.listing_type !== 'rent';
+    if (listingMode === 'rent') return l.listing_type === 'rent';
+    return true;
+  }).length;
   document.getElementById('result-count').innerHTML =
-    '<strong>' + filteredListings.length + '</strong> of ' + allListings.length + ' listings';
+    '<strong>' + filteredListings.length + '</strong> of ' + modeTotal + ' listings';
 
   if (currentView === 'table') renderTable();
   else renderCards();
@@ -857,15 +981,27 @@ function renderTable() {
   wrap.style.display  = 'block';
   empty.style.display = 'none';
 
+  // colspan adjusts for hidden columns (Ask Price + Price/SqFt hidden in rent-only)
+  const colSpan  = listingMode === 'rent' ? 9 : 11;
+  const showBoth = listingMode === 'both';
+
   let html = '';
   filteredListings.forEach(listing => {
+    const isRent  = listing.listing_type === 'rent';
     const monthly = calcMonthlyTotal(listing);
     const pmtSqft = calcPmtPerSqft(listing);
-    const days    = fmtDays(listing.days_on_market);
+    const days    = fmtDays(listing.days_on_market, listing.listing_type);
     const isExp   = expandedId === listing.id;
     const baths   = listing.baths ?? '—';
-    const ppsqft  = listing.price_per_sqft ? fmtMoney(listing.price_per_sqft) : '—';
+    // Price/SqFt blank for rentals (user decision: annualized $/sqft already covers it)
+    const ppsqft  = (!isRent && listing.price_per_sqft) ? fmtMoney(listing.price_per_sqft) : '—';
     const pmtSq   = pmtSqft ? fmtMoney(pmtSqft) : '—';
+    // Ask Price: blank for rentals in Both mode; column hidden entirely in Rent mode
+    const askCell = isRent ? '—' : fmtPrice(listing.price);
+    // Type cell: show SALE/RENT badge in Both mode alongside condo/co-op pill
+    const typeCell = showBoth
+      ? listingTypeBadge(listing) + ' ' + typePill(listing.type)
+      : typePill(listing.type);
 
     html += `
       <tr class="${isExp ? 'row-expanded' : ''}" onclick="toggleExpand('${listing.id}')">
@@ -875,18 +1011,18 @@ function renderTable() {
           <div class="td-sub">${listing.address}${listing.unit ? ' #' + listing.unit : ''} · ${listing.neighborhood || ''}</div>
         </td>
         <td class="td-monthly">${fmtMoney(monthly)}<span style="font-size:10px;font-weight:500;color:#888;">/mo</span></td>
-        <td class="td-price">${fmtPrice(listing.price)}</td>
+        <td class="td-price col-price">${askCell}</td>
         <td>${listing.sqft ? listing.sqft.toLocaleString() : '—'}</td>
         <td>${listing.beds ?? '—'} bd · ${baths} ba</td>
-        <td>${ppsqft}</td>
+        <td class="col-ppsqft">${ppsqft}</td>
         <td>${pmtSq}</td>
-        <td>${typePill(listing.type)}</td>
+        <td>${typeCell}</td>
         <td>${listing.year_built || '—'}</td>
         <td><span class="days-badge ${days.cls}">${days.text}</span></td>
       </tr>`;
 
     if (isExp) {
-      html += `<tr class="row-expansion"><td colspan="11">${buildExpansion(listing)}</td></tr>`;
+      html += `<tr class="row-expansion"><td colspan="${colSpan}">${buildExpansion(listing)}</td></tr>`;
     }
   });
   tbody.innerHTML = html;
@@ -898,27 +1034,31 @@ function renderCards() {
     container.innerHTML = '<div style="width:100%;text-align:center;padding:60px;color:#888;">No listings match your filters.</div>';
     return;
   }
+  const showBoth = listingMode === 'both';
   let html = '';
   filteredListings.forEach(listing => {
+    const isRent  = listing.listing_type === 'rent';
     const monthly = calcMonthlyTotal(listing);
-    const days = fmtDays(listing.days_on_market);
+    const days    = fmtDays(listing.days_on_market, listing.listing_type);
+    // For rentals, the monthly rent IS the headline price
+    const priceRow = isRent
+      ? `<span class="card-ask">${fmtMoney(monthly)}<span style="font-size:13px;font-weight:500;">/mo</span></span>`
+      : `<span class="card-ask">${fmtPrice(listing.price)}</span><span class="card-monthly">${fmtMoney(monthly)}/mo</span>`;
+
     html += `
       <div class="listing-card">
         <div class="card-type-row">
-          ${typePill(listing.type)}
+          <div>${showBoth ? listingTypeBadge(listing) + ' ' : ''}${typePill(listing.type)}</div>
           <span class="days-badge ${days.cls}">${days.text}</span>
         </div>
         <div class="card-building">${listing.building || '—'}</div>
         <div class="card-address">${listing.address}${listing.unit ? ' #' + listing.unit : ''} · ${listing.neighborhood || ''}</div>
-        <div class="card-price-row">
-          <span class="card-ask">${fmtPrice(listing.price)}</span>
-          <span class="card-monthly">${fmtMoney(monthly)}/mo</span>
-        </div>
+        <div class="card-price-row">${priceRow}</div>
         <div class="card-stats">
           <span><strong>${listing.beds ?? '—'}</strong> bd</span>
           <span><strong>${listing.baths ?? '—'}</strong> ba</span>
           <span><strong>${listing.sqft ? listing.sqft.toLocaleString() : '—'}</strong> sqft</span>
-          <span><strong>${listing.price_per_sqft ? fmtMoney(listing.price_per_sqft) : '—'}</strong>/sqft</span>
+          ${!isRent && listing.price_per_sqft ? `<span><strong>${fmtMoney(listing.price_per_sqft)}</strong>/sqft</span>` : ''}
           <span>Built <strong>${listing.year_built || '—'}</strong></span>
         </div>
         <div class="card-footer">
@@ -931,7 +1071,7 @@ function renderCards() {
 }
 
 function buildExpansion(listing) {
-  const mtg   = calcMortgagePayment(listing.price);
+  const isRent  = listing.listing_type === 'rent';
   const monthly = calcMonthlyTotal(listing);
   const insight = historyInsight(listing);
 
@@ -967,18 +1107,24 @@ function buildExpansion(listing) {
   }
   agentHtml += `<a class="se-link" href="${listing.url}" target="_blank">View on StreetEasy ↗</a>`;
 
-  // Payment breakdown
+  // Payment breakdown: simplified for rentals
   let pmtHtml = '<div class="exp-title">Payment Breakdown</div><div class="pmt-breakdown">';
-  pmtHtml += `<div class="pmt-row"><span>Mortgage</span><strong>${fmtMoney(mtg)}</strong></div>`;
-  if (listing.type === 'coop') {
-    pmtHtml += `<div class="pmt-row"><span>Maintenance</span><strong>${listing.maintenance ? fmtMoney(listing.maintenance) : '—'}</strong></div>`;
-    pmtHtml += `<div class="pmt-note" style="font-size:10px;color:#aaa;padding-top:4px;">Maintenance includes taxes</div>`;
+  if (isRent) {
+    pmtHtml += `<div class="pmt-row"><span>Monthly Rent</span><strong>${fmtMoney(monthly)}</strong></div>`;
+    pmtHtml += `<div class="pmt-note">Rent as listed on StreetEasy</div>`;
   } else {
-    pmtHtml += `<div class="pmt-row"><span>Common Charges</span><strong>${listing.monthly_fees ? fmtMoney(listing.monthly_fees) : '—'}</strong></div>`;
-    pmtHtml += `<div class="pmt-row"><span>RE Taxes</span><strong>${listing.monthly_taxes ? fmtMoney(listing.monthly_taxes) : '—'}</strong></div>`;
+    const mtg = calcMortgagePayment(listing.price);
+    pmtHtml += `<div class="pmt-row"><span>Mortgage</span><strong>${fmtMoney(mtg)}</strong></div>`;
+    if (listing.type === 'coop') {
+      pmtHtml += `<div class="pmt-row"><span>Maintenance</span><strong>${listing.maintenance ? fmtMoney(listing.maintenance) : '—'}</strong></div>`;
+      pmtHtml += `<div class="pmt-note" style="font-size:10px;color:#aaa;padding-top:4px;">Maintenance includes taxes</div>`;
+    } else {
+      pmtHtml += `<div class="pmt-row"><span>Common Charges</span><strong>${listing.monthly_fees ? fmtMoney(listing.monthly_fees) : '—'}</strong></div>`;
+      pmtHtml += `<div class="pmt-row"><span>RE Taxes</span><strong>${listing.monthly_taxes ? fmtMoney(listing.monthly_taxes) : '—'}</strong></div>`;
+    }
+    pmtHtml += `<div class="pmt-total"><span>Total</span><span>${fmtMoney(monthly)}/mo</span></div>`;
+    pmtHtml += `<div class="pmt-note">$${(downPayment/1000).toFixed(0)}K down · ${annualRate}% · ${termYears}yr</div>`;
   }
-  pmtHtml += `<div class="pmt-total"><span>Total</span><span>${fmtMoney(monthly)}/mo</span></div>`;
-  pmtHtml += `<div class="pmt-note">$${(downPayment/1000).toFixed(0)}K down · ${annualRate}% · ${termYears}yr</div>`;
   pmtHtml += '</div>';
 
   return `<div class="expansion-panel">
@@ -1019,9 +1165,7 @@ function onMtgChange() {
 }
 
 // ─── Init ─────────────────────────────────────────────────────────────
-// Set initial sort header
 document.getElementById('th-monthly').classList.add('sort-active');
-
 loadData();
 </script>
 </body>

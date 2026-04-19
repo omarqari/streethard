@@ -4,6 +4,38 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-04-19 — Rentals Added (Session 3)
+
+### Scope Expansion
+Added UES rental listings ($10K–$20K/month, sqft ≥ 1,500) alongside existing sales. Primary motivation: rent-vs-buy comparison using the same neighborhood and size criteria.
+
+### UI: Mode Toggle
+Added a 3-way segmented control to the filter bar: **[ For Sale ] [ For Rent ] [ Both ]**. Behavior per mode:
+- **For Sale**: existing behavior unchanged
+- **For Rent**: mortgage calculator bar collapses; Ask Price column hidden; Price/SqFt blank (annualized $/sqft already covers the equivalent); Days Listed uses tighter rental thresholds
+- **Both**: all listings shown with SALE/RENT badge per row; mortgage bar visible (affects sale rows only); Ask Price blank for rental rows
+
+### Column Mapping Decisions
+| Column | Rentals treatment |
+|---|---|
+| Monthly Pmt → "Monthly Rent" | `listing.price` = monthly rent directly |
+| Ask Price | Hidden in rent-only; blank in Both |
+| Price/SqFt | Blank for all rentals (annualized $/sqft is the equivalent) |
+| PMT/SqFt | Direct equivalent: (annual rent) ÷ sqft |
+| Days Listed | Tighter thresholds: NEW <3d, green 3–14d, yellow 14–30d, red 30d+ |
+| Mortgage calculator | Collapsed in rent-only mode |
+| Payment breakdown | Simplified to "Monthly Rent: $X" for rentals |
+
+### Pipeline Changes
+- `pull.py` refactored: new `run_two_pass(client, url, max_items, listing_type)` helper; new `normalize_rental()` with best-guess field names mirroring the sales schema (`rentalListingDetailsFederated_*` etc.); `--mode both|sale|rent` argument (default: both); `listing_type: "sale"|"rent"` field on every normalized record
+- `refresh.yml`: replaced `--url` manual input with `--mode`; commit message now includes sale/rent counts
+- `data/latest.json`: now contains both types merged; `sale_count` and `rental_count` added to payload metadata
+
+### Rental normalize() Status
+`normalize_rental()` uses best-guess field name prefixes. On first CI run, if rental normalization fails the existing debug dump will print the actual Apify field names. Update `normalize_rental()` accordingly (same process used for sales in Session 2).
+
+---
+
 ## 2026-04-19 — Pipeline Debugging + Production Launch (Session 2)
 
 ### Problem: GitHub Actions Failing on Pass 2

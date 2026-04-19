@@ -10,7 +10,8 @@ Build a lightweight personal web app (StreetHard) that supplements — rather th
 
 ## Search Criteria
 
-Active sale listings in the **Upper East Side**, Manhattan, matching:
+### For Sale
+Active sale listings in the **Upper East Side**, Manhattan:
 
 - **Sqft:** ≥ 1,500 (caveat: StreetEasy's `sqft:1500-` filter only excludes listings that explicitly have sqft listed below 1,500 — co-ops with no sqft recorded bypass the filter entirely)
 - **Price:** $2,000,000 – $5,000,000
@@ -20,6 +21,16 @@ Active sale listings in the **Upper East Side**, Manhattan, matching:
 **$2M floor rationale:** Sub-$1M 1-bedroom co-ops appeared in the first production pull because the sqft filter doesn't catch listings with no sqft. The price floor eliminates the noise cleanly.
 
 **$5M ceiling:** User preference as of 2026-04-19.
+
+### For Rent
+Active rental listings in the **Upper East Side**, Manhattan:
+
+- **Sqft:** ≥ 1,500 (same caveat as sales — listings without sqft bypass the filter)
+- **Monthly Rent:** $10,000 – $20,000
+- **Geography:** Upper East Side
+- **Status:** Active only
+
+Added 2026-04-19 to support rent-vs-buy comparison. The `price` field for rental listings = monthly rent (not a purchase price); the app's `calcMonthlyTotal()` handles this by returning `listing.price` directly for rentals.
 
 ## App: StreetHard
 

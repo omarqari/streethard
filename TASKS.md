@@ -45,8 +45,9 @@ Actionable next steps. Check things off as you go.
 
 ## Phase 2 Enhancements (Post-v1)
 
+- [x] **Rental comp analysis:** Added UES rental listings ($10K–$20K/mo). Mode toggle (For Sale / For Rent / Both) added to app. Pipeline pulls both types in one run.
+- [ ] **Rental normalize() validation:** First CI run with rentals will dump actual Apify field names if normalization fails. Update `normalize_rental()` in `pull.py` based on that output.
 - [ ] **New/reduced badges:** Compare current pull against previous `data/YYYY-MM-DD.json` to surface new listings and price cuts with visual badges in the app.
-- [ ] **Rental comp analysis:** Add UES rental data alongside PMT/SqFt column for buy-vs-rent comparison.
 - [ ] **Co-op sqft gap:** Evaluate supplemental pull for co-ops without sqft filter; flag those listings separately.
 
 ---
