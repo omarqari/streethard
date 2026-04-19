@@ -109,12 +109,16 @@ class ApifyClient:
         print(f"  URLs:      {len(start_urls)}")
         print(f"  Max items: {max_items}")
 
+        # Only paginate beyond page 1 when fetching a full set of results.
+        # For small test runs (max_items <= 20) stay on page 1 — moreResults
+        # causes the actor to paginate aggressively before respecting maxItems,
+        # making small test runs extremely slow.
+        paginate = max_items > 20
+
         run_input = {
-            "startUrls": [{"url": u} for u in start_urls],
-            "maxItems":  max_items,
-            # Paginate through all search result pages (not just page 1).
-            # Without this the actor stops after ~50 results (one StreetEasy page).
-            "moreResults": True,
+            "startUrls":   [{"url": u} for u in start_urls],
+            "maxItems":    max_items,
+            "moreResults": paginate,
             # Residential proxies are required — without them StreetEasy's
             # bot detection blocks search page scraping and the actor only
             # returns internal queue/status objects (message, timestamp, urls_json)
