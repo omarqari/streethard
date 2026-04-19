@@ -112,6 +112,9 @@ class ApifyClient:
         run_input = {
             "startUrls": [{"url": u} for u in start_urls],
             "maxItems":  max_items,
+            # Paginate through all search result pages (not just page 1).
+            # Without this the actor stops after ~50 results (one StreetEasy page).
+            "moreResults": True,
             # Residential proxies are required — without them StreetEasy's
             # bot detection blocks search page scraping and the actor only
             # returns internal queue/status objects (message, timestamp, urls_json)
