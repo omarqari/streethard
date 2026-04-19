@@ -1,1208 +1,3377 @@
 {
   "generated_at": "2026-04-19",
   "listing_count": 50,
-  "run_cost_usd": 0.15,
-  "search_url": "https://streeteasy.com/for-sale/upper-east-side/price:2500000-4000000%7Csqft:1500-",
+  "run_cost_usd": 0.3,
+  "search_url": "https://streeteasy.com/for-sale/upper-east-side/price:2000000-5000000%7Csqft:1500-",
+  "data_source": "pass2",
   "listings": [
     {
-      "id": "1822622",
-      "url": "https://streeteasy.com/sale/1822622",
-      "building": "",
-      "address": "",
-      "unit": "41AB",
-      "neighborhood": "",
-      "price": 3700000,
-      "sqft": null,
-      "beds": 3,
-      "baths": 3.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1818978",
-      "url": "https://streeteasy.com/sale/1818978",
-      "building": "",
-      "address": "",
-      "unit": "28BC",
-      "neighborhood": "",
-      "price": 3300000,
+      "id": "1820699",
+      "url": "https://streeteasy.com/sale/1820699",
+      "building": "Carnegie Tower",
+      "address": "115 East 87th Street",
+      "unit": "37EF",
+      "neighborhood": "Carnegie Hill",
+      "price": 4995000,
       "sqft": 2400,
       "beds": 4,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "baths": 4.0,
+      "price_per_sqft": 2081,
+      "type": "coop",
+      "year_built": 1972,
+      "days_on_market": 11,
       "monthly_fees": null,
       "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "maintenance": 5833,
+      "agent_name": "Jamie Gorman",
+      "agent_phone": "(917) 880-8064",
+      "agent_email": "jamie.gorman@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-08",
+          "price": 4995000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ]
     },
     {
-      "id": "1822546",
-      "url": "https://streeteasy.com/sale/1822546",
-      "building": "",
-      "address": "",
-      "unit": "15S",
-      "neighborhood": "",
-      "price": 2799000,
-      "sqft": 2000,
+      "id": "1819376",
+      "url": "https://streeteasy.com/sale/1819376",
+      "building": "1065 Park Avenue",
+      "address": "1065 Park Avenue",
+      "unit": "18BCD",
+      "neighborhood": "Carnegie Hill",
+      "price": 4750000,
+      "sqft": null,
       "beds": 4,
-      "baths": 3.5,
+      "baths": 4.0,
       "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "type": "coop",
+      "year_built": 1973,
+      "days_on_market": 10,
       "monthly_fees": null,
       "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "maintenance": 7029,
+      "agent_name": "Judy Kloner",
+      "agent_phone": "(917) 885-9619",
+      "agent_email": "jkloner@cbwarburg.com",
+      "agent_firm": "Coldwell Banker Warburg",
+      "price_history": [
+        {
+          "date": "2026-04-09",
+          "price": 4750000,
+          "event": "LISTED",
+          "broker": "Coldwell Banker Warburg"
+        }
+      ]
     },
     {
-      "id": "1822440",
-      "url": "https://streeteasy.com/sale/1822440",
-      "building": "",
-      "address": "",
-      "unit": "6B",
-      "neighborhood": "",
-      "price": 3100000,
-      "sqft": 2500,
+      "id": "1821232",
+      "url": "https://streeteasy.com/sale/1821232",
+      "building": "420 East 75th",
+      "address": "420 East 75th Street",
+      "unit": "6",
+      "neighborhood": "Lenox Hill",
+      "price": 4735000,
+      "sqft": 2350,
       "beds": 3,
       "baths": 3.5,
-      "price_per_sqft": null,
+      "price_per_sqft": 2014,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
+      "year_built": 2025,
+      "days_on_market": 9,
+      "monthly_fees": 2165,
+      "monthly_taxes": 2227,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Nick Hovsepian",
+      "agent_phone": "(310) 748-8668",
+      "agent_email": "nick.hovsepian@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-10",
+          "price": 4735000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-01-02",
+          "price": 4995000,
+          "event": "DELISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-05-06",
+          "price": 4995000,
+          "event": "IN_CONTRACT",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-02-05",
+          "price": 4995000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ]
     },
     {
-      "id": "1822389",
-      "url": "https://streeteasy.com/sale/1822389",
-      "building": "",
-      "address": "",
-      "unit": "2",
-      "neighborhood": "",
-      "price": 2750000,
-      "sqft": 1300,
-      "beds": 2,
-      "baths": 2.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1822183",
-      "url": "https://streeteasy.com/sale/1822183",
-      "building": "",
-      "address": "",
-      "unit": "10DE",
-      "neighborhood": "",
-      "price": 3700000,
-      "sqft": 1750,
-      "beds": 3,
-      "baths": 3.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1821281",
-      "url": "https://streeteasy.com/sale/1821281",
-      "building": "",
-      "address": "",
-      "unit": "2NE",
-      "neighborhood": "",
-      "price": 3800000,
+      "id": "1819023",
+      "url": "https://streeteasy.com/sale/1819023",
+      "building": "1148 Fifth Avenue",
+      "address": "1148 5th Avenue",
+      "unit": "12C",
+      "neighborhood": "Carnegie Hill",
+      "price": 4695000,
       "sqft": null,
       "beds": 4,
       "baths": 3.0,
       "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "type": "coop",
+      "year_built": 1923,
+      "days_on_market": 9,
       "monthly_fees": null,
       "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "maintenance": 8384,
+      "agent_name": "Dianne Weston",
+      "agent_phone": "(917) 693-8442",
+      "agent_email": "dianne.weston@sothebys.realty",
+      "agent_firm": "Sotheby's International Realty",
+      "price_history": [
+        {
+          "date": "2026-04-10",
+          "price": 4695000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2025-04-28",
+          "price": 4695000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2025-01-27",
+          "price": 4695000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2024-04-08",
+          "price": 4695000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2023-09-29",
+          "price": 4800000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2023-06-30",
+          "price": 4800000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2023-03-08",
+          "price": 4800000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        }
+      ]
     },
     {
-      "id": "1822160",
-      "url": "https://streeteasy.com/sale/1822160",
-      "building": "",
-      "address": "",
-      "unit": "6B",
-      "neighborhood": "",
-      "price": 2699000,
+      "id": "1822675",
+      "url": "https://streeteasy.com/sale/1822675",
+      "building": "770 Park Avenue",
+      "address": "770 Park Avenue",
+      "unit": "1D",
+      "neighborhood": "Lenox Hill",
+      "price": 4500000,
       "sqft": null,
       "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1822193",
-      "url": "https://streeteasy.com/sale/1822193",
-      "building": "",
-      "address": "",
-      "unit": "PHA",
-      "neighborhood": "",
-      "price": 2700000,
-      "sqft": null,
-      "beds": 2,
-      "baths": 2.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1822094",
-      "url": "https://streeteasy.com/sale/1822094",
-      "building": "",
-      "address": "",
-      "unit": "7/8A",
-      "neighborhood": "",
-      "price": 3100000,
-      "sqft": null,
-      "beds": 2,
       "baths": 2.5,
       "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "type": "coop",
+      "year_built": 1931,
+      "days_on_market": 2,
       "monthly_fees": null,
       "monthly_taxes": null,
+      "maintenance": 6116,
+      "agent_name": "Jane Powers",
+      "agent_phone": "(212) 727-6134",
+      "agent_email": "jane.powers@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-04-17",
+          "price": 4500000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2024-12-17",
+          "price": null,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
+    },
+    {
+      "id": "1822654",
+      "url": "https://streeteasy.com/sale/1822654",
+      "building": "The Parc V",
+      "address": "785 5th Avenue",
+      "unit": "12C",
+      "neighborhood": "Lenox Hill",
+      "price": 4500000,
+      "sqft": 2400,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": 1875,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 3,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 5303,
+      "agent_name": "Fabienne Lecole",
+      "agent_phone": "(917) 405-6336",
+      "agent_email": "fle@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-04-16",
+          "price": 4500000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2011-04-12",
+          "price": 3900000,
+          "event": "SOLD",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2011-04-11",
+          "price": 3500000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2010-12-29",
+          "price": 3900000,
+          "event": "IN_CONTRACT",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2010-10-04",
+          "price": 3900000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2010-10-01",
+          "price": 3875000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2010-09-14",
+          "price": 3875000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2010-07-20",
+          "price": 3875000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2010-03-23",
+          "price": 3875000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2009-09-30",
+          "price": 4200000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ]
+    },
+    {
+      "id": "1822201",
+      "url": "https://streeteasy.com/sale/1822201",
+      "building": "LUX 74",
+      "address": "433 East 74th Street",
+      "unit": "TH/1B",
+      "neighborhood": "Lenox Hill",
+      "price": 4500000,
+      "sqft": 3216,
+      "beds": 3,
+      "baths": 4.0,
+      "price_per_sqft": 1399,
+      "type": "condo",
+      "year_built": 2007,
+      "days_on_market": 4,
+      "monthly_fees": 5840,
+      "monthly_taxes": 5643,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Sabrina Saltiel",
+      "agent_phone": "(917) 696-6499",
+      "agent_email": "ssaltiel@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-04-15",
+          "price": 4500000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ]
+    },
+    {
+      "id": "1820532",
+      "url": "https://streeteasy.com/sale/1820532",
+      "building": "1158 Fifth Avenue",
+      "address": "1158 5th Avenue",
+      "unit": "4A",
+      "neighborhood": "Carnegie Hill",
+      "price": 4490000,
+      "sqft": 2500,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 1796,
+      "type": "coop",
+      "year_built": 1924,
+      "days_on_market": 12,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 6427,
+      "agent_name": "Daniel E. Kirschner",
+      "agent_phone": "(917) 932-7187",
+      "agent_email": "daniel.k@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-04-07",
+          "price": 4490000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2019-07-17",
+          "price": 3750000,
+          "event": "SOLD",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2019-07-10",
+          "price": 3750000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2019-07-02",
+          "price": 3500000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2019-03-28",
+          "price": 3750000,
+          "event": "IN_CONTRACT",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2019-02-15",
+          "price": 3750000,
+          "event": "PRICE_DECREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2018-06-18",
+          "price": 3995000,
+          "event": "PRICE_DECREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2018-05-03",
+          "price": 4250000,
+          "event": "PRICE_DECREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2018-03-29",
+          "price": 4500000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2017-09-01",
+          "price": 4500000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2017-04-28",
+          "price": 4500000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2012-07-07",
+          "price": 3500000,
+          "event": "SOLD",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2012-06-27",
+          "price": 3400000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2012-05-27",
+          "price": 3500000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2012-05-02",
+          "price": 3500000,
+          "event": "IN_CONTRACT",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2012-01-22",
+          "price": 3500000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2012-01-03",
+          "price": 3700000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2011-12-25",
+          "price": 3700000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2011-09-21",
+          "price": 3700000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2011-09-06",
+          "price": 3900000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2011-08-24",
+          "price": 4050000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2011-07-06",
+          "price": 4295000,
+          "event": "DELISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2011-06-10",
+          "price": 4050000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2011-06-10",
+          "price": 4195000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2011-06-07",
+          "price": 4295000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2010-02-05",
+          "price": 4295000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2009-09-03",
+          "price": 4295000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2009-06-05",
+          "price": 4295000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2009-02-10",
+          "price": 4750000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2009-01-11",
+          "price": 4750000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2008-12-27",
+          "price": 4750000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2008-12-11",
+          "price": 4750000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2007-07-10",
+          "price": 3400000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2006-10-19",
+          "price": 3199999,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "CBHK"
+        },
+        {
+          "date": "2006-08-01",
+          "price": 3199999,
+          "event": "PRICE_DECREASE",
+          "broker": "CBHK"
+        },
+        {
+          "date": "2006-05-18",
+          "price": 3375000,
+          "event": "PRICE_DECREASE",
+          "broker": "CBHK"
+        },
+        {
+          "date": "2005-11-01",
+          "price": 3500000,
+          "event": "LISTED",
+          "broker": "CBHK"
+        }
+      ]
+    },
+    {
+      "id": "1820623",
+      "url": "https://streeteasy.com/sale/1820623",
+      "building": "The Kent",
+      "address": "200 East 95th Street",
+      "unit": "14C",
+      "neighborhood": "Yorkville",
+      "price": 4480000,
+      "sqft": 1959,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 2286,
+      "type": "condo",
+      "year_built": 2017,
+      "days_on_market": 11,
+      "monthly_fees": 2603,
+      "monthly_taxes": 239,
+      "maintenance": null,
+      "agent_name": "RIVA ZHENG",
+      "agent_phone": "(347) 439-9466",
+      "agent_email": "riva.zheng@trurealtycorp.com",
+      "agent_firm": "Tru International Realty Corp",
+      "price_history": [
+        {
+          "date": "2026-04-08",
+          "price": 4480000,
+          "event": "LISTED",
+          "broker": "Tru International Realty Corp"
+        },
+        {
+          "date": "2020-07-08",
+          "price": 4324000,
+          "event": "SOLD",
+          "broker": "Extell Marketing Group"
+        },
+        {
+          "date": "2020-06-25",
+          "price": 4324000,
+          "event": "SOLD",
+          "broker": "Extell Marketing Group"
+        },
+        {
+          "date": "2020-06-08",
+          "price": 4001825,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2020-03-11",
+          "price": 4324000,
+          "event": "IN_CONTRACT",
+          "broker": "Extell Marketing Group"
+        },
+        {
+          "date": "2019-08-30",
+          "price": 4324000,
+          "event": "LISTED",
+          "broker": "Extell Marketing Group"
+        },
+        {
+          "date": "2019-04-01",
+          "price": 4324000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Extell Marketing Group"
+        },
+        {
+          "date": "2019-03-01",
+          "price": 4324000,
+          "event": "LISTED",
+          "broker": "Extell Marketing Group"
+        }
+      ]
+    },
+    {
+      "id": "1820301",
+      "url": "https://streeteasy.com/sale/1820301",
+      "building": "710 Park Avenue",
+      "address": "710 Park Avenue",
+      "unit": "2A",
+      "neighborhood": "Lenox Hill",
+      "price": 4395000,
+      "sqft": null,
+      "beds": 4,
+      "baths": 4.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1948,
+      "days_on_market": 12,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 8500,
+      "agent_name": "Francine Crocker",
+      "agent_phone": "(917) 545-7208",
+      "agent_email": "francine.crocker@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-07",
+          "price": 4395000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ]
+    },
+    {
+      "id": "1822845",
+      "url": "https://streeteasy.com/sale/1822845",
+      "building": "115 East 67th Street",
+      "address": "115 East 67th Street",
+      "unit": "3/4D",
+      "neighborhood": "Lenox Hill",
+      "price": 4250000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 5.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1931,
+      "days_on_market": 2,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 9185,
+      "agent_name": "Leighton Candler",
+      "agent_phone": "(212) 937-6677",
+      "agent_email": "lcc@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-17",
+          "price": 4250000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2024-09-16",
+          "price": 4700000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2024-06-17",
+          "price": 4700000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2024-05-13",
+          "price": 4700000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ]
+    },
+    {
+      "id": "1821445",
+      "url": "https://streeteasy.com/sale/1821445",
+      "building": "39 E 79 Street",
+      "address": "39 East 79th Street",
+      "unit": "2B",
+      "neighborhood": "Lenox Hill",
+      "price": 4200000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1925,
+      "days_on_market": 6,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3654,
+      "agent_name": "Stephanie Kanner",
+      "agent_phone": "(917) 287-9517",
+      "agent_email": "skanner@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-04-13",
+          "price": 4200000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2023-03-02",
+          "price": 3875000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Fox Residential Group"
+        },
+        {
+          "date": "2022-12-01",
+          "price": 3875000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Fox Residential Group"
+        },
+        {
+          "date": "2022-03-14",
+          "price": 3875000,
+          "event": "LISTED",
+          "broker": "Fox Residential Group"
+        },
+        {
+          "date": "2022-02-28",
+          "price": 3875000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Fox Residential Group"
+        },
+        {
+          "date": "2021-11-29",
+          "price": 3875000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Fox Residential Group"
+        },
+        {
+          "date": "2021-04-05",
+          "price": 3875000,
+          "event": "LISTED",
+          "broker": "Fox Residential Group"
+        }
+      ]
+    },
+    {
+      "id": "1822146",
+      "url": "https://streeteasy.com/sale/1822146",
+      "building": "420 East 75th",
+      "address": "420 East 75th Street",
+      "unit": "2",
+      "neighborhood": "Lenox Hill",
+      "price": 4195000,
+      "sqft": 2350,
+      "beds": 3,
+      "baths": 3.5,
+      "price_per_sqft": 1785,
+      "type": "condo",
+      "year_built": 2025,
+      "days_on_market": 4,
+      "monthly_fees": 2146,
+      "monthly_taxes": 2207,
+      "maintenance": null,
+      "agent_name": "Nick Hovsepian",
+      "agent_phone": "(310) 748-8668",
+      "agent_email": "nick.hovsepian@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-15",
+          "price": 4195000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-01-02",
+          "price": 4150000,
+          "event": "DELISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-09-10",
+          "price": 4150000,
+          "event": "PRICE_DECREASE",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-06-05",
+          "price": 4295000,
+          "event": "PRICE_INCREASE",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-02-03",
+          "price": 3995000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ]
+    },
+    {
+      "id": "1822856",
+      "url": "https://streeteasy.com/sale/1822856",
+      "building": "Evans Tower Condominium",
+      "address": "171 East 84th Street",
+      "unit": "25BC",
+      "neighborhood": "Upper East Side",
+      "price": 4150000,
+      "sqft": 2500,
+      "beds": 4,
+      "baths": 4.5,
+      "price_per_sqft": 1660,
+      "type": "condo",
+      "year_built": 1987,
+      "days_on_market": 1,
+      "monthly_fees": 5074,
+      "monthly_taxes": 4559,
+      "maintenance": null,
+      "agent_name": "Beatrice Caponnetti Jackson",
+      "agent_phone": "(646) 420-5705",
+      "agent_email": "beatrice.jackson@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-04-18",
+          "price": 4150000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ]
     },
     {
       "id": "1821913",
       "url": "https://streeteasy.com/sale/1821913",
-      "building": "",
-      "address": "",
+      "building": "1025 Fifth Avenue",
+      "address": "1025 5th Avenue",
       "unit": "7A",
-      "neighborhood": "",
+      "neighborhood": "Upper East Side",
       "price": 3995000,
       "sqft": null,
       "beds": 3,
       "baths": 3.0,
       "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "type": "coop",
+      "year_built": 1955,
+      "days_on_market": 5,
       "monthly_fees": null,
       "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1817847",
-      "url": "https://streeteasy.com/sale/1817847",
-      "building": "",
-      "address": "",
-      "unit": "1A",
-      "neighborhood": "",
-      "price": 2700000,
-      "sqft": 2038,
-      "beds": 4,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1821532",
-      "url": "https://streeteasy.com/sale/1821532",
-      "building": "",
-      "address": "",
-      "unit": "38F",
-      "neighborhood": "",
-      "price": 2695000,
-      "sqft": null,
-      "beds": 2,
-      "baths": 2.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "maintenance": 5211,
+      "agent_name": "Matthew Cohen",
+      "agent_phone": "(201) 410-5496",
+      "agent_email": "matt@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-03-11",
+          "price": 3995000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-02-25",
+          "price": 3995000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ]
     },
     {
       "id": "1821617",
       "url": "https://streeteasy.com/sale/1821617",
-      "building": "",
-      "address": "",
+      "building": "The Belaire",
+      "address": "524 East 72nd Street",
       "unit": "33CDE",
-      "neighborhood": "",
+      "neighborhood": "Lenox Hill",
       "price": 3850000,
       "sqft": 2700,
       "beds": 4,
       "baths": 4.5,
-      "price_per_sqft": null,
+      "price_per_sqft": 1425,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
+      "year_built": 1988,
+      "days_on_market": 6,
+      "monthly_fees": 5766,
+      "monthly_taxes": 4324,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "William Krooss-Tadas",
+      "agent_phone": "(631) 827-1541",
+      "agent_email": "williamkt@kw.com",
+      "agent_firm": "Keller Williams NYC",
+      "price_history": [
+        {
+          "date": "2026-04-13",
+          "price": 3850000,
+          "event": "LISTED",
+          "broker": "Keller Williams NYC"
+        },
+        {
+          "date": "2025-03-08",
+          "price": 3450000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2025-02-21",
+          "price": 3450000,
+          "event": "DELISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2025-02-06",
+          "price": 3450000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2024-12-07",
+          "price": 3450000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2024-09-19",
+          "price": 3450000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2010-08-01",
+          "price": 2995000,
+          "event": "SOLD",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2010-04-01",
+          "price": 2995000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2010-03-30",
+          "price": 2850000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2010-01-22",
+          "price": 2995000,
+          "event": "IN_CONTRACT",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2009-07-17",
+          "price": 2995000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ]
     },
     {
-      "id": "1821428",
-      "url": "https://streeteasy.com/sale/1821428",
-      "building": "",
-      "address": "",
-      "unit": "8B",
-      "neighborhood": "",
-      "price": 3200000,
-      "sqft": 1695,
-      "beds": 2,
-      "baths": 2.5,
+      "id": "1821281",
+      "url": "https://streeteasy.com/sale/1821281",
+      "building": "1155 Park Avenue",
+      "address": "1155 Park Avenue",
+      "unit": "2NE",
+      "neighborhood": "Carnegie Hill",
+      "price": 3800000,
+      "sqft": null,
+      "beds": 4,
+      "baths": 3.0,
       "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "type": "coop",
+      "year_built": 1915,
+      "days_on_market": 198,
       "monthly_fees": null,
       "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "maintenance": 5600,
+      "agent_name": "Steven Cohen",
+      "agent_phone": "(917) 834-4287",
+      "agent_email": "steven.cohen@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-15",
+          "price": 3800000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-03-31",
+          "price": 3995000,
+          "event": "DELISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2025-09-18",
+          "price": 3995000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2009-05-12",
+          "price": null,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
     },
     {
       "id": "1818919",
       "url": "https://streeteasy.com/sale/1818919",
-      "building": "",
-      "address": "",
+      "building": "The Oxford",
+      "address": "422 East 72nd Street",
       "unit": "30E",
-      "neighborhood": "",
+      "neighborhood": "Lenox Hill",
       "price": 3799500,
       "sqft": null,
       "beds": 2,
       "baths": 3.5,
       "price_per_sqft": null,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
+      "year_built": 1990,
+      "days_on_market": 6,
+      "monthly_fees": 3571,
+      "monthly_taxes": 2969,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Mike Biryla",
+      "agent_phone": "(646) 496-2174",
+      "agent_email": "mikeb@theagencyre.com",
+      "agent_firm": "The Agency",
+      "price_history": [
+        {
+          "date": "2026-04-13",
+          "price": 3799500,
+          "event": "LISTED",
+          "broker": "The Agency"
+        },
+        {
+          "date": "2012-03-28",
+          "price": 2699500,
+          "event": "SOLD",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2012-03-26",
+          "price": 2650000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2011-11-30",
+          "price": 2699500,
+          "event": "IN_CONTRACT",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2011-09-12",
+          "price": 2699500,
+          "event": "LISTED",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2007-11-29",
+          "price": 2500000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2000-11-17",
+          "price": 1400000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
     },
     {
-      "id": "1820909",
-      "url": "https://streeteasy.com/sale/1820909",
-      "building": "",
-      "address": "",
-      "unit": "8C",
-      "neighborhood": "",
-      "price": 2880000,
-      "sqft": 1079,
-      "beds": 1,
-      "baths": 1.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1821108",
-      "url": "https://streeteasy.com/sale/1821108",
-      "building": "",
-      "address": "",
-      "unit": "26A",
-      "neighborhood": "",
-      "price": 3100000,
-      "sqft": 1690,
-      "beds": 2,
-      "baths": 2.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1818777",
-      "url": "https://streeteasy.com/sale/1818777",
-      "building": "",
-      "address": "",
-      "unit": "27GH",
-      "neighborhood": "",
-      "price": 2595000,
-      "sqft": 2040,
+      "id": "1822622",
+      "url": "https://streeteasy.com/sale/1822622",
+      "building": "The Savoy",
+      "address": "200 East 61st Street",
+      "unit": "41AB",
+      "neighborhood": "Lenox Hill",
+      "price": 3700000,
+      "sqft": null,
       "beds": 3,
-      "baths": 2.5,
+      "baths": 3.5,
       "price_per_sqft": null,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
+      "year_built": 1986,
+      "days_on_market": 2,
+      "monthly_fees": 4012,
+      "monthly_taxes": 3574,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Fred Gouveia",
+      "agent_phone": "(917) 214-2636",
+      "agent_email": "fred.g@leven.re",
+      "agent_firm": "LEVEN Real Estate",
+      "price_history": [
+        {
+          "date": "2026-04-17",
+          "price": 3700000,
+          "event": "LISTED",
+          "broker": "LEVEN Real Estate"
+        },
+        {
+          "date": "2021-09-13",
+          "price": 4500000,
+          "event": "DELISTED",
+          "broker": "New York Casas Ltd."
+        },
+        {
+          "date": "2020-12-07",
+          "price": 4500000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "New York Casas Ltd."
+        },
+        {
+          "date": "2020-03-12",
+          "price": 4500000,
+          "event": "LISTED",
+          "broker": "New York Casas Ltd."
+        },
+        {
+          "date": "2019-11-02",
+          "price": 5100000,
+          "event": "DELISTED",
+          "broker": "New York Casas Ltd."
+        },
+        {
+          "date": "2019-06-27",
+          "price": 5100000,
+          "event": "DELISTED",
+          "broker": "New York Casas Ltd."
+        },
+        {
+          "date": "2019-05-06",
+          "price": 3900000,
+          "event": "SOLD",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2019-02-05",
+          "price": 5100000,
+          "event": "LISTED",
+          "broker": "New York Casas Ltd."
+        },
+        {
+          "date": "2014-09-30",
+          "price": 3900000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2014-09-17",
+          "price": 3900000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2014-03-07",
+          "price": 3900000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ]
     },
     {
-      "id": "1820884",
-      "url": "https://streeteasy.com/sale/1820884",
-      "building": "",
-      "address": "",
-      "unit": "PHEF",
-      "neighborhood": "",
-      "price": 3195000,
-      "sqft": 2242,
+      "id": "1822183",
+      "url": "https://streeteasy.com/sale/1822183",
+      "building": "20 East 68th Street",
+      "address": "20 East 68th Street",
+      "unit": "10DE",
+      "neighborhood": "Lenox Hill",
+      "price": 3700000,
+      "sqft": 1750,
       "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": null,
+      "baths": 3.5,
+      "price_per_sqft": 2114,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
+      "year_built": 1955,
+      "days_on_market": 3,
+      "monthly_fees": 4499,
       "monthly_taxes": null,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Morella Machado",
+      "agent_phone": "(917) 612-2367",
+      "agent_email": "mmachado@christiesrealestategroup.com",
+      "agent_firm": "Christie's International Real Estate Group, LLC",
+      "price_history": [
+        {
+          "date": "2026-04-16",
+          "price": 3700000,
+          "event": "LISTED",
+          "broker": "Christie's International Real Estate Group, LLC"
+        }
+      ]
     },
     {
       "id": "1820772",
       "url": "https://streeteasy.com/sale/1820772",
-      "building": "",
-      "address": "",
+      "building": "The Harper",
+      "address": "310 East 86th Street",
       "unit": "9D",
-      "neighborhood": "",
+      "neighborhood": "Yorkville",
       "price": 3700000,
       "sqft": 1908,
       "beds": 3,
       "baths": 2.5,
-      "price_per_sqft": null,
+      "price_per_sqft": 1939,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
+      "year_built": 2023,
+      "days_on_market": 11,
+      "monthly_fees": 1697,
+      "monthly_taxes": 3568,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1820589",
-      "url": "https://streeteasy.com/sale/1820589",
-      "building": "",
-      "address": "",
-      "unit": "14C",
-      "neighborhood": "",
-      "price": 3250000,
-      "sqft": null,
-      "beds": 4,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1819428",
-      "url": "https://streeteasy.com/sale/1819428",
-      "building": "",
-      "address": "",
-      "unit": "25BD",
-      "neighborhood": "",
-      "price": 2795000,
-      "sqft": null,
-      "beds": 5,
-      "baths": 5.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1819569",
-      "url": "https://streeteasy.com/sale/1819569",
-      "building": "",
-      "address": "",
-      "unit": "5F",
-      "neighborhood": "",
-      "price": 2650000,
-      "sqft": null,
-      "beds": 2,
-      "baths": 2.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Doron Zwickel",
+      "agent_phone": "(917) 400-4404",
+      "agent_email": "dzwickel@corenyc.com",
+      "agent_firm": "CORE",
+      "price_history": [
+        {
+          "date": "2026-04-08",
+          "price": 3700000,
+          "event": "LISTED",
+          "broker": "CORE"
+        }
+      ]
     },
     {
       "id": "1820399",
       "url": "https://streeteasy.com/sale/1820399",
-      "building": "",
-      "address": "",
+      "building": "Park 900",
+      "address": "900 Park Avenue",
       "unit": "20A",
-      "neighborhood": "",
+      "neighborhood": "Upper East Side",
       "price": 3399000,
       "sqft": null,
       "beds": 3,
       "baths": 3.5,
       "price_per_sqft": null,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
+      "year_built": 1973,
+      "days_on_market": 12,
+      "monthly_fees": 3619,
+      "monthly_taxes": 2876,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Deanna Kory",
+      "agent_phone": "(917) 991-2657",
+      "agent_email": "dek@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-07",
+          "price": 3399000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2003-11-20",
+          "price": 2300000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
     },
     {
-      "id": "1820150",
-      "url": "https://streeteasy.com/sale/1820150",
-      "building": "",
-      "address": "",
-      "unit": "2FG",
-      "neighborhood": "",
-      "price": 2600000,
-      "sqft": null,
-      "beds": 3,
-      "baths": 2.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1820117",
-      "url": "https://streeteasy.com/sale/1820117",
-      "building": "",
-      "address": "",
-      "unit": "10B",
-      "neighborhood": "",
-      "price": 2850000,
-      "sqft": null,
-      "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1820020",
-      "url": "https://streeteasy.com/sale/1820020",
-      "building": "",
-      "address": "",
-      "unit": "17A",
-      "neighborhood": "",
-      "price": 2625000,
-      "sqft": 1725,
-      "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1819722",
-      "url": "https://streeteasy.com/sale/1819722",
-      "building": "",
-      "address": "",
-      "unit": "15B",
-      "neighborhood": "",
-      "price": 3195000,
-      "sqft": 1690,
-      "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1819962",
-      "url": "https://streeteasy.com/sale/1819962",
-      "building": "",
-      "address": "",
-      "unit": "2A",
-      "neighborhood": "",
-      "price": 2675000,
-      "sqft": null,
-      "beds": 3,
-      "baths": 2.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1819673",
-      "url": "https://streeteasy.com/sale/1819673",
-      "building": "",
-      "address": "",
-      "unit": "2E",
-      "neighborhood": "",
-      "price": 3395000,
-      "sqft": null,
-      "beds": 3,
-      "baths": 2.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1818750",
-      "url": "https://streeteasy.com/sale/1818750",
-      "building": "",
-      "address": "",
-      "unit": "5B",
-      "neighborhood": "",
-      "price": 3450000,
-      "sqft": 1700,
-      "beds": 3,
-      "baths": 2.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1819273",
-      "url": "https://streeteasy.com/sale/1819273",
-      "building": "",
-      "address": "",
-      "unit": "15B",
-      "neighborhood": "",
-      "price": 2850000,
-      "sqft": null,
-      "beds": 2,
-      "baths": 2.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1819021",
-      "url": "https://streeteasy.com/sale/1819021",
-      "building": "",
-      "address": "",
-      "unit": "12AB",
-      "neighborhood": "",
-      "price": 3495000,
-      "sqft": null,
+      "id": "1818978",
+      "url": "https://streeteasy.com/sale/1818978",
+      "building": "The Saratoga",
+      "address": "330 East 75th Street",
+      "unit": "28BC",
+      "neighborhood": "Lenox Hill",
+      "price": 3300000,
+      "sqft": 2400,
       "beds": 4,
-      "baths": 2.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1819085",
-      "url": "https://streeteasy.com/sale/1819085",
-      "building": "",
-      "address": "",
-      "unit": "3J",
-      "neighborhood": "",
-      "price": 4000000,
-      "sqft": 1928,
-      "beds": 3,
-      "baths": 3.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1818843",
-      "url": "https://streeteasy.com/sale/1818843",
-      "building": "",
-      "address": "",
-      "unit": "12G",
-      "neighborhood": "",
-      "price": 3960000,
-      "sqft": 2200,
-      "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1375,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
+      "year_built": 1985,
+      "days_on_market": 3,
+      "monthly_fees": 2448,
+      "monthly_taxes": 3368,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Matthew Gulker",
+      "agent_phone": "(917) 848-1338",
+      "agent_email": "mgulker@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-04-16",
+          "price": 3300000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-03-02",
+          "price": 3395000,
+          "event": "DELISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2025-11-19",
+          "price": 3395000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2019-05-23",
+          "price": 4195000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2018-07-30",
+          "price": 3700000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2018-05-10",
+          "price": 3700000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2017-12-21",
+          "price": 4195000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2017-12-07",
+          "price": 4195000,
+          "event": "PRICE_DECREASE",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2017-09-21",
+          "price": 4395000,
+          "event": "LISTED",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2006-12-04",
+          "price": 3495000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2006-11-20",
+          "price": 3495000,
+          "event": "IN_CONTRACT",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2006-11-07",
+          "price": 3495000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2006-10-24",
+          "price": 3495000,
+          "event": "PRICE_DECREASE",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2006-10-17",
+          "price": 3700000,
+          "event": "LISTED",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2006-10-12",
+          "price": 3700000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2006-09-12",
+          "price": 3700000,
+          "event": "LISTED",
+          "broker": "Warburg"
+        }
+      ]
     },
     {
-      "id": "1818866",
-      "url": "https://streeteasy.com/sale/1818866",
-      "building": "",
-      "address": "",
-      "unit": "7C",
-      "neighborhood": "",
-      "price": 2695000,
-      "sqft": 1800,
-      "beds": 3,
-      "baths": 2.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1818560",
-      "url": "https://streeteasy.com/sale/1818560",
-      "building": "",
-      "address": "",
-      "unit": "11C",
-      "neighborhood": "",
-      "price": 3995000,
-      "sqft": null,
-      "beds": 3,
-      "baths": 3.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1818520",
-      "url": "https://streeteasy.com/sale/1818520",
-      "building": "",
-      "address": "",
-      "unit": "12HJ",
-      "neighborhood": "",
-      "price": 2550000,
-      "sqft": null,
-      "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1818474",
-      "url": "https://streeteasy.com/sale/1818474",
-      "building": "",
-      "address": "",
-      "unit": "10A",
-      "neighborhood": "",
-      "price": 3750000,
-      "sqft": null,
-      "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1818431",
-      "url": "https://streeteasy.com/sale/1818431",
-      "building": "",
-      "address": "",
-      "unit": "11DE",
-      "neighborhood": "",
-      "price": 3995000,
-      "sqft": 3300,
-      "beds": 3,
-      "baths": 4.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1817491",
-      "url": "https://streeteasy.com/sale/1817491",
-      "building": "",
-      "address": "",
-      "unit": "4JK",
-      "neighborhood": "",
+      "id": "1820589",
+      "url": "https://streeteasy.com/sale/1820589",
+      "building": "8 East 96th Street",
+      "address": "8 East 96th Street",
+      "unit": "14C",
+      "neighborhood": "Carnegie Hill",
       "price": 3250000,
       "sqft": null,
+      "beds": 4,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1928,
+      "days_on_market": 11,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 6051,
+      "agent_name": "Monica Podell",
+      "agent_phone": "(212) 381-3231",
+      "agent_email": "mpodell@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-04-08",
+          "price": 3250000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2025-12-10",
+          "price": 3350000,
+          "event": "DELISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2025-09-08",
+          "price": 3350000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2025-01-12",
+          "price": 3425000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2024-07-02",
+          "price": 3425000,
+          "event": "DELISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2024-05-01",
+          "price": 3425000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2013-05-11",
+          "price": 3400000,
+          "event": "SOLD",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2013-04-18",
+          "price": 3050000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2012-11-03",
+          "price": 3400000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2012-10-23",
+          "price": 3400000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ]
+    },
+    {
+      "id": "1821428",
+      "url": "https://streeteasy.com/sale/1821428",
+      "building": "200 E 62",
+      "address": "200 East 62nd Street",
+      "unit": "8B",
+      "neighborhood": "Lenox Hill",
+      "price": 3200000,
+      "sqft": 1695,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": 1887,
+      "type": "condo",
+      "year_built": 1967,
+      "days_on_market": 6,
+      "monthly_fees": 2393,
+      "monthly_taxes": 2214,
+      "maintenance": null,
+      "agent_name": "Martin Newman",
+      "agent_phone": "(203) 623-9331",
+      "agent_email": "martin.newman@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-04-13",
+          "price": 3200000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2019-05-06",
+          "price": null,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2016-06-30",
+          "price": 3165000,
+          "event": "SOLD",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2016-06-07",
+          "price": 3165000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2016-06-06",
+          "price": 3038000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2016-05-10",
+          "price": 3165000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2015-07-15",
+          "price": 3165000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ]
+    },
+    {
+      "id": "1820884",
+      "url": "https://streeteasy.com/sale/1820884",
+      "building": "333 East 66th Street",
+      "address": "333 East 66th Street",
+      "unit": "PHEF",
+      "neighborhood": "Lenox Hill",
+      "price": 3195000,
+      "sqft": 2242,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 1425,
+      "type": "coop",
+      "year_built": 1964,
+      "days_on_market": 10,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 5913,
+      "agent_name": "Beth Benalloul",
+      "agent_phone": "(212) 360-5037",
+      "agent_email": "thebenalloulteam@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-09",
+          "price": 3195000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ]
+    },
+    {
+      "id": "1822440",
+      "url": "https://streeteasy.com/sale/1822440",
+      "building": "Brisbane House",
+      "address": "1215 5th Avenue",
+      "unit": "6B",
+      "neighborhood": "Upper Carnegie Hill",
+      "price": 3100000,
+      "sqft": 2500,
+      "beds": 3,
+      "baths": 3.5,
+      "price_per_sqft": 1240,
+      "type": "coop",
+      "year_built": 1926,
+      "days_on_market": 3,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 7544,
+      "agent_name": "Chelsea Silvernell",
+      "agent_phone": "(212) 381-2538",
+      "agent_email": "csilvernell@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-04-16",
+          "price": 3100000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-02-10",
+          "price": 3200000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2025-11-11",
+          "price": 3200000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2025-10-07",
+          "price": 3200000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ]
+    },
+    {
+      "id": "1822094",
+      "url": "https://streeteasy.com/sale/1822094",
+      "building": "3 East 69th Street",
+      "address": "3 East 69th Street",
+      "unit": "7/8A",
+      "neighborhood": "Lenox Hill",
+      "price": 3100000,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1938,
+      "days_on_market": 4,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 6553,
+      "agent_name": "Zac Scott",
+      "agent_phone": "(917) 480-9294",
+      "agent_email": "zed@findrealestate.com",
+      "agent_firm": "FIND Real Estate",
+      "price_history": [
+        {
+          "date": "2026-04-15",
+          "price": 3100000,
+          "event": "LISTED",
+          "broker": "FIND Real Estate"
+        },
+        {
+          "date": "2022-02-11",
+          "price": 2950000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2017-11-14",
+          "price": 2655000,
+          "event": "SOLD",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2017-10-26",
+          "price": 2450000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2017-07-20",
+          "price": 2655000,
+          "event": "IN_CONTRACT",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2017-05-18",
+          "price": 2655000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2017-04-03",
+          "price": 2875000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2017-01-26",
+          "price": 2995000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2017-01-03",
+          "price": 3350000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2016-10-31",
+          "price": 3895000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2013-05-07",
+          "price": 2600018,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
+    },
+    {
+      "id": "1821108",
+      "url": "https://streeteasy.com/sale/1821108",
+      "building": "200 E 62",
+      "address": "200 East 62nd Street",
+      "unit": "26A",
+      "neighborhood": "Lenox Hill",
+      "price": 3100000,
+      "sqft": 1690,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": 1834,
+      "type": "condo",
+      "year_built": 1967,
+      "days_on_market": 9,
+      "monthly_fees": 2937,
+      "monthly_taxes": 2652,
+      "maintenance": null,
+      "agent_name": "Sara Schwartz",
+      "agent_phone": "(818) 515-4443",
+      "agent_email": "sara.schwartz@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-10",
+          "price": 3100000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2018-06-26",
+          "price": 3450000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2018-06-25",
+          "price": 3391790,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2018-06-25",
+          "price": 3450000,
+          "event": "SOLD",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2018-05-15",
+          "price": 3450000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2017-12-08",
+          "price": 3450000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2017-04-11",
+          "price": 3615000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2016-10-06",
+          "price": 3615000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2016-10-06",
+          "price": 3940000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2015-11-25",
+          "price": 3940000,
+          "event": "PRICE_INCREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2015-07-15",
+          "price": 3925000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ]
+    },
+    {
+      "id": "1820909",
+      "url": "https://streeteasy.com/sale/1820909",
+      "building": "200 East 83rd Street",
+      "address": "200 East 83rd Street",
+      "unit": "8C",
+      "neighborhood": "Yorkville",
+      "price": 2880000,
+      "sqft": 1079,
+      "beds": 1,
+      "baths": 1.5,
+      "price_per_sqft": 2669,
+      "type": "condo",
+      "year_built": 2022,
+      "days_on_market": 6,
+      "monthly_fees": 1822,
+      "monthly_taxes": 1623,
+      "maintenance": null,
+      "agent_name": "Rachel King",
+      "agent_phone": "(914) 643-5724",
+      "agent_email": "rachel@serhant.com",
+      "agent_firm": "SERHANT.",
+      "price_history": [
+        {
+          "date": "2026-04-13",
+          "price": 2880000,
+          "event": "LISTED",
+          "broker": "SERHANT."
+        },
+        {
+          "date": "2026-02-28",
+          "price": 2995000,
+          "event": "DELISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2026-01-05",
+          "price": 2995000,
+          "event": "PRICE_DECREASE",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-10-15",
+          "price": 3100000,
+          "event": "PRICE_DECREASE",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-09-02",
+          "price": 3245000,
+          "event": "PRICE_DECREASE",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-07-07",
+          "price": 3295000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2023-02-06",
+          "price": 2385000,
+          "event": "SOLD",
+          "broker": "Compass"
+        },
+        {
+          "date": "2023-01-31",
+          "price": 2393526,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2022-03-03",
+          "price": 2385000,
+          "event": "IN_CONTRACT",
+          "broker": "Compass"
+        },
+        {
+          "date": "2022-02-14",
+          "price": 2385000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2022-01-06",
+          "price": 2385000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Compass"
+        },
+        {
+          "date": "2021-10-22",
+          "price": 2385000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ]
+    },
+    {
+      "id": "1822546",
+      "url": "https://streeteasy.com/sale/1822546",
+      "building": "The New Yorker Condominium",
+      "address": "1474 Third Avenue",
+      "unit": "15S",
+      "neighborhood": "Upper East Side",
+      "price": 2799000,
+      "sqft": 2000,
+      "beds": 4,
+      "baths": 3.5,
+      "price_per_sqft": 1399,
+      "type": "condo",
+      "year_built": 1981,
+      "days_on_market": 3,
+      "monthly_fees": 3551,
+      "monthly_taxes": 2360,
+      "maintenance": null,
+      "agent_name": "Carter McHyman",
+      "agent_phone": "(917) 776-7623",
+      "agent_email": "cmchyman@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-04-16",
+          "price": 2799000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2021-12-07",
+          "price": 1525000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2018-03-15",
+          "price": 1575000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2017-04-07",
+          "price": 2990000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2017-02-02",
+          "price": 2990000,
+          "event": "PRICE_DECREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2016-12-02",
+          "price": 3050000,
+          "event": "PRICE_DECREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2016-10-12",
+          "price": 3250000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2015-08-04",
+          "price": 3199000,
+          "event": "PRICE_DECREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2015-05-12",
+          "price": 3250000,
+          "event": "PRICE_INCREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2015-05-12",
+          "price": 3150000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2015-02-28",
+          "price": 3150000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2014-11-07",
+          "price": 3150000,
+          "event": "PRICE_DECREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2014-08-28",
+          "price": 3200000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2009-10-22",
+          "price": 2899000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2009-07-23",
+          "price": 2899000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2008-07-31",
+          "price": 1451006,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2008-01-30",
+          "price": 2684107,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
+    },
+    {
+      "id": "1819428",
+      "url": "https://streeteasy.com/sale/1819428",
+      "building": "190 East 72nd Street",
+      "address": "190 East 72nd Street",
+      "unit": "25BD",
+      "neighborhood": "Lenox Hill",
+      "price": 2795000,
+      "sqft": null,
+      "beds": 5,
+      "baths": 5.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1962,
+      "days_on_market": 11,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 13815,
+      "agent_name": "Susan Landau Abrams",
+      "agent_phone": "(212) 439-4537",
+      "agent_email": "sabrams@cbwarburg.com",
+      "agent_firm": "Coldwell Banker Warburg",
+      "price_history": [
+        {
+          "date": "2026-04-08",
+          "price": 2795000,
+          "event": "LISTED",
+          "broker": "Coldwell Banker Warburg"
+        }
+      ]
+    },
+    {
+      "id": "1822389",
+      "url": "https://streeteasy.com/sale/1822389",
+      "building": "2 East 80th Street",
+      "address": "2 East 80th Street",
+      "unit": "2",
+      "neighborhood": "Upper East Side",
+      "price": 2750000,
+      "sqft": 1300,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": 2115,
+      "type": "coop",
+      "year_built": 1925,
+      "days_on_market": 3,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3500,
+      "agent_name": "Judith Thorn",
+      "agent_phone": "(212) 327-9601",
+      "agent_email": "jthorn@cbwarburg.com",
+      "agent_firm": "Coldwell Banker Warburg",
+      "price_history": [
+        {
+          "date": "2026-04-16",
+          "price": 2750000,
+          "event": "LISTED",
+          "broker": "Coldwell Banker Warburg"
+        }
+      ]
+    },
+    {
+      "id": "1822193",
+      "url": "https://streeteasy.com/sale/1822193",
+      "building": "180 East End Avenue",
+      "address": "180 East End Avenue",
+      "unit": "PHA",
+      "neighborhood": "Yorkville",
+      "price": 2700000,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1960,
+      "days_on_market": 4,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 4721,
+      "agent_name": "Jordan Shea",
+      "agent_phone": "(917) 597-9486",
+      "agent_email": "jshea@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-04-15",
+          "price": 2700000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-01-12",
+          "price": 2700000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2025-10-13",
+          "price": 2700000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2025-09-29",
+          "price": 2700000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2005-12-21",
+          "price": 2000000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
+    },
+    {
+      "id": "1817847",
+      "url": "https://streeteasy.com/sale/1817847",
+      "building": "306 East 82nd Street",
+      "address": "306 East 82nd Street",
+      "unit": "1A",
+      "neighborhood": "Yorkville",
+      "price": 2700000,
+      "sqft": 2038,
+      "beds": 4,
+      "baths": 3.0,
+      "price_per_sqft": 1324,
+      "type": "condo",
+      "year_built": 2008,
+      "days_on_market": 5,
+      "monthly_fees": 1404,
+      "monthly_taxes": 2044,
+      "maintenance": null,
+      "agent_name": "Andreea Miller",
+      "agent_phone": "(917) 232-0166",
+      "agent_email": "amiller@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-14",
+          "price": 2700000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2020-07-31",
+          "price": 2500000,
+          "event": "SOLD",
+          "broker": "Nest Seekers International"
+        },
+        {
+          "date": "2020-07-30",
+          "price": 2185000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2020-06-23",
+          "price": 2500000,
+          "event": "IN_CONTRACT",
+          "broker": "Nest Seekers International"
+        },
+        {
+          "date": "2020-03-19",
+          "price": 2500000,
+          "event": "LISTED",
+          "broker": "Nest Seekers International"
+        },
+        {
+          "date": "2015-03-20",
+          "price": 1832850,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
+    },
+    {
+      "id": "1822160",
+      "url": "https://streeteasy.com/sale/1822160",
+      "building": "114 East 84th Street",
+      "address": "114 East 84th Street",
+      "unit": "6B",
+      "neighborhood": "Upper East Side",
+      "price": 2699000,
+      "sqft": null,
       "beds": 3,
       "baths": 3.0,
       "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "type": "coop",
+      "year_built": 1915,
+      "days_on_market": 4,
       "monthly_fees": null,
       "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "maintenance": 5482,
+      "agent_name": "Holly Harnsongkram",
+      "agent_phone": "(347) 215-0946",
+      "agent_email": "holly.harnsongkram@tungstenproperty.com",
+      "agent_firm": "Tungsten Properties",
+      "price_history": [
+        {
+          "date": "2026-04-15",
+          "price": 2699000,
+          "event": "LISTED",
+          "broker": "Tungsten Properties"
+        },
+        {
+          "date": "2018-06-02",
+          "price": 2350000,
+          "event": "SOLD",
+          "broker": "Halstead Real Estate"
+        },
+        {
+          "date": "2018-05-22",
+          "price": 2250000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2018-04-12",
+          "price": 2350000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Halstead Real Estate"
+        },
+        {
+          "date": "2018-02-06",
+          "price": 2350000,
+          "event": "IN_CONTRACT",
+          "broker": "Halstead Real Estate"
+        },
+        {
+          "date": "2018-01-08",
+          "price": 2350000,
+          "event": "LISTED",
+          "broker": "Halstead Real Estate"
+        }
+      ]
     },
     {
-      "id": "1817792",
-      "url": "https://streeteasy.com/sale/1817792",
-      "building": "",
-      "address": "",
-      "unit": "18A",
-      "neighborhood": "",
+      "id": "1821532",
+      "url": "https://streeteasy.com/sale/1821532",
+      "building": "Carnegie Tower",
+      "address": "115 East 87th Street",
+      "unit": "38F",
+      "neighborhood": "Carnegie Hill",
+      "price": 2695000,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1972,
+      "days_on_market": 5,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3838,
+      "agent_name": "valerie sherman",
+      "agent_phone": "(917) 449-1438",
+      "agent_email": "valerie.sherman@sothebyshomes.com",
+      "agent_firm": "Sotheby's International Realty",
+      "price_history": [
+        {
+          "date": "2026-04-14",
+          "price": 2695000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2024-09-19",
+          "price": 2725000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2024-06-20",
+          "price": 2725000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2024-05-01",
+          "price": 2725000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2016-12-10",
+          "price": 2495000,
+          "event": "SOLD",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2016-12-06",
+          "price": 2495000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2016-12-05",
+          "price": 2500000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2016-09-16",
+          "price": 2495000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2016-07-13",
+          "price": 2495000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2016-06-09",
+          "price": 2495000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2016-05-18",
+          "price": 2495000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2011-04-02",
+          "price": 1595000,
+          "event": "SOLD",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2011-03-17",
+          "price": 1595000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2011-03-16",
+          "price": 1510000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2011-01-31",
+          "price": 1595000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2010-10-18",
+          "price": 1595000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2010-08-10",
+          "price": 1625000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2010-07-19",
+          "price": 1750000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ]
+    },
+    {
+      "id": "1819569",
+      "url": "https://streeteasy.com/sale/1819569",
+      "building": "The Charles House",
+      "address": "40 East 78th Street",
+      "unit": "5F",
+      "neighborhood": "Lenox Hill",
       "price": 2650000,
-      "sqft": 1581,
-      "beds": 2,
-      "baths": 2.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1817776",
-      "url": "https://streeteasy.com/sale/1817776",
-      "building": "",
-      "address": "",
-      "unit": "4NE",
-      "neighborhood": "",
-      "price": 3875000,
       "sqft": null,
-      "beds": 4,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1817519",
-      "url": "https://streeteasy.com/sale/1817519",
-      "building": "",
-      "address": "",
-      "unit": "6A",
-      "neighborhood": "",
-      "price": 3000000,
-      "sqft": 1125,
       "beds": 2,
       "baths": 2.0,
       "price_per_sqft": null,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
+      "year_built": 1958,
+      "days_on_market": 11,
+      "monthly_fees": 2271,
+      "monthly_taxes": 1814,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Allison Koffman",
+      "agent_phone": "(917) 226-4320",
+      "agent_email": "allison.koffman@sothebyshomes.com",
+      "agent_firm": "Sotheby's International Realty",
+      "price_history": [
+        {
+          "date": "2026-04-08",
+          "price": 2650000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2025-11-13",
+          "price": 2795000,
+          "event": "DELISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2025-05-06",
+          "price": 2795000,
+          "event": "PRICE_DECREASE",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2025-04-01",
+          "price": 2900000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2018-10-10",
+          "price": 2495000,
+          "event": "SOLD",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2018-08-08",
+          "price": 2495000,
+          "event": "IN_CONTRACT",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2018-07-09",
+          "price": 2495000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "1998-02-24",
+          "price": 287000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
     },
     {
-      "id": "1817198",
-      "url": "https://streeteasy.com/sale/1817198",
-      "building": "",
-      "address": "",
-      "unit": "2/3A",
-      "neighborhood": "",
-      "price": 3495000,
-      "sqft": null,
+      "id": "1818777",
+      "url": "https://streeteasy.com/sale/1818777",
+      "building": "200 East 90th Street",
+      "address": "200 East 90th Street",
+      "unit": "27GH",
+      "neighborhood": "Yorkville",
+      "price": 2595000,
+      "sqft": 2040,
       "beds": 3,
       "baths": 2.5,
-      "price_per_sqft": null,
+      "price_per_sqft": 1272,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
+      "year_built": 1980,
+      "days_on_market": 10,
+      "monthly_fees": 4793,
       "monthly_taxes": null,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Jamie Mitchell",
+      "agent_phone": "(917) 913-4999",
+      "agent_email": "jamie@kleiers.com",
+      "agent_firm": "Kleier Residential",
+      "price_history": [
+        {
+          "date": "2026-04-09",
+          "price": 2595000,
+          "event": "LISTED",
+          "broker": "Kleier Residential"
+        }
+      ]
     },
     {
-      "id": "1816509",
-      "url": "https://streeteasy.com/sale/1816509",
-      "building": "",
-      "address": "",
-      "unit": "D1204",
-      "neighborhood": "",
-      "price": 3095000,
-      "sqft": 1489,
-      "beds": 3,
+      "id": "1822613",
+      "url": "https://streeteasy.com/sale/1822613",
+      "building": "135 East 83rd Street",
+      "address": "135 East 83rd Street",
+      "unit": "6/7C",
+      "neighborhood": "Upper East Side",
+      "price": 2400000,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1961,
+      "days_on_market": 3,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3889,
+      "agent_name": "Matthew D Hughes",
+      "agent_phone": "(212) 906-9351",
+      "agent_email": "mhughes@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-04-16",
+          "price": 2400000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2012-12-14",
+          "price": 1888888,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2012-09-14",
+          "price": 1888888,
+          "event": "IN_CONTRACT",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2012-04-21",
+          "price": 1888888,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ]
+    },
+    {
+      "id": "1821044",
+      "url": "https://streeteasy.com/sale/1821044",
+      "building": "440 East 62nd Street",
+      "address": "440 East 62nd Street",
+      "unit": "17BC",
+      "neighborhood": "Lenox Hill",
+      "price": 2395000,
+      "sqft": null,
+      "beds": 4,
       "baths": 3.0,
       "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "type": "coop",
+      "year_built": 1960,
+      "days_on_market": 10,
       "monthly_fees": null,
       "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "maintenance": 4121,
+      "agent_name": "Li Chuang",
+      "agent_phone": "(408) 460-8124",
+      "agent_email": "li.chuang@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-04-09",
+          "price": 2395000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2019-03-20",
+          "price": 2000000,
+          "event": "IN_CONTRACT",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2019-02-25",
+          "price": 2000000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2018-11-15",
+          "price": 2000000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Owner"
+        },
+        {
+          "date": "2018-11-09",
+          "price": 2000000,
+          "event": "PRICE_DECREASE",
+          "broker": "Owner"
+        },
+        {
+          "date": "2018-10-18",
+          "price": 2099000,
+          "event": "PRICE_DECREASE",
+          "broker": "Owner"
+        },
+        {
+          "date": "2018-10-18",
+          "price": 2149000,
+          "event": "LISTED",
+          "broker": "Owner"
+        },
+        {
+          "date": "2009-05-15",
+          "price": 2000000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Bellmarc Realty"
+        },
+        {
+          "date": "2008-10-08",
+          "price": 2000000,
+          "event": "LISTED",
+          "broker": "Bellmarc Realty"
+        }
+      ]
     },
     {
-      "id": "1816570",
-      "url": "https://streeteasy.com/sale/1816570",
-      "building": "",
-      "address": "",
-      "unit": "24C",
-      "neighborhood": "",
-      "price": 2500000,
+      "id": "1821788",
+      "url": "https://streeteasy.com/sale/1821788",
+      "building": "174 East 74th Street",
+      "address": "174 East 74th Street",
+      "unit": "PHC",
+      "neighborhood": "Lenox Hill",
+      "price": 2350000,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1966,
+      "days_on_market": 4,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 2716,
+      "agent_name": "Robin Weiden",
+      "agent_phone": "(858) 405-1361",
+      "agent_email": "robin.weiden@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-04-15",
+          "price": 2350000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2017-03-28",
+          "price": null,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2008-07-07",
+          "price": 1890000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2008-04-14",
+          "price": 1890000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2008-03-05",
+          "price": 1890000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2008-02-06",
+          "price": 1890000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ]
+    },
+    {
+      "id": "1821766",
+      "url": "https://streeteasy.com/sale/1821766",
+      "building": "The Oxford",
+      "address": "422 East 72nd Street",
+      "unit": "24D",
+      "neighborhood": "Lenox Hill",
+      "price": 2250000,
+      "sqft": 1327,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": 1695,
+      "type": "condo",
+      "year_built": 1990,
+      "days_on_market": 4,
+      "monthly_fees": 2446,
+      "monthly_taxes": 1577,
+      "maintenance": null,
+      "agent_name": "Robert Ciere",
+      "agent_phone": "(646) 306-1206",
+      "agent_email": "rciere@wernewyork.com",
+      "agent_firm": "R New York",
+      "price_history": [
+        {
+          "date": "2026-04-15",
+          "price": 2250000,
+          "event": "LISTED",
+          "broker": "R New York"
+        },
+        {
+          "date": "2019-07-24",
+          "price": 1715000,
+          "event": "SOLD",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2019-07-20",
+          "price": 1715000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2019-07-11",
+          "price": 1795000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2019-07-10",
+          "price": 1715000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2019-04-13",
+          "price": 1795000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2019-03-05",
+          "price": 1795000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2018-10-26",
+          "price": 1849000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2018-10-09",
+          "price": 1995000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2018-09-25",
+          "price": 2149000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2013-08-21",
+          "price": null,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2010-09-02",
+          "price": 1675000,
+          "event": "SOLD",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2010-08-31",
+          "price": 1675000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2010-08-26",
+          "price": 1600000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2010-06-05",
+          "price": 1675000,
+          "event": "IN_CONTRACT",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2010-01-22",
+          "price": 1675000,
+          "event": "PRICE_DECREASE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2010-01-08",
+          "price": 1695000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2010-01-04",
+          "price": 1695000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2009-10-15",
+          "price": 1795000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2009-06-18",
+          "price": 1850000,
+          "event": "PRICE_DECREASE",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2009-03-17",
+          "price": 1975000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2006-07-17",
+          "price": 1450000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2004-04-13",
+          "price": 1150000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
+    },
+    {
+      "id": "1820840",
+      "url": "https://streeteasy.com/sale/1820840",
+      "building": "188 East 70th Street",
+      "address": "188 East 70th Street",
+      "unit": "3A",
+      "neighborhood": "Lenox Hill",
+      "price": 2250000,
+      "sqft": 1430,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": 1573,
+      "type": "condo",
+      "year_built": 1986,
+      "days_on_market": 11,
+      "monthly_fees": 2961,
+      "monthly_taxes": 2500,
+      "maintenance": null,
+      "agent_name": "Rachel Skumanich",
+      "agent_phone": "(917) 886-3405",
+      "agent_email": "rachel.skumanich@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-04-08",
+          "price": 2250000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2023-11-14",
+          "price": null,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2014-11-07",
+          "price": 2250000,
+          "event": "SOLD",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2014-10-08",
+          "price": 2100000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2014-06-27",
+          "price": 2250000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2014-04-21",
+          "price": 2250000,
+          "event": "LISTED",
+          "broker": "Warburg"
+        },
+        {
+          "date": "2014-04-18",
+          "price": 2250000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2014-03-05",
+          "price": 2250000,
+          "event": "PRICE_DECREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2014-02-07",
+          "price": 2325000,
+          "event": "PRICE_INCREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2013-10-15",
+          "price": 2295000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2013-10-03",
+          "price": 2300000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Owner"
+        },
+        {
+          "date": "2013-09-04",
+          "price": 2300000,
+          "event": "LISTED",
+          "broker": "Owner"
+        },
+        {
+          "date": "2004-04-21",
+          "price": 1100000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "1996-04-30",
+          "price": 650000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
+    },
+    {
+      "id": "1822320",
+      "url": "https://streeteasy.com/sale/1822320",
+      "building": "The Strathmore",
+      "address": "400 East 84th Street",
+      "unit": "30A",
+      "neighborhood": "Yorkville",
+      "price": 2225000,
+      "sqft": 1331,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": 1671,
+      "type": "condo",
+      "year_built": 1994,
+      "days_on_market": 4,
+      "monthly_fees": 4852,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": "The Strathmore",
+      "agent_phone": "(212) 284-6600",
+      "agent_email": "info@thestrathmore.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-15",
+          "price": 2225000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ]
+    },
+    {
+      "id": "1822014",
+      "url": "https://streeteasy.com/sale/1822014",
+      "building": "3 East 71st Street",
+      "address": "3 East 71st Street",
+      "unit": "5A",
+      "neighborhood": "Lenox Hill",
+      "price": 2200000,
       "sqft": 1600,
-      "beds": 3,
-      "baths": 2.5,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": 1375,
+      "type": "coop",
+      "year_built": 1948,
+      "days_on_market": 5,
       "monthly_fees": null,
       "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "maintenance": 4689,
+      "agent_name": "Russell Miller",
+      "agent_phone": "(212) 906-9360",
+      "agent_email": "rmiller@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-04-14",
+          "price": 2200000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2022-10-25",
+          "price": null,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
     },
     {
-      "id": "1815364",
-      "url": "https://streeteasy.com/sale/1815364",
-      "building": "",
-      "address": "",
-      "unit": "19AB",
-      "neighborhood": "",
-      "price": 3995000,
-      "sqft": 3005,
-      "beds": 4,
-      "baths": 4.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
-    },
-    {
-      "id": "1813692",
-      "url": "https://streeteasy.com/sale/1813692",
-      "building": "",
-      "address": "",
-      "unit": "B610",
-      "neighborhood": "",
-      "price": 2500000,
-      "sqft": 1534,
+      "id": "1820593",
+      "url": "https://streeteasy.com/sale/1820593",
+      "building": "The Monarch",
+      "address": "200 East 89th Street",
+      "unit": "37D",
+      "neighborhood": "Yorkville",
+      "price": 2195000,
+      "sqft": 1327,
       "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 1654,
+      "type": "condo",
+      "year_built": 1987,
+      "days_on_market": 5,
+      "monthly_fees": 1997,
+      "monthly_taxes": 1738,
+      "maintenance": null,
+      "agent_name": "Anne Chang",
+      "agent_phone": "(917) 494-0531",
+      "agent_email": "anne@jadestonenyc.com",
+      "agent_firm": "Jade Stone Real Estate Consulting",
+      "price_history": [
+        {
+          "date": "2026-04-14",
+          "price": 2195000,
+          "event": "LISTED",
+          "broker": "Jade Stone Real Estate Consulting"
+        },
+        {
+          "date": "2008-05-19",
+          "price": 1650000,
+          "event": "SOLD",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2006-05-03",
+          "price": 1650000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2006-04-10",
+          "price": 1450000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2006-04-03",
+          "price": 1650000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2006-04-01",
+          "price": 1650000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2006-03-07",
+          "price": 1650000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2006-01-24",
+          "price": 1650000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2006-01-23",
+          "price": 1650000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2006-01-13",
+          "price": 1650000,
+          "event": "PRICE_DECREASE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2005-11-19",
+          "price": 1850000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ]
+    },
+    {
+      "id": "1821497",
+      "url": "https://streeteasy.com/sale/1821497",
+      "building": "The Concorde",
+      "address": "220 East 65th Street",
+      "unit": "PHB",
+      "neighborhood": "Lenox Hill",
+      "price": 2185000,
+      "sqft": null,
+      "beds": 2,
       "baths": 2.0,
       "price_per_sqft": null,
       "type": "condo",
-      "year_built": null,
-      "days_on_market": null,
+      "year_built": 1978,
+      "days_on_market": 6,
+      "monthly_fees": 1303,
+      "monthly_taxes": 1435,
+      "maintenance": null,
+      "agent_name": "Marilyn Blume",
+      "agent_phone": "(212) 606-7776",
+      "agent_email": "marilyn.blume@sothebys.realty",
+      "agent_firm": "Sotheby's International Realty",
+      "price_history": [
+        {
+          "date": "2026-04-13",
+          "price": 2185000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2014-10-30",
+          "price": 1600000,
+          "event": "IN_CONTRACT",
+          "broker": "Furumoto Realty of New York City Inc"
+        },
+        {
+          "date": "2014-10-21",
+          "price": 1600000,
+          "event": "LISTED",
+          "broker": "Furumoto Realty of New York City Inc"
+        }
+      ]
+    },
+    {
+      "id": "1820992",
+      "url": "https://streeteasy.com/sale/1820992",
+      "building": "201 East 79th Street",
+      "address": "201 East 79th Street",
+      "unit": "5D",
+      "neighborhood": "Yorkville",
+      "price": 2149000,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 10,
       "monthly_fees": null,
       "monthly_taxes": null,
+      "maintenance": 3846,
+      "agent_name": "Richard Rosenthal",
+      "agent_phone": "(917) 445-1903",
+      "agent_email": "rrosenthal@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-04-09",
+          "price": 2149000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ]
+    },
+    {
+      "id": "1821469",
+      "url": "https://streeteasy.com/sale/1821469",
+      "building": "The Channel Club",
+      "address": "455 East 86th Street",
+      "unit": "20E",
+      "neighborhood": "Yorkville",
+      "price": 2000000,
+      "sqft": 1325,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": 1509,
+      "type": "condo",
+      "year_built": 1986,
+      "days_on_market": 6,
+      "monthly_fees": 2448,
+      "monthly_taxes": 1959,
       "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": null,
-      "price_history": []
+      "agent_name": "Susan Hirschorn",
+      "agent_phone": "(516) 903-9097",
+      "agent_email": "susan.hirschorn@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-04-13",
+          "price": 2000000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-11-13",
+          "price": 1650000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2019-11-26",
+          "price": 1649000,
+          "event": "SOLD",
+          "broker": "Compass"
+        },
+        {
+          "date": "2019-11-19",
+          "price": 1511250,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2019-09-20",
+          "price": 1649000,
+          "event": "IN_CONTRACT",
+          "broker": "Compass"
+        },
+        {
+          "date": "2019-07-12",
+          "price": 1649000,
+          "event": "PRICE_DECREASE",
+          "broker": "Compass"
+        },
+        {
+          "date": "2019-05-07",
+          "price": 1695000,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2011-05-09",
+          "price": null,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2009-04-07",
+          "price": 1495000,
+          "event": "SOLD",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2009-03-26",
+          "price": 1495000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2009-03-24",
+          "price": 1250000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        },
+        {
+          "date": "2009-02-17",
+          "price": 1495000,
+          "event": "IN_CONTRACT",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2009-01-09",
+          "price": 1495000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2008-12-21",
+          "price": 1695000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2008-10-17",
+          "price": 1695000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2002-01-11",
+          "price": 730000,
+          "event": "CLOSING",
+          "broker": "Closing record"
+        }
+      ]
     }
   ]
 }

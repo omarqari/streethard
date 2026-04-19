@@ -10,14 +10,27 @@ Build a lightweight personal web app (StreetHard) that supplements — rather th
 
 ## Search Criteria
 
-Active sale listings in the **Upper East Side**, Manhattan, matching:
+### For Sale
+Active sale listings in the **Upper East Side**, Manhattan:
 
-- **Sqft:** ≥ 1,500
-- **Price:** ≤ $6,000,000 (long-term ceiling)
+- **Sqft:** ≥ 1,500 (caveat: StreetEasy's `sqft:1500-` filter only excludes listings that explicitly have sqft listed below 1,500 — co-ops with no sqft recorded bypass the filter entirely)
+- **Price:** $2,000,000 – $5,000,000
 - **Geography:** Upper East Side (StreetEasy neighborhood slug: `upper-east-side`)
 - **Status:** Active only
 
-**First test run price range:** $2,500,000 – $4,000,000. Narrowed to keep the v1 result set manageable and validate the pipeline before expanding to the full $6M ceiling.
+**$2M floor rationale:** Sub-$1M 1-bedroom co-ops appeared in the first production pull because the sqft filter doesn't catch listings with no sqft. The price floor eliminates the noise cleanly.
+
+**$5M ceiling:** User preference as of 2026-04-19.
+
+### For Rent
+Active rental listings in the **Upper East Side**, Manhattan:
+
+- **Sqft:** ≥ 1,500 (same caveat as sales — listings without sqft bypass the filter)
+- **Monthly Rent:** $10,000 – $20,000
+- **Geography:** Upper East Side
+- **Status:** Active only
+
+Added 2026-04-19 to support rent-vs-buy comparison. The `price` field for rental listings = monthly rent (not a purchase price); the app's `calcMonthlyTotal()` handles this by returning `listing.price` directly for rentals.
 
 ## App: StreetHard
 
@@ -73,16 +86,16 @@ Inspired by StreetEasy's visual language:
 ### Data Columns (Table view, in order)
 | Column | Source | Notes |
 |---|---|---|
-| Building / Unit | Apify `building_title` + `address_unit` | |
+| Building / Unit | `saleDetailsToCombineWithFederated_data_sale_building_title` + `saleListingDetailsFederated_data_saleByListingId_propertyDetails_address_unit` | |
 | Monthly Pmt | Calculated in JS | Primary sort key; recalculates on mortgage input change |
-| Ask Price | Apify `pricing_price` | |
-| SqFt | Apify `livingAreaSize` | |
-| Beds / Baths | Apify fields | Baths = full + (0.5 × half) |
-| Price/SqFt | Apify `price_per_sqft` | |
+| Ask Price | `saleListingDetailsFederated_data_saleByListingId_pricing_price` | |
+| SqFt | `saleListingDetailsFederated_data_saleByListingId_propertyDetails_livingAreaSize` | ~50% coverage; co-ops routinely omit sqft on StreetEasy |
+| Beds / Baths | `propertyDetails_bedroomCount`, `_fullBathroomCount`, `_halfBathroomCount` | Baths = full + (0.5 × half) |
+| Price/SqFt | Calculated in JS | |
 | PMT/SqFt | Calculated | `(Monthly × 12) ÷ SqFt` |
-| Type | Apify `building_building_type` | Pill tag: Condo / Co-op |
-| Yr Built | Apify `building_year_built` | |
-| Days Listed | Apify `days_on_market` | Color-coded — see thresholds below |
+| Type | `saleDetailsToCombineWithFederated_data_sale_building_building_type` | Pill tag: Condo / Co-op |
+| Yr Built | `saleDetailsToCombineWithFederated_data_sale_building_year_built` | |
+| Days Listed | `saleDetailsToCombineWithFederated_data_sale_days_on_market` | Color-coded — see thresholds below |
 | Cross Streets | — | Header present, values blank (not in API) |
 
 ### Days Listed Color Thresholds (calibrated for luxury Manhattan pace)
@@ -110,17 +123,14 @@ Inspired by StreetEasy's visual language:
 ### Primary Ingestion: Apify `memo23/streeteasy-ppr`
 Pay-Per-Event actor, $3.00 per 1,000 results. Validated GREEN on 2026-04-19.
 
-**First test run URL** (price $2.5M–$4M, sqft ≥ 1,500):
+**Production URL** ($2M–$5M, sqft ≥ 1,500):
 ```
-https://streeteasy.com/for-sale/upper-east-side/price:2500000-4000000%7Csqft:1500-
-```
-
-**Full production URL** (price ≤ $6M, sqft ≥ 1,500):
-```
-https://streeteasy.com/for-sale/upper-east-side/price:-6000000%7Csqft:1500-
+https://streeteasy.com/for-sale/upper-east-side/price:2000000-5000000%7Csqft:1500-
 ```
 
-Fields confirmed present: price, sqft, beds/baths, address, unit, building name, year built, days on market, HOA/common charges, taxes, price history (full event timeline), agent name/phone/email, amenities.
+**Apify schema note:** The actor flattens StreetEasy's federated GraphQL API into flat keys with long namespace prefixes. Three key namespaces: `saleListingDetailsFederated_data_saleByListingId_*` (price, beds/baths, sqft, address), `saleDetailsToCombineWithFederated_data_sale_*` (building name, neighborhood, year built, days on market, contacts JSON, price history JSON), `extraListingDetails_data_sale_*` (richer price history JSON). Agent info parsed from `contacts_json`; price history from `extraListingDetails_data_sale_price_histories_json`.
+
+Fields confirmed present (50/50): price, beds, baths, address, unit, building name, year built, days on market, HOA/common charges, taxes, price history (full event timeline), agent name/phone/email. SqFt: 26/50 (co-ops routinely omit sqft on StreetEasy — not a pipeline bug).
 
 **Cost estimate for full UES pull:** ~500–800 listings → ~$1.50–$2.40 per run.
 
@@ -151,30 +161,33 @@ Auth: `x-api-key` + `x-api-host: nyc-real-estate-api.p.rapidapi.com`. Key in `.e
 ### Phase 1 — Setup ✅ Complete
 Data sources validated. Apify confirmed as primary. Mortgage calculator defaults locked. Output schema defined. Architecture decided.
 
-### Phase 2 — v1 Build + First Pull
-Build the StreetHard app and run the first real data pull.
+### Phase 2 — v1 Build + First Pull ✅ Complete
 
-**Step 1 — Build `index.html`**
+**Step 1 — Build `index.html`** ✅ Done
 - Static app shell with all UI and JS mortgage calculator
 - Fetches `data/latest.json` on load
 - Table view default, card view toggle
 - Inline filters and mortgage inputs
 - Row expansion with price history + agent + payment breakdown
 
-**Step 2 — Build `scripts/pull.py`**
-- Calls Apify `memo23/streeteasy-ppr` with the test URL
+**Step 2 — Build `scripts/pull.py`** ✅ Done
+- Calls Apify `memo23/streeteasy-ppr` with production URL
 - Downloads results, saves as `data/latest.json` + `data/YYYY-MM-DD.json`
+- Two-pass strategy: Pass 1 = search URL (discovers IDs, simple field names), Pass 2 = individual listing pages (full data with federated GraphQL prefix field names)
+- Pass 1 fallback: if Pass 2 yields < MIN_LISTINGS, falls back to Pass 1 sparse data so app stays live
 - Reads Apify token from environment variable (local: `.env`; CI: GitHub Secret)
+- Guard clause: exits code 1 if listing count < 10 (prevents overwriting `latest.json` on bad run)
 
-**Step 3 — First test pull**
-- Run against $2.5M–$4M test URL, `maxItems: 500`
-- Validate: pagination, field coverage, price history present in search results vs. individual listing pages
+**Step 3 — First pull + pipeline debugging** ✅ Done
+- Ran against production $2M–$5M URL, `maxItems: 500`
+- Debugged and fixed Pass 2 normalization: Apify uses federated GraphQL flat key names that original `normalize()` didn't know about
+- Result: 50 normalized, 0 skipped. Full field coverage on all required fields.
 
-**Step 4 — GitHub setup**
-- Create repo, push code, enable GitHub Pages
-- Add Apify token as GitHub Secret (`APIFY_TOKEN`)
-- Add `.github/workflows/refresh.yml` — weekly cron + manual trigger
-- Verify end-to-end: Actions runs → JSON committed → Pages updates → family URL live
+**Step 4 — GitHub setup** ✅ Done
+- Repo live at `github.com/omarqari/streethard`
+- GitHub Pages enabled; family URL live
+- `APIFY_TOKEN` GitHub Secret set
+- `.github/workflows/refresh.yml` running; weekly cron + manual trigger verified
 
 **Phase 2 enhancements (post-v1):**
 - **Rental comp analysis:** UES rental data alongside PMT/SqFt for buy-vs-rent comparison

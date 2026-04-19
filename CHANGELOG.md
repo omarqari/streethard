@@ -4,6 +4,98 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-04-19 — Rentals Added (Session 3)
+
+### Scope Expansion
+Added UES rental listings ($10K–$20K/month, sqft ≥ 1,500) alongside existing sales. Primary motivation: rent-vs-buy comparison using the same neighborhood and size criteria.
+
+### UI: Mode Toggle
+Added a 3-way segmented control to the filter bar: **[ For Sale ] [ For Rent ] [ Both ]**. Behavior per mode:
+- **For Sale**: existing behavior unchanged
+- **For Rent**: mortgage calculator bar collapses; Ask Price column hidden; Price/SqFt blank (annualized $/sqft already covers the equivalent); Days Listed uses tighter rental thresholds
+- **Both**: all listings shown with SALE/RENT badge per row; mortgage bar visible (affects sale rows only); Ask Price blank for rental rows
+
+### Column Mapping Decisions
+| Column | Rentals treatment |
+|---|---|
+| Monthly Pmt → "Monthly Rent" | `listing.price` = monthly rent directly |
+| Ask Price | Hidden in rent-only; blank in Both |
+| Price/SqFt | Blank for all rentals (annualized $/sqft is the equivalent) |
+| PMT/SqFt | Direct equivalent: (annual rent) ÷ sqft |
+| Days Listed | Tighter thresholds: NEW <3d, green 3–14d, yellow 14–30d, red 30d+ |
+| Mortgage calculator | Collapsed in rent-only mode |
+| Payment breakdown | Simplified to "Monthly Rent: $X" for rentals |
+
+### Pipeline Changes
+- `pull.py` refactored: new `run_two_pass(client, url, max_items, listing_type)` helper; new `normalize_rental()` with best-guess field names mirroring the sales schema (`rentalListingDetailsFederated_*` etc.); `--mode both|sale|rent` argument (default: both); `listing_type: "sale"|"rent"` field on every normalized record
+- `refresh.yml`: replaced `--url` manual input with `--mode`; commit message now includes sale/rent counts
+- `data/latest.json`: now contains both types merged; `sale_count` and `rental_count` added to payload metadata
+
+### Rental normalize() Status
+`normalize_rental()` uses best-guess field name prefixes. On first CI run, if rental normalization fails the existing debug dump will print the actual Apify field names. Update `normalize_rental()` accordingly (same process used for sales in Session 2).
+
+### Bugs Found and Fixed (same session, post-merge CI run)
+
+First CI run with new code (`--mode both`) revealed two bugs:
+
+**Bug 1 — TypeError crash:** `run_two_pass()` early return (when Pass 1 finds < 10 IDs) returned `([], search_items)` where `search_items` is a list. Caller did `total_events += events`, crashing with `TypeError: int += list`. Fixed: return `len(search_items)` instead.
+
+**Bug 2 — 0 IDs from 10 search items:** Pass 1 returned 10 items but extracted 0 unique listing IDs. Root cause unknown — items appear to lack explicit `id`/`listingId` fields AND URLs that match the regex `/(?:sale|rental)/(\d+)`. Added a debug dump (stderr) that fires when 0 IDs are extracted, printing the raw keys and all ID/URL-related fields of the first item. Next CI run will reveal the actual field structure.
+
+---
+
+## 2026-04-19 — Pipeline Debugging + Production Launch (Session 2)
+
+### Problem: GitHub Actions Failing on Pass 2
+
+- First CI run failed at "Run pull script" (1m 17s). Pass 2 returned 50 items but all were skipped with "no price" — guard clause triggered, `latest.json` not overwritten.
+- Root cause: Apify `memo23/streeteasy-ppr` flattens StreetEasy's federated GraphQL API into flat top-level keys with long namespace prefixes. The actual price field is `saleListingDetailsFederated_data_saleByListingId_pricing_price`, not `price`, `pricing_price`, or `askingPrice` as the original `normalize()` assumed.
+- The previous sparse `data/latest.json` (prices but no addresses/agent/history) had come from Pass 1 search results, which do use a simple `price` field — masking the mismatch.
+
+### Fix 1: Debug Output + Pass 1 Fallback
+
+- Added raw field key dump to stderr when all Pass 2 items fail normalization.
+- Added automatic fallback to Pass 1 (search result) data if Pass 2 yields fewer than `MIN_LISTINGS`. Prevents the workflow from aborting completely while the normalize bug exists.
+- Fallback triggered for two CI runs during debugging; app stayed live with sparse-but-valid data.
+
+### Fix 2: Rewrote normalize() with Actual Field Names
+
+- Debug output from the first fallback run revealed the full Apify schema. Three key namespaces:
+  - `saleListingDetailsFederated_data_saleByListingId_*` — pricing, beds/baths, sqft, address, unit
+  - `saleDetailsToCombineWithFederated_data_sale_*` — building name, neighborhood, year built, days on market, contacts JSON, price history JSON
+  - `extraListingDetails_data_sale_*` — richer price history JSON (includes `source_group_label`)
+- Agent info: parsed from `contacts_json` (JSON string → array → first contact's name/phone/email/firm)
+- Price history: parsed from `extraListingDetails_data_sale_price_histories_json` (JSON string)
+- Co-op vs. condo split: `pricing_maintenanceFee` = HOA for condos, full maintenance for co-ops; `pricing_taxes` = 0 for co-ops (included in maintenance)
+- Pass 1 simple field names retained as fallbacks so normalize() works on both schemas
+
+### Result: Full Data Coverage
+
+After fix: 50 normalized, 0 skipped. Field fill rates:
+
+| Field | Coverage | Notes |
+|---|---|---|
+| price, beds, baths, type | 50/50 | |
+| address, building, unit | 50/50 | |
+| year_built, days_on_market | 50/50 | |
+| agent name/phone/email | 50/50 | |
+| price_history | 50/50 | |
+| sqft | 26/50 | Co-ops routinely omit sqft on StreetEasy — not a bug |
+| monthly_fees + maintenance | 50/50 | Correctly split by type |
+
+### Search Criteria Expanded to Production Range
+
+- Removed test ceiling ($4M) and floor (none) — first production pull revealed sub-$1M 1-bedroom co-ops appearing because StreetEasy's `sqft:1500-` filter only excludes listings that explicitly have sqft listed below 1,500; listings with no sqft bypass it entirely.
+- Set `$2M–$5M` as production range. $2M floor eliminates the noise; $5M ceiling is user preference.
+- Production URL: `https://streeteasy.com/for-sale/upper-east-side/price:2000000-5000000%7Csqft:1500-`
+
+### All Code Merged to Main
+
+- Feature branch `claude/explore-project-V2hAM` merged to `main`. Weekly cron now runs from `main`.
+- UI verified correct with rich data: price history, agent contact, payment breakdown all render properly.
+
+---
+
 ## 2026-04-19 — Project Kickoff
 
 ### Discovery

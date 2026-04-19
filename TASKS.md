@@ -10,72 +10,17 @@ Actionable next steps. Check things off as you go.
 - [x] Validate Apify `memo23/streeteasy-ppr` — GREEN. Full price history, agent contact, all required fields. $0.009/listing.
 - [x] Lock mortgage calculator defaults: $750k down, 3.00%, 30 years.
 - [x] Define output schema: Building, Street, Apt, Yr Built, Monthly Pmt, SqFt, Price/SqFt, PMT/SqFt, Days Listed, Type.
-- [x] Define search criteria: UES, sqft ≥ 1,500, price ≤ $6,000,000, active only.
+- [x] Define search criteria: UES, sqft ≥ 1,500, price $2M–$5M, active only.
 - [x] Decide output format: StreetHard HTML app (not spreadsheet).
 - [x] Decide architecture: GitHub Pages (static) + GitHub Actions (weekly cron) + client-side JS mortgage math.
+- [x] Build `index.html` — full app shell with table/card views, sticky mortgage calculator, filters, row expansion, price history, agent info, payment breakdown.
+- [x] Build `scripts/pull.py` — two-pass Apify scraper with Pass 1 fallback, guard clause (exit 1 if < 10 listings), debug output, full schema for federated GraphQL field names.
+- [x] Debug and fix Pass 2 normalization — rewrote `normalize()` with actual `saleListingDetailsFederated_*` / `saleDetailsToCombineWithFederated_*` / `extraListingDetails_*` field mappings. 50/50 listings normalized on first successful run.
+- [x] Set production search URL: `https://streeteasy.com/for-sale/upper-east-side/price:2000000-5000000%7Csqft:1500-`
+- [x] GitHub repo live (`github.com/omarqari/streethard`), Pages enabled, `APIFY_TOKEN` secret set.
+- [x] Weekly cron verified end-to-end: Actions run → JSON committed → Pages redeploys → family URL live.
 
 ---
-
-## Next Up — Phase 2, Step 1: Build `index.html`
-
-Build the StreetHard app shell. No real data yet — use hardcoded sample JSON (2–3 listings) to build and validate the UI.
-
-- [ ] Create `index.html` — full app shell:
-  - Dark navy header, "StreetHard" wordmark, UES context tag, last-updated date
-  - **Sticky mortgage calculator bar** directly below header (always visible while scrolling): Down Payment · Rate · Term — defaults: $750k / 3.00% / 30yr. Any change recalculates all rows instantly.
-  - **v1 is desktop-only. Mobile responsiveness is deferred to v2.**
-  - Summary bar: median ask, median monthly, condo/co-op count, new-this-week count
-  - Filter bar: Beds (All/2+/3+/4+), Type (All/Condo/Co-op), Max Price, Max Monthly Pmt
-  - Table view (default): sortable columns, default sort Monthly Pmt descending
-  - Card view toggle
-  - Row expansion (click to open inline): price history table, "never sold" warning badge, agent contact block, payment breakdown (mortgage + charges + taxes)
-  - Days Listed color coding: NEW/blue (<7d), green (7–44d), yellow (45–120d), red (121d+)
-  - Footer: data source credit + generation date + run cost
-- [ ] On load: `fetch('data/latest.json')` → render; show graceful loading state
-- [ ] Mortgage inputs: any change instantly recalculates and re-sorts all rows in-place
-- [ ] Null field handling: show "—" for missing values; show "data incomplete" badge if multiple key fields are null
-
----
-
-## Next Up — Phase 2, Step 2: Build `scripts/pull.py`
-
-- [ ] Write `scripts/pull.py`:
-  - Reads Apify token from environment variable `APIFY_TOKEN`
-  - Calls Apify `memo23/streeteasy-ppr` with the configured start URL and `maxItems`
-  - Polls for run completion
-  - Downloads results as JSON
-  - Saves to `data/latest.json` (overwrite) and `data/YYYY-MM-DD.json` (new file)
-  - Prints summary: listing count, run cost estimate, any nulls on key fields
-
----
-
-## Next Up — Phase 2, Step 3: First Real Pull (v1 Test)
-
-**Test search URL** (UES, price $2.5M–$4M, sqft ≥ 1,500):
-```
-https://streeteasy.com/for-sale/upper-east-side/price:2500000-4000000%7Csqft:1500-
-```
-
-- [ ] Run `pull.py` with the test URL. `maxItems: 500`.
-- [ ] Confirm price and sqft filters are respected in results; apply post-processing filter as backup.
-- [ ] Validate pagination: did we get all listings, or just page 1?
-- [ ] Validate field coverage: do bulk search results include maintenance fee, taxes, price history, agent contact — or only individual listing page scrapes?
-- [ ] Open `index.html` locally, confirm it renders all listings correctly with calculated monthly payments.
-
----
-
-## Next Up — Phase 2, Step 4: GitHub Setup
-
-- [ ] Create GitHub repo `streethard` (public or private — data is all public, no sensitive info)
-- [ ] Push `index.html`, `scripts/pull.py`, `data/latest.json`, `data/YYYY-MM-DD.json`
-- [ ] Enable GitHub Pages (source: root of `main` branch)
-- [ ] Add Apify token as GitHub Secret: `APIFY_TOKEN`
-- [ ] Create `.github/workflows/refresh.yml`:
-  - Trigger: weekly cron (Sunday) + manual `workflow_dispatch`
-  - Steps: checkout → set up Python → run `pull.py` → commit + push updated `data/` files
-  - **Guard**: `pull.py` exits with code 1 if listing count < 10; workflow fails without overwriting `data/latest.json`
-- [ ] Confirm end-to-end: Actions run → JSON committed → Pages redeploys → family URL live
-- [ ] Share URL with family
 
 ---
 
@@ -98,10 +43,26 @@ https://streeteasy.com/for-sale/upper-east-side/price:2500000-4000000%7Csqft:150
 
 ---
 
+## 🔴 Blocked — Manual CI Run Required
+
+Bug fixes committed (`f385827`). Pipeline is broken until Pass 1 ID extraction is fixed.
+Root cause cannot be diagnosed without seeing the actual Apify field structure.
+
+**Manual steps to unblock:**
+
+1. **Trigger CI run:** GitHub → Actions → "Refresh listings" → Run workflow → Mode: `both`, Max items: `500`
+2. **Copy debug output:** In the "Run pull script" step log, find lines starting with `DEBUG —` and copy everything through the `ID/URL-related fields:` line (one block for sale, possibly one for rent)
+3. **Paste to Claude:** Start a new session and paste the debug output — Claude will fix the ID extraction logic in `pull.py` in <5 min
+4. **Also note:** If you see `Skipped N rental items (no price)`, paste that too — means `normalize_rental()` field names need correcting (same fix process as Session 2 sales normalization)
+
+---
+
 ## Phase 2 Enhancements (Post-v1)
 
+- [x] **Rental comp analysis:** Added UES rental listings ($10K–$20K/mo). Mode toggle (For Sale / For Rent / Both) added to app. Pipeline pulls both types in one run.
+- [ ] **Pass 1 ID extraction fix:** Debug dump added — next CI run will reveal actual field structure. Fix `run_two_pass()` ID extraction logic based on output.
+- [ ] **Rental normalize() validation:** First CI run with rentals will dump actual Apify field names if normalization fails. Update `normalize_rental()` in `pull.py` based on that output.
 - [ ] **New/reduced badges:** Compare current pull against previous `data/YYYY-MM-DD.json` to surface new listings and price cuts with visual badges in the app.
-- [ ] **Rental comp analysis:** Add UES rental data alongside PMT/SqFt column for buy-vs-rent comparison.
 - [ ] **Co-op sqft gap:** Evaluate supplemental pull for co-ops without sqft filter; flag those listings separately.
 
 ---

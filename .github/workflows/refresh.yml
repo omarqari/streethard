@@ -6,12 +6,12 @@ on:
     - cron: "0 8 * * 0"
   workflow_dispatch:
     inputs:
-      url:
-        description: "StreetEasy search URL (leave blank for default)"
+      mode:
+        description: "Listing types to pull: both, sale, or rent (default: both)"
         required: false
-        default: ""
+        default: "both"
       max_items:
-        description: "Max listings to fetch (default: 500)"
+        description: "Max listings per type (default: 500)"
         required: false
         default: "500"
 
@@ -37,15 +37,11 @@ jobs:
         env:
           APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
         run: |
-          URL="${{ github.event.inputs.url }}"
+          MODE="${{ github.event.inputs.mode }}"
           MAX="${{ github.event.inputs.max_items }}"
+          MODE="${MODE:-both}"
           MAX="${MAX:-500}"
-
-          if [ -n "$URL" ]; then
-            python scripts/pull.py --url "$URL" --max-items "$MAX"
-          else
-            python scripts/pull.py --max-items "$MAX"
-          fi
+          python scripts/pull.py --mode "$MODE" --max-items "$MAX"
         # If pull.py exits with code 1 (guard clause triggered), this step fails
         # and the workflow stops here — data/latest.json is NOT committed.
 
@@ -59,7 +55,9 @@ jobs:
             echo "No changes to data/ — skipping commit."
           else
             COUNT=$(python -c "import json; d=json.load(open('data/latest.json')); print(d['listing_count'])")
+            SALE=$(python  -c "import json; d=json.load(open('data/latest.json')); print(d.get('sale_count','?'))")
+            RENT=$(python  -c "import json; d=json.load(open('data/latest.json')); print(d.get('rental_count','?'))")
             COST=$(python  -c "import json; d=json.load(open('data/latest.json')); print(d['run_cost_usd'])")
-            git commit -m "chore: refresh listings — ${COUNT} listings, \$${COST} [skip ci]"
+            git commit -m "chore: refresh listings — ${COUNT} listings (${SALE} sale, ${RENT} rent), \$${COST} [skip ci]"
             git push
           fi
