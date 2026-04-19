@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreetHard — Lo-Fi Wireframe</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #f0f0f0; }
+
+  /* ANNOTATION SYSTEM */
+  .annotation {
+    position: absolute;
+    font-size: 10px;
+    color: #e05c00;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .ann-line {
+    position: absolute;
+    background: #e05c00;
+    opacity: 0.5;
+  }
+
+  /* FRAME */
+  .frame {
+    width: 1100px;
+    margin: 40px auto;
+    background: white;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.15);
+  }
+
+  /* HEADER */
+  .header {
+    background: #1a1a2e;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    gap: 16px;
+  }
+  .logo {
+    font-size: 22px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -0.5px;
+  }
+  .logo span { color: #ff8c42; }
+  .header-spacer { flex: 1; }
+  .header-meta {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+  }
+  .header-tag {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.8);
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 3px;
+  }
+  .view-toggle {
+    display: flex;
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  .view-btn {
+    padding: 5px 12px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.6);
+    cursor: pointer;
+  }
+  .view-btn.active {
+    background: rgba(255,255,255,0.15);
+    color: white;
+  }
+
+  /* FILTER BAR */
+  .filters {
+    background: #f7f7f7;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 24px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  .filter-label {
+    font-size: 11px;
+    color: #888;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-right: 4px;
+  }
+  .filter-pill {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+    padding: 5px 14px;
+    font-size: 12px;
+    color: #333;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .filter-pill .arrow { color: #999; font-size: 10px; }
+  .filter-active {
+    border-color: #3461D9;
+    color: #3461D9;
+    background: #eef2ff;
+  }
+  .filter-spacer { flex: 1; }
+  .result-count {
+    font-size: 12px;
+    color: #666;
+  }
+  .result-count strong { color: #111; }
+
+  /* SUMMARY BAR */
+  .summary {
+    background: white;
+    border-bottom: 1px solid #e8e8e8;
+    padding: 8px 24px;
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .stat-chip {
+    font-size: 11px;
+    color: #666;
+  }
+  .stat-chip strong { color: #111; font-size: 13px; }
+  .stat-divider { color: #ddd; }
+
+  /* TABLE */
+  .table-wrap { overflow-x: auto; }
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  thead th {
+    background: #fafafa;
+    border-bottom: 2px solid #e0e0e0;
+    padding: 10px 12px;
+    text-align: left;
+    font-size: 11px;
+    font-weight: 700;
+    color: #555;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    cursor: pointer;
+    user-select: none;
+  }
+  thead th .sort-icon { color: #aaa; margin-left: 4px; }
+  thead th.sort-active { color: #3461D9; }
+  thead th.sort-active .sort-icon { color: #3461D9; }
+
+  tbody tr {
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  tbody tr:hover { background: #f9f9ff; }
+  tbody tr.expanded { background: #f0f4ff; border-bottom: none; }
+  tbody tr.expansion-row { background: #f0f4ff; border-bottom: 2px solid #c5d3f8; }
+
+  td {
+    padding: 11px 12px;
+    vertical-align: middle;
+    color: #222;
+  }
+  .td-building { font-weight: 700; color: #111; }
+  .td-address { font-size: 11px; color: #666; margin-top: 1px; }
+  .td-price { font-weight: 700; color: #111; font-size: 13px; }
+  .td-monthly {
+    font-weight: 800;
+    font-size: 13px;
+    color: #1a1a2e;
+  }
+  .tag {
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 3px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .tag-condo { background: #e8f0fe; color: #3461D9; }
+  .tag-coop { background: #fef3e2; color: #c07a00; }
+  .days-green { color: #1a7a3c; font-weight: 700; background: #e6f7ec; border-radius: 3px; padding: 2px 6px; }
+  .days-yellow { color: #7a5c00; font-weight: 700; background: #fff8e0; border-radius: 3px; padding: 2px 6px; }
+  .days-red { color: #9a2020; font-weight: 700; background: #fde8e8; border-radius: 3px; padding: 2px 6px; }
+  .days-new { color: white; font-weight: 700; background: #3461D9; border-radius: 3px; padding: 2px 6px; }
+  .expand-btn {
+    color: #3461D9;
+    font-size: 18px;
+    line-height: 1;
+    font-weight: 300;
+  }
+
+  /* EXPANSION PANEL */
+  .expansion-panel {
+    padding: 16px 20px 20px 48px;
+    display: flex;
+    gap: 32px;
+  }
+  .exp-section { flex: 1; }
+  .exp-title {
+    font-size: 10px;
+    font-weight: 800;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    margin-bottom: 8px;
+  }
+  .history-table { width: 100%; border-collapse: collapse; }
+  .history-table td {
+    font-size: 11px;
+    padding: 4px 8px;
+    border-bottom: 1px solid #e0e8ff;
+    color: #333;
+  }
+  .history-table tr:last-child td { border-bottom: none; }
+  .history-table .hist-event { color: #666; }
+  .event-listed { color: #1a7a3c; font-weight: 700; }
+  .event-price-cut { color: #c07a00; font-weight: 700; }
+  .event-delisted { color: #9a2020; font-weight: 700; }
+  .peak-note {
+    margin-top: 8px;
+    font-size: 10px;
+    color: #666;
+    background: #fff8e0;
+    border-left: 3px solid #f0b429;
+    padding: 5px 8px;
+    border-radius: 0 3px 3px 0;
+  }
+  .agent-block {
+    background: #f7f7f7;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 10px 12px;
+    font-size: 11px;
+    color: #444;
+    line-height: 1.7;
+    max-width: 240px;
+  }
+  .agent-name { font-weight: 700; font-size: 12px; color: #111; }
+  .agent-firm { color: #666; font-size: 11px; }
+  .agent-contact { color: #3461D9; }
+
+  /* ANNOTATIONS LAYER */
+  .page-wrapper { position: relative; width: 1100px; margin: 0 auto; }
+  .ann-group { position: absolute; pointer-events: none; }
+
+  /* PLACEHOLDER ROW styles */
+  .skeleton { background: #eee; border-radius: 2px; display: inline-block; height: 12px; }
+  .sk-sm { width: 60px; }
+  .sk-md { width: 100px; }
+  .sk-lg { width: 140px; }
+</style>
+</head>
+<body style="background: #d8d8d8; padding: 32px 0;">
+
+<div style="text-align:center; margin-bottom: 20px;">
+  <span style="font-family: monospace; font-size: 13px; color: #555; background: #fff; padding: 6px 16px; border-radius: 4px; border: 1px solid #ccc;">
+    StreetHard — Low Fidelity Wireframe · Table View (Default)
+  </span>
+</div>
+
+<div class="page-wrapper">
+<div class="frame">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="logo">Street<span>Hard</span></div>
+    <div class="header-tag">Upper East Side</div>
+    <div class="header-spacer"></div>
+    <div class="header-meta">Last updated: Apr 19, 2026</div>
+    <div class="view-toggle" style="margin-left:16px;">
+      <div class="view-btn active">⊞ Table</div>
+      <div class="view-btn">▦ Cards</div>
+    </div>
+  </div>
+
+  <!-- FILTER BAR -->
+  <div class="filters">
+    <span class="filter-label">Filter:</span>
+    <div class="filter-pill filter-active">Beds: 3+ <span class="arrow">▾</span></div>
+    <div class="filter-pill">Type: All <span class="arrow">▾</span></div>
+    <div class="filter-pill">Max Price: $6M <span class="arrow">▾</span></div>
+    <div class="filter-pill">Max Monthly: $30K <span class="arrow">▾</span></div>
+    <div class="filter-pill" style="color:#999; border-style:dashed;">+ More filters</div>
+    <div class="filter-spacer"></div>
+    <div class="result-count"><strong>47</strong> listings · <strong>$1.8M–$5.9M</strong></div>
+  </div>
+
+  <!-- SUMMARY BAR -->
+  <div class="summary">
+    <div class="stat-chip"><strong>$3,241,000</strong> median ask</div>
+    <div class="stat-divider">|</div>
+    <div class="stat-chip"><strong>$17,840</strong> median monthly</div>
+    <div class="stat-divider">|</div>
+    <div class="stat-chip"><strong>$1,312</strong> median $/sqft</div>
+    <div class="stat-divider">|</div>
+    <div class="stat-chip"><strong>34</strong> condos · <strong>13</strong> co-ops</div>
+    <div class="stat-divider">|</div>
+    <div class="stat-chip" style="color:#1a7a3c;"><strong>6</strong> new this week</div>
+  </div>
+
+  <!-- TABLE -->
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:32px;"></th>
+          <th>Building / Unit</th>
+          <th class="sort-active">Monthly Pmt <span class="sort-icon">↓</span></th>
+          <th>Ask Price</th>
+          <th>SqFt</th>
+          <th>Beds / Baths</th>
+          <th>$/SqFt</th>
+          <th>Mo/SqFt×12</th>
+          <th>Type</th>
+          <th>Yr Built</th>
+          <th>Days Listed</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- EXPANDED ROW -->
+        <tr class="expanded">
+          <td><span class="expand-btn">▾</span></td>
+          <td>
+            <div class="td-building">The Saratoga</div>
+            <div class="td-address">330 E 75th St #28BC · Lenox Hill</div>
+          </td>
+          <td><span class="td-monthly">$21,320/mo</span></td>
+          <td class="td-price">$3,300,000</td>
+          <td>2,400</td>
+          <td>4 bd · 3 ba</td>
+          <td>$1,375</td>
+          <td>$106.6</td>
+          <td><span class="tag tag-condo">Condo</span></td>
+          <td>1985</td>
+          <td><span class="days-new">NEW · 3d</span></td>
+        </tr>
+
+        <!-- EXPANSION PANEL -->
+        <tr class="expansion-row">
+          <td colspan="11">
+            <div class="expansion-panel">
+              <div class="exp-section">
+                <div class="exp-title">📈 Price History</div>
+                <table class="history-table">
+                  <tr>
+                    <td>Apr 2026</td>
+                    <td><strong>$3,300,000</strong></td>
+                    <td class="event-listed">LISTED</td>
+                    <td class="hist-event">Douglas Elliman</td>
+                  </tr>
+                  <tr>
+                    <td>Mar 2026</td>
+                    <td><strong>$3,395,000</strong></td>
+                    <td class="event-delisted">DELISTED</td>
+                    <td class="hist-event">Sotheby's</td>
+                  </tr>
+                  <tr>
+                    <td>Nov 2025</td>
+                    <td><strong>$3,395,000</strong></td>
+                    <td class="event-listed">LISTED</td>
+                    <td class="hist-event">Sotheby's</td>
+                  </tr>
+                  <tr>
+                    <td>Sep 2017</td>
+                    <td><strong>$4,395,000</strong></td>
+                    <td class="event-listed">LISTED</td>
+                    <td class="hist-event">Warburg</td>
+                  </tr>
+                  <tr>
+                    <td>Dec 2017</td>
+                    <td><strong>$4,195,000</strong></td>
+                    <td class="event-price-cut">PRICE CUT −5%</td>
+                    <td class="hist-event">Warburg</td>
+                  </tr>
+                </table>
+                <div class="peak-note">⚠ 3rd listing since 2017 · Peak ask $4.4M · −25% from peak · never sold</div>
+              </div>
+              <div class="exp-section" style="flex: 0 0 auto;">
+                <div class="exp-title">🧑 Agent</div>
+                <div class="agent-block">
+                  <div class="agent-name">Matthew Gulker</div>
+                  <div class="agent-firm">Douglas Elliman</div>
+                  <div class="agent-contact">mgulker@elliman.com</div>
+                  <div class="agent-contact">(917) 848-1338</div>
+                </div>
+              </div>
+              <div class="exp-section" style="flex: 0 0 auto;">
+                <div class="exp-title">💰 Payment Breakdown</div>
+                <div class="agent-block" style="max-width:200px;">
+                  <div style="display:flex;justify-content:space-between;"><span>Mortgage</span><strong>$10,697</strong></div>
+                  <div style="display:flex;justify-content:space-between;margin-top:4px;"><span>Common Charges</span><strong>$2,448</strong></div>
+                  <div style="display:flex;justify-content:space-between;margin-top:4px;"><span>RE Taxes</span><strong>$3,368</strong></div>
+                  <div style="display:flex;justify-content:space-between;margin-top:8px;border-top:1px solid #ddd;padding-top:6px;font-size:12px;"><span>Total</span><strong style="color:#1a1a2e;font-size:13px;">$16,513</strong></div>
+                  <div style="font-size:10px;color:#999;margin-top:4px;">$750k down · 3% · 30yr</div>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ROW 2 -->
+        <tr>
+          <td><span class="expand-btn" style="color:#bbb;">▸</span></td>
+          <td>
+            <div class="td-building">170 East End Avenue</div>
+            <div class="td-address">170 E End Ave #22B · Yorkville</div>
+          </td>
+          <td><span class="td-monthly">$19,850/mo</span></td>
+          <td class="td-price">$2,995,000</td>
+          <td>2,100</td>
+          <td>3 bd · 2.5 ba</td>
+          <td>$1,426</td>
+          <td>$113.4</td>
+          <td><span class="tag tag-condo">Condo</span></td>
+          <td>1987</td>
+          <td><span class="days-yellow">62d</span></td>
+        </tr>
+
+        <!-- ROW 3 -->
+        <tr>
+          <td><span class="expand-btn" style="color:#bbb;">▸</span></td>
+          <td>
+            <div class="td-building">The Wellsley</div>
+            <div class="td-address">215 E 68th St #14RS · Lenox Hill</div>
+          </td>
+          <td><span class="td-monthly">$18,240/mo</span></td>
+          <td class="td-price">$2,750,000</td>
+          <td>1,850</td>
+          <td>3 bd · 3 ba</td>
+          <td>$1,486</td>
+          <td>$118.3</td>
+          <td><span class="tag tag-coop">Co-op</span></td>
+          <td>1963</td>
+          <td><span class="days-green">18d</span></td>
+        </tr>
+
+        <!-- ROW 4 - placeholder -->
+        <tr style="opacity:0.45;">
+          <td><span class="expand-btn" style="color:#bbb;">▸</span></td>
+          <td>
+            <div class="td-building"><span class="skeleton sk-lg"></span></div>
+            <div class="td-address" style="margin-top:4px;"><span class="skeleton sk-md"></span></div>
+          </td>
+          <td><span class="skeleton sk-md"></span></td>
+          <td><span class="skeleton sk-md"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton" style="width:48px;"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+        </tr>
+        <tr style="opacity:0.25;">
+          <td><span class="expand-btn" style="color:#bbb;">▸</span></td>
+          <td><div class="td-building"><span class="skeleton sk-lg"></span></div></td>
+          <td><span class="skeleton sk-md"></span></td>
+          <td><span class="skeleton sk-md"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton" style="width:48px;"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+          <td><span class="skeleton sk-sm"></span></td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div style="background:#fafafa; border-top:1px solid #eee; padding:10px 24px; display:flex; justify-content:space-between; align-items:center;">
+    <span style="font-size:11px; color:#aaa;">StreetHard · Data via Apify memo23/streeteasy-ppr · Generated Apr 19 2026</span>
+    <span style="font-size:11px; color:#aaa;">47 listings · ~$0.42 this run</span>
+  </div>
+
+</div><!-- /frame -->
+</div><!-- /page-wrapper -->
+
+<!-- CALL OUT LABELS -->
+<div style="width:1100px; margin: 24px auto; display:grid; grid-template-columns: repeat(3, 1fr); gap: 12px; font-family: -apple-system, sans-serif;">
+  <div style="background:white; border:1px solid #ddd; border-radius:4px; padding:12px 14px;">
+    <div style="font-size:10px; font-weight:800; color:#e05c00; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">① Header</div>
+    <div style="font-size:11px; color:#444; line-height:1.5;">Dark navy bar. "StreetHard" wordmark. UES context tag. Table/Card toggle. Last-updated timestamp.</div>
+  </div>
+  <div style="background:white; border:1px solid #ddd; border-radius:4px; padding:12px 14px;">
+    <div style="font-size:10px; font-weight:800; color:#e05c00; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">② Filter + Summary</div>
+    <div style="font-size:11px; color:#444; line-height:1.5;">Inline pill filters — no modal. Live result count updates as you filter. Quick-stat summary bar above the table.</div>
+  </div>
+  <div style="background:white; border:1px solid #ddd; border-radius:4px; padding:12px 14px;">
+    <div style="font-size:10px; font-weight:800; color:#e05c00; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">③ Expanded Row</div>
+    <div style="font-size:11px; color:#444; line-height:1.5;">Click any row to expand in-place. Shows: full price history + "never sold" warning, agent contact, and payment breakdown.</div>
+  </div>
+  <div style="background:white; border:1px solid #ddd; border-radius:4px; padding:12px 14px;">
+    <div style="font-size:10px; font-weight:800; color:#e05c00; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">④ Days Listed Badge</div>
+    <div style="font-size:11px; color:#444; line-height:1.5;">NEW (blue, &lt;7d) · Green &lt;45d · Yellow 45–120d · Red 120d+. Thresholds calibrated to luxury Manhattan pace.</div>
+  </div>
+  <div style="background:white; border:1px solid #ddd; border-radius:4px; padding:12px 14px;">
+    <div style="font-size:10px; font-weight:800; color:#e05c00; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">⑤ Sort</div>
+    <div style="font-size:11px; color:#444; line-height:1.5;">All column headers are sortable. Default: Monthly Payment ↓. Active sort column highlighted blue. No page reload — pure JS.</div>
+  </div>
+  <div style="background:white; border:1px solid #ddd; border-radius:4px; padding:12px 14px;">
+    <div style="font-size:10px; font-weight:800; color:#e05c00; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:4px;">⑥ Footer</div>
+    <div style="font-size:11px; color:#444; line-height:1.5;">Data provenance + generation date. Run cost shown so you can track Apify spend at a glance.</div>
+  </div>
+</div>
+
+</body>
+</html>
