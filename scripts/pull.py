@@ -214,7 +214,8 @@ def normalize(raw):
     street = (
         raw.get(f"{_P1}propertyDetails_address_street")
         or raw.get(f"{_P3}address_street")
-        or raw.get("address_street") or raw.get("addressStreet") or ""
+        or raw.get("address_street") or raw.get("addressStreet")
+        or raw.get("street") or ""   # Pass 1 search results use "street" directly
     )
     if not street:
         addr_raw = raw.get("address") or {}
@@ -238,7 +239,8 @@ def normalize(raw):
 
     neighborhood = (
         raw.get(f"{_P2}area_name") or raw.get(f"{_P3}area_name")
-        or raw.get("area_name") or raw.get("neighborhood") or raw.get("neighborhoodName") or ""
+        or raw.get("area_name") or raw.get("neighborhood") or raw.get("neighborhoodName")
+        or raw.get("areaName") or ""   # Pass 1 search results use "areaName"
     )
 
     sqft = (
@@ -292,7 +294,9 @@ def normalize(raw):
         agent_name  = raw.get("agent_name")  or raw.get("agentName")
         agent_phone = raw.get("agent_phone") or raw.get("agentPhone")
         agent_email = raw.get("agent_email") or raw.get("agentEmail")
-        agent_firm  = raw.get("agent_firm")  or raw.get("agentFirm") or raw.get("brokerageName")
+        # sourceGroupLabel = brokerage from Pass 1 search results (e.g. "Compass", "Douglas Elliman")
+        agent_firm  = (raw.get("agent_firm")  or raw.get("agentFirm") or raw.get("brokerageName")
+                       or raw.get("sourceGroupLabel"))
 
     history = []
     ph_raw = raw.get(f"{_P4}price_histories_json") or raw.get(f"{_P2}price_histories_json")
@@ -357,12 +361,19 @@ _R4 = "extraListingDetails_data_rental_"
 def normalize_rental(raw):
     """Normalize a rental listing. Returns None if rent price is missing.
     For rentals, price = monthly rent (not a purchase price).
-    Field names mirror the sales schema with rental namespaces."""
+
+    Three schemas handled (in priority order):
+      Pass 2 detail  — flat keys with _R1/_R2/_R3/_R4 namespace prefixes
+      Pass 1 search (rental) — all fields prefixed with "node_"
+                               (__typename == "OrganicRentalEdge")
+      Pass 1 search (sale-like fallback) — bare field names
+    """
     price = (
         raw.get(f"{_R1}pricing_price")
         or raw.get(f"{_R1}pricing_netEffectiveRent")
         or raw.get(f"{_R1}pricing_grossRent")
         or raw.get("pricing_price")
+        or raw.get("node_price")       # Pass 1 rental search
         or raw.get("price")
         or raw.get("askingRent") or raw.get("asking_rent")
         or raw.get("monthlyRent") or raw.get("monthly_rent")
@@ -372,33 +383,46 @@ def normalize_rental(raw):
         return None
 
     listing_id = str(
-        raw.get("listingId") or raw.get(f"{_R1}id") or raw.get("id") or ""
+        raw.get("listingId") or raw.get(f"{_R1}id")
+        or raw.get("node_id")          # Pass 1 rental search
+        or raw.get("id") or ""
     )
+    # Use urlPath (building URL format) so the URL works for future Pass 2 detail pulls
+    url_path = raw.get("node_urlPath") or raw.get("urlPath") or ""
     url = (
         raw.get("originalUrl") or raw.get("url")
+        or (f"https://streeteasy.com{url_path}" if url_path else "")
         or (f"https://streeteasy.com/rental/{listing_id}" if listing_id else "")
     )
 
     beds = (
         raw.get(f"{_R1}propertyDetails_bedroomCount")
+        or raw.get("node_bedroomCount")   # Pass 1 rental search
         or raw.get("bedroomCount") or raw.get("bedrooms") or raw.get("beds")
     )
-    full = raw.get(f"{_R1}propertyDetails_fullBathroomCount") or raw.get("fullBathroomCount") or raw.get("bathrooms") or 0
-    half = raw.get(f"{_R1}propertyDetails_halfBathroomCount") or raw.get("halfBathroomCount") or 0
+    full = (raw.get(f"{_R1}propertyDetails_fullBathroomCount")
+            or raw.get("node_fullBathroomCount")  # Pass 1 rental search
+            or raw.get("fullBathroomCount") or raw.get("bathrooms") or 0)
+    half = (raw.get(f"{_R1}propertyDetails_halfBathroomCount")
+            or raw.get("node_halfBathroomCount")  # Pass 1 rental search
+            or raw.get("halfBathroomCount") or 0)
     baths = (full or 0) + (half or 0) * 0.5
 
     btype = (
         raw.get(f"{_R2}building_building_type")
         or raw.get(f"{_R3}type")
         or raw.get("building_building_type")
+        or raw.get("node_buildingType")   # Pass 1 rental search
         or raw.get("propertyType") or raw.get("buildingType") or ""
     ).lower()
-    ptype = "coop" if any(s in btype for s in ("co-op", "coop", "co_op")) else "condo"
+    ptype = "coop" if any(s in btype for s in ("co-op", "coop", "co_op")) else "rental"
 
     street = (
         raw.get(f"{_R1}propertyDetails_address_street")
         or raw.get(f"{_R3}address_street")
-        or raw.get("address_street") or raw.get("addressStreet") or ""
+        or raw.get("address_street") or raw.get("addressStreet")
+        or raw.get("node_street")      # Pass 1 rental search
+        or raw.get("street") or ""
     )
     if not street:
         addr_raw = raw.get("address") or {}
@@ -409,7 +433,9 @@ def normalize_rental(raw):
 
     unit = (
         raw.get(f"{_R1}propertyDetails_address_unit")
-        or raw.get("address_unit") or raw.get("addressUnit") or raw.get("unit") or ""
+        or raw.get("address_unit") or raw.get("addressUnit")
+        or raw.get("node_unit")        # Pass 1 rental search
+        or raw.get("unit") or ""
     )
 
     _bldg_obj = raw.get("building")
@@ -422,11 +448,14 @@ def normalize_rental(raw):
 
     neighborhood = (
         raw.get(f"{_R2}area_name") or raw.get(f"{_R3}area_name")
-        or raw.get("area_name") or raw.get("neighborhood") or raw.get("neighborhoodName") or ""
+        or raw.get("area_name") or raw.get("neighborhood") or raw.get("neighborhoodName")
+        or raw.get("node_areaName")    # Pass 1 rental search
+        or raw.get("areaName") or ""
     )
 
     sqft = (
         raw.get(f"{_R1}propertyDetails_livingAreaSize")
+        or raw.get("node_livingAreaSize")  # Pass 1 rental search
         or raw.get("livingAreaSize") or raw.get("sqft") or raw.get("squareFeet")
     )
 
@@ -456,7 +485,9 @@ def normalize_rental(raw):
         agent_name  = raw.get("agent_name")  or raw.get("agentName")
         agent_phone = raw.get("agent_phone") or raw.get("agentPhone")
         agent_email = raw.get("agent_email") or raw.get("agentEmail")
-        agent_firm  = raw.get("agent_firm")  or raw.get("agentFirm") or raw.get("brokerageName")
+        # node_sourceGroupLabel = brokerage from Pass 1 rental search results
+        agent_firm  = (raw.get("agent_firm")  or raw.get("agentFirm") or raw.get("brokerageName")
+                       or raw.get("node_sourceGroupLabel") or raw.get("sourceGroupLabel"))
 
     history = []
     ph_raw = raw.get(f"{_R4}price_histories_json") or raw.get(f"{_R2}price_histories_json")
@@ -551,12 +582,14 @@ def run_two_pass(client, search_url, max_items, listing_type):
     listing_url_re = re.compile(r'https?://(?:www\.)?streeteasy\.com/(?:sale|rental)/(\d+)')
 
     for item in search_items:
-        lid = str(item.get("id") or item.get("listingId") or "")
+        # Rental Pass 1 items use node_* prefix; sale Pass 1 items use bare names
+        lid = str(item.get("node_id") or item.get("id") or item.get("listingId") or "")
 
         # Prefer urlPath (e.g. /building/evans-tower-condominium/25bc) — this is
         # the URL format the new actor version handles correctly for Pass 2.
         # Fall back to /sale/{id} or /rental/{id} only when urlPath is absent.
-        url_path = item.get("urlPath") or ""
+        # Rental Pass 1 items store urlPath under node_urlPath
+        url_path = item.get("node_urlPath") or item.get("urlPath") or ""
         if url_path:
             url = f"https://streeteasy.com{url_path}"
         elif lid:
@@ -591,7 +624,8 @@ def run_two_pass(client, search_url, max_items, listing_type):
             listing_urls.append(url.replace("www.streeteasy.com", "streeteasy.com"))
             listing_ids.append(lid)
             seen_ids.add(lid)
-            raw_price = (item.get("price") or item.get("pricing_price")
+            raw_price = (item.get("node_price")       # rental Pass 1
+                         or item.get("price") or item.get("pricing_price")
                          or item.get("askingPrice") or item.get("asking_price"))
             if raw_price:
                 try:
