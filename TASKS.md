@@ -43,16 +43,25 @@ Actionable next steps. Check things off as you go.
 
 ---
 
-## 🔴 Blocked — Manual CI Run Required
+## 🔴 Blocked — Two Issues; Must Fix in Order
 
-Bug fixes committed (`f385827`). Pipeline is broken until Pass 1 ID extraction is fixed.
-Root cause cannot be diagnosed without seeing the actual Apify field structure.
+### Block 1: Apify actor broken (403s) — waiting on memo23
 
-**Manual steps to unblock:**
+StreetEasy rotated their iOS API key again (2026-04-19). All actor runs return wall-to-wall 403s.
+Comment posted to memo23's issue thread with run IDs `I1C7EFWK61Lfa8XW3` and `aSmBOStZKpupB2Rs9`.
+The actor was modified ~2 hours before the issue was reported — a fix may already be live.
+
+**To unblock:** Run the Saratoga validation test (see `APIFY_VALIDATION_TEST.md`). If it passes, the actor is fixed and you can proceed to Block 2.
+
+### Block 2: Pass 1 ID extraction bug — needs debug dump from CI
+
+Once the actor is confirmed working, the pipeline still has a bug: Pass 1 returns 0 IDs from search results. A debug dump is already wired in.
+
+**Manual steps:**
 
 1. **Trigger CI run:** GitHub → Actions → "Refresh listings" → Run workflow → Mode: `both`, Max items: `500`
 2. **Copy debug output:** In the "Run pull script" step log, find lines starting with `DEBUG —` and copy everything through the `ID/URL-related fields:` line (one block for sale, possibly one for rent)
-3. **Paste to Claude:** Start a new session and paste the debug output — Claude will fix the ID extraction logic in `pull.py` in <5 min
+3. **Paste to Claude:** Claude will fix the ID extraction logic in `pull.py` in <5 min
 4. **Also note:** If you see `Skipped N rental items (no price)`, paste that too — means `normalize_rental()` field names need correcting (same fix process as Session 2 sales normalization)
 
 ---

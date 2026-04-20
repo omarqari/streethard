@@ -8,11 +8,14 @@ Drop this entire prompt into a new Cowork session to pick up exactly where we le
 
 I'm buying one residential apartment in Manhattan for my family. This is a personal project, not commercial. I've built lightweight tooling in Cowork to pull active listings data from StreetEasy via Apify, calculate monthly payments, and output a sortable spreadsheet for analysis.
 
-**Start by reading these four files in my workspace folder before doing anything:**
+**Start by reading these files in my workspace folder before doing anything:**
 - `/Users/omarqari/cowork/NYC Real Estate Advisor/CLAUDE.md` — project orientation, defaults, infrastructure state
 - `/Users/omarqari/cowork/NYC Real Estate Advisor/PROJECTPLAN.md` — full strategy, output schema, architecture
-- `/Users/omarqari/cowork/NYC Real Estate Advisor/TASKS.md` — what's done and what's next
+- `/Users/omarqari/cowork/NYC Real Estate Advisor/TASKS.md` — what's done and what's next (READ THIS — there are two active blockers)
 - `/Users/omarqari/cowork/NYC Real Estate Advisor/TEST_RESULTS.md` — validation results for RapidAPI and Apify
+- `/Users/omarqari/cowork/NYC Real Estate Advisor/APIFY_VALIDATION_TEST.md` — official one-listing test to run at the start of any session to verify Apify is working
+
+**Current status (as of 2026-04-19 session close):** The Apify actor is broken due to StreetEasy rotating their iOS API key. Run the Saratoga validation test first — if it passes, the actor is fixed and you can proceed to fixing the Pass 1 ID extraction bug. If it still 403s, check the Apify issue thread for memo23's response.
 
 Once you've read those, here is a complete briefing so you don't need to re-derive anything.
 

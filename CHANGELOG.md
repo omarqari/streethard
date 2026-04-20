@@ -4,6 +4,43 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-04-19 — Apify 403 Recurrence + Session Close (Session 4)
+
+### Apify Actor Broken — StreetEasy iOS Key Rotated Again
+
+Attempted to run Apify `memo23/streeteasy-ppr` for a single-listing validation test (Saratoga, ID 1818978). Both runs failed wall-to-wall with 403s — identical behavior to the issue resolved ~23 days ago.
+
+- **Run ID: I1C7EFWK61Lfa8XW3** — free tier, all 403s
+- **Run ID: aSmBOStZKpupB2Rs9** — after upgrading to Apify paid plan, still all 403s
+
+Upgrading to paid plan ruled out proxy quota as the cause. Root cause: StreetEasy rotated their internal iOS app API key, which the actor uses for all requests. This is a recurring maintenance issue with this actor (prior occurrence: ~2026-03-27, resolved within hours by memo23).
+
+The actor showed "Last modified: 2 hours ago" at the time of testing — memo23 may have already pushed a fix. A comment was posted to the existing GitHub issue thread alerting memo23, with both run IDs included.
+
+### Apify Plan Upgraded
+
+Upgraded Omar's Apify account from free to paid tier. This had no effect on the 403 issue but is required for production use (residential proxy access, higher concurrency).
+
+### Official Validation Test Created
+
+Created `APIFY_VALIDATION_TEST.md` — a reproducible one-listing test using 330 East 75th Street #28BC (The Saratoga, listing ID 1818978) as the canonical ground truth. Drop this into any future session to instantly verify the actor is working before running a full pull.
+
+### Session State at Close
+
+- Apify actor: **BROKEN** (403s, pending memo23 fix)
+- GitHub Actions pipeline: **BLOCKED** (Pass 1 ID extraction bug from Session 3, plus actor broken)
+- Comment posted to memo23's issue thread: ✅
+- All docs updated: ✅
+
+### Next Steps (start of next session)
+
+1. Run the Saratoga validation test (`APIFY_VALIDATION_TEST.md`) to confirm the actor is fixed
+2. Once confirmed, run the Pass 1 debug dump (trigger CI run, copy DEBUG lines, paste to Claude)
+3. Fix `run_two_pass()` ID extraction logic based on debug output
+4. First full UES production pull
+
+---
+
 ## 2026-04-19 — Rentals Added (Session 3)
 
 ### Scope Expansion

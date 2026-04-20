@@ -116,9 +116,14 @@ class ApifyClient:
         paginate = max_items > 20
 
         run_input = {
-            "startUrls":   [{"url": u} for u in start_urls],
-            "maxItems":    max_items,
-            "moreResults": paginate,
+            "startUrls":         [{"url": u} for u in start_urls],
+            "maxItems":          max_items,
+            "moreResults":       paginate,
+            # flattenDatasetItems: true is required so that the deeply-nested
+            # GraphQL response fields are stored as top-level keys with long
+            # prefixed names (e.g. saleListingDetailsFederated_data_...).
+            # Without this, normalize() cannot find price, sqft, fees, etc.
+            "flattenDatasetItems": True,
             # Residential proxies are required — without them StreetEasy's
             # bot detection blocks search page scraping and the actor only
             # returns internal queue/status objects (message, timestamp, urls_json)
@@ -540,16 +545,25 @@ def run_two_pass(client, search_url, max_items, listing_type):
     )
 
     listing_urls = []
+    listing_ids  = []   # parallel to listing_urls — lid for each entry
     pass1_prices = {}   # {id: price} — used for delta comparison
     seen_ids     = set()
     listing_url_re = re.compile(r'https?://(?:www\.)?streeteasy\.com/(?:sale|rental)/(\d+)')
 
     for item in search_items:
         lid = str(item.get("id") or item.get("listingId") or "")
-        url = (
-            item.get("url") or item.get("originalUrl")
-            or (f"https://streeteasy.com/{'rental' if is_rental else 'sale'}/{lid}" if lid else "")
-        )
+
+        # Prefer urlPath (e.g. /building/evans-tower-condominium/25bc) — this is
+        # the URL format the new actor version handles correctly for Pass 2.
+        # Fall back to /sale/{id} or /rental/{id} only when urlPath is absent.
+        url_path = item.get("urlPath") or ""
+        if url_path:
+            url = f"https://streeteasy.com{url_path}"
+        elif lid:
+            url = f"https://streeteasy.com/{'rental' if is_rental else 'sale'}/{lid}"
+        else:
+            url = item.get("url") or item.get("originalUrl") or ""
+
         if not lid and url:
             m = listing_url_re.search(url)
             if m:
@@ -575,6 +589,7 @@ def run_two_pass(client, search_url, max_items, listing_type):
 
         if url and lid and lid not in seen_ids:
             listing_urls.append(url.replace("www.streeteasy.com", "streeteasy.com"))
+            listing_ids.append(lid)
             seen_ids.add(lid)
             raw_price = (item.get("price") or item.get("pricing_price")
                          or item.get("askingPrice") or item.get("asking_price"))
@@ -628,14 +643,7 @@ def run_two_pass(client, search_url, max_items, listing_type):
     changed_count  = 0
     reused_count   = 0
 
-    for url in listing_urls:
-        m   = re.search(r'/(?:sale|rental)/(\d+)', url)
-        lid = m.group(1) if m else None
-        if not lid:
-            to_scrape_urls.append(url)
-            new_count += 1
-            continue
-
+    for url, lid in zip(listing_urls, listing_ids):
         prev = prev_by_id.get(lid)
         if prev is None:
             # New listing — always scrape for full detail
