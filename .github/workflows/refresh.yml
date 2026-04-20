@@ -14,6 +14,10 @@ on:
         description: "Max listings per type (default: 500)"
         required: false
         default: "500"
+      pass1_only:
+        description: "Skip Pass 2 detail scraping — use when actor's individual listing pages are broken (true/false)"
+        required: false
+        default: "false"
 
 jobs:
   refresh:
@@ -39,9 +43,15 @@ jobs:
         run: |
           MODE="${{ github.event.inputs.mode }}"
           MAX="${{ github.event.inputs.max_items }}"
+          PASS1_ONLY="${{ github.event.inputs.pass1_only }}"
           MODE="${MODE:-both}"
           MAX="${MAX:-500}"
-          python scripts/pull.py --mode "$MODE" --max-items "$MAX"
+          PASS1_ONLY="${PASS1_ONLY:-false}"
+          if [ "$PASS1_ONLY" = "true" ]; then
+            python scripts/pull.py --mode "$MODE" --max-items "$MAX" --pass1-only
+          else
+            python scripts/pull.py --mode "$MODE" --max-items "$MAX"
+          fi
         # If pull.py exits with code 1 (guard clause triggered), this step fails
         # and the workflow stops here — data/latest.json is NOT committed.
 

@@ -57,6 +57,9 @@ def parse_args():
     p.add_argument("--max-items",   default=DEFAULT_MAX_ITEMS, type=int,
                    help="Max listings per type")
     p.add_argument("--dry-run",     action="store_true",  help="Fetch data but don't write files")
+    p.add_argument("--pass1-only",  action="store_true",
+                   help="Skip Pass 2 (detail pages). Normalize Pass 1 search data only. "
+                        "Use when the actor's individual listing scraping is broken.")
     return p.parse_args()
 
 # ─── Apify Client ──────────────────────────────────────────────────
@@ -555,14 +558,15 @@ def _debug_dump(samples, label=""):
             print(f"    {k}: {repr(v)[:100]}", file=sys.stderr)
 
 # ─── Two-Pass Runner ───────────────────────────────────────────────
-def run_two_pass(client, search_url, max_items, listing_type):
-    """Run Pass 1 + Pass 2 for one listing type. Returns (listings, total_events).
+def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False):
+    """Run Pass 1 (+ optional Pass 2) for one listing type. Returns (listings, total_events).
 
-    Delta strategy: Pass 1 discovers all active listing IDs + current prices.
-    We compare against the previous run's data/latest.json. Listings whose price
-    is unchanged are reused from cache — no Pass 2 scrape needed. Only new
-    listings and price-changed listings go through Pass 2. This cuts Apify
-    costs and scrape volume by ~80–90% on stable weeks.
+    pass1_only=True: Skip Pass 2 entirely. Normalize and return Pass 1 search data
+    directly. Use when the actor's individual listing pages are broken.
+
+    Default (pass1_only=False): Delta strategy — Pass 1 discovers all active listing
+    IDs + current prices. Compare against previous latest.json. Only new and
+    price-changed listings go through Pass 2. Cuts Apify costs by ~80–90% on stable weeks.
     """
     is_rental    = listing_type == "rent"
     normalize_fn = normalize_rental if is_rental else normalize
@@ -649,6 +653,20 @@ def run_two_pass(client, search_url, max_items, listing_type):
         print(f"\nWARN: Only {len(listing_urls)} {label_tag} listings in search — skipping Pass 2.",
               file=sys.stderr)
         return [], len(search_items)
+
+    # ── Pass 1 only mode: skip Pass 2, normalize search items directly ─
+    if pass1_only:
+        print(f"  --pass1-only: skipping Pass 2, normalizing {len(search_items)} search items.")
+        listings = []
+        skipped  = 0
+        for item in search_items:
+            result = normalize_fn(item)
+            if result:
+                listings.append(result)
+            else:
+                skipped += 1
+        print(f"  Total: {len(listings)} {label_tag} listings  (skipped/no-price: {skipped})")
+        return listings, len(search_items)
 
     # ── Delta: load previous run, split into scrape vs. reuse ────────
     prev_by_id  = {}
@@ -757,10 +775,11 @@ def main():
         sys.exit(1)
 
     print("StreetHard — Apify Pull")
-    print(f"  Actor:     {ACTOR_ID}")
-    print(f"  Mode:      {args.mode}")
-    print(f"  Max items: {args.max_items} per type")
-    print(f"  Dry run:   {args.dry_run}")
+    print(f"  Actor:      {ACTOR_ID}")
+    print(f"  Mode:       {args.mode}")
+    print(f"  Max items:  {args.max_items} per type")
+    print(f"  Pass 1 only: {args.pass1_only}")
+    print(f"  Dry run:    {args.dry_run}")
 
     client = ApifyClient(token)
 
@@ -770,14 +789,20 @@ def main():
     if args.mode in ("sale", "both"):
         print(f"\n{'═'*50}")
         print(f"  FOR SALE: {args.sale_url}")
-        listings, events = run_two_pass(client, args.sale_url, args.max_items, "sale")
+        listings, events = run_two_pass(
+            client, args.sale_url, args.max_items, "sale",
+            pass1_only=args.pass1_only,
+        )
         all_listings.extend(listings)
         total_events += events
 
     if args.mode in ("rent", "both"):
         print(f"\n{'═'*50}")
         print(f"  FOR RENT: {args.rental_url}")
-        listings, events = run_two_pass(client, args.rental_url, args.max_items, "rent")
+        listings, events = run_two_pass(
+            client, args.rental_url, args.max_items, "rent",
+            pass1_only=args.pass1_only,
+        )
         all_listings.extend(listings)
         total_events += events
 
