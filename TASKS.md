@@ -26,7 +26,7 @@ Actionable next steps. Check things off as you go.
 
 ## Recurring (While Searching)
 
-- [ ] Weekly: GitHub Actions auto-runs the pull. Verify output after each run.
+- [ ] Mon + Thu: GitHub Actions auto-runs the pull. Verify output after each run.
 - [ ] Per serious candidate: run the 15-minute due diligence checklist.
 - [ ] Monthly: cross-check StreetEasy and CitySnap saved searches for anything the API missed.
 
@@ -78,9 +78,12 @@ The new actor version returns "No results found" for individual `/sale/{id}` URL
 - [x] **Rental comp analysis:** Added UES rental listings ($10K–$20K/mo). Mode toggle (For Sale / For Rent / Both) added to app. Pipeline pulls both types in one run.
 - [x] **Pass 1 ID extraction fix:** Fixed — `item['id']` works; `urlPath` used for Pass 2 URLs; `flattenDatasetItems: True` added.
 - [x] **Pass 2 — fixed 2026-04-20:** memo23 pushed a fix. Validation test passed (Run ID: Lz5JkP1Ky592CZU8h) — price history (17 entries), agent contact, fees, taxes, sqft all confirmed. Ready for full production pull.
-- [ ] **Run full production pull:** Commit `--pass1-only` code to main, then trigger CI run with mode=both, max_items=500, pass1_only=false.
-- [ ] **Rental normalize() validation:** First CI run with rentals will dump actual Apify field names if normalization fails. Update `normalize_rental()` in `pull.py` based on that output.
-- [ ] **New/reduced badges:** Compare current pull against previous `data/YYYY-MM-DD.json` to surface new listings and price cuts with visual badges in the app.
+- [ ] **Run full production pull:** Push all current code changes, then trigger CI run with mode=both, max_items=500, pass1_only=false, force_pass2=true (to backfill fees/taxes/agent/history for all listings).
+- [x] **Rental normalize() validation:** `normalize_rental()` fully rewritten with verified `combineData_rental_*` schema (2026-04-21). `/rental/{id}` URL format confirmed. End-to-end production run still pending — debug dump fires automatically if field names change.
+- [ ] **Days-on-market: update index.html to use listed_date.** `listed_date` field is now stored in every listing. Update JS to compute DOM live: `Math.floor((new Date() - new Date(listing.listed_date)) / 86400000)`, with fallback to `listing.days_on_market` when `listed_date` is null.
+- [ ] **New/reduced badges (P1):** Add `badge` field (`"new"`, `"reduced"`, or `null`) in pull.py by diffing current prices against previous dated JSON. Render as a pill badge in index.html's Building/Unit column. Architecture documented in PROJECTPLAN.md.
+- [ ] **Shortlist feature:** In-app ability to mark listings as seen/liked/rejected. **Do not start until sharing model is decided** — localStorage (device-only) vs. shared backing store (GitHub API, Sheets, etc.) are very different builds. See PROJECTPLAN.md Phase 3 for options and tradeoffs.
+- [ ] **Rental end-to-end validation:** Test a standard apartment rental (not townhouse) through the full Pass 1 → Pass 2 → normalize_rental() → stub merge pipeline. Confirm beds/baths/sqft backfill works correctly.
 - [ ] **Co-op sqft gap:** Evaluate supplemental pull for co-ops without sqft filter; flag those listings separately.
 
 ---

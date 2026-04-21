@@ -906,6 +906,39 @@ def main():
 
     all_listings  = []
     total_events  = 0
+    completed_types = []
+
+    data_dir     = Path(__file__).parent.parent / "data"
+    partial_path = data_dir / "partial.json"
+
+    def _save_partial(listings, events, done_types):
+        """Checkpoint completed listing type(s) to data/partial.json.
+
+        Called after each type finishes so that if a later type fails
+        mid-run (or the guard clause triggers), data already collected
+        is not lost. The partial flag lets the app show a warning banner.
+        """
+        if args.dry_run:
+            return
+        data_dir.mkdir(exist_ok=True)
+        today_str = datetime.date.today().isoformat()
+        sales_so_far   = [l for l in listings if l["listing_type"] != "rent"]
+        rentals_so_far = [l for l in listings if l["listing_type"] == "rent"]
+        partial_payload = {
+            "generated_at":  today_str,
+            "partial":       True,
+            "partial_types": done_types,
+            "listing_count": len(listings),
+            "sale_count":    len(sales_so_far),
+            "rental_count":  len(rentals_so_far),
+            "run_cost_usd":  estimate_cost(events),
+            "mode":          args.mode,
+            "listings":      listings,
+        }
+        with open(partial_path, "w") as f:
+            json.dump(partial_payload, f, indent=2)
+        print(f"  ✓ Checkpoint saved → data/partial.json "
+              f"({len(listings)} listings so far)")
 
     if args.mode in ("sale", "both"):
         print(f"\n{'═'*50}")
@@ -917,6 +950,8 @@ def main():
         )
         all_listings.extend(listings)
         total_events += events
+        completed_types.append("sale")
+        _save_partial(all_listings, total_events, completed_types)
 
     if args.mode in ("rent", "both"):
         print(f"\n{'═'*50}")
@@ -928,12 +963,18 @@ def main():
         )
         all_listings.extend(listings)
         total_events += events
+        completed_types.append("rent")
+        _save_partial(all_listings, total_events, completed_types)
 
-    # Guard clause
+    # Guard clause — partial.json already has whatever we collected;
+    # abort without overwriting latest.json.
     if len(all_listings) < MIN_LISTINGS:
         print(
             f"\nABORT: Only {len(all_listings)} listings after normalization "
-            f"(minimum is {MIN_LISTINGS}).\ndata/latest.json was NOT overwritten.",
+            f"(minimum is {MIN_LISTINGS}).\ndata/latest.json was NOT overwritten."
+            + (f"\ndata/partial.json preserves {len(all_listings)} listings "
+               f"from completed types: {completed_types}."
+               if completed_types and not args.dry_run else ""),
             file=sys.stderr,
         )
         sys.exit(1)
@@ -971,7 +1012,6 @@ def main():
               f"est. cost ${payload['run_cost_usd']:.3f}")
         return
 
-    data_dir = Path(__file__).parent.parent / "data"
     data_dir.mkdir(exist_ok=True)
 
     latest_path = data_dir / "latest.json"
@@ -981,6 +1021,10 @@ def main():
         json.dump(payload, f, indent=2)
     with open(dated_path, "w") as f:
         json.dump(payload, f, indent=2)
+
+    # Clean up partial checkpoint — run succeeded, partial is now stale.
+    if partial_path.exists():
+        partial_path.unlink()
 
     print(f"\n✓ Wrote {len(all_listings)} listings "
           f"({len(sales)} sale, {len(rentals)} rental)")

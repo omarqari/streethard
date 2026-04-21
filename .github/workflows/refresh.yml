@@ -2,8 +2,9 @@ name: Refresh Listings
 
 on:
   schedule:
-    # Every Sunday at 8:00 AM UTC
-    - cron: "0 8 * * 0"
+    # Monday 9 AM UTC + Thursday 9 AM UTC
+    - cron: "0 9 * * 1"
+    - cron: "0 9 * * 4"
   workflow_dispatch:
     inputs:
       mode:
@@ -65,6 +66,11 @@ jobs:
           git config user.name  "StreetHard Bot"
           git config user.email "streethard-bot@users.noreply.github.com"
           git add data/
+          # partial.json is written after each completed type. If the workflow
+          # fails mid-run (e.g. rental Pass 1 aborts after sale succeeded),
+          # this commit step is skipped and partial.json stays local — it won't
+          # be committed, but it is available for inspection in the Actions log.
+          # On a successful run, pull.py deletes partial.json before this step.
           # Only commit if something actually changed
           if git diff --cached --quiet; then
             echo "No changes to data/ — skipping commit."

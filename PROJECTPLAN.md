@@ -41,7 +41,7 @@ Added 2026-04-19 to support rent-vs-buy comparison. The `price` field for rental
 - No server, no backend, no database
 
 ### Data Refresh
-- **GitHub Actions** cron job runs weekly (Sundays)
+- **GitHub Actions** cron job runs **Monday + Thursday, 9 AM UTC** (twice-weekly; fresh data mid-week and start of week)
 - Workflow: call Apify → download results → save `data/latest.json` + `data/YYYY-MM-DD.json` → commit to repo → GitHub Pages auto-deploys
 - Apify API token stored as **GitHub Secret** (never in code)
 - Manual re-run available via GitHub Actions "Run workflow" button
@@ -52,10 +52,11 @@ Added 2026-04-19 to support rent-vs-buy comparison. The `price` field for rental
 ├── index.html              ← StreetHard app shell (static, never changes per-run)
 ├── data/
 │   ├── latest.json         ← Always the most recent pull (overwritten each run)
+│   ├── partial.json        ← Mid-run checkpoint (deleted on success; present = run aborted)
 │   └── 2026-04-19.json     ← Dated archive of every past run
 ├── .github/
 │   └── workflows/
-│       └── refresh.yml     ← GitHub Actions weekly cron
+│       └── refresh.yml     ← GitHub Actions cron (Mon + Thu)
 └── scripts/
     └── pull.py             ← Apify pull script (runs locally or in CI)
 ```
@@ -104,6 +105,27 @@ Inspired by StreetEasy's visual language:
 - **Yellow**: 45–120 days
 - **Red**: 121+ days
 
+### Days-on-Market Calculation
+`days_on_market` as scraped from Apify is a point-in-time snapshot and becomes stale immediately. The pipeline stores a `listed_date` field (ISO date string: `"2026-04-16"`) derived from the most recent LISTED event in price history (sales) or the `listed_at` timestamp (rentals). The JS app computes days-on-market live at render time:
+
+```js
+const dom = listing.listed_date
+  ? Math.floor((new Date() - new Date(listing.listed_date)) / 86400000)
+  : listing.days_on_market;  // fallback for listings with no price history
+```
+
+**TODO:** `index.html` still uses the static `days_on_market` field. Update `calcDaysOnMarket()` (or equivalent) to prefer `listed_date` when present.
+
+### New Listing + Price Cut Badges (P1 — next sprint)
+Surface signal that StreetEasy already shows but the app doesn't — without any extra API cost:
+
+- **NEW badge** (blue): listing ID appears in current pull but not in the previous `data/YYYY-MM-DD.json`
+- **PRICE CUT badge** (green): price decreased since previous pull
+
+Implementation: during the `_save_partial()` / final write step in `pull.py`, compare current listing prices against the previous dated JSON. Add a `badge` field (`"new"`, `"reduced"`, or `null`) to each normalized listing before writing. `index.html` renders the badge as a pill in the Building/Unit column.
+
+**Pending:** implement `badge` field in `pull.py` + badge rendering in `index.html`.
+
 ### Expanded Row (click to open inline)
 - Full price history event timeline
 - "Never sold" / peak-ask warning if applicable
@@ -136,7 +158,8 @@ Fields confirmed present (50/50): price, beds, baths, address, unit, building na
 
 ### Data Storage
 - `data/latest.json` — overwritten each run; what the live app reads
-- `data/YYYY-MM-DD.json` — immutable dated archive; never overwritten
+- `data/YYYY-MM-DD.json` — immutable dated archive; never overwritten; used for badge diff (new/reduced)
+- `data/partial.json` — checkpoint written after each listing type completes; deleted on successful run; presence indicates a run aborted mid-way (sale succeeded, rent failed, etc.)
 - Raw Apify output stored as-is (no pre-computation); all math runs client-side
 - Git history of `data/` directory = full audit trail of every weekly pull
 
@@ -190,12 +213,24 @@ Data sources validated. Apify confirmed as primary. Mortgage calculator defaults
 - `.github/workflows/refresh.yml` running; weekly cron + manual trigger verified
 
 **Phase 2 enhancements (post-v1):**
-- **Rental comp analysis:** UES rental data alongside PMT/SqFt for buy-vs-rent comparison
-- **New/reduced badges:** Compare current pull IDs against previous `data/` JSON to surface new listings and price cuts with visual badges
+- **Rental comp analysis:** UES rental data alongside PMT/SqFt for buy-vs-rent comparison. ✅ Pipeline built; rental Pass 2 schema verified (2026-04-21): `combineData_rental_*` namespace, `/rental/{id}` URL format confirmed. `normalize_rental()` rewritten from scratch with verified field names. End-to-end pipeline not yet run in production on a standard apartment (validation test used a townhouse, which may have atypical schema coverage). First full rental CI run will confirm field coverage; debug dump fires automatically if normalization fails.
+- **New/reduced badges:** Compare current pull against previous dated JSON → `badge` field on each listing → pill badge in app. Architecture documented above. Pending implementation.
 - **Co-op sqft gap:** Evaluate whether to add a supplemental co-op pass without the sqft filter
 
 ### Phase 3 — Shortlisting (~5–20 candidates)
 Run the 15-minute due diligence checklist per serious candidate. Maintain a running shortlist with status (watching / viewing / shortlisted / rejected / offered).
+
+**Shortlist feature (in-app) — options TBD before building:**
+The app needs a way for family members to mark listings as seen/liked/rejected. Several approaches exist with different tradeoffs:
+
+- **localStorage** — works immediately, zero infrastructure. Device-local only; marks not shared across family members. Simple prototype.
+- **GitHub API (repo JSON)** — shortlist stored as a JSON file in the repo; app writes it via GitHub API using a personal access token. Shared across all family members (one source of truth). Requires a PAT in the browser — not safe for a public Pages URL.
+- **Google Sheets** — lightweight shared backing store; free. Requires a service account or OAuth; adds complexity.
+- **Airtable / Notion** — easy UI for non-technical family members but introduces a third-party dependency.
+
+**Decision needed before building:** What's the family sharing model? If only one person uses the app, localStorage is fine. If multiple family members need to see each other's marks, a shared backing store is required. The right choice determines the entire architecture.
+
+**Do not implement until the sharing model is decided.**
 
 ### Phase 4 — Finalists (1–3 candidates)
 Engage real estate attorney. Request offering plan and 2 years of financial statements. Inspector if feasible. Deep read of board minutes for co-ops.
