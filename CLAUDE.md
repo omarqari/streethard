@@ -91,7 +91,7 @@ The app is called **StreetHard**. It is a static web app hosted on **GitHub Page
 - `data/db.json` — **canonical store**; persistent dict of all listings keyed by ID; each has `data_quality` ("pass1" or "pass2"); never overwritten destructively
 - `data/latest.json` — generated from db.json each run; flat array for the app to fetch on load
 - `data/YYYY-MM-DD.json` — immutable dated archive of every past run
-- `scripts/pull.py` — **incremental** Apify pull script; Pass 1 discovers listings, Pass 2 only fills in what's missing (capped at 30/run); saves db.json after every step
+- `scripts/pull.py` — **incremental** Apify pull script; Pass 1 discovers listings, Pass 2 only fills in what's missing (capped at 100/run); saves db.json after every step
 - `.github/workflows/refresh.yml` — cron Mon+Thu 9 AM UTC; calls Apify, commits data/, Pages auto-deploys
 - Apify token in `.env` locally; `APIFY_TOKEN` GitHub Secret in CI
 
@@ -112,8 +112,8 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
 - **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 GREEN, Pass 2 GREEN (fixed by memo23 2026-04-20). Both operational.
-- **Pipeline: Incremental ("Puzzle" model)** — `data/db.json` is the canonical store. Each run fills in what's missing. Pass 2 capped at 30 listings/run. After ~12 runs all listings reach pass2 quality. See PROJECTPLAN.md for full architecture.
-- **db.json state:** 373 active listings (11 pass2, 362 pass1). Filling ~30 per run.
+- **Pipeline: Incremental ("Puzzle" model)** — `data/db.json` is the canonical store. Each cron run discovers new listings via Pass 1 and fills in detail via Pass 2 (capped at 100/run). See PROJECTPLAN.md for full architecture.
+- **db.json state:** 373 active listings — **ALL at pass2 quality** (330 sale, 43 rental). Full fees, taxes, agent contact, price history across the board. Backfilled in Session 9.
 - **Secondary: RapidAPI NYC Real Estate API** — validated YELLOW, 25 req/mo free tier, good for fast single-listing lookups; no price history or agent contact
 - RapidAPI key in `.env`; Apify account on paid plan
 - No PLUTO, ACRIS, or other supplemental data downloaded yet
@@ -137,6 +137,7 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `CHANGELOG.md` — chronological record of project events
 - `PROJECTPLAN.md` — strategy, architecture, phases
 - `TASKS.md` — concrete next steps
+- `RETRO-SESSION9.md` — CTO/Architect/CPO retrospective on the backfill lesson
 - `data/db.json` — canonical listing store (the source of truth; never overwritten destructively)
 - `data/latest.json` — generated from db.json for the app to consume
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
@@ -168,6 +169,24 @@ Before building any new data source or pipeline step, Claude must:
 3. **Isolate before integrating.** Test Pass 1 independently. Test Pass 2 independently. Only combine them after both work in isolation.
 4. **Never test architecture in CI.** GitHub Actions is for running validated code. It is not a debugging environment. If something is unvalidated, test it locally or via direct API call first.
 5. **Don't add layers while one is broken.** If Pass 1 isn't returning IDs, don't add delta caching on top of it. Fix the broken layer first.
+
+## Solve the Problem First, Then Automate — READ THIS BEFORE BUILDING PIPELINES
+
+**Distinguish between "initial load" and "steady-state maintenance."** They are different problems requiring different solutions. Session 9 retrospective (RETRO-SESSION9.md) documents this lesson in full.
+
+**The backfill lesson:** We spent sessions 2–8 building an incremental cron pipeline that fills ~30 listings per run. The initial database had 373 listings needing Pass 2. At 30/run, twice weekly, that's 6+ weeks to full data. In Session 9, we called the API directly in batches of 50–100 and completed the entire backfill in 15 minutes.
+
+**Concrete rules:**
+
+1. **Data completeness is a launch blocker, not a backlog item.** If the app's primary value (accurate monthly payments) requires Pass 2 data, then Pass 2 completion is P0. Don't ship with 97% of listings showing incomplete data and call it "v1."
+2. **When the user can see the answer in 15 minutes, don't build a 6-week pipeline.** Always ask: "What's the fastest path to the user having what they need?" If the answer is "call the API directly," do that first, then build automation for maintenance.
+3. **Don't confuse building the system with solving the problem.** A pipeline is infrastructure. The user's need is data. Solve the need directly, then automate the maintenance.
+4. **Revisit defensive limits after outages are resolved.** Batch sizes and caps set during an actor regression should be re-evaluated once the actor is fixed. Don't let crisis-mode guardrails become permanent bottlenecks.
+5. **Features on incomplete data are vanity work.** Text search, rental comps, and date formatting are nice — but not while 97% of sale listings lack fees, taxes, and agent contact.
+
+**Operational modes:**
+- **Backfill mode:** Call Apify directly from Cowork. No Pass 1. Read db.json for pass1-quality IDs, send through Pass 2 in batches of 50–100, merge results. For supervised use when bulk data population is needed.
+- **Maintenance mode:** Cron pipeline (pull.py via GitHub Actions). Pass 1 discovers new listings, Pass 2 fills in details for new/changed listings. For unattended steady-state operation.
 
 ## Tone Guidance for Responses
 

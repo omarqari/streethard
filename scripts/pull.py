@@ -48,8 +48,8 @@ MIN_LISTINGS         = 10
 POLL_INTERVAL_SEC    = 5
 PASS1_TIMEOUT_SEC    = 600    # 10 min — search pages are fast
 PASS2_TIMEOUT_SEC    = 600    # 10 min per batch — abort and salvage if stuck
-PASS2_BATCH_SIZE     = 10     # max URLs per Pass 2 Apify run; smaller = less blast radius from stuck URLs
-PASS2_PER_RUN_CAP   = 30     # max listings to send through Pass 2 per run; rest queue for next run
+PASS2_BATCH_SIZE     = 50     # max URLs per Pass 2 Apify run (tested up to 100 in Session 9; 50 balances speed vs. blast radius)
+PASS2_PER_RUN_CAP   = 100    # max listings to send through Pass 2 per run; rest queue for next run
 DELIST_DAYS          = 14    # listings not seen in Pass 1 for this many days are marked delisted
 
 SALE_URL = (

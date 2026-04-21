@@ -230,10 +230,9 @@ Each cron run does:
 
 #### What this means in practice
 
-- **Run 1 (today):** Pass 1 finds 330 sales. All enter db.json at pass1 quality. Pass 2 processes 30, gets 25 successfully. Those 25 are now permanent — never re-scraped unless their price changes.
-- **Run 2 (Thursday):** Pass 1 finds 335 sales (5 new). Pass 2 queue: 305 remaining pass1-only + 5 new = 310. Processes next 30, gets 28. Running total: 53 pass2-complete.
-- **Run 6 (two weeks later):** 280 of 330 are pass2-complete. Pass 2 queue is down to 50 + any new listings. Almost done filling the puzzle.
-- **Ongoing runs:** Only new listings and price-changed listings need Pass 2. Typical run might only scrape 5-10 detail pages.
+**Initial backfill (Session 9, 2026-04-21):** All 373 listings were backfilled to pass2 quality in a single session by calling the Apify API directly in batches of 50–100. Total time: ~15 minutes of Apify runtime. This bypassed the cron pipeline entirely — the right approach for bulk initial population.
+
+**Ongoing cron runs:** Pass 1 discovers new listings and price changes. Pass 2 processes up to 100 per run (new + price-changed only). Typical maintenance run: 5–15 detail pages.
 
 #### Files
 
@@ -244,8 +243,8 @@ Each cron run does:
 
 #### Cost Efficiency
 
-Current: every run tries to scrape all 330+ listings via Pass 2 (~$1-2 in Apify credits).
-New: after the initial fill, runs only scrape ~5-10 new/changed listings (~$0.03-0.06). The puzzle fills in over 2-3 weeks, then maintenance is nearly free.
+Initial backfill (Session 9): ~362 listings × $0.003 = ~$1.09 total. Completed in one session.
+Ongoing maintenance: each cron run scrapes ~5–15 new/changed listings (~$0.015–$0.045). Maintenance is nearly free.
 
 ### Secondary: RapidAPI NYC Real Estate API
 Validated YELLOW. Fast cached lookups, no price history or agent contact. 25 free req/mo (~19 remaining). Use for targeted per-property due diligence only, not bulk pulls.
@@ -297,7 +296,8 @@ Data sources validated. Apify confirmed as primary. Mortgage calculator defaults
 - `.github/workflows/refresh.yml` running; weekly cron + manual trigger verified
 
 **Phase 2 enhancements (post-v1):**
-- **Incremental pipeline ("Puzzle" model):** ✅ Implemented Session 8. `data/db.json` canonical store. Pass 2 capped at 30/run, abort+salvage on timeout, delisting detection. Full architecture documented above under "Data Storage."
+- **Incremental pipeline ("Puzzle" model):** ✅ Implemented Session 8. `data/db.json` canonical store. Pass 2 capped at 100/run (raised from 30 in Session 9), abort+salvage on timeout, delisting detection. Full architecture documented above under "Data Storage."
+- **Full Pass 2 backfill:** ✅ Completed Session 9. All 373 listings (330 sale, 43 rental) at pass2 quality. Direct API calls in batches of 50–100, bypassing the cron pipeline. See RETRO-SESSION9.md.
 - **Text search:** ✅ Free-text search bar in filter bar (Session 8).
 - **Price history full dates:** ✅ Shows "Apr 16, 2026" instead of "Apr 2026" (Session 8).
 - **Rental comp analysis:** ✅ Pipeline built; rental Pass 2 schema verified. `normalize_rental()` rewritten with verified field names. End-to-end production run on a standard apartment still pending.

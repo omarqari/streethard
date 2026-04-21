@@ -4,6 +4,58 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-04-21 — Full Pass 2 Backfill + Retrospective (Session 9)
+
+### Complete Database: 373/373 at Pass 2 Quality
+
+Bypassed the cron pipeline entirely and called the Apify API directly in escalating batches to backfill all remaining pass1 listings. Every batch returned 100% success, zero normalization failures.
+
+| Batch | Size | Result | Cumulative pass2 |
+|-------|------|--------|------------------|
+| 1     | 10   | 10/10  | 21               |
+| 2     | 20   | 20/20  | 41               |
+| 3     | 50   | 50/50  | 91               |
+| 4     | 50   | 50/50  | 141              |
+| 5     | 100  | 100/100| 241              |
+| 6     | 89   | 89/89  | 330 (all sales)  |
+| 7     | 43   | 43/43  | 373 (all rentals)|
+
+Total Apify runtime: ~15 minutes. Total wall-clock: ~30 minutes. The cron pipeline would have taken 6+ weeks at 30 listings/run.
+
+### Pipeline Config Updated
+
+- `PASS2_BATCH_SIZE`: 10 → 50 (actor handles 100 comfortably; 50 balances speed vs. blast radius for unattended cron)
+- `PASS2_PER_RUN_CAP`: 30 → 100 (no reason to throttle this aggressively now that the actor is stable)
+
+### Retrospective: "Don't Build an Irrigation System to Fill a Bathtub"
+
+Full CTO/Architect/CPO retrospective documented in `RETRO-SESSION9.md`. Key findings:
+
+1. **Initial load ≠ steady-state maintenance.** The pipeline was designed for maintenance (5–10 new listings per run) but was used for initial population (362 listings). Wrong tool for the job.
+2. **Defensive limits from the actor outage were never revisited.** Batch size 10 and cap 30 were set during the 0.0.118 regression. Actor has been stable since the fix; limits should have been raised immediately.
+3. **Data completeness is a launch blocker.** The app's primary value (monthly payment comparison) was broken for 97% of listings across sessions 3–8 because Pass 2 wasn't complete. Features (text search, rentals, date formatting) were prioritized over data completeness.
+4. **CI is not a debugging environment.** Multiple sessions wasted 6-minute CI cycles debugging code that should have been tested via direct API calls.
+
+New rules added to CLAUDE.md: "Solve the Problem First, Then Automate" section with concrete guidelines for backfill vs. maintenance modes.
+
+### Session State at Close
+
+- Pipeline: **ALL COMPLETE** — 373/373 listings at pass2 quality
+- Sales: 330 pass2, 0 pass1
+- Rentals: 43 pass2, 0 pass1
+- Delisted: 0
+- App: LIVE on GitHub Pages with full data (pending user `git push`)
+- Cron: Mon + Thu, now handles up to 100 Pass 2 listings per run
+
+### Remaining Open Items
+
+1. Live days-on-market from `listed_date` (JS update in index.html)
+2. New/reduced badges (diff against previous dated JSON)
+3. Shortlist feature (blocked on sharing model decision)
+4. Co-op sqft gap evaluation
+
+---
+
 ## 2026-04-20 — Incremental Pipeline + UI Search (Session 8)
 
 ### Architectural Redesign: Puzzle Model

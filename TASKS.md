@@ -58,7 +58,7 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 - [x] **Rental normalize() validation:** `normalize_rental()` rewritten with verified `combineData_rental_*` schema.
 - [x] **Text search (2026-04-20):** Free-text search bar in filter bar. Filters by building, address, unit, neighborhood, agent name/firm.
 - [x] **Price history full dates (2026-04-20):** `fmtDate()` now shows "Apr 16, 2026" instead of "Apr 2026".
-- [ ] **Monitor pass2 fill rate:** Watch next 2-3 cron runs. pass2 count should climb ~30 per run. Currently 11/373.
+- [x] **Monitor pass2 fill rate:** ✅ Moot — all 373/373 listings backfilled to pass2 in Session 9 via direct API calls.
 - [ ] **Days-on-market: update index.html to use listed_date.** `listed_date` field is now stored in every listing. Update JS to compute DOM live: `Math.floor((new Date() - new Date(listing.listed_date)) / 86400000)`, with fallback to `listing.days_on_market` when `listed_date` is null.
 - [ ] **New/reduced badges (P1):** Add `badge` field (`"new"`, `"reduced"`, or `null`) in pull.py by diffing current prices against previous dated JSON. Render as a pill badge in index.html's Building/Unit column. Architecture documented in PROJECTPLAN.md.
 - [ ] **Shortlist feature:** In-app ability to mark listings as seen/liked/rejected. **Do not start until sharing model is decided** — localStorage (device-only) vs. shared backing store (GitHub API, Sheets, etc.) are very different builds. See PROJECTPLAN.md Phase 3 for options and tradeoffs.
