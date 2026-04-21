@@ -43,8 +43,8 @@ ACTOR_ID             = "memo23/streeteasy-ppr"
 MIN_LISTINGS         = 10
 POLL_INTERVAL_SEC    = 5
 PASS1_TIMEOUT_SEC    = 600    # 10 min — search pages are fast
-PASS2_TIMEOUT_SEC    = 1800   # 30 min — individual pages can be slow
-PASS2_BATCH_SIZE     = 50     # max URLs per Pass 2 Apify run; avoids actor timeouts
+PASS2_TIMEOUT_SEC    = 600    # 10 min per batch — abort and salvage if stuck
+PASS2_BATCH_SIZE     = 10     # max URLs per Pass 2 Apify run; smaller = less blast radius from stuck URLs
 
 SALE_URL = (
     "https://streeteasy.com/for-sale/upper-east-side"
@@ -97,6 +97,17 @@ class ApifyClient:
         resp = self.session.get(f"{self.BASE}/actor-runs/{run_id}", timeout=30)
         resp.raise_for_status()
         return resp.json()["data"]
+
+    def abort_run(self, run_id):
+        """Abort a running actor run. Returns the run status dict."""
+        try:
+            resp = self.session.post(
+                f"{self.BASE}/actor-runs/{run_id}/abort", timeout=30)
+            resp.raise_for_status()
+            return resp.json()["data"]
+        except Exception as e:
+            print(f"\n  WARN: Failed to abort run {run_id}: {e}", file=sys.stderr)
+            return None
 
     def get_dataset_items(self, dataset_id):
         items = []
@@ -166,6 +177,7 @@ class ApifyClient:
         print(f"  Dataset:   {dataset_id}")
 
         print("  Waiting for completion…", end="", flush=True)
+        timed_out = False
         deadline = time.time() + timeout_sec
         while time.time() < deadline:
             run_status = self.get_run(run_id)
@@ -175,14 +187,21 @@ class ApifyClient:
                 break
             time.sleep(POLL_INTERVAL_SEC)
         else:
-            raise ApifyRunError(f"Timed out after {timeout_sec}s (run {run_id} still running)")
+            timed_out = True
+            print(f"\n  TIMEOUT after {timeout_sec}s — aborting run and salvaging partial results…",
+                  flush=True)
+            self.abort_run(run_id)
+            # Give Apify a moment to finalize the dataset after abort
+            time.sleep(5)
 
         print()
-        if status != "SUCCEEDED":
+
+        if not timed_out and status not in ("SUCCEEDED",):
             raise ApifyRunError(f"Run {run_id} ended with status {status}")
 
         items = self.get_dataset_items(dataset_id)
-        print(f"  Items received: {len(items)}")
+        print(f"  Items received: {len(items)}"
+              + (f"  (PARTIAL — run was aborted after timeout)" if timed_out else ""))
         return items
 
 # ─── Field Resolution Helpers ─────────────────────────────────────

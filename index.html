@@ -202,6 +202,19 @@ a:hover { text-decoration: underline; }
 .filter-select:focus { outline: none; border-color: #3461D9; }
 .filter-select.active { border-color: #3461D9; color: #3461D9; background-color: #eef2ff; }
 .filter-spacer { flex: 1; }
+#f-search {
+  border: 1px solid #d0d5dd;
+  border-radius: 20px;
+  padding: 5px 13px 5px 30px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #333;
+  width: 180px;
+  transition: border-color 0.15s, width 0.2s;
+  background: white url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' fill='none' stroke='%23999' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='6' cy='6' r='4.5'/%3E%3Cline x1='9.5' y1='9.5' x2='13' y2='13'/%3E%3C/svg%3E") no-repeat 10px center;
+}
+#f-search:focus { outline: none; border-color: #3461D9; width: 240px; }
+#f-search.active { border-color: #3461D9; color: #3461D9; background-color: #eef2ff; }
 #result-count {
   font-size: 12px;
   color: #666;
@@ -570,6 +583,7 @@ td {
     <button class="mode-btn" id="mode-btn-rent" onclick="setMode('rent')">For Rent</button>
     <button class="mode-btn" id="mode-btn-both" onclick="setMode('both')">Both</button>
   </div>
+  <input type="text" id="f-search" placeholder="Search building, address, agent…" oninput="applyFilters()">
   <span class="filter-label" style="margin-left:6px;">Filter</span>
   <select class="filter-select" id="f-beds" onchange="applyFilters()">
     <option value="0">Beds: All</option>
@@ -831,14 +845,17 @@ function applyFilters() {
   const type  = document.getElementById('f-type').value;
   const maxPx = parseFloat(document.getElementById('f-price').value) || 0;
   const maxMo = parseFloat(document.getElementById('f-monthly').value) || 0;
+  const searchRaw = document.getElementById('f-search').value.trim();
+  const searchQ   = searchRaw.toLowerCase();
 
-  const hasFilter = beds > 0 || type !== '' || maxPx > 0 || maxMo > 0;
+  const hasFilter = beds > 0 || type !== '' || maxPx > 0 || maxMo > 0 || searchRaw !== '';
   document.getElementById('clear-btn').style.display = hasFilter ? 'inline-block' : 'none';
 
   ['f-beds','f-type','f-price','f-monthly'].forEach(id => {
     const el = document.getElementById(id);
     el.classList.toggle('active', el.value !== '0' && el.value !== '');
   });
+  document.getElementById('f-search').classList.toggle('active', searchRaw !== '');
 
   filteredListings = allListings.filter(l => {
     if (listingMode === 'sale' && l.listing_type === 'rent') return false;
@@ -848,6 +865,12 @@ function applyFilters() {
     // Max price filter only applies to sale listings
     if (maxPx > 0 && l.listing_type !== 'rent' && l.price > maxPx) return false;
     if (maxMo > 0 && calcMonthlyTotal(l) > maxMo) return false;
+    // Text search — matches against building, address, unit, neighborhood, agent name/firm
+    if (searchQ) {
+      const haystack = [l.building, l.address, l.unit, l.neighborhood, l.agent_name, l.agent_firm]
+        .filter(Boolean).join(' ').toLowerCase();
+      if (!haystack.includes(searchQ)) return false;
+    }
     return true;
   });
 
@@ -861,6 +884,7 @@ function clearFilters() {
   document.getElementById('f-type').value    = '';
   document.getElementById('f-price').value   = '0';
   document.getElementById('f-monthly').value = '0';
+  document.getElementById('f-search').value  = '';
   applyFilters();
 }
 

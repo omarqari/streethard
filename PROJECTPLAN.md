@@ -126,6 +126,9 @@ Implementation: during the `_save_partial()` / final write step in `pull.py`, co
 
 **Pending:** implement `badge` field in `pull.py` + badge rendering in `index.html`.
 
+### Text Search
+Free-text search input in the filter bar, between the mode toggle and the dropdown filters. Filters listings in real time (on every keystroke) by matching the query against a concatenated haystack of: `building`, `address`, `unit`, `neighborhood`, `agent_name`, and `agent_firm`. Case-insensitive substring match. Clears with the existing "Clear" button. Highlights with the same blue active-state styling as dropdown filters when non-empty. Expands from 180px to 240px on focus for comfortable typing.
+
 ### Expanded Row (click to open inline)
 - Full price history event timeline
 - "Never sold" / peak-ask warning if applicable
