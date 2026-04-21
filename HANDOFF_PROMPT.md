@@ -15,7 +15,7 @@ I'm buying one residential apartment in Manhattan for my family. This is a perso
 - `/Users/omarqari/cowork/NYC Real Estate Advisor/TEST_RESULTS.md` — validation results for RapidAPI and Apify
 - `/Users/omarqari/cowork/NYC Real Estate Advisor/APIFY_VALIDATION_TEST.md` — official one-listing test to run at the start of any session to verify Apify is working
 
-**Current status (as of 2026-04-19 session close):** The Apify actor is broken due to StreetEasy rotating their iOS API key. Run the Saratoga validation test first — if it passes, the actor is fixed and you can proceed to fixing the Pass 1 ID extraction bug. If it still 403s, check the Apify issue thread for memo23's response.
+**Current status (as of 2026-04-19 Session 6 close):** CI Run #15 was triggered (Mode: sale, Max: 20, commit `1e5cd99`) and was in-progress at ~3–4 min when the session ended. **Start the next session by checking whether Run #15 passed or failed.** If passed, check `data/latest.json` for `monthly_fees` and `monthly_taxes`. If failed, look at the "Run pull script" step logs for DEBUG output and paste it into Claude for diagnosis. See TASKS.md for details.
 
 Once you've read those, here is a complete briefing so you don't need to re-derive anything.
 

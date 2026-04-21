@@ -69,6 +69,7 @@ def run_apify(token):
     run_input = {
         "startUrls": [{"url": TEST_URL}],
         "maxItems": 1,
+        "moreResults": False,   # must be False — True causes infinite pagination hang
         "proxy": {
             "useApifyProxy":    True,
             "apifyProxyGroups": ["RESIDENTIAL"],

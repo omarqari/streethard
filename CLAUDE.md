@@ -109,10 +109,23 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
-- **Primary data source: Apify `memo23/streeteasy-ppr`** — validated GREEN, $0.009/listing, returns price history + agent contact + all required fields
+- **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 (search URLs) GREEN; Pass 2 (individual listing pages) BROKEN in build 0.0.118. Bug report filed 2026-04-20, awaiting fix. Without Pass 2: no fees, taxes, agent contact, or price history.
 - **Secondary: RapidAPI NYC Real Estate API** — validated YELLOW, 25 req/mo free tier, good for fast single-listing lookups; no price history or agent contact
-- RapidAPI key in `.env`; Apify account created (free tier, $5 credit)
+- RapidAPI key in `.env`; Apify account on paid plan
 - No PLUTO, ACRIS, or other supplemental data downloaded yet
+
+## How to Contact memo23 (Apify Actor Author)
+
+When the Apify actor breaks or needs a feature, the fastest path is the Apify console issues thread:
+
+1. Open `https://console.apify.com/actors/ptsXZUXADV3OKZ5kd/issues/a2fptiipUUxfjnh9X` in browser (Omar's Apify account is logged in on his browser)
+2. Find the textarea with `id="text"` and `placeholder="Leave a comment"`
+3. Fill it and click the `button[type="submit"]` labelled "Add comment"
+4. Claude can do this via `mcp__Claude_in_Chrome__javascript_tool` — set value via `HTMLTextAreaElement.prototype` native setter + `dispatchEvent(new Event('input', {bubbles:true}))`, then click submit
+
+**Backup:** email `muhamed.didovic@gmail.com` (actor README). Average issues response: 3.6 hours.
+
+**Do NOT use the public-facing `apify.com` issues page** — the "Add comment" link there redirects to the console, and the public page has no textarea when not logged in.
 
 ## Files in This Project
 
