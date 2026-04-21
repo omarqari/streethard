@@ -31,6 +31,13 @@ import requests
 from pathlib import Path
 from dotenv import load_dotenv
 
+# ─── Exceptions ────────────────────────────────────────────────────
+class ApifyRunError(Exception):
+    """Raised when an Apify run fails, aborts, or times out.
+    Catchable at the batch level so a single failed batch doesn't
+    discard results from batches that already succeeded."""
+    pass
+
 # ─── Config ────────────────────────────────────────────────────────
 ACTOR_ID             = "memo23/streeteasy-ppr"
 MIN_LISTINGS         = 10
@@ -111,21 +118,28 @@ class ApifyClient:
             offset += limit
         return items
 
-    def run_and_wait(self, start_urls, max_items, label="", timeout_sec=PASS1_TIMEOUT_SEC):
+    def run_and_wait(self, start_urls, max_items, label="",
+                     timeout_sec=PASS1_TIMEOUT_SEC, paginate=True):
+        """Submit an Apify run and poll until complete.
+
+        paginate: pass True for Pass 1 search URLs (actor needs to page through
+        results), False for Pass 2 individual listing URLs (pagination is
+        meaningless and causes unnecessary extra requests).
+
+        Raises ApifyRunError on timeout or non-SUCCEEDED status so the caller
+        can decide whether to abort or continue with remaining batches.
+        """
         print(f"\n{'─'*50}")
         print(f"  {label}")
         print(f"  URLs:      {len(start_urls)}")
         print(f"  Max items: {max_items}")
 
-        # Only paginate beyond page 1 when fetching a full set of results.
-        # For small test runs (max_items <= 20) stay on page 1 — moreResults
-        # causes the actor to paginate aggressively before respecting maxItems,
-        # making small test runs extremely slow.
-        paginate = max_items > 20
-
         run_input = {
             "startUrls":         [{"url": u} for u in start_urls],
             "maxItems":          max_items,
+            # moreResults: only for Pass 1 search pages. Pass 2 individual
+            # listing URLs have nothing to paginate — setting this True there
+            # causes the actor to make unnecessary extra requests.
             "moreResults":       paginate,
             # flattenDatasetItems: true is required so that the deeply-nested
             # GraphQL response fields are stored as top-level keys with long
@@ -144,8 +158,7 @@ class ApifyClient:
         try:
             run = self.start_run(ACTOR_ID, run_input)
         except requests.HTTPError as e:
-            print(f"ERROR: Failed to start Apify run: {e}", file=sys.stderr)
-            sys.exit(1)
+            raise ApifyRunError(f"Failed to start Apify run: {e}")
 
         run_id     = run["id"]
         dataset_id = run["defaultDatasetId"]
@@ -162,17 +175,29 @@ class ApifyClient:
                 break
             time.sleep(POLL_INTERVAL_SEC)
         else:
-            print("\nERROR: Timed out.", file=sys.stderr)
-            sys.exit(1)
+            raise ApifyRunError(f"Timed out after {timeout_sec}s (run {run_id} still running)")
 
         print()
         if status != "SUCCEEDED":
-            print(f"ERROR: Apify run ended with status {status}.", file=sys.stderr)
-            sys.exit(1)
+            raise ApifyRunError(f"Run {run_id} ended with status {status}")
 
         items = self.get_dataset_items(dataset_id)
         print(f"  Items received: {len(items)}")
         return items
+
+# ─── Field Resolution Helpers ─────────────────────────────────────
+def _get(*candidates):
+    """Return the first non-None candidate value.
+
+    Use this instead of `or`-chaining for fields where 0 is a valid value
+    (beds=0 for studios, days_on_market=0 for just-listed, fees=0 for
+    tax-abated units). Plain `or` would skip a legitimate 0 and fall through
+    to the next candidate silently.
+    """
+    for v in candidates:
+        if v is not None:
+            return v
+    return None
 
 # ─── Field Normalization — Sales ───────────────────────────────────
 # memo23/streeteasy-ppr flattens StreetEasy's federated GraphQL into
@@ -203,12 +228,14 @@ def normalize(raw):
         or (f"https://streeteasy.com/sale/{listing_id}" if listing_id else "")
     )
 
-    beds = (
-        raw.get(f"{_P1}propertyDetails_bedroomCount")
-        or raw.get("bedroomCount") or raw.get("bedrooms") or raw.get("beds")
+    beds = _get(
+        raw.get(f"{_P1}propertyDetails_bedroomCount"),
+        raw.get("bedroomCount"), raw.get("bedrooms"), raw.get("beds"),
     )
-    full = raw.get(f"{_P1}propertyDetails_fullBathroomCount") or raw.get("fullBathroomCount") or raw.get("bathrooms") or 0
-    half = raw.get(f"{_P1}propertyDetails_halfBathroomCount") or raw.get("halfBathroomCount") or 0
+    full = _get(raw.get(f"{_P1}propertyDetails_fullBathroomCount"),
+                raw.get("fullBathroomCount"), raw.get("bathrooms")) or 0
+    half = _get(raw.get(f"{_P1}propertyDetails_halfBathroomCount"),
+                raw.get("halfBathroomCount")) or 0
     baths = (full or 0) + (half or 0) * 0.5
 
     btype = (
@@ -263,17 +290,20 @@ def normalize(raw):
         raw.get(f"{_P2}building_year_built") or raw.get(f"{_P3}yearBuilt")
         or raw.get("building_year_built") or raw.get("yearBuilt") or raw.get("builtIn")
     )
-    days_on_market = (
-        raw.get(f"{_P2}days_on_market")
-        or raw.get("days_on_market") or raw.get("daysOnMarket")
+    days_on_market = _get(
+        raw.get(f"{_P2}days_on_market"),
+        raw.get("days_on_market"), raw.get("daysOnMarket"),
     )
 
-    maint_fee = raw.get(f"{_P1}pricing_maintenanceFee")
-    taxes_fee  = raw.get(f"{_P1}pricing_taxes")
-    if maint_fee is None:
-        maint_fee = raw.get("pricing_monthly_fees") or raw.get("monthlyHoa") or raw.get("commonCharges")
-    if taxes_fee is None:
-        taxes_fee = raw.get("pricing_monthly_taxes") or raw.get("monthlyTax") or raw.get("realEstateTaxes")
+    # Use _get (not or) for fees/taxes — $0 is valid (tax abatements, some condos)
+    maint_fee = _get(
+        raw.get(f"{_P1}pricing_maintenanceFee"),
+        raw.get("pricing_monthly_fees"), raw.get("monthlyHoa"), raw.get("commonCharges"),
+    )
+    taxes_fee = _get(
+        raw.get(f"{_P1}pricing_taxes"),
+        raw.get("pricing_monthly_taxes"), raw.get("monthlyTax"), raw.get("realEstateTaxes"),
+    )
     old_maint = raw.get("pricing_monthly_maintenance") or raw.get("maintenance") or raw.get("monthlyMaintenance")
 
     if ptype == "coop":
@@ -403,17 +433,17 @@ def normalize_rental(raw):
         or (f"https://streeteasy.com/rental/{listing_id}" if listing_id else "")
     )
 
-    beds = (
-        raw.get(f"{_R1}propertyDetails_bedroomCount")
-        or raw.get("node_bedroomCount")   # Pass 1 rental search
-        or raw.get("bedroomCount") or raw.get("bedrooms") or raw.get("beds")
+    beds = _get(
+        raw.get(f"{_R1}propertyDetails_bedroomCount"),
+        raw.get("node_bedroomCount"),     # Pass 1 rental search
+        raw.get("bedroomCount"), raw.get("bedrooms"), raw.get("beds"),
     )
-    full = (raw.get(f"{_R1}propertyDetails_fullBathroomCount")
-            or raw.get("node_fullBathroomCount")  # Pass 1 rental search
-            or raw.get("fullBathroomCount") or raw.get("bathrooms") or 0)
-    half = (raw.get(f"{_R1}propertyDetails_halfBathroomCount")
-            or raw.get("node_halfBathroomCount")  # Pass 1 rental search
-            or raw.get("halfBathroomCount") or 0)
+    full = _get(raw.get(f"{_R1}propertyDetails_fullBathroomCount"),
+                raw.get("node_fullBathroomCount"),   # Pass 1 rental search
+                raw.get("fullBathroomCount"), raw.get("bathrooms")) or 0
+    half = _get(raw.get(f"{_R1}propertyDetails_halfBathroomCount"),
+                raw.get("node_halfBathroomCount"),   # Pass 1 rental search
+                raw.get("halfBathroomCount")) or 0
     baths = (full or 0) + (half or 0) * 0.5
 
     btype = (
@@ -471,9 +501,9 @@ def normalize_rental(raw):
         raw.get(f"{_R2}building_year_built") or raw.get(f"{_R3}yearBuilt")
         or raw.get("building_year_built") or raw.get("yearBuilt") or raw.get("builtIn")
     )
-    days_on_market = (
-        raw.get(f"{_R2}days_on_market")
-        or raw.get("days_on_market") or raw.get("daysOnMarket")
+    days_on_market = _get(
+        raw.get(f"{_R2}days_on_market"),
+        raw.get("days_on_market"), raw.get("daysOnMarket"),
     )
 
     agent_name = agent_phone = agent_email = agent_firm = None
@@ -578,15 +608,21 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, 
     label_tag    = "rental" if is_rental else "sale"
 
     # ── Pass 1: Search → discover listing IDs + current prices ───────
-    search_items = client.run_and_wait(
-        start_urls=[search_url],
-        max_items=max_items,
-        label=f"Pass 1/2 — Search ({label_tag})",
-    )
+    try:
+        search_items = client.run_and_wait(
+            start_urls=[search_url],
+            max_items=max_items,
+            label=f"Pass 1/2 — Search ({label_tag})",
+            paginate=True,
+        )
+    except ApifyRunError as e:
+        print(f"\nERROR: Pass 1 failed — {e}", file=sys.stderr)
+        sys.exit(1)
 
     listing_urls = []
     listing_ids  = []   # parallel to listing_urls — lid for each entry
     pass1_prices = {}   # {id: price} — used for delta comparison
+    pass1_dom    = {}   # {id: days_on_market} — fresh from search, avoids cache drift
     seen_ids     = set()
     listing_url_re = re.compile(r'https?://(?:www\.)?streeteasy\.com/(?:sale|rental)/(\d+)')
 
@@ -639,6 +675,17 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, 
             if raw_price:
                 try:
                     pass1_prices[lid] = int(raw_price)
+                except (ValueError, TypeError):
+                    pass
+            # Capture days_on_market from Pass 1 so cached listings get a
+            # fresh value rather than a synthetically incremented one. This
+            # avoids drift when a listing is delisted and relisted (DOM resets
+            # on StreetEasy but our cache would keep counting up).
+            raw_dom = _get(item.get("node_days_on_market"),
+                           item.get("days_on_market"), item.get("daysOnMarket"))
+            if raw_dom is not None:
+                try:
+                    pass1_dom[lid] = int(raw_dom)
                 except (ValueError, TypeError):
                     pass
 
@@ -720,9 +767,14 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, 
                 to_scrape_urls.append(url)
                 changed_count += 1
             else:
-                # Price unchanged — reuse cached detail, just advance days_on_market
+                # Price unchanged — reuse cached detail with fresh DOM from Pass 1.
+                # Prefer the live Pass 1 value over incrementing the cached one:
+                # if a listing was delisted and relisted, DOM resets on StreetEasy
+                # but synthetic incrementing would keep counting up incorrectly.
                 cached = dict(prev)
-                if cached.get("days_on_market") is not None and days_elapsed > 0:
+                if lid in pass1_dom:
+                    cached["days_on_market"] = pass1_dom[lid]
+                elif cached.get("days_on_market") is not None and days_elapsed > 0:
                     cached["days_on_market"] = cached["days_on_market"] + days_elapsed
                 to_reuse.append(cached)
                 reused_count += 1
@@ -735,30 +787,39 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, 
     # ── Pass 2: Scrape only new + changed listings (in batches) ──────
     detail_items = []
     if to_scrape_urls:
-        batches     = [to_scrape_urls[i:i+PASS2_BATCH_SIZE]
-                       for i in range(0, len(to_scrape_urls), PASS2_BATCH_SIZE)]
-        total_urls  = len(to_scrape_urls)
+        batches    = [to_scrape_urls[i:i+PASS2_BATCH_SIZE]
+                      for i in range(0, len(to_scrape_urls), PASS2_BATCH_SIZE)]
+        total_urls = len(to_scrape_urls)
         for batch_num, batch in enumerate(batches, 1):
-            batch_items = client.run_and_wait(
-                start_urls=batch,
-                max_items=len(batch),
-                label=(f"Pass 2/2 — Detail pages ({label_tag}, "
-                       f"batch {batch_num}/{len(batches)}, "
-                       f"URLs {(batch_num-1)*PASS2_BATCH_SIZE+1}–"
-                       f"{min(batch_num*PASS2_BATCH_SIZE, total_urls)} of {total_urls})"),
-                timeout_sec=PASS2_TIMEOUT_SEC,
-            )
-            detail_items.extend(batch_items)
+            try:
+                batch_items = client.run_and_wait(
+                    start_urls=batch,
+                    max_items=len(batch),
+                    label=(f"Pass 2/2 — Detail pages ({label_tag}, "
+                           f"batch {batch_num}/{len(batches)}, "
+                           f"URLs {(batch_num-1)*PASS2_BATCH_SIZE+1}–"
+                           f"{min(batch_num*PASS2_BATCH_SIZE, total_urls)} of {total_urls})"),
+                    timeout_sec=PASS2_TIMEOUT_SEC,
+                    paginate=False,   # individual listing URLs — nothing to paginate
+                )
+                detail_items.extend(batch_items)
+            except ApifyRunError as e:
+                # One batch failing doesn't kill the whole run — log and continue.
+                # Affected listings fall back to cached/Pass-1 data this week.
+                print(f"\nWARN: Batch {batch_num}/{len(batches)} failed — {e}. "
+                      f"Continuing with remaining batches.", file=sys.stderr)
     else:
         print(f"\n  Pass 2 skipped — all {reused_count} {label_tag} listings unchanged.")
 
-    listings        = list(to_reuse)
-    skipped         = 0
-    skipped_samples = []
+    listings         = list(to_reuse)
+    pass2_normalized = 0   # count of items successfully normalized from Pass 2
+    skipped          = 0
+    skipped_samples  = []
     for item in detail_items:
         result = normalize_fn(item)
         if result:
             listings.append(result)
+            pass2_normalized += 1
         else:
             skipped += 1
             if len(skipped_samples) < 3:
@@ -766,8 +827,9 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, 
 
     print(f"\n  Total: {len(listings)} {label_tag} listings  (skipped/no-price: {skipped})")
 
-    # Debug dump + Pass 1 fallback if all Pass 2 items fail normalization
-    if skipped_samples and len([l for l in listings if l not in to_reuse]) == 0:
+    # Debug dump + Pass 1 fallback if Pass 2 produced nothing new.
+    # Use pass2_normalized counter (not identity comparison on dicts) to check.
+    if to_scrape_urls and pass2_normalized == 0:
         _debug_dump(skipped_samples, label_tag)
         print(f"\nFalling back to Pass 1 data for {label_tag} (sparse — no agent/history).",
               file=sys.stderr)
