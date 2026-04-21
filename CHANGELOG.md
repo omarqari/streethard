@@ -4,6 +4,121 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-04-20 — Pass 2 Restored (Session 7)
+
+### memo23 Fixed the Actor
+
+memo23 responded and pushed a fix. Ran the Saratoga validation test (Run ID: `Lz5JkP1Ky592CZU8h`):
+
+- price_history: ✅ 17 entries returned
+- agent name/phone/email: ✅ Matthew Gulker / (917) 848-1338 / mgulker@elliman.com
+- maintenance fee: ✅ $2,448
+- taxes: ✅ $3,384 (ticked up slightly from $3,368 — real data change, not a bug)
+- price: $3,295,000 (decreased from $3,300,000 on 2026-04-20 — real price cut, not a bug)
+- sqft, beds, year_built: ✅ all correct
+
+Pass 2 is fully operational. The `--pass1-only` flag added this session remains available for future outages.
+
+### --pass1-only Flag Added
+
+Added `--pass1-only` to `pull.py` and `refresh.yml`. When set, skips Pass 2 entirely and normalizes Pass 1 search data directly. Use when the actor's individual listing pages are broken again. Accessible via GitHub Actions "Run workflow" → `pass1_only: true`.
+
+### Next Step
+
+Run a full production pull (both sale + rent, max 500 each) without `--pass1-only`. Push the `--pass1-only` code to main first.
+
+---
+
+## 2026-04-20 — Bug Report Filed + Session Close (Session 6)
+
+### Comment Posted to memo23's Issues Thread
+
+After exhausting all other options (build pinning not supported by Apify API for third-party actors), posted a detailed bug report directly to memo23's Apify issues thread.
+
+**How to contact memo23 in the future:**
+1. Navigate to `https://console.apify.com/actors/ptsXZUXADV3OKZ5kd/issues/a2fptiipUUxfjnh9X` (requires being logged into Apify console as Omar)
+2. Type in the `#text` textarea (id="text", placeholder="Leave a comment")
+3. Click the "Add comment" submit button
+- Alternatively: email `muhamed.didovic@gmail.com` directly (listed in actor README)
+- Average issues response time: 3.6 hours
+
+**Comment posted (verbatim):**
+> Search URLs confirmed working — ran a full production pull without issues. 403 fix is solid.
+> Follow-up on individual listing URLs: I've now tested every documented format and none return data in build 0.0.118: `/sale/1818978`, `/rental/4991146`, `/building/301e94.../rental/4991146`, `/building/the-saratoga/sale/1818978`, `/building/the-saratoga/28bc` (urlPath from Pass 1). Both listings confirmed active on StreetEasy (1818978 re-listed 4/16/2026). The actor calls api-internal.streeteasy.com/graphql for all requests. Search queries work perfectly; individual listing queries return empty results. Is individual listing detail scraping intended to work in 0.0.118?
+
+### Session State at Close
+
+- Pass 2: **BROKEN**, bug report filed, awaiting memo23 response
+- Pass 1 (search URLs): **WORKING** — app live with price, beds/baths/sqft, address, brokerage
+- Monthly payment calc: **partial** — shows mortgage-only until Pass 2 restored (no fees/taxes)
+- GitHub Actions pipeline: running weekly on Pass 1 data
+
+### Next Steps
+
+1. Check memo23 issues thread for response (link above)
+2. If memo23 fixes Pass 2: re-run validation test (Saratoga `building/the-saratoga/28bc`), confirm fees + taxes + agent info populate, then trigger CI run
+3. If no fix within a week: evaluate emailing memo23 directly or accepting Pass 1-only permanently
+
+---
+
+## 2026-04-20 — Pass 2 Deep Investigation (Session 5)
+
+### Result: Pass 2 is Definitively Broken in Actor Build 0.0.118
+
+Continued from prior session. Tested every known and documented URL format for individual listing pages — all return `{"message": "No results found"}`.
+
+Formats tested:
+- `/sale/{id}` — ❌ (10 × "No results found")
+- `/rental/{id}` — ❌ (documented in actor features; still fails)
+- `/building/{slug}/rental/{id}` — ❌ (documented in actor features; still fails)
+- `/building/{slug}/sale/{id}` — ❌ (fails)
+- `/building/{slug}/{unit}` (urlPath from Pass 1) — ❌ (fails, tested in prior session)
+
+**The listings are confirmed still active.** Navigated to `streeteasy.com/sale/1818978` in browser — listing is live, re-listed 4/16/2026 at $3,300,000 with fees $2,448/mo, taxes $3,368/mo, 4 beds, 2,400 sqft. The actor failure is a genuine regression, not a stale-listing issue.
+
+### Root Cause
+
+Build 0.0.118 was a "403 fix" (StreetEasy iOS API key rotation, ~2026-03-27). The fix restored search page scraping but broke the individual listing URL → GraphQL query path. The actor internally calls `api-internal.streeteasy.com/graphql` — Pass 1 (search queries) still work; individual listing queries do not.
+
+### Actor Internals Observed
+
+From inspecting the request queue during a run:
+- All requests go to `api-internal.streeteasy.com/graphql` regardless of input URL type
+- `maxRequestRetries: 100` — stuck requests retry up to 100 times (explains long run times)
+- For a 3-URL run: 5 total GraphQL requests generated (4 succeeded, 1 failed)
+- Dataset had 10 items despite 3 input URLs — multiple retry attempts each wrote a "No results found" record
+
+### Older Builds Exist — Not Yet Tried
+
+Build history available via Apify API:
+- 0.0.117 | id=SwDxnjUXSfNtlpm9l | SUCCEEDED
+- 0.0.116 | id=FXHfKcbbFFq0cefq1 | SUCCEEDED
+- 0.0.115 | id=ttubcfQfPb0nGW7qa | SUCCEEDED
+- 0.0.114 | id=SRahdXAKpNImqH9j2 | SUCCEEDED
+- 0.0.112, 0.0.111, 0.0.109 — also available
+
+Pinning to an older build (e.g., 0.0.117) via `"build": "SwDxnjUXSfNtlpm9l"` in the run request is untested but is the fastest possible fix if those builds handled individual listing URLs correctly. Risk: older builds may re-introduce 403s.
+
+### What Pass 1 Gives Without Pass 2
+
+Pass 1 (search URLs) is fully working and returns: price, beds, baths, sqft, address, unit, building name, neighborhood, brokerage name, days on market. Missing from Pass 1: **price history, maintenance fees, property taxes, agent name/phone/email.**
+
+Fees and taxes are critical for the monthly payment calculation in StreetHard. Without them, the app shows mortgage-only, which understates true monthly cost by ~$6k/mo for a typical $3M condo.
+
+### Session State at Close
+
+- Pass 2: **BROKEN** (all URL formats fail in build 0.0.118)
+- Pass 1: **WORKING** (search URLs return good data with correct field mapping)
+- App: **LIVE on GitHub Pages** (Pass 1 fallback active; monthly payments show mortgage-only until Pass 2 fixed)
+
+### Next Steps
+
+1. **Try pinning to build 0.0.117** — submit a validation run with `"build": "SwDxnjUXSfNtlpm9l"` and test `/building/the-saratoga/28bc` (the canonical URL for listing 1818978). If it works, wire that build into `pull.py` for Pass 2.
+2. **If 0.0.117 also fails** — contact memo23 via Apify actor comments with a clear report: all individual listing URL formats return "No results found" in 0.0.118; was working in a prior build.
+3. **If no fix available** — fall back to StreetEasy's published listing pages as a manual source for fees/taxes on serious candidates, and leave the pipeline as Pass-1-only.
+
+---
+
 ## 2026-04-19 — Apify 403 Recurrence + Session Close (Session 4)
 
 ### Apify Actor Broken — StreetEasy iOS Key Rotated Again

@@ -18,9 +18,9 @@ One listing, one run, ~20 seconds, ~$0.009.
 
 | Field | Expected Value |
 |---|---|
-| Price | $3,300,000 |
+| Price | $3,295,000 (reduced from $3,300,000 on 2026-04-20) |
 | Common Charges | $2,448/mo |
-| Property Taxes | $3,368/mo |
+| Property Taxes | $3,384/mo |
 | Bedrooms | 4 |
 | Full Bathrooms | 3 |
 | SqFt | 2,400 |
@@ -39,6 +39,7 @@ One listing, one run, ~20 seconds, ~$0.009.
 
 | Date | Event | Price |
 |---|---|---|
+| 2026-04-20 | PRICE_DECREASE | $3,295,000 |
 | 2026-04-16 | LISTED | $3,300,000 |
 | 2026-03-02 | DELISTED | $3,395,000 |
 | 2025-11-19 | LISTED | $3,395,000 |
@@ -144,6 +145,6 @@ If FAIL: dump the raw response in full and paste to Claude. Field names may have
 | Date | Duration | Root Cause | Resolution |
 |---|---|---|---|
 | ~2026-03-27 | ~hours | StreetEasy rotated iOS API key | memo23 patched the actor |
-| 2026-04-19 | Ongoing | StreetEasy rotated iOS API key again | Awaiting memo23 fix |
+| 2026-04-19 | ~1 day | Individual listing pages broken in build 0.0.118 (Pass 2 regression) | memo23 fixed ~2026-04-20 |
 
 This is the known failure mode for this actor. When 403s appear, it is almost certainly this cause. Check the actor's Issues tab first before debugging anything else.

@@ -43,33 +43,42 @@ Actionable next steps. Check things off as you go.
 
 ---
 
-## 🔴 Blocked — Two Issues; Must Fix in Order
+## 🟡 One Remaining Issue: Pass 2 Field Coverage (not a blocker)
 
-### Block 1: Apify actor broken (403s) — waiting on memo23
+Block 1 (403s) and Block 2 (Pass 1 ID extraction) are both resolved as of 2026-04-19 Session 5.
 
-StreetEasy rotated their iOS API key again (2026-04-19). All actor runs return wall-to-wall 403s.
-Comment posted to memo23's issue thread with run IDs `I1C7EFWK61Lfa8XW3` and `aSmBOStZKpupB2Rs9`.
-The actor was modified ~2 hours before the issue was reported — a fix may already be live.
+### What was fixed
 
-**To unblock:** Run the Saratoga validation test (see `APIFY_VALIDATION_TEST.md`). If it passes, the actor is fixed and you can proceed to Block 2.
+**Block 1 — Apify 403s:** ✅ Resolved by memo23 (iOS API key rotation fix, 2026-04-19).
 
-### Block 2: Pass 1 ID extraction bug — needs debug dump from CI
+**Block 2 — Pass 1 ID extraction:** ✅ Fixed in `pull.py` (commit `1e5cd99`):
+- Search results return `"id": "1822856"` as a top-level field — `item.get("id")` works correctly
+- `urlPath` field (e.g. `/building/evans-tower-condominium/25bc`) is now used for Pass 2 URLs instead of constructing `/sale/{id}` URLs (which return "No results found" in the new actor version)
+- `listing_ids[]` list tracks IDs in parallel with `listing_urls[]` so the delta loop doesn't need to regex-extract IDs from URLs
+- `flattenDatasetItems: True` added to `run_input` (required for `normalize()` to find the long field names)
 
-Once the actor is confirmed working, the pipeline still has a bug: Pass 1 returns 0 IDs from search results. A debug dump is already wired in.
+### Remaining issue: Pass 2 individual listing pages
 
-**Manual steps:**
+The new actor version returns "No results found" for individual `/sale/{id}` URLs (pre-existing issue per larry-lobster, 22 days ago). The fix above switches to building URL format (`/building/slug/unit`) for Pass 2 — this has NOT been tested yet.
 
-1. **Trigger CI run:** GitHub → Actions → "Refresh listings" → Run workflow → Mode: `both`, Max items: `500`
-2. **Copy debug output:** In the "Run pull script" step log, find lines starting with `DEBUG —` and copy everything through the `ID/URL-related fields:` line (one block for sale, possibly one for rent)
-3. **Paste to Claude:** Claude will fix the ID extraction logic in `pull.py` in <5 min
-4. **Also note:** If you see `Skipped N rental items (no price)`, paste that too — means `normalize_rental()` field names need correcting (same fix process as Session 2 sales normalization)
+**Most likely outcomes on next CI run:**
+1. **Building URLs work** → full data (fees, taxes, agent info, price history) ✅
+2. **Building URLs also fail** → script falls back to Pass 1 data (price, beds, baths, sqft, type, address) — app works but monthly payment shows mortgage-only, no fees/taxes
+
+**Next action:** Trigger a CI run and check the output. If Pass 2 normalization fails (all "No results found"), the debug dump will fire and we'll see what the actor actually returns.
+
+1. **Trigger CI run:** GitHub → Actions → "Refresh listings" → Run workflow → Mode: `sale`, Max items: `20` (small test run first)
+2. **Check output:** Does `data/latest.json` have `monthly_fees` and `monthly_taxes` populated? If yes, Pass 2 works.
+3. **If Pass 2 fails:** Paste the DEBUG lines from the "Run pull script" step to Claude for further diagnosis.
 
 ---
 
 ## Phase 2 Enhancements (Post-v1)
 
 - [x] **Rental comp analysis:** Added UES rental listings ($10K–$20K/mo). Mode toggle (For Sale / For Rent / Both) added to app. Pipeline pulls both types in one run.
-- [ ] **Pass 1 ID extraction fix:** Debug dump added — next CI run will reveal actual field structure. Fix `run_two_pass()` ID extraction logic based on output.
+- [x] **Pass 1 ID extraction fix:** Fixed — `item['id']` works; `urlPath` used for Pass 2 URLs; `flattenDatasetItems: True` added.
+- [x] **Pass 2 — fixed 2026-04-20:** memo23 pushed a fix. Validation test passed (Run ID: Lz5JkP1Ky592CZU8h) — price history (17 entries), agent contact, fees, taxes, sqft all confirmed. Ready for full production pull.
+- [ ] **Run full production pull:** Commit `--pass1-only` code to main, then trigger CI run with mode=both, max_items=500, pass1_only=false.
 - [ ] **Rental normalize() validation:** First CI run with rentals will dump actual Apify field names if normalization fails. Update `normalize_rental()` in `pull.py` based on that output.
 - [ ] **New/reduced badges:** Compare current pull against previous `data/YYYY-MM-DD.json` to surface new listings and price cuts with visual badges in the app.
 - [ ] **Co-op sqft gap:** Evaluate supplemental pull for co-ops without sqft filter; flag those listings separately.
