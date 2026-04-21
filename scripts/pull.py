@@ -60,6 +60,9 @@ def parse_args():
     p.add_argument("--pass1-only",  action="store_true",
                    help="Skip Pass 2 (detail pages). Normalize Pass 1 search data only. "
                         "Use when the actor's individual listing scraping is broken.")
+    p.add_argument("--force-pass2", action="store_true",
+                   help="Bypass the delta cache and run Pass 2 on all listings. "
+                        "Use once after Pass 2 was broken to backfill fees/taxes/agent/history.")
     return p.parse_args()
 
 # ─── Apify Client ──────────────────────────────────────────────────
@@ -558,7 +561,7 @@ def _debug_dump(samples, label=""):
             print(f"    {k}: {repr(v)[:100]}", file=sys.stderr)
 
 # ─── Two-Pass Runner ───────────────────────────────────────────────
-def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False):
+def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, force_pass2=False):
     """Run Pass 1 (+ optional Pass 2) for one listing type. Returns (listings, total_events).
 
     pass1_only=True: Skip Pass 2 entirely. Normalize and return Pass 1 search data
@@ -673,7 +676,9 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False):
     prev_date   = None
     data_dir    = Path(__file__).parent.parent / "data"
     latest_path = data_dir / "latest.json"
-    if latest_path.exists():
+    if force_pass2:
+        print(f"  --force-pass2: bypassing delta cache, scraping all {len(listing_urls)} listings.")
+    elif latest_path.exists():
         try:
             with open(latest_path) as f:
                 prev_payload = json.load(f)
@@ -697,10 +702,14 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False):
 
     for url, lid in zip(listing_urls, listing_ids):
         prev = prev_by_id.get(lid)
-        if prev is None:
-            # New listing — always scrape for full detail
+        if force_pass2 or prev is None:
+            # force_pass2: scrape everything regardless of cache
+            # prev is None: new listing — always scrape for full detail
             to_scrape_urls.append(url)
-            new_count += 1
+            if prev is None:
+                new_count += 1
+            else:
+                changed_count += 1   # counted as "changed" for logging purposes
         else:
             curr_price = pass1_prices.get(lid)
             prev_price = prev.get("price")
@@ -778,8 +787,9 @@ def main():
     print(f"  Actor:      {ACTOR_ID}")
     print(f"  Mode:       {args.mode}")
     print(f"  Max items:  {args.max_items} per type")
-    print(f"  Pass 1 only: {args.pass1_only}")
-    print(f"  Dry run:    {args.dry_run}")
+    print(f"  Pass 1 only:  {args.pass1_only}")
+    print(f"  Force Pass 2: {args.force_pass2}")
+    print(f"  Dry run:      {args.dry_run}")
 
     client = ApifyClient(token)
 
@@ -792,6 +802,7 @@ def main():
         listings, events = run_two_pass(
             client, args.sale_url, args.max_items, "sale",
             pass1_only=args.pass1_only,
+            force_pass2=args.force_pass2,
         )
         all_listings.extend(listings)
         total_events += events
@@ -802,6 +813,7 @@ def main():
         listings, events = run_two_pass(
             client, args.rental_url, args.max_items, "rent",
             pass1_only=args.pass1_only,
+            force_pass2=args.force_pass2,
         )
         all_listings.extend(listings)
         total_events += events
