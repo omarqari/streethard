@@ -4,6 +4,63 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-04-20 — Incremental Pipeline + UI Search (Session 8)
+
+### Architectural Redesign: Puzzle Model
+
+The Apify actor is brittle — Pass 2 times out, batches fail, and runs rarely complete all 330+ listings. Previous architecture overwrote `latest.json` every run, so partial results meant losing data already collected. Redesigned the entire data pipeline around incremental accumulation:
+
+**`data/db.json` is now the canonical store.** A persistent JSON dictionary keyed by listing ID, committed to the repo. Each listing has a `data_quality` field (`"pass1"` or `"pass2"`) and metadata (`last_pass1`, `last_pass2`, `needs_refresh`, `status`). Once a listing reaches pass2 quality (fees, taxes, agent, price history), it is never re-scraped unless its price changes.
+
+**Run logic changed:**
+1. Pass 1 (search) discovers active listings, merges basic data into db.json
+2. Pass 2 only targets listings still at pass1 quality or with price changes
+3. Capped at 30 listings per run (`PASS2_PER_RUN_CAP`) to stay within actor reliability
+4. db.json saved after every Pass 1 merge and every Pass 2 batch — partial progress is never lost
+5. `data/latest.json` generated from db.json at end of run for the app
+
+**Delisting detection:** Listings not seen in Pass 1 for 14+ days marked as `status: "delisted"`, excluded from latest.json but kept in db.json for history.
+
+**Cost impact:** After the initial fill (~12 runs over 4 weeks), each cron run only scrapes a handful of new/changed listings. Cost drops from ~$2/run to ~$0.05/run.
+
+### Pass 2 Timeout Fix: Abort + Salvage
+
+When Pass 2 times out (10 min per batch), the script now aborts the Apify run and fetches whatever items were already collected in the dataset, instead of discarding the entire batch. This handles the actor's `maxRequestRetries: 100` behavior gracefully.
+
+Additional changes:
+- **Batch size reduced** from 50 → 10 URLs per Apify run (less blast radius from stuck URLs)
+- **Timeout reduced** from 30 min → 10 min per batch (abort sooner, salvage sooner)
+- **`abort_run()` method** added to ApifyClient
+
+### Text Search Bar
+
+Added a free-text search input to the StreetHard filter bar. Filters listings in real time (on keystroke) by building name, street address, unit, neighborhood, agent name, and agent firm. Case-insensitive substring match. Same pill styling as dropdown filters. Expands from 180px → 240px on focus. Clears with the existing Clear button.
+
+### Price History Date Fix
+
+Changed `fmtDate()` in index.html to show full dates (e.g., "Apr 16, 2026") instead of just month+year ("Apr 2026").
+
+### db.json Seeded from Existing Data
+
+Migrated all 373 listings from `latest.json` into `data/db.json`. Listings with agent/fees/history data (6 total) were classified as pass2; the rest as pass1. First incremental run upgraded 5 more to pass2 (total: 11 pass2 / 362 pass1).
+
+### Session State at Close
+
+- Pipeline: **INCREMENTAL** — db.json accumulates data run-over-run
+- db.json: 373 active listings (11 pass2, 362 pass1, 0 delisted)
+- Pass 2: **WORKING** — 5/5 succeeded in test run
+- App: **LIVE** on GitHub Pages with text search
+- Cron: Mon + Thu, will fill ~30 more pass2 entries per run
+
+### Next Steps
+
+1. Push all changes and trigger a full production run (`--mode both --max-items 500`)
+2. Monitor next 2-3 cron runs — pass2 count should climb ~30 per run
+3. After ~12 runs, most listings should be at pass2 quality
+4. Remaining open items: live days-on-market from listed_date, new/reduced badges, shortlist feature
+
+---
+
 ## 2026-04-20 — Pass 2 Restored (Session 7)
 
 ### memo23 Fixed the Actor

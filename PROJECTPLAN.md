@@ -297,7 +297,10 @@ Data sources validated. Apify confirmed as primary. Mortgage calculator defaults
 - `.github/workflows/refresh.yml` running; weekly cron + manual trigger verified
 
 **Phase 2 enhancements (post-v1):**
-- **Rental comp analysis:** UES rental data alongside PMT/SqFt for buy-vs-rent comparison. ✅ Pipeline built; rental Pass 2 schema verified (2026-04-21): `combineData_rental_*` namespace, `/rental/{id}` URL format confirmed. `normalize_rental()` rewritten from scratch with verified field names. End-to-end pipeline not yet run in production on a standard apartment (validation test used a townhouse, which may have atypical schema coverage). First full rental CI run will confirm field coverage; debug dump fires automatically if normalization fails.
+- **Incremental pipeline ("Puzzle" model):** ✅ Implemented Session 8. `data/db.json` canonical store. Pass 2 capped at 30/run, abort+salvage on timeout, delisting detection. Full architecture documented above under "Data Storage."
+- **Text search:** ✅ Free-text search bar in filter bar (Session 8).
+- **Price history full dates:** ✅ Shows "Apr 16, 2026" instead of "Apr 2026" (Session 8).
+- **Rental comp analysis:** ✅ Pipeline built; rental Pass 2 schema verified. `normalize_rental()` rewritten with verified field names. End-to-end production run on a standard apartment still pending.
 - **New/reduced badges:** Compare current pull against previous dated JSON → `badge` field on each listing → pill badge in app. Architecture documented above. Pending implementation.
 - **Co-op sqft gap:** Evaluate whether to add a supplemental co-op pass without the sqft filter
 

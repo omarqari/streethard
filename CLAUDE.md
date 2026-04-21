@@ -88,10 +88,11 @@ The app is called **StreetHard**. It is a static web app hosted on **GitHub Page
 
 ### Architecture
 - `index.html` — static app shell; all UI and mortgage math in client-side JavaScript
-- `data/latest.json` — current listings data; fetched by the app on load; overwritten each weekly run
+- `data/db.json` — **canonical store**; persistent dict of all listings keyed by ID; each has `data_quality` ("pass1" or "pass2"); never overwritten destructively
+- `data/latest.json` — generated from db.json each run; flat array for the app to fetch on load
 - `data/YYYY-MM-DD.json` — immutable dated archive of every past run
-- `scripts/pull.py` — Apify pull script; runs locally or in CI
-- `.github/workflows/refresh.yml` — weekly cron; calls Apify, commits JSON, Pages auto-deploys
+- `scripts/pull.py` — **incremental** Apify pull script; Pass 1 discovers listings, Pass 2 only fills in what's missing (capped at 30/run); saves db.json after every step
+- `.github/workflows/refresh.yml` — cron Mon+Thu 9 AM UTC; calls Apify, commits data/, Pages auto-deploys
 - Apify token in `.env` locally; `APIFY_TOKEN` GitHub Secret in CI
 
 ### Design Language
@@ -100,6 +101,7 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Default view**: Sortable table (dense, comparison-optimized)
 - **Toggle**: Card view
 - **Default sort**: Monthly Payment descending
+- **Text search**: Free-text search bar filters by building, address, unit, neighborhood, agent name/firm
 - **Inline filters**: Beds, Type (Condo/Co-op), Max Price, Max Monthly Payment
 - **Mortgage calculator** in header: Down Payment · Rate · Term — interactive, recalculates all rows instantly
 - **Row expansion**: Price History, Agent info, Payment Breakdown
@@ -109,7 +111,9 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
-- **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 (search URLs) GREEN; Pass 2 (individual listing pages) BROKEN in build 0.0.118. Bug report filed 2026-04-20, awaiting fix. Without Pass 2: no fees, taxes, agent contact, or price history.
+- **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 GREEN, Pass 2 GREEN (fixed by memo23 2026-04-20). Both operational.
+- **Pipeline: Incremental ("Puzzle" model)** — `data/db.json` is the canonical store. Each run fills in what's missing. Pass 2 capped at 30 listings/run. After ~12 runs all listings reach pass2 quality. See PROJECTPLAN.md for full architecture.
+- **db.json state:** 373 active listings (11 pass2, 362 pass1). Filling ~30 per run.
 - **Secondary: RapidAPI NYC Real Estate API** — validated YELLOW, 25 req/mo free tier, good for fast single-listing lookups; no price history or agent contact
 - RapidAPI key in `.env`; Apify account on paid plan
 - No PLUTO, ACRIS, or other supplemental data downloaded yet
@@ -133,6 +137,11 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `CHANGELOG.md` — chronological record of project events
 - `PROJECTPLAN.md` — strategy, architecture, phases
 - `TASKS.md` — concrete next steps
+- `data/db.json` — canonical listing store (the source of truth; never overwritten destructively)
+- `data/latest.json` — generated from db.json for the app to consume
+- `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
+- `scripts/pull.py` — incremental Apify pull script
+- `index.html` — StreetHard app shell
 
 ## Bottom-Up Validation Rule — READ THIS BEFORE BUILDING ANYTHING
 

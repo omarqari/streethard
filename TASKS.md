@@ -43,33 +43,9 @@ Actionable next steps. Check things off as you go.
 
 ---
 
-## 🟡 One Remaining Issue: Pass 2 Field Coverage (not a blocker)
+## ✅ All Blockers Resolved
 
-Block 1 (403s) and Block 2 (Pass 1 ID extraction) are both resolved as of 2026-04-19 Session 5.
-
-### What was fixed
-
-**Block 1 — Apify 403s:** ✅ Resolved by memo23 (iOS API key rotation fix, 2026-04-19).
-
-**Block 2 — Pass 1 ID extraction:** ✅ Fixed in `pull.py` (commit `1e5cd99`):
-- Search results return `"id": "1822856"` as a top-level field — `item.get("id")` works correctly
-- `urlPath` field (e.g. `/building/evans-tower-condominium/25bc`) is now used for Pass 2 URLs instead of constructing `/sale/{id}` URLs (which return "No results found" in the new actor version)
-- `listing_ids[]` list tracks IDs in parallel with `listing_urls[]` so the delta loop doesn't need to regex-extract IDs from URLs
-- `flattenDatasetItems: True` added to `run_input` (required for `normalize()` to find the long field names)
-
-### Remaining issue: Pass 2 individual listing pages
-
-The new actor version returns "No results found" for individual `/sale/{id}` URLs (pre-existing issue per larry-lobster, 22 days ago). The fix above switches to building URL format (`/building/slug/unit`) for Pass 2 — this has NOT been tested yet.
-
-**Most likely outcomes on next CI run:**
-1. **Building URLs work** → full data (fees, taxes, agent info, price history) ✅
-2. **Building URLs also fail** → script falls back to Pass 1 data (price, beds, baths, sqft, type, address) — app works but monthly payment shows mortgage-only, no fees/taxes
-
-**Next action:** Trigger a CI run and check the output. If Pass 2 normalization fails (all "No results found"), the debug dump will fire and we'll see what the actor actually returns.
-
-1. **Trigger CI run:** GitHub → Actions → "Refresh listings" → Run workflow → Mode: `sale`, Max items: `20` (small test run first)
-2. **Check output:** Does `data/latest.json` have `monthly_fees` and `monthly_taxes` populated? If yes, Pass 2 works.
-3. **If Pass 2 fails:** Paste the DEBUG lines from the "Run pull script" step to Claude for further diagnosis.
+Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all operational as of Session 8 (2026-04-20).
 
 ---
 
@@ -77,10 +53,12 @@ The new actor version returns "No results found" for individual `/sale/{id}` URL
 
 - [x] **Rental comp analysis:** Added UES rental listings ($10K–$20K/mo). Mode toggle (For Sale / For Rent / Both) added to app. Pipeline pulls both types in one run.
 - [x] **Pass 1 ID extraction fix:** Fixed — `item['id']` works; `urlPath` used for Pass 2 URLs; `flattenDatasetItems: True` added.
-- [x] **Pass 2 — fixed 2026-04-20:** memo23 pushed a fix. Validation test passed (Run ID: Lz5JkP1Ky592CZU8h) — price history (17 entries), agent contact, fees, taxes, sqft all confirmed. Ready for full production pull.
-- [ ] **Run full production pull:** Push all current code changes, then trigger CI run with mode=both, max_items=500, pass1_only=false, force_pass2=true (to backfill fees/taxes/agent/history for all listings).
-- [x] **Rental normalize() validation:** `normalize_rental()` fully rewritten with verified `combineData_rental_*` schema (2026-04-21). `/rental/{id}` URL format confirmed. End-to-end production run still pending — debug dump fires automatically if field names change.
-- [x] **Text search (2026-04-20):** Free-text search bar in filter bar. Filters by building, address, unit, neighborhood, agent name/firm. Case-insensitive substring match, real-time on keystroke.
+- [x] **Pass 2 — fixed 2026-04-20:** memo23 pushed a fix. Validation test passed.
+- [x] **Incremental pipeline (2026-04-20):** `data/db.json` canonical store. Pass 2 only fills what's missing, capped at 30/run. Abort+salvage on timeout. Delisting detection at 14 days. Full architecture in PROJECTPLAN.md.
+- [x] **Rental normalize() validation:** `normalize_rental()` rewritten with verified `combineData_rental_*` schema.
+- [x] **Text search (2026-04-20):** Free-text search bar in filter bar. Filters by building, address, unit, neighborhood, agent name/firm.
+- [x] **Price history full dates (2026-04-20):** `fmtDate()` now shows "Apr 16, 2026" instead of "Apr 2026".
+- [ ] **Monitor pass2 fill rate:** Watch next 2-3 cron runs. pass2 count should climb ~30 per run. Currently 11/373.
 - [ ] **Days-on-market: update index.html to use listed_date.** `listed_date` field is now stored in every listing. Update JS to compute DOM live: `Math.floor((new Date() - new Date(listing.listed_date)) / 86400000)`, with fallback to `listing.days_on_market` when `listed_date` is null.
 - [ ] **New/reduced badges (P1):** Add `badge` field (`"new"`, `"reduced"`, or `null`) in pull.py by diffing current prices against previous dated JSON. Render as a pill badge in index.html's Building/Unit column. Architecture documented in PROJECTPLAN.md.
 - [ ] **Shortlist feature:** In-app ability to mark listings as seen/liked/rejected. **Do not start until sharing model is decided** — localStorage (device-only) vs. shared backing store (GitHub API, Sheets, etc.) are very different builds. See PROJECTPLAN.md Phase 3 for options and tradeoffs.
