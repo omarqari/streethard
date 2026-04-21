@@ -45,7 +45,7 @@ Actionable next steps. Check things off as you go.
 
 ## ✅ All Blockers Resolved
 
-Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all operational as of Session 8 (2026-04-20).
+Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all operational as of Session 8 (2026-04-20). Full Pass 2 backfill completed Session 9 (2026-04-21) — 373/373 listings at pass2 quality.
 
 ---
 
@@ -62,7 +62,7 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 - [ ] **Days-on-market: update index.html to use listed_date.** `listed_date` field is now stored in every listing. Update JS to compute DOM live: `Math.floor((new Date() - new Date(listing.listed_date)) / 86400000)`, with fallback to `listing.days_on_market` when `listed_date` is null.
 - [ ] **New/reduced badges (P1):** Add `badge` field (`"new"`, `"reduced"`, or `null`) in pull.py by diffing current prices against previous dated JSON. Render as a pill badge in index.html's Building/Unit column. Architecture documented in PROJECTPLAN.md.
 - [ ] **Shortlist feature:** In-app ability to mark listings as seen/liked/rejected. **Do not start until sharing model is decided** — localStorage (device-only) vs. shared backing store (GitHub API, Sheets, etc.) are very different builds. See PROJECTPLAN.md Phase 3 for options and tradeoffs.
-- [ ] **Rental end-to-end validation:** Test a standard apartment rental (not townhouse) through the full Pass 1 → Pass 2 → normalize_rental() → stub merge pipeline. Confirm beds/baths/sqft backfill works correctly.
+- [x] **Rental end-to-end validation:** ✅ All 43 rentals successfully passed through Pass 2 → normalize_rental() → stub merge in Session 9. Beds/baths/sqft backfill from Pass 1 stubs confirmed working.
 - [ ] **Co-op sqft gap:** Evaluate supplemental pull for co-ops without sqft filter; flag those listings separately.
 
 ---
