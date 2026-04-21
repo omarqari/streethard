@@ -361,6 +361,15 @@ def normalize(raw):
                 history.append({"date": date, "price": int(hprice) if hprice else None,
                                 "event": event, "broker": broker})
 
+    # Extract listed_date from the most recent LISTED event in price history.
+    # Stored so the JS app can compute days-on-market at render time (always
+    # current) rather than relying on a stale scraped snapshot.
+    listed_date = None
+    for h in history:
+        if h.get("event") == "LISTED" and h.get("date"):
+            listed_date = h["date"]
+            break   # history is reverse-chronological; first LISTED = most recent
+
     return {
         "listing_type":   "sale",
         "id":             listing_id,
@@ -377,6 +386,7 @@ def normalize(raw):
         "type":           ptype,
         "year_built":     year_built,
         "days_on_market": days_on_market,
+        "listed_date":    listed_date,
         "monthly_fees":   int(fees)  if fees  else None,
         "monthly_taxes":  int(taxes) if taxes else None,
         "maintenance":    int(maint) if maint else None,
@@ -388,126 +398,122 @@ def normalize(raw):
     }
 
 # ─── Field Normalization — Rentals ─────────────────────────────────
-# Rental GraphQL namespaces mirror sales with "rental" swapped for "sale".
-# If normalization fails on first CI run, the debug dump will reveal
-# actual field names so this function can be updated.
-_R1 = "rentalListingDetailsFederated_data_rentalByListingId_"
-_R2 = "rentalDetailsToCombineWithFederated_data_rental_"
-_R3 = "rentalListingDetailsFederated_data_buildingByRentalListingId_"
-_R4 = "extraListingDetails_data_rental_"
+# Pass 2 rental schema verified 2026-04-21 (run KIaeh9L2v7LkUSyZo, listing 5015416).
+# Actual namespace: "combineData_rental_*" — completely different from the
+# sale namespace and from what was originally guessed.
+#
+# Key gaps vs. sale Pass 2:
+#   - No direct price field — extract from price_histories_json[0].price
+#   - No beds/baths/sqft/unit — not in Pass 2 at all; come from Pass 1 search
+#   - run_two_pass() merges Pass 1 stub data back in after normalization
+#
+# Pass 1 rental search items use "node_*" prefix (__typename == OrganicRentalEdge).
+_RC = "combineData_rental_"   # Pass 2 rental namespace (verified)
 
 def normalize_rental(raw):
     """Normalize a rental listing. Returns None if rent price is missing.
     For rentals, price = monthly rent (not a purchase price).
 
-    Three schemas handled (in priority order):
-      Pass 2 detail  — flat keys with _R1/_R2/_R3/_R4 namespace prefixes
-      Pass 1 search (rental) — all fields prefixed with "node_"
-                               (__typename == "OrganicRentalEdge")
-      Pass 1 search (sale-like fallback) — bare field names
+    Two schemas handled (in priority order):
+      Pass 2 detail  — combineData_rental_* prefix (verified)
+      Pass 1 search  — node_* prefix (__typename == OrganicRentalEdge)
     """
-    price = (
-        raw.get(f"{_R1}pricing_price")
-        or raw.get(f"{_R1}pricing_netEffectiveRent")
-        or raw.get(f"{_R1}pricing_grossRent")
-        or raw.get("pricing_price")
-        or raw.get("node_price")       # Pass 1 rental search
-        or raw.get("price")
-        or raw.get("askingRent") or raw.get("asking_rent")
-        or raw.get("monthlyRent") or raw.get("monthly_rent")
-        or raw.get("rent")
+    # Price is not a top-level field in rental Pass 2 — extract from price history.
+    price = _get(
+        raw.get("node_price"),        # Pass 1 rental search
+        raw.get("price"),
+        raw.get("askingRent"), raw.get("asking_rent"),
+        raw.get("monthlyRent"), raw.get("monthly_rent"),
+        raw.get("rent"),
     )
+    if price is None:
+        # Pass 2: extract from most recent price history entry
+        ph_raw = raw.get(f"{_RC}price_histories_json")
+        if ph_raw:
+            try:
+                ph = json.loads(ph_raw) if isinstance(ph_raw, str) else ph_raw
+                if ph and ph[0].get("price") is not None:
+                    price = ph[0]["price"]
+            except (json.JSONDecodeError, AttributeError, IndexError, KeyError):
+                pass
     if not price:
         return None
 
-    listing_id = str(
-        raw.get("listingId") or raw.get(f"{_R1}id")
-        or raw.get("node_id")          # Pass 1 rental search
-        or raw.get("id") or ""
-    )
-    # Use urlPath (building URL format) so the URL works for future Pass 2 detail pulls
-    url_path = raw.get("node_urlPath") or raw.get("urlPath") or ""
+    listing_id = str(_get(
+        raw.get(f"{_RC}id"),
+        raw.get("basicInfo_id"),
+        raw.get("node_id"),           # Pass 1 rental search
+        raw.get("listingId"),
+        raw.get("id"),
+    ) or "")
+
     url = (
         raw.get("originalUrl") or raw.get("url")
-        or (f"https://streeteasy.com{url_path}" if url_path else "")
         or (f"https://streeteasy.com/rental/{listing_id}" if listing_id else "")
     )
 
+    # beds/baths/sqft/unit are NOT in rental Pass 2 data.
+    # These fields will be None here; run_two_pass() merges Pass 1 stub values in.
     beds = _get(
-        raw.get(f"{_R1}propertyDetails_bedroomCount"),
-        raw.get("node_bedroomCount"),     # Pass 1 rental search
+        raw.get("node_bedroomCount"),   # Pass 1 rental search
         raw.get("bedroomCount"), raw.get("bedrooms"), raw.get("beds"),
     )
-    full = _get(raw.get(f"{_R1}propertyDetails_fullBathroomCount"),
-                raw.get("node_fullBathroomCount"),   # Pass 1 rental search
+    full = _get(raw.get("node_fullBathroomCount"),   # Pass 1 rental search
                 raw.get("fullBathroomCount"), raw.get("bathrooms")) or 0
-    half = _get(raw.get(f"{_R1}propertyDetails_halfBathroomCount"),
-                raw.get("node_halfBathroomCount"),   # Pass 1 rental search
+    half = _get(raw.get("node_halfBathroomCount"),   # Pass 1 rental search
                 raw.get("halfBathroomCount")) or 0
     baths = (full or 0) + (half or 0) * 0.5
 
-    btype = (
-        raw.get(f"{_R2}building_building_type")
-        or raw.get(f"{_R3}type")
-        or raw.get("building_building_type")
-        or raw.get("node_buildingType")   # Pass 1 rental search
-        or raw.get("propertyType") or raw.get("buildingType") or ""
-    ).lower()
+    sqft = _get(
+        raw.get("node_livingAreaSize"),  # Pass 1 rental search
+        raw.get("livingAreaSize"), raw.get("sqft"), raw.get("squareFeet"),
+    )
+
+    unit = _get(
+        raw.get("node_unit"),            # Pass 1 rental search
+        raw.get("address_unit"), raw.get("addressUnit"), raw.get("unit"),
+    ) or ""
+
+    btype = (_get(
+        raw.get(f"{_RC}building_building_type"),
+        raw.get("node_buildingType"),    # Pass 1 rental search
+        raw.get("building_building_type"),
+        raw.get("propertyType"), raw.get("buildingType"),
+    ) or "").lower()
     ptype = "coop" if any(s in btype for s in ("co-op", "coop", "co_op")) else "rental"
 
-    street = (
-        raw.get(f"{_R1}propertyDetails_address_street")
-        or raw.get(f"{_R3}address_street")
-        or raw.get("address_street") or raw.get("addressStreet")
-        or raw.get("node_street")      # Pass 1 rental search
-        or raw.get("street") or ""
-    )
-    if not street:
-        addr_raw = raw.get("address") or {}
-        if isinstance(addr_raw, dict):
-            street = addr_raw.get("street") or addr_raw.get("streetAddress") or ""
-        elif isinstance(addr_raw, str):
-            street = addr_raw
+    # For Pass 2, building_title is the street address ("549 East 86th Street")
+    building = _get(
+        raw.get(f"{_RC}building_title"),
+        raw.get("building_title"), raw.get("buildingTitle"), raw.get("buildingName"),
+        raw.get("node_street"),          # Pass 1 rental search
+        raw.get("street"),
+    ) or ""
 
-    unit = (
-        raw.get(f"{_R1}propertyDetails_address_unit")
-        or raw.get("address_unit") or raw.get("addressUnit")
-        or raw.get("node_unit")        # Pass 1 rental search
-        or raw.get("unit") or ""
-    )
+    street = _get(
+        raw.get("node_street"),          # Pass 1 rental search
+        raw.get("address_street"), raw.get("addressStreet"), raw.get("street"),
+        raw.get(f"{_RC}building_title"), # Pass 2 fallback: building_title is the address
+    ) or ""
 
-    _bldg_obj = raw.get("building")
-    building = (
-        raw.get(f"{_R2}building_title") or raw.get(f"{_R3}name")
-        or raw.get("building_title") or raw.get("buildingTitle") or raw.get("buildingName")
-        or ((_bldg_obj or {}).get("name") if isinstance(_bldg_obj, dict) else None)
-        or street or ""
-    )
+    neighborhood = _get(
+        raw.get(f"{_RC}area_name"),
+        raw.get("node_areaName"),        # Pass 1 rental search
+        raw.get("area_name"), raw.get("neighborhood"),
+        raw.get("neighborhoodName"), raw.get("areaName"),
+    ) or ""
 
-    neighborhood = (
-        raw.get(f"{_R2}area_name") or raw.get(f"{_R3}area_name")
-        or raw.get("area_name") or raw.get("neighborhood") or raw.get("neighborhoodName")
-        or raw.get("node_areaName")    # Pass 1 rental search
-        or raw.get("areaName") or ""
-    )
-
-    sqft = (
-        raw.get(f"{_R1}propertyDetails_livingAreaSize")
-        or raw.get("node_livingAreaSize")  # Pass 1 rental search
-        or raw.get("livingAreaSize") or raw.get("sqft") or raw.get("squareFeet")
-    )
-
-    year_built = (
-        raw.get(f"{_R2}building_year_built") or raw.get(f"{_R3}yearBuilt")
-        or raw.get("building_year_built") or raw.get("yearBuilt") or raw.get("builtIn")
+    year_built = _get(
+        raw.get(f"{_RC}building_year_built"),
+        raw.get("building_year_built"), raw.get("yearBuilt"), raw.get("builtIn"),
     )
     days_on_market = _get(
-        raw.get(f"{_R2}days_on_market"),
+        raw.get(f"{_RC}days_on_market"),
         raw.get("days_on_market"), raw.get("daysOnMarket"),
     )
 
     agent_name = agent_phone = agent_email = agent_firm = None
-    contacts_raw = raw.get(f"{_R2}contacts_json") or raw.get("contacts_json")
+    contacts_raw = raw.get(f"{_RC}contacts_json") or raw.get("contacts_json")
     if contacts_raw:
         try:
             contacts = json.loads(contacts_raw) if isinstance(contacts_raw, str) else contacts_raw
@@ -523,12 +529,12 @@ def normalize_rental(raw):
         agent_name  = raw.get("agent_name")  or raw.get("agentName")
         agent_phone = raw.get("agent_phone") or raw.get("agentPhone")
         agent_email = raw.get("agent_email") or raw.get("agentEmail")
-        # node_sourceGroupLabel = brokerage from Pass 1 rental search results
-        agent_firm  = (raw.get("agent_firm")  or raw.get("agentFirm") or raw.get("brokerageName")
-                       or raw.get("node_sourceGroupLabel") or raw.get("sourceGroupLabel"))
+        agent_firm  = (_get(raw.get("agent_firm"), raw.get("agentFirm"),
+                            raw.get("brokerageName"), raw.get("node_sourceGroupLabel"),
+                            raw.get("sourceGroupLabel")))
 
     history = []
-    ph_raw = raw.get(f"{_R4}price_histories_json") or raw.get(f"{_R2}price_histories_json")
+    ph_raw = raw.get(f"{_RC}price_histories_json")
     if ph_raw:
         try:
             ph_list = json.loads(ph_raw) if isinstance(ph_raw, str) else ph_raw
@@ -552,6 +558,19 @@ def normalize_rental(raw):
                 history.append({"date": date, "price": int(hprice) if hprice else None,
                                 "event": event, "broker": broker})
 
+    # listed_date: prefer the explicit listed_at timestamp (Pass 2), fall back
+    # to most recent LISTED event in price history. Stored so JS can compute
+    # days-on-market at render time rather than relying on a stale snapshot.
+    listed_date = None
+    listed_at_raw = raw.get(f"{_RC}listed_at")
+    if listed_at_raw:
+        listed_date = listed_at_raw[:10]   # "2026-04-16" from "2026-04-16T13:33:58-04:00"
+    else:
+        for h in history:
+            if h.get("event") == "LISTED" and h.get("date"):
+                listed_date = h["date"]
+                break
+
     return {
         "listing_type":   "rent",
         "id":             listing_id,
@@ -568,6 +587,7 @@ def normalize_rental(raw):
         "type":           ptype,
         "year_built":     year_built,
         "days_on_market": days_on_market,
+        "listed_date":    listed_date,
         "monthly_fees":   None,
         "monthly_taxes":  None,
         "maintenance":    None,
@@ -630,11 +650,12 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, 
         # Rental Pass 1 items use node_* prefix; sale Pass 1 items use bare names
         lid = str(item.get("node_id") or item.get("id") or item.get("listingId") or "")
 
-        # Prefer urlPath (e.g. /building/evans-tower-condominium/25bc) — this is
-        # the URL format the new actor version handles correctly for Pass 2.
-        # Fall back to /sale/{id} or /rental/{id} only when urlPath is absent.
-        # Rental Pass 1 items store urlPath under node_urlPath
-        url_path = item.get("node_urlPath") or item.get("urlPath") or ""
+        # For sales: prefer urlPath (e.g. /building/slug/unit) — this is the
+        # format the actor handles correctly for Pass 2 sale detail pages.
+        # For rentals: always use /rental/{id} — the building URL format
+        # (/building/slug/unit) causes the actor to hang indefinitely on rentals
+        # (verified 2026-04-21: run MPHqLxW7gqbJAy4SG never completed).
+        url_path = (not is_rental) and (item.get("urlPath") or "")
         if url_path:
             url = f"https://streeteasy.com{url_path}"
         elif lid:
@@ -690,6 +711,16 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, 
                     pass
 
     print(f"\n  Discovered {len(listing_urls)} unique {label_tag} listing IDs")
+
+    # For rentals: build a Pass 1 stub map so we can backfill beds/baths/sqft/unit
+    # after Pass 2 normalization. Those fields are absent from rental Pass 2 data
+    # (combineData_rental_* namespace) but present in Pass 1 search results (node_*).
+    pass1_stubs = {}
+    if is_rental:
+        for item in search_items:
+            stub = normalize_fn(item)
+            if stub and stub.get("id"):
+                pass1_stubs[stub["id"]] = stub
 
     # Debug dump when 0 IDs extracted — dump ALL items so we can see what the
     # actor actually returns (not just item 0).
@@ -818,6 +849,13 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, 
     for item in detail_items:
         result = normalize_fn(item)
         if result:
+            # For rentals: backfill beds/baths/sqft/unit from Pass 1 stub if
+            # Pass 2 didn't provide them (rental Pass 2 schema omits these fields).
+            if is_rental and result.get("id") in pass1_stubs:
+                stub = pass1_stubs[result["id"]]
+                for field in ("beds", "baths", "sqft", "unit", "price_per_sqft"):
+                    if result.get(field) is None and stub.get(field) is not None:
+                        result[field] = stub[field]
             listings.append(result)
             pass2_normalized += 1
         else:
