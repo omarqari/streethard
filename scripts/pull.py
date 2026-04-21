@@ -32,10 +32,12 @@ from pathlib import Path
 from dotenv import load_dotenv
 
 # ─── Config ────────────────────────────────────────────────────────
-ACTOR_ID          = "memo23/streeteasy-ppr"
-MIN_LISTINGS      = 10
-POLL_INTERVAL_SEC = 5
-RUN_TIMEOUT_SEC   = 600
+ACTOR_ID             = "memo23/streeteasy-ppr"
+MIN_LISTINGS         = 10
+POLL_INTERVAL_SEC    = 5
+PASS1_TIMEOUT_SEC    = 600    # 10 min — search pages are fast
+PASS2_TIMEOUT_SEC    = 1800   # 30 min — individual pages can be slow
+PASS2_BATCH_SIZE     = 50     # max URLs per Pass 2 Apify run; avoids actor timeouts
 
 SALE_URL = (
     "https://streeteasy.com/for-sale/upper-east-side"
@@ -109,7 +111,7 @@ class ApifyClient:
             offset += limit
         return items
 
-    def run_and_wait(self, start_urls, max_items, label=""):
+    def run_and_wait(self, start_urls, max_items, label="", timeout_sec=PASS1_TIMEOUT_SEC):
         print(f"\n{'─'*50}")
         print(f"  {label}")
         print(f"  URLs:      {len(start_urls)}")
@@ -151,7 +153,7 @@ class ApifyClient:
         print(f"  Dataset:   {dataset_id}")
 
         print("  Waiting for completion…", end="", flush=True)
-        deadline = time.time() + RUN_TIMEOUT_SEC
+        deadline = time.time() + timeout_sec
         while time.time() < deadline:
             run_status = self.get_run(run_id)
             status = run_status.get("status", "")
@@ -730,14 +732,23 @@ def run_two_pass(client, search_url, max_items, listing_type, pass1_only=False, 
     print(f"  Scraping {len(to_scrape_urls)} listings via Pass 2  "
           f"(skipping {reused_count} unchanged)")
 
-    # ── Pass 2: Scrape only new + changed listings ────────────────────
+    # ── Pass 2: Scrape only new + changed listings (in batches) ──────
     detail_items = []
     if to_scrape_urls:
-        detail_items = client.run_and_wait(
-            start_urls=to_scrape_urls,
-            max_items=len(to_scrape_urls),
-            label=f"Pass 2/2 — Detail pages ({label_tag}, {len(to_scrape_urls)} of {len(listing_urls)})",
-        )
+        batches     = [to_scrape_urls[i:i+PASS2_BATCH_SIZE]
+                       for i in range(0, len(to_scrape_urls), PASS2_BATCH_SIZE)]
+        total_urls  = len(to_scrape_urls)
+        for batch_num, batch in enumerate(batches, 1):
+            batch_items = client.run_and_wait(
+                start_urls=batch,
+                max_items=len(batch),
+                label=(f"Pass 2/2 — Detail pages ({label_tag}, "
+                       f"batch {batch_num}/{len(batches)}, "
+                       f"URLs {(batch_num-1)*PASS2_BATCH_SIZE+1}–"
+                       f"{min(batch_num*PASS2_BATCH_SIZE, total_urls)} of {total_urls})"),
+                timeout_sec=PASS2_TIMEOUT_SEC,
+            )
+            detail_items.extend(batch_items)
     else:
         print(f"\n  Pass 2 skipped — all {reused_count} {label_tag} listings unchanged.")
 
