@@ -713,7 +713,7 @@ function fmtMoney(n) {
 function fmtDate(s) {
   if (!s) return '—';
   const d = new Date(s + 'T00:00:00');
-  return d.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
+  return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
 function fmtDays(n, listingType) {
   if (n === null || n === undefined) return { text: '—', cls: '' };
