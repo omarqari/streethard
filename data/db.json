@@ -1,12 +1,15 @@
 {
-  "generated_at": "2026-04-21",
-  "listing_count": 330,
-  "sale_count": 330,
-  "rental_count": 0,
-  "run_cost_usd": 0.045,
-  "mode": "sale",
-  "listings": [
-    {
+  "last_updated": "2026-04-21",
+  "stats": {
+    "total": 373,
+    "pass1_only": 362,
+    "pass2_complete": 11,
+    "sale": 330,
+    "rent": 43,
+    "delisted": 0
+  },
+  "listings": {
+    "1811080": {
       "listing_type": "sale",
       "id": "1811080",
       "url": "https://streeteasy.com/sale/1811080",
@@ -29,9 +32,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1806171": {
       "listing_type": "sale",
       "id": "1806171",
       "url": "https://streeteasy.com/sale/1806171",
@@ -54,9 +62,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813462": {
       "listing_type": "sale",
       "id": "1813462",
       "url": "https://streeteasy.com/sale/1813462",
@@ -79,9 +92,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1806093": {
       "listing_type": "sale",
       "id": "1806093",
       "url": "https://streeteasy.com/sale/1806093",
@@ -104,9 +122,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1804776": {
       "listing_type": "sale",
       "id": "1804776",
       "url": "https://streeteasy.com/sale/1804776",
@@ -129,9 +152,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1794438": {
       "listing_type": "sale",
       "id": "1794438",
       "url": "https://streeteasy.com/sale/1794438",
@@ -154,9 +182,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819501": {
       "listing_type": "sale",
       "id": "1819501",
       "url": "https://streeteasy.com/sale/1819501",
@@ -179,9 +212,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Keller Williams NYC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820699": {
       "listing_type": "sale",
       "id": "1820699",
       "url": "https://streeteasy.com/sale/1820699",
@@ -204,9 +242,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817995": {
       "listing_type": "sale",
       "id": "1817995",
       "url": "https://streeteasy.com/sale/1817995",
@@ -229,9 +272,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810570": {
       "listing_type": "sale",
       "id": "1810570",
       "url": "https://streeteasy.com/sale/1810570",
@@ -254,9 +302,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1796809": {
       "listing_type": "sale",
       "id": "1796809",
       "url": "https://streeteasy.com/sale/1796809",
@@ -279,9 +332,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1792113": {
       "listing_type": "sale",
       "id": "1792113",
       "url": "https://streeteasy.com/sale/1792113",
@@ -304,9 +362,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1793196": {
       "listing_type": "sale",
       "id": "1793196",
       "url": "https://streeteasy.com/sale/1793196",
@@ -329,9 +392,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1815226": {
       "listing_type": "sale",
       "id": "1815226",
       "url": "https://streeteasy.com/sale/1815226",
@@ -354,9 +422,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810506": {
       "listing_type": "sale",
       "id": "1810506",
       "url": "https://streeteasy.com/sale/1810506",
@@ -379,9 +452,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1799022": {
       "listing_type": "sale",
       "id": "1799022",
       "url": "https://streeteasy.com/sale/1799022",
@@ -404,9 +482,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1769977": {
       "listing_type": "sale",
       "id": "1769977",
       "url": "https://streeteasy.com/sale/1769977",
@@ -429,9 +512,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1765961": {
       "listing_type": "sale",
       "id": "1765961",
       "url": "https://streeteasy.com/sale/1765961",
@@ -454,9 +542,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807560": {
       "listing_type": "sale",
       "id": "1807560",
       "url": "https://streeteasy.com/sale/1807560",
@@ -479,9 +572,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817587": {
       "listing_type": "sale",
       "id": "1817587",
       "url": "https://streeteasy.com/sale/1817587",
@@ -504,9 +602,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Highline Residential",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1794132": {
       "listing_type": "sale",
       "id": "1794132",
       "url": "https://streeteasy.com/sale/1794132",
@@ -529,9 +632,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1772338": {
       "listing_type": "sale",
       "id": "1772338",
       "url": "https://streeteasy.com/sale/1772338",
@@ -554,9 +662,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810230": {
       "listing_type": "sale",
       "id": "1810230",
       "url": "https://streeteasy.com/sale/1810230",
@@ -579,9 +692,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819376": {
       "listing_type": "sale",
       "id": "1819376",
       "url": "https://streeteasy.com/sale/1819376",
@@ -604,9 +722,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Coldwell Banker Warburg",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816380": {
       "listing_type": "sale",
       "id": "1816380",
       "url": "https://streeteasy.com/sale/1816380",
@@ -629,9 +752,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814595": {
       "listing_type": "sale",
       "id": "1814595",
       "url": "https://streeteasy.com/sale/1814595",
@@ -654,9 +782,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1798329": {
       "listing_type": "sale",
       "id": "1798329",
       "url": "https://streeteasy.com/sale/1798329",
@@ -679,9 +812,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Leslie J. Garfield",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1744364": {
       "listing_type": "sale",
       "id": "1744364",
       "url": "https://streeteasy.com/sale/1744364",
@@ -704,9 +842,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1716165": {
       "listing_type": "sale",
       "id": "1716165",
       "url": "https://streeteasy.com/sale/1716165",
@@ -729,9 +872,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1823063": {
       "listing_type": "sale",
       "id": "1823063",
       "url": "https://streeteasy.com/building/carlton-house/8c",
@@ -809,9 +957,14 @@
           "event": "LISTED",
           "broker": "Extell Development Company (Legacy)"
         }
-      ]
+      ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821232": {
       "listing_type": "sale",
       "id": "1821232",
       "url": "https://streeteasy.com/sale/1821232",
@@ -834,9 +987,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1799302": {
       "listing_type": "sale",
       "id": "1799302",
       "url": "https://streeteasy.com/sale/1799302",
@@ -859,9 +1017,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Blue Line Realty NY LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819023": {
       "listing_type": "sale",
       "id": "1819023",
       "url": "https://streeteasy.com/sale/1819023",
@@ -884,9 +1047,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1800697": {
       "listing_type": "sale",
       "id": "1800697",
       "url": "https://streeteasy.com/sale/1800697",
@@ -909,9 +1077,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1804578": {
       "listing_type": "sale",
       "id": "1804578",
       "url": "https://streeteasy.com/sale/1804578",
@@ -934,9 +1107,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1803569": {
       "listing_type": "sale",
       "id": "1803569",
       "url": "https://streeteasy.com/sale/1803569",
@@ -959,9 +1137,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "ASF 61 LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822675": {
       "listing_type": "sale",
       "id": "1822675",
       "url": "https://streeteasy.com/building/770-park-avenue-new_york/1d",
@@ -998,9 +1181,14 @@
           "broker": "Closing record"
         }
       ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false,
       "listed_date": "2026-04-17"
     },
-    {
+    "1822654": {
       "listing_type": "sale",
       "id": "1822654",
       "url": "https://streeteasy.com/building/the-parc-v/12c",
@@ -1085,9 +1273,14 @@
           "broker": "Corcoran"
         }
       ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false,
       "listed_date": "2026-04-16"
     },
-    {
+    "1822201": {
       "listing_type": "sale",
       "id": "1822201",
       "url": "https://streeteasy.com/sale/1822201",
@@ -1110,9 +1303,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817181": {
       "listing_type": "sale",
       "id": "1817181",
       "url": "https://streeteasy.com/sale/1817181",
@@ -1135,9 +1333,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816864": {
       "listing_type": "sale",
       "id": "1816864",
       "url": "https://streeteasy.com/sale/1816864",
@@ -1160,9 +1363,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Modlin Group",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816146": {
       "listing_type": "sale",
       "id": "1816146",
       "url": "https://streeteasy.com/sale/1816146",
@@ -1185,9 +1393,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807490": {
       "listing_type": "sale",
       "id": "1807490",
       "url": "https://streeteasy.com/sale/1807490",
@@ -1210,9 +1423,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1799682": {
       "listing_type": "sale",
       "id": "1799682",
       "url": "https://streeteasy.com/sale/1799682",
@@ -1235,9 +1453,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1800139": {
       "listing_type": "sale",
       "id": "1800139",
       "url": "https://streeteasy.com/sale/1800139",
@@ -1260,9 +1483,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1790545": {
       "listing_type": "sale",
       "id": "1790545",
       "url": "https://streeteasy.com/sale/1790545",
@@ -1285,9 +1513,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818078": {
       "listing_type": "sale",
       "id": "1818078",
       "url": "https://streeteasy.com/sale/1818078",
@@ -1310,9 +1543,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816093": {
       "listing_type": "sale",
       "id": "1816093",
       "url": "https://streeteasy.com/sale/1816093",
@@ -1335,9 +1573,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813798": {
       "listing_type": "sale",
       "id": "1813798",
       "url": "https://streeteasy.com/sale/1813798",
@@ -1360,9 +1603,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1718666": {
       "listing_type": "sale",
       "id": "1718666",
       "url": "https://streeteasy.com/sale/1718666",
@@ -1385,9 +1633,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Olshan Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820532": {
       "listing_type": "sale",
       "id": "1820532",
       "url": "https://streeteasy.com/sale/1820532",
@@ -1410,9 +1663,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820623": {
       "listing_type": "sale",
       "id": "1820623",
       "url": "https://streeteasy.com/sale/1820623",
@@ -1435,9 +1693,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Tru International Realty Corp",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818812": {
       "listing_type": "sale",
       "id": "1818812",
       "url": "https://streeteasy.com/sale/1818812",
@@ -1460,9 +1723,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810931": {
       "listing_type": "sale",
       "id": "1810931",
       "url": "https://streeteasy.com/sale/1810931",
@@ -1485,9 +1753,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1806052": {
       "listing_type": "sale",
       "id": "1806052",
       "url": "https://streeteasy.com/sale/1806052",
@@ -1510,9 +1783,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820301": {
       "listing_type": "sale",
       "id": "1820301",
       "url": "https://streeteasy.com/sale/1820301",
@@ -1535,9 +1813,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810860": {
       "listing_type": "sale",
       "id": "1810860",
       "url": "https://streeteasy.com/sale/1810860",
@@ -1560,9 +1843,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1806401": {
       "listing_type": "sale",
       "id": "1806401",
       "url": "https://streeteasy.com/sale/1806401",
@@ -1585,9 +1873,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1791742": {
       "listing_type": "sale",
       "id": "1791742",
       "url": "https://streeteasy.com/sale/1791742",
@@ -1610,9 +1903,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809433": {
       "listing_type": "sale",
       "id": "1809433",
       "url": "https://streeteasy.com/sale/1809433",
@@ -1635,9 +1933,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822845": {
       "listing_type": "sale",
       "id": "1822845",
       "url": "https://streeteasy.com/building/115-east-67-street-new_york/34d",
@@ -1686,9 +1989,14 @@
           "broker": "Douglas Elliman"
         }
       ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false,
       "listed_date": "2026-04-17"
     },
-    {
+    "1816743": {
       "listing_type": "sale",
       "id": "1816743",
       "url": "https://streeteasy.com/sale/1816743",
@@ -1711,9 +2019,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816510": {
       "listing_type": "sale",
       "id": "1816510",
       "url": "https://streeteasy.com/sale/1816510",
@@ -1736,9 +2049,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Dolly Lenz Real Estate LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816283": {
       "listing_type": "sale",
       "id": "1816283",
       "url": "https://streeteasy.com/sale/1816283",
@@ -1761,9 +2079,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814146": {
       "listing_type": "sale",
       "id": "1814146",
       "url": "https://streeteasy.com/sale/1814146",
@@ -1786,9 +2109,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809750": {
       "listing_type": "sale",
       "id": "1809750",
       "url": "https://streeteasy.com/sale/1809750",
@@ -1811,9 +2139,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1805952": {
       "listing_type": "sale",
       "id": "1805952",
       "url": "https://streeteasy.com/sale/1805952",
@@ -1836,9 +2169,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "William Raveis Real Estate",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1723883": {
       "listing_type": "sale",
       "id": "1723883",
       "url": "https://streeteasy.com/sale/1723883",
@@ -1861,9 +2199,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1764115": {
       "listing_type": "sale",
       "id": "1764115",
       "url": "https://streeteasy.com/sale/1764115",
@@ -1886,9 +2229,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1797999": {
       "listing_type": "sale",
       "id": "1797999",
       "url": "https://streeteasy.com/sale/1797999",
@@ -1911,9 +2259,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Christie's International Real Estate Group, LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821445": {
       "listing_type": "sale",
       "id": "1821445",
       "url": "https://streeteasy.com/sale/1821445",
@@ -1936,9 +2289,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810960": {
       "listing_type": "sale",
       "id": "1810960",
       "url": "https://streeteasy.com/sale/1810960",
@@ -1961,9 +2319,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1792029": {
       "listing_type": "sale",
       "id": "1792029",
       "url": "https://streeteasy.com/sale/1792029",
@@ -1986,9 +2349,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822146": {
       "listing_type": "sale",
       "id": "1822146",
       "url": "https://streeteasy.com/sale/1822146",
@@ -2011,9 +2379,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1808452": {
       "listing_type": "sale",
       "id": "1808452",
       "url": "https://streeteasy.com/sale/1808452",
@@ -2036,9 +2409,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1768173": {
       "listing_type": "sale",
       "id": "1768173",
       "url": "https://streeteasy.com/sale/1768173",
@@ -2061,9 +2439,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Classic Marketing",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822856": {
       "listing_type": "sale",
       "id": "1822856",
       "url": "https://streeteasy.com/building/evans-tower-condominium/25bc",
@@ -2094,9 +2477,14 @@
           "broker": "Compass"
         }
       ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false,
       "listed_date": "2026-04-18"
     },
-    {
+    "1809238": {
       "listing_type": "sale",
       "id": "1809238",
       "url": "https://streeteasy.com/sale/1809238",
@@ -2119,9 +2507,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1789095": {
       "listing_type": "sale",
       "id": "1789095",
       "url": "https://streeteasy.com/sale/1789095",
@@ -2144,9 +2537,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819085": {
       "listing_type": "sale",
       "id": "1819085",
       "url": "https://streeteasy.com/sale/1819085",
@@ -2169,9 +2567,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813870": {
       "listing_type": "sale",
       "id": "1813870",
       "url": "https://streeteasy.com/sale/1813870",
@@ -2194,9 +2597,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813862": {
       "listing_type": "sale",
       "id": "1813862",
       "url": "https://streeteasy.com/sale/1813862",
@@ -2219,9 +2627,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1799956": {
       "listing_type": "sale",
       "id": "1799956",
       "url": "https://streeteasy.com/sale/1799956",
@@ -2244,9 +2657,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "SERHANT.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1797915": {
       "listing_type": "sale",
       "id": "1797915",
       "url": "https://streeteasy.com/sale/1797915",
@@ -2269,9 +2687,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1796375": {
       "listing_type": "sale",
       "id": "1796375",
       "url": "https://streeteasy.com/sale/1796375",
@@ -2294,9 +2717,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1801982": {
       "listing_type": "sale",
       "id": "1801982",
       "url": "https://streeteasy.com/sale/1801982",
@@ -2319,9 +2747,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821913": {
       "listing_type": "sale",
       "id": "1821913",
       "url": "https://streeteasy.com/sale/1821913",
@@ -2344,9 +2777,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818431": {
       "listing_type": "sale",
       "id": "1818431",
       "url": "https://streeteasy.com/sale/1818431",
@@ -2369,9 +2807,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Christie's International Real Estate Group, LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1815364": {
       "listing_type": "sale",
       "id": "1815364",
       "url": "https://streeteasy.com/sale/1815364",
@@ -2394,9 +2837,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816047": {
       "listing_type": "sale",
       "id": "1816047",
       "url": "https://streeteasy.com/sale/1816047",
@@ -2419,9 +2867,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814620": {
       "listing_type": "sale",
       "id": "1814620",
       "url": "https://streeteasy.com/sale/1814620",
@@ -2444,9 +2897,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1812995": {
       "listing_type": "sale",
       "id": "1812995",
       "url": "https://streeteasy.com/sale/1812995",
@@ -2469,9 +2927,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "SERHANT.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1811726": {
       "listing_type": "sale",
       "id": "1811726",
       "url": "https://streeteasy.com/sale/1811726",
@@ -2494,9 +2957,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1808299": {
       "listing_type": "sale",
       "id": "1808299",
       "url": "https://streeteasy.com/sale/1808299",
@@ -2519,9 +2987,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1802605": {
       "listing_type": "sale",
       "id": "1802605",
       "url": "https://streeteasy.com/sale/1802605",
@@ -2544,9 +3017,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1787332": {
       "listing_type": "sale",
       "id": "1787332",
       "url": "https://streeteasy.com/sale/1787332",
@@ -2569,9 +3047,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818843": {
       "listing_type": "sale",
       "id": "1818843",
       "url": "https://streeteasy.com/sale/1818843",
@@ -2594,9 +3077,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1815017": {
       "listing_type": "sale",
       "id": "1815017",
       "url": "https://streeteasy.com/sale/1815017",
@@ -2619,9 +3107,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Trump International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1800256": {
       "listing_type": "sale",
       "id": "1800256",
       "url": "https://streeteasy.com/sale/1800256",
@@ -2644,9 +3137,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1776741": {
       "listing_type": "sale",
       "id": "1776741",
       "url": "https://streeteasy.com/sale/1776741",
@@ -2669,9 +3167,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Classic Marketing",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817776": {
       "listing_type": "sale",
       "id": "1817776",
       "url": "https://streeteasy.com/sale/1817776",
@@ -2694,9 +3197,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1806806": {
       "listing_type": "sale",
       "id": "1806806",
       "url": "https://streeteasy.com/sale/1806806",
@@ -2719,9 +3227,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Classic Marketing",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821617": {
       "listing_type": "sale",
       "id": "1821617",
       "url": "https://streeteasy.com/sale/1821617",
@@ -2744,9 +3257,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Keller Williams NYC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821281": {
       "listing_type": "sale",
       "id": "1821281",
       "url": "https://streeteasy.com/sale/1821281",
@@ -2769,9 +3287,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1753325": {
       "listing_type": "sale",
       "id": "1753325",
       "url": "https://streeteasy.com/sale/1753325",
@@ -2794,9 +3317,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818919": {
       "listing_type": "sale",
       "id": "1818919",
       "url": "https://streeteasy.com/sale/1818919",
@@ -2819,9 +3347,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "The Agency",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1784959": {
       "listing_type": "sale",
       "id": "1784959",
       "url": "https://streeteasy.com/sale/1784959",
@@ -2844,9 +3377,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1802131": {
       "listing_type": "sale",
       "id": "1802131",
       "url": "https://streeteasy.com/sale/1802131",
@@ -2869,9 +3407,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Natalia Harrison, LREB",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818474": {
       "listing_type": "sale",
       "id": "1818474",
       "url": "https://streeteasy.com/sale/1818474",
@@ -2894,9 +3437,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1806875": {
       "listing_type": "sale",
       "id": "1806875",
       "url": "https://streeteasy.com/sale/1806875",
@@ -2919,9 +3467,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1805962": {
       "listing_type": "sale",
       "id": "1805962",
       "url": "https://streeteasy.com/sale/1805962",
@@ -2944,9 +3497,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1794114": {
       "listing_type": "sale",
       "id": "1794114",
       "url": "https://streeteasy.com/sale/1794114",
@@ -2969,9 +3527,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1761794": {
       "listing_type": "sale",
       "id": "1761794",
       "url": "https://streeteasy.com/sale/1761794",
@@ -2994,9 +3557,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Dolly Lenz Real Estate LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822622": {
       "listing_type": "sale",
       "id": "1822622",
       "url": "https://streeteasy.com/building/the-savoy/41ab",
@@ -3087,9 +3655,14 @@
           "broker": "Corcoran"
         }
       ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false,
       "listed_date": "2026-04-17"
     },
-    {
+    "1822183": {
       "listing_type": "sale",
       "id": "1822183",
       "url": "https://streeteasy.com/sale/1822183",
@@ -3112,9 +3685,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Christie's International Real Estate Group, LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820772": {
       "listing_type": "sale",
       "id": "1820772",
       "url": "https://streeteasy.com/sale/1820772",
@@ -3137,9 +3715,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "CORE",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1802386": {
       "listing_type": "sale",
       "id": "1802386",
       "url": "https://streeteasy.com/sale/1802386",
@@ -3162,9 +3745,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814483": {
       "listing_type": "sale",
       "id": "1814483",
       "url": "https://streeteasy.com/sale/1814483",
@@ -3187,9 +3775,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "FIND Real Estate",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1815418": {
       "listing_type": "sale",
       "id": "1815418",
       "url": "https://streeteasy.com/sale/1815418",
@@ -3212,9 +3805,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "A & I Broadway",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1802604": {
       "listing_type": "sale",
       "id": "1802604",
       "url": "https://streeteasy.com/sale/1802604",
@@ -3237,9 +3835,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1786657": {
       "listing_type": "sale",
       "id": "1786657",
       "url": "https://streeteasy.com/sale/1786657",
@@ -3262,9 +3865,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1811342": {
       "listing_type": "sale",
       "id": "1811342",
       "url": "https://streeteasy.com/sale/1811342",
@@ -3287,9 +3895,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809375": {
       "listing_type": "sale",
       "id": "1809375",
       "url": "https://streeteasy.com/sale/1809375",
@@ -3312,9 +3925,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810114": {
       "listing_type": "sale",
       "id": "1810114",
       "url": "https://streeteasy.com/sale/1810114",
@@ -3337,9 +3955,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813545": {
       "listing_type": "sale",
       "id": "1813545",
       "url": "https://streeteasy.com/sale/1813545",
@@ -3362,9 +3985,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "SERHANT.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814435": {
       "listing_type": "sale",
       "id": "1814435",
       "url": "https://streeteasy.com/sale/1814435",
@@ -3387,9 +4015,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1811788": {
       "listing_type": "sale",
       "id": "1811788",
       "url": "https://streeteasy.com/sale/1811788",
@@ -3412,9 +4045,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1804854": {
       "listing_type": "sale",
       "id": "1804854",
       "url": "https://streeteasy.com/sale/1804854",
@@ -3437,9 +4075,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1794532": {
       "listing_type": "sale",
       "id": "1794532",
       "url": "https://streeteasy.com/sale/1794532",
@@ -3462,9 +4105,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819021": {
       "listing_type": "sale",
       "id": "1819021",
       "url": "https://streeteasy.com/sale/1819021",
@@ -3487,9 +4135,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Berkshire Hathaway HomeServices New York Properties",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817198": {
       "listing_type": "sale",
       "id": "1817198",
       "url": "https://streeteasy.com/sale/1817198",
@@ -3512,9 +4165,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1815616": {
       "listing_type": "sale",
       "id": "1815616",
       "url": "https://streeteasy.com/sale/1815616",
@@ -3537,9 +4195,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814280": {
       "listing_type": "sale",
       "id": "1814280",
       "url": "https://streeteasy.com/sale/1814280",
@@ -3562,9 +4225,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1803888": {
       "listing_type": "sale",
       "id": "1803888",
       "url": "https://streeteasy.com/sale/1803888",
@@ -3587,9 +4255,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1806022": {
       "listing_type": "sale",
       "id": "1806022",
       "url": "https://streeteasy.com/sale/1806022",
@@ -3612,9 +4285,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810291": {
       "listing_type": "sale",
       "id": "1810291",
       "url": "https://streeteasy.com/sale/1810291",
@@ -3637,9 +4315,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1823180": {
       "listing_type": "sale",
       "id": "1823180",
       "url": "https://streeteasy.com/building/the-strathmore-400-east-84th-street-new_york/40b",
@@ -3669,9 +4352,14 @@
           "event": "LISTED",
           "broker": "Corcoran"
         }
-      ]
+      ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818750": {
       "listing_type": "sale",
       "id": "1818750",
       "url": "https://streeteasy.com/sale/1818750",
@@ -3694,9 +4382,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1764393": {
       "listing_type": "sale",
       "id": "1764393",
       "url": "https://streeteasy.com/sale/1764393",
@@ -3719,9 +4412,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820399": {
       "listing_type": "sale",
       "id": "1820399",
       "url": "https://streeteasy.com/sale/1820399",
@@ -3744,9 +4442,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819673": {
       "listing_type": "sale",
       "id": "1819673",
       "url": "https://streeteasy.com/sale/1819673",
@@ -3769,9 +4472,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813882": {
       "listing_type": "sale",
       "id": "1813882",
       "url": "https://streeteasy.com/sale/1813882",
@@ -3794,9 +4502,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1811321": {
       "listing_type": "sale",
       "id": "1811321",
       "url": "https://streeteasy.com/sale/1811321",
@@ -3819,9 +4532,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Heatmap Real Estate LLC ",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1796043": {
       "listing_type": "sale",
       "id": "1796043",
       "url": "https://streeteasy.com/sale/1796043",
@@ -3844,9 +4562,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Keller Williams NYC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809687": {
       "listing_type": "sale",
       "id": "1809687",
       "url": "https://streeteasy.com/sale/1809687",
@@ -3869,9 +4592,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1797135": {
       "listing_type": "sale",
       "id": "1797135",
       "url": "https://streeteasy.com/sale/1797135",
@@ -3894,9 +4622,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1775804": {
       "listing_type": "sale",
       "id": "1775804",
       "url": "https://streeteasy.com/sale/1775804",
@@ -3919,9 +4652,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Manhattan Management Group",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1811063": {
       "listing_type": "sale",
       "id": "1811063",
       "url": "https://streeteasy.com/sale/1811063",
@@ -3944,9 +4682,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Heller Organization",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818978": {
       "listing_type": "sale",
       "id": "1818978",
       "url": "https://streeteasy.com/building/the-saratoga/28bc",
@@ -4072,9 +4815,14 @@
           "event": "LISTED",
           "broker": "Warburg"
         }
-      ]
+      ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820589": {
       "listing_type": "sale",
       "id": "1820589",
       "url": "https://streeteasy.com/sale/1820589",
@@ -4097,9 +4845,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817491": {
       "listing_type": "sale",
       "id": "1817491",
       "url": "https://streeteasy.com/sale/1817491",
@@ -4122,9 +4875,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Coldwell Banker Warburg",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810633": {
       "listing_type": "sale",
       "id": "1810633",
       "url": "https://streeteasy.com/sale/1810633",
@@ -4147,9 +4905,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1787651": {
       "listing_type": "sale",
       "id": "1787651",
       "url": "https://streeteasy.com/sale/1787651",
@@ -4172,9 +4935,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Christie's International Real Estate Group, LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1627198": {
       "listing_type": "sale",
       "id": "1627198",
       "url": "https://streeteasy.com/sale/1627198",
@@ -4197,9 +4965,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "BLU Real Estate",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1801296": {
       "listing_type": "sale",
       "id": "1801296",
       "url": "https://streeteasy.com/sale/1801296",
@@ -4222,9 +4995,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "NY Empire Real Estate",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821428": {
       "listing_type": "sale",
       "id": "1821428",
       "url": "https://streeteasy.com/sale/1821428",
@@ -4247,9 +5025,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1812780": {
       "listing_type": "sale",
       "id": "1812780",
       "url": "https://streeteasy.com/sale/1812780",
@@ -4272,9 +5055,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1802031": {
       "listing_type": "sale",
       "id": "1802031",
       "url": "https://streeteasy.com/sale/1802031",
@@ -4297,9 +5085,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820884": {
       "listing_type": "sale",
       "id": "1820884",
       "url": "https://streeteasy.com/sale/1820884",
@@ -4322,9 +5115,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819722": {
       "listing_type": "sale",
       "id": "1819722",
       "url": "https://streeteasy.com/sale/1819722",
@@ -4347,9 +5145,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1798162": {
       "listing_type": "sale",
       "id": "1798162",
       "url": "https://streeteasy.com/sale/1798162",
@@ -4372,9 +5175,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1803208": {
       "listing_type": "sale",
       "id": "1803208",
       "url": "https://streeteasy.com/sale/1803208",
@@ -4397,9 +5205,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1802273": {
       "listing_type": "sale",
       "id": "1802273",
       "url": "https://streeteasy.com/sale/1802273",
@@ -4422,9 +5235,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813829": {
       "listing_type": "sale",
       "id": "1813829",
       "url": "https://streeteasy.com/sale/1813829",
@@ -4447,9 +5265,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809923": {
       "listing_type": "sale",
       "id": "1809923",
       "url": "https://streeteasy.com/sale/1809923",
@@ -4472,9 +5295,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1728564": {
       "listing_type": "sale",
       "id": "1728564",
       "url": "https://streeteasy.com/sale/1728564",
@@ -4497,9 +5325,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Peter Ashe",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822440": {
       "listing_type": "sale",
       "id": "1822440",
       "url": "https://streeteasy.com/sale/1822440",
@@ -4522,9 +5355,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822094": {
       "listing_type": "sale",
       "id": "1822094",
       "url": "https://streeteasy.com/sale/1822094",
@@ -4547,9 +5385,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "FIND Real Estate",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821108": {
       "listing_type": "sale",
       "id": "1821108",
       "url": "https://streeteasy.com/sale/1821108",
@@ -4572,9 +5415,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1815232": {
       "listing_type": "sale",
       "id": "1815232",
       "url": "https://streeteasy.com/sale/1815232",
@@ -4597,9 +5445,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1808482": {
       "listing_type": "sale",
       "id": "1808482",
       "url": "https://streeteasy.com/sale/1808482",
@@ -4622,9 +5475,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822892": {
       "listing_type": "sale",
       "id": "1822892",
       "url": "https://streeteasy.com/building/the-chatham/15a",
@@ -4720,9 +5578,14 @@
           "event": "CLOSING",
           "broker": "Closing record"
         }
-      ]
+      ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816509": {
       "listing_type": "sale",
       "id": "1816509",
       "url": "https://streeteasy.com/sale/1816509",
@@ -4745,9 +5608,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Living New York",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1811766": {
       "listing_type": "sale",
       "id": "1811766",
       "url": "https://streeteasy.com/sale/1811766",
@@ -4770,9 +5638,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817519": {
       "listing_type": "sale",
       "id": "1817519",
       "url": "https://streeteasy.com/sale/1817519",
@@ -4795,9 +5668,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "SERHANT.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1804279": {
       "listing_type": "sale",
       "id": "1804279",
       "url": "https://streeteasy.com/sale/1804279",
@@ -4820,9 +5698,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Kleier Residential",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813638": {
       "listing_type": "sale",
       "id": "1813638",
       "url": "https://streeteasy.com/sale/1813638",
@@ -4845,9 +5728,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813145": {
       "listing_type": "sale",
       "id": "1813145",
       "url": "https://streeteasy.com/sale/1813145",
@@ -4870,9 +5758,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813213": {
       "listing_type": "sale",
       "id": "1813213",
       "url": "https://streeteasy.com/sale/1813213",
@@ -4895,9 +5788,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1812453": {
       "listing_type": "sale",
       "id": "1812453",
       "url": "https://streeteasy.com/sale/1812453",
@@ -4920,9 +5818,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1788886": {
       "listing_type": "sale",
       "id": "1788886",
       "url": "https://streeteasy.com/sale/1788886",
@@ -4945,9 +5848,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1787579": {
       "listing_type": "sale",
       "id": "1787579",
       "url": "https://streeteasy.com/sale/1787579",
@@ -4970,9 +5878,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1776382": {
       "listing_type": "sale",
       "id": "1776382",
       "url": "https://streeteasy.com/sale/1776382",
@@ -4995,9 +5908,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1769940": {
       "listing_type": "sale",
       "id": "1769940",
       "url": "https://streeteasy.com/sale/1769940",
@@ -5020,9 +5938,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sloane Square",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1716786": {
       "listing_type": "sale",
       "id": "1716786",
       "url": "https://streeteasy.com/sale/1716786",
@@ -5045,9 +5968,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Andrew Shipper, LREB",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1646957": {
       "listing_type": "sale",
       "id": "1646957",
       "url": "https://streeteasy.com/sale/1646957",
@@ -5070,9 +5998,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816232": {
       "listing_type": "sale",
       "id": "1816232",
       "url": "https://streeteasy.com/sale/1816232",
@@ -5095,9 +6028,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809585": {
       "listing_type": "sale",
       "id": "1809585",
       "url": "https://streeteasy.com/sale/1809585",
@@ -5120,9 +6058,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814732": {
       "listing_type": "sale",
       "id": "1814732",
       "url": "https://streeteasy.com/sale/1814732",
@@ -5145,9 +6088,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1815706": {
       "listing_type": "sale",
       "id": "1815706",
       "url": "https://streeteasy.com/sale/1815706",
@@ -5170,9 +6118,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1811517": {
       "listing_type": "sale",
       "id": "1811517",
       "url": "https://streeteasy.com/sale/1811517",
@@ -5195,9 +6148,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sousa Real Estate, Inc.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1771762": {
       "listing_type": "sale",
       "id": "1771762",
       "url": "https://streeteasy.com/sale/1771762",
@@ -5220,9 +6178,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820909": {
       "listing_type": "sale",
       "id": "1820909",
       "url": "https://streeteasy.com/sale/1820909",
@@ -5245,9 +6208,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "SERHANT.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1803838": {
       "listing_type": "sale",
       "id": "1803838",
       "url": "https://streeteasy.com/sale/1803838",
@@ -5270,9 +6238,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820117": {
       "listing_type": "sale",
       "id": "1820117",
       "url": "https://streeteasy.com/sale/1820117",
@@ -5295,9 +6268,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819273": {
       "listing_type": "sale",
       "id": "1819273",
       "url": "https://streeteasy.com/sale/1819273",
@@ -5320,9 +6298,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1799085": {
       "listing_type": "sale",
       "id": "1799085",
       "url": "https://streeteasy.com/sale/1799085",
@@ -5345,9 +6328,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1823188": {
       "listing_type": "sale",
       "id": "1823188",
       "url": "https://streeteasy.com/building/arcadia-408-east-79-street-new_york/14b",
@@ -5425,9 +6413,14 @@
           "event": "CLOSING",
           "broker": "Closing record"
         }
-      ]
+      ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1808409": {
       "listing_type": "sale",
       "id": "1808409",
       "url": "https://streeteasy.com/sale/1808409",
@@ -5450,9 +6443,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814572": {
       "listing_type": "sale",
       "id": "1814572",
       "url": "https://streeteasy.com/sale/1814572",
@@ -5475,9 +6473,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822546": {
       "listing_type": "sale",
       "id": "1822546",
       "url": "https://streeteasy.com/sale/1822546",
@@ -5500,9 +6503,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813477": {
       "listing_type": "sale",
       "id": "1813477",
       "url": "https://streeteasy.com/sale/1813477",
@@ -5525,9 +6533,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819428": {
       "listing_type": "sale",
       "id": "1819428",
       "url": "https://streeteasy.com/sale/1819428",
@@ -5550,9 +6563,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Coldwell Banker Warburg",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809187": {
       "listing_type": "sale",
       "id": "1809187",
       "url": "https://streeteasy.com/sale/1809187",
@@ -5575,9 +6593,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Simple Real Estate",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809797": {
       "listing_type": "sale",
       "id": "1809797",
       "url": "https://streeteasy.com/sale/1809797",
@@ -5600,9 +6623,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822389": {
       "listing_type": "sale",
       "id": "1822389",
       "url": "https://streeteasy.com/sale/1822389",
@@ -5625,9 +6653,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Coldwell Banker Warburg",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1808165": {
       "listing_type": "sale",
       "id": "1808165",
       "url": "https://streeteasy.com/sale/1808165",
@@ -5650,9 +6683,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Christie's International Real Estate Group, LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1799081": {
       "listing_type": "sale",
       "id": "1799081",
       "url": "https://streeteasy.com/sale/1799081",
@@ -5675,9 +6713,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1799054": {
       "listing_type": "sale",
       "id": "1799054",
       "url": "https://streeteasy.com/sale/1799054",
@@ -5700,9 +6743,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1785836": {
       "listing_type": "sale",
       "id": "1785836",
       "url": "https://streeteasy.com/sale/1785836",
@@ -5725,9 +6773,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1781135": {
       "listing_type": "sale",
       "id": "1781135",
       "url": "https://streeteasy.com/sale/1781135",
@@ -5750,9 +6803,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1766853": {
       "listing_type": "sale",
       "id": "1766853",
       "url": "https://streeteasy.com/sale/1766853",
@@ -5775,9 +6833,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Kleier Residential",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1765168": {
       "listing_type": "sale",
       "id": "1765168",
       "url": "https://streeteasy.com/sale/1765168",
@@ -5800,9 +6863,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1765074": {
       "listing_type": "sale",
       "id": "1765074",
       "url": "https://streeteasy.com/sale/1765074",
@@ -5825,9 +6893,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Olshan Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1749237": {
       "listing_type": "sale",
       "id": "1749237",
       "url": "https://streeteasy.com/sale/1749237",
@@ -5850,9 +6923,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1712894": {
       "listing_type": "sale",
       "id": "1712894",
       "url": "https://streeteasy.com/sale/1712894",
@@ -5875,9 +6953,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1705239": {
       "listing_type": "sale",
       "id": "1705239",
       "url": "https://streeteasy.com/sale/1705239",
@@ -5900,9 +6983,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822193": {
       "listing_type": "sale",
       "id": "1822193",
       "url": "https://streeteasy.com/sale/1822193",
@@ -5925,9 +7013,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817847": {
       "listing_type": "sale",
       "id": "1817847",
       "url": "https://streeteasy.com/sale/1817847",
@@ -5950,9 +7043,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1788842": {
       "listing_type": "sale",
       "id": "1788842",
       "url": "https://streeteasy.com/sale/1788842",
@@ -5975,9 +7073,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Nest Seekers International",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822160": {
       "listing_type": "sale",
       "id": "1822160",
       "url": "https://streeteasy.com/sale/1822160",
@@ -6000,9 +7103,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Tungsten Properties",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1743437": {
       "listing_type": "sale",
       "id": "1743437",
       "url": "https://streeteasy.com/sale/1743437",
@@ -6025,9 +7133,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Argent Advisors LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821532": {
       "listing_type": "sale",
       "id": "1821532",
       "url": "https://streeteasy.com/sale/1821532",
@@ -6050,9 +7163,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818866": {
       "listing_type": "sale",
       "id": "1818866",
       "url": "https://streeteasy.com/sale/1818866",
@@ -6075,9 +7193,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1815803": {
       "listing_type": "sale",
       "id": "1815803",
       "url": "https://streeteasy.com/sale/1815803",
@@ -6100,9 +7223,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Olshan Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1788462": {
       "listing_type": "sale",
       "id": "1788462",
       "url": "https://streeteasy.com/sale/1788462",
@@ -6125,9 +7253,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819962": {
       "listing_type": "sale",
       "id": "1819962",
       "url": "https://streeteasy.com/sale/1819962",
@@ -6150,9 +7283,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1792668": {
       "listing_type": "sale",
       "id": "1792668",
       "url": "https://streeteasy.com/sale/1792668",
@@ -6175,9 +7313,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819569": {
       "listing_type": "sale",
       "id": "1819569",
       "url": "https://streeteasy.com/sale/1819569",
@@ -6200,9 +7343,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817792": {
       "listing_type": "sale",
       "id": "1817792",
       "url": "https://streeteasy.com/sale/1817792",
@@ -6225,9 +7373,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807381": {
       "listing_type": "sale",
       "id": "1807381",
       "url": "https://streeteasy.com/sale/1807381",
@@ -6250,9 +7403,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "SERHANT.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820020": {
       "listing_type": "sale",
       "id": "1820020",
       "url": "https://streeteasy.com/sale/1820020",
@@ -6275,9 +7433,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820150": {
       "listing_type": "sale",
       "id": "1820150",
       "url": "https://streeteasy.com/sale/1820150",
@@ -6300,9 +7463,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1815101": {
       "listing_type": "sale",
       "id": "1815101",
       "url": "https://streeteasy.com/sale/1815101",
@@ -6325,9 +7493,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807320": {
       "listing_type": "sale",
       "id": "1807320",
       "url": "https://streeteasy.com/sale/1807320",
@@ -6350,9 +7523,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1805128": {
       "listing_type": "sale",
       "id": "1805128",
       "url": "https://streeteasy.com/sale/1805128",
@@ -6375,9 +7553,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1804487": {
       "listing_type": "sale",
       "id": "1804487",
       "url": "https://streeteasy.com/sale/1804487",
@@ -6400,9 +7583,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1788823": {
       "listing_type": "sale",
       "id": "1788823",
       "url": "https://streeteasy.com/sale/1788823",
@@ -6425,9 +7613,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818777": {
       "listing_type": "sale",
       "id": "1818777",
       "url": "https://streeteasy.com/sale/1818777",
@@ -6450,9 +7643,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Kleier Residential",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1746001": {
       "listing_type": "sale",
       "id": "1746001",
       "url": "https://streeteasy.com/sale/1746001",
@@ -6475,9 +7673,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Coldwell Banker Warburg",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1701518": {
       "listing_type": "sale",
       "id": "1701518",
       "url": "https://streeteasy.com/sale/1701518",
@@ -6500,9 +7703,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Classic Marketing",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818520": {
       "listing_type": "sale",
       "id": "1818520",
       "url": "https://streeteasy.com/sale/1818520",
@@ -6525,9 +7733,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1797814": {
       "listing_type": "sale",
       "id": "1797814",
       "url": "https://streeteasy.com/sale/1797814",
@@ -6550,9 +7763,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1804308": {
       "listing_type": "sale",
       "id": "1804308",
       "url": "https://streeteasy.com/sale/1804308",
@@ -6575,9 +7793,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "New York Residence",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816570": {
       "listing_type": "sale",
       "id": "1816570",
       "url": "https://streeteasy.com/sale/1816570",
@@ -6600,9 +7823,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1813692": {
       "listing_type": "sale",
       "id": "1813692",
       "url": "https://streeteasy.com/sale/1813692",
@@ -6625,9 +7853,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Christie's International Real Estate Group, LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814707": {
       "listing_type": "sale",
       "id": "1814707",
       "url": "https://streeteasy.com/sale/1814707",
@@ -6650,9 +7883,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814194": {
       "listing_type": "sale",
       "id": "1814194",
       "url": "https://streeteasy.com/sale/1814194",
@@ -6675,9 +7913,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1806036": {
       "listing_type": "sale",
       "id": "1806036",
       "url": "https://streeteasy.com/sale/1806036",
@@ -6700,9 +7943,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1805559": {
       "listing_type": "sale",
       "id": "1805559",
       "url": "https://streeteasy.com/sale/1805559",
@@ -6725,9 +7973,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1768197": {
       "listing_type": "sale",
       "id": "1768197",
       "url": "https://streeteasy.com/sale/1768197",
@@ -6750,9 +8003,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807895": {
       "listing_type": "sale",
       "id": "1807895",
       "url": "https://streeteasy.com/sale/1807895",
@@ -6775,9 +8033,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Developing Dreams Realty USA Corp.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818939": {
       "listing_type": "sale",
       "id": "1818939",
       "url": "https://streeteasy.com/sale/1818939",
@@ -6800,9 +8063,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810399": {
       "listing_type": "sale",
       "id": "1810399",
       "url": "https://streeteasy.com/sale/1810399",
@@ -6825,9 +8093,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1808807": {
       "listing_type": "sale",
       "id": "1808807",
       "url": "https://streeteasy.com/sale/1808807",
@@ -6850,9 +8123,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Peter Ashe",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1808823": {
       "listing_type": "sale",
       "id": "1808823",
       "url": "https://streeteasy.com/sale/1808823",
@@ -6875,9 +8153,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1796054": {
       "listing_type": "sale",
       "id": "1796054",
       "url": "https://streeteasy.com/sale/1796054",
@@ -6900,9 +8183,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1790260": {
       "listing_type": "sale",
       "id": "1790260",
       "url": "https://streeteasy.com/sale/1790260",
@@ -6925,9 +8213,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1770508": {
       "listing_type": "sale",
       "id": "1770508",
       "url": "https://streeteasy.com/sale/1770508",
@@ -6950,9 +8243,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1805766": {
       "listing_type": "sale",
       "id": "1805766",
       "url": "https://streeteasy.com/sale/1805766",
@@ -6975,9 +8273,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1727143": {
       "listing_type": "sale",
       "id": "1727143",
       "url": "https://streeteasy.com/sale/1727143",
@@ -7000,9 +8303,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1782178": {
       "listing_type": "sale",
       "id": "1782178",
       "url": "https://streeteasy.com/sale/1782178",
@@ -7025,9 +8333,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Island Advantage Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822613": {
       "listing_type": "sale",
       "id": "1822613",
       "url": "https://streeteasy.com/sale/1822613",
@@ -7050,9 +8363,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819924": {
       "listing_type": "sale",
       "id": "1819924",
       "url": "https://streeteasy.com/sale/1819924",
@@ -7075,9 +8393,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "William B. May",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1804244": {
       "listing_type": "sale",
       "id": "1804244",
       "url": "https://streeteasy.com/sale/1804244",
@@ -7100,9 +8423,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Hauseit LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821044": {
       "listing_type": "sale",
       "id": "1821044",
       "url": "https://streeteasy.com/sale/1821044",
@@ -7125,9 +8453,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819199": {
       "listing_type": "sale",
       "id": "1819199",
       "url": "https://streeteasy.com/sale/1819199",
@@ -7150,9 +8483,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816229": {
       "listing_type": "sale",
       "id": "1816229",
       "url": "https://streeteasy.com/sale/1816229",
@@ -7175,9 +8513,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1797329": {
       "listing_type": "sale",
       "id": "1797329",
       "url": "https://streeteasy.com/sale/1797329",
@@ -7200,9 +8543,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821788": {
       "listing_type": "sale",
       "id": "1821788",
       "url": "https://streeteasy.com/sale/1821788",
@@ -7225,9 +8573,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809466": {
       "listing_type": "sale",
       "id": "1809466",
       "url": "https://streeteasy.com/sale/1809466",
@@ -7250,9 +8603,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817461": {
       "listing_type": "sale",
       "id": "1817461",
       "url": "https://streeteasy.com/sale/1817461",
@@ -7275,9 +8633,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810540": {
       "listing_type": "sale",
       "id": "1810540",
       "url": "https://streeteasy.com/sale/1810540",
@@ -7300,9 +8663,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1809851": {
       "listing_type": "sale",
       "id": "1809851",
       "url": "https://streeteasy.com/sale/1809851",
@@ -7325,9 +8693,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Winzone Realty Home Inc",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807703": {
       "listing_type": "sale",
       "id": "1807703",
       "url": "https://streeteasy.com/sale/1807703",
@@ -7350,9 +8723,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1797437": {
       "listing_type": "sale",
       "id": "1797437",
       "url": "https://streeteasy.com/sale/1797437",
@@ -7375,9 +8753,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1784395": {
       "listing_type": "sale",
       "id": "1784395",
       "url": "https://streeteasy.com/sale/1784395",
@@ -7400,9 +8783,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Christie's International Real Estate Group, LLC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1776704": {
       "listing_type": "sale",
       "id": "1776704",
       "url": "https://streeteasy.com/sale/1776704",
@@ -7425,9 +8813,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807523": {
       "listing_type": "sale",
       "id": "1807523",
       "url": "https://streeteasy.com/sale/1807523",
@@ -7450,9 +8843,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818844": {
       "listing_type": "sale",
       "id": "1818844",
       "url": "https://streeteasy.com/sale/1818844",
@@ -7475,9 +8873,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816986": {
       "listing_type": "sale",
       "id": "1816986",
       "url": "https://streeteasy.com/sale/1816986",
@@ -7500,9 +8903,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1786610": {
       "listing_type": "sale",
       "id": "1786610",
       "url": "https://streeteasy.com/sale/1786610",
@@ -7525,9 +8933,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1823190": {
       "listing_type": "sale",
       "id": "1823190",
       "url": "https://streeteasy.com/building/the-strathmore-400-east-84th-street-new_york/29a",
@@ -7557,9 +8970,14 @@
           "event": "LISTED",
           "broker": "Corcoran"
         }
-      ]
+      ],
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-21",
+      "last_pass2": "2026-04-21",
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821766": {
       "listing_type": "sale",
       "id": "1821766",
       "url": "https://streeteasy.com/sale/1821766",
@@ -7582,9 +9000,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "R New York",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820840": {
       "listing_type": "sale",
       "id": "1820840",
       "url": "https://streeteasy.com/sale/1820840",
@@ -7607,9 +9030,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820321": {
       "listing_type": "sale",
       "id": "1820321",
       "url": "https://streeteasy.com/sale/1820321",
@@ -7632,9 +9060,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817730": {
       "listing_type": "sale",
       "id": "1817730",
       "url": "https://streeteasy.com/sale/1817730",
@@ -7657,9 +9090,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Page 1 Properties",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814032": {
       "listing_type": "sale",
       "id": "1814032",
       "url": "https://streeteasy.com/sale/1814032",
@@ -7682,9 +9120,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807516": {
       "listing_type": "sale",
       "id": "1807516",
       "url": "https://streeteasy.com/sale/1807516",
@@ -7707,9 +9150,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1789947": {
       "listing_type": "sale",
       "id": "1789947",
       "url": "https://streeteasy.com/sale/1789947",
@@ -7732,9 +9180,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Berkshire Hathaway HomeServices New York Properties",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807968": {
       "listing_type": "sale",
       "id": "1807968",
       "url": "https://streeteasy.com/sale/1807968",
@@ -7757,9 +9210,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1792953": {
       "listing_type": "sale",
       "id": "1792953",
       "url": "https://streeteasy.com/sale/1792953",
@@ -7782,9 +9240,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819449": {
       "listing_type": "sale",
       "id": "1819449",
       "url": "https://streeteasy.com/sale/1819449",
@@ -7807,9 +9270,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1822014": {
       "listing_type": "sale",
       "id": "1822014",
       "url": "https://streeteasy.com/sale/1822014",
@@ -7832,9 +9300,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818943": {
       "listing_type": "sale",
       "id": "1818943",
       "url": "https://streeteasy.com/sale/1818943",
@@ -7857,9 +9330,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814043": {
       "listing_type": "sale",
       "id": "1814043",
       "url": "https://streeteasy.com/sale/1814043",
@@ -7882,9 +9360,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1812091": {
       "listing_type": "sale",
       "id": "1812091",
       "url": "https://streeteasy.com/sale/1812091",
@@ -7907,9 +9390,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1802732": {
       "listing_type": "sale",
       "id": "1802732",
       "url": "https://streeteasy.com/sale/1802732",
@@ -7932,9 +9420,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1802001": {
       "listing_type": "sale",
       "id": "1802001",
       "url": "https://streeteasy.com/sale/1802001",
@@ -7957,9 +9450,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "R New York",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1763882": {
       "listing_type": "sale",
       "id": "1763882",
       "url": "https://streeteasy.com/sale/1763882",
@@ -7982,9 +9480,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1810488": {
       "listing_type": "sale",
       "id": "1810488",
       "url": "https://streeteasy.com/sale/1810488",
@@ -8007,9 +9510,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820593": {
       "listing_type": "sale",
       "id": "1820593",
       "url": "https://streeteasy.com/sale/1820593",
@@ -8032,9 +9540,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Jade Stone Real Estate Consulting",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819960": {
       "listing_type": "sale",
       "id": "1819960",
       "url": "https://streeteasy.com/sale/1819960",
@@ -8057,9 +9570,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819195": {
       "listing_type": "sale",
       "id": "1819195",
       "url": "https://streeteasy.com/sale/1819195",
@@ -8082,9 +9600,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1811993": {
       "listing_type": "sale",
       "id": "1811993",
       "url": "https://streeteasy.com/sale/1811993",
@@ -8107,9 +9630,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "R New York",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1811265": {
       "listing_type": "sale",
       "id": "1811265",
       "url": "https://streeteasy.com/sale/1811265",
@@ -8132,9 +9660,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "SERHANT.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1792513": {
       "listing_type": "sale",
       "id": "1792513",
       "url": "https://streeteasy.com/sale/1792513",
@@ -8157,9 +9690,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821497": {
       "listing_type": "sale",
       "id": "1821497",
       "url": "https://streeteasy.com/sale/1821497",
@@ -8182,9 +9720,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1685555": {
       "listing_type": "sale",
       "id": "1685555",
       "url": "https://streeteasy.com/sale/1685555",
@@ -8207,9 +9750,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1812960": {
       "listing_type": "sale",
       "id": "1812960",
       "url": "https://streeteasy.com/sale/1812960",
@@ -8232,9 +9780,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1807746": {
       "listing_type": "sale",
       "id": "1807746",
       "url": "https://streeteasy.com/sale/1807746",
@@ -8257,9 +9810,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1820992": {
       "listing_type": "sale",
       "id": "1820992",
       "url": "https://streeteasy.com/sale/1820992",
@@ -8282,9 +9840,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1819828": {
       "listing_type": "sale",
       "id": "1819828",
       "url": "https://streeteasy.com/sale/1819828",
@@ -8307,9 +9870,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818931": {
       "listing_type": "sale",
       "id": "1818931",
       "url": "https://streeteasy.com/sale/1818931",
@@ -8332,9 +9900,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817990": {
       "listing_type": "sale",
       "id": "1817990",
       "url": "https://streeteasy.com/sale/1817990",
@@ -8357,9 +9930,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814882": {
       "listing_type": "sale",
       "id": "1814882",
       "url": "https://streeteasy.com/sale/1814882",
@@ -8382,9 +9960,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sherry Netherland Inc",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1812765": {
       "listing_type": "sale",
       "id": "1812765",
       "url": "https://streeteasy.com/sale/1812765",
@@ -8407,9 +9990,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1812120": {
       "listing_type": "sale",
       "id": "1812120",
       "url": "https://streeteasy.com/sale/1812120",
@@ -8432,9 +10020,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817515": {
       "listing_type": "sale",
       "id": "1817515",
       "url": "https://streeteasy.com/sale/1817515",
@@ -8457,9 +10050,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817401": {
       "listing_type": "sale",
       "id": "1817401",
       "url": "https://streeteasy.com/sale/1817401",
@@ -8482,9 +10080,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816609": {
       "listing_type": "sale",
       "id": "1816609",
       "url": "https://streeteasy.com/sale/1816609",
@@ -8507,9 +10110,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1808948": {
       "listing_type": "sale",
       "id": "1808948",
       "url": "https://streeteasy.com/sale/1808948",
@@ -8532,9 +10140,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Scrimale Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816171": {
       "listing_type": "sale",
       "id": "1816171",
       "url": "https://streeteasy.com/sale/1816171",
@@ -8557,9 +10170,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Howard Hanna NYC",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816962": {
       "listing_type": "sale",
       "id": "1816962",
       "url": "https://streeteasy.com/sale/1816962",
@@ -8582,9 +10200,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "SERHANT.",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1821469": {
       "listing_type": "sale",
       "id": "1821469",
       "url": "https://streeteasy.com/sale/1821469",
@@ -8607,9 +10230,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1818329": {
       "listing_type": "sale",
       "id": "1818329",
       "url": "https://streeteasy.com/sale/1818329",
@@ -8632,9 +10260,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1817554": {
       "listing_type": "sale",
       "id": "1817554",
       "url": "https://streeteasy.com/sale/1817554",
@@ -8657,9 +10290,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1816036": {
       "listing_type": "sale",
       "id": "1816036",
       "url": "https://streeteasy.com/sale/1816036",
@@ -8682,9 +10320,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1814976": {
       "listing_type": "sale",
       "id": "1814976",
       "url": "https://streeteasy.com/sale/1814976",
@@ -8707,9 +10350,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     },
-    {
+    "1702966": {
       "listing_type": "sale",
       "id": "1702966",
       "url": "https://streeteasy.com/sale/1702966",
@@ -8732,8 +10380,1302 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": []
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5015416": {
+      "listing_type": "rent",
+      "id": "5015416",
+      "url": "https://streeteasy.com/rental/5015416",
+      "building": "549 East 86th Street",
+      "address": "549 East 86th Street",
+      "unit": "",
+      "neighborhood": "Yorkville",
+      "price": 20000,
+      "sqft": 2450,
+      "beds": 3,
+      "baths": 2.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Corcoran",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5007567": {
+      "listing_type": "rent",
+      "id": "5007567",
+      "url": "https://streeteasy.com/building/875-5-avenue-new_york/9gh",
+      "building": "875 5th Avenue",
+      "address": "875 5th Avenue",
+      "unit": "9GH",
+      "neighborhood": "Lenox Hill",
+      "price": 20000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 3.5,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Compass",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4893063": {
+      "listing_type": "rent",
+      "id": "4893063",
+      "url": "https://streeteasy.com/building/the-savoy/38g39f",
+      "building": "200 East 61st Street",
+      "address": "200 East 61st Street",
+      "unit": "38G/39F",
+      "neighborhood": "Lenox Hill",
+      "price": 19995,
+      "sqft": 2300,
+      "beds": 2,
+      "baths": 3.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Corcoran",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4901095": {
+      "listing_type": "rent",
+      "id": "4901095",
+      "url": "https://streeteasy.com/building/13-east-69-street-new_york/ph",
+      "building": "13 East 69th Street",
+      "address": "13 East 69th Street",
+      "unit": "PH",
+      "neighborhood": "Lenox Hill",
+      "price": 18000,
+      "sqft": 3583,
+      "beds": 4,
+      "baths": 4.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Corcoran",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5010657": {
+      "listing_type": "rent",
+      "id": "5010657",
+      "url": "https://streeteasy.com/building/14-east-68-street-new_york/3",
+      "building": "14 East 68th Street",
+      "address": "14 East 68th Street",
+      "unit": "3",
+      "neighborhood": "Lenox Hill",
+      "price": 18000,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Compass",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5019186": {
+      "listing_type": "rent",
+      "id": "5019186",
+      "url": "https://streeteasy.com/building/334-east-83-street-new_york/1w",
+      "building": "334 East 83rd Street",
+      "address": "334 East 83rd Street",
+      "unit": "1W",
+      "neighborhood": "Yorkville",
+      "price": 17995,
+      "sqft": 1791,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Howard Hanna NYC",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5015460": {
+      "listing_type": "rent",
+      "id": "5015460",
+      "url": "https://streeteasy.com/building/carlton-house/5c",
+      "building": "21 East 61st Street",
+      "address": "21 East 61st Street",
+      "unit": "5C",
+      "neighborhood": "Lenox Hill",
+      "price": 17995,
+      "sqft": 1435,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "BLU Real Estate",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5018654": {
+      "listing_type": "rent",
+      "id": "5018654",
+      "url": "https://streeteasy.com/building/155-east-80-street-new_york/full-house",
+      "building": "155 East 80th Street",
+      "address": "155 East 80th Street",
+      "unit": "FULL HOUSE",
+      "neighborhood": "Upper East Side",
+      "price": 17900,
+      "sqft": 3600,
+      "beds": 4,
+      "baths": 3.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Quality Living Village, Inc.",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5018307": {
+      "listing_type": "rent",
+      "id": "5018307",
+      "url": "https://streeteasy.com/building/26-east-93-street-new_york/7ab",
+      "building": "26 East 93rd Street",
+      "address": "26 East 93rd Street",
+      "unit": "7AB",
+      "neighborhood": "Carnegie Hill",
+      "price": 17000,
+      "sqft": null,
+      "beds": 4,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Douglas Elliman",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5015332": {
+      "listing_type": "rent",
+      "id": "5015332",
+      "url": "https://streeteasy.com/building/the-duchess/12d",
+      "building": "300 East 83rd Street",
+      "address": "300 East 83rd Street",
+      "unit": "12D",
+      "neighborhood": "Yorkville",
+      "price": 16995,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Douglas Elliman",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5012799": {
+      "listing_type": "rent",
+      "id": "5012799",
+      "url": "https://streeteasy.com/building/920-park/002b",
+      "building": "920 Park Avenue",
+      "address": "920 Park Avenue",
+      "unit": "002B",
+      "neighborhood": "Upper East Side",
+      "price": 16500,
+      "sqft": 1410,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Stonehenge NYC LLC",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4996952": {
+      "listing_type": "rent",
+      "id": "4996952",
+      "url": "https://streeteasy.com/building/citizen360-condominium/4e1",
+      "building": "360 East 89th Street",
+      "address": "360 East 89th Street",
+      "unit": "4E1",
+      "neighborhood": "Yorkville",
+      "price": 16000,
+      "sqft": 1594,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Rove Travel LLC",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4906039": {
+      "listing_type": "rent",
+      "id": "4906039",
+      "url": "https://streeteasy.com/building/7-east-75-street-new_york/ph",
+      "building": "7 East 75th Street",
+      "address": "7 East 75th Street",
+      "unit": "PH",
+      "neighborhood": "Lenox Hill",
+      "price": 15660,
+      "sqft": 850,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "The Blueground",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5006487": {
+      "listing_type": "rent",
+      "id": "5006487",
+      "url": "https://streeteasy.com/building/one-east-river-place/25i",
+      "building": "525 East 72nd Street",
+      "address": "525 East 72nd Street",
+      "unit": "25I",
+      "neighborhood": "Lenox Hill",
+      "price": 15540,
+      "sqft": 1300,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Stay Haus",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5004178": {
+      "listing_type": "rent",
+      "id": "5004178",
+      "url": "https://streeteasy.com/building/44-east-74-street-new_york/1",
+      "building": "44 East 74th Street",
+      "address": "44 East 74th Street",
+      "unit": "1",
+      "neighborhood": "Lenox Hill",
+      "price": 15500,
+      "sqft": 2110,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5014703": {
+      "listing_type": "rent",
+      "id": "5014703",
+      "url": "https://streeteasy.com/building/254-east-68th-street-new_york/11d",
+      "building": "254 East 68th Street",
+      "address": "254 East 68th Street",
+      "unit": "11D",
+      "neighborhood": "Lenox Hill",
+      "price": 15500,
+      "sqft": 1824,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Rudin Management Company, Inc.",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5014681": {
+      "listing_type": "rent",
+      "id": "5014681",
+      "url": "https://streeteasy.com/building/35-east-63-street-new_york/3a",
+      "building": "35 East 63rd Street",
+      "address": "35 East 63rd Street",
+      "unit": "3A",
+      "neighborhood": "Lenox Hill",
+      "price": 15000,
+      "sqft": 1174,
+      "beds": 1,
+      "baths": 1.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Maidman Realty Group LLC",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5014280": {
+      "listing_type": "rent",
+      "id": "5014280",
+      "url": "https://streeteasy.com/building/carlton-house/rental/5014280",
+      "building": "21 East 61st Street",
+      "address": "21 East 61st Street",
+      "unit": "4F",
+      "neighborhood": "Lenox Hill",
+      "price": 15000,
+      "sqft": 1193,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Kleier Residential",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4986600": {
+      "listing_type": "rent",
+      "id": "4986600",
+      "url": "https://streeteasy.com/building/40-east-80-street-new_york/rental/4986600",
+      "building": "40 East 80th Street",
+      "address": "40 East 80th Street",
+      "unit": "3A",
+      "neighborhood": "Upper East Side",
+      "price": 15000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5001121": {
+      "listing_type": "rent",
+      "id": "5001121",
+      "url": "https://streeteasy.com/building/230-east-67-street-manhattan/ph",
+      "building": "230 East 67th Street",
+      "address": "230 East 67th Street",
+      "unit": "PH",
+      "neighborhood": "Lenox Hill",
+      "price": 15000,
+      "sqft": 2150,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Douglas Elliman",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5007748": {
+      "listing_type": "rent",
+      "id": "5007748",
+      "url": "https://streeteasy.com/building/112-east-61-street-new_york/1",
+      "building": "112 East 61st Street",
+      "address": "112 East 61st Street",
+      "unit": "1",
+      "neighborhood": "Lenox Hill",
+      "price": 15000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Peter Ashe",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5010604": {
+      "listing_type": "rent",
+      "id": "5010604",
+      "url": "https://streeteasy.com/building/barbizon63-condominium/7ab",
+      "building": "140 East 63rd Street",
+      "address": "140 East 63rd Street",
+      "unit": "7AB",
+      "neighborhood": "Lenox Hill",
+      "price": 14000,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "REAL New York",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4983631": {
+      "listing_type": "rent",
+      "id": "4983631",
+      "url": "https://streeteasy.com/building/165-east-66th-by-stonehenge/17c",
+      "building": "165 East 66th Street",
+      "address": "165 East 66th Street",
+      "unit": "17C",
+      "neighborhood": "Lenox Hill",
+      "price": 13500,
+      "sqft": 1179,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Stonehenge NYC LLC",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4922320": {
+      "listing_type": "rent",
+      "id": "4922320",
+      "url": "https://streeteasy.com/building/165-east-66th-by-stonehenge/15f",
+      "building": "165 East 66th Street",
+      "address": "165 East 66th Street",
+      "unit": "15F",
+      "neighborhood": "Lenox Hill",
+      "price": 13500,
+      "sqft": 1419,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Stonehenge NYC LLC",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5004128": {
+      "listing_type": "rent",
+      "id": "5004128",
+      "url": "https://streeteasy.com/building/1289-lexington/4a",
+      "building": "1289 Lex Avenue",
+      "address": "1289 Lex Avenue",
+      "unit": "4A",
+      "neighborhood": "Carnegie Hill",
+      "price": 13500,
+      "sqft": 1526,
+      "beds": 2,
+      "baths": 2.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Koriny NYC LLC",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5007283": {
+      "listing_type": "rent",
+      "id": "5007283",
+      "url": "https://streeteasy.com/building/carnegie-park-condominium/504",
+      "building": "200 East 94th Street",
+      "address": "200 East 94th Street",
+      "unit": "504",
+      "neighborhood": "Yorkville",
+      "price": 13500,
+      "sqft": 1468,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Corcoran",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4984605": {
+      "listing_type": "rent",
+      "id": "4984605",
+      "url": "https://streeteasy.com/building/the-duchess/14a",
+      "building": "300 East 83rd Street",
+      "address": "300 East 83rd Street",
+      "unit": "14A",
+      "neighborhood": "Yorkville",
+      "price": 13495,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Douglas Elliman",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4979115": {
+      "listing_type": "rent",
+      "id": "4979115",
+      "url": "https://streeteasy.com/building/265-east-66th-street-new_york/32c",
+      "building": "265 East 66th Street",
+      "address": "265 East 66th Street",
+      "unit": "32C",
+      "neighborhood": "Lenox Hill",
+      "price": 13000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "MNS",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5019791": {
+      "listing_type": "rent",
+      "id": "5019791",
+      "url": "https://streeteasy.com/building/165-east-66th-by-stonehenge/17b",
+      "building": "165 East 66th Street",
+      "address": "165 East 66th Street",
+      "unit": "17B",
+      "neighborhood": "Lenox Hill",
+      "price": 13000,
+      "sqft": 1182,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Stonehenge NYC LLC",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5019716": {
+      "listing_type": "rent",
+      "id": "5019716",
+      "url": "https://streeteasy.com/building/715-park-avenue-new_york/6d",
+      "building": "715 Park Avenue",
+      "address": "715 Park Avenue",
+      "unit": "6D",
+      "neighborhood": "Lenox Hill",
+      "price": 13000,
+      "sqft": 1250,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Compass",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4991146": {
+      "listing_type": "rent",
+      "id": "4991146",
+      "url": "https://streeteasy.com/building/301e94-301-east-94th-street-new_york/21c",
+      "building": "301 East 94th Street",
+      "address": "301 East 94th Street",
+      "unit": "21C",
+      "neighborhood": "Yorkville",
+      "price": 12849,
+      "sqft": 1450,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Rose Associates, Inc.",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4991711": {
+      "listing_type": "rent",
+      "id": "4991711",
+      "url": "https://streeteasy.com/building/rivers-bend/ph22b",
+      "building": "501 East 87th Street",
+      "address": "501 East 87th Street",
+      "unit": "PH22B",
+      "neighborhood": "Yorkville",
+      "price": 12800,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Corcoran",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5015047": {
+      "listing_type": "rent",
+      "id": "5015047",
+      "url": "https://streeteasy.com/building/530-park-avenue-new_york/5b",
+      "building": "530 Park Avenue",
+      "address": "530 Park Avenue",
+      "unit": "5B",
+      "neighborhood": "Lenox Hill",
+      "price": 12000,
+      "sqft": 1072,
+      "beds": 1,
+      "baths": 1.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Corcoran",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4997352": {
+      "listing_type": "rent",
+      "id": "4997352",
+      "url": "https://streeteasy.com/building/sherry-netherland/1614",
+      "building": "781 5th Avenue",
+      "address": "781 5th Avenue",
+      "unit": "1614",
+      "neighborhood": "Lenox Hill",
+      "price": 11500,
+      "sqft": null,
+      "beds": 1,
+      "baths": 1.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Sotheby's International Realty",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5017524": {
+      "listing_type": "rent",
+      "id": "5017524",
+      "url": "https://streeteasy.com/building/citizen360-condominium/4d",
+      "building": "360 East 89th Street",
+      "address": "360 East 89th Street",
+      "unit": "4D",
+      "neighborhood": "Yorkville",
+      "price": 11000,
+      "sqft": 1393,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "R New York",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5007964": {
+      "listing_type": "rent",
+      "id": "5007964",
+      "url": "https://streeteasy.com/building/the-leonori/5f",
+      "building": "26 East 63rd Street",
+      "address": "26 East 63rd Street",
+      "unit": "5F",
+      "neighborhood": "Lenox Hill",
+      "price": 10600,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Compass",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4996637": {
+      "listing_type": "rent",
+      "id": "4996637",
+      "url": "https://streeteasy.com/building/175-east-62-street-new_york/18b",
+      "building": "175 East 62nd Street",
+      "address": "175 East 62nd Street",
+      "unit": "18B",
+      "neighborhood": "Lenox Hill",
+      "price": 10500,
+      "sqft": 1090,
+      "beds": 2,
+      "baths": 1.5,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Compass",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "4971666": {
+      "listing_type": "rent",
+      "id": "4971666",
+      "url": "https://streeteasy.com/building/20-east-68-street-new_york/5a",
+      "building": "20 East 68th Street",
+      "address": "20 East 68th Street",
+      "unit": "5A",
+      "neighborhood": "Lenox Hill",
+      "price": 10500,
+      "sqft": 1400,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Coldwell Banker Warburg",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5019291": {
+      "listing_type": "rent",
+      "id": "5019291",
+      "url": "https://streeteasy.com/building/302-east-96th-street/1203",
+      "building": "302 East 96th Street",
+      "address": "302 East 96th Street",
+      "unit": "1203",
+      "neighborhood": "Yorkville",
+      "price": 10495,
+      "sqft": null,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Howard Hanna NYC",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5014303": {
+      "listing_type": "rent",
+      "id": "5014303",
+      "url": "https://streeteasy.com/building/303-east-83rd/29b",
+      "building": "303 East 83rd Street",
+      "address": "303 East 83rd Street",
+      "unit": "29B",
+      "neighborhood": "Yorkville",
+      "price": 10383,
+      "sqft": 1260,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Equity Residential",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5010804": {
+      "listing_type": "rent",
+      "id": "5010804",
+      "url": "https://streeteasy.com/building/501-east-74th-street-new_york/18a",
+      "building": "501 East 74th Street",
+      "address": "501 East 74th Street",
+      "unit": "18A",
+      "neighborhood": "Lenox Hill",
+      "price": 10250,
+      "sqft": 1324,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Fetner Properties",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5011783": {
+      "listing_type": "rent",
+      "id": "5011783",
+      "url": "https://streeteasy.com/building/231-east-60-street-new_york/5",
+      "building": "231 East 60th Street",
+      "address": "231 East 60th Street",
+      "unit": "5",
+      "neighborhood": "Lenox Hill",
+      "price": 10000,
+      "sqft": null,
+      "beds": 4,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Compass",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5013174": {
+      "listing_type": "rent",
+      "id": "5013174",
+      "url": "https://streeteasy.com/building/64-east-94-street-new_york/3c",
+      "building": "64 East 94th Street",
+      "address": "64 East 94th Street",
+      "unit": "3C",
+      "neighborhood": "Carnegie Hill",
+      "price": 10000,
+      "sqft": null,
+      "beds": 2,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": null,
+      "days_on_market": null,
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Douglas Elliman",
+      "price_history": [],
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-21",
+      "last_pass2": null,
+      "status": "active",
+      "needs_refresh": false
     }
-  ],
-  "sale_search_url": "https://streeteasy.com/for-sale/upper-east-side/price:2000000-5000000%7Csqft:1500-"
+  }
 }

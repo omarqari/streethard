@@ -1,23 +1,27 @@
 #!/usr/bin/env python3
 """
-StreetHard — Apify Pull Script
-Two-pass strategy per listing type:
-  Pass 1 — Search URL → discover listing IDs (stub data)
-  Pass 2 — Individual listing pages → full data
+StreetHard — Apify Pull Script (Incremental / Puzzle Model)
+
+Accumulates listing data into a canonical store (data/db.json). Each run
+fills in what's missing rather than re-fetching everything:
+
+  Pass 1 — Search URL → discover active listing IDs, merge basic data into db
+  Pass 2 — Only fetch detail pages for listings that don't have full data yet
+            (capped at PASS2_PER_RUN_CAP per run to stay within actor reliability)
+
+After 5-10 runs, most listings reach pass2 quality (fees, taxes, agent, history).
+Subsequent runs only scrape new listings and price changes.
 
 Usage:
   python scripts/pull.py [--mode both|sale|rent] [--max-items N] [--dry-run]
-  python scripts/pull.py --sale-url URL --rental-url URL  (override search URLs)
 
 Environment:
   APIFY_TOKEN  — required. Set in .env locally or as GitHub Secret in CI.
 
 Output:
-  data/latest.json          — overwritten on every successful run
+  data/db.json              — canonical store (never overwritten destructively)
+  data/latest.json          — generated from db.json for the app
   data/YYYY-MM-DD.json      — immutable dated archive
-
-Guard:
-  Exits with code 1 (no files written) if total listing count < MIN_LISTINGS.
 """
 
 import os
@@ -45,6 +49,8 @@ POLL_INTERVAL_SEC    = 5
 PASS1_TIMEOUT_SEC    = 600    # 10 min — search pages are fast
 PASS2_TIMEOUT_SEC    = 600    # 10 min per batch — abort and salvage if stuck
 PASS2_BATCH_SIZE     = 10     # max URLs per Pass 2 Apify run; smaller = less blast radius from stuck URLs
+PASS2_PER_RUN_CAP   = 30     # max listings to send through Pass 2 per run; rest queue for next run
+DELIST_DAYS          = 14    # listings not seen in Pass 1 for this many days are marked delisted
 
 SALE_URL = (
     "https://streeteasy.com/for-sale/upper-east-side"
@@ -70,8 +76,8 @@ def parse_args():
                    help="Skip Pass 2 (detail pages). Normalize Pass 1 search data only. "
                         "Use when the actor's individual listing scraping is broken.")
     p.add_argument("--force-pass2", action="store_true",
-                   help="Bypass the delta cache and run Pass 2 on all listings. "
-                        "Use once after Pass 2 was broken to backfill fees/taxes/agent/history.")
+                   help="Queue all listings for Pass 2 (not just pass1-quality ones). "
+                        "Still capped at PASS2_PER_RUN_CAP. Use to refresh stale pass2 data.")
     return p.parse_args()
 
 # ─── Apify Client ──────────────────────────────────────────────────
@@ -617,6 +623,309 @@ def normalize_rental(raw):
         "price_history":  history,
     }
 
+# ─── Canonical Store (db.json) ─────────────────────────────────────
+DB_PATH = Path(__file__).parent.parent / "data" / "db.json"
+
+def load_db():
+    """Load the canonical listing database. Returns dict keyed by listing ID."""
+    if DB_PATH.exists():
+        try:
+            with open(DB_PATH) as f:
+                data = json.load(f)
+            return data.get("listings", {})
+        except (json.JSONDecodeError, KeyError):
+            pass
+    return {}
+
+def save_db(db, total_events=0):
+    """Save the canonical listing database."""
+    DB_PATH.parent.mkdir(exist_ok=True)
+    today = datetime.date.today().isoformat()
+    active = {lid: l for lid, l in db.items() if l.get("status") != "delisted"}
+    stats = {
+        "total":         len(active),
+        "pass1_only":    sum(1 for l in active.values() if l.get("data_quality") == "pass1"),
+        "pass2_complete": sum(1 for l in active.values() if l.get("data_quality") == "pass2"),
+        "sale":          sum(1 for l in active.values() if l.get("listing_type") != "rent"),
+        "rent":          sum(1 for l in active.values() if l.get("listing_type") == "rent"),
+        "delisted":      sum(1 for l in db.values() if l.get("status") == "delisted"),
+    }
+    payload = {
+        "last_updated": today,
+        "stats": stats,
+        "listings": db,
+    }
+    with open(DB_PATH, "w") as f:
+        json.dump(payload, f, indent=2)
+    print(f"\n  ✓ db.json saved — {stats['total']} active "
+          f"({stats['pass2_complete']} pass2, {stats['pass1_only']} pass1, "
+          f"{stats['delisted']} delisted)")
+
+def generate_latest(db, mode, total_events, sale_url=None, rental_url=None):
+    """Generate data/latest.json from the canonical db for the app to consume."""
+    data_dir = DB_PATH.parent
+    today = datetime.date.today().isoformat()
+
+    # Only include active (non-delisted) listings matching the mode
+    active = []
+    for l in db.values():
+        if l.get("status") == "delisted":
+            continue
+        if mode == "sale" and l.get("listing_type") == "rent":
+            continue
+        if mode == "rent" and l.get("listing_type") != "rent":
+            continue
+        # Strip internal db fields before writing to latest.json
+        out = {k: v for k, v in l.items()
+               if k not in ("data_quality", "last_pass1", "last_pass2",
+                            "needs_refresh", "status")}
+        active.append(out)
+
+    # Sort: sales by price desc, then rentals by price desc
+    sales   = sorted([l for l in active if l.get("listing_type") != "rent"],
+                     key=lambda x: x.get("price", 0), reverse=True)
+    rentals = sorted([l for l in active if l.get("listing_type") == "rent"],
+                     key=lambda x: x.get("price", 0), reverse=True)
+    all_listings = sales + rentals
+
+    payload = {
+        "generated_at":  today,
+        "listing_count": len(all_listings),
+        "sale_count":    len(sales),
+        "rental_count":  len(rentals),
+        "run_cost_usd":  estimate_cost(total_events),
+        "mode":          mode,
+        "listings":      all_listings,
+    }
+    if sale_url:
+        payload["sale_search_url"] = sale_url
+    if rental_url:
+        payload["rental_search_url"] = rental_url
+
+    latest_path = data_dir / "latest.json"
+    dated_path  = data_dir / f"{today}.json"
+    with open(latest_path, "w") as f:
+        json.dump(payload, f, indent=2)
+    with open(dated_path, "w") as f:
+        json.dump(payload, f, indent=2)
+
+    print(f"  ✓ latest.json — {len(all_listings)} listings "
+          f"({len(sales)} sale, {len(rentals)} rental)")
+    return all_listings
+
+def merge_pass1_into_db(db, search_items, listing_type, normalize_fn):
+    """Merge Pass 1 search results into the canonical db.
+
+    - New listings: added at data_quality='pass1'
+    - Existing pass1 listings: all fields updated
+    - Existing pass2 listings: only volatile fields updated (price, days_on_market)
+      If price changed, sets needs_refresh=True for Pass 2 re-scrape.
+
+    Returns (listing_ids, listing_urls, pass1_stubs) for Pass 2 queue building.
+    """
+    is_rental = listing_type == "rent"
+    today = datetime.date.today().isoformat()
+    listing_url_re = re.compile(r'https?://(?:www\.)?streeteasy\.com/(?:sale|rental)/(\d+)')
+
+    ids_seen   = []      # ordered list of IDs discovered this run
+    urls_by_id = {}      # {id: pass2_url}
+    pass1_stubs = {}     # {id: normalized_pass1_dict} for rental backfill
+    new_count = changed_count = updated_count = 0
+
+    for item in search_items:
+        lid = str(item.get("node_id") or item.get("id") or item.get("listingId") or "")
+
+        # Build Pass 2 URL
+        url_path = (not is_rental) and (item.get("urlPath") or "")
+        if url_path:
+            url = f"https://streeteasy.com{url_path}"
+        elif lid:
+            url = f"https://streeteasy.com/{'rental' if is_rental else 'sale'}/{lid}"
+        else:
+            url = item.get("url") or item.get("originalUrl") or ""
+
+        if not lid and url:
+            m = listing_url_re.search(url)
+            if m:
+                lid = m.group(1)
+
+        # Parse urls_json for batch items
+        if not lid:
+            urls_json_raw = item.get("urls_json", "")
+            if urls_json_raw:
+                try:
+                    batch = json.loads(urls_json_raw) if isinstance(urls_json_raw, str) else urls_json_raw
+                    for entry in (batch if isinstance(batch, list) else []):
+                        candidate = entry.get("url", "")
+                        m = listing_url_re.search(candidate)
+                        if m:
+                            lid = m.group(1)
+                            url = candidate.replace("www.streeteasy.com", "streeteasy.com")
+                            break
+                except (json.JSONDecodeError, TypeError, AttributeError):
+                    pass
+
+        if not lid or lid in set(ids_seen):
+            continue
+
+        url = url.replace("www.streeteasy.com", "streeteasy.com")
+        ids_seen.append(lid)
+        urls_by_id[lid] = url
+
+        # Normalize the Pass 1 item
+        stub = normalize_fn(item)
+        if stub:
+            stub["id"] = lid  # ensure consistent ID
+            pass1_stubs[lid] = stub
+
+        existing = db.get(lid)
+        if existing is None:
+            # New listing — add at pass1 quality
+            if stub:
+                entry = dict(stub)
+                entry["data_quality"] = "pass1"
+                entry["last_pass1"]   = today
+                entry["last_pass2"]   = None
+                entry["status"]       = "active"
+                db[lid] = entry
+                new_count += 1
+        elif existing.get("data_quality") == "pass2":
+            # Already have full data — only update volatile fields
+            if stub:
+                old_price = existing.get("price")
+                existing["price"]          = stub.get("price") or existing.get("price")
+                existing["days_on_market"] = stub.get("days_on_market") or existing.get("days_on_market")
+                existing["last_pass1"]     = today
+                existing["status"]         = "active"
+                # Price changed? Queue for Pass 2 refresh
+                if stub.get("price") and old_price and stub["price"] != old_price:
+                    existing["needs_refresh"] = True
+                    changed_count += 1
+                else:
+                    updated_count += 1
+        else:
+            # Existing pass1 listing — update everything from fresh Pass 1 data
+            if stub:
+                for k, v in stub.items():
+                    if v is not None:
+                        existing[k] = v
+                existing["last_pass1"] = today
+                existing["status"]     = "active"
+                updated_count += 1
+
+    print(f"\n  Pass 1 merge: {new_count} new, {changed_count} price-changed, "
+          f"{updated_count} updated, {len(ids_seen)} total discovered")
+
+    return ids_seen, urls_by_id, pass1_stubs
+
+def build_pass2_queue(db, ids_seen, urls_by_id, listing_type):
+    """Build the Pass 2 scrape queue from the db.
+
+    Queue includes:
+      1. Listings at data_quality='pass1' (never had Pass 2)
+      2. Listings with needs_refresh=True (price changed)
+    Capped at PASS2_PER_RUN_CAP. Prioritizes never-scraped over price-changed.
+    """
+    never_scraped  = []
+    price_changed  = []
+
+    for lid in ids_seen:
+        entry = db.get(lid)
+        if not entry:
+            continue
+        url = urls_by_id.get(lid)
+        if not url:
+            continue
+        if entry.get("data_quality") == "pass1":
+            never_scraped.append((lid, url))
+        elif entry.get("needs_refresh"):
+            price_changed.append((lid, url))
+
+    # Priority: never-scraped first, then price-changed
+    queue = never_scraped + price_changed
+    capped = queue[:PASS2_PER_RUN_CAP]
+    skipped = len(queue) - len(capped)
+
+    label = "rental" if listing_type == "rent" else "sale"
+    print(f"  Pass 2 queue: {len(never_scraped)} never-scraped + {len(price_changed)} price-changed "
+          f"= {len(queue)} total")
+    if skipped > 0:
+        print(f"  Capped at {PASS2_PER_RUN_CAP} this run — {skipped} queued for next run")
+
+    return capped
+
+def merge_pass2_into_db(db, detail_items, listing_type, normalize_fn, pass1_stubs):
+    """Merge Pass 2 detail results into the canonical db.
+
+    Upgrades listings from pass1 → pass2. Sets data_quality='pass2' and
+    fills in fees, taxes, agent, price_history.
+    """
+    is_rental = listing_type == "rent"
+    today = datetime.date.today().isoformat()
+    upgraded = 0
+    skipped  = 0
+
+    for item in detail_items:
+        result = normalize_fn(item)
+        if not result or not result.get("id"):
+            skipped += 1
+            continue
+
+        lid = result["id"]
+
+        # For rentals: backfill beds/baths/sqft/unit from Pass 1 stub
+        if is_rental and lid in pass1_stubs:
+            stub = pass1_stubs[lid]
+            for field in ("beds", "baths", "sqft", "unit", "price_per_sqft"):
+                if result.get(field) is None and stub.get(field) is not None:
+                    result[field] = stub[field]
+
+        existing = db.get(lid, {})
+
+        # Merge: Pass 2 fields overwrite, but keep any Pass 1 fields that
+        # Pass 2 doesn't provide (e.g. rental beds/baths come from Pass 1)
+        for k, v in result.items():
+            if v is not None:
+                existing[k] = v
+
+        existing["data_quality"]  = "pass2"
+        existing["last_pass2"]    = today
+        existing["needs_refresh"] = False
+        existing["status"]        = "active"
+        db[lid] = existing
+        upgraded += 1
+
+    print(f"  Pass 2 merge: {upgraded} upgraded to pass2, {skipped} skipped")
+    return upgraded
+
+def detect_delistings(db, ids_seen_by_type):
+    """Mark listings not seen in Pass 1 for DELIST_DAYS+ days as delisted."""
+    today = datetime.date.today()
+    delisted_count = 0
+
+    for lid, entry in db.items():
+        if entry.get("status") == "delisted":
+            continue
+        ltype = entry.get("listing_type", "sale")
+        # Only check against the types we actually pulled this run
+        if ltype not in ids_seen_by_type:
+            continue
+        if lid in ids_seen_by_type[ltype]:
+            continue
+        # Not seen this run — check last_pass1 age
+        last_seen = entry.get("last_pass1")
+        if last_seen:
+            try:
+                age = (today - datetime.date.fromisoformat(last_seen)).days
+                if age >= DELIST_DAYS:
+                    entry["status"] = "delisted"
+                    delisted_count += 1
+            except ValueError:
+                pass
+
+    if delisted_count > 0:
+        print(f"  Delistings: {delisted_count} listings not seen for {DELIST_DAYS}+ days")
+
 # ─── Debug Dump ────────────────────────────────────────────────────
 def _debug_dump(samples, label=""):
     print(f"\nDEBUG — all {label} Pass 2 items failed normalization.", file=sys.stderr)
@@ -913,143 +1222,144 @@ def main():
         print("ERROR: APIFY_TOKEN not set.", file=sys.stderr)
         sys.exit(1)
 
-    print("StreetHard — Apify Pull")
-    print(f"  Actor:      {ACTOR_ID}")
-    print(f"  Mode:       {args.mode}")
-    print(f"  Max items:  {args.max_items} per type")
+    print("StreetHard — Apify Pull (Incremental)")
+    print(f"  Actor:        {ACTOR_ID}")
+    print(f"  Mode:         {args.mode}")
+    print(f"  Max items:    {args.max_items} per type")
     print(f"  Pass 1 only:  {args.pass1_only}")
     print(f"  Force Pass 2: {args.force_pass2}")
+    print(f"  Pass 2 cap:   {PASS2_PER_RUN_CAP} per run")
     print(f"  Dry run:      {args.dry_run}")
 
     client = ApifyClient(token)
 
-    all_listings  = []
-    total_events  = 0
-    completed_types = []
+    # ── Load canonical store ───────────────────────────────────────
+    db = load_db()
+    active_before = sum(1 for l in db.values() if l.get("status") != "delisted")
+    pass2_before  = sum(1 for l in db.values()
+                        if l.get("data_quality") == "pass2" and l.get("status") != "delisted")
+    print(f"\n  db.json loaded: {active_before} active listings "
+          f"({pass2_before} pass2 complete)")
 
-    data_dir     = Path(__file__).parent.parent / "data"
-    partial_path = data_dir / "partial.json"
+    total_events    = 0
+    ids_seen_by_type = {}  # {listing_type: set(ids)} for delisting detection
 
-    def _save_partial(listings, events, done_types):
-        """Checkpoint completed listing type(s) to data/partial.json.
+    # ── Process each listing type ──────────────────────────────────
+    for listing_type in ["sale", "rent"]:
+        if listing_type == "sale" and args.mode not in ("sale", "both"):
+            continue
+        if listing_type == "rent" and args.mode not in ("rent", "both"):
+            continue
 
-        Called after each type finishes so that if a later type fails
-        mid-run (or the guard clause triggers), data already collected
-        is not lost. The partial flag lets the app show a warning banner.
-        """
-        if args.dry_run:
-            return
-        data_dir.mkdir(exist_ok=True)
-        today_str = datetime.date.today().isoformat()
-        sales_so_far   = [l for l in listings if l["listing_type"] != "rent"]
-        rentals_so_far = [l for l in listings if l["listing_type"] == "rent"]
-        partial_payload = {
-            "generated_at":  today_str,
-            "partial":       True,
-            "partial_types": done_types,
-            "listing_count": len(listings),
-            "sale_count":    len(sales_so_far),
-            "rental_count":  len(rentals_so_far),
-            "run_cost_usd":  estimate_cost(events),
-            "mode":          args.mode,
-            "listings":      listings,
-        }
-        with open(partial_path, "w") as f:
-            json.dump(partial_payload, f, indent=2)
-        print(f"  ✓ Checkpoint saved → data/partial.json "
-              f"({len(listings)} listings so far)")
+        is_rental    = listing_type == "rent"
+        normalize_fn = normalize_rental if is_rental else normalize
+        label_tag    = "rental" if is_rental else "sale"
+        search_url   = args.rental_url if is_rental else args.sale_url
 
-    if args.mode in ("sale", "both"):
         print(f"\n{'═'*50}")
-        print(f"  FOR SALE: {args.sale_url}")
-        listings, events = run_two_pass(
-            client, args.sale_url, args.max_items, "sale",
-            pass1_only=args.pass1_only,
-            force_pass2=args.force_pass2,
-        )
-        all_listings.extend(listings)
-        total_events += events
-        completed_types.append("sale")
-        _save_partial(all_listings, total_events, completed_types)
+        print(f"  {'FOR RENT' if is_rental else 'FOR SALE'}: {search_url}")
 
-    if args.mode in ("rent", "both"):
-        print(f"\n{'═'*50}")
-        print(f"  FOR RENT: {args.rental_url}")
-        listings, events = run_two_pass(
-            client, args.rental_url, args.max_items, "rent",
-            pass1_only=args.pass1_only,
-            force_pass2=args.force_pass2,
-        )
-        all_listings.extend(listings)
-        total_events += events
-        completed_types.append("rent")
-        _save_partial(all_listings, total_events, completed_types)
+        # ── Pass 1: Search → discover listing IDs ──────────────────
+        try:
+            search_items = client.run_and_wait(
+                start_urls=[search_url],
+                max_items=args.max_items,
+                label=f"Pass 1 — Search ({label_tag})",
+                paginate=True,
+            )
+        except ApifyRunError as e:
+            print(f"\nERROR: Pass 1 failed — {e}", file=sys.stderr)
+            # Save db with whatever we have so far, don't lose accumulated data
+            if not args.dry_run:
+                save_db(db, total_events)
+            sys.exit(1)
 
-    # Guard clause — partial.json already has whatever we collected;
-    # abort without overwriting latest.json.
-    if len(all_listings) < MIN_LISTINGS:
-        print(
-            f"\nABORT: Only {len(all_listings)} listings after normalization "
-            f"(minimum is {MIN_LISTINGS}).\ndata/latest.json was NOT overwritten."
-            + (f"\ndata/partial.json preserves {len(all_listings)} listings "
-               f"from completed types: {completed_types}."
-               if completed_types and not args.dry_run else ""),
-            file=sys.stderr,
-        )
-        sys.exit(1)
+        total_events += len(search_items)
 
-    # Sort: sales by price desc, then rentals by price desc
-    sales   = sorted([l for l in all_listings if l["listing_type"] != "rent"],
-                     key=lambda x: x["price"], reverse=True)
-    rentals = sorted([l for l in all_listings if l["listing_type"] == "rent"],
-                     key=lambda x: x["price"], reverse=True)
-    all_listings = sales + rentals
+        # ── Merge Pass 1 into db ──────────────────────────────────
+        ids_seen, urls_by_id, pass1_stubs = merge_pass1_into_db(
+            db, search_items, listing_type, normalize_fn)
+        ids_seen_by_type[listing_type] = set(ids_seen)
 
-    # Build payload
-    today   = datetime.date.today().isoformat()
-    payload = {
-        "generated_at":  today,
-        "listing_count": len(all_listings),
-        "sale_count":    len(sales),
-        "rental_count":  len(rentals),
-        "run_cost_usd":  estimate_cost(total_events),
-        "mode":          args.mode,
-        "listings":      all_listings,
-    }
+        # Save db after Pass 1 merge — even if Pass 2 fails, we keep the Pass 1 data
+        if not args.dry_run:
+            save_db(db, total_events)
+
+        # ── Pass 2 (detail pages) — incremental ──────────────────
+        if args.pass1_only:
+            print(f"  --pass1-only: skipping Pass 2 for {label_tag}")
+            continue
+
+        # Build queue: only pass1-quality + price-changed listings
+        if args.force_pass2:
+            # Force mode: queue ALL listings, not just missing ones
+            print(f"  --force-pass2: queuing all {len(ids_seen)} {label_tag} listings for Pass 2")
+            queue = [(lid, urls_by_id[lid]) for lid in ids_seen if lid in urls_by_id]
+            queue = queue[:PASS2_PER_RUN_CAP]
+        else:
+            queue = build_pass2_queue(db, ids_seen, urls_by_id, listing_type)
+
+        if not queue:
+            print(f"  Pass 2 skipped — all {label_tag} listings already at pass2 quality")
+            continue
+
+        # Run Pass 2 in batches
+        detail_items = []
+        urls_to_scrape = [url for _, url in queue]
+        batches = [urls_to_scrape[i:i+PASS2_BATCH_SIZE]
+                   for i in range(0, len(urls_to_scrape), PASS2_BATCH_SIZE)]
+
+        for batch_num, batch in enumerate(batches, 1):
+            try:
+                batch_items = client.run_and_wait(
+                    start_urls=batch,
+                    max_items=len(batch),
+                    label=(f"Pass 2 — Detail ({label_tag}, "
+                           f"batch {batch_num}/{len(batches)}, "
+                           f"{len(batch)} URLs)"),
+                    timeout_sec=PASS2_TIMEOUT_SEC,
+                    paginate=False,
+                )
+                detail_items.extend(batch_items)
+                total_events += len(batch_items)
+            except ApifyRunError as e:
+                print(f"\n  WARN: Batch {batch_num}/{len(batches)} failed — {e}. "
+                      f"Continuing.", file=sys.stderr)
+
+            # Save db after each batch — salvage partial progress
+            if detail_items and not args.dry_run:
+                merge_pass2_into_db(db, detail_items, listing_type,
+                                    normalize_fn, pass1_stubs)
+                detail_items = []  # reset; already merged
+                save_db(db, total_events)
+
+        # Merge any remaining items from the last batch
+        if detail_items and not args.dry_run:
+            merge_pass2_into_db(db, detail_items, listing_type,
+                                normalize_fn, pass1_stubs)
+            save_db(db, total_events)
+
+    # ── Delisting detection ────────────────────────────────────────
+    detect_delistings(db, ids_seen_by_type)
+
+    # ── Final save + generate latest.json ──────────────────────────
+    if args.dry_run:
+        active = sum(1 for l in db.values() if l.get("status") != "delisted")
+        pass2  = sum(1 for l in db.values()
+                     if l.get("data_quality") == "pass2" and l.get("status") != "delisted")
+        print(f"\nDRY RUN — db has {active} active ({pass2} pass2). "
+              f"Est. cost ${estimate_cost(total_events):.3f}")
+        return
+
+    save_db(db, total_events)
 
     sale_url_used   = args.sale_url   if args.mode in ("sale",  "both") else None
     rental_url_used = args.rental_url if args.mode in ("rent",  "both") else None
-    if sale_url_used:
-        payload["sale_search_url"]   = sale_url_used
-    if rental_url_used:
-        payload["rental_search_url"] = rental_url_used
+    all_listings = generate_latest(db, args.mode, total_events,
+                                   sale_url=sale_url_used,
+                                   rental_url=rental_url_used)
 
-    if args.dry_run:
-        print(f"\nDRY RUN — not writing files.")
-        print(f"  Would write {len(all_listings)} listings "
-              f"({len(sales)} sale, {len(rentals)} rental), "
-              f"est. cost ${payload['run_cost_usd']:.3f}")
-        return
-
-    data_dir.mkdir(exist_ok=True)
-
-    latest_path = data_dir / "latest.json"
-    dated_path  = data_dir / f"{today}.json"
-
-    with open(latest_path, "w") as f:
-        json.dump(payload, f, indent=2)
-    with open(dated_path, "w") as f:
-        json.dump(payload, f, indent=2)
-
-    # Clean up partial checkpoint — run succeeded, partial is now stale.
-    if partial_path.exists():
-        partial_path.unlink()
-
-    print(f"\n✓ Wrote {len(all_listings)} listings "
-          f"({len(sales)} sale, {len(rentals)} rental)")
-    print(f"  {latest_path}")
-    print(f"  {dated_path}")
-    print(f"  Estimated run cost: ${payload['run_cost_usd']:.3f}")
+    print(f"\n  Estimated run cost: ${estimate_cost(total_events):.3f}")
     print("Done.")
 
 if __name__ == "__main__":

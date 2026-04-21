@@ -159,12 +159,93 @@ Fields confirmed present (50/50): price, beds, baths, address, unit, building na
 
 **Cost estimate for full UES pull:** ~500–800 listings → ~$1.50–$2.40 per run.
 
-### Data Storage
-- `data/latest.json` — overwritten each run; what the live app reads
-- `data/YYYY-MM-DD.json` — immutable dated archive; never overwritten; used for badge diff (new/reduced)
-- `data/partial.json` — checkpoint written after each listing type completes; deleted on successful run; presence indicates a run aborted mid-way (sale succeeded, rent failed, etc.)
-- Raw Apify output stored as-is (no pre-computation); all math runs client-side
-- Git history of `data/` directory = full audit trail of every weekly pull
+### Data Storage — Incremental Accumulation ("Puzzle" Model)
+
+The Apify actor is brittle: Pass 2 times out, batches fail, some runs only get 10 out of 330 listings. The pipeline must accumulate data like filling in a puzzle — every successful scrape is saved permanently; future runs only fill in what's missing.
+
+#### The Canonical Store: `data/db.json`
+
+A persistent JSON file committed to the repo. This is the **single source of truth** for all listing data. Structure:
+
+```json
+{
+  "listings": {
+    "1818978": {
+      "id": "1818978",
+      "listing_type": "sale",
+      "data_quality": "pass2",
+      "last_pass1": "2026-04-20",
+      "last_pass2": "2026-04-20",
+      "price": 3295000,
+      "building": "The Saratoga",
+      "monthly_fees": 2448,
+      "monthly_taxes": 3384,
+      "price_history": [...],
+      "agent_name": "Matthew Gulker",
+      ...all normalized fields...
+    },
+    "1811080": {
+      "id": "1811080",
+      "listing_type": "sale",
+      "data_quality": "pass1",
+      "last_pass1": "2026-04-20",
+      "last_pass2": null,
+      "price": 4200000,
+      "building": "530 Park Avenue",
+      "monthly_fees": null,
+      ...sparse fields...
+    }
+  },
+  "last_updated": "2026-04-20",
+  "stats": {
+    "total": 414, "pass1_only": 324, "pass2_complete": 90,
+    "sale": 330, "rent": 84
+  }
+}
+```
+
+Key fields per listing:
+- **`data_quality`**: `"pass1"` (basic — price/beds/baths/sqft/address) or `"pass2"` (complete — fees/taxes/agent/price_history). This is the "puzzle piece" flag.
+- **`last_pass1`**: Date this listing was last seen in a Pass 1 search. Used to detect delistings — if a listing hasn't appeared in Pass 1 for 14+ days, it's probably gone.
+- **`last_pass2`**: Date Pass 2 detail data was last successfully fetched. `null` means never.
+
+#### Run Logic (what changes)
+
+Each cron run does:
+
+1. **Pass 1 (search):** Same as today. Discovers all active listing IDs + basic data.
+2. **Merge Pass 1 into db.json:** For each Pass 1 result:
+   - **New listing?** Add it with `data_quality: "pass1"`.
+   - **Existing pass1 listing?** Update price, days_on_market, etc.
+   - **Existing pass2 listing?** Update only volatile fields (price, days_on_market). Do NOT overwrite fees/taxes/agent/history — those are stable.
+   - **Price changed on a pass2 listing?** Mark it `needs_refresh: true` so Pass 2 re-scrapes it next time (price history will have a new entry).
+3. **Pass 2 (detail pages) — incremental only:** Build the scrape queue from:
+   - All listings with `data_quality: "pass1"` (never had Pass 2)
+   - All listings with `needs_refresh: true` (price changed since last Pass 2)
+   - **Skip** anything already at `data_quality: "pass2"` with unchanged price
+   - **Cap** at N listings per run (e.g., 30) to stay within actor reliability. The rest queue for next run.
+4. **Merge Pass 2 into db.json:** For each successful Pass 2 result, upgrade the listing: set `data_quality: "pass2"`, fill in fees/taxes/agent/history, set `last_pass2` to today.
+5. **Generate `data/latest.json`** from db.json — this is what the app reads. Flat array of all active listings, same format as today.
+6. **Detect delistings:** Any listing in db.json whose `last_pass1` is 14+ days old and didn't appear in today's Pass 1 results gets `status: "delisted"`. Delisted listings are excluded from `latest.json` but kept in db.json for historical reference.
+
+#### What this means in practice
+
+- **Run 1 (today):** Pass 1 finds 330 sales. All enter db.json at pass1 quality. Pass 2 processes 30, gets 25 successfully. Those 25 are now permanent — never re-scraped unless their price changes.
+- **Run 2 (Thursday):** Pass 1 finds 335 sales (5 new). Pass 2 queue: 305 remaining pass1-only + 5 new = 310. Processes next 30, gets 28. Running total: 53 pass2-complete.
+- **Run 6 (two weeks later):** 280 of 330 are pass2-complete. Pass 2 queue is down to 50 + any new listings. Almost done filling the puzzle.
+- **Ongoing runs:** Only new listings and price-changed listings need Pass 2. Typical run might only scrape 5-10 detail pages.
+
+#### Files
+
+- `data/db.json` — canonical store, committed to repo, always the most complete picture
+- `data/latest.json` — generated from db.json each run, flat array for the app, overwrites are fine because db.json is the real store
+- `data/YYYY-MM-DD.json` — dated snapshot of latest.json for badge diffing (new/reduced)
+- `data/partial.json` — removed; no longer needed since db.json is never overwritten destructively
+
+#### Cost Efficiency
+
+Current: every run tries to scrape all 330+ listings via Pass 2 (~$1-2 in Apify credits).
+New: after the initial fill, runs only scrape ~5-10 new/changed listings (~$0.03-0.06). The puzzle fills in over 2-3 weeks, then maintenance is nearly free.
 
 ### Secondary: RapidAPI NYC Real Estate API
 Validated YELLOW. Fast cached lookups, no price history or agent contact. 25 free req/mo (~19 remaining). Use for targeted per-property due diligence only, not bulk pulls.
