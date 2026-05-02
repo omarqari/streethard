@@ -1248,10 +1248,20 @@ function sortListings() {
   filteredListings.sort((a, b) => {
     let av, bv;
     switch (sortCol) {
-      case 'oq_rank':  av = (getStatus(a.id).oq_rank || 0) || 9999;
-                       bv = (getStatus(b.id).oq_rank || 0) || 9999; break;
-      case 'rq_rank':  av = (getStatus(a.id).rq_rank || 0) || 9999;
-                       bv = (getStatus(b.id).rq_rank || 0) || 9999; break;
+      case 'oq_rank': {
+        const ar = getStatus(a.id).oq_rank, br = getStatus(b.id).oq_rank;
+        if (!ar && !br) return 0;
+        if (!ar) return 1;   // nulls always last
+        if (!br) return -1;
+        return dir * (ar - br);
+      }
+      case 'rq_rank': {
+        const ar = getStatus(a.id).rq_rank, br = getStatus(b.id).rq_rank;
+        if (!ar && !br) return 0;
+        if (!ar) return 1;   // nulls always last
+        if (!br) return -1;
+        return dir * (ar - br);
+      }
       case 'monthly':  av = calcMonthlyTotal(a); bv = calcMonthlyTotal(b); break;
       // Ask Price sorts rentals to bottom (no purchase price)
       case 'price':    av = a.listing_type === 'rent' ? 0 : (a.price || 0);
