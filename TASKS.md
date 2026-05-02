@@ -69,6 +69,77 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 
 ---
 
+## Listing Status Tracking (Backend Migration)
+
+Full design spec in `STATUS-FEATURE.md`. Architecture summary in `PROJECTPLAN.md` under "Listing Status Tracking (Backend Migration)." Build order below.
+
+### Pre-Build Decisions (must answer before any code)
+
+- [ ] **Confirm final status names.** Proposed: `watching / viewing / shortlisted / rejected / offered`, plus implicit `none`. Sign off or rename. Locks the CHECK constraint and the UI cycle order.
+- [ ] **Confirm chip vocabulary.** Proposed: `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Curated on purpose — free-text tags devolve into the same idea spelled three ways. Amend if anything is missing.
+- [ ] **Confirm backup posture.** Proposed: Railway snapshots only for v1; no extra backup script. Sign off or raise a concern.
+- [ ] **Confirm Hobby-tier signup ($5/mo).** Without it the service auto-sleeps and the first click after a quiet day is visibly laggy. Sign off so we can provision in one go.
+- [ ] **Confirm domain.** Proposed: default `*.up.railway.app`, no custom domain in v1. Or name the preferred custom domain now to avoid a redeploy.
+- [ ] **Generate the `WRITE_API_KEY`.** `openssl rand -hex 32`. Have it ready to paste into Railway env vars and each device's localStorage.
+
+### Backend Build (in this order)
+
+- [ ] **B1 — Skeleton + `/health`.** `api/main.py`, `api/db.py`, `api/requirements.txt`, `api/railway.toml`. Minimal FastAPI app, asyncpg pool, `/health` returns `{"ok": true, "db": "connected"}`. Verify `uvicorn` runs locally.
+- [ ] **B2 — Schema + startup migration.** `api/schema.sql` with the `listing_status` table, CHECK constraint, two indexes. Idempotent `CREATE … IF NOT EXISTS`. FastAPI startup hook executes it. Verify on a fresh DB and on a redeploy that the second run is a no-op.
+- [ ] **B3 — `GET /status`.** Public read; returns `{items: [...]}`. `Cache-Control: no-store`. Verify against an empty table and a hand-seeded row.
+- [ ] **B4 — `PUT /status/{listing_id}` + auth.** `INSERT … ON CONFLICT DO UPDATE` with `COALESCE` so partial patches preserve unchanged fields. `X-API-Key` header check via `hmac.compare_digest`. Returns the full row. Verify with curl: missing key → 401, wrong key → 401, correct key → 200 and persisted.
+- [ ] **B5 — `POST /status/batch`.** Idempotent batch upsert for the offline outbox flush path. 200 on full success; 207 with per-item status on partial failure.
+- [ ] **B6 — CORS + final hardening.** `Access-Control-Allow-Origin: https://omarqari.github.io` (the Pages origin). Allow `Content-Type, X-API-Key`. Methods `GET, PUT, POST, OPTIONS`. Verify a preflight from the live Pages origin succeeds.
+
+### Frontend Build
+
+- [ ] **F1 — Settings panel + Test Connection.** Gear icon top-right of header opens a modal. API key input writes to `localStorage['streethard.api_key']`. "Test Connection" button hits `GET /health` with the key set on a separate test endpoint or noop write — surface a clear green/red result inside the modal.
+- [ ] **F2 — Status pill cycle (column 1).** New leading cell in the table row template. Tap cycles `none → watching → viewing → shortlisted → rejected → offered → none`. Long-press / right-click menu jumps directly to any status. Pill uses `data-status="..."` attribute for CSS coloring.
+- [ ] **F3 — Watch bookmark toggle.** Bookmark icon next to the pill. Independent of status — rejecting does not clear watch.
+- [ ] **F4 — Expanded-row notes editor + chips.** Append to the existing expansion content. Notes textarea with 1-second debounce on keystrokes (only the notes field; status / watch / chips fire immediately). Multi-select chip selector above the textarea, drawn from the locked vocabulary. Soft-cap notes at ~2,000 chars in the UI.
+- [ ] **F5 — Optimistic update helper.** `updateStatus(listingId, patch)` mutates in-memory, re-renders, then PUTs. On any failure, queue the patch in the outbox and leave the UI as-is. Single-row PUTs only — no debounce on commits, no batching.
+- [ ] **F6 — Offline outbox + flush triggers.** `localStorage['streethard.outbox']` array of `{listing_id, patch, ts}`. Flush via `POST /status/batch` on `window.online` and `document.visibilitychange` (when `!document.hidden`).
+- [ ] **F7 — Two-fetch load + merge.** `Promise.all([fetch('data/latest.json'), fetch('${API_BASE}/status')])`. Tolerate the status fetch failing (e.g., no key, Railway down) — the listings still render with default-status overlays.
+- [ ] **F8 — Filter chips.** "Show only Shortlisted" toggle in the existing filter bar. "Hide Rejected" toggle, on by default once any listing is rejected.
+
+### Deployment & Ops
+
+- [ ] **D1 — Railway project setup.** New project → "Deploy from GitHub" → set Root Directory to `api`. Confirm the build picks up `api/requirements.txt` and starts `uvicorn`.
+- [ ] **D2 — Postgres plugin.** Add the managed Postgres plugin. `DATABASE_URL` injected automatically. Verify `/health` reads the DB after first deploy.
+- [ ] **D3 — Env vars.** Set `WRITE_API_KEY` and `ALLOWED_ORIGIN=https://omarqari.github.io` in Railway. Re-deploy.
+- [ ] **D4 — Healthcheck.** Configure Railway healthcheck path to `/health`. Verify auto-restart fires if the DB connection drops.
+- [ ] **D5 — Hobby tier upgrade.** Upgrade so the service doesn't sleep. Verify first-click latency is sub-second after a quiet hour.
+- [ ] **D6 — `API_BASE` wired into `index.html`.** Add the Railway URL constant near the top of the script section. Single point of change if the URL ever moves.
+- [ ] **D7 — Mobile device key paste.** On the iPhone, open the live Pages URL → Settings → paste the same `WRITE_API_KEY`. Verify Test Connection passes.
+- [ ] **D8 — Deploy verification.** Push a deploy. Mark a listing Shortlisted on iPhone. Hard-refresh laptop. Confirm the change persists. Push another (no-op) deploy and confirm the change still persists post-deploy.
+
+### v1 Acceptance Criteria
+
+All seven must pass on a real iPhone + laptop pair before v1 is closed:
+
+- [ ] **A1 — Cross-device sync.** Mark Shortlisted on iPhone. Refresh laptop. Same status visible.
+- [ ] **A2 — Persistence across deploys.** Push a deploy. Shortlisted listing is still Shortlisted.
+- [ ] **A3 — Watch is independent.** Reject a watched listing. Bookmark icon stays. Listing still surfaces under the "watched" filter.
+- [ ] **A4 — Offline tour.** Phone in airplane mode → mark Viewing → type a note → toggle airplane mode off. Within ~3 seconds, change is on the laptop after refresh.
+- [ ] **A5 — Bad key fails clearly.** Wrong key in Settings → Test Connection shows a red error in the modal. Writes from that device are blocked with a non-silent toast.
+- [ ] **A6 — Read without key.** Clean browser, no key. Statuses still show; status pill is read-only with a tooltip explaining how to add the key.
+- [ ] **A7 — Cron untouched.** A `refresh.yml` run completes; statuses are unchanged afterward.
+
+### v1.5 (deferred — do NOT pollute v1 list)
+
+- [ ] **(v1.5)** Service Worker + IndexedDB so the app works offline in a closed tab.
+- [ ] **(v1.5)** Per-IP write rate limit on the API.
+- [ ] **(v1.5)** Export-to-CSV of marked listings.
+- [ ] **(v1.5)** Watch-triggered visual diff when a watched listing's price drops.
+
+### v2 (deferred — only if actually needed)
+
+- [ ] **(v2)** Per-user identity. Multi-key with per-user attribution on notes.
+- [ ] **(v2)** Push notifications when a watched listing's price changes.
+- [ ] **(v2)** Custom domain.
+
+---
+
 ## Open from Session 12 (2026-05-02)
 
 - [ ] **Watch Mon's 09:00 UTC cron (2026-05-04).** Confirms whether memo23 has acted on the proxy/PX issues. Sentinel guard will surface a clean failure if not.
