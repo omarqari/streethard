@@ -725,6 +725,19 @@ function fmtDate(s) {
   const d = new Date(s + 'T00:00:00');
   return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
 }
+// Compute days on market from listed_date. The actor's days_on_market field
+// is unreliable — validation across all 367 listings (2026-05-02) showed 90.5%
+// undercount, with worst-case deltas of 100+ days. listed_date matches the
+// most recent LISTED event in price_history for 99.7% of listings, so we
+// trust it and fall back to days_on_market only when listed_date is missing.
+function daysListed(listing) {
+  if (listing && listing.listed_date) {
+    const listed = new Date(listing.listed_date + 'T00:00:00');
+    const ms = Date.now() - listed.getTime();
+    if (!isNaN(ms) && ms >= 0) return Math.floor(ms / 86400000);
+  }
+  return (listing && listing.days_on_market != null) ? listing.days_on_market : null;
+}
 function fmtDays(n, listingType) {
   if (n === null || n === undefined) return { text: '—', cls: '' };
   // Rental market moves 3-5x faster — tighter thresholds
@@ -932,7 +945,7 @@ function sortListings() {
                        bv = b.listing_type === 'rent' ? 0 : (b.price_per_sqft || 0); break;
       case 'pmtsqft':  av = calcPmtPerSqft(a) || 0; bv = calcPmtPerSqft(b) || 0; break;
       case 'year':     av = a.year_built || 0; bv = b.year_built || 0; break;
-      case 'days':     av = a.days_on_market ?? 9999; bv = b.days_on_market ?? 9999; break;
+      case 'days':     av = daysListed(a) ?? 9999; bv = daysListed(b) ?? 9999; break;
       case 'type':     av = a.type || ''; bv = b.type || ''; return dir * av.localeCompare(bv);
       case 'building': av = (a.building || ''); bv = (b.building || ''); return dir * av.localeCompare(bv);
       default: return 0;
@@ -982,7 +995,7 @@ function updateSummary() {
 
   // "New this week": type-aware threshold
   const newCount = listings.filter(l => {
-    const d = l.days_on_market ?? 999;
+    const d = daysListed(l) ?? 999;
     return l.listing_type === 'rent' ? d < 3 : d < 7;
   }).length;
   document.getElementById('s-new').textContent = newCount || '0';
@@ -1024,7 +1037,7 @@ function renderTable() {
     const isRent  = listing.listing_type === 'rent';
     const monthly = calcMonthlyTotal(listing);
     const pmtSqft = calcPmtPerSqft(listing);
-    const days    = fmtDays(listing.days_on_market, listing.listing_type);
+    const days    = fmtDays(daysListed(listing), listing.listing_type);
     const isExp   = expandedId === listing.id;
     const baths   = listing.baths ?? '—';
     // Estimated sqft (typical for co-ops where official sqft isn't published).
@@ -1081,7 +1094,7 @@ function renderCards() {
   filteredListings.forEach(listing => {
     const isRent  = listing.listing_type === 'rent';
     const monthly = calcMonthlyTotal(listing);
-    const days    = fmtDays(listing.days_on_market, listing.listing_type);
+    const days    = fmtDays(daysListed(listing), listing.listing_type);
     const sqEst   = !!listing.sqft_estimated;
     const sqTitle = sqEst ? (listing.sqft_estimate_note ||
                     'Estimated from floor plan — not officially published.') : '';
