@@ -3,3 +3,5 @@ __pycache__/
 .env
 __pycache__/
 *.pyc
+floorplans/
+.DS_Store
