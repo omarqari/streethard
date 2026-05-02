@@ -10059,10 +10059,10 @@
       "unit": "12C",
       "neighborhood": "Carnegie Hill",
       "price": 3500000,
-      "sqft": null,
+      "sqft": 2800,
       "beds": 2,
       "baths": 2.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1250,
       "type": "coop",
       "year_built": 1960,
       "days_on_market": 45,
@@ -10140,7 +10140,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-06"
+      "listed_date": "2026-03-06",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "1050 5th Avenue 12C: pixel-method, calibrated off Master Bedroom 19' wall. Range 2,650-2,950."
     },
     "1811788": {
       "listing_type": "sale",
@@ -11144,10 +11147,10 @@
       "unit": "2E",
       "neighborhood": "Carnegie Hill",
       "price": 3395000,
-      "sqft": null,
+      "sqft": 2550,
       "beds": 3,
       "baths": 2.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1331,
       "type": "coop",
       "year_built": 1960,
       "days_on_market": 18,
@@ -11201,7 +11204,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-02"
+      "listed_date": "2026-04-02",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "1050 5th Avenue 2E: pixel-method, calibrated off Primary Bedroom 18'8\" wall. Range 2,400-2,700."
     },
     "1813882": {
       "listing_type": "sale",
@@ -11280,10 +11286,10 @@
       "unit": "3AB",
       "neighborhood": "Lenox Hill",
       "price": 3395000,
-      "sqft": null,
+      "sqft": 2500,
       "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1358,
       "type": "coop",
       "year_built": 1961,
       "days_on_market": 63,
@@ -11421,7 +11427,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-16"
+      "listed_date": "2026-02-16",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "196 East 75th Street 3AB: pixel-method, calibrated off Master Bedroom 17' wall. Range 2,350-2,650."
     },
     "1796043": {
       "listing_type": "sale",
@@ -11943,10 +11952,10 @@
       "unit": "4JK",
       "neighborhood": "Carnegie Hill",
       "price": 3250000,
-      "sqft": null,
+      "sqft": 2550,
       "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1275,
       "type": "coop",
       "year_built": 1963,
       "days_on_market": 26,
@@ -12006,7 +12015,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-25"
+      "listed_date": "2026-03-25",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "55 East 87th Street 4JK: pixel-method, calibrated off Living Room 28'9\" wall. Range 2,400-2,700."
     },
     "1810633": {
       "listing_type": "sale",
@@ -13198,10 +13210,10 @@
       "unit": "7/8A",
       "neighborhood": "Lenox Hill",
       "price": 3100000,
-      "sqft": null,
+      "sqft": 2000,
       "beds": 2,
       "baths": 2.5,
-      "price_per_sqft": null,
+      "price_per_sqft": 1550,
       "type": "coop",
       "year_built": 1938,
       "days_on_market": 5,
@@ -13285,7 +13297,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-15"
+      "listed_date": "2026-04-15",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "3 East 69th Street 7/8A: duplex (7th + 8th floors). Pixel-method gave 1,150 but that's too low for a duplex at $3.1M; adjusted up based on labeled-room sum (~1,560) plus walls/circulation. Range 1,800-2,200."
     },
     "1821108": {
       "listing_type": "sale",
@@ -14741,10 +14756,10 @@
       "unit": "5B",
       "neighborhood": "Upper Carnegie Hill",
       "price": 2995000,
-      "sqft": null,
+      "sqft": 3400,
       "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 881,
       "type": "coop",
       "year_built": 1926,
       "days_on_market": 224,
@@ -14822,7 +14837,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-09-08"
+      "listed_date": "2025-09-08",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "1215 5th Avenue 5B: pixel-method, calibrated off Living Room 29'6\" wall. Large pre-war on Carnegie Hill. Range 3,200-3,600."
     },
     "1787579": {
       "listing_type": "sale",
@@ -15453,10 +15471,10 @@
       "unit": "2C",
       "neighborhood": "Carnegie Hill",
       "price": 2895000,
-      "sqft": null,
+      "sqft": 3000,
       "beds": 3,
       "baths": 3.5,
-      "price_per_sqft": null,
+      "price_per_sqft": 965,
       "type": "coop",
       "year_built": 1930,
       "days_on_market": 35,
@@ -15618,7 +15636,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-16"
+      "listed_date": "2026-03-16",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "1220 Park Avenue 2C: pixel-method indicated 3,800 but adjusted down based on $/sqft sanity check (raw measurement gave $762/sqft, suspiciously low for Park Ave Carnegie Hill). Range 2,800-3,400."
     },
     "1815706": {
       "listing_type": "sale",
@@ -15629,10 +15650,10 @@
       "unit": "8B",
       "neighborhood": "Lenox Hill",
       "price": 2895000,
-      "sqft": null,
+      "sqft": 2300,
       "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1259,
       "type": "coop",
       "year_built": 1931,
       "days_on_market": 38,
@@ -15656,7 +15677,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-13"
+      "listed_date": "2026-03-13",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "115 East 67th Street 8B: pixel-method, calibrated off Living/Dining 26' wall. Range 2,150-2,450."
     },
     "1811517": {
       "listing_type": "sale",
@@ -17138,10 +17162,10 @@
       "unit": "10C",
       "neighborhood": "Lenox Hill",
       "price": 2750000,
-      "sqft": null,
+      "sqft": 1600,
       "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1719,
       "type": "coop",
       "year_built": 1922,
       "days_on_market": 84,
@@ -17243,7 +17267,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-01-26"
+      "listed_date": "2026-01-26",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "29 East 64th Street 10C: pixel-method, calibrated off Living Room 24' wall. Range 1,500-1,700."
     },
     "1799081": {
       "listing_type": "sale",
@@ -17420,10 +17447,10 @@
       "unit": "6/7B",
       "neighborhood": "Lenox Hill",
       "price": 2750000,
-      "sqft": null,
+      "sqft": 2400,
       "beds": 3,
       "baths": 2.5,
-      "price_per_sqft": null,
+      "price_per_sqft": 1146,
       "type": "coop",
       "year_built": 1930,
       "days_on_market": 217,
@@ -17459,7 +17486,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-09-15"
+      "listed_date": "2025-09-15",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "829 Park Avenue 6/7B: duplex. Pixel-method gave 4,850 but that's clearly inflated (would imply $567/sqft, way below market). Adjusted to labeled-room-sum + walls. Range 2,200-2,600."
     },
     "1781135": {
       "listing_type": "sale",
