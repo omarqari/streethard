@@ -15763,10 +15763,10 @@
       "unit": "14AF",
       "neighborhood": "Lenox Hill",
       "price": 2799000,
-      "sqft": null,
+      "sqft": 1700,
       "beds": 4,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1646,
       "type": "coop",
       "year_built": 1965,
       "days_on_market": 47,
@@ -15815,7 +15815,10 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "listed_date": "2026-03-04"
+      "listed_date": "2026-03-04",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "floorplan_sum",
+      "sqft_estimate_note": "Method 1: sum of labeled rooms (1,307) + estimated unlabeled (~215) + 11% wall gross-up. Range 1,670\u20131,725."
     },
     {
       "listing_type": "sale",

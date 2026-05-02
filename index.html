@@ -267,6 +267,16 @@ a:hover { text-decoration: underline; }
 #table-view.mode-rent .col-price,
 #table-view.mode-rent .col-ppsqft { display: none; }
 
+/* Estimated values (e.g., co-op sqft calculated from floor plan).
+   Render in gray with a dotted underline and tooltip to make clear they
+   are not officially published numbers. Applies to sqft and any value
+   derived from it (price/sqft, payment/sqft). */
+.estimated {
+  color: #9aa0a6;
+  border-bottom: 1px dotted #c4c8cc;
+  cursor: help;
+}
+
 /* ─── Table ────────────────────────────────────────────────────── */
 #table-view { display: block; }
 #card-view  { display: none; }
@@ -1017,6 +1027,14 @@ function renderTable() {
     const days    = fmtDays(listing.days_on_market, listing.listing_type);
     const isExp   = expandedId === listing.id;
     const baths   = listing.baths ?? '—';
+    // Estimated sqft (typical for co-ops where official sqft isn't published).
+    // When true, render sqft + any sqft-derived figures in gray with a tooltip.
+    const sqEst   = !!listing.sqft_estimated;
+    const sqTitle = sqEst ? (listing.sqft_estimate_note ||
+                    'Estimated from floor plan — not officially published.') : '';
+    const wrapEst = (txt) => sqEst
+      ? `<span class="estimated" title="${sqTitle}">${txt}</span>`
+      : txt;
     // Price/SqFt blank for rentals (user decision: annualized $/sqft already covers it)
     const ppsqft  = (!isRent && listing.price_per_sqft) ? fmtMoney(listing.price_per_sqft) : '—';
     const pmtSq   = pmtSqft ? fmtMoney(pmtSqft) : '—';
@@ -1036,10 +1054,10 @@ function renderTable() {
         </td>
         <td class="td-monthly">${fmtMoney(monthly)}<span style="font-size:10px;font-weight:500;color:#888;">/mo</span></td>
         <td class="td-price col-price">${askCell}</td>
-        <td>${listing.sqft ? listing.sqft.toLocaleString() : '—'}</td>
+        <td>${listing.sqft ? wrapEst(listing.sqft.toLocaleString()) : '—'}</td>
         <td>${listing.beds ?? '—'} bd · ${baths} ba</td>
-        <td class="col-ppsqft">${ppsqft}</td>
-        <td>${pmtSq}</td>
+        <td class="col-ppsqft">${ppsqft === '—' ? '—' : wrapEst(ppsqft)}</td>
+        <td>${pmtSq === '—' ? '—' : wrapEst(pmtSq)}</td>
         <td>${typeCell}</td>
         <td>${listing.year_built || '—'}</td>
         <td><span class="days-badge ${days.cls}">${days.text}</span></td>
@@ -1064,6 +1082,12 @@ function renderCards() {
     const isRent  = listing.listing_type === 'rent';
     const monthly = calcMonthlyTotal(listing);
     const days    = fmtDays(listing.days_on_market, listing.listing_type);
+    const sqEst   = !!listing.sqft_estimated;
+    const sqTitle = sqEst ? (listing.sqft_estimate_note ||
+                    'Estimated from floor plan — not officially published.') : '';
+    const wrapEst = (txt) => sqEst
+      ? `<span class="estimated" title="${sqTitle}">${txt}</span>`
+      : txt;
     // For rentals, the monthly rent IS the headline price
     const priceRow = isRent
       ? `<span class="card-ask">${fmtMoney(monthly)}<span style="font-size:13px;font-weight:500;">/mo</span></span>`
@@ -1081,8 +1105,8 @@ function renderCards() {
         <div class="card-stats">
           <span><strong>${listing.beds ?? '—'}</strong> bd</span>
           <span><strong>${listing.baths ?? '—'}</strong> ba</span>
-          <span><strong>${listing.sqft ? listing.sqft.toLocaleString() : '—'}</strong> sqft</span>
-          ${!isRent && listing.price_per_sqft ? `<span><strong>${fmtMoney(listing.price_per_sqft)}</strong>/sqft</span>` : ''}
+          <span>${listing.sqft ? wrapEst('<strong>' + listing.sqft.toLocaleString() + '</strong> sqft') : '<strong>—</strong> sqft'}</span>
+          ${!isRent && listing.price_per_sqft ? `<span>${wrapEst('<strong>' + fmtMoney(listing.price_per_sqft) + '</strong>/sqft')}</span>` : ''}
           <span>Built <strong>${listing.year_built || '—'}</strong></span>
         </div>
         <div class="card-footer">
