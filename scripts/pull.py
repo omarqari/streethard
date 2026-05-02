@@ -100,9 +100,44 @@ class ApifyClient:
         return resp.json()["data"]
 
     def get_run(self, run_id):
-        resp = self.session.get(f"{self.BASE}/actor-runs/{run_id}", timeout=30)
-        resp.raise_for_status()
-        return resp.json()["data"]
+        # Retry transient 5xx from api.apify.com — observed in run #23
+        # (2026-05-02): Pass 1 succeeded, Pass 2 batch was running on Apify,
+        # but get_run polling hit a 502 Bad Gateway, the uncaught HTTPError
+        # bubbled up and killed the whole pipeline before any commit.
+        # Five attempts with exponential backoff (1s, 2s, 4s, 8s) covers the
+        # typical Apify infrastructure blip without delaying healthy polls.
+        last_err = None
+        for attempt in range(5):
+            try:
+                resp = self.session.get(
+                    f"{self.BASE}/actor-runs/{run_id}", timeout=30)
+                if 500 <= resp.status_code < 600:
+                    last_err = requests.HTTPError(
+                        f"{resp.status_code} {resp.reason} for {resp.url}",
+                        response=resp)
+                    if attempt < 4:
+                        sleep_s = 1 << attempt   # 1, 2, 4, 8
+                        print(f"\n  WARN: get_run({run_id}) returned "
+                              f"{resp.status_code}; retrying in {sleep_s}s "
+                              f"(attempt {attempt+1}/5)…", file=sys.stderr)
+                        time.sleep(sleep_s)
+                        continue
+                resp.raise_for_status()
+                return resp.json()["data"]
+            except requests.RequestException as e:
+                # Network timeouts, connection errors — also worth retrying
+                last_err = e
+                if attempt < 4:
+                    sleep_s = 1 << attempt
+                    print(f"\n  WARN: get_run({run_id}) network error: {e}; "
+                          f"retrying in {sleep_s}s (attempt {attempt+1}/5)…",
+                          file=sys.stderr)
+                    time.sleep(sleep_s)
+                    continue
+                raise
+        # Out of retries — re-raise the last error so the caller (which now
+        # catches both ApifyRunError and HTTPError) can decide what to do.
+        raise last_err
 
     def abort_run(self, run_id):
         """Abort a running actor run. Returns the run status dict."""
@@ -1348,9 +1383,17 @@ def main():
                 )
                 detail_items.extend(batch_items)
                 total_events += len(batch_items)
-            except ApifyRunError as e:
+            except (ApifyRunError, requests.RequestException) as e:
+                # ApifyRunError: actor run itself failed (timeout, FAILED status).
+                # requests.RequestException: transient HTTP/network error talking
+                # to api.apify.com (e.g., 502 Bad Gateway during status polling)
+                # AFTER get_run's own retry budget was exhausted. Either way,
+                # this batch is lost but Pass 1 progress is already saved and
+                # subsequent batches deserve a chance — the affected listings
+                # will still be queued for Pass 2 on the next run because they
+                # remain at data_quality='pass1'.
                 print(f"\n  WARN: Batch {batch_num}/{len(batches)} failed — {e}. "
-                      f"Continuing.", file=sys.stderr)
+                      f"Continuing with remaining batches.", file=sys.stderr)
 
             # Save db after each batch — salvage partial progress
             if detail_items and not args.dry_run:

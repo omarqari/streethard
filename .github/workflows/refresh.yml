@@ -62,6 +62,12 @@ jobs:
         # and the workflow stops here — data/latest.json is NOT committed.
 
       - name: Commit updated data
+        # Run even if pull.py exited non-zero. Pass 1 progress is saved to
+        # data/db.json before Pass 2 runs, so a Pass 2 failure should not
+        # discard Pass 1 work. The git diff --cached --quiet check below
+        # ensures we still no-op when nothing actually changed (e.g. when
+        # the new sentinel guard exits 1 BEFORE save_db).
+        if: success() || failure()
         run: |
           git config user.name  "StreetHard Bot"
           git config user.email "streethard-bot@users.noreply.github.com"
