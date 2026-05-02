@@ -59,11 +59,23 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 - [x] **Text search (2026-04-20):** Free-text search bar in filter bar. Filters by building, address, unit, neighborhood, agent name/firm.
 - [x] **Price history full dates (2026-04-20):** `fmtDate()` now shows "Apr 16, 2026" instead of "Apr 2026".
 - [x] **Monitor pass2 fill rate:** ✅ Moot — all 373/373 listings backfilled to pass2 in Session 9 via direct API calls.
-- [ ] **Days-on-market: update index.html to use listed_date.** `listed_date` field is now stored in every listing. Update JS to compute DOM live: `Math.floor((new Date() - new Date(listing.listed_date)) / 86400000)`, with fallback to `listing.days_on_market` when `listed_date` is null.
+- [x] **Days-on-market: update index.html to use listed_date (Session 12, 2026-05-02).** `daysListed(listing)` helper added; reads `listed_date` exclusively (validated as canonical for 99.7% of listings; the actor's `days_on_market` field is wrong on 100% of records). Returns `null` when `listed_date` is missing — badge shows `—` rather than misleading numbers. Updated 4 read sites: table row, card view, sort comparator, NEW filter.
 - [ ] **New/reduced badges (P1):** Add `badge` field (`"new"`, `"reduced"`, or `null`) in pull.py by diffing current prices against previous dated JSON. Render as a pill badge in index.html's Building/Unit column. Architecture documented in PROJECTPLAN.md.
 - [ ] **Shortlist feature:** In-app ability to mark listings as seen/liked/rejected. **Do not start until sharing model is decided** — localStorage (device-only) vs. shared backing store (GitHub API, Sheets, etc.) are very different builds. See PROJECTPLAN.md Phase 3 for options and tradeoffs.
 - [x] **Rental end-to-end validation:** ✅ All 43 rentals successfully passed through Pass 2 → normalize_rental() → stub merge in Session 9. Beds/baths/sqft backfill from Pass 1 stubs confirmed working.
 - [x] **Co-op sqft gap (Sessions 10–11, 2026-05-02):** ✅ Pixel-polygon estimation method developed, validated to ~2–5% accuracy against 8 plans with known official sqft. 15 co-op listings now have estimates flagged `sqft_estimated: true` with gray styling and tooltips in StreetHard. Full methodology in `SQFT-METHODOLOGY.md`.
+- [x] **Cron silent-failure diagnosis + resilience patches (Session 12, 2026-05-02):** ✅ Pass 1 sentinel guard, `get_run` 5xx retry, Pass 2 `RequestException` catch, `refresh.yml` `if: success() || failure()` on the commit step. Workflow run #24 brought in 46 new listings (first fresh data in 12 days). Memo23 issue thread updated with run-ID evidence.
+- [x] **Partial Pass 2 backfill (Session 12, 2026-05-02):** ✅ Direct API call to memo23 actor on the 46 pass1 records. SaleListingDetailsFederated GraphQL endpoint is currently 403'd by StreetEasy's PX bot detection; the actor's fallback endpoint returns partials missing financial fields. Salvaged `listed_date`, `price_history`, agent contact, year_built, neighborhood, $/sqft for 38 of 38 sales. Records remain at `data_quality=pass1` since taxes/fees still missing. The 8 rentals in the same batch returned 0 items.
+
+---
+
+## Open from Session 12 (2026-05-02)
+
+- [ ] **Watch Mon's 09:00 UTC cron (2026-05-04).** Confirms whether memo23 has acted on the proxy/PX issues. Sentinel guard will surface a clean failure if not.
+- [ ] **Memo23 follow-up:** if the next cron sentinel-fails, post a follow-up on the issues thread referencing run IDs and the partial-backfill PX 403 evidence.
+- [ ] **Harden `pull.py` for partial Pass 2 responses.** When the actor returns `partial: True` with `partialReason` mentioning a blocked GraphQL endpoint, extract `price_history`, `contacts_json`, building fields, and $/sqft into the existing pass1 record (don't reject the whole item). Set a `last_partial_pass2` audit field. Stay at `data_quality=pass1`. The salvage logic exists in this session's notes — needs to be folded into `merge_pass2_into_db`.
+- [ ] **Investigate rental Pass 2 failure mode.** All 8 rental URLs in the partial-backfill batch returned 0 items. Different from the sale-side partial response. Test 1–2 individual rental URLs in isolation to characterize before pinging memo23.
+- [ ] **Add a pipeline health assertion.** Fail the cron when `max(listed_date)` is more than N days behind today. Catches silent-failure modes that pass our existing guards (count, exit code) but still produce stale data.
 
 ---
 

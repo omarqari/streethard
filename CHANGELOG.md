@@ -4,6 +4,51 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Days-on-Market Bug, Cron Diagnosis, Resilience Patches (Session 12)
+
+A user-visible "NEW · 5d" badge on `174 East 74th Street #PHC` (actually listed 12 days earlier per StreetEasy) led to peeling back three layered failures.
+
+### What Got Fixed
+
+**1. App badge logic — `daysListed()` helper.** `index.html` was reading `listing.days_on_market` to compute the days-listed badge. Validation across all 367 listings showed that field is wrong on 100% of them — 90.5% undercount, 9.5% overcount, worst case off by 123 days. Replaced with a `daysListed(listing)` helper that derives days from `listed_date` (matches the most recent `LISTED` event in `price_history` for 99.7% of listings). Updated 4 read sites: `fmtDays` in table rows + cards, the sort comparator, the NEW filter in `updateSummary`. Initially fell back to `days_on_market` when `listed_date` was missing, but that surfaced stale cached values as if they were fresh; the fallback was dropped — missing dates now render as `—`.
+
+**2. Cron silent-failure diagnosis.** Cron commits had read "373 listings, $0.06" on Apr 23, 27, and 30, looking healthy. But `data/db.json`'s contents were identical across all three runs and the max `listed_date` was stuck at 2026-04-20. Direct inspection of the Apify actor's recent runs revealed each cron run returned exactly 10 items, all of shape `{message: "No results found", urls_json, timestamp}` — placeholder objects from StreetEasy's bot detection, not real listings. The actor itself was fine: ad-hoc runs of the same actor with the same input returned 100–200 real listings. Strong evidence the residential proxy IPs at the cron's Mon/Thu 09:00 UTC slot kept landing on blocked IPs.
+
+**3. Pass 1 sentinel guard in `pull.py`.** Added a check after Pass 1 that aborts with `sys.exit(1)` if no item has a listing-id field. Before this guard, `merge_pass1_into_db` silently discarded all 10 placeholder objects (zero new listings added), then `save_db` re-committed the existing 373 listings, with the misleading "373 listings, $0.06" commit message. Verified against real datasets: the 6 known sentinel-only cron runs trigger the guard; ad-hoc runs of 100 and 200 real items pass through cleanly.
+
+**4. `get_run` retry + Pass 2 batch resilience.** Workflow run #23 succeeded at Pass 1 (43 fresh URLs queued for Pass 2), then a single transient `502 Bad Gateway` from `api.apify.com` during status polling raised an uncaught `requests.HTTPError`, killing the whole pipeline before any commit. `ApifyClient.get_run` now retries 5xx and network errors with exponential backoff (1s, 2s, 4s, 8s, fail). The Pass 2 batch loop now catches `requests.RequestException` alongside `ApifyRunError` so a single transient batch failure no longer cascades.
+
+**5. `refresh.yml` commit step `if: success() || failure()`.** Pass 1 progress is saved to `db.json` before Pass 2 runs. The previous step-conditional commit guard threw that progress away when Pass 2 crashed. The new guard preserves it; the existing `git diff --cached --quiet` check still no-ops on truly empty runs.
+
+**6. Manual workflow_dispatch unblocked the backlog.** Workflow run #24 (15:14 UTC) succeeded with the resilience patches and brought in 46 new listings — the first fresh data in 12 days. Confirms the actor works at this time of day; the 09:00 UTC slot is the bad one.
+
+**7. Partial Pass 2 backfill on the 46 pass1 records.** Direct API call (run `55MDlYhllCrCZaybg`, $0.12, 38 of 46 URLs returned data) hit a different actor failure mode: `partialReason: SaleListingDetailsFederated_blocked_by_PX_api_v6` (the GraphQL endpoint that holds price/sqft/beds/fees/taxes was 403'd by StreetEasy's PX bot detection). The fallback endpoint returned full `price_history`, `contacts`, and building info for all 38 sale URLs but no core financial fields. Salvaged what was available — `listed_date`, full price history, agent contact, year_built, neighborhood, $/sqft — into the 38 records; left them at `data_quality=pass1` since `monthly_taxes` and `maintenance` are still missing. The 8 rental URLs returned 0 items entirely (different rental-side issue).
+
+**8. Memo23 thread updated.** Posted on the Apify console issues thread with run IDs comparing 6 broken cron runs against 2 working ad-hoc runs, plus the input shape (identical across both). Reopened the issue to ping Muhamed.
+
+### State After Session
+
+- 419 active listings (368 sale, 51 rental) — was 373
+- 373 at pass2 quality, 46 at pass1
+- 38 of the pass1 records partially backfilled (listed_date + agent + history)
+- 174 East 74th #PHC now correctly reads "17d" green (was "NEW · 5d")
+- All 37 prior NEW badges were false positives — now there's 1 actual NEW listing
+
+### Why the Cron Looked Healthy When It Wasn't
+
+`pull.py` had three guards that all checked weaker conditions than they should have:
+- `MIN_LISTINGS = 10` ran on the count of items returned by Pass 1, but each "No results found" placeholder counted as an item
+- `merge_pass1_into_db` silently discarded items without a listing-id rather than flagging them
+- `save_db` was always called even when no new listings entered the database
+
+The new sentinel guard, `if: success() || failure()` on commit, and the partial-data salvage path each address one layer.
+
+### Lesson — "Cron green" doesn't mean "data flowing"
+
+CI status alone is not a signal that the data pipeline is functional. The cron's commit message ("373 listings, $0.06") was machine-generated from the file the script chose to write — not from any check that the file's contents had advanced. For any pipeline that maintains its own data: assert on data progress (max listed_date advances, count grows, IDs change), not on script exit code. Worth adding a sanity assertion to future cron runs: e.g., warn if `max(listed_date) < (today - N days)`.
+
+---
+
 ## 2026-05-02 — Co-op SqFt Estimation (Sessions 10–11)
 
 ### The Co-op SqFt Gap

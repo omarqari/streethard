@@ -111,12 +111,27 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
-- **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 GREEN, Pass 2 GREEN (fixed by memo23 2026-04-20). Both operational.
-- **Pipeline: Incremental ("Puzzle" model)** — `data/db.json` is the canonical store. Each cron run discovers new listings via Pass 1 and fills in detail via Pass 2 (capped at 100/run). See PROJECTPLAN.md for full architecture.
-- **db.json state:** 373 active listings — **ALL at pass2 quality** (330 sale, 43 rental). Full fees, taxes, agent contact, price history across the board. Backfilled in Session 9.
+- **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 INTERMITTENT (proxy IP rotation; works most of the time but cron's Mon/Thu 09:00 UTC slot kept landing on blocked IPs returning empty results). Pass 2 INTERMITTENT (the `SaleListingDetailsFederated` GraphQL endpoint hits `PX_api_v6` 403s and falls back to a partial endpoint missing the financial fields). Memo23 issue thread updated 2026-05-02 with run-ID evidence.
+- **Pipeline: Incremental ("Puzzle" model) with resilience guards** — `data/db.json` is the canonical store. Each cron run discovers new listings via Pass 1 and fills in detail via Pass 2 (capped at 100/run). See PROJECTPLAN.md for full architecture.
+- **db.json state (2026-05-02 evening):** 419 active listings (368 sale, 51 rental). 373 at pass2 quality (the original cohort), 46 at pass1 quality (new arrivals). Of the 46 pass1 records, 38 sales were partially backfilled — they now have `listed_date`, `price_history`, agent contact, year_built, neighborhood, and `price_per_sqft`, but still lack `monthly_taxes` and `maintenance` because those fields require the blocked endpoint. The 8 pass1 rentals returned 0 items in the partial backfill batch and remain stub-only.
 - **Secondary: RapidAPI NYC Real Estate API** — validated YELLOW, 25 req/mo free tier, good for fast single-listing lookups; no price history or agent contact
 - RapidAPI key in `.env`; Apify account on paid plan
 - No PLUTO, ACRIS, or other supplemental data downloaded yet
+
+### Resilience Guards in `pull.py` and `refresh.yml` (added 2026-05-02)
+
+- **Pass 1 sentinel guard** in `pull.py` — when the actor returns only placeholder rows shaped like `{message: "No results found", urls_json, timestamp}` (no `id`/`listingId`/`node_id` on any item), the script `sys.exit(1)` before merge or save. Without this, the silent failure mode produced cron commits reading "373 listings, $0.06" while actually capturing zero new data — masked a 12-day gap on the Apr 23/27/30 cron runs.
+- **`get_run` retry on transient 5xx** — Apify's API occasionally returns 502/503/504 during status polling. The client now retries with exponential backoff (1s, 2s, 4s, 8s) before raising. A single transient blip during a long Pass 2 run no longer kills the whole pipeline.
+- **Pass 2 batch loop catches `requests.RequestException`** alongside `ApifyRunError`. Affected listings remain at `data_quality=pass1` and re-queue automatically on the next run.
+- **`refresh.yml` commit step uses `if: success() || failure()`** so Pass 1 progress that was already saved survives a Pass 2 crash. The existing `git diff --cached --quiet` check still no-ops on truly empty runs.
+
+## Days-on-Market — Field Reliability
+
+`days_on_market` from the actor is **systematically unreliable** (validated 2026-05-02 across all 367 listings: 90.5% undercount, 9.5% overcount, worst case off by 123 days, 0% match). Do NOT compute "days listed" or NEW badges from this field.
+
+**Use `listed_date` instead.** It matches the most recent `LISTED` event in `price_history` for 99.7% of listings. The app computes days client-side via `daysListed(listing)` in `index.html` (drops fallback to `days_on_market` — returns null instead, which renders as "—").
+
+When backfilling pass1 listings, always populate `listed_date` from the price-history JSON's most recent `LISTED` event so badges work correctly.
 
 ## How to Contact memo23 (Apify Actor Author)
 
