@@ -108,41 +108,43 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Days Listed**: NEW/blue <7d, green 7–44d, yellow 45–120d, red 121d+
 - Single `index.html`, no server, opens in any browser
 
-## Status Feature Architecture (Sessions 13–16)
+## Status Feature Architecture (Sessions 13–19)
 
-**Backend is built and deployed (Session 18, 2026-05-02).** The API is
-live on Railway with all six endpoints operational. Frontend wiring
-(F1–F8) is next. Architecture is fully locked — do not re-litigate.
-Read `STATUS-FEATURE.md` for the spec and `STATUS-BACKEND-WALKTHROUGH.md`
-for the build guide.
+**Backend and initial frontend are built and deployed.** The API is
+live on Railway. Frontend has Settings panel, two-fetch merge, OQ/RQ
+rankings (sortable), and OQ/RQ notes. Architecture is fully locked —
+do not re-litigate. Read `STATUS-FEATURE.md` for the spec and
+`STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
 
 - **Backend (DONE):** FastAPI on Python 3.12 + asyncpg + Railway managed
   Postgres. `api/` directory in the streethard repo (Railway "Root
   Directory" feature). One table (`listing_status`), one shared write
   key, no per-user attribution. Endpoints: `/health`, `GET /status`,
-  `PUT /status/{listing_id}`, `POST /status/batch`. All verified with
-  curl locally and on Railway.
-- **Frontend (NOT YET BUILT):** All changes land in `index.html`. Two
-  fetches on load (listings from Pages, status from the API), merged in
-  JS by `listing_id`. Optimistic writes + localStorage outbox for
-  offline. See TASKS.md F1–F8.
+  `PUT /status/{listing_id}`, `POST /status/batch`. Fields: `status`,
+  `watch`, `oq_notes`, `rq_notes`, `oq_rank`, `rq_rank`, `chips`.
+- **Frontend (PARTIAL — Session 19):** Settings panel (F1) with API key
+  storage in localStorage + Test Connection. Two-fetch load + merge (F7)
+  via `Promise.all`. OQ # / RQ # ranking columns in table view with
+  click-to-edit and nulls-last sorting. OQ Notes / RQ Notes textareas
+  in card view with 1-second debounced saves. Read-only mode when no
+  API key configured. **Not yet built:** status pill cycling (F2),
+  watch toggle (F3), chips (F4), status filter tabs (F5), offline
+  outbox (F6), card-view status controls (F8).
 - **Domains (Session 18):** `streethard.omarqari.com` for the static
   app (CNAME → `omarqari.github.io`), `api.streethard.omarqari.com` for
   the API (CNAME → `bu5x85os.up.railway.app`). Spaceship is the
   registrar (nameservers migrated from Namecheap in Session 18).
-  DNS propagation pending.
 - **Cron is unaffected.** `data/db.json` stays in the repo, written by
   the cron. The API never touches `db.json`. Two stores, two rates of
   change, zero coupling.
 - **Auth:** `WRITE_API_KEY` is `MLCzWI0Jj9_JiTsEU5UUB92Jn-ILmPnLhFbDK1tCnN4`.
   Set in Railway env vars and saved in local `.env`. Pasted once per
-  device into the Settings panel (not yet built — F1). Reads are public.
+  device into the Settings panel. Reads are public.
 - **Cost:** $5/mo Hobby tier on Railway so the service doesn't sleep.
 
-Next session opens with the **frontend build** (F1–F8 in TASKS.md).
-Start with F1 (Settings panel + Test Connection) and F7 (two-fetch
-load + merge) so the API round-trip is validated from the browser
-before building status pill cycling (F2).
+Next session continues the **frontend build** (F2–F6, F8 in TASKS.md).
+Start with F2 (status pill cycling) — the API round-trip is already
+validated from the browser via rankings and notes.
 
 ## Current Infrastructure State
 
