@@ -79,20 +79,29 @@ Full design spec in `STATUS-FEATURE.md`. Build-time CTO walkthrough in `STATUS-B
 - [ ] **Confirm chip vocabulary.** Proposed: `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Curated on purpose — free-text tags devolve into the same idea spelled three ways. Amend if anything is missing. *(Carried over from Session 13 — still needs explicit user sign-off.)*
 - [x] **Confirm backup posture.** ✅ Session 15: Railway snapshots only for v1; no extra `pg_dump` script. Revisit when notes accumulate enough to feel irreplaceable.
 - [x] **Confirm Hobby-tier signup ($5/mo).** ✅ Session 15: recommended and accepted. Provisioning happens in D5.
-- [x] **Confirm domain.** ✅ Session 15: default `*.up.railway.app` (e.g. `streethard-api-production.up.railway.app`). No custom domain in v1.
+- [x] **Confirm domain.** ✅ Session 16: custom domains on Spaceship — `streethard.omarqari.com` (app, CNAME → `omarqari.github.io`) and `api.streethard.omarqari.com` (API, CNAME → Railway service). Default `*.up.railway.app` and `omarqari.github.io/streethard` stay live as fallbacks.
 - [x] **Language pick.** ✅ Session 15: FastAPI (Python 3.12). Validated by GitHub repo check — `omarqari/streethard` is the only public repo and it's Python; `insightcubed`/`OmarGPT` are 404.
 - [x] **Same-repo vs new-repo.** ✅ Session 15: same repo, `api/` subfolder, Railway Root Directory setting. One PR can change both ends.
 - [x] **Per-user attribution.** ✅ Session 15: dropped. Single shared write key, no `updated_by` column.
-- [ ] **Generate the `WRITE_API_KEY`.** `python3 -c "import secrets; print(secrets.token_urlsafe(32))"` (or `openssl rand -hex 32`). Have it ready to paste into Railway env vars and each device's localStorage. *(Do this immediately before D3.)*
+- [x] **Generate the `WRITE_API_KEY`.** ✅ Session 18: generated and saved in `.env` and Railway env vars. Value: `MLCzWI0Jj9_JiTsEU5UUB92Jn-ILmPnLhFbDK1tCnN4`.
 
-### Backend Build (in this order)
+### ✅ DNS + Custom Domains (Session 18, 2026-05-02)
 
-- [ ] **B1 — Skeleton + `/health`.** `api/main.py`, `api/db.py`, `api/requirements.txt`, `api/railway.toml`. Minimal FastAPI app, asyncpg pool, `/health` returns `{"ok": true, "db": "connected"}`. Verify `uvicorn` runs locally.
-- [ ] **B2 — Schema + startup migration.** `api/schema.sql` with the `listing_status` table, CHECK constraint, two indexes. Idempotent `CREATE … IF NOT EXISTS`. FastAPI startup hook executes it. Verify on a fresh DB and on a redeploy that the second run is a no-op.
-- [ ] **B3 — `GET /status`.** Public read; returns `{items: [...]}`. `Cache-Control: no-store`. Verify against an empty table and a hand-seeded row.
-- [ ] **B4 — `PUT /status/{listing_id}` + auth.** `INSERT … ON CONFLICT DO UPDATE` with `COALESCE` so partial patches preserve unchanged fields. `X-API-Key` header check via `hmac.compare_digest`. Returns the full row. Verify with curl: missing key → 401, wrong key → 401, correct key → 200 and persisted.
-- [ ] **B5 — `POST /status/batch`.** Idempotent batch upsert for the offline outbox flush path. 200 on full success; 207 with per-item status on partial failure.
-- [ ] **B6 — CORS + final hardening.** `Access-Control-Allow-Origin: https://omarqari.github.io` (the Pages origin). Allow `Content-Type, X-API-Key`. Methods `GET, PUT, POST, OPTIONS`. Verify a preflight from the live Pages origin succeeds.
+All infrastructure tasks completed by Claude in Cowork mode (browser automation on Spaceship, GitHub, Railway).
+
+- [x] **U1 — Add CNAME records on Spaceship.** ✅ Session 18: Migrated nameservers from Namecheap to Spaceship. Added 4 custom DNS records: `streethard` CNAME → `omarqari.github.io`, `api.streethard` CNAME → `bu5x85os.up.railway.app`, `_railway-verify` TXT record, `www` CNAME → `omarqari.github.io` (LinkedIn redirect).
+- [x] **U2 — GitHub Pages custom domain.** ✅ Session 18: Custom domain `streethard.omarqari.com` configured. DNS check passed. Enforce HTTPS pending DNS propagation from nameserver migration.
+- [x] **U3 — Railway custom domain.** ✅ Session 18: `api.streethard.omarqari.com` added as custom domain. TXT verification record added on Spaceship. Awaiting DNS propagation for auto-SSL.
+- [x] **U4 — Verify both domains end-to-end.** Awaiting DNS propagation (nameserver switch Namecheap → Spaceship, up to 48h). Once propagated: verify `https://streethard.omarqari.com` loads, `curl https://api.streethard.omarqari.com/health` returns 200, enable "Enforce HTTPS" on GitHub Pages, then remove `ALLOWED_ORIGIN_FALLBACK` from Railway env vars.
+
+### ✅ Backend Build (completed Session 18, 2026-05-02)
+
+- [x] **B1 — Skeleton + `/health`.** ✅ `api/main.py`, `api/db.py`, `api/requirements.txt`, `api/railway.toml`. FastAPI + asyncpg pool. `/health` returns `{"ok": true, "db": "connected"}`.
+- [x] **B2 — Schema + startup migration.** ✅ `api/schema.sql` with `listing_status` table, CHECK constraint, two indexes. Idempotent `CREATE … IF NOT EXISTS` via FastAPI startup hook.
+- [x] **B3 — `GET /status`.** ✅ Public read, `Cache-Control: no-store`, returns `{items: [...]}`.
+- [x] **B4 — `PUT /status/{listing_id}` + auth.** ✅ `INSERT … ON CONFLICT DO UPDATE` with `COALESCE`. `X-API-Key` via `hmac.compare_digest`. Verified: missing key → 401, wrong key → 401, correct key → 200.
+- [x] **B5 — `POST /status/batch`.** ✅ Idempotent batch upsert. 200 on full success; 207 with per-item status on partial failure.
+- [x] **B6 — CORS + final hardening.** ✅ `ALLOWED_ORIGIN=https://streethard.omarqari.com`, `ALLOWED_ORIGIN_FALLBACK=https://omarqari.github.io`. Methods `GET, PUT, POST, OPTIONS`. Headers `Content-Type, X-API-Key`.
 
 ### Frontend Build
 
@@ -107,12 +116,12 @@ Full design spec in `STATUS-FEATURE.md`. Build-time CTO walkthrough in `STATUS-B
 
 ### Deployment & Ops
 
-- [ ] **D1 — Railway project setup.** New project → "Deploy from GitHub" → set Root Directory to `api`. Confirm the build picks up `api/requirements.txt` and starts `uvicorn`.
-- [ ] **D2 — Postgres plugin.** Add the managed Postgres plugin. `DATABASE_URL` injected automatically. Verify `/health` reads the DB after first deploy.
-- [ ] **D3 — Env vars.** Set `WRITE_API_KEY` and `ALLOWED_ORIGIN=https://omarqari.github.io` in Railway. Re-deploy.
-- [ ] **D4 — Healthcheck.** Configure Railway healthcheck path to `/health`. Verify auto-restart fires if the DB connection drops.
-- [ ] **D5 — Hobby tier upgrade.** Upgrade so the service doesn't sleep. Verify first-click latency is sub-second after a quiet hour.
-- [ ] **D6 — `API_BASE` wired into `index.html`.** Add the Railway URL constant near the top of the script section. Single point of change if the URL ever moves.
+- [x] **D1 — Railway project setup.** ✅ Session 18: Project created, Root Directory set to `api`, connected to `omarqari/streethard` GitHub repo. Builds pick up `api/requirements.txt` and run `uvicorn`.
+- [x] **D2 — Postgres plugin.** ✅ Session 18: Managed Postgres provisioned. `DATABASE_URL` auto-injected. `/health` confirms DB connection.
+- [x] **D3 — Env vars.** ✅ Session 18: `WRITE_API_KEY`, `ALLOWED_ORIGIN`, `ALLOWED_ORIGIN_FALLBACK` all set in Railway.
+- [x] **D4 — Healthcheck.** ✅ Session 18: Railway healthcheck configured on `/health`.
+- [x] **D5 — Hobby tier upgrade.** ✅ Session 18: Hobby plan active ($5/mo). Service doesn't sleep.
+- [ ] **D6 — `API_BASE` wired into `index.html`.** Set `const API_BASE = "https://api.streethard.omarqari.com"` near the top of the script section. Single point of change if the URL ever moves.
 - [ ] **D7 — Mobile device key paste.** On the iPhone, open the live Pages URL → Settings → paste the same `WRITE_API_KEY`. Verify Test Connection passes.
 - [ ] **D8 — Deploy verification.** Push a deploy. Mark a listing Shortlisted on iPhone. Hard-refresh laptop. Confirm the change persists. Push another (no-op) deploy and confirm the change still persists post-deploy.
 
@@ -133,13 +142,17 @@ All seven must pass on a real iPhone + laptop pair before v1 is closed:
 - [ ] **(v1.5)** Service Worker + IndexedDB so the app works offline in a closed tab.
 - [ ] **(v1.5)** Per-IP write rate limit on the API.
 - [ ] **(v1.5)** Export-to-CSV of marked listings.
-- [ ] **(v1.5)** Watch-triggered visual diff when a watched listing's price drops.
+- [ ] **(v1.5)** Watch-triggered visual diff when a watched listing's price drops. Concrete spec from 2026-05-02 review: snapshot `price_at_watch` (NUMERIC) on the watch=true transition; render a yellow `RECONSIDER` pill in the row when current price < `price_at_watch`. See `STATUS-FEATURE.md` "Re-evaluation badge specifics."
+- [ ] **(v1.5)** Saved-filter tabs above the table — `All / Active / Toured / Watching / Offered`. Pure frontend; default tab becomes `Active` once any listings are shortlisted. Logged 2026-05-02 from proposal review.
+- [ ] **(v1.5)** Recently-delisted surface for tracked listings. Collapsible section under the main table: "Recently delisted that you tracked." Requires the merge step to keep orphan `listing_status` rows on a separate list rather than dropping them. Logged 2026-05-02 from proposal review.
 
 ### v2 (deferred — only if actually needed)
 
 - [ ] **(v2)** Per-user identity. Multi-key with per-user attribution on notes.
 - [ ] **(v2)** Push notifications when a watched listing's price changes.
-- [ ] **(v2)** Custom domain.
+- [ ] **(v2)** Structured tour metadata columns on `listing_status`: `toured_at`, `tour_attendees JSONB`, `follow_up_at`, `private_max_offer NUMERIC`. Folds in only if the free-text notes field becomes painful in actual use. Logged 2026-05-02 from proposal review.
+- [ ] **(v2)** Status history / audit trail. Second table `listing_status_history(listing_id, status, watch, chips, changed_at)` appended on every write. Cost ~$0/mo at n=1; pulls in only if any reversal becomes "wait, why did we say no?". Logged 2026-05-02 from proposal review.
+- [x] **Custom domain.** ✅ Promoted to v1 in Session 16 — see "User Action Required — DNS + Custom Domains" above.
 
 ---
 
@@ -168,6 +181,45 @@ All seven must pass on a real iPhone + laptop pair before v1 is closed:
 
 ## Open Questions
 
+### Buying-decision (long-standing)
 - [ ] Co-ops, condos, or both? Changes due diligence stack significantly.
 - [ ] School-zone constraint?
 - [ ] Financing pre-approval in place, or still to do?
+
+### Product backlog (Session 17 — 2026-05-02)
+
+A CPO slate of 14 proposed product improvements is in `PRODUCT-BACKLOG.md`,
+themed by Decision Quality / Data Quality / UX / Signal & Noise / DD
+Integration / Automation. Five open decisions are pending user selection:
+
+- [ ] **Which backlog items to accept into TASKS.** Whole slate is awaiting
+  pick. CPO-recommended quick-wins: #1 Rent-vs-Buy Card, #8 Compare Pane,
+  #12 Pipeline Health Strip (all S, no inter-dependencies). CPO-recommended
+  negotiation-data arc: #5 PLUTO → #6 ACRIS Overlay → #13 DD Quicklinks →
+  #4 Comp Sheet PDF.
+- [ ] **Floor plan licensing for #7.** Are Compass / StreetEasy floor plan
+  images OK to commit to the public GitHub Pages repo, or do they need
+  a private host? Blocks #7 (Floor Plan Surfacing) until decided.
+- [ ] **#14 Cron diversification — wait or act?** Defer the decision until
+  the Mon 2026-05-04 09:00 UTC cron outcome is in. Sentinel-fail → accept
+  #14. Healthy → defer indefinitely.
+- [ ] **#3 vs v1.5 RECONSIDER pill.** Confirm whether to ship both
+  (CPO recommendation: yes — different surfaces) or pick one.
+- [ ] **#9 vs v1.5 Saved-filter tabs.** Confirm whether to ship both
+  (CPO recommendation: coexist — tabs for routine, URL-state for ad-hoc
+  sharing).
+
+### Status feature (Session 16 — non-blocking for build)
+- [ ] **Final status names.** Currently `watching / viewing / shortlisted / rejected / offered` plus implicit `none`. Confirm or rename before the schema CHECK constraint is set in stone — renaming after first writes is an idempotent ALTER + client update but worth doing once.
+- [ ] **Final chip vocabulary.** Currently `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Curated on purpose. Amend if anything is missing before F4 ships.
+- [ ] **Mobile Safari `localStorage` eviction.** iOS 17 wipes site data after ~7 days of non-use. Settings panel must show a "key not set" empty state, not crash. Decide: mitigate now (IndexedDB or service worker storage), or accept the periodic re-paste at v1?
+- [ ] **Spouse / family writes ever in scope?** Today the shared write key works for n=1. Revisit only if attribution ever matters (would require schema change to add `updated_by` and a per-user key model).
+- [ ] **DNS cutover — when to drop the fallback?** Nameservers migrated to Spaceship in Session 18. Once propagation completes and both devices verify load via `streethard.omarqari.com`, remove `ALLOWED_ORIGIN_FALLBACK` from Railway env vars. Also enable "Enforce HTTPS" on GitHub Pages settings.
+- [ ] **Custom domain on the cron data feed?** The app currently fetches `data/latest.json` as a relative path under whichever origin loaded `index.html`, so the custom domain works for free. No action needed unless we ever want to host the data behind a separate CDN.
+
+### Status feature (Session 17 — proposal-review additions, decide before v1 schema hardens)
+
+- [ ] **`triaged-out` as a seventh status?** Real triage often produces "skimmed, it's a no, but I won't formally reject" — softer than `rejected`, more deliberate than `none`. Adding it after launch means amending the CHECK constraint and reordering the cycle. Decide before B2 lands or accept that `rejected` covers both cases. Captured in `STATUS-FEATURE.md` "Deferred Design Ideas."
+- [ ] **Last-write-wins vs status history.** Spec is last-write-wins. Reversals (vetoed → active when a price drops; shortlisted → rejected after a tour) are common in this workflow. Decide whether v1 should append to a `listing_status_history` table on every write — cheap to add now, expensive to reconstruct later. Captured in `STATUS-FEATURE.md` and the v2 backlog.
+- [ ] **Notes field: free text only, or structured + free text?** Tour metadata (date, attendees, follow-up date, `private_max_offer`) currently lives in the notes textarea. Decide whether v2 should promote any of those to structured columns. Won't block v1; ask after the family has ~10 marked listings and we can see whether the notes are painful. Captured in `STATUS-FEATURE.md`.
+- [ ] **Default tab on app load.** v1 ships with no tabs. If v1.5 adds saved-filter tabs, decide whether the default is `All` (current behavior) or `Active` once any listings are shortlisted. Affects whether the family lands on "the shortlist" or "the firehose" — different UX bets.

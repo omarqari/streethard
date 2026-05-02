@@ -489,6 +489,36 @@ When all three return 200 with sensible JSON, the backend is done. Move to the f
 
 ---
 
+## Deferred Design Ideas — Logged 2026-05-02 (Proposal Review)
+
+A late-evening review proposed a few additions that aren't superseded by the locked spec but also aren't pulled into v1. Captured here so future Claude sees what's been considered. Each is intentionally parked as an open question in `TASKS.md` — none are scheduled until the v1 build proves out and the user weighs in.
+
+### Triaged-out as a distinct status
+
+The current six statuses jump from `none` directly to `watching` or `rejected`. Real triage often produces a third state: "I skimmed this listing, it's a no, but I don't want to spend chip-selection effort rejecting it formally." A `triaged-out` status would absorb the silent scroll-past — softer than `rejected`, more deliberate than `none`. Not recommended for v1 because adding a status midstream means amending the CHECK constraint and the cycle order; worth deciding before the schema hardens with real data.
+
+### Status history / audit trail
+
+The schema is last-write-wins. Reversal (vetoed → active when a price drops, or shortlisted → rejected after a tour) is common in this workflow, and the *why we changed our minds* is information the family will want two months later. A second table (`listing_status_history(listing_id, status, watch, chips, changed_at)`) appended on every write would give a free audit log without complicating the read path. Cost is ~$0/mo at this volume; worth folding in if any reversal is ever the subject of "wait, why did we say no to this?"
+
+### Structured tour metadata
+
+The notes textarea is the only place tour information lives today. Real tours generate structured fields that buyers consistently want: tour date, who attended, follow-up date for "check again on X," and `private_max_offer` (the number the family argues about, separate from list price). These fit naturally as additional columns on `listing_status` (`toured_at`, `tour_attendees JSONB`, `follow_up_at`, `private_max_offer NUMERIC`). v1 ships with notes only; if structure-vs-free-text becomes painful in actual use, add the columns then.
+
+### Saved-filter tabs above the table
+
+v1 has filter toggles ("Show only Shortlisted," "Hide Rejected"). A complementary UI: persistent tabs above the table — `All / Active / Toured / Watching / Offered` — that are saved filter shortcuts matching how the buyer already thinks ("show me my shortlist"). Default tab on load could become `Active` once the family has any shortlisted listings. Pure frontend work, lands in `index.html` after F8.
+
+### "Recently delisted (you tracked these)" surface
+
+The spec acknowledges that orphan `listing_status` rows persist when a listing leaves `db.json` (delisting/sold), and the merge tolerates them. It doesn't surface them visually. A collapsible section under the table — "Recently delisted that you tracked" — would make "what passed us by" visible. Useful signal for the family ("we vetoed this and it sold in 11 days at asking — recalibrate"). Requires the merge step to keep orphan rows on a separate list rather than dropping them.
+
+### Re-evaluation badge specifics
+
+v1.5 already has "Watch-triggered visual diff." Concrete rendering: a yellow `RECONSIDER` pill next to the price for any watched listing whose latest `data/db.json` price is lower than the price stored at the moment the user marked it watched. Implementation needs a `price_at_watch` snapshot on the status row (NUMERIC, set on the watch=true transition). One additional column; lands cleanly when v1.5 picks up the diff work.
+
+---
+
 ## v1 Acceptance Criteria
 
 1. **Cross-device sync.** Mark a listing Shortlisted on the iPhone. Open the laptop. After hard refresh, the same listing shows Shortlisted.

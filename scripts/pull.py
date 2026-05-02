@@ -275,12 +275,19 @@ _P4 = "extraListingDetails_data_sale_"
 # Lacks the financial fields (taxes/maint/fees) — those live in the blocked
 # endpoint.
 _PP = "sale_"
+# _SC = "saleCombineResponse_sale_" prefix used by memo23's 2026-05-02 build
+# when individual listing URLs (/sale/{id}) are fetched. This build pulls
+# financials from a non-PX-blocked source. Has pricing_*, propertyDetails_*,
+# and deeply nested saleCombineResponse_sale_* fields. Top-level convenience
+# fields (maintenance, monthly_taxes, monthly_fees) are also present.
+_SC = "saleCombineResponse_sale_"
 
 def normalize(raw):
     """Normalize a sale listing. Returns None if price is missing."""
     price = (
         raw.get(f"{_P1}pricing_price")
         or raw.get("pricing_price")
+        or raw.get(f"{_SC}pricing_price")  # 2026-05-02 build
         or raw.get("price")
         or raw.get("askingPrice")
         or raw.get("asking_price")
@@ -291,7 +298,8 @@ def normalize(raw):
     if not price:
         ph_raw = (raw.get(f"{_P4}price_histories_json")
                   or raw.get(f"{_P2}price_histories_json")
-                  or raw.get(f"{_PP}price_histories_json"))
+                  or raw.get(f"{_PP}price_histories_json")
+                  or raw.get(f"{_SC}price_histories_json"))
         if ph_raw:
             try:
                 ph_list = json.loads(ph_raw) if isinstance(ph_raw, str) else ph_raw
@@ -306,7 +314,8 @@ def normalize(raw):
 
     listing_id = str(
         raw.get("listingId") or raw.get(f"{_P1}id") or raw.get("id")
-        or raw.get(f"{_PP}id") or ""
+        or raw.get(f"{_PP}id") or raw.get(f"{_SC}id")  # 2026-05-02 build
+        or ""
     )
     url = (
         raw.get("originalUrl") or raw.get("url")
@@ -315,11 +324,14 @@ def normalize(raw):
 
     beds = _get(
         raw.get(f"{_P1}propertyDetails_bedroomCount"),
+        raw.get("propertyDetails_bedroomCount"),  # 2026-05-02 build
         raw.get("bedroomCount"), raw.get("bedrooms"), raw.get("beds"),
     )
     full = _get(raw.get(f"{_P1}propertyDetails_fullBathroomCount"),
+                raw.get("propertyDetails_fullBathroomCount"),  # 2026-05-02 build
                 raw.get("fullBathroomCount"), raw.get("bathrooms")) or 0
     half = _get(raw.get(f"{_P1}propertyDetails_halfBathroomCount"),
+                raw.get("propertyDetails_halfBathroomCount"),  # 2026-05-02 build
                 raw.get("halfBathroomCount")) or 0
     baths = (full or 0) + (half or 0) * 0.5
 
@@ -328,15 +340,18 @@ def normalize(raw):
         or raw.get(f"{_P3}type")
         or raw.get("building_building_type")
         or raw.get(f"{_PP}building_building_type")
+        or raw.get(f"{_SC}building_building_type")  # 2026-05-02 build
         or raw.get("propertyType") or raw.get("buildingType") or ""
     ).lower()
     ptype = "coop" if any(s in btype for s in ("co-op", "coop", "co_op")) else "condo"
 
     street = (
         raw.get(f"{_P1}propertyDetails_address_street")
+        or raw.get("propertyDetails_address_street")  # 2026-05-02 build
         or raw.get(f"{_P3}address_street")
         or raw.get("address_street") or raw.get("addressStreet")
         or raw.get(f"{_PP}building_subtitle")  # partial response: "200 East 66th Street"
+        or raw.get(f"{_SC}building_subtitle")  # 2026-05-02 build
         or raw.get("street") or ""   # Pass 1 search results use "street" directly
     )
     if not street:
@@ -348,6 +363,7 @@ def normalize(raw):
 
     unit = (
         raw.get(f"{_P1}propertyDetails_address_unit")
+        or raw.get("propertyDetails_address_displayUnit")  # 2026-05-02 build
         or raw.get("address_unit") or raw.get("addressUnit") or raw.get("unit") or ""
     )
 
@@ -356,6 +372,7 @@ def normalize(raw):
         raw.get(f"{_P2}building_title") or raw.get(f"{_P3}name")
         or raw.get("building_title") or raw.get("buildingTitle") or raw.get("buildingName")
         or raw.get(f"{_PP}building_title")
+        or raw.get(f"{_SC}building_title")  # 2026-05-02 build
         or ((_bldg_obj or {}).get("name") if isinstance(_bldg_obj, dict) else None)
         or street or ""
     )
@@ -364,15 +381,19 @@ def normalize(raw):
         raw.get(f"{_P2}area_name") or raw.get(f"{_P3}area_name")
         or raw.get("area_name") or raw.get("neighborhood") or raw.get("neighborhoodName")
         or raw.get(f"{_PP}area_name")
+        or raw.get(f"{_SC}area_name")  # 2026-05-02 build
         or raw.get("areaName") or ""   # Pass 1 search results use "areaName"
     )
 
     sqft = (
         raw.get(f"{_P1}propertyDetails_livingAreaSize")
+        or raw.get("propertyDetails_livingAreaSize")  # 2026-05-02 build
         or raw.get("livingAreaSize") or raw.get("sqft") or raw.get("squareFeet")
     )
     ppsqft = (raw.get(f"{_P2}price_per_sqft") or raw.get("price_per_sqft")
-              or raw.get(f"{_PP}price_per_sqft") or raw.get("ppsqft"))
+              or raw.get(f"{_PP}price_per_sqft")
+              or raw.get(f"{_SC}price_per_sqft")  # 2026-05-02 build
+              or raw.get("ppsqft"))
     if not ppsqft and sqft and price:
         ppsqft = round(int(price) / sqft)
 
@@ -380,26 +401,41 @@ def normalize(raw):
         raw.get(f"{_P2}building_year_built") or raw.get(f"{_P3}yearBuilt")
         or raw.get("building_year_built") or raw.get("yearBuilt") or raw.get("builtIn")
         or raw.get(f"{_PP}building_year_built")
+        or raw.get(f"{_SC}building_year_built")  # 2026-05-02 build
     )
     days_on_market = _get(
         raw.get(f"{_P2}days_on_market"),
         raw.get("days_on_market"), raw.get("daysOnMarket"),
         raw.get(f"{_PP}days_on_market"),
+        raw.get(f"{_SC}days_on_market"),  # 2026-05-02 build
     )
 
     # Use _get (not or) for fees/taxes — $0 is valid (tax abatements, some condos)
+    #
+    # 2026-05-02 build adds top-level convenience fields (maintenance,
+    # monthly_taxes, monthly_fees) AND nested pricing_monthly* fields.
+    # These are checked first because they're the most reliable source
+    # when the new build is active.
     maint_fee = _get(
         raw.get(f"{_P1}pricing_maintenanceFee"),
+        raw.get("pricing_monthlyCommonCharges"),  # 2026-05-02 build (condo common charges)
         raw.get("pricing_monthly_fees"), raw.get("monthlyHoa"), raw.get("commonCharges"),
     )
     taxes_fee = _get(
         raw.get(f"{_P1}pricing_taxes"),
+        raw.get("pricing_monthlyTaxes"),  # 2026-05-02 build
+        raw.get("monthly_taxes"),  # 2026-05-02 build top-level
         raw.get("pricing_monthly_taxes"), raw.get("monthlyTax"), raw.get("realEstateTaxes"),
     )
-    old_maint = raw.get("pricing_monthly_maintenance") or raw.get("maintenance") or raw.get("monthlyMaintenance")
+    old_maint = _get(
+        raw.get("pricing_monthlyMaintenance"),  # 2026-05-02 build
+        raw.get("maintenance"),  # 2026-05-02 build top-level
+        raw.get("pricing_monthly_maintenance"),
+        raw.get("monthlyMaintenance"),
+    )
 
     if ptype == "coop":
-        maint  = maint_fee or old_maint
+        maint  = old_maint or maint_fee
         fees   = None
         taxes  = None
     else:
@@ -408,7 +444,9 @@ def normalize(raw):
         maint  = None
 
     agent_name = agent_phone = agent_email = agent_firm = None
-    contacts_raw = raw.get(f"{_P2}contacts_json") or raw.get(f"{_PP}contacts_json")
+    contacts_raw = (raw.get(f"{_P2}contacts_json")
+                    or raw.get(f"{_PP}contacts_json")
+                    or raw.get(f"{_SC}contacts_json"))  # 2026-05-02 build
     if contacts_raw:
         try:
             contacts = json.loads(contacts_raw) if isinstance(contacts_raw, str) else contacts_raw
@@ -431,7 +469,12 @@ def normalize(raw):
     history = []
     ph_raw = (raw.get(f"{_P4}price_histories_json")
               or raw.get(f"{_P2}price_histories_json")
-              or raw.get(f"{_PP}price_histories_json"))
+              or raw.get(f"{_PP}price_histories_json")
+              or raw.get(f"{_SC}price_histories_json")  # 2026-05-02 build (flat format)
+              # NOTE: propertyHistory_json (also 2026-05-02) has a nested
+              # saleEventsOfInterest structure — NOT the flat date/price/event
+              # format. Don't add it here; the flat source above is preferred.
+              )
     if ph_raw:
         try:
             ph_list = json.loads(ph_raw) if isinstance(ph_raw, str) else ph_raw
@@ -455,14 +498,19 @@ def normalize(raw):
                 history.append({"date": date, "price": int(hprice) if hprice else None,
                                 "event": event, "broker": broker})
 
-    # Extract listed_date from the most recent LISTED event in price history.
-    # Stored so the JS app can compute days-on-market at render time (always
-    # current) rather than relying on a stale scraped snapshot.
+    # Extract listed_date: prefer explicit listed_at timestamp (2026-05-02
+    # build), fall back to most recent LISTED event in price history. Stored
+    # so the JS app can compute days-on-market at render time.
     listed_date = None
-    for h in history:
-        if h.get("event") == "LISTED" and h.get("date"):
-            listed_date = h["date"]
-            break   # history is reverse-chronological; first LISTED = most recent
+    listed_at_raw = (raw.get(f"{_SC}listed_at")  # 2026-05-02 build
+                     or raw.get(f"{_PP}listed_at"))
+    if listed_at_raw:
+        listed_date = listed_at_raw[:10]  # "2026-04-30" from "2026-04-30T12:43:04-04:00"
+    else:
+        for h in history:
+            if h.get("event") == "LISTED" and h.get("date"):
+                listed_date = h["date"]
+                break   # history is reverse-chronological; first LISTED = most recent
 
     # Partial-response flags from memo23's actor (added 2026-05-02). When the
     # actor's primary endpoint (SaleListingDetailsFederated) is blocked by

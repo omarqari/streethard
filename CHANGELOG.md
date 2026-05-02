@@ -4,6 +4,192 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Status Backend Built + Infrastructure Complete (Session 18)
+
+Built and deployed the entire Status Feature backend (B1–B6) and completed all infrastructure tasks (D1–D5, U1–U3). The API is live on Railway.
+
+### Backend (B1–B6)
+
+All six backend tasks completed in one session:
+
+- **B1:** `api/main.py` (FastAPI app), `api/db.py` (asyncpg pool), `api/requirements.txt`, `api/railway.toml`. `/health` returns `{"ok": true, "db": "connected"}`.
+- **B2:** `api/schema.sql` with `listing_status` table, CHECK constraint on status values, indexes on `listing_id` and `watch`. Idempotent startup migration.
+- **B3:** `GET /status` — public read, no auth required, `Cache-Control: no-store`.
+- **B4:** `PUT /status/{listing_id}` — upsert with `COALESCE` for partial patches. `X-API-Key` auth via `hmac.compare_digest`.
+- **B5:** `POST /status/batch` — idempotent batch upsert for offline outbox flush.
+- **B6:** CORS middleware with `ALLOWED_ORIGIN` + `ALLOWED_ORIGIN_FALLBACK` env vars.
+
+All endpoints verified with curl locally before push to Railway.
+
+### Infrastructure (D1–D5, U1–U3)
+
+- **Railway:** Project created, Postgres provisioned, env vars set (`WRITE_API_KEY`, `ALLOWED_ORIGIN`, `ALLOWED_ORIGIN_FALLBACK`), Hobby tier activated ($5/mo), healthcheck configured. API deployed and responding.
+- **DNS:** Migrated nameservers from Namecheap to Spaceship. Added 4 custom DNS records on Spaceship: `streethard` CNAME → `omarqari.github.io`, `api.streethard` CNAME → `bu5x85os.up.railway.app`, `_railway-verify` TXT, `www` CNAME → `omarqari.github.io`.
+- **GitHub Pages:** Custom domain `streethard.omarqari.com` configured on the streethard repo. DNS check in progress (awaiting nameserver propagation).
+- **Railway custom domain:** `api.streethard.omarqari.com` added. TXT verification record in DNS. Awaiting propagation for auto-SSL.
+
+### www.omarqari.com → LinkedIn Redirect
+
+User requested `www.omarqari.com` redirect to `https://www.linkedin.com/in/oqari/`. Spaceship's built-in URL Redirect feature would have destroyed the custom DNS records (it forces one "hosting service" at a time). Solution: created `omarqari/www-redirect` GitHub repo with a meta-refresh `index.html` + `CNAME` file, enabled GitHub Pages, added `www` CNAME on Spaceship pointing to `omarqari.github.io`. Zero-cost, no maintenance.
+
+### Pending After DNS Propagation
+
+- Verify `https://streethard.omarqari.com` loads the app
+- Verify `https://api.streethard.omarqari.com/health` returns 200
+- Enable "Enforce HTTPS" on GitHub Pages settings
+- Remove `ALLOWED_ORIGIN_FALLBACK` from Railway env vars
+- Verify `www.omarqari.com` redirects to LinkedIn
+
+### What's Next
+
+Frontend build (F1–F8 in TASKS.md). Start with F1 (Settings panel + Test Connection) and F7 (two-fetch load + merge), then F2 (status pill cycling).
+
+### Files Created
+
+- `api/main.py` — FastAPI application with all endpoints
+- `api/db.py` — asyncpg connection pool management
+- `api/schema.sql` — listing_status table DDL
+- `api/requirements.txt` — Python dependencies
+- `api/railway.toml` — Railway deployment config
+- `omarqari/www-redirect` repo — GitHub Pages redirect to LinkedIn
+
+### Files Updated
+
+- `TASKS.md` — B1–B6 marked complete, D1–D5 marked complete, U1–U3 marked complete, WRITE_API_KEY generated
+- `CLAUDE.md` — Status Feature Architecture section updated to reflect backend-complete state
+- `CHANGELOG.md` — this entry
+- `.env` — added `WRITE_API_KEY` and `STATUS_API_URL`
+
+---
+
+## 2026-05-02 — Status Feature Proposal Review (Session 17)
+
+User asked for a fresh CPO-style proposal on the listing-status tracking feature. The proposal was written from a buyer's-mental-model angle without re-reading the locked spec first, and recommended committed JSON in the repo as the persistence story. That part was superseded by the Session 13–16 architecture (Railway + FastAPI + managed Postgres on `api.streethard.omarqari.com`) and not folded back into the docs — the locked design is correct for the cross-device requirement and shouldn't be disturbed.
+
+What was new and worth keeping has been logged in the docs:
+
+- `STATUS-FEATURE.md` gains a "Deferred Design Ideas" section near the end capturing five ideas from the proposal that aren't in v1 but are worth considering: `triaged-out` as a seventh status, a `listing_status_history` audit table, structured tour metadata, saved-filter tabs above the table, a "Recently delisted (you tracked these)" surface, and a concrete spec for the v1.5 watch-triggered re-evaluation pill.
+- `TASKS.md` v1.5 backlog gains the saved-filter tabs and recently-delisted surface, plus a concrete `price_at_watch` snapshot spec for the existing v1.5 visual-diff item. v2 backlog gains structured tour metadata columns and the status-history table.
+- `TASKS.md` "Open Questions → Status feature" gets four new questions to resolve before v1 schema hardens (Session 17 bucket): `triaged-out` as a status, last-write-wins vs history, notes structure, default tab on load.
+
+No code changed. v1 build (B1–B6 / F1–F8 / D1–D8 / U1–U4) remains the next session's opener as before.
+
+### Files Updated
+
+- `STATUS-FEATURE.md` — new "Deferred Design Ideas — Logged 2026-05-02 (Proposal Review)" section before v1 Acceptance Criteria.
+- `TASKS.md` — v1.5 list expanded; v2 list expanded; Open Questions gets a new "Session 17 — proposal-review additions" bucket.
+- `CHANGELOG.md` — this entry.
+
+### Lesson For Future Claude
+
+Before designing a feature that already has a locked spec, read the spec doc first. The proposal sunk effort on a persistence path (`data/status.json` + Cowork commits) the user already evaluated and rejected explicitly back in Sessions 13–14. The `Personal Watch List` localStorage scope-down (CLAUDE.md) and the locked Railway design (`STATUS-FEATURE.md` "Architecture Decision" table) both signal that this question has been settled. The buyer's-mental-model framing was useful; the architecture re-litigation was not.
+
+### Continuation — Broader CPO Product Slate
+
+Same session, separate ask: CPO-mode proposal for *product improvements
+across the whole app* (not just the status feature). 15 proposals drafted
+across six themes: Decision Quality, Data Quality, UX, Signal & Noise,
+Due Diligence Integration, Automation. Each proposal calibrated for n=1
+personal purchase — no commercial APIs, no StreetEasy scraping, no
+production-grade infra. Reviewed against in-flight TASKS.md items before
+committing: 14 stand as-is, 1 (`#15 Listing-Watch List localStorage`)
+superseded by the Status Feature backend already in motion.
+
+Three relate to or extend in-flight work: `#3 Price-History Signal Score`
+relates to the v1.5 RECONSIDER pill but is broader (universal vs.
+watch-triggered); `#9 URL-encoded Saved Views` relates to the v1.5
+Saved-filter tabs but is orthogonal (ad-hoc sharing vs. fixed nav);
+`#12 In-App Pipeline Health Strip` extends the in-flight pipeline-health
+assertion by adding a user-visible surface.
+
+The slate plus five open decisions awaiting user selection are captured
+in a new `PRODUCT-BACKLOG.md`. CPO recommendations:
+
+- **Quick-wins slate (3 × S):** Rent-vs-Buy Card, Compare Pane, Pipeline
+  Health Strip — closes three real gaps with no inter-dependencies.
+- **Negotiation-data arc:** PLUTO BBL Enrichment → ACRIS Condo Comp
+  Overlay → Per-Listing DD Quicklinks → Comp Sheet PDF — each builds on
+  the prior, ends with an artifact an attorney could review.
+
+User has not yet selected — open decisions tracked in TASKS.md
+"Open Questions → Product backlog (Session 17)" so they stay visible.
+
+#### Files Updated (continuation)
+
+- `PRODUCT-BACKLOG.md` — new file. The full themed slate, the
+  superseded #15, and the five open decisions.
+- `TASKS.md` — `Open Questions` gains a `Product backlog (Session 17 —
+  2026-05-02)` bucket listing the five open decisions.
+- `PROJECTPLAN.md` — `Phase 2 enhancements` gains a "Product backlog"
+  bullet pointing to PRODUCT-BACKLOG.md.
+- `CLAUDE.md` — `Files in This Project` lists PRODUCT-BACKLOG.md.
+
+#### Lesson For Future Claude (continuation)
+
+When proposing CPO-style work, read TASKS.md to the bottom *first*. The
+initial slate of 15 included a localStorage-only watch list (`#15`)
+which would have been ~1 session of work that needed to be torn out
+once the Railway-based Status Feature shipped. Catching that overlap
+*before* writing the file kept the recommendation honest. Same lesson
+the Session 17 status-feature entry above documents — applied
+differently.
+
+---
+
+## 2026-05-02 — Custom Domain Decision + Documentation Pass (Session 16)
+
+Closed the last two open architectural questions on the status backend (language pick was already Python; domain was the genuinely-open one). The user signed off on running everything under `omarqari.com` subdomains via Spaceship DNS. Updated all four design/orientation docs to reflect the new URLs and added a user-action checklist for the DNS work.
+
+### Decisions Locked This Session
+
+**Custom domains (replaces Session 15's "no custom domain in v1" call).**
+
+- `streethard.omarqari.com` → CNAME → `omarqari.github.io` — the static StreetHard app
+- `api.streethard.omarqari.com` → CNAME → the Railway API service
+
+Domain registrar is Spaceship (`spaceship.com`); Omar owns `omarqari.com`. The default `omarqari.github.io/streethard` and `*.up.railway.app` URLs stay live as fallbacks during propagation and as backups thereafter.
+
+**Implications threaded through the docs:**
+
+- CORS allowlist on the API flips from `https://omarqari.github.io` to `https://streethard.omarqari.com` (canonical) plus an optional `ALLOWED_ORIGIN_FALLBACK` for the cutover window.
+- `API_BASE` constant in `index.html` will be `https://api.streethard.omarqari.com`.
+- A `CNAME` file lands at the repo root once GitHub Pages' Custom Domain field is set.
+- TLS is auto-issued by both GitHub Pages and Railway once the CNAMEs resolve — no manual cert work.
+
+**No code written this session.** Pure documentation pass + user-action checklist.
+
+### User Action Items Created
+
+Three dashboard tasks Omar owns before the first deploy of the API can land cleanly:
+
+1. **Spaceship DNS panel** — add two CNAME records (`streethard` → `omarqari.github.io.`, `api.streethard` → Railway-printed target).
+2. **GitHub Pages** — repo Settings → Pages → Custom domain → `streethard.omarqari.com`. Auto-creates the `CNAME` file.
+3. **Railway** — project → API service → Settings → Custom Domain → `api.streethard.omarqari.com`. Print the CNAME target back into Spaceship for U1's second record.
+
+Full sequenced list in `TASKS.md` under "User Action Required — DNS + Custom Domains".
+
+### Files Updated
+
+- `STATUS-FEATURE.md` — base URL, CORS section, deployment topology env vars, smoke-test snippet, starter-snippet CORS code.
+- `STATUS-BACKEND-WALKTHROUGH.md` — section F (deployment topology) gets the custom-domain pre-req block; section I (CORS) updated to use the dual-origin allowlist.
+- `CLAUDE.md` — new "Status Feature Architecture (Sessions 13–16)" section so future Claude instances orient against the locked design without re-reading both spec docs.
+- `PROJECTPLAN.md` — Hosting section reflects the canonical URLs; File Structure includes the `api/` subdirectory and the `CNAME` marker file; Phase 3 "Open Questions" replaced with "Resolved Pre-Build Questions" and a tighter "Still-Open" list.
+- `TASKS.md` — D3, B6, D6 updated to reference the custom domains; new "User Action Required" section above Backend Build; (v2) Custom domain item promoted to v1 and marked done; "Open Questions" reorganized into Buying-decision and Status-feature buckets.
+
+### Open Questions Carried Forward (non-blocking for build)
+
+- **Final status names** (`watching / viewing / shortlisted / rejected / offered`) — proposed but not yet explicitly signed off; CHECK constraint hardens on first write.
+- **Final chip vocabulary** — same as above.
+- **Mobile Safari `localStorage` eviction** — iOS 17 wipes site data after ~7 days unused; decide whether to mitigate (IndexedDB) at v1 or accept the periodic re-paste.
+- **Spouse/family writes attribution** — currently single shared key; revisit only if attribution ever matters.
+- **DNS cutover timing** — when to drop `ALLOWED_ORIGIN_FALLBACK` from Railway env vars (after both devices verify load via `streethard.omarqari.com`).
+
+### Next Session Opens With
+
+The 30-minute starter from `STATUS-BACKEND-WALKTHROUGH.md` section O — write `api/main.py` + `api/requirements.txt` + `api/Procfile`, push, connect Railway to the repo with Root Directory `api/`, hit `/health` from the laptop. Don't write business logic until that round trip works. The DNS work (U1–U4) can happen in parallel since it's independent of the API build itself; the custom domain only needs to be live by the time the frontend wires `API_BASE`.
+
+---
+
 ## 2026-05-02 — Status Backend Architecture Locked + Build Walkthrough (Session 15)
 
 Continuation of Session 13's listing-status design work. Closed out the six pre-build decisions, added the language pick, and produced a CTO/Architect build walkthrough. No code yet — `api/` directory still empty. Next session opens by writing the 30-minute starter from section O of the walkthrough.

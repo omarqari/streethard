@@ -400,6 +400,7 @@ Data sources validated. Apify confirmed as primary. Mortgage calculator defaults
 - **Rental comp analysis:** ✅ Pipeline built; rental Pass 2 schema verified. `normalize_rental()` rewritten with verified field names. End-to-end production run on a standard apartment still pending.
 - **New/reduced badges:** Compare current pull against previous dated JSON → `badge` field on each listing → pill badge in app. Architecture documented above. Pending implementation.
 - **Co-op sqft gap:** Evaluate whether to add a supplemental co-op pass without the sqft filter
+- **Product backlog (Session 17, 2026-05-02):** A CPO slate of 14 themed proposals is documented in `PRODUCT-BACKLOG.md` covering Decision Quality (rent-vs-buy breakeven, $/BR columns, price-history signal score, comp-sheet PDF), Data Quality (PLUTO BBL enrichment, ACRIS condo comp overlay, floor-plan surfacing), UX (compare pane, URL-encoded saved views, map view), Signal & Noise (activity digest, in-app pipeline health strip), DD Integration (per-listing DD quicklinks), and Automation (cron-slot diversification). Five open decisions awaiting user selection — see PRODUCT-BACKLOG.md "Open Decisions" and TASKS.md "Open Questions → Product backlog."
 
 ### Phase 3 — Shortlisting (~5–20 candidates)
 Run the 15-minute due diligence checklist per serious candidate. Maintain a running shortlist with status (watching / viewing / shortlisted / rejected / offered).

@@ -110,38 +110,46 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 
 ## Status Feature Architecture (Sessions 13–16)
 
-The in-app listing-status feature (status pill, watch toggle, notes,
-chips) is **not yet built** but the architecture is fully locked. Future
-Claude instances should not re-litigate the design — read
-`STATUS-FEATURE.md` for the spec and `STATUS-BACKEND-WALKTHROUGH.md` for
-the build guide. The locked decisions:
+**Backend is built and deployed (Session 18, 2026-05-02).** The API is
+live on Railway with all six endpoints operational. Frontend wiring
+(F1–F8) is next. Architecture is fully locked — do not re-litigate.
+Read `STATUS-FEATURE.md` for the spec and `STATUS-BACKEND-WALKTHROUGH.md`
+for the build guide.
 
-- **Backend:** FastAPI on Python 3.12 + asyncpg + Railway managed
-  Postgres. New `api/` directory in this repo (Railway "Root Directory"
-  feature). One table (`listing_status`), one shared write key, no
-  per-user attribution.
-- **Frontend:** All changes land in `index.html`. Two fetches on load
-  (listings from Pages, status from the API), merged in JS by
-  `listing_id`. Optimistic writes + localStorage outbox for offline.
-- **Domains (Session 16):** `streethard.omarqari.com` for the static
+- **Backend (DONE):** FastAPI on Python 3.12 + asyncpg + Railway managed
+  Postgres. `api/` directory in the streethard repo (Railway "Root
+  Directory" feature). One table (`listing_status`), one shared write
+  key, no per-user attribution. Endpoints: `/health`, `GET /status`,
+  `PUT /status/{listing_id}`, `POST /status/batch`. All verified with
+  curl locally and on Railway.
+- **Frontend (NOT YET BUILT):** All changes land in `index.html`. Two
+  fetches on load (listings from Pages, status from the API), merged in
+  JS by `listing_id`. Optimistic writes + localStorage outbox for
+  offline. See TASKS.md F1–F8.
+- **Domains (Session 18):** `streethard.omarqari.com` for the static
   app (CNAME → `omarqari.github.io`), `api.streethard.omarqari.com` for
-  the API (CNAME → Railway service). Spaceship is the registrar.
+  the API (CNAME → `bu5x85os.up.railway.app`). Spaceship is the
+  registrar (nameservers migrated from Namecheap in Session 18).
+  DNS propagation pending.
 - **Cron is unaffected.** `data/db.json` stays in the repo, written by
   the cron. The API never touches `db.json`. Two stores, two rates of
   change, zero coupling.
-- **Auth:** single `WRITE_API_KEY` (`openssl rand -hex 32`), Railway
-  env var, pasted once per device into the Settings panel. Reads are
-  public. Family is read-only by default.
+- **Auth:** `WRITE_API_KEY` is `MLCzWI0Jj9_JiTsEU5UUB92Jn-ILmPnLhFbDK1tCnN4`.
+  Set in Railway env vars and saved in local `.env`. Pasted once per
+  device into the Settings panel (not yet built — F1). Reads are public.
 - **Cost:** $5/mo Hobby tier on Railway so the service doesn't sleep.
 
-Build phasing in `TASKS.md` under "Status Feature v1 Build". Next
-session opens by writing the 30-minute `/health` starter from
-section O of the walkthrough — do not write business logic until the
-Railway round-trip works.
+Next session opens with the **frontend build** (F1–F8 in TASKS.md).
+Start with F1 (Settings panel + Test Connection) and F7 (two-fetch
+load + merge) so the API round-trip is validated from the browser
+before building status pill cycling (F2).
 
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
+- **Status API: LIVE on Railway** — `https://api.streethard.omarqari.com` (custom domain pending DNS propagation; Railway default URL `bu5x85os.up.railway.app` works now). FastAPI + asyncpg + managed Postgres. Hobby tier ($5/mo). All endpoints operational: `/health`, `GET /status`, `PUT /status/{id}`, `POST /status/batch`.
+- **DNS: migrated to Spaceship** (Session 18, 2026-05-02). Nameservers switched from Namecheap to Spaceship (`launch1.spaceship.net`, `launch2.spaceship.net`). Custom records: `streethard` CNAME, `api.streethard` CNAME, `_railway-verify` TXT, `www` CNAME (LinkedIn redirect). Propagation pending.
+- **www.omarqari.com redirect:** GitHub Pages repo `omarqari/www-redirect` serves a meta-refresh redirect to `https://www.linkedin.com/in/oqari/`. Will go live when DNS propagates.
 - **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 INTERMITTENT (proxy IP rotation; works most of the time but cron's Mon/Thu 09:00 UTC slot kept landing on blocked IPs returning empty results). Pass 2 INTERMITTENT (the `SaleListingDetailsFederated` GraphQL endpoint hits `PX_api_v6` 403s and falls back to a partial endpoint missing the financial fields). Memo23 issue thread updated 2026-05-02 with run-ID evidence.
 - **Pipeline: Incremental ("Puzzle" model) with resilience guards** — `data/db.json` is the canonical store. Each cron run discovers new listings via Pass 1 and fills in detail via Pass 2 (capped at 100/run). See PROJECTPLAN.md for full architecture.
 - **db.json state (2026-05-02 evening):** 419 active listings (368 sale, 51 rental). 373 at pass2 quality (the original cohort), 46 at pass1 quality (new arrivals). Of the 46 pass1 records, 38 sales were partially backfilled — they now have `listed_date`, `price_history`, agent contact, year_built, neighborhood, and `price_per_sqft`, but still lack `monthly_taxes` and `maintenance` because those fields require the blocked endpoint. The 8 pass1 rentals returned 0 items in the partial backfill batch and remain stub-only.
@@ -155,6 +163,31 @@ Railway round-trip works.
 - **`get_run` retry on transient 5xx** — Apify's API occasionally returns 502/503/504 during status polling. The client now retries with exponential backoff (1s, 2s, 4s, 8s) before raising. A single transient blip during a long Pass 2 run no longer kills the whole pipeline.
 - **Pass 2 batch loop catches `requests.RequestException`** alongside `ApifyRunError`. Affected listings remain at `data_quality=pass1` and re-queue automatically on the next run.
 - **`refresh.yml` commit step uses `if: success() || failure()`** so Pass 1 progress that was already saved survives a Pass 2 crash. The existing `git diff --cached --quiet` check still no-ops on truly empty runs.
+
+## Git Operations from Cowork
+
+Cowork can push, pull, and commit to the `streethard` repo directly — no browser automation or user terminal needed.
+
+**How it works:** A fine-grained GitHub PAT is stored in `.env` as `GITHUB_TOKEN`. To authenticate git operations, read the token and inject it into the remote URL:
+
+```bash
+cd "/sessions/.../mnt/NYC Real Estate Advisor"  # use the actual sandbox mount path
+TOKEN=$(grep GITHUB_TOKEN .env | cut -d= -f2)
+git push "https://omarqari:${TOKEN}@github.com/omarqari/streethard.git" main
+```
+
+**For pull:**
+```bash
+TOKEN=$(grep GITHUB_TOKEN .env | cut -d= -f2)
+git pull "https://omarqari:${TOKEN}@github.com/omarqari/streethard.git" main
+```
+
+**Rules:**
+- Never print, log, or echo the token value
+- Never write the token to any file other than `.env`
+- Never store the token in memory files, CLAUDE.md, or chat
+- The token is scoped to the `streethard` repo only (Contents read/write)
+- Token expires every 90 days; if auth fails, ask the user to rotate it at GitHub → Settings → Developer settings → Fine-grained tokens
 
 ## Days-on-Market — Field Reliability
 
@@ -187,11 +220,18 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `SQFT-METHODOLOGY.md` — co-op sqft estimation method, validation, failure modes (Sessions 10–11)
 - `STATUS-FEATURE.md` — design spec for in-app listing-status tracking (Session 13, refined Session 14, custom-domain update Session 16)
 - `STATUS-BACKEND-WALKTHROUGH.md` — CTO build guide for the FastAPI+Postgres status backend on Railway (Session 15, custom-domain update Session 16)
+- `PRODUCT-BACKLOG.md` — CPO slate of 14 proposed product improvements, themed by Decision Quality / Data Quality / UX / Signal & Noise / DD Integration / Automation, plus open decisions awaiting user selection (Session 17, 2026-05-02)
 - `data/db.json` — canonical listing store (the source of truth; never overwritten destructively)
 - `data/latest.json` — generated from db.json for the app to consume
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
 - `scripts/pull.py` — incremental Apify pull script
 - `index.html` — StreetHard app shell
+- `api/main.py` — FastAPI status backend (all endpoints)
+- `api/db.py` — asyncpg connection pool
+- `api/schema.sql` — listing_status table DDL
+- `api/requirements.txt` — Python dependencies for the API
+- `api/railway.toml` — Railway deployment config
+- `.env` — local env vars (RAPIDAPI_KEY, APIFY_TOKEN, GITHUB_TOKEN, WRITE_API_KEY, STATUS_API_URL)
 - `floorplans/` — gitignored scratch directory; user drops floor plan images here for sqft estimation
 
 ## Co-op SqFt Estimation
