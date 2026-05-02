@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-30",
+  "generated_at": "2026-05-02",
   "listing_count": 373,
   "sale_count": 330,
   "rental_count": 43,
@@ -10801,10 +10801,10 @@
       "unit": "PH",
       "neighborhood": "Yorkville",
       "price": 3300000,
-      "sqft": null,
+      "sqft": 3000,
       "beds": 4,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1100,
       "type": "coop",
       "year_built": 1966,
       "days_on_market": 75,
@@ -10823,7 +10823,10 @@
           "broker": "Compass"
         }
       ],
-      "listed_date": "2026-02-04"
+      "listed_date": "2026-02-04",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "245 East 87th Street PH: pixel-method on Zweben Team plan; calibrated off Primary Bedroom 23'3\" \u00d7 19'7\". Polygon includes ~400 sqft of terraces (not counted as interior). Interior estimate ~3,000, range 2,700-3,300."
     },
     {
       "listing_type": "sale",
@@ -11097,10 +11100,10 @@
       "unit": "14C",
       "neighborhood": "Carnegie Hill",
       "price": 3250000,
-      "sqft": null,
+      "sqft": 2400,
       "beds": 4,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1354,
       "type": "coop",
       "year_built": 1928,
       "days_on_market": 12,
@@ -11173,7 +11176,10 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "listed_date": "2026-04-08"
+      "listed_date": "2026-04-08",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "8 East 96th Street 14C: pixel-method on B&W blueprint; calibrated off Living/Dining Room 19'6\" \u00d7 15'8\". Range 2,200-2,600."
     },
     {
       "listing_type": "sale",
@@ -11799,10 +11805,10 @@
       "unit": "6A",
       "neighborhood": "Carnegie Hill",
       "price": 3200000,
-      "sqft": null,
+      "sqft": 3500,
       "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 914,
       "type": "coop",
       "year_built": 1926,
       "days_on_market": 98,
@@ -11833,7 +11839,10 @@
           "broker": "Compass"
         }
       ],
-      "listed_date": "2026-04-14"
+      "listed_date": "2026-04-14",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "1170 Fifth Avenue 6A: pixel-method (Method 1.5) on Compass plan; calibrated off Primary Bedroom 17'10\" \u00d7 12'10\". Wide error band (~\u00b110%) due to floor plan distortion. Range 3,200-3,800."
     },
     {
       "listing_type": "sale",
@@ -15095,10 +15104,10 @@
       "unit": "10B",
       "neighborhood": "Lenox Hill",
       "price": 2850000,
-      "sqft": null,
+      "sqft": 1750,
       "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1629,
       "type": "coop",
       "year_built": 1930,
       "days_on_market": 14,
@@ -15117,7 +15126,10 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "listed_date": "2026-04-06"
+      "listed_date": "2026-04-06",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "pixel_polygon",
+      "sqft_estimate_note": "829 Park Avenue 10B: pixel-method on duplex plan; calibrated off upper-level Primary Bedroom 12'4\" \u00d7 14'4\". Range 1,600-1,900."
     },
     {
       "listing_type": "sale",
