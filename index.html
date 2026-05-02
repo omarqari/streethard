@@ -729,14 +729,16 @@ function fmtDate(s) {
 // is unreliable — validation across all 367 listings (2026-05-02) showed 90.5%
 // undercount, with worst-case deltas of 100+ days. listed_date matches the
 // most recent LISTED event in price_history for 99.7% of listings, so we
-// trust it and fall back to days_on_market only when listed_date is missing.
+// trust it exclusively. When listed_date is missing we return null (badge
+// shows "—") rather than falling back to days_on_market — the fallback was
+// surfacing stale per-listing values as if they were fresh "NEW · 4d" badges.
 function daysListed(listing) {
   if (listing && listing.listed_date) {
     const listed = new Date(listing.listed_date + 'T00:00:00');
     const ms = Date.now() - listed.getTime();
     if (!isNaN(ms) && ms >= 0) return Math.floor(ms / 86400000);
   }
-  return (listing && listing.days_on_market != null) ? listing.days_on_market : null;
+  return null;
 }
 function fmtDays(n, listingType) {
   if (n === null || n === undefined) return { text: '—', cls: '' };

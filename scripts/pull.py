@@ -1276,6 +1276,32 @@ def main():
 
         total_events += len(search_items)
 
+        # ── Guard: detect "No results found" sentinel-only run ────────
+        # When residential proxies hit a StreetEasy block, the actor returns
+        # placeholder objects shaped like
+        #   {"message": "No results found", "urls_json": "...", "timestamp": "..."}
+        # instead of real listings. merge_pass1_into_db treats these as items
+        # with no listing-id and silently discards them, but save_db then
+        # re-commits the existing 373 listings as if the run succeeded — the
+        # cron commit message reads "373 listings, $0.06" while we've actually
+        # captured 0 fresh data. This silently masked a 12-day gap on the
+        # 2026-04-23/27/30 cron runs. Fail loudly here so the cron step
+        # exits non-zero and skips the commit.
+        real_items = [it for it in search_items
+                      if it.get("id") or it.get("listingId") or it.get("node_id")]
+        if search_items and not real_items:
+            sentinel_msgs = {it.get("message") for it in search_items if it.get("message")}
+            print(f"\nERROR: Pass 1 ({label_tag}) returned {len(search_items)} "
+                  f"items but none had a listing ID — all appear to be actor "
+                  f"sentinels.", file=sys.stderr)
+            print(f"  Sentinel messages: {sentinel_msgs}", file=sys.stderr)
+            print(f"  This is the actor's response to a blocked StreetEasy "
+                  f"request (residential proxy IP rotation issue, or actor "
+                  f"regression). Aborting before commit so db.json is not "
+                  f"re-saved as if the run succeeded. Retry the workflow; "
+                  f"different proxy IPs typically work.", file=sys.stderr)
+            sys.exit(1)
+
         # ── Merge Pass 1 into db ──────────────────────────────────
         ids_seen, urls_by_id, pass1_stubs = merge_pass1_into_db(
             db, search_items, listing_type, normalize_fn)
