@@ -12,14 +12,17 @@ body {
   background: #f2f3f5;
   color: #1a1a2e;
   min-width: 1100px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 a { color: #3461D9; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
 /* ─── Sticky Top Wrapper ──────────────────────────────────────── */
 #sticky-top {
-  position: sticky;
-  top: 0;
+  flex-shrink: 0;
   z-index: 100;
   box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
@@ -278,13 +281,18 @@ a:hover { text-decoration: underline; }
   cursor: help;
 }
 
+/* ─── Scroll Content ──────────────────────────────────────────── */
+#scroll-content {
+  flex: 1;
+  overflow: auto;
+}
+
 /* ─── Table ────────────────────────────────────────────────────── */
 #table-view { display: block; }
 #card-view  { display: none; }
 
 .table-wrap {
   background: white;
-  overflow-x: auto;
 }
 table {
   width: 100%;
@@ -632,6 +640,7 @@ td {
 </div>
 </div><!-- /sticky-top -->
 
+<div id="scroll-content">
 <!-- ─── Table View ───────────────────────────────────────────────── -->
 <div id="table-view">
   <div id="loading-state">
@@ -668,6 +677,7 @@ td {
   <span id="footer-left">StreetHard · Data via Apify memo23/streeteasy-ppr</span>
   <span id="footer-right"></span>
 </footer>
+</div><!-- /scroll-content -->
 
 <script>
 // ─── State ────────────────────────────────────────────────────────
