@@ -4,6 +4,69 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Listing Status Tracking — Plan, Tasks, Design Spec (Session 13)
+
+Documentation-only session. No implementation. Locked the architecture for in-app listing-status tracking and wrote the spec, executive summary, and task list before any code touches the repo.
+
+### What Got Decided
+
+**The shape of the feature.** Six statuses (`none / watching / viewing / shortlisted / rejected / offered`, names final-pending), one orthogonal `watch` boolean for re-surfacing on price changes, free-text notes, fixed-vocabulary multi-select chips for deal-breakers (`no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`). Status pill in column 1 of the existing table, watch bookmark icon, expanded-row notes/chips editor. No kanban view — the buyer thinks one-listing-at-a-time, not in columns.
+
+**The architecture.** Railway-hosted FastAPI + managed Postgres, deployed from an `api/` subfolder of the same repo via Railway's Root Directory setting. The static GitHub Pages app does two parallel fetches on load (`data/latest.json` from Pages, `/status` from Railway) and merges by `listing_id`. Reads public, writes gated by a single static `WRITE_API_KEY` (constant-time compare), pasted into Railway env vars and into each device's `localStorage`. Family shares one identity — no per-user attribution. Optimistic UI, immediate single-row PUTs, 1-second debounce on notes keystrokes only. Offline outbox in localStorage, flushed on `online` and `visibilitychange` events. Closed-tab-while-offline (Service Worker + IndexedDB) deferred to v1.5.
+
+**Why this over the alternatives.** Rejected `data/status.json` written from the browser via GitHub PAT (PAT in client, every click is a commit, racy). Rejected serverless proxy → repo (same fundamental problems). Rejected OAuth (over-engineered for n=1 family). Rejected Sheets/Airtable (vendor lock-in for a 10-row schema). Rejected pure localStorage (doesn't sync). Tradeoffs documented in PROJECTPLAN.md.
+
+**Why `db.json` stays in the repo.** Bot-written, weekly cadence, public, version history is genuinely useful (price diffs). Status moves to Railway because it's per-click, mutable, private, two devices, and server-of-truth simplifies concurrency. Two stores, two access patterns, two rates of change — don't unify them.
+
+**Schema.** One table `listing_status (listing_id PK, status, watch, notes, chips JSONB, updated_at)`. Status as TEXT + CHECK constraint (not ENUM — easier to extend without a migration framework). Indexes on `updated_at DESC` and partial on `status <> 'none'`. Idempotent `CREATE … IF NOT EXISTS` in `api/schema.sql`, run at FastAPI startup. No Alembic.
+
+**Endpoints.** `GET /health`, `GET /status` (public), `PUT /status/{id}` (key-gated, upsert via `INSERT … ON CONFLICT DO UPDATE` with `COALESCE` so partial patches preserve unchanged fields), `POST /status/batch` (idempotent, used by the offline outbox flush).
+
+**Posture.** Hobby tier ($5/mo) so the service doesn't sleep. Default `*.up.railway.app` URL — no custom domain in v1. Backups: Railway snapshots only — no extra backup script. CORS allowlist exactly `https://omarqari.github.io`.
+
+### What Got Written (commit `4dceb68`)
+
+- `STATUS-FEATURE.md` (new, 487 lines) — full design spec. Buyer's mental model, state model, schema with rationale, API request/response shapes, frontend integration plan with line-of-sight to where in `index.html` each change lands, deployment topology, env vars, security/CORS, risks table, 30-minute FastAPI starter snippet, v1 acceptance criteria.
+- `PROJECTPLAN.md` (+74 lines) — new "Listing Status Tracking (Backend Migration)" section after Data Pipeline. Executive summary, rejected-alternatives table, the "why db.json stays vs. why status moves" comparison, state model, stack, v1/v1.5/v2 phasing, open questions, non-negotiables.
+- `TASKS.md` (+71 lines) — new feature section before "Open from Session 12." Pre-build decisions (6 questions for the user), backend B1–B6, frontend F1–F8, deployment D1–D8, v1 acceptance A1–A7, v1.5 and v2 deferred items tagged.
+
+### Open Questions (must resolve before code)
+
+1. Final status names — confirm `watching / viewing / shortlisted / rejected / offered` or rename. Locks the CHECK constraint and UI cycle order.
+2. Chip vocabulary — confirm or amend the proposed nine.
+3. Backup posture — confirm Railway snapshots only for v1.
+4. Hobby tier ($5/mo) signup — confirm willingness so the service doesn't auto-sleep.
+5. Domain — stay on default `*.up.railway.app` for v1, or name a custom domain now.
+6. Generate `WRITE_API_KEY` via `openssl rand -hex 32` and have it ready.
+
+### Commit Mechanics — FUSE Mount Workaround
+
+A stale `.git/index.lock` (and later `.git/HEAD.lock`) from an earlier crashed `git` blocked the normal commit path. The bindfs FUSE mount this session runs against denies `unlink` on `.git/*` even for files we own — `rm`, `python os.unlink`, and `truncate` all return `Operation not permitted`. We can write and chmod, but not delete.
+
+Worked around it with plumbing:
+
+```
+GIT_INDEX_FILE=/tmp/myindex git add PROJECTPLAN.md TASKS.md STATUS-FEATURE.md
+GIT_INDEX_FILE=/tmp/myindex git write-tree              # → tree SHA
+git commit-tree <tree> -p <HEAD> -m "..."               # → commit SHA
+python3 -c "open('.git/refs/heads/main','w').write('<sha>\n')"
+cp /tmp/myindex .git/index                              # reconcile working index
+```
+
+`git log` and `git show --stat HEAD` confirm the commit is well-formed (4dceb68, 3 files, +632 lines). The lock files persist on disk and will need manual cleanup outside this session before normal `git commit` invocations work again on this checkout. Not a bug in the project — environment artifact of the session's mount.
+
+### State After Session
+
+- New on `main` locally, one commit ahead of `origin/main`: `4dceb68 docs: add listing-status feature plan, tasks, and design spec`.
+- No implementation files created. No `api/` folder, no `schema.sql`, no Python, no JavaScript changes. Documentation only.
+- App, pipeline, and cron are untouched and unaffected.
+
+### Lesson — Lock the Architecture Before the Code
+
+The previous shortlist plan (PROJECTPLAN.md Phase 3) had been listed as "options TBD before building" since Session 1. Sitting in that state for a month meant any time the topic came up, we re-debated localStorage vs. Sheets vs. GitHub API rather than building. Closing the architecture debate in writing — even with six open questions still pending — is what unblocks the build. The next session can answer the questions and start B1 without re-litigating the stack.
+
+---
+
 ## 2026-05-02 — Days-on-Market Bug, Cron Diagnosis, Resilience Patches (Session 12)
 
 A user-visible "NEW · 5d" badge on `174 East 74th Street #PHC` (actually listed 12 days earlier per StreetEasy) led to peeling back three layered failures.
