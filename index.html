@@ -536,6 +536,209 @@ td {
   display: none;
 }
 
+/* ─── Settings Modal ──────────────────────────────────────────── */
+.settings-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 18px;
+  cursor: pointer;
+  padding: 4px 8px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  transition: color 0.15s;
+}
+.settings-btn:hover { color: rgba(255,255,255,0.9); }
+#settings-modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1000;
+  background: rgba(0,0,0,0.5);
+  align-items: center;
+  justify-content: center;
+}
+#settings-modal.open { display: flex; }
+.settings-panel {
+  background: white;
+  border-radius: 8px;
+  padding: 28px 32px;
+  width: 420px;
+  max-width: 90vw;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+}
+.settings-panel h2 {
+  margin: 0 0 18px;
+  font-size: 16px;
+  font-weight: 800;
+  color: #111;
+}
+.settings-panel label {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.settings-panel input[type="text"] {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #d0d5dd;
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: monospace;
+  color: #333;
+}
+.settings-panel input[type="text"]:focus { outline: none; border-color: #3461D9; }
+.settings-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+.settings-actions button {
+  padding: 7px 16px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid #d0d5dd;
+  background: white;
+  color: #333;
+  font-family: inherit;
+}
+.settings-actions button.primary {
+  background: #3461D9;
+  color: white;
+  border-color: #3461D9;
+}
+.settings-actions button.primary:hover { background: #2a50b5; }
+#conn-result {
+  margin-top: 10px;
+  font-size: 12px;
+  font-weight: 600;
+  min-height: 18px;
+}
+.conn-ok { color: #1a7a3c; }
+.conn-fail { color: #d92d20; }
+
+/* ─── Rank Columns ────────────────────────────────────────────── */
+.rank-cell {
+  width: 52px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 13px;
+  color: #3461D9;
+}
+.rank-cell .rank-val {
+  display: inline-block;
+  min-width: 28px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.1s;
+}
+.rank-cell .rank-val:hover { background: #eef2ff; }
+.rank-cell .rank-val.empty { color: #ccc; font-weight: 400; }
+.rank-input {
+  width: 44px;
+  padding: 2px 4px;
+  border: 2px solid #3461D9;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  font-family: inherit;
+  color: #3461D9;
+  outline: none;
+}
+.rank-cell-rq { color: #FF6000; }
+.rank-cell-rq .rank-input { border-color: #FF6000; color: #FF6000; }
+.rank-cell-rq .rank-val:hover { background: #fff7ed; }
+.no-api-key .rank-val { cursor: default; }
+.no-api-key .rank-val:hover { background: transparent; }
+
+/* ─── Card Notes ──────────────────────────────────────────────── */
+.card-notes {
+  border-top: 1px solid #f0f2f5;
+  margin-top: 10px;
+  padding-top: 10px;
+}
+.card-notes-group {
+  margin-bottom: 8px;
+}
+.card-notes-group label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 3px;
+}
+.card-notes-group label.oq-label { color: #3461D9; }
+.card-notes-group label.rq-label { color: #FF6000; }
+.card-notes-group textarea {
+  width: 100%;
+  min-height: 48px;
+  padding: 6px 8px;
+  border: 1px solid #e4e7ed;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: inherit;
+  color: #333;
+  resize: vertical;
+  transition: border-color 0.15s;
+}
+.card-notes-group textarea:focus { outline: none; border-color: #3461D9; }
+.card-notes-group textarea.rq-textarea:focus { border-color: #FF6000; }
+.card-notes-group textarea:disabled { background: #f7f8fa; color: #aaa; cursor: not-allowed; }
+.notes-saved {
+  font-size: 10px;
+  color: #1a7a3c;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 0.3s;
+  margin-left: 6px;
+}
+
+/* ─── Card Rankings ───────────────────────────────────────────── */
+.card-ranks {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid #f0f2f5;
+}
+.card-rank-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.card-rank-group label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.card-rank-group label.oq-label { color: #3461D9; }
+.card-rank-group label.rq-label { color: #FF6000; }
+.card-rank-input {
+  width: 44px;
+  padding: 3px 4px;
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  font-family: inherit;
+  color: #333;
+}
+.card-rank-input:focus { outline: none; border-color: #3461D9; }
+.card-rank-input.rq-input:focus { border-color: #FF6000; }
+.card-rank-input:disabled { background: #f7f8fa; color: #aaa; cursor: not-allowed; }
+
 /* ─── Footer ───────────────────────────────────────────────────── */
 #page-footer {
   background: #fafbfc;
@@ -563,6 +766,7 @@ td {
     <button class="view-btn active" id="btn-table" onclick="setView('table')">⊞ Table</button>
     <button class="view-btn" id="btn-cards" onclick="setView('cards')">▦ Cards</button>
   </div>
+  <button class="settings-btn" onclick="openSettings()" title="Settings">⚙</button>
 </header>
 
 <!-- ─── Mortgage Bar ────────────────────────────────────────────── -->
@@ -652,6 +856,8 @@ td {
       <thead>
         <tr>
           <th></th>
+          <th onclick="sortBy('oq_rank')" id="th-oq_rank" style="width:52px;">OQ # <span class="sort-arrow" id="arr-oq_rank"></span></th>
+          <th onclick="sortBy('rq_rank')" id="th-rq_rank" style="width:52px;">RQ # <span class="sort-arrow" id="arr-rq_rank"></span></th>
           <th onclick="sortBy('building')" id="th-building">Building / Unit <span class="sort-arrow" id="arr-building"></span></th>
           <th onclick="sortBy('monthly')" id="th-monthly"><span id="lbl-monthly">Monthly Pmt</span> <span class="sort-arrow" id="arr-monthly">↓</span></th>
           <th onclick="sortBy('price')" id="th-price" class="col-price">Ask Price <span class="sort-arrow" id="arr-price"></span></th>
@@ -679,16 +885,38 @@ td {
 </footer>
 </div><!-- /scroll-content -->
 
+<!-- ─── Settings Modal ─────────────────────────────────────────── -->
+<div id="settings-modal" onclick="if(event.target===this)closeSettings()">
+  <div class="settings-panel">
+    <h2>Settings</h2>
+    <label for="api-key-input">API Key (for saving rankings &amp; notes)</label>
+    <input type="text" id="api-key-input" placeholder="Paste your write key here…" autocomplete="off">
+    <div class="settings-actions">
+      <button class="primary" onclick="testConnection()">Test Connection</button>
+      <button onclick="saveSettings()">Save</button>
+      <button onclick="closeSettings()">Cancel</button>
+    </div>
+    <div id="conn-result"></div>
+  </div>
+</div>
+
 <script>
 // ─── State ────────────────────────────────────────────────────────
 let allListings = [];
 let filteredListings = [];
+let statusMap = {};  // listing_id → { oq_rank, rq_rank, oq_notes, rq_notes, ... }
 let expandedId = null;
 let currentView = 'table';
 let listingMode = 'sale'; // 'sale' | 'rent' | 'both'
 let sortCol = 'monthly';
 let sortDir = 'desc';
 let mtgCalcTimer = null;
+let noteTimers = {};  // debounce timers for notes
+
+// API config
+const API_BASE = 'https://api.streethard.omarqari.com';
+function getApiKey() { return localStorage.getItem('streethard.api_key') || ''; }
+function hasApiKey() { return !!getApiKey(); }
 
 // Mortgage defaults
 let downPayment = 750000;
@@ -814,10 +1042,81 @@ function historyInsight(listing) {
   return null;
 }
 
+// ─── Settings ─────────────────────────────────────────────────────
+function openSettings() {
+  document.getElementById('api-key-input').value = getApiKey();
+  document.getElementById('conn-result').innerHTML = '';
+  document.getElementById('settings-modal').classList.add('open');
+}
+function closeSettings() {
+  document.getElementById('settings-modal').classList.remove('open');
+}
+function saveSettings() {
+  const key = document.getElementById('api-key-input').value.trim();
+  if (key) localStorage.setItem('streethard.api_key', key);
+  else localStorage.removeItem('streethard.api_key');
+  closeSettings();
+  render();
+}
+async function testConnection() {
+  const key = document.getElementById('api-key-input').value.trim();
+  const el = document.getElementById('conn-result');
+  if (!key) { el.innerHTML = '<span class="conn-fail">Enter a key first.</span>'; return; }
+  el.innerHTML = 'Testing…';
+  try {
+    const r = await fetch(API_BASE + '/health');
+    const d = await r.json();
+    if (d.ok) el.innerHTML = '<span class="conn-ok">✓ Connected — DB is healthy.</span>';
+    else el.innerHTML = '<span class="conn-fail">✗ DB error: ' + (d.detail || 'unknown') + '</span>';
+  } catch (e) {
+    el.innerHTML = '<span class="conn-fail">✗ Cannot reach API: ' + e.message + '</span>';
+  }
+}
+
+// ─── Status API ───────────────────────────────────────────────────
+async function putStatus(listingId, patch) {
+  const key = getApiKey();
+  if (!key) return null;
+  try {
+    const r = await fetch(API_BASE + '/status/' + encodeURIComponent(listingId), {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json', 'X-API-Key': key },
+      body: JSON.stringify(patch),
+    });
+    if (!r.ok) { console.error('PUT /status failed:', r.status); return null; }
+    const data = await r.json();
+    statusMap[listingId] = data;
+    return data;
+  } catch (e) {
+    console.error('PUT /status error:', e);
+    return null;
+  }
+}
+
+async function loadStatus() {
+  try {
+    const r = await fetch(API_BASE + '/status?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+    statusMap = {};
+    (d.items || []).forEach(item => { statusMap[item.listing_id] = item; });
+  } catch (e) {
+    console.warn('Status API unavailable:', e.message);
+    statusMap = {};
+  }
+}
+
+function getStatus(listingId) {
+  return statusMap[listingId] || {};
+}
+
 // ─── Data Load ─────────────────────────────────────────────────────
 async function loadData() {
   try {
-    const resp = await fetch('data/latest.json?t=' + Date.now());
+    const [resp] = await Promise.all([
+      fetch('data/latest.json?t=' + Date.now()),
+      loadStatus(),  // populates statusMap; tolerates failure
+    ]);
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const data = await resp.json();
     allListings = data.listings || [];
@@ -949,6 +1248,10 @@ function sortListings() {
   filteredListings.sort((a, b) => {
     let av, bv;
     switch (sortCol) {
+      case 'oq_rank':  av = (getStatus(a.id).oq_rank || 0) || 9999;
+                       bv = (getStatus(b.id).oq_rank || 0) || 9999; break;
+      case 'rq_rank':  av = (getStatus(a.id).rq_rank || 0) || 9999;
+                       bv = (getStatus(b.id).rq_rank || 0) || 9999; break;
       case 'monthly':  av = calcMonthlyTotal(a); bv = calcMonthlyTotal(b); break;
       // Ask Price sorts rentals to bottom (no purchase price)
       case 'price':    av = a.listing_type === 'rent' ? 0 : (a.price || 0);
@@ -1043,9 +1346,10 @@ function renderTable() {
   wrap.style.display  = 'block';
   empty.style.display = 'none';
 
-  // colspan adjusts for hidden columns (Ask Price + Price/SqFt hidden in rent-only)
-  const colSpan  = listingMode === 'rent' ? 9 : 11;
+  // colspan adjusts for hidden columns (Ask Price + Price/SqFt hidden in rent-only) + 2 rank cols
+  const colSpan  = listingMode === 'rent' ? 11 : 13;
   const showBoth = listingMode === 'both';
+  const canEdit  = hasApiKey();
 
   let html = '';
   filteredListings.forEach(listing => {
@@ -1073,9 +1377,19 @@ function renderTable() {
       ? listingTypeBadge(listing) + ' ' + typePill(listing.type)
       : typePill(listing.type);
 
+    const st = getStatus(listing.id);
+    const oqR = st.oq_rank || '';
+    const rqR = st.rq_rank || '';
+
     html += `
-      <tr class="${isExp ? 'row-expanded' : ''}" onclick="toggleExpand('${listing.id}')">
+      <tr class="${isExp ? 'row-expanded' : ''}${canEdit ? '' : ' no-api-key'}" onclick="toggleExpand('${listing.id}')">
         <td class="td-expand">${isExp ? '▾' : '▸'}</td>
+        <td class="rank-cell" onclick="event.stopPropagation()">
+          <span class="rank-val${oqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','oq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${oqR || '·'}</span>
+        </td>
+        <td class="rank-cell rank-cell-rq" onclick="event.stopPropagation()">
+          <span class="rank-val${rqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','rq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${rqR || '·'}</span>
+        </td>
         <td>
           <div class="td-building">${listing.building || '—'}</div>
           <div class="td-sub">${listing.address}${listing.unit ? ' #' + listing.unit : ''} · ${listing.neighborhood || ''}</div>
@@ -1136,6 +1450,44 @@ function renderCards() {
           <span>${listing.sqft ? wrapEst('<strong>' + listing.sqft.toLocaleString() + '</strong> sqft') : '<strong>—</strong> sqft'}</span>
           ${!isRent && listing.price_per_sqft ? `<span>${wrapEst('<strong>' + fmtMoney(listing.price_per_sqft) + '</strong>/sqft')}</span>` : ''}
           <span>Built <strong>${listing.year_built || '—'}</strong></span>
+        </div>
+        <div class="card-ranks">
+          <div class="card-rank-group">
+            <label class="oq-label">OQ #</label>
+            <input type="number" min="1" class="card-rank-input"
+              value="${(getStatus(listing.id).oq_rank || '')}"
+              ${hasApiKey() ? '' : 'disabled'}
+              onchange="saveCardRank('${listing.id}','oq_rank',this.value)"
+              onclick="event.stopPropagation()">
+          </div>
+          <div class="card-rank-group">
+            <label class="rq-label">RQ #</label>
+            <input type="number" min="1" class="card-rank-input rq-input"
+              value="${(getStatus(listing.id).rq_rank || '')}"
+              ${hasApiKey() ? '' : 'disabled'}
+              onchange="saveCardRank('${listing.id}','rq_rank',this.value)"
+              onclick="event.stopPropagation()">
+          </div>
+        </div>
+        <div class="card-notes">
+          <div class="card-notes-group">
+            <label class="oq-label">OQ Notes <span class="notes-saved" id="ns-oq-${listing.id}">Saved ✓</span></label>
+            <textarea
+              ${hasApiKey() ? '' : 'disabled'}
+              placeholder="${hasApiKey() ? 'Add notes…' : 'Set API key to add notes'}"
+              oninput="debounceNote('${listing.id}','oq_notes',this.value)"
+              onclick="event.stopPropagation()"
+            >${getStatus(listing.id).oq_notes || ''}</textarea>
+          </div>
+          <div class="card-notes-group">
+            <label class="rq-label">RQ Notes <span class="notes-saved" id="ns-rq-${listing.id}">Saved ✓</span></label>
+            <textarea class="rq-textarea"
+              ${hasApiKey() ? '' : 'disabled'}
+              placeholder="${hasApiKey() ? 'Add notes…' : 'Set API key to add notes'}"
+              oninput="debounceNote('${listing.id}','rq_notes',this.value)"
+              onclick="event.stopPropagation()"
+            >${getStatus(listing.id).rq_notes || ''}</textarea>
+          </div>
         </div>
         <div class="card-footer">
           <span>${listing.neighborhood || ''}</span>
@@ -1238,6 +1590,64 @@ function onMtgChange() {
     applyFilters();
     document.getElementById('calc-indicator').style.opacity = '0';
   }, 350);
+}
+
+// ─── Rank Editing (Table) ──────────────────────────────────────────
+function startEditRank(el, listingId, field) {
+  if (!hasApiKey()) return;
+  const current = getStatus(listingId)[field] || '';
+  const cls = field === 'rq_rank' ? 'rank-cell-rq' : '';
+  el.outerHTML = `<input type="number" min="1" class="rank-input ${cls ? 'rq-input' : ''}"
+    value="${current}" autofocus
+    onblur="commitRank(this,'${listingId}','${field}')"
+    onkeydown="if(event.key==='Enter')this.blur();if(event.key==='Escape'){this.dataset.cancel='1';this.blur()}"
+    onclick="event.stopPropagation()">`;
+  // Focus the input we just created
+  const td = document.querySelector(`.rank-input[value="${current}"]`);
+  if (td) td.focus();
+}
+
+async function commitRank(input, listingId, field) {
+  if (input.dataset.cancel) { renderTable(); return; }
+  const val = parseInt(input.value) || null;
+  const patch = {};
+  patch[field] = val || 0;  // 0 means unranked
+  // Optimistic update
+  if (!statusMap[listingId]) statusMap[listingId] = { listing_id: listingId };
+  statusMap[listingId][field] = val || null;
+  renderTable();
+  await putStatus(listingId, patch);
+}
+
+// ─── Rank Editing (Cards) ─────────────────────────────────────────
+async function saveCardRank(listingId, field, value) {
+  const val = parseInt(value) || 0;
+  const patch = {};
+  patch[field] = val;
+  if (!statusMap[listingId]) statusMap[listingId] = { listing_id: listingId };
+  statusMap[listingId][field] = val || null;
+  await putStatus(listingId, patch);
+}
+
+// ─── Notes Saving (Cards) ─────────────────────────────────────────
+function debounceNote(listingId, field, value) {
+  const key = listingId + '.' + field;
+  clearTimeout(noteTimers[key]);
+  // Optimistic in-memory update
+  if (!statusMap[listingId]) statusMap[listingId] = { listing_id: listingId };
+  statusMap[listingId][field] = value;
+  noteTimers[key] = setTimeout(async () => {
+    const patch = {};
+    patch[field] = value;
+    const result = await putStatus(listingId, patch);
+    // Flash "Saved ✓"
+    const prefix = field === 'oq_notes' ? 'oq' : 'rq';
+    const badge = document.getElementById('ns-' + prefix + '-' + listingId);
+    if (badge && result) {
+      badge.style.opacity = '1';
+      setTimeout(() => { badge.style.opacity = '0'; }, 1500);
+    }
+  }, 1000);
 }
 
 // ─── Init ─────────────────────────────────────────────────────────────
