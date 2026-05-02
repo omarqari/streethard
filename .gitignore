@@ -5,3 +5,4 @@ __pycache__/
 *.pyc
 floorplans/
 .DS_Store
+scripts/__pycache__/
