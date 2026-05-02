@@ -138,11 +138,49 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `PROJECTPLAN.md` — strategy, architecture, phases
 - `TASKS.md` — concrete next steps
 - `RETRO-SESSION9.md` — CTO/Architect/CPO retrospective on the backfill lesson
+- `SQFT-METHODOLOGY.md` — co-op sqft estimation method, validation, failure modes (Sessions 10–11)
 - `data/db.json` — canonical listing store (the source of truth; never overwritten destructively)
 - `data/latest.json` — generated from db.json for the app to consume
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
 - `scripts/pull.py` — incremental Apify pull script
 - `index.html` — StreetHard app shell
+- `floorplans/` — gitignored scratch directory; user drops floor plan images here for sqft estimation
+
+## Co-op SqFt Estimation
+
+NYC co-ops don't publish official sqft. We estimate from floor plans using
+the **pixel-polygon method**: detect the apartment polygon (largest
+connected non-white blob, with morphological closing), calibrate the
+pixel-to-feet scale from one labeled rectangular room, divide. Validated
+to ~2% accuracy on well-behaved plans, ~5% on noisier ones. Full
+methodology, accuracy bench, and failure modes in `SQFT-METHODOLOGY.md`.
+
+### Data fields for estimated sqft
+
+When sqft is not officially published, set on the listing in db.json:
+
+- `sqft_estimated: true` — flag that triggers gray rendering in the app
+- `sqft_estimate_method` — `"pixel_polygon"` or `"floorplan_sum"` (for the
+  earlier eyeball-based Method 1 estimate)
+- `sqft_estimate_note` — human-readable string shown in tooltip; should
+  document the calibration room and any sanity-check overrides
+- `price_per_sqft` — recompute as `round(price / sqft)` whenever sqft
+  changes
+
+### App rendering
+
+CSS class `.estimated` (gray `#9aa0a6`, dotted underline, cursor: help)
+is applied to SqFt, Price/SqFt, and Pmt/SqFt cells whenever
+`sqft_estimated: true`. The behavior is data-driven; new estimates
+inherit it automatically with no app code changes.
+
+### When to override the algorithm manually
+
+Compute the implied $/sqft after estimating. UES residential trades in
+roughly $900–$1,800/sqft. If the algorithm produces $/sqft outside
+that band, something is wrong — usually multi-floor plan misdetection
+or a calibration-room pixel-read off by ~25%. Fall back to a labeled-room
+sum + walls estimate and document the override in `sqft_estimate_note`.
 
 ## Bottom-Up Validation Rule — READ THIS BEFORE BUILDING ANYTHING
 

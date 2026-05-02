@@ -63,7 +63,7 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 - [ ] **New/reduced badges (P1):** Add `badge` field (`"new"`, `"reduced"`, or `null`) in pull.py by diffing current prices against previous dated JSON. Render as a pill badge in index.html's Building/Unit column. Architecture documented in PROJECTPLAN.md.
 - [ ] **Shortlist feature:** In-app ability to mark listings as seen/liked/rejected. **Do not start until sharing model is decided** — localStorage (device-only) vs. shared backing store (GitHub API, Sheets, etc.) are very different builds. See PROJECTPLAN.md Phase 3 for options and tradeoffs.
 - [x] **Rental end-to-end validation:** ✅ All 43 rentals successfully passed through Pass 2 → normalize_rental() → stub merge in Session 9. Beds/baths/sqft backfill from Pass 1 stubs confirmed working.
-- [ ] **Co-op sqft gap:** Evaluate supplemental pull for co-ops without sqft filter; flag those listings separately.
+- [x] **Co-op sqft gap (Sessions 10–11, 2026-05-02):** ✅ Pixel-polygon estimation method developed, validated to ~2–5% accuracy against 8 plans with known official sqft. 15 co-op listings now have estimates flagged `sqft_estimated: true` with gray styling and tooltips in StreetHard. Full methodology in `SQFT-METHODOLOGY.md`.
 
 ---
 
@@ -76,6 +76,7 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 - [ ] For co-ops: confirm flip tax, sublet policy, pet policy, board package requirements.
 - [ ] Schedule inspector (especially pre-war, recent renovations, or lower floors).
 - [ ] Run ACRIS one more time for unusual transfers or liens (condos only).
+- [ ] **For co-ops with our pixel-method sqft estimate:** Get an ANSI-Z765 measurement ($250–400 from NYC Measure or Compass partner) before offering. Our estimate is good for screening but not for negotiating $/sqft.
 
 ---
 

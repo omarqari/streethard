@@ -4,6 +4,97 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Co-op SqFt Estimation (Sessions 10–11)
+
+### The Co-op SqFt Gap
+
+NYC co-ops don't publish official square footage at the unit level (ACRIS
+doesn't carry co-op transactions; Compass / StreetEasy floor plans
+typically omit a sqft figure for co-ops). Without sqft, the Price/SqFt
+and Pmt/SqFt columns in StreetHard show `—` for every co-op listing,
+defeating the single most useful screening metric. Closing this gap was
+the focus of these sessions.
+
+### What Got Built
+
+**1. UI — gray rendering for estimated values.** New `.estimated` CSS
+class in `index.html` (gray `#9aa0a6`, dotted underline, hover tooltip).
+When a listing has `sqft_estimated: true`, the table cells for SqFt,
+Price/SqFt, and Pmt/SqFt are wrapped in this class; same for card view.
+The tooltip displays `sqft_estimate_note`, which spells out the
+calibration source and any sanity-check overrides. Behavior is
+data-flag-driven, so future estimates inherit the styling automatically.
+
+**2. Methodology — pixel-polygon measurement.** Detect apartment polygon
+by thresholding non-white pixels + morphological closing, take the
+largest connected blob, fill its contour. Calibrate the px/ft scale
+from one labeled rectangular room (typically a bedroom). Compute
+`sqft = polygon_pixels / (px/ft)²`. Sanity-check the result against the
+$900–$1,800/sqft band typical for UES residential; override manually if
+the implied $/sqft is implausible. Full methodology and validation
+documented in SQFT-METHODOLOGY.md.
+
+**3. Validation — accuracy bench.** Tested against 8 floor plans with
+known official sqft. 3/8 within 2%, 5/8 within 5%, 7/8 within 10%. The
+misses come from visual pixel-coordinate-reading noise (±10 pixels per
+wall endpoint) and from non-uniform image scaling (some plans have
+horizontal scale ≠ vertical scale). Good enough for screening; not
+good enough for negotiation. Real ANSI-Z765 measurements ($250–400)
+are still the answer for offer/contract pricing.
+
+**4. Data — 15 co-ops now have estimates.** All flagged
+`sqft_estimated: true` with method `pixel_polygon` (or `floorplan_sum`
+for the original 14AF estimate). Recomputed `price_per_sqft` for each.
+
+| Listing | Price | Estimated Sqft | $/sqft |
+|---------|-------|----------------|--------|
+| 201 E 77th 14AF | $2.799M | 1,700 | $1,646 |
+| 1170 5th 6A | $3.2M | 3,500 | $914 |
+| 245 E 87th PH | $3.3M | 3,000 | $1,100 |
+| 8 E 96th 14C | $3.25M | 2,400 | $1,354 |
+| 829 Park 10B | $2.85M | 1,750 | $1,629 |
+| 1050 5th 12C | $3.5M | 2,800 | $1,250 |
+| 1050 5th 2E | $3.395M | 2,550 | $1,331 |
+| 115 E 67th 8B | $2.895M | 2,300 | $1,259 |
+| 1215 5th 5B | $2.995M | 3,400 | $881 |
+| 1220 Park 2C | $2.895M | 3,000 | $965 |
+| 196 E 75th 3AB | $3.395M | 2,500 | $1,358 |
+| 29 E 64th 10C | $2.75M | 1,600 | $1,719 |
+| 3 E 69th 7/8A | $3.1M | 2,000 | $1,550 |
+| 55 E 87th 4JK | $3.25M | 2,550 | $1,275 |
+| 829 Park 6/7B | $2.75M | 2,400 | $1,146 |
+
+### Methodology Lessons (Captured in SQFT-METHODOLOGY.md)
+
+- **The architect's "longest-labeled-dim equals longest-exterior-wall"
+  heuristic is wrong.** The longest labeled dim is one room's wall;
+  the longest exterior wall spans multiple rooms. Bbox-of-polygon
+  shortcut doesn't work.
+- **Multi-floor plans break single-blob detection.** Duplexes/triplexes
+  shown as separate diagrams on one image need manual override.
+  829 Park 6/7B's raw estimate was 4,850 sqft (would imply $567/sqft);
+  adjusted to 2,400.
+- **Sanity-check via $/sqft.** Whenever the computed $/sqft is way out
+  of the UES band ($900–$1,800), the polygon or calibration is wrong.
+  Trust the market more than the algorithm.
+- **The user's in-person sense matters.** On 14AF, Omar said the unit
+  "felt like 2,200 sqft" after walking it; the floor plan math says
+  1,700. We held at 1,700 (the conservative number) and noted that
+  in-apartment perception can run high in modern, well-lit, high-ceiling
+  units. Get a measurement before offering.
+
+### What's Next
+
+- Get ANSI measurements on the 2–3 co-ops Omar is actually offering on.
+- Consider OCR-based auto-calibration if the listing pipeline ever
+  needs to handle co-op sqft at scale (currently manual; ~2 minutes
+  per plan with Claude).
+- Consider adding building-era and floor plan source as data fields if
+  systematic patterns emerge (e.g., Compass plans systematically
+  under-state vs Sotheby's plans).
+
+---
+
 ## 2026-04-21 — Full Pass 2 Backfill + Retrospective (Session 9)
 
 ### Complete Database: 373/373 at Pass 2 Quality
