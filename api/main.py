@@ -30,7 +30,10 @@ async def require_write_key(x_api_key: str | None = Header(None)):
 class StatusPatch(BaseModel):
     status: str | None = None
     watch: bool | None = None
-    notes: str | None = None
+    oq_notes: str | None = None
+    rq_notes: str | None = None
+    oq_rank: int | None = None
+    rq_rank: int | None = None
     chips: list[str] | None = None
 
 
@@ -38,7 +41,10 @@ class BatchItem(BaseModel):
     listing_id: str
     status: str | None = None
     watch: bool | None = None
-    notes: str | None = None
+    oq_notes: str | None = None
+    rq_notes: str | None = None
+    oq_rank: int | None = None
+    rq_rank: int | None = None
     chips: list[str] | None = None
 
 
@@ -75,6 +81,52 @@ app.add_middleware(
 )
 
 
+# --- Helpers ---
+
+UPSERT_SQL = """
+    INSERT INTO listing_status
+        (listing_id, status, watch, oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at)
+    VALUES ($1,
+            COALESCE($2, 'none'),
+            COALESCE($3, FALSE),
+            COALESCE($4, ''),
+            COALESCE($5, ''),
+            $6,
+            $7,
+            COALESCE($8::jsonb, '[]'::jsonb),
+            NOW())
+    ON CONFLICT (listing_id) DO UPDATE SET
+        status     = COALESCE($2, listing_status.status),
+        watch      = COALESCE($3, listing_status.watch),
+        oq_notes   = COALESCE($4, listing_status.oq_notes),
+        rq_notes   = COALESCE($5, listing_status.rq_notes),
+        oq_rank    = CASE WHEN $6 IS NOT NULL THEN $6 ELSE listing_status.oq_rank END,
+        rq_rank    = CASE WHEN $7 IS NOT NULL THEN $7 ELSE listing_status.rq_rank END,
+        chips      = COALESCE($8::jsonb, listing_status.chips),
+        updated_at = NOW()
+    RETURNING listing_id, status, watch, oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at
+"""
+
+SELECT_ALL_SQL = """
+    SELECT listing_id, status, watch, oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at
+    FROM listing_status ORDER BY updated_at DESC
+"""
+
+
+def row_to_dict(r):
+    return {
+        "listing_id": r["listing_id"],
+        "status": r["status"],
+        "watch": r["watch"],
+        "oq_notes": r["oq_notes"],
+        "rq_notes": r["rq_notes"],
+        "oq_rank": r["oq_rank"],
+        "rq_rank": r["rq_rank"],
+        "chips": r["chips"],
+        "updated_at": r["updated_at"].isoformat(),
+    }
+
+
 # --- Routes ---
 
 @app.get("/health")
@@ -97,23 +149,8 @@ async def get_all_status(response: Response):
     response.headers["Cache-Control"] = "no-store"
     pool = get_pool()
     async with pool.acquire() as conn:
-        rows = await conn.fetch(
-            "SELECT listing_id, status, watch, notes, chips, updated_at "
-            "FROM listing_status ORDER BY updated_at DESC"
-        )
-    return {
-        "items": [
-            {
-                "listing_id": r["listing_id"],
-                "status": r["status"],
-                "watch": r["watch"],
-                "notes": r["notes"],
-                "chips": r["chips"],
-                "updated_at": r["updated_at"].isoformat(),
-            }
-            for r in rows
-        ]
-    }
+        rows = await conn.fetch(SELECT_ALL_SQL)
+    return {"items": [row_to_dict(r) for r in rows]}
 
 
 @app.put("/status/{listing_id}", dependencies=[Depends(require_write_key)])
@@ -124,37 +161,18 @@ async def put_status(listing_id: str, patch: StatusPatch):
 
     async with pool.acquire() as conn:
         row = await conn.fetchrow(
-            """
-            INSERT INTO listing_status (listing_id, status, watch, notes, chips, updated_at)
-            VALUES ($1,
-                    COALESCE($2, 'none'),
-                    COALESCE($3, FALSE),
-                    COALESCE($4, ''),
-                    COALESCE($5::jsonb, '[]'::jsonb),
-                    NOW())
-            ON CONFLICT (listing_id) DO UPDATE SET
-                status     = COALESCE($2, listing_status.status),
-                watch      = COALESCE($3, listing_status.watch),
-                notes      = COALESCE($4, listing_status.notes),
-                chips      = COALESCE($5::jsonb, listing_status.chips),
-                updated_at = NOW()
-            RETURNING listing_id, status, watch, notes, chips, updated_at
-            """,
+            UPSERT_SQL,
             listing_id,
             patch.status,
             patch.watch,
-            patch.notes,
+            patch.oq_notes,
+            patch.rq_notes,
+            patch.oq_rank,
+            patch.rq_rank,
             chips_json,
         )
 
-    return {
-        "listing_id": row["listing_id"],
-        "status": row["status"],
-        "watch": row["watch"],
-        "notes": row["notes"],
-        "chips": row["chips"],
-        "updated_at": row["updated_at"].isoformat(),
-    }
+    return row_to_dict(row)
 
 
 @app.post("/status/batch", dependencies=[Depends(require_write_key)])
@@ -170,36 +188,17 @@ async def post_batch(body: BatchRequest):
                 chips_json = json.dumps(item.chips) if item.chips is not None else None
                 try:
                     row = await conn.fetchrow(
-                        """
-                        INSERT INTO listing_status (listing_id, status, watch, notes, chips, updated_at)
-                        VALUES ($1,
-                                COALESCE($2, 'none'),
-                                COALESCE($3, FALSE),
-                                COALESCE($4, ''),
-                                COALESCE($5::jsonb, '[]'::jsonb),
-                                NOW())
-                        ON CONFLICT (listing_id) DO UPDATE SET
-                            status     = COALESCE($2, listing_status.status),
-                            watch      = COALESCE($3, listing_status.watch),
-                            notes      = COALESCE($4, listing_status.notes),
-                            chips      = COALESCE($5::jsonb, listing_status.chips),
-                            updated_at = NOW()
-                        RETURNING listing_id, status, watch, notes, chips, updated_at
-                        """,
+                        UPSERT_SQL,
                         item.listing_id,
                         item.status,
                         item.watch,
-                        item.notes,
+                        item.oq_notes,
+                        item.rq_notes,
+                        item.oq_rank,
+                        item.rq_rank,
                         chips_json,
                     )
-                    results.append({
-                        "listing_id": row["listing_id"],
-                        "status": row["status"],
-                        "watch": row["watch"],
-                        "notes": row["notes"],
-                        "chips": row["chips"],
-                        "updated_at": row["updated_at"].isoformat(),
-                    })
+                    results.append(row_to_dict(row))
                 except Exception as e:
                     errors.append({"listing_id": item.listing_id, "error": str(e)})
 
