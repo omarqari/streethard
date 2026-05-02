@@ -4,6 +4,39 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Backfill Complete After memo23 PX Fix (Session 19)
+
+memo23 patched the actor's short-URL path (`/sale/{id}`) to pull financials from a non-PX-blocked source, resolving the `SaleListingDetailsFederated` 403 issue that had blocked financial fields since late April.
+
+### What We Did
+
+1. **Validated the fix.** Single-listing test on 785 5th Ave #7E (co-op, listing 1824911, run `jge7HatyHZzhqZnwm`). `partial: False`, `maintenance: 5480`, all fields populated. Confirmed the new field schema: `pricing_*`, `propertyDetails_*`, `saleCombineResponse_sale_*` prefixes alongside top-level convenience fields.
+
+2. **Updated `pull.py` normalize().** Added `_SC` (`saleCombineResponse_sale_*`) prefix to all field resolution chains. Added `pricing_monthlyMaintenance`, `pricing_monthlyTaxes`, `pricing_monthlyCommonCharges`, `propertyDetails_bedroomCount`, `propertyDetails_livingAreaSize`, etc. Fixed price history source ordering — `saleCombineResponse_sale_price_histories_json` (flat format) before `propertyHistory_json` (nested, incompatible format). All changes backward-compatible with the old actor build.
+
+3. **Backfilled all 38 pass1 sale listings.** Single Apify run (`eEQfCNBuh0fTNihJ0`), 38 URLs, all returned full data, zero partials. Cost: ~$0.11. All 38 upgraded from `pass1` → `pass2`.
+
+4. **Flagged rental URL issue to memo23.** Individual rental URLs (`/rental/{id}`) still return "No results found" sentinels — tested with run `tIhlVjuDBh9LDQwxa`. Different failure mode from the sale-side PX block; the actor's rental detail path likely needs the same treatment as the sale short-URL fix. Posted to the Apify issues thread. 8 rental listings remain at pass1.
+
+### DB State After Session
+
+- 419 active listings (368 sale, 51 rental)
+- 411 pass2, 0 partial, 8 pass1 (all rentals)
+- 366 of 368 sales have full financial data for monthly payment calculations
+- Pass1 → pass2 upgrade rate: 38/38 (100%)
+
+### Files Modified
+
+- `scripts/pull.py` — normalize() field mapping for new actor build
+- `data/db.json` — 38 listings upgraded to pass2
+- `data/latest.json` — regenerated
+- `data/2026-05-02.json` — dated archive
+- `CHANGELOG.md` — this entry
+- `TASKS.md` — updated open items
+- `CLAUDE.md` — updated infrastructure state
+
+---
+
 ## 2026-05-02 — Status Backend Built + Infrastructure Complete (Session 18)
 
 Built and deployed the entire Status Feature backend (B1–B6) and completed all infrastructure tasks (D1–D5, U1–U3). The API is live on Railway.
