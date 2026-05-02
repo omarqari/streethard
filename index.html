@@ -16,18 +16,22 @@ body {
 a { color: #3461D9; text-decoration: none; }
 a:hover { text-decoration: underline; }
 
-/* ─── Header ───────────────────────────────────────────────────── */
-#main-header {
+/* ─── Sticky Top Wrapper ──────────────────────────────────────── */
+#sticky-top {
   position: sticky;
   top: 0;
   z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* ─── Header ───────────────────────────────────────────────────── */
+#main-header {
   background: #0E1730;
   padding: 0 28px;
   height: 52px;
   display: flex;
   align-items: center;
   gap: 14px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
 }
 .logo {
   font-size: 20px;
@@ -80,9 +84,6 @@ a:hover { text-decoration: underline; }
 
 /* ─── Mortgage Bar (sticky) ────────────────────────────────────── */
 #mortgage-bar {
-  position: sticky;
-  top: 52px;
-  z-index: 99;
   background: #1a2744;
   border-bottom: 1px solid #2d3f6a;
   padding: 8px 28px;
@@ -542,6 +543,7 @@ td {
 </head>
 <body>
 
+<div id="sticky-top">
 <!-- ─── Header ─────────────────────────────────────────────────── -->
 <header id="main-header">
   <div class="logo">Street<span>Hard</span></div>
@@ -628,6 +630,7 @@ td {
   <div class="filter-spacer"></div>
   <div id="result-count"></div>
 </div>
+</div><!-- /sticky-top -->
 
 <!-- ─── Table View ───────────────────────────────────────────────── -->
 <div id="table-view">
