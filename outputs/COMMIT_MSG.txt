@@ -1,0 +1,29 @@
+Partial Pass 2 backfill — 38 sales got listed_date + price_history + agent contact
+
+The cron's Pass 2 endpoint (SaleListingDetailsFederated) is being blocked
+by StreetEasy's PX bot detection right now (partialReason:
+SaleListingDetailsFederated_blocked_by_PX_api_v6, 403). The actor falls
+back to a secondary endpoint that returns 'partial: True' items missing
+the core financial fields (price/sqft from this endpoint, beds/baths,
+monthly_taxes, monthly_carrying_charges, maintenance_amount).
+
+We can still salvage from the partial responses: the price_histories_json
+and contacts_json arrays come back fully populated. This commit extracts
+those into the 38 sale records that were stuck at pass1 quality with no
+listed_date, no agent contact, and a misleading '—' badge.
+
+Specifically populates:
+- listed_date  (from most recent LISTED event in price_histories_json)
+- price_history (parsed array)
+- agent_name / agent_phone / agent_email / agent_firm (from contacts_json)
+- year_built, neighborhood, price_per_sqft, description
+
+Records remain at data_quality=pass1 because monthly_taxes and fees are
+still missing — the badge will work but full monthly-payment estimates
+won't be accurate until the SaleListingDetailsFederated 403 lifts.
+
+The 8 rental URLs in the same batch returned 0 items (different actor
+failure mode for /rental/{id} URLs). They stay pass1, no listed_date.
+
+Apify run: 55MDlYhllCrCZaybg, cost $0.12, 38 of 46 URLs returned partial
+data, 0 returned full data.

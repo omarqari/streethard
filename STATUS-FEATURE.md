@@ -66,9 +66,16 @@ The chip vocabulary is small and curated on purpose — free-text "tags" devolve
 The app makes two fetches on load:
 
 1. `data/latest.json` from GitHub Pages — the listings (bot-written, weekly).
-2. `https://streethard-api.up.railway.app/status` — the status overlay (per-click, mutable).
+2. `https://api.streethard.omarqari.com/status` — the status overlay (per-click, mutable).
 
 Merge by `listing_id` in the browser. Render. Writes go to `PUT /status/{id}` immediately, optimistic in the UI, key-gated on the server.
+
+Both ends sit on user-owned custom domains (Session 16):
+
+- `streethard.omarqari.com` → CNAME → `omarqari.github.io` (the static app)
+- `api.streethard.omarqari.com` → CNAME → the Railway API service
+
+DNS records live on Spaceship (Omar's registrar). The default `*.up.railway.app` and `omarqari.github.io/streethard` URLs continue to resolve as fallbacks during the cutover but are not the canonical surface.
 
 ### Why this over the alternatives
 
@@ -131,7 +138,7 @@ CREATE INDEX IF NOT EXISTS listing_status_active_idx
 
 ## API
 
-Base URL: `https://streethard-api.up.railway.app` (default Railway domain; no custom domain in v1).
+Base URL: `https://api.streethard.omarqari.com` (custom domain on Spaceship → Railway service, decided Session 16). The default `*.up.railway.app` URL is also live and works for ad-hoc curl while DNS is propagating.
 
 ### `GET /health`
 
@@ -220,7 +227,9 @@ The family is read-only by default. If anyone with the key writes, they all shar
 
 ### CORS
 
-Allow exactly `https://omarqari.github.io` (the Pages origin). Allow `*` only during local dev. `Access-Control-Allow-Headers: Content-Type, X-API-Key`. Methods: `GET, PUT, POST, OPTIONS`.
+Allow exactly `https://streethard.omarqari.com` (the canonical Pages origin under the custom domain). During the DNS cutover window, also allow `https://omarqari.github.io` so the old URL keeps working until Pages settles. Allow `*` only during local dev. `Access-Control-Allow-Headers: Content-Type, X-API-Key`. Methods: `GET, PUT, POST, OPTIONS`.
+
+Once both devices are confirmed loading the app via `streethard.omarqari.com`, drop the `omarqari.github.io` entry from `ALLOWED_ORIGIN`.
 
 ---
 
@@ -324,7 +333,8 @@ Two services, one repo. The cron pipeline (`refresh.yml` → `db.json`) is untou
 - New project → Deploy from GitHub → **Root Directory: `api`**
 - Add Postgres plugin → `DATABASE_URL` injected automatically
 - Hobby plan ($5/mo) so the service doesn't sleep — auto-sleep would make the first click after a quiet day visibly laggy
-- Default `*.up.railway.app` URL — no custom domain in v1
+- Custom domain: `api.streethard.omarqari.com` (Settings → Custom Domain → add → Railway prints a CNAME target → user pastes that target into Spaceship's DNS panel as a CNAME record)
+- Default `*.up.railway.app` URL stays live as a fallback for curl/dev work
 - Healthcheck path: `/health`
 - Auto-deploy on push to `main`
 
@@ -334,7 +344,8 @@ Two services, one repo. The cron pipeline (`refresh.yml` → `db.json`) is untou
 |---|---|---|
 | `DATABASE_URL` | Postgres plugin | Auto-injected |
 | `WRITE_API_KEY` | User-generated | `openssl rand -hex 32` |
-| `ALLOWED_ORIGIN` | `https://omarqari.github.io` | CORS allowlist |
+| `ALLOWED_ORIGIN` | `https://streethard.omarqari.com` | CORS allowlist (canonical app origin) |
+| `ALLOWED_ORIGIN_FALLBACK` | `https://omarqari.github.io` | Optional, only set during DNS cutover; remove once `streethard.omarqari.com` is verified live on both devices |
 
 ### Local dev
 
@@ -384,12 +395,14 @@ import asyncpg
 
 DATABASE_URL = os.environ["DATABASE_URL"]
 WRITE_API_KEY = os.environ["WRITE_API_KEY"]
-ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "https://omarqari.github.io")
+ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "https://streethard.omarqari.com")
+ALLOWED_ORIGIN_FALLBACK = os.environ.get("ALLOWED_ORIGIN_FALLBACK")
+ALLOWED_ORIGINS = [o for o in (ALLOWED_ORIGIN, ALLOWED_ORIGIN_FALLBACK) if o]
 
 app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[ALLOWED_ORIGIN],
+    allow_origins=ALLOWED_ORIGINS,
     allow_methods=["GET", "PUT", "POST", "OPTIONS"],
     allow_headers=["Content-Type", "X-API-Key"],
 )
@@ -452,9 +465,11 @@ async def put_status(listing_id: str, patch: dict, x_api_key: str | None = Heade
 Smoke test:
 
 ```bash
-curl https://streethard-api.up.railway.app/health
-curl https://streethard-api.up.railway.app/status
-curl -X PUT https://streethard-api.up.railway.app/status/1818978 \
+# Use the *.up.railway.app URL until the custom-domain CNAME on Spaceship
+# resolves; then switch to api.streethard.omarqari.com.
+curl https://api.streethard.omarqari.com/health
+curl https://api.streethard.omarqari.com/status
+curl -X PUT https://api.streethard.omarqari.com/status/1818978 \
   -H "X-API-Key: $WRITE_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{"status":"shortlisted"}'

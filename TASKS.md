@@ -71,16 +71,19 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 
 ## Listing Status Tracking (Backend Migration)
 
-Full design spec in `STATUS-FEATURE.md`. Architecture summary in `PROJECTPLAN.md` under "Listing Status Tracking (Backend Migration)." Build order below.
+Full design spec in `STATUS-FEATURE.md`. Build-time CTO walkthrough in `STATUS-BACKEND-WALKTHROUGH.md` (file layout, schema, code snippets, phasing rationale). Architecture summary in `PROJECTPLAN.md` under "Listing Status Tracking (Backend Migration)." Build order below.
 
-### Pre-Build Decisions (must answer before any code)
+### Pre-Build Decisions (resolved Session 15, 2026-05-02)
 
-- [ ] **Confirm final status names.** Proposed: `watching / viewing / shortlisted / rejected / offered`, plus implicit `none`. Sign off or rename. Locks the CHECK constraint and the UI cycle order.
-- [ ] **Confirm chip vocabulary.** Proposed: `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Curated on purpose — free-text tags devolve into the same idea spelled three ways. Amend if anything is missing.
-- [ ] **Confirm backup posture.** Proposed: Railway snapshots only for v1; no extra backup script. Sign off or raise a concern.
-- [ ] **Confirm Hobby-tier signup ($5/mo).** Without it the service auto-sleeps and the first click after a quiet day is visibly laggy. Sign off so we can provision in one go.
-- [ ] **Confirm domain.** Proposed: default `*.up.railway.app`, no custom domain in v1. Or name the preferred custom domain now to avoid a redeploy.
-- [ ] **Generate the `WRITE_API_KEY`.** `openssl rand -hex 32`. Have it ready to paste into Railway env vars and each device's localStorage.
+- [ ] **Confirm final status names.** Proposed: `watching / viewing / shortlisted / rejected / offered`, plus implicit `none`. Sign off or rename. Locks the CHECK constraint and the UI cycle order. *(Carried over from Session 13 — still needs explicit user sign-off on names; defaults assumed in walkthrough.)*
+- [ ] **Confirm chip vocabulary.** Proposed: `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Curated on purpose — free-text tags devolve into the same idea spelled three ways. Amend if anything is missing. *(Carried over from Session 13 — still needs explicit user sign-off.)*
+- [x] **Confirm backup posture.** ✅ Session 15: Railway snapshots only for v1; no extra `pg_dump` script. Revisit when notes accumulate enough to feel irreplaceable.
+- [x] **Confirm Hobby-tier signup ($5/mo).** ✅ Session 15: recommended and accepted. Provisioning happens in D5.
+- [x] **Confirm domain.** ✅ Session 15: default `*.up.railway.app` (e.g. `streethard-api-production.up.railway.app`). No custom domain in v1.
+- [x] **Language pick.** ✅ Session 15: FastAPI (Python 3.12). Validated by GitHub repo check — `omarqari/streethard` is the only public repo and it's Python; `insightcubed`/`OmarGPT` are 404.
+- [x] **Same-repo vs new-repo.** ✅ Session 15: same repo, `api/` subfolder, Railway Root Directory setting. One PR can change both ends.
+- [x] **Per-user attribution.** ✅ Session 15: dropped. Single shared write key, no `updated_by` column.
+- [ ] **Generate the `WRITE_API_KEY`.** `python3 -c "import secrets; print(secrets.token_urlsafe(32))"` (or `openssl rand -hex 32`). Have it ready to paste into Railway env vars and each device's localStorage. *(Do this immediately before D3.)*
 
 ### Backend Build (in this order)
 

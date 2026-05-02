@@ -4,6 +4,70 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Status Backend Architecture Locked + Build Walkthrough (Session 15)
+
+Continuation of Session 13's listing-status design work. Closed out the six pre-build decisions, added the language pick, and produced a CTO/Architect build walkthrough. No code yet — `api/` directory still empty. Next session opens by writing the 30-minute starter from section O of the walkthrough.
+
+### Decisions Locked This Session
+
+**Language: FastAPI on Python 3.12.** Checked `https://api.github.com/users/omarqari/repos` for `insightcubed` and `OmarGPT` to weight stack continuity. Both 404 (private or under a different handle); the only public repo on `omarqari` is `streethard` itself, language Python. Decision: continue in Python. Rationale: one mental model with `pull.py`, Pydantic v2 validation for free, raw asyncpg over an ORM since there's only one table.
+
+**Per-user attribution: dropped.** User's framing: "anyone can write — how will you know whether it's me or my wife anyway?" Confirmed shared write key, no `updated_by` column, no per-row identity. Schema simplifies to one table, six columns.
+
+**Repo strategy: same repo, `api/` subfolder.** Railway's "Root Directory" setting deploys a subpath as its own service. Benefits: one PR can change both ends, simpler mental model, no second `.git` to keep in sync. The static Pages app and the cron pipeline stay where they are; `api/` is additive.
+
+**Backups: Railway snapshots only.** No `pg_dump` cron at v1. Trigger to revisit: when the dataset ever represents irreplaceable input (months of detailed apartment notes that would hurt to lose).
+
+**Domain: default `*.up.railway.app`.** No custom domain in v1. Service URL will be derived from the Railway service+environment names — e.g., `streethard-api-production.up.railway.app`. Renamable from the dashboard before first deploy if a cleaner subdomain is wanted.
+
+**Hobby tier: $5/mo, recommended.** Free tier sleeps idle services; first click after a quiet hour is visibly laggy on the cold-start path. Not yet paid for — provisioning step in the Deployment phase.
+
+### Schema (final, one table)
+
+```sql
+CREATE TABLE listing_status (
+    listing_id  TEXT PRIMARY KEY,
+    status      TEXT NOT NULL DEFAULT 'none'
+                  CHECK (status IN ('none','watching','viewing','shortlisted','rejected','offered')),
+    watch       BOOLEAN NOT NULL DEFAULT FALSE,
+    notes       TEXT NOT NULL DEFAULT '',
+    chips       JSONB NOT NULL DEFAULT '[]'::jsonb,
+    updated_at  TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+CREATE INDEX idx_listing_status_updated ON listing_status (updated_at DESC);
+CREATE INDEX idx_listing_status_status  ON listing_status (status) WHERE status <> 'none';
+```
+
+### Phasing (each step independently shippable)
+
+1. Skeleton + `/health` deployed and reachable on Railway. ~30 min.
+2. Schema + `PUT /status/:id` + `POST /status/batch` + key auth. ~1 hr.
+3. Frontend Settings panel + Test Connection. ~30 min.
+4. Status pill + optimistic write. ~1 hr.
+5. Notes + chips editor. ~1 hr.
+6. Offline outbox + flush. ~30 min.
+
+Total: a focused weekend.
+
+### What Got Written (this session)
+
+- `STATUS-BACKEND-WALKTHROUGH.md` (new) — the CTO build guide. Covers stack pick, file layout under `api/`, schema SQL with rationale, API surface with auth middleware shape, frontend integration touch points in `index.html`, deployment topology on Railway, env vars, migrations posture (`schema.sql` at startup, no Alembic), CORS, observability, local dev, backup posture, phasing rationale, risks table (Hobby sleep, Postgres connection limits, CORS preflight, mobile Safari `localStorage` eviction, Pages cache, ID drift, secret leak), and the 30-minute starter snippet.
+
+### Risks Surfaced That Aren't Already Documented
+
+- **Mobile Safari `localStorage` eviction.** iOS 17 wipes site data after ~7 days of non-use; private browsing never persists. The Settings panel must show a "key not set" empty state, not crash on `localStorage.streethard_key` being null.
+- **GitHub Pages 10-min cache on `index.html`.** Frontend deploys can appear to be no-ops for up to 10 minutes. Add a `?v=N` cachebuster on the status fetch URL when shipping new merge logic.
+- **`WRITE_API_KEY` should NOT live in GitHub Secrets.** Cron doesn't write status. Keep it Railway-only to shrink blast radius if the GitHub repo's secret store is ever compromised.
+
+### State After Session
+
+- Architecture frozen. All six pre-build decisions resolved (status names and chip vocabulary already locked in Session 13).
+- New file in working tree: `STATUS-BACKEND-WALKTHROUGH.md`.
+- `api/` directory not yet created — Session 16 starts there.
+- TASKS.md updated: pre-build decision items checked off; build queue (B1–B6, F1–F8, D1–D8, A1–A7) untouched and ready.
+
+---
+
 ## 2026-05-02 — Wire Partial-Response Handling into pull.py (Session 14)
 
 memo23 replied on the Apify console issue thread saying he'd "made some

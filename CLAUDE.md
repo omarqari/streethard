@@ -108,6 +108,37 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Days Listed**: NEW/blue <7d, green 7–44d, yellow 45–120d, red 121d+
 - Single `index.html`, no server, opens in any browser
 
+## Status Feature Architecture (Sessions 13–16)
+
+The in-app listing-status feature (status pill, watch toggle, notes,
+chips) is **not yet built** but the architecture is fully locked. Future
+Claude instances should not re-litigate the design — read
+`STATUS-FEATURE.md` for the spec and `STATUS-BACKEND-WALKTHROUGH.md` for
+the build guide. The locked decisions:
+
+- **Backend:** FastAPI on Python 3.12 + asyncpg + Railway managed
+  Postgres. New `api/` directory in this repo (Railway "Root Directory"
+  feature). One table (`listing_status`), one shared write key, no
+  per-user attribution.
+- **Frontend:** All changes land in `index.html`. Two fetches on load
+  (listings from Pages, status from the API), merged in JS by
+  `listing_id`. Optimistic writes + localStorage outbox for offline.
+- **Domains (Session 16):** `streethard.omarqari.com` for the static
+  app (CNAME → `omarqari.github.io`), `api.streethard.omarqari.com` for
+  the API (CNAME → Railway service). Spaceship is the registrar.
+- **Cron is unaffected.** `data/db.json` stays in the repo, written by
+  the cron. The API never touches `db.json`. Two stores, two rates of
+  change, zero coupling.
+- **Auth:** single `WRITE_API_KEY` (`openssl rand -hex 32`), Railway
+  env var, pasted once per device into the Settings panel. Reads are
+  public. Family is read-only by default.
+- **Cost:** $5/mo Hobby tier on Railway so the service doesn't sleep.
+
+Build phasing in `TASKS.md` under "Status Feature v1 Build". Next
+session opens by writing the 30-minute `/health` starter from
+section O of the walkthrough — do not write business logic until the
+Railway round-trip works.
+
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
@@ -154,6 +185,8 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `TASKS.md` — concrete next steps
 - `RETRO-SESSION9.md` — CTO/Architect/CPO retrospective on the backfill lesson
 - `SQFT-METHODOLOGY.md` — co-op sqft estimation method, validation, failure modes (Sessions 10–11)
+- `STATUS-FEATURE.md` — design spec for in-app listing-status tracking (Session 13, refined Session 14, custom-domain update Session 16)
+- `STATUS-BACKEND-WALKTHROUGH.md` — CTO build guide for the FastAPI+Postgres status backend on Railway (Session 15, custom-domain update Session 16)
 - `data/db.json` — canonical listing store (the source of truth; never overwritten destructively)
 - `data/latest.json` — generated from db.json for the app to consume
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
