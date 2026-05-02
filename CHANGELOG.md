@@ -4,6 +4,113 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Wire Partial-Response Handling into pull.py (Session 14)
+
+memo23 replied on the Apify console issue thread saying he'd "made some
+changes, give it a new go." Tested with a 10-listing batch (run ID
+`TImFFxgbWPt8M7MQZ`); the underlying PerimeterX block on
+`SaleListingDetailsFederated` is **still in place** — every item came back
+flagged with the new `partial: true` / `partialReason:
+"SaleListingDetailsFederated_blocked_by_PX_api_v6"`.
+
+What changed for the better: memo's actor now **explicitly flags partial
+responses** and surfaces useful fallback data (price history, agent
+contacts, year_built, building info, area name, days_on_market,
+listed_at, price_per_sqft) under a bare `sale_*` namespace. The financial
+fields (`monthly_taxes`, `maintenance`, `monthly_fees`) still live behind
+the blocked endpoint and are absent.
+
+Replied to memo on the thread with run ID and asked whether he's tried
+a different residential proxy pool or PX-bypass header tweaks.
+
+### What Got Wired
+
+**1. Pass-Partial namespace in `normalize()`.** Added `_PP = "sale_"` to
+the prefix constants alongside `_P1/_P2/_P3/_P4`. Extended the field
+fallback chains in `normalize()` so that when the federated namespaces
+yield nothing, the bare `sale_*` keys are tried — `sale_id`,
+`sale_building_subtitle` (street), `sale_building_title` (building),
+`sale_area_name` (neighborhood), `sale_building_year_built`,
+`sale_days_on_market`, `sale_price_per_sqft`, `sale_contacts_json`,
+`sale_price_histories_json`, and `sale_building_building_type`.
+
+**2. Price extraction from price history.** Partial responses don't carry
+the asking price at the top level. Added a fallback in `normalize()`:
+when no direct price field is found, parse `sale_price_histories_json`
+and pull the price from the most recent `LISTED` event. Verified on the
+10 listings — 10/10 prices recovered correctly.
+
+**3. Partial flags through the pipeline.** `normalize()` and
+`normalize_rental()` now pass through `_is_partial`,
+`_partial_reason`, `_partial_error` (underscore-prefixed so they can be
+popped before merge — they never land in db.json).
+
+**4. New `data_quality: "partial"` state.** `merge_pass2_into_db()` now
+inspects the partial flag. When true, the listing is upgraded to
+`data_quality: "partial"` (not `pass2`), with `last_partial_attempt`,
+`partial_reason`, and `partial_error` recorded. When a later run gets a
+real (non-partial) response, those fields are cleared and the listing
+upgrades to `pass2`. The merge log line reports separately:
+`"N upgraded to pass2, M partial (PX-blocked), K skipped"`.
+
+**5. Throttled retries via `PARTIAL_RETRY_DAYS`.** New config constant
+(default 7). `build_pass2_queue()` now treats partials separately:
+listings with `data_quality: "partial"` are re-queued only if their
+`last_partial_attempt` is older than `PARTIAL_RETRY_DAYS`. This prevents
+the cron from hammering the actor every Mon/Thu while the PX block is
+still in effect — at the same time, ensures we automatically retry once
+memo's fix lands. Cron logs show `"Skipping N partial listings (within
+7-day retry window)"` so the throttling is visible.
+
+**6. Stats line updated.** `save_db()` now reports `pass2 / partial /
+pass1 / delisted` counts separately.
+
+### How This Plays Out Operationally
+
+- Next cron run (Mon May 4 09:00 UTC): the 38 pass1 sale listings get
+  re-fetched, return partial, get reclassified to `data_quality:
+  "partial"` with today's date as `last_partial_attempt`. Each listing
+  gains useful data (price_history, agent contact, year_built, etc.) but
+  remains flagged as missing financial fields.
+- Subsequent cron runs through May 11: those 38 listings are skipped
+  (within the 7-day retry window). Pipeline only does Pass 2 work on
+  newly-discovered pass1 listings and price-changed ones.
+- May 11+: retries kick in. If memo's fix has landed, listings upgrade
+  to pass2 and the partial markers clear. If still blocked, they reset
+  the `last_partial_attempt` clock and wait another 7 days.
+
+### App Behavior
+
+No `index.html` changes this session. Listings at
+`data_quality: "partial"` will render the same as `pass1` listings —
+the table shows `—` for missing maintenance/taxes/fees and the monthly
+payment falls through to mortgage-only. Considered adding a "partial
+data" badge in the row but deferred — the existing dashes make it
+visually clear the listing is incomplete, and the user can spot-check
+which are partial vs pass1 via db.json if needed.
+
+### Files Touched
+
+- `scripts/pull.py` — config (`PARTIAL_RETRY_DAYS`), prefixes (`_PP`),
+  `normalize()` (price-from-history fallback + partial passthrough),
+  `normalize_rental()` (partial passthrough), `merge_pass2_into_db()`
+  (partial state machine), `build_pass2_queue()` (retry throttling),
+  `save_db()` (stats line).
+- `CHANGELOG.md` — this entry.
+
+### Smoke Test
+
+Ran today's 10 partial responses through the new normalizer and merge
+in a fresh mock db. Result: `0 upgraded to pass2, 10 partial
+(PX-blocked), 0 skipped`. All 10 prices recovered from price history
+(range $2.695M–$4.495M). Building names populated correctly (Manhattan
+House, Twelve Twelve Fifth Avenue, The Parc V, The Leyton, Claremont
+Hall, etc.). Year_built populated 10/10. Price history 2–23 entries
+each. No `_is_partial`/`_partial_reason` underscore-prefixed keys
+leaked into the mock db. ✓
+
+---
+
 ## 2026-05-02 — Listing Status Tracking — Plan, Tasks, Design Spec (Session 13)
 
 Documentation-only session. No implementation. Locked the architecture for in-app listing-status tracking and wrote the spec, executive summary, and task list before any code touches the repo.

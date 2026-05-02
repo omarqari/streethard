@@ -51,6 +51,7 @@ PASS2_TIMEOUT_SEC    = 600    # 10 min per batch — abort and salvage if stuck
 PASS2_BATCH_SIZE     = 50     # max URLs per Pass 2 Apify run (tested up to 100 in Session 9; 50 balances speed vs. blast radius)
 PASS2_PER_RUN_CAP   = 100    # max listings to send through Pass 2 per run; rest queue for next run
 DELIST_DAYS          = 14    # listings not seen in Pass 1 for this many days are marked delisted
+PARTIAL_RETRY_DAYS   = 7     # if a listing came back partial (PX_api_v6 block), wait this many days before retrying — avoids hammering the actor while memo23 is fixing the block. See SQFT-METHODOLOGY.md / CHANGELOG Session 12.
 
 SALE_URL = (
     "https://streeteasy.com/for-sale/upper-east-side"
@@ -267,6 +268,13 @@ _P1 = "saleListingDetailsFederated_data_saleByListingId_"
 _P2 = "saleDetailsToCombineWithFederated_data_sale_"
 _P3 = "saleListingDetailsFederated_data_buildingBySaleListingId_"
 _P4 = "extraListingDetails_data_sale_"
+# _PP = bare "sale_" prefix used by memo23's partial fallback endpoint
+# (when the federated endpoint is PX_api_v6-blocked). Verified 2026-05-02
+# from run TImFFxgbWPt8M7MQZ. Has 66 sale_* fields including building info,
+# price_histories_json, contacts_json, area_name, days_on_market, listed_at.
+# Lacks the financial fields (taxes/maint/fees) — those live in the blocked
+# endpoint.
+_PP = "sale_"
 
 def normalize(raw):
     """Normalize a sale listing. Returns None if price is missing."""
@@ -277,11 +285,28 @@ def normalize(raw):
         or raw.get("askingPrice")
         or raw.get("asking_price")
     )
+    # Partial-response fallback (memo23 actor when SaleListingDetailsFederated
+    # is PX-blocked): the asking price isn't returned at the top level, but
+    # the most recent LISTED event in sale_price_histories_json has it.
+    if not price:
+        ph_raw = (raw.get(f"{_P4}price_histories_json")
+                  or raw.get(f"{_P2}price_histories_json")
+                  or raw.get(f"{_PP}price_histories_json"))
+        if ph_raw:
+            try:
+                ph_list = json.loads(ph_raw) if isinstance(ph_raw, str) else ph_raw
+                for h in (ph_list or []):
+                    if (h.get("event") or "").upper() == "LISTED" and h.get("price"):
+                        price = h["price"]
+                        break
+            except (json.JSONDecodeError, AttributeError):
+                pass
     if not price:
         return None
 
     listing_id = str(
-        raw.get("listingId") or raw.get(f"{_P1}id") or raw.get("id") or ""
+        raw.get("listingId") or raw.get(f"{_P1}id") or raw.get("id")
+        or raw.get(f"{_PP}id") or ""
     )
     url = (
         raw.get("originalUrl") or raw.get("url")
@@ -302,6 +327,7 @@ def normalize(raw):
         raw.get(f"{_P2}building_building_type")
         or raw.get(f"{_P3}type")
         or raw.get("building_building_type")
+        or raw.get(f"{_PP}building_building_type")
         or raw.get("propertyType") or raw.get("buildingType") or ""
     ).lower()
     ptype = "coop" if any(s in btype for s in ("co-op", "coop", "co_op")) else "condo"
@@ -310,6 +336,7 @@ def normalize(raw):
         raw.get(f"{_P1}propertyDetails_address_street")
         or raw.get(f"{_P3}address_street")
         or raw.get("address_street") or raw.get("addressStreet")
+        or raw.get(f"{_PP}building_subtitle")  # partial response: "200 East 66th Street"
         or raw.get("street") or ""   # Pass 1 search results use "street" directly
     )
     if not street:
@@ -328,6 +355,7 @@ def normalize(raw):
     building = (
         raw.get(f"{_P2}building_title") or raw.get(f"{_P3}name")
         or raw.get("building_title") or raw.get("buildingTitle") or raw.get("buildingName")
+        or raw.get(f"{_PP}building_title")
         or ((_bldg_obj or {}).get("name") if isinstance(_bldg_obj, dict) else None)
         or street or ""
     )
@@ -335,6 +363,7 @@ def normalize(raw):
     neighborhood = (
         raw.get(f"{_P2}area_name") or raw.get(f"{_P3}area_name")
         or raw.get("area_name") or raw.get("neighborhood") or raw.get("neighborhoodName")
+        or raw.get(f"{_PP}area_name")
         or raw.get("areaName") or ""   # Pass 1 search results use "areaName"
     )
 
@@ -342,17 +371,20 @@ def normalize(raw):
         raw.get(f"{_P1}propertyDetails_livingAreaSize")
         or raw.get("livingAreaSize") or raw.get("sqft") or raw.get("squareFeet")
     )
-    ppsqft = raw.get(f"{_P2}price_per_sqft") or raw.get("price_per_sqft") or raw.get("ppsqft")
+    ppsqft = (raw.get(f"{_P2}price_per_sqft") or raw.get("price_per_sqft")
+              or raw.get(f"{_PP}price_per_sqft") or raw.get("ppsqft"))
     if not ppsqft and sqft and price:
         ppsqft = round(int(price) / sqft)
 
     year_built = (
         raw.get(f"{_P2}building_year_built") or raw.get(f"{_P3}yearBuilt")
         or raw.get("building_year_built") or raw.get("yearBuilt") or raw.get("builtIn")
+        or raw.get(f"{_PP}building_year_built")
     )
     days_on_market = _get(
         raw.get(f"{_P2}days_on_market"),
         raw.get("days_on_market"), raw.get("daysOnMarket"),
+        raw.get(f"{_PP}days_on_market"),
     )
 
     # Use _get (not or) for fees/taxes — $0 is valid (tax abatements, some condos)
@@ -376,7 +408,7 @@ def normalize(raw):
         maint  = None
 
     agent_name = agent_phone = agent_email = agent_firm = None
-    contacts_raw = raw.get(f"{_P2}contacts_json")
+    contacts_raw = raw.get(f"{_P2}contacts_json") or raw.get(f"{_PP}contacts_json")
     if contacts_raw:
         try:
             contacts = json.loads(contacts_raw) if isinstance(contacts_raw, str) else contacts_raw
@@ -397,7 +429,9 @@ def normalize(raw):
                        or raw.get("sourceGroupLabel"))
 
     history = []
-    ph_raw = raw.get(f"{_P4}price_histories_json") or raw.get(f"{_P2}price_histories_json")
+    ph_raw = (raw.get(f"{_P4}price_histories_json")
+              or raw.get(f"{_P2}price_histories_json")
+              or raw.get(f"{_PP}price_histories_json"))
     if ph_raw:
         try:
             ph_list = json.loads(ph_raw) if isinstance(ph_raw, str) else ph_raw
@@ -430,6 +464,17 @@ def normalize(raw):
             listed_date = h["date"]
             break   # history is reverse-chronological; first LISTED = most recent
 
+    # Partial-response flags from memo23's actor (added 2026-05-02). When the
+    # actor's primary endpoint (SaleListingDetailsFederated) is blocked by
+    # PerimeterX, the actor falls back to a partial endpoint that returns
+    # price_history, agent contacts, year_built, etc. but lacks the financial
+    # fields (monthly_taxes, maintenance, monthly_fees). Pass these through so
+    # merge_pass2_into_db can flag the listing as partial-quality and skip
+    # immediate retries.
+    is_partial    = bool(raw.get("partial"))
+    partial_reason = raw.get("partialReason") or raw.get("partial_reason")
+    partial_error  = raw.get("partialError") or raw.get("partial_error")
+
     return {
         "listing_type":   "sale",
         "id":             listing_id,
@@ -455,6 +500,10 @@ def normalize(raw):
         "agent_email":    agent_email,
         "agent_firm":     agent_firm,
         "price_history":  history,
+        # Partial-response markers from memo23 actor (None when full)
+        "_is_partial":     is_partial,
+        "_partial_reason": partial_reason,
+        "_partial_error":  partial_error,
     }
 
 # ─── Field Normalization — Rentals ─────────────────────────────────
@@ -631,6 +680,11 @@ def normalize_rental(raw):
                 listed_date = h["date"]
                 break
 
+    # Partial-response flags (see normalize() for context)
+    is_partial    = bool(raw.get("partial"))
+    partial_reason = raw.get("partialReason") or raw.get("partial_reason")
+    partial_error  = raw.get("partialError") or raw.get("partial_error")
+
     return {
         "listing_type":   "rent",
         "id":             listing_id,
@@ -656,6 +710,9 @@ def normalize_rental(raw):
         "agent_email":    agent_email,
         "agent_firm":     agent_firm,
         "price_history":  history,
+        "_is_partial":     is_partial,
+        "_partial_reason": partial_reason,
+        "_partial_error":  partial_error,
     }
 
 # ─── Canonical Store (db.json) ─────────────────────────────────────
@@ -680,6 +737,7 @@ def save_db(db, total_events=0):
     stats = {
         "total":         len(active),
         "pass1_only":    sum(1 for l in active.values() if l.get("data_quality") == "pass1"),
+        "partial":       sum(1 for l in active.values() if l.get("data_quality") == "partial"),
         "pass2_complete": sum(1 for l in active.values() if l.get("data_quality") == "pass2"),
         "sale":          sum(1 for l in active.values() if l.get("listing_type") != "rent"),
         "rent":          sum(1 for l in active.values() if l.get("listing_type") == "rent"),
@@ -693,8 +751,8 @@ def save_db(db, total_events=0):
     with open(DB_PATH, "w") as f:
         json.dump(payload, f, indent=2)
     print(f"\n  ✓ db.json saved — {stats['total']} active "
-          f"({stats['pass2_complete']} pass2, {stats['pass1_only']} pass1, "
-          f"{stats['delisted']} delisted)")
+          f"({stats['pass2_complete']} pass2, {stats['partial']} partial, "
+          f"{stats['pass1_only']} pass1, {stats['delisted']} delisted)")
 
 def generate_latest(db, mode, total_events, sale_url=None, rental_url=None):
     """Generate data/latest.json from the canonical db for the app to consume."""
@@ -858,11 +916,17 @@ def build_pass2_queue(db, ids_seen, urls_by_id, listing_type):
 
     Queue includes:
       1. Listings at data_quality='pass1' (never had Pass 2)
-      2. Listings with needs_refresh=True (price changed)
-    Capped at PASS2_PER_RUN_CAP. Prioritizes never-scraped over price-changed.
+      2. Listings at data_quality='partial' whose last_partial_attempt is
+         older than PARTIAL_RETRY_DAYS (memo23's PX_api_v6 block may have
+         been fixed in the interim)
+      3. Listings with needs_refresh=True (price changed)
+    Capped at PASS2_PER_RUN_CAP. Prioritizes never-scraped > stale-partial
+    > price-changed.
     """
-    never_scraped  = []
-    price_changed  = []
+    today = datetime.date.today()
+    never_scraped     = []
+    stale_partial     = []
+    price_changed     = []
 
     for lid in ids_seen:
         entry = db.get(lid)
@@ -871,19 +935,41 @@ def build_pass2_queue(db, ids_seen, urls_by_id, listing_type):
         url = urls_by_id.get(lid)
         if not url:
             continue
-        if entry.get("data_quality") == "pass1":
+        quality = entry.get("data_quality")
+        if quality == "pass1":
             never_scraped.append((lid, url))
+        elif quality == "partial":
+            # Only retry if PARTIAL_RETRY_DAYS have elapsed since the last
+            # partial attempt. Otherwise skip — actor is still blocked.
+            last = entry.get("last_partial_attempt")
+            if last:
+                try:
+                    days_since = (today - datetime.date.fromisoformat(last)).days
+                    if days_since >= PARTIAL_RETRY_DAYS:
+                        stale_partial.append((lid, url))
+                except (ValueError, TypeError):
+                    stale_partial.append((lid, url))   # malformed date; retry
+            else:
+                stale_partial.append((lid, url))
         elif entry.get("needs_refresh"):
             price_changed.append((lid, url))
 
-    # Priority: never-scraped first, then price-changed
-    queue = never_scraped + price_changed
+    # Priority: never-scraped > stale partials > price-changed
+    queue = never_scraped + stale_partial + price_changed
     capped = queue[:PASS2_PER_RUN_CAP]
     skipped = len(queue) - len(capped)
 
+    # Count partial listings being skipped for visibility in cron logs
+    fresh_partial = sum(1 for lid in ids_seen
+                       if db.get(lid, {}).get("data_quality") == "partial"
+                       and (lid, urls_by_id.get(lid)) not in stale_partial)
+
     label = "rental" if listing_type == "rent" else "sale"
-    print(f"  Pass 2 queue: {len(never_scraped)} never-scraped + {len(price_changed)} price-changed "
+    print(f"  Pass 2 queue: {len(never_scraped)} never-scraped + "
+          f"{len(stale_partial)} stale-partial + {len(price_changed)} price-changed "
           f"= {len(queue)} total")
+    if fresh_partial:
+        print(f"  Skipping {fresh_partial} partial listings (within {PARTIAL_RETRY_DAYS}-day retry window)")
     if skipped > 0:
         print(f"  Capped at {PASS2_PER_RUN_CAP} this run — {skipped} queued for next run")
 
@@ -892,12 +978,15 @@ def build_pass2_queue(db, ids_seen, urls_by_id, listing_type):
 def merge_pass2_into_db(db, detail_items, listing_type, normalize_fn, pass1_stubs):
     """Merge Pass 2 detail results into the canonical db.
 
-    Upgrades listings from pass1 → pass2. Sets data_quality='pass2' and
-    fills in fees, taxes, agent, price_history.
+    Upgrades listings from pass1 → pass2 (or → 'partial' if memo23's actor
+    returned partial:true with a PerimeterX block reason). Sets the
+    appropriate data_quality, last_pass2/last_partial_attempt, and clears
+    needs_refresh.
     """
     is_rental = listing_type == "rent"
     today = datetime.date.today().isoformat()
     upgraded = 0
+    partial_count = 0
     skipped  = 0
 
     for item in detail_items:
@@ -907,6 +996,11 @@ def merge_pass2_into_db(db, detail_items, listing_type, normalize_fn, pass1_stub
             continue
 
         lid = result["id"]
+        # Pull partial flags out of the result dict; never store the
+        # underscore-prefixed keys in db.json
+        is_partial    = result.pop("_is_partial", False)
+        partial_reason = result.pop("_partial_reason", None)
+        partial_error  = result.pop("_partial_error", None)
 
         # For rentals: backfill beds/baths/sqft/unit from Pass 1 stub
         if is_rental and lid in pass1_stubs:
@@ -923,15 +1017,32 @@ def merge_pass2_into_db(db, detail_items, listing_type, normalize_fn, pass1_stub
             if v is not None:
                 existing[k] = v
 
-        existing["data_quality"]  = "pass2"
-        existing["last_pass2"]    = today
-        existing["needs_refresh"] = False
-        existing["status"]        = "active"
-        db[lid] = existing
-        upgraded += 1
+        if is_partial:
+            # Actor's primary endpoint blocked. We have most fields but
+            # are missing financial fields (taxes/maint/fees). Keep the
+            # listing flagged 'partial' so build_pass2_queue() can throttle
+            # retries until memo23 fixes the PerimeterX block.
+            existing["data_quality"]         = "partial"
+            existing["last_partial_attempt"] = today
+            existing["partial_reason"]       = partial_reason
+            existing["partial_error"]        = partial_error
+            existing["needs_refresh"]        = False
+            partial_count += 1
+        else:
+            existing["data_quality"]  = "pass2"
+            existing["last_pass2"]    = today
+            existing["needs_refresh"] = False
+            # Clear any stale partial markers if a later run succeeds
+            for k in ("partial_reason", "partial_error", "last_partial_attempt"):
+                existing.pop(k, None)
+            upgraded += 1
 
-    print(f"  Pass 2 merge: {upgraded} upgraded to pass2, {skipped} skipped")
-    return upgraded
+        existing["status"] = "active"
+        db[lid] = existing
+
+    print(f"  Pass 2 merge: {upgraded} upgraded to pass2, "
+          f"{partial_count} partial (PX-blocked), {skipped} skipped")
+    return upgraded + partial_count
 
 def detect_delistings(db, ids_seen_by_type):
     """Mark listings not seen in Pass 1 for DELIST_DAYS+ days as delisted."""
