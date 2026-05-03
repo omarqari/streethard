@@ -895,6 +895,7 @@ td {
     <option value="30000">$30K</option>
   </select>
   <label class="filter-check" title="Show only listings with price reductions"><input type="checkbox" id="f-cuts" onchange="applyFilters()"> ✂ Price Cuts</label>
+  <label class="filter-check" title="Show only listings you've visited"><input type="checkbox" id="f-seen" onchange="applyFilters()"> 👁 Seen</label>
   <button class="clear-btn" id="clear-btn" onclick="clearFilters()">✕ Clear</button>
   <div class="filter-spacer"></div>
   <div id="result-count"></div>
@@ -1364,10 +1365,11 @@ function applyFilters() {
   const maxPx = parseFloat(document.getElementById('f-price').value) || 0;
   const maxMo = parseFloat(document.getElementById('f-monthly').value) || 0;
   const cutsOnly = document.getElementById('f-cuts').checked;
+  const seenOnly = document.getElementById('f-seen').checked;
   const searchRaw = document.getElementById('f-search').value.trim();
   const searchQ   = searchRaw.toLowerCase();
 
-  const hasFilter = beds > 0 || type !== '' || maxPx > 0 || maxMo > 0 || cutsOnly || searchRaw !== '';
+  const hasFilter = beds > 0 || type !== '' || maxPx > 0 || maxMo > 0 || cutsOnly || seenOnly || searchRaw !== '';
   document.getElementById('clear-btn').style.display = hasFilter ? 'inline-block' : 'none';
 
   ['f-beds','f-type','f-price','f-monthly'].forEach(id => {
@@ -1387,6 +1389,7 @@ function applyFilters() {
     if (maxPx > 0 && l.listing_type !== 'rent' && l.price > maxPx) return false;
     if (maxMo > 0 && calcMonthlyTotal(l) > maxMo) return false;
     if (cutsOnly && !priceSignals(l).hasCuts) return false;
+    if (seenOnly && !getStatus(l.id).seen) return false;
     // Text search — matches against building, address, unit, neighborhood, agent name/firm
     if (searchQ) {
       const haystack = [l.building, l.address, l.unit, l.neighborhood, l.agent_name, l.agent_firm]
@@ -1409,6 +1412,7 @@ function clearFilters() {
   document.getElementById('f-price').value   = '0';
   document.getElementById('f-monthly').value = '0';
   document.getElementById('f-cuts').checked  = false;
+  document.getElementById('f-seen').checked  = false;
   document.getElementById('f-search').value  = '';
   applyFilters();
 }
