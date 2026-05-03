@@ -1437,10 +1437,10 @@
       "unit": "",
       "neighborhood": "Carnegie Hill",
       "price": 4950000,
-      "sqft": null,
+      "sqft": 3200,
       "beds": 8,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1547,
       "type": "condo",
       "year_built": 1899,
       "days_on_market": 348,
@@ -1470,7 +1470,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-05-07"
+      "listed_date": "2025-05-07",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "floorplan_sum",
+      "sqft_estimate_note": "5-level townhouse room sum + 18% gross-up; multi-floor prevents pixel method; ~3,200 sqft"
     },
     "1765961": {
       "listing_type": "sale",
@@ -10155,10 +10158,10 @@
       "unit": "9EF",
       "neighborhood": "Upper East Side",
       "price": 3500000,
-      "sqft": null,
+      "sqft": 1900,
       "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1842,
       "type": "coop",
       "year_built": 1963,
       "days_on_market": 59,
@@ -10182,7 +10185,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-20"
+      "listed_date": "2026-02-20",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "floorplan_sum",
+      "sqft_estimate_note": "Detailed room sum; image heavily stretched (48% divergence); combined unit 9EF; ~1,900 sqft"
     },
     "1804854": {
       "listing_type": "sale",
@@ -13813,10 +13819,10 @@
       "unit": "16ABG",
       "neighborhood": "Yorkville",
       "price": 3075000,
-      "sqft": null,
+      "sqft": 1750,
       "beds": 3,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1757,
       "type": "coop",
       "year_built": 1964,
       "days_on_market": 59,
@@ -13900,7 +13906,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-20"
+      "listed_date": "2026-02-20",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "floorplan_sum",
+      "sqft_estimate_note": "Room sum; image stretched (30% divergence); combined unit 16ABG; ~1,750 sqft"
     },
     "1817519": {
       "listing_type": "sale",
@@ -17069,10 +17078,10 @@
       "unit": "14C",
       "neighborhood": "Yorkville",
       "price": 2775000,
-      "sqft": null,
+      "sqft": 2150,
       "beds": 4,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1291,
       "type": "coop",
       "year_built": 1958,
       "days_on_market": 75,
@@ -17114,7 +17123,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-04"
+      "listed_date": "2026-02-04",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "floorplan_sum",
+      "sqft_estimate_note": "Room sum; polygon captured fragment only; 4BR unit; ~2,150 sqft"
     },
     "1822389": {
       "listing_type": "sale",
@@ -21895,10 +21907,10 @@
       "unit": "14K",
       "neighborhood": "Lenox Hill",
       "price": 2445000,
-      "sqft": null,
+      "sqft": 2300,
       "beds": 4,
       "baths": 4.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1063,
       "type": "coop",
       "year_built": 1957,
       "days_on_market": 97,
@@ -21922,7 +21934,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-01-13"
+      "listed_date": "2026-01-13",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "floorplan_sum",
+      "sqft_estimate_note": "Room sum + 5% walls; blue exterior lines fragment polygon; guest suite + den; ~2,300 sqft"
     },
     "1727143": {
       "listing_type": "sale",
@@ -27992,10 +28007,10 @@
       "unit": "10A",
       "neighborhood": "Upper East Side",
       "price": 2000000,
-      "sqft": null,
+      "sqft": 1650,
       "beds": 3,
       "baths": 2.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1212,
       "type": "coop",
       "year_built": 1912,
       "days_on_market": 28,
@@ -28019,7 +28034,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-23"
+      "listed_date": "2026-03-23",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "floorplan_sum",
+      "sqft_estimate_note": "Room sum + 20% gross-up; polygon fragmented by blue dashed lines; ~1,650 sqft"
     },
     "1816036": {
       "listing_type": "sale",
