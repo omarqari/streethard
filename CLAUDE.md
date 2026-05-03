@@ -76,7 +76,7 @@ These are the non-obvious pitfalls that matter for Manhattan real estate data:
 Use these assumptions for all monthly payment estimates unless the user specifies otherwise:
 
 - **Down payment:** $750,000 exactly (fixed dollar amount always, regardless of purchase price)
-- **Interest rate:** 3.00% annual
+- **Interest rate:** 5.00% annual
 - **Loan term:** 30 years
 
 Formula: `M = P × [r(1+r)^n] / [(1+r)^n − 1]`  
@@ -92,7 +92,7 @@ The app is called **StreetHard**. It is a static web app hosted on **GitHub Page
 - `data/latest.json` — generated from db.json each run; flat array for the app to fetch on load
 - `data/YYYY-MM-DD.json` — immutable dated archive of every past run
 - `scripts/pull.py` — **incremental** Apify pull script; Pass 1 discovers listings, Pass 2 only fills in what's missing (capped at 100/run); saves db.json after every step
-- `.github/workflows/refresh.yml` — cron Mon+Thu 9 AM UTC; calls Apify, commits data/, Pages auto-deploys
+- `.github/workflows/refresh.yml` — cron daily 9 AM UTC; calls Apify, commits data/, Pages auto-deploys
 - Apify token in `.env` locally; `APIFY_TOKEN` GitHub Secret in CI
 
 ### Design Language
@@ -102,10 +102,12 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Toggle**: Card view
 - **Default sort**: Per tab — Inbox: Monthly Payment desc, Shortlist: OQ# asc, Archive: bucket_changed_at desc
 - **Text search**: Free-text search bar filters by building, address, unit, neighborhood, agent name/firm
-- **Inline filters**: Beds, Type (Condo/Co-op), Max Price, Max Monthly Payment
+- **Inline filters**: Beds, Type (Condo/Co-op), Max Price, Max Monthly Payment, Price Cuts (checkbox)
 - **Mortgage calculator** in header: Down Payment · Rate · Term — interactive, recalculates all rows instantly
 - **Row expansion**: Price History, Agent info, Payment Breakdown
 - **Days Listed**: NEW/blue <7d, green 7–44d, yellow 45–120d, red 121d+
+- **Price-history signal icons**: Per-listing icons next to days badge — ✂ price cuts (red), ↻ re-listed (orange), ⏸ off-market-and-back (blue), ⏳ stale 90d+ (yellow). Cached per listing ID.
+- **Pipeline health strip**: Between summary bar and tabs. Green/yellow/red staleness indicator from `generated_at` in latest.json.
 - Single `index.html`, no server, opens in any browser
 
 ## Status Feature Architecture (Sessions 13–21)
@@ -137,19 +139,18 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   Reads are public.
 - **Cost:** $5/mo Hobby tier on Railway.
 
-Next session: **polish items** (T9 card view adaptation, T10 chips), **DNS
-cutover cleanup** (drop `ALLOWED_ORIGIN_FALLBACK` from Railway, enable Enforce
-HTTPS on GitHub Pages), **product backlog selection**, and **git lock file cleanup**
-(stale `.git/*.lock` files from a crashed prior operation — need host-side `rm`).
-See PRODUCT-BACKLOG.md for proposed features and TASKS.md for acceptance criteria A1–A10.
+Next session: **polish items** (T9 card view adaptation, T10 chips), **push
+daily cron workflow** (PAT needs `workflow` scope — Omar to update token or push
+manually), **product backlog selection** from PRODUCT-BACKLOG.md.
+See TASKS.md for acceptance criteria A1–A10.
 
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
 - **Status API: LIVE on Railway** — `https://api.streethard.omarqari.com` (custom domain pending DNS propagation; Railway default URL `bu5x85os.up.railway.app` works now). FastAPI + asyncpg + managed Postgres. Hobby tier ($5/mo). All endpoints operational: `/health`, `GET /status`, `PUT /status/{id}`, `POST /status/batch`.
-- **DNS: migrated to Spaceship, PROPAGATED** (Session 18, 2026-05-02; confirmed Session 23). Nameservers switched from Namecheap to Spaceship (`launch1.spaceship.net`, `launch2.spaceship.net`). Custom records: `streethard` CNAME, `api.streethard` CNAME, `_railway-verify` TXT, `www` CNAME (LinkedIn redirect). Both custom domains verified working with HTTPS (Session 23). **TODO:** Remove `ALLOWED_ORIGIN_FALLBACK` from Railway env vars, enable "Enforce HTTPS" on GitHub Pages.
+- **DNS: migrated to Spaceship, PROPAGATED** (Session 18, 2026-05-02; confirmed Session 23). Nameservers switched from Namecheap to Spaceship (`launch1.spaceship.net`, `launch2.spaceship.net`). Custom records: `streethard` CNAME, `api.streethard` CNAME, `_railway-verify` TXT, `www` CNAME (LinkedIn redirect). Both custom domains verified working with HTTPS (Session 23). DNS cutover cleanup completed (Session 24): `ALLOWED_ORIGIN_FALLBACK` removed from Railway, "Enforce HTTPS" enabled on GitHub Pages.
 - **www.omarqari.com redirect:** GitHub Pages repo `omarqari/www-redirect` serves a meta-refresh redirect to `https://www.linkedin.com/in/oqari/`. Will go live when DNS propagates.
-- **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 INTERMITTENT (proxy IP rotation; cron's Mon/Thu 09:00 UTC slot sometimes hits blocked IPs). Pass 2 for sales FIXED (Session 19): memo23 patched `/sale/{id}` path to pull financials from non-PX-blocked source. Pass 2 for rentals BROKEN: `/rental/{id}` URLs return "No results found" sentinels; flagged to memo23, awaiting fix. Actor's new build uses different field schema (`pricing_*`, `propertyDetails_*`, `saleCombineResponse_sale_*`) — `normalize()` in pull.py handles both old and new schemas.
+- **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 INTERMITTENT (proxy IP rotation; cron's daily 09:00 UTC slot sometimes hits blocked IPs). Pass 2 for sales FIXED (Session 19): memo23 patched `/sale/{id}` path to pull financials from non-PX-blocked source. Pass 2 for rentals BROKEN: `/rental/{id}` URLs return "No results found" sentinels; flagged to memo23, awaiting fix. Actor's new build uses different field schema (`pricing_*`, `propertyDetails_*`, `saleCombineResponse_sale_*`) — `normalize()` in pull.py handles both old and new schemas.
 - **Pipeline: Incremental ("Puzzle" model) with resilience guards** — `data/db.json` is the canonical store. Each cron run discovers new listings via Pass 1 and fills in detail via Pass 2 (capped at 100/run). See PROJECTPLAN.md for full architecture.
 - **db.json state (Session 24, 2026-05-03):** 419 active listings (368 sale, 51 rental). 411 at pass2 quality, 0 partial, 8 at pass1 quality (all rentals — blocked on memo23 fixing `/rental/{id}` support). All 190 pass2 sale listings now have `monthly_fees` populated (0 for N/A new-dev condos, actual values where available). Fixed from 7 nulls in Session 24 via duplicate carry-forward + StreetEasy browser scraping.
 - **Secondary: RapidAPI NYC Real Estate API** — validated YELLOW, 25 req/mo free tier, good for fast single-listing lookups; no price history or agent contact
@@ -165,21 +166,19 @@ See PRODUCT-BACKLOG.md for proposed features and TASKS.md for acceptance criteri
 
 ## Git Operations from Cowork
 
-Cowork can push, pull, and commit to the `streethard` repo directly — no browser automation or user terminal needed.
+**DO NOT use `git` CLI commands from the sandbox.** The Cowork sandbox mounts the user's folder, but git operations (commit, push, pull, stash) create `.lock` files owned by the sandbox process. When the sandbox exits or crashes, these locks persist and cannot be deleted by the next session — leading to cascading failures. This was validated across Sessions 24–25 and is a fundamental limitation of the mount model.
 
-**How it works:** A fine-grained GitHub PAT is stored in `.env` as `GITHUB_TOKEN`. To authenticate git operations, read the token and inject it into the remote URL:
+**Use `scripts/git_push.py` instead.** It pushes via the GitHub REST API — no local git CLI, no lock files, no conflicts:
 
 ```bash
-cd "/sessions/.../mnt/NYC Real Estate Advisor"  # use the actual sandbox mount path
-TOKEN=$(grep GITHUB_TOKEN .env | cut -d= -f2)
-git push "https://omarqari:${TOKEN}@github.com/omarqari/streethard.git" main
+python3 scripts/git_push.py "commit message" api/main.py index.html
 ```
 
-**For pull:**
-```bash
-TOKEN=$(grep GITHUB_TOKEN .env | cut -d= -f2)
-git pull "https://omarqari:${TOKEN}@github.com/omarqari/streethard.git" main
-```
+If no files are listed, it auto-detects changed files via `git status`. The script creates blobs, builds a tree, commits, and fast-forwards `main` — all via the API. It reads `GITHUB_TOKEN` from `.env`.
+
+**For reading remote state** (e.g., checking what's deployed): use `curl` against the GitHub API or read files directly from the mount. The mount is fine for reads — it's only git's lock-file writes that break.
+
+**For pulling remote changes:** ask the user to run `git pull` from their Terminal, or read specific files via the GitHub Contents API: `curl -s -H "Authorization: token $TOKEN" "https://api.github.com/repos/omarqari/streethard/contents/path/to/file" | python3 -c "import sys,json,base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())"`.
 
 **Rules:**
 - Never print, log, or echo the token value
@@ -187,6 +186,7 @@ git pull "https://omarqari:${TOKEN}@github.com/omarqari/streethard.git" main
 - Never store the token in memory files, CLAUDE.md, or chat
 - The token is scoped to the `streethard` repo only (Contents read/write)
 - Token expires every 90 days; if auth fails, ask the user to rotate it at GitHub → Settings → Developer settings → Fine-grained tokens
+- **Never run `git commit`, `git push`, `git pull`, `git stash`, or any write-mode git command against the mounted .git directory**
 
 ## Days-on-Market — Field Reliability
 
