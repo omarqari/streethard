@@ -61,7 +61,7 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 - [x] **Monitor pass2 fill rate:** ✅ Moot — all 373/373 listings backfilled to pass2 in Session 9 via direct API calls.
 - [x] **Days-on-market: update index.html to use listed_date (Session 12, 2026-05-02).** `daysListed(listing)` helper added; reads `listed_date` exclusively (validated as canonical for 99.7% of listings; the actor's `days_on_market` field is wrong on 100% of records). Returns `null` when `listed_date` is missing — badge shows `—` rather than misleading numbers. Updated 4 read sites: table row, card view, sort comparator, NEW filter.
 - [ ] **New/reduced badges (P1):** Add `badge` field (`"new"`, `"reduced"`, or `null`) in pull.py by diffing current prices against previous dated JSON. Render as a pill badge in index.html's Building/Unit column. Architecture documented in PROJECTPLAN.md.
-- [ ] **Shortlist feature:** In-app ability to mark listings as seen/liked/rejected. **Do not start until sharing model is decided** — localStorage (device-only) vs. shared backing store (GitHub API, Sheets, etc.) are very different builds. See PROJECTPLAN.md Phase 3 for options and tradeoffs.
+- [x] **Shortlist feature:** ✅ Redesigned in Session 21 as three-bucket triage system (Inbox/Shortlist/Archive). Backend on Railway (shared Postgres). See "Three-Bucket Triage System" section below for build tasks.
 - [x] **Rental end-to-end validation:** ✅ All 43 rentals successfully passed through Pass 2 → normalize_rental() → stub merge in Session 9. Beds/baths/sqft backfill from Pass 1 stubs confirmed working.
 - [x] **Co-op sqft gap (Sessions 10–11, 2026-05-02):** ✅ Pixel-polygon estimation method developed, validated to ~2–5% accuracy against 8 plans with known official sqft. 15 co-op listings now have estimates flagged `sqft_estimated: true` with gray styling and tooltips in StreetHard. Full methodology in `SQFT-METHODOLOGY.md`.
 - [x] **Cron silent-failure diagnosis + resilience patches (Session 12, 2026-05-02):** ✅ Pass 1 sentinel guard, `get_run` 5xx retry, Pass 2 `RequestException` catch, `refresh.yml` `if: success() || failure()` on the commit step. Workflow run #24 brought in 46 new listings (first fresh data in 12 days). Memo23 issue thread updated with run-ID evidence.
@@ -70,21 +70,19 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 
 ---
 
-## Listing Status Tracking (Backend Migration)
+## Three-Bucket Triage System (Inbox / Shortlist / Archive)
 
-Full design spec in `STATUS-FEATURE.md`. Build-time CTO walkthrough in `STATUS-BACKEND-WALKTHROUGH.md` (file layout, schema, code snippets, phasing rationale). Architecture summary in `PROJECTPLAN.md` under "Listing Status Tracking (Backend Migration)." Build order below.
+Supersedes the old "status pill cycling" (F2) and "watch toggle" (F3) design from Sessions 13–19. The new model is simpler and maps to the user's Gmail-like mental model: new listings land in the Inbox, get triaged to Shortlist (actively pursuing) or Archive (rejected), and archived listings auto-resurrect on price drops.
 
-### Pre-Build Decisions (resolved Session 15, 2026-05-02)
+Full design spec in `STATUS-FEATURE.md`. Backend walkthrough in `STATUS-BACKEND-WALKTHROUGH.md`. Architecture summary in `PROJECTPLAN.md`.
 
-- [ ] **Confirm final status names.** Proposed: `watching / viewing / shortlisted / rejected / offered`, plus implicit `none`. Sign off or rename. Locks the CHECK constraint and the UI cycle order. *(Carried over from Session 13 — still needs explicit user sign-off on names; defaults assumed in walkthrough.)*
-- [ ] **Confirm chip vocabulary.** Proposed: `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Curated on purpose — free-text tags devolve into the same idea spelled three ways. Amend if anything is missing. *(Carried over from Session 13 — still needs explicit user sign-off.)*
-- [x] **Confirm backup posture.** ✅ Session 15: Railway snapshots only for v1; no extra `pg_dump` script. Revisit when notes accumulate enough to feel irreplaceable.
-- [x] **Confirm Hobby-tier signup ($5/mo).** ✅ Session 15: recommended and accepted. Provisioning happens in D5.
-- [x] **Confirm domain.** ✅ Session 16: custom domains on Spaceship — `streethard.omarqari.com` (app, CNAME → `omarqari.github.io`) and `api.streethard.omarqari.com` (API, CNAME → Railway service). Default `*.up.railway.app` and `omarqari.github.io/streethard` stay live as fallbacks.
-- [x] **Language pick.** ✅ Session 15: FastAPI (Python 3.12). Validated by GitHub repo check — `omarqari/streethard` is the only public repo and it's Python; `insightcubed`/`OmarGPT` are 404.
-- [x] **Same-repo vs new-repo.** ✅ Session 15: same repo, `api/` subfolder, Railway Root Directory setting. One PR can change both ends.
-- [x] **Per-user attribution.** ✅ Session 15: dropped. Single shared write key, no `updated_by` column.
-- [x] **Generate the `WRITE_API_KEY`.** ✅ Session 18: generated and saved in `.env` and Railway env vars. Value: `MLCzWI0Jj9_JiTsEU5UUB92Jn-ILmPnLhFbDK1tCnN4`.
+### Design Decisions (Session 21, 2026-05-02)
+
+- [x] **Three buckets replace status + watch.** `inbox` (default), `shortlist`, `archive`. Replaces six-status enum and orthogonal watch boolean. ✅ Session 21.
+- [x] **OQ/RQ rankings are Shortlist-exclusive.** Moving out of Shortlist clears rankings (server-side enforced). ✅ Session 21.
+- [x] **Auto-resurrection on price drop.** Archived listings auto-promote to Inbox when current price < `price_at_archive`. Client-side logic on load, batch PUT to persist. ✅ Session 21.
+- [x] **URL hash for tab state.** `#inbox`, `#shortlist`, `#archive` for bookmarkability (family-shared app). ✅ Session 21.
+- [ ] **Confirm chip vocabulary.** Proposed: `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Deferred to after the bucket system ships — chips work on Shortlist items during due diligence.
 
 ### ✅ DNS + Custom Domains (Session 18, 2026-05-02)
 
@@ -104,48 +102,68 @@ All infrastructure tasks completed by Claude in Cowork mode (browser automation 
 - [x] **B5 — `POST /status/batch`.** ✅ Idempotent batch upsert. 200 on full success; 207 with per-item status on partial failure.
 - [x] **B6 — CORS + final hardening.** ✅ `ALLOWED_ORIGIN=https://streethard.omarqari.com`, `ALLOWED_ORIGIN_FALLBACK=https://omarqari.github.io`. Methods `GET, PUT, POST, OPTIONS`. Headers `Content-Type, X-API-Key`.
 
-### Frontend Build
+### Frontend Build — Three-Bucket Triage
 
-- [ ] **F1 — Settings panel + Test Connection.** Gear icon top-right of header opens a modal. API key input writes to `localStorage['streethard.api_key']`. "Test Connection" button hits `GET /health` with the key set on a separate test endpoint or noop write — surface a clear green/red result inside the modal.
-- [ ] **F2 — Status pill cycle (column 1).** New leading cell in the table row template. Tap cycles `none → watching → viewing → shortlisted → rejected → offered → none`. Long-press / right-click menu jumps directly to any status. Pill uses `data-status="..."` attribute for CSS coloring.
-- [ ] **F3 — Watch bookmark toggle.** Bookmark icon next to the pill. Independent of status — rejecting does not clear watch.
-- [ ] **F4 — Expanded-row notes editor + chips.** Append to the existing expansion content. Notes textarea with 1-second debounce on keystrokes (only the notes field; status / watch / chips fire immediately). Multi-select chip selector above the textarea, drawn from the locked vocabulary. Soft-cap notes at ~2,000 chars in the UI.
-- [ ] **F5 — Optimistic update helper.** `updateStatus(listingId, patch)` mutates in-memory, re-renders, then PUTs. On any failure, queue the patch in the outbox and leave the UI as-is. Single-row PUTs only — no debounce on commits, no batching.
-- [ ] **F6 — Offline outbox + flush triggers.** `localStorage['streethard.outbox']` array of `{listing_id, patch, ts}`. Flush via `POST /status/batch` on `window.online` and `document.visibilitychange` (when `!document.hidden`).
-- [ ] **F7 — Two-fetch load + merge.** `Promise.all([fetch('data/latest.json'), fetch('${API_BASE}/status')])`. Tolerate the status fetch failing (e.g., no key, Railway down) — the listings still render with default-status overlays.
-- [ ] **F8 — Filter chips.** "Show only Shortlisted" toggle in the existing filter bar. "Hide Rejected" toggle, on by default once any listing is rejected.
+Replaces old F2 (status pill cycling) and F3 (watch toggle). Existing work retained: F1 (Settings panel ✅), F7 (two-fetch load + merge ✅), OQ/RQ rankings ✅, OQ/RQ notes ✅.
+
+- [ ] **T1 — Tab navigation (Inbox / Shortlist / Archive).** Three tab pills in the filter bar. Inbox active on load. State read from URL hash (`#inbox`, `#shortlist`, `#archive`), persisted to localStorage as fallback. Column set adapts: Inbox/Archive hide OQ#/RQ# columns; Shortlist shows them.
+- [ ] **T2 — Transition buttons per row.** Contextual action buttons based on current bucket:
+  - Inbox: **★ Shortlist** button, **Archive ↓** button
+  - Shortlist: **Archive ↓** button, **← Inbox** (demote) button
+  - Archive: **← Inbox** (unarchive) button
+  Each fires `PUT /status/{id}` with new `bucket` + `bucket_changed_at`. Archive transitions also send `price_at_archive`.
+- [ ] **T3 — Server-side OQ/RQ clearing.** Update `PUT /status/{id}` in `api/main.py`: when bucket changes FROM `shortlist`, forcibly set `oq_rank = NULL`, `rq_rank = NULL` regardless of payload. Invariant: rankings only exist on shortlisted items.
+- [ ] **T4 — Auto-resurrection on price drop.** On frontend load, after merge: for each archived listing where current price < `price_at_archive`, auto-promote to inbox. Use `POST /status/batch` for efficiency. Tag with transient "Price dropped" badge. Skip if `price_at_archive` is null.
+- [ ] **T5 — Tab badge counts.** "Inbox (43) | Shortlist (7) | Archive (112)" — computed from filtered array on each render.
+- [ ] **T6 — Sort defaults per tab.** Inbox: Monthly Payment descending (existing default). Shortlist: OQ# ascending (priority order). Archive: `bucket_changed_at` descending (most recently archived first).
+- [ ] **T7 — Optimistic update helper.** `updateStatus(listingId, patch)` mutates in-memory, re-renders, then PUTs. On failure, queue in outbox. (Carried from old F5.)
+- [ ] **T8 — Offline outbox + flush.** `localStorage['streethard.outbox']` flushed via `POST /status/batch` on `online` / `visibilitychange`. (Carried from old F6.)
+- [ ] **T9 — Card view adaptation.** Cards in Shortlist show OQ/RQ notes; Inbox/Archive cards do not show ranking fields. Transition buttons visible in card view too.
+- [ ] **T10 — Chips (Shortlist only).** Multi-select chip selector in expanded row for shortlisted items. Fixed vocabulary. Fires immediately on change. (Carried from old F4, scoped to Shortlist.)
 
 ### Deployment & Ops
 
-- [x] **D1 — Railway project setup.** ✅ Session 18: Project created, Root Directory set to `api`, connected to `omarqari/streethard` GitHub repo. Builds pick up `api/requirements.txt` and run `uvicorn`.
-- [x] **D2 — Postgres plugin.** ✅ Session 18: Managed Postgres provisioned. `DATABASE_URL` auto-injected. `/health` confirms DB connection.
-- [x] **D3 — Env vars.** ✅ Session 18: `WRITE_API_KEY`, `ALLOWED_ORIGIN`, `ALLOWED_ORIGIN_FALLBACK` all set in Railway.
-- [x] **D4 — Healthcheck.** ✅ Session 18: Railway healthcheck configured on `/health`.
-- [x] **D5 — Hobby tier upgrade.** ✅ Session 18: Hobby plan active ($5/mo). Service doesn't sleep.
-- [ ] **D6 — `API_BASE` wired into `index.html`.** Set `const API_BASE = "https://api.streethard.omarqari.com"` near the top of the script section. Single point of change if the URL ever moves.
-- [ ] **D7 — Mobile device key paste.** On the iPhone, open the live Pages URL → Settings → paste the same `WRITE_API_KEY`. Verify Test Connection passes.
-- [ ] **D8 — Deploy verification.** Push a deploy. Mark a listing Shortlisted on iPhone. Hard-refresh laptop. Confirm the change persists. Push another (no-op) deploy and confirm the change still persists post-deploy.
+- [x] **D1–D5 — Railway infra.** ✅ Session 18. Project, Postgres, env vars, healthcheck, Hobby tier all done.
+- [ ] **D6 — Schema migration for three-bucket system.** Run in sequence:
+  1. `ALTER TABLE listing_status ADD COLUMN bucket TEXT NOT NULL DEFAULT 'inbox';`
+  2. `ALTER TABLE listing_status ADD COLUMN bucket_changed_at TIMESTAMPTZ;`
+  3. `ALTER TABLE listing_status ADD COLUMN price_at_archive INTEGER;`
+  4. `UPDATE listing_status SET bucket = 'shortlist' WHERE watch = true;`
+  5. `UPDATE listing_status SET bucket_changed_at = updated_at;`
+  6. Deploy new API code that reads/writes `bucket`.
+  7. Verify everything works.
+  8. `ALTER TABLE listing_status DROP COLUMN status, DROP COLUMN watch;`
+- [ ] **D7 — `API_BASE` wired into `index.html`.** Set `const API_BASE = "https://api.streethard.omarqari.com"`.
+- [ ] **D8 — Mobile device key paste.** On the iPhone, open the live Pages URL → Settings → paste the `WRITE_API_KEY`. Verify Test Connection passes.
+- [ ] **D9 — Deploy verification.** Push a deploy. Shortlist a listing on iPhone. Hard-refresh laptop. Confirm the change persists.
 
 ### v1 Acceptance Criteria
 
-All seven must pass on a real iPhone + laptop pair before v1 is closed:
+All must pass on a real iPhone + laptop pair before v1 is closed:
 
-- [ ] **A1 — Cross-device sync.** Mark Shortlisted on iPhone. Refresh laptop. Same status visible.
-- [ ] **A2 — Persistence across deploys.** Push a deploy. Shortlisted listing is still Shortlisted.
-- [ ] **A3 — Watch is independent.** Reject a watched listing. Bookmark icon stays. Listing still surfaces under the "watched" filter.
-- [ ] **A4 — Offline tour.** Phone in airplane mode → mark Viewing → type a note → toggle airplane mode off. Within ~3 seconds, change is on the laptop after refresh.
-- [ ] **A5 — Bad key fails clearly.** Wrong key in Settings → Test Connection shows a red error in the modal. Writes from that device are blocked with a non-silent toast.
-- [ ] **A6 — Read without key.** Clean browser, no key. Statuses still show; status pill is read-only with a tooltip explaining how to add the key.
-- [ ] **A7 — Cron untouched.** A `refresh.yml` run completes; statuses are unchanged afterward.
+- [ ] **A1 — Cross-device sync.** Shortlist a listing on iPhone. Refresh laptop. Same listing appears in Shortlist tab.
+- [ ] **A2 — Persistence across deploys.** Push a deploy. Shortlisted listing is still in Shortlist tab.
+- [ ] **A3 — Archive removes from Inbox.** Archive a listing. It disappears from Inbox, appears in Archive tab.
+- [ ] **A4 — OQ/RQ cleared on exit from Shortlist.** Rank a shortlisted listing OQ#1. Archive it. Unarchive it back to Inbox. Shortlist it again. OQ# is empty (was cleared on the first archive).
+- [ ] **A5 — Auto-resurrection.** Archive a listing at $3M. Simulate a price drop to $2.8M in db.json. Reload app. Listing appears in Inbox with "Price dropped" badge.
+- [ ] **A6 — Offline tour.** Phone in airplane mode → shortlist a listing → toggle airplane mode off. Within ~3 seconds, change is on the laptop after refresh.
+- [ ] **A7 — Bad key fails clearly.** Wrong key in Settings → Test Connection shows a red error. Writes blocked with non-silent toast.
+- [ ] **A8 — Read without key.** Clean browser, no key. Listings render in Inbox. Transition buttons are hidden/disabled.
+- [ ] **A9 — Cron untouched.** A `refresh.yml` run completes; bucket assignments unchanged afterward.
+- [ ] **A10 — New listings land in Inbox.** Run cron. New listings appear in Inbox tab, not Shortlist or Archive.
+
+### v1.1 (after bucket system ships)
+
+- [ ] **(v1.1)** Bulk archive — checkboxes + toolbar button to archive multiple Inbox listings at once. Row markup includes checkbox hook from v1 (hidden, not wired); wire in v1.1.
+- [ ] **(v1.1)** Keyboard shortcut `e` to archive highlighted row (Gmail muscle memory).
+- [ ] **(v1.1)** Chips on Shortlist items (T10 above).
 
 ### v1.5 (deferred — do NOT pollute v1 list)
 
 - [ ] **(v1.5)** Service Worker + IndexedDB so the app works offline in a closed tab.
 - [ ] **(v1.5)** Per-IP write rate limit on the API.
-- [ ] **(v1.5)** Export-to-CSV of marked listings.
-- [ ] **(v1.5)** Watch-triggered visual diff when a watched listing's price drops. Concrete spec from 2026-05-02 review: snapshot `price_at_watch` (NUMERIC) on the watch=true transition; render a yellow `RECONSIDER` pill in the row when current price < `price_at_watch`. See `STATUS-FEATURE.md` "Re-evaluation badge specifics."
-- [ ] **(v1.5)** Saved-filter tabs above the table — `All / Active / Toured / Watching / Offered`. Pure frontend; default tab becomes `Active` once any listings are shortlisted. Logged 2026-05-02 from proposal review.
-- [ ] **(v1.5)** Recently-delisted surface for tracked listings. Collapsible section under the main table: "Recently delisted that you tracked." Requires the merge step to keep orphan `listing_status` rows on a separate list rather than dropping them. Logged 2026-05-02 from proposal review.
+- [ ] **(v1.5)** Export-to-CSV of shortlisted listings.
+- [ ] **(v1.5)** Recently-delisted surface for tracked listings. Collapsible section under the main table: "Recently delisted that you shortlisted." Requires the merge step to keep orphan `listing_status` rows on a separate list rather than dropping them.
 
 ### v2 (deferred — only if actually needed)
 
@@ -210,17 +228,8 @@ Integration / Automation. Five open decisions are pending user selection:
   (CPO recommendation: coexist — tabs for routine, URL-state for ad-hoc
   sharing).
 
-### Status feature (Session 16 — non-blocking for build)
-- [ ] **Final status names.** Currently `watching / viewing / shortlisted / rejected / offered` plus implicit `none`. Confirm or rename before the schema CHECK constraint is set in stone — renaming after first writes is an idempotent ALTER + client update but worth doing once.
-- [ ] **Final chip vocabulary.** Currently `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Curated on purpose. Amend if anything is missing before F4 ships.
-- [ ] **Mobile Safari `localStorage` eviction.** iOS 17 wipes site data after ~7 days of non-use. Settings panel must show a "key not set" empty state, not crash. Decide: mitigate now (IndexedDB or service worker storage), or accept the periodic re-paste at v1?
-- [ ] **Spouse / family writes ever in scope?** Today the shared write key works for n=1. Revisit only if attribution ever matters (would require schema change to add `updated_by` and a per-user key model).
-- [ ] **DNS cutover — when to drop the fallback?** Nameservers migrated to Spaceship in Session 18. Once propagation completes and both devices verify load via `streethard.omarqari.com`, remove `ALLOWED_ORIGIN_FALLBACK` from Railway env vars. Also enable "Enforce HTTPS" on GitHub Pages settings.
-- [ ] **Custom domain on the cron data feed?** The app currently fetches `data/latest.json` as a relative path under whichever origin loaded `index.html`, so the custom domain works for free. No action needed unless we ever want to host the data behind a separate CDN.
-
-### Status feature (Session 17 — proposal-review additions, decide before v1 schema hardens)
-
-- [ ] **`triaged-out` as a seventh status?** Real triage often produces "skimmed, it's a no, but I won't formally reject" — softer than `rejected`, more deliberate than `none`. Adding it after launch means amending the CHECK constraint and reordering the cycle. Decide before B2 lands or accept that `rejected` covers both cases. Captured in `STATUS-FEATURE.md` "Deferred Design Ideas."
-- [ ] **Last-write-wins vs status history.** Spec is last-write-wins. Reversals (vetoed → active when a price drops; shortlisted → rejected after a tour) are common in this workflow. Decide whether v1 should append to a `listing_status_history` table on every write — cheap to add now, expensive to reconstruct later. Captured in `STATUS-FEATURE.md` and the v2 backlog.
-- [ ] **Notes field: free text only, or structured + free text?** Tour metadata (date, attendees, follow-up date, `private_max_offer`) currently lives in the notes textarea. Decide whether v2 should promote any of those to structured columns. Won't block v1; ask after the family has ~10 marked listings and we can see whether the notes are painful. Captured in `STATUS-FEATURE.md`.
-- [ ] **Default tab on app load.** v1 ships with no tabs. If v1.5 adds saved-filter tabs, decide whether the default is `All` (current behavior) or `Active` once any listings are shortlisted. Affects whether the family lands on "the shortlist" or "the firehose" — different UX bets.
+### Triage system (Session 21 — remaining open questions)
+- [ ] **DNS cutover — when to drop the fallback?** Nameservers migrated to Spaceship in Session 18. Once propagation completes, remove `ALLOWED_ORIGIN_FALLBACK` from Railway env vars and enable "Enforce HTTPS" on GitHub Pages.
+- [ ] **Mobile Safari `localStorage` eviction.** iOS 17 wipes site data after ~7 days of non-use. Settings panel must show a "key not set" empty state. Decide: mitigate now (IndexedDB) or accept periodic re-paste?
+- [ ] **Chip vocabulary.** `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Confirm or amend before T10 ships.
+- [ ] **Status history / audit trail.** Last-write-wins for v1. Consider `listing_status_history` table in v2 if "why did we change our mind on this?" becomes a real question after a few months of use.

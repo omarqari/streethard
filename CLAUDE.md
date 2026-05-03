@@ -108,43 +108,36 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Days Listed**: NEW/blue <7d, green 7–44d, yellow 45–120d, red 121d+
 - Single `index.html`, no server, opens in any browser
 
-## Status Feature Architecture (Sessions 13–19)
+## Status Feature Architecture (Sessions 13–21)
 
-**Backend and initial frontend are built and deployed.** The API is
-live on Railway. Frontend has Settings panel, two-fetch merge, OQ/RQ
-rankings (sortable), and OQ/RQ notes. Architecture is fully locked —
-do not re-litigate. Read `STATUS-FEATURE.md` for the spec and
-`STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
+**Backend deployed, frontend partially built. Major design pivot in Session 21:**
+replaced the six-status pill cycling + watch toggle with a **three-bucket triage
+system** (Inbox / Shortlist / Archive). Read `STATUS-FEATURE.md` for the full
+spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
 
-- **Backend (DONE):** FastAPI on Python 3.12 + asyncpg + Railway managed
-  Postgres. `api/` directory in the streethard repo (Railway "Root
-  Directory" feature). One table (`listing_status`), one shared write
-  key, no per-user attribution. Endpoints: `/health`, `GET /status`,
-  `PUT /status/{listing_id}`, `POST /status/batch`. Fields: `status`,
-  `watch`, `oq_notes`, `rq_notes`, `oq_rank`, `rq_rank`, `chips`.
-- **Frontend (PARTIAL — Session 19):** Settings panel (F1) with API key
-  storage in localStorage + Test Connection. Two-fetch load + merge (F7)
-  via `Promise.all`. OQ # / RQ # ranking columns in table view with
-  click-to-edit and nulls-last sorting. OQ Notes / RQ Notes textareas
-  in card view with 1-second debounced saves. Read-only mode when no
-  API key configured. **Not yet built:** status pill cycling (F2),
-  watch toggle (F3), chips (F4), status filter tabs (F5), offline
-  outbox (F6), card-view status controls (F8).
-- **Domains (Session 18):** `streethard.omarqari.com` for the static
-  app (CNAME → `omarqari.github.io`), `api.streethard.omarqari.com` for
-  the API (CNAME → `bu5x85os.up.railway.app`). Spaceship is the
-  registrar (nameservers migrated from Namecheap in Session 18).
-- **Cron is unaffected.** `data/db.json` stays in the repo, written by
-  the cron. The API never touches `db.json`. Two stores, two rates of
-  change, zero coupling.
+- **Backend (NEEDS MIGRATION):** FastAPI on Python 3.12 + asyncpg + Railway
+  managed Postgres. `api/` directory. One table (`listing_status`), one shared
+  write key. **Current columns:** `status`, `watch`, `oq_notes`, `rq_notes`,
+  `oq_rank`, `rq_rank`, `chips`. **Target columns (Session 21):** `bucket`
+  (inbox/shortlist/archive), `bucket_changed_at`, `price_at_archive`, `oq_rank`,
+  `rq_rank`, `oq_notes`, `rq_notes`, `chips`. Migration: add columns → backfill
+  (`watch=true` → `bucket='shortlist'`) → deploy new API → drop old columns.
+- **Frontend (PARTIAL):** Settings panel + Test Connection ✅. Two-fetch merge ✅.
+  OQ#/RQ# rankings (click-to-edit, nulls-last) ✅. OQ/RQ Notes (debounced) ✅.
+  **Not yet built:** Tab navigation (T1), transition buttons (T2), server-side
+  OQ/RQ clearing (T3), auto-resurrection (T4), counts (T5), sort defaults (T6),
+  optimistic update (T7), offline outbox (T8), card adaptation (T9), chips (T10).
+- **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
+  actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
+  drop). OQ/RQ cleared server-side on exit from Shortlist. URL hash for tab state.
+- **Domains (Session 18):** `streethard.omarqari.com` (app), `api.streethard.omarqari.com` (API). Spaceship registrar.
+- **Cron unaffected.** New listings have no status row → implicitly in Inbox.
 - **Auth:** `WRITE_API_KEY` is `MLCzWI0Jj9_JiTsEU5UUB92Jn-ILmPnLhFbDK1tCnN4`.
-  Set in Railway env vars and saved in local `.env`. Pasted once per
-  device into the Settings panel. Reads are public.
-- **Cost:** $5/mo Hobby tier on Railway so the service doesn't sleep.
+  Reads are public.
+- **Cost:** $5/mo Hobby tier on Railway.
 
-Next session continues the **frontend build** (F2–F6, F8 in TASKS.md).
-Start with F2 (status pill cycling) — the API round-trip is already
-validated from the browser via rankings and notes.
+Next session: **schema migration (D6 in TASKS.md)** then **frontend build
+(T1–T4)** for the MVP triage experience.
 
 ## Current Infrastructure State
 

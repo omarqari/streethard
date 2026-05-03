@@ -4,6 +4,43 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Three-Bucket Triage System Design (Session 21)
+
+Major design pivot: replaced the six-status pill cycling + watch toggle design (Sessions 13–19) with a simpler **three-bucket triage system** modeled on Gmail's Inbox/Archive pattern.
+
+### Design Decisions
+
+1. **Three buckets: Inbox / Shortlist / Archive.** Every listing lives in exactly one. New listings from cron land in Inbox. User triages to Shortlist (actively pursuing) or Archive (rejected). Replaces the old `status` enum (none/watching/viewing/shortlisted/rejected/offered) and `watch` boolean.
+
+2. **OQ/RQ rankings are Shortlist-exclusive.** Rankings only exist while a listing is shortlisted. Moving out of Shortlist clears them — server-side enforced, not just client-side. Rankings are operational priority, not historical.
+
+3. **Auto-resurrection on price drop.** When archiving, the app records `price_at_archive`. On page load, any archived listing whose current price < `price_at_archive` auto-promotes to Inbox with a "Price dropped" badge. Re-archiving at the new price resets the threshold.
+
+4. **URL hash for tab state.** `#inbox`, `#shortlist`, `#archive` — bookmarkable, shareable within the family.
+
+5. **Notes persist across all buckets.** Context like "overpriced by $200K" is useful if the listing auto-resurrects.
+
+### What This Supersedes
+
+- F2 (status pill cycling) — replaced by bucket transitions
+- F3 (watch toggle) — replaced by Archive with auto-resurrection
+- F5 (status filter tabs) — replaced by three-bucket tab navigation
+- v1.5 RECONSIDER pill — replaced by auto-resurrection + "Price dropped" badge
+- v1.5 saved-filter tabs — replaced by Inbox/Shortlist/Archive tabs
+
+### Documentation Updated
+
+- `TASKS.md` — new task list (T1–T10), acceptance criteria (A1–A10), revised deployment ops (D6)
+- `STATUS-FEATURE.md` — revised state model, schema, frontend integration, acceptance criteria
+- `PROJECTPLAN.md` — updated Phase 3, state model, phasing, open questions
+- `CLAUDE.md` — updated Status Feature Architecture section
+
+### Next Session
+
+Start with D6 (schema migration: add `bucket`, `bucket_changed_at`, `price_at_archive` columns; backfill from `watch`; update API logic; drop old columns). Then T1–T4 for the MVP frontend.
+
+---
+
 ## 2026-05-02 — Frontend: Rankings, Notes, Visual QA (Session 20)
 
 Built the remaining frontend features for the Status Feature and performed a comprehensive visual QA audit.

@@ -12,50 +12,66 @@ The shopping process is intrinsically stateful — a candidate moves through *se
 
 ---
 
-## Buyer's Mental Model
+## Buyer's Mental Model (Revised — Session 21)
 
-The user's natural workflow on a tour day:
+The user thinks in terms of an **email inbox**: new listings arrive, get triaged, and move to either "actively pursuing" or "not interested." The key insight is that a rejected listing should come back if its price drops — like an email that auto-returns to your inbox when something changes.
 
-1. Open StreetHard on the phone in the elevator before a showing.
-2. Mark a listing **Viewing** when arriving; type a quick note in the expanded row ("doorman seemed checked-out, lobby smelled of cigarettes").
-3. After the tour, either bump to **Shortlisted** or drop to **Rejected**.
-4. Tap a deal-breaker chip (`no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`) so a one-glance reason persists for "why was this rejected?"
-5. Back on the laptop that evening, all of the above is already there.
+Workflow:
 
-A separate dimension: **watch**. Sometimes a listing is rejected on price but the user wants to be told if it ever drops. Watch is orthogonal to status — a Rejected-but-watched listing should re-surface (UI badge or a saved filter) when its price changes.
+1. Cron drops new listings into the **Inbox** — the default triage space.
+2. User opens StreetHard, sees 12 new listings in Inbox since last visit.
+3. Quickly archives the obvious no's. Shortlists the interesting ones.
+4. Shortlisted items get OQ/RQ rankings, notes, chips — the due diligence workspace.
+5. An archived listing's price drops → it auto-resurrects in the Inbox with a "Price dropped" badge. User re-triages with fresh eyes.
+6. Everything syncs across laptop + phone.
 
-No kanban view. The buyer doesn't think in columns; they think one-listing-at-a-time inside the existing table they already use.
+No kanban view. No multi-step status progression. Three buckets, clear transitions, one question per listing: "Inbox, Shortlist, or Archive?"
 
 ---
 
-## State Model
+## State Model (Three-Bucket Triage)
 
-### Status (one of)
+### Bucket (one of three)
 
-| Status | Meaning | Typical lifecycle |
-|---|---|---|
-| `none` | Default. No interaction yet. | Implicit; not stored. |
-| `watching` | Interesting, want to keep an eye on it. Not yet seen in person. | none → watching |
-| `viewing` | Tour scheduled or just finished. | watching → viewing |
-| `shortlisted` | Serious candidate. Offering plan / due diligence stage. | viewing → shortlisted |
-| `rejected` | Vetoed. Reasons captured in chips/notes. | any → rejected |
-| `offered` | Offer submitted. | shortlisted → offered |
+| Bucket | Meaning | OQ/RQ Rankings? | Default sort |
+|---|---|---|---|
+| `inbox` | Untriaged / new arrivals. The triage workspace. | No | Monthly Payment desc |
+| `shortlist` | Actively pursuing. Due diligence, tours, ranking. | **Yes** | OQ# ascending |
+| `archive` | Rejected / passed on. Out of active attention. | No | `bucket_changed_at` desc |
 
-Final names are open until the user signs off — see PROJECTPLAN "Open Questions." The shape (six values, one default) is locked.
+Every listing lives in exactly one bucket. Listings without a status row (i.e., all new listings from the cron) are implicitly in `inbox`.
 
-### Watch (orthogonal boolean)
+### Transitions
 
-`watch: true` means "re-surface this listing when its price changes," regardless of status. Implemented as a bookmark icon next to the status pill. Rejecting a listing does **not** clear `watch` — the two are independent.
+| From | To | Action | Side effects |
+|---|---|---|---|
+| Inbox | Shortlist | ★ Shortlist button | — |
+| Inbox | Archive | Archive ↓ button | Records `price_at_archive` |
+| Shortlist | Archive | Archive ↓ button | **Clears OQ/RQ rankings** (server-enforced), records `price_at_archive` |
+| Shortlist | Inbox | ← Inbox button | **Clears OQ/RQ rankings** (server-enforced) |
+| Archive | Inbox | ← Inbox button (manual) or auto-resurrection (price drop) | — |
+
+**OQ/RQ clearing is server-enforced.** The PUT endpoint detects when `bucket` changes FROM `shortlist` and forcibly nulls `oq_rank` and `rq_rank` regardless of what the client sends. This makes the invariant "rankings only exist on shortlisted items" impossible to violate at the data layer.
+
+### Auto-Resurrection (Archive → Inbox on price drop)
+
+When a listing is archived, the app records `price_at_archive` (the listing's ask price at that moment). On each page load, the frontend compares each archived listing's current price against `price_at_archive`. If current price < `price_at_archive`, the listing auto-promotes to Inbox with a "Price dropped" badge.
+
+If the user re-archives at the new lower price, `price_at_archive` updates to the new price — no ping-pong unless there's another drop.
+
+Edge case: if `price_at_archive` is null (listing had no price, or legacy data), skip the comparison.
 
 ### Notes (free text)
 
-A textarea in the expanded row. No length limit enforced server-side; the app should soft-cap at ~2,000 chars in the UI. One field per listing. Last-write-wins (no per-paragraph attribution; we don't have per-user identity).
+Persist across all buckets. A textarea in the expanded row. Soft-cap ~2,000 chars in the UI. Last-write-wins. Notes provide context regardless of bucket — "overpriced by $200K" is useful if the listing resurrects.
 
-### Chips (structured deal-breakers)
+### Chips (structured deal-breakers — Shortlist only in v1)
 
-A fixed vocabulary of multi-select chips: `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Stored as a JSON array. Designed to make "why did we kill this?" answerable in one glance two months later.
+A fixed vocabulary of multi-select chips: `no light`, `bad layout`, `building risk`, `priced too high`, `noise`, `condition`, `bad block`, `flip tax`, `board risk`. Stored as a JSON array. Only shown/editable on Shortlisted items (during due diligence). Designed to make "why did we kill this?" answerable in one glance.
 
-The chip vocabulary is small and curated on purpose — free-text "tags" devolve into the same idea spelled three different ways. We pick the list; the user picks from it.
+### OQ/RQ Rankings (Shortlist only)
+
+OQ# (Omar's Queue) and RQ# (Roya's Queue) are integer priority ranks. Only meaningful while a listing is shortlisted — they represent "my personal priority order among the listings I'm actively pursuing." Cleared on exit from Shortlist because they'd be stale/meaningless if the listing returns later.
 
 ---
 
@@ -101,38 +117,58 @@ Two stores, two access patterns, two rates of change. Don't unify them.
 
 ---
 
-## Schema
+## Schema (Revised — Session 21, Three-Bucket)
 
-One table. One PK. One JSONB column for the chip array. No migrations framework; the SQL is idempotent and runs at FastAPI startup.
+One table. One PK. No migrations framework; the SQL is idempotent and runs at FastAPI startup.
 
 ```sql
--- api/schema.sql
+-- api/schema.sql (target state after migration)
 CREATE TABLE IF NOT EXISTS listing_status (
-    listing_id   TEXT      PRIMARY KEY,
-    status       TEXT      NOT NULL DEFAULT 'none'
-                           CHECK (status IN ('none','watching','viewing','shortlisted','rejected','offered')),
-    watch        BOOLEAN   NOT NULL DEFAULT FALSE,
-    notes        TEXT      NOT NULL DEFAULT '',
-    chips        JSONB     NOT NULL DEFAULT '[]'::jsonb,
-    updated_at   TIMESTAMPTZ NOT NULL DEFAULT NOW()
+    listing_id        TEXT        PRIMARY KEY,
+    bucket            TEXT        NOT NULL DEFAULT 'inbox'
+                                  CHECK (bucket IN ('inbox','shortlist','archive')),
+    bucket_changed_at TIMESTAMPTZ,
+    price_at_archive  INTEGER,
+    oq_rank           INTEGER,
+    rq_rank           INTEGER,
+    oq_notes          TEXT        NOT NULL DEFAULT '',
+    rq_notes          TEXT        NOT NULL DEFAULT '',
+    chips             JSONB       NOT NULL DEFAULT '[]'::jsonb,
+    updated_at        TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
 CREATE INDEX IF NOT EXISTS listing_status_updated_at_idx
     ON listing_status (updated_at DESC);
 
--- Most rows will have status='none' once we add bulk listings.
--- Partial index keeps the "show me only marked listings" query fast.
-CREATE INDEX IF NOT EXISTS listing_status_active_idx
-    ON listing_status (status)
-    WHERE status <> 'none';
+CREATE INDEX IF NOT EXISTS listing_status_bucket_idx
+    ON listing_status (bucket);
+```
+
+### Migration from old schema (run once)
+
+```sql
+ALTER TABLE listing_status ADD COLUMN IF NOT EXISTS bucket TEXT NOT NULL DEFAULT 'inbox';
+ALTER TABLE listing_status ADD COLUMN IF NOT EXISTS bucket_changed_at TIMESTAMPTZ;
+ALTER TABLE listing_status ADD COLUMN IF NOT EXISTS price_at_archive INTEGER;
+
+-- Migrate existing data
+UPDATE listing_status SET bucket = 'shortlist' WHERE watch = true;
+UPDATE listing_status SET bucket_changed_at = updated_at;
+
+-- After verifying new code works:
+-- ALTER TABLE listing_status DROP COLUMN IF EXISTS status;
+-- ALTER TABLE listing_status DROP COLUMN IF EXISTS watch;
 ```
 
 ### Notes on the schema
 
-- `listing_id` matches the StreetEasy ID we already use as the key in `db.json`. No FK — `listing_status` survives independently of `db.json` revisions, which is what we want when a listing temporarily disappears from a Pass 1 search.
-- `status` is TEXT + CHECK rather than a Postgres ENUM. Adding a value to an ENUM requires a migration; adding to a CHECK is a one-line idempotent `ALTER TABLE ... DROP CONSTRAINT ...; ADD CONSTRAINT ...` that fits our no-Alembic posture.
-- `chips` JSONB rather than a join table — we never query "all listings with chip X" server-side. The app filters in the browser. JSONB is the right primitive for "opaque blob the client owns."
-- `updated_at` is server-set on insert and on every write. Used for cache busting on the client and as a tie-breaker if we ever add per-device queues.
+- `listing_id` matches the StreetEasy ID used as key in `db.json`. No FK — `listing_status` survives independently of `db.json` revisions.
+- `bucket` is TEXT + CHECK. Three values only. Simple, clear, no cycle-order to reason about.
+- `bucket_changed_at` tracks when the listing last changed buckets. Used to sort Archive (most recently archived first) and for potential future "how long has this been shortlisted?" UX.
+- `price_at_archive` records the ask price at the moment of archiving. Used by the auto-resurrection comparison on frontend load. NULL if never archived or if price was unavailable.
+- `oq_rank` / `rq_rank` are only meaningful when `bucket = 'shortlist'`. The API enforces: on any transition OUT of shortlist, these are set to NULL server-side.
+- `chips` JSONB — opaque blob the client owns. Never queried server-side.
+- `updated_at` is server-set on every write.
 
 ---
 
@@ -233,7 +269,7 @@ Once both devices are confirmed loading the app via `streethard.omarqari.com`, d
 
 ---
 
-## Frontend Integration
+## Frontend Integration (Revised — Session 21)
 
 All changes land in `index.html`. No build step, no new files.
 
@@ -248,46 +284,80 @@ const [listingsRes, statusRes] = await Promise.all([
 const listings = (await listingsRes.json()).listings;
 const statusMap = new Map((await statusRes.json()).items.map(s => [s.listing_id, s]));
 
+// Merge status into listings
 for (const listing of listings) {
-  Object.assign(listing, statusMap.get(listing.id) ?? defaultStatus());
+  Object.assign(listing, statusMap.get(listing.id) ?? { bucket: 'inbox' });
+}
+
+// Auto-resurrection: archived listings with price drops → inbox
+const resurrections = [];
+for (const listing of listings) {
+  if (listing.bucket === 'archive' && listing.price_at_archive && listing.price < listing.price_at_archive) {
+    listing.bucket = 'inbox';
+    listing.bucket_changed_at = new Date().toISOString();
+    listing._price_dropped = true; // transient badge flag
+    resurrections.push({ listing_id: listing.id, bucket: 'inbox', bucket_changed_at: listing.bucket_changed_at });
+  }
+}
+if (resurrections.length > 0) {
+  fetch(`${API_BASE}/status/batch`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-API-Key': getApiKey() },
+    body: JSON.stringify(resurrections)
+  }).catch(() => {}); // best-effort
 }
 ```
 
-Status fetch failure is non-fatal — the app continues with default-status overlays. Family member without the API key, or Railway briefly down, doesn't degrade the read experience.
+Status fetch failure is non-fatal — listings render in Inbox with no transition buttons (read-only mode).
 
-### Where the UI changes go
+### Tab navigation
 
-| Change | Location in `index.html` |
-|---|---|
-| Status pill (column 1) | New leading cell in the table row template; `data-status="..."` for CSS coloring |
-| Watch bookmark icon | Inside the same column-1 cell, after the pill |
-| Expanded-row notes editor | Append to the existing expansion content alongside Price History / Agent / Payment Breakdown |
-| Chip selector | Same expansion block, above the notes textarea |
-| Settings panel | New gear icon top-right of header → opens a modal with API key input and Test Connection button |
-| Filter — "Show only my Shortlisted" | New chip in the existing filter bar |
-| Filter — "Hide Rejected" | Same; on by default once any listing is rejected |
+Three tab pills in the filter bar: **Inbox** | **Shortlist** | **Archive**. Active tab read from `location.hash` on load (default: `#inbox`). Hash updates on tab switch. localStorage stores last tab as fallback.
 
-### Status pill cycle
+```js
+function getActiveTab() {
+  const hash = location.hash.replace('#', '');
+  return ['inbox', 'shortlist', 'archive'].includes(hash) ? hash : 'inbox';
+}
+```
 
-Tapping the pill cycles forward: `none → watching → viewing → shortlisted → rejected → offered → none`. Long-press / right-click opens a menu to jump directly to any status. Rejecting prompts for chips before committing the change — a one-tap "rejected" without a reason is a regret waiting to happen.
+### Column set per tab
+
+| Column | Inbox | Shortlist | Archive |
+|---|---|---|---|
+| Building / Unit | ✓ | ✓ | ✓ |
+| Monthly Pmt | ✓ | ✓ | ✓ |
+| Ask Price | ✓ | ✓ | ✓ |
+| SqFt | ✓ | ✓ | ✓ |
+| Beds / Baths | ✓ | ✓ | ✓ |
+| OQ # | — | ✓ | — |
+| RQ # | — | ✓ | — |
+| Type | ✓ | ✓ | ✓ |
+| Days Listed | ✓ | ✓ | — |
+| Actions | ★ / ↓ | ↓ / ← | ← |
+
+### Transition buttons
+
+Per-row action buttons, contextual to current tab:
+
+- **Inbox**: `★ Shortlist` (blue) + `Archive ↓` (gray)
+- **Shortlist**: `Archive ↓` (gray) + `← Inbox` (subtle)
+- **Archive**: `← Inbox` (blue)
+
+Each button fires `updateStatus(id, { bucket: newBucket, bucket_changed_at: now, ... })`. Archive transitions also include `price_at_archive: listing.price`.
 
 ### Optimistic update helper
 
 ```js
 async function updateStatus(listingId, patch) {
-  // 1. Mutate in-memory, re-render row immediately.
   const row = listings.find(l => l.id === listingId);
   Object.assign(row, patch, { updated_at: new Date().toISOString() });
-  renderRow(row);
+  renderCurrentTab(); // re-filter and re-render
 
-  // 2. PUT to server. On failure, queue for offline flush, leave UI as-is.
   try {
     const res = await fetch(`${API_BASE}/status/${listingId}`, {
       method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-API-Key': localStorage.getItem('streethard.api_key') ?? ''
-      },
+      headers: { 'Content-Type': 'application/json', 'X-API-Key': getApiKey() },
       body: JSON.stringify(patch)
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
@@ -297,16 +367,11 @@ async function updateStatus(listingId, patch) {
 }
 ```
 
-Notes get a 1-second debounce on keystrokes (only the notes field; status / watch / chips fire immediately). Single-row PUTs only — no commit-flooding problem because Railway is the source of truth, not git.
+Notes: 1-second debounce on keystrokes. Bucket transitions fire immediately.
 
-### Offline outbox (phone on tour)
+### Offline outbox
 
-`localStorage['streethard.outbox']` holds an array of `{listing_id, patch, ts}` entries. Flushed via `POST /status/batch` on:
-
-- `window.addEventListener('online', flushOutbox)`
-- `document.addEventListener('visibilitychange', () => { if (!document.hidden) flushOutbox() })`
-
-This handles the realistic case: in an elevator, no signal, mark a listing Viewing, signal returns, queue flushes silently. Closed-tab-while-offline (Service Worker + IndexedDB) is deferred to v1.5 — the tour-day case doesn't need it.
+`localStorage['streethard.outbox']` holds `{listing_id, patch, ts}` entries. Flushed via `POST /status/batch` on `online` / `visibilitychange`. Same as before — handles the elevator/tour scenario.
 
 ---
 
@@ -479,54 +544,49 @@ When all three return 200 with sensible JSON, the backend is done. Move to the f
 
 ---
 
-## v1 / v1.5 / v2
+## v1 / v1.1 / v1.5 / v2
 
-**v1 — ship it.** Six statuses, watch flag, notes, chips, Settings panel with API key + Test Connection, optimistic UI, offline outbox via `online` / `visibilitychange`. Cycle pill and bookmark in column 1. Inline filters for "show only Shortlisted" and "hide Rejected." Acceptance criteria below.
+**v1 — ship it.** Three-bucket triage (Inbox/Shortlist/Archive), tab navigation with URL hash, transition buttons, auto-resurrection on price drops, OQ/RQ rankings (Shortlist-only, server-enforced clearing), notes, Settings panel, optimistic UI, offline outbox. Acceptance criteria below.
 
-**v1.5 — niceties.** Service Worker + IndexedDB so the app keeps working in a closed tab while offline. Per-IP rate limit on writes. Export-to-CSV of marked listings. Watch-triggered visual diff ("price dropped 5% on a watched listing").
+**v1.1 — triage speed.** Bulk archive (checkboxes + toolbar). Keyboard shortcut `e` to archive. Chips on Shortlist items.
 
-**v2 — only if needed.** Per-user identity (multi-key, attribution on notes). Push notification when a watched listing's price changes. None of this is needed for n=1.
+**v1.5 — niceties.** Service Worker + IndexedDB for closed-tab offline. Per-IP rate limit. Export-to-CSV of shortlisted listings.
+
+**v2 — only if needed.** Per-user identity (multi-key, attribution). Status history / audit trail. Push notifications. None needed for n=1.
 
 ---
 
-## Deferred Design Ideas — Logged 2026-05-02 (Proposal Review)
+## Deferred Design Ideas
 
-A late-evening review proposed a few additions that aren't superseded by the locked spec but also aren't pulled into v1. Captured here so future Claude sees what's been considered. Each is intentionally parked as an open question in `TASKS.md` — none are scheduled until the v1 build proves out and the user weighs in.
+### Status history / audit trail (v2)
 
-### Triaged-out as a distinct status
+The schema is last-write-wins. A second table (`listing_status_history(listing_id, bucket, changed_at)`) appended on every write would give a free audit log. Cost is ~$0/mo at this volume; worth adding if "wait, why did we archive this?" becomes a real question after a few months.
 
-The current six statuses jump from `none` directly to `watching` or `rejected`. Real triage often produces a third state: "I skimmed this listing, it's a no, but I don't want to spend chip-selection effort rejecting it formally." A `triaged-out` status would absorb the silent scroll-past — softer than `rejected`, more deliberate than `none`. Not recommended for v1 because adding a status midstream means amending the CHECK constraint and the cycle order; worth deciding before the schema hardens with real data.
+### Structured tour metadata (v2)
 
-### Status history / audit trail
+Notes textarea is the only place tour info lives. If structure-vs-free-text becomes painful after ~10 tours, add columns: `toured_at`, `tour_attendees JSONB`, `follow_up_at`, `private_max_offer NUMERIC`.
 
-The schema is last-write-wins. Reversal (vetoed → active when a price drops, or shortlisted → rejected after a tour) is common in this workflow, and the *why we changed our minds* is information the family will want two months later. A second table (`listing_status_history(listing_id, status, watch, chips, changed_at)`) appended on every write would give a free audit log without complicating the read path. Cost is ~$0/mo at this volume; worth folding in if any reversal is ever the subject of "wait, why did we say no to this?"
+### "Recently delisted (you tracked these)" surface (v1.5)
 
-### Structured tour metadata
+Orphan `listing_status` rows persist when a listing leaves `db.json`. A collapsible "Recently delisted that you shortlisted" section would make "what passed us by" visible. Requires the merge step to surface orphan rows rather than dropping them.
 
-The notes textarea is the only place tour information lives today. Real tours generate structured fields that buyers consistently want: tour date, who attended, follow-up date for "check again on X," and `private_max_offer` (the number the family argues about, separate from list price). These fit naturally as additional columns on `listing_status` (`toured_at`, `tour_attendees JSONB`, `follow_up_at`, `private_max_offer NUMERIC`). v1 ships with notes only; if structure-vs-free-text becomes painful in actual use, add the columns then.
+### Bulk archive (v1.1)
 
-### Saved-filter tabs above the table
-
-v1 has filter toggles ("Show only Shortlisted," "Hide Rejected"). A complementary UI: persistent tabs above the table — `All / Active / Toured / Watching / Offered` — that are saved filter shortcuts matching how the buyer already thinks ("show me my shortlist"). Default tab on load could become `Active` once the family has any shortlisted listings. Pure frontend work, lands in `index.html` after F8.
-
-### "Recently delisted (you tracked these)" surface
-
-The spec acknowledges that orphan `listing_status` rows persist when a listing leaves `db.json` (delisting/sold), and the merge tolerates them. It doesn't surface them visually. A collapsible section under the table — "Recently delisted that you tracked" — would make "what passed us by" visible. Useful signal for the family ("we vetoed this and it sold in 11 days at asking — recalibrate"). Requires the merge step to keep orphan rows on a separate list rather than dropping them.
-
-### Re-evaluation badge specifics
-
-v1.5 already has "Watch-triggered visual diff." Concrete rendering: a yellow `RECONSIDER` pill next to the price for any watched listing whose latest `data/db.json` price is lower than the price stored at the moment the user marked it watched. Implementation needs a `price_at_watch` snapshot on the status row (NUMERIC, set on the watch=true transition). One additional column; lands cleanly when v1.5 picks up the diff work.
+When 40 new listings land from a cron run, archiving one-by-one is tedious. Gmail solves this with checkboxes + toolbar button. Row markup in v1 includes a hidden checkbox hook for this.
 
 ---
 
 ## v1 Acceptance Criteria
 
-1. **Cross-device sync.** Mark a listing Shortlisted on the iPhone. Open the laptop. After hard refresh, the same listing shows Shortlisted.
-2. **Persistence across deploys.** Push a deploy to GitHub Pages. The Shortlisted listing is still Shortlisted.
-3. **Watch is independent.** Reject a watched listing. The bookmark icon stays. The listing still surfaces under any "watched" filter.
-4. **Offline tour.** Phone in airplane mode. Mark a listing Viewing. Type a note. Toggle airplane mode off. Within ~3 seconds, the change is on the laptop after refresh.
-5. **Bad key fails clearly.** Wrong key in Settings → Test Connection shows a red error inside the modal. Writes from that device are blocked with a non-silent toast.
-6. **Read without key.** Open the app in a clean browser with no key. Statuses still show; status pill is read-only with a tooltip explaining how to add the key.
-7. **Cron untouched.** A `refresh.yml` run completes; statuses are unchanged afterward.
+1. **Cross-device sync.** Shortlist a listing on iPhone. Refresh laptop. Same listing in Shortlist tab.
+2. **Persistence across deploys.** Push a deploy. Shortlisted listing still in Shortlist tab.
+3. **Archive removes from Inbox.** Archive a listing. Disappears from Inbox, appears in Archive tab.
+4. **OQ/RQ cleared on exit.** Rank a shortlisted listing OQ#1. Archive it. Unarchive → Shortlist again. OQ# is empty.
+5. **Auto-resurrection.** Archive at $3M. Simulate price drop to $2.8M. Reload. Listing in Inbox with "Price dropped" badge.
+6. **Offline tour.** Phone in airplane mode → shortlist → airplane off. Change syncs within ~3 seconds.
+7. **Bad key fails clearly.** Wrong key → Test Connection shows red error. Writes blocked.
+8. **Read without key.** Clean browser, no key. Listings render in Inbox. Transition buttons hidden/disabled.
+9. **Cron untouched.** `refresh.yml` run completes; bucket assignments unchanged.
+10. **New listings land in Inbox.** Run cron. New listings appear in Inbox, not Shortlist or Archive.
 
-When all seven pass on a real iPhone + laptop pair, v1 is done.
+When all ten pass on a real iPhone + laptop pair, v1 is done.
