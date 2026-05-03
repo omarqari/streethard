@@ -67,9 +67,14 @@ async def lifespan(app: FastAPI):
     # Run schema migration
     pool = get_pool()
     schema_path = os.path.join(os.path.dirname(__file__), "schema.sql")
-    async with pool.acquire() as conn:
-        with open(schema_path) as f:
-            await conn.execute(f.read())
+    try:
+        async with pool.acquire() as conn:
+            with open(schema_path) as f:
+                await conn.execute(f.read())
+        print("Schema migration completed successfully")
+    except Exception as e:
+        print(f"Schema migration error (non-fatal): {e}")
+        # Log but don't crash — allows the service to start so we can debug
     yield
     await pool_shutdown()
 
@@ -153,6 +158,16 @@ SELECT_ALL_SQL = """
     FROM listing_status ORDER BY updated_at DESC
 """
 
+# Fallback if migration hasn't run yet
+SELECT_ALL_LEGACY_SQL = """
+    SELECT listing_id,
+           CASE WHEN watch THEN 'shortlist' ELSE 'inbox' END as bucket,
+           updated_at as bucket_changed_at,
+           NULL::integer as price_at_archive,
+           oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at
+    FROM listing_status ORDER BY updated_at DESC
+"""
+
 
 def row_to_dict(r):
     return {
@@ -222,7 +237,11 @@ async def get_all_status(response: Response):
     response.headers["Cache-Control"] = "no-store"
     pool = get_pool()
     async with pool.acquire() as conn:
-        rows = await conn.fetch(SELECT_ALL_SQL)
+        try:
+            rows = await conn.fetch(SELECT_ALL_SQL)
+        except Exception:
+            # Migration hasn't run yet — use legacy query
+            rows = await conn.fetch(SELECT_ALL_LEGACY_SQL)
     return {"items": [row_to_dict(r) for r in rows]}
 
 
