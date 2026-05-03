@@ -804,13 +804,13 @@ td {
 
 /* ─── Swipe Indicators (card triage) ──────────────────────────── */
 .swipe-indicator {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  font-size: 15px; font-weight: 900; opacity: 0; pointer-events: none;
-  padding: 6px 12px; border-radius: 6px; border: 3px solid;
-  z-index: 2; white-space: nowrap;
+  position: absolute; top: 50%;
+  font-size: 18px; font-weight: 900; opacity: 0; pointer-events: none;
+  padding: 8px 14px; border-radius: 6px; border: 3px solid;
+  z-index: 2; white-space: nowrap; letter-spacing: 0.04em;
 }
-.swipe-right { left: 14px;  color: #3461D9; border-color: #3461D9; background: rgba(52,97,217,0.1); }
-.swipe-left  { right: 14px; color: #888;   border-color: #999;    background: rgba(0,0,0,0.06); }
+.swipe-right { left: 14px;  transform: translateY(-50%) rotate(-15deg); color: #1a7a3c; border-color: #1a7a3c; background: rgba(26,122,60,0.1); }
+.swipe-left  { right: 14px; transform: translateY(-50%) rotate(15deg);  color: #c62828; border-color: #c62828; background: rgba(198,40,40,0.1); }
 
 /* ─── Card Actions Row ─────────────────────────────────────────── */
 .card-actions {
@@ -825,6 +825,12 @@ td {
 
 /* ─── Mobile (≤768px) ─────────────────────────────────────────── */
 @media (max-width: 768px) {
+
+  /* Switch to full-page scroll; only #main-header stays pinned */
+  body { height: auto; min-height: 100dvh; overflow-y: auto; overflow-x: hidden; }
+  #sticky-top { position: static; box-shadow: none; }
+  #main-header { position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  #scroll-content { overflow: visible; flex: none; }
 
   /* Header: hide non-essential items */
   .header-tag, #last-updated { display: none; }
@@ -1740,6 +1746,9 @@ function initCardSwipe(cardEl, listingId) {
     const pct = Math.min(Math.abs(dx) / THRESHOLD, 1);
     indRight.style.opacity = dx > 0 ? pct : 0;
     indLeft.style.opacity  = dx < 0 ? pct : 0;
+    if (dx > 0)      cardEl.style.background = `rgba(26,122,60,${pct * 0.18})`;
+    else if (dx < 0) cardEl.style.background = `rgba(198,40,40,${pct * 0.15})`;
+    else             cardEl.style.background = '';
   }, { passive: true });
 
   cardEl.addEventListener('touchend', () => {
@@ -1755,8 +1764,9 @@ function initCardSwipe(cardEl, listingId) {
       cardEl.style.opacity = '0';
       setTimeout(() => transitionBucket(listingId, 'archive', null), 250);
     } else {
-      cardEl.style.transition = 'transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275)';
+      cardEl.style.transition = 'transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275), background 0.2s';
       cardEl.style.transform  = '';
+      cardEl.style.background = '';
       indRight.style.opacity = indLeft.style.opacity = 0;
     }
     startX = null; dragging = false;
