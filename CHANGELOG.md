@@ -4,6 +4,31 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-03 — Seen Toggle for Visited Apartments (Session 28)
+
+### Feature: "Seen" indicator
+Added the ability to mark apartments as physically visited with a simple toggle.
+
+**Backend:**
+- Added `seen BOOLEAN NOT NULL DEFAULT FALSE` column to `listing_status` table
+- Idempotent migration in `schema.sql` (adds column if missing on startup)
+- `seen` field added to all Pydantic models (`StatusPatch`, `BatchItem`)
+- Both UPSERT SQL paths (`UPSERT_SQL`, `UPSERT_WITH_RANK_CLEAR_SQL`) updated with `$seen` parameter
+- `SELECT_ALL_SQL` and `row_to_dict` include `seen`
+- Toggle via `PUT /status/{id}` with `{"seen": true}` or `{"seen": false}`
+
+**Frontend:**
+- Eye icon (👁) in the actions cell of each table row, before transition buttons
+- Faded when not seen, blue (`#3461D9`) when marked as visited
+- Click toggles with optimistic UI update, persists to API
+- "👁 Seen" checkbox filter in filter bar (same pattern as "✂ Price Cuts")
+- Filter shows only listings where `seen === true`
+- Clear Filters resets the Seen checkbox
+
+**Commits:** `5c3f586` (backend + frontend toggle), `dc6d728` (seen filter checkbox)
+
+---
+
 ## 2026-05-03 — Update Default Mortgage Rate to 5% (Session 27)
 
 Updated the default mortgage interest rate from 3.00% to 5.00% across all locations:

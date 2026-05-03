@@ -121,14 +121,15 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   managed Postgres. `api/` directory. One table (`listing_status`), no auth
   (CORS-restricted to `streethard.omarqari.com`). **Columns:** `bucket` (inbox/shortlist/archive), `bucket_changed_at`,
   `price_at_archive`, `oq_rank`, `rq_rank`, `oq_notes`, `rq_notes`, `chips`,
-  `updated_at`. Old `status` and `watch` columns dropped. Two SQL paths:
-  `UPSERT_SQL` (normal) and `UPSERT_WITH_RANK_CLEAR_SQL` (clears ranks on
-  shortlist exit).
+  `seen` (boolean, visited in person), `updated_at`. Old `status` and `watch`
+  columns dropped. Two SQL paths: `UPSERT_SQL` (normal) and
+  `UPSERT_WITH_RANK_CLEAR_SQL` (clears ranks on shortlist exit).
 - **Frontend (MVP COMPLETE):** Two-fetch merge ✅. OQ#/RQ# rankings
   (click-to-edit, nulls-last) ✅. OQ/RQ Notes (debounced) ✅. Tab navigation
   with badge counts (T1) ✅. Transition buttons (T2) ✅. Auto-resurrection on
   price drop (T4) ✅. URL hash routing ✅. Sort defaults per tab (T6) ✅.
-  Settings panel removed (Session 26) — no API key needed.
+  Settings panel removed (Session 26) — no API key needed. Seen toggle
+  (Session 28) ✅ — eye icon per row + filter checkbox.
   **Not yet built:** Offline outbox (T8), card view adaptation (T9), chips (T10).
 - **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
   actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
