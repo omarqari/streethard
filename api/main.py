@@ -197,14 +197,24 @@ async def should_clear_ranks(conn, listing_id: str, new_bucket: str | None) -> b
 
 async def do_upsert(conn, listing_id: str, patch, clear_ranks: bool):
     """Execute the upsert with or without rank clearing."""
+    from datetime import datetime, timezone
+
     chips_json = json.dumps(patch.chips) if patch.chips is not None else None
+
+    # Convert bucket_changed_at string to datetime for asyncpg
+    bucket_changed_at = None
+    if patch.bucket_changed_at:
+        try:
+            bucket_changed_at = datetime.fromisoformat(patch.bucket_changed_at.replace('Z', '+00:00'))
+        except (ValueError, AttributeError):
+            bucket_changed_at = datetime.now(timezone.utc)
 
     sql = UPSERT_WITH_RANK_CLEAR_SQL if clear_ranks else UPSERT_SQL
     row = await conn.fetchrow(
         sql,
         listing_id,
         patch.bucket,
-        patch.bucket_changed_at,
+        bucket_changed_at,
         patch.price_at_archive,
         patch.oq_notes,
         patch.rq_notes,
