@@ -4,6 +4,16 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-03 — Update Default Mortgage Rate to 5% (Session 27)
+
+Updated the default mortgage interest rate from 3.00% to 5.00% across all locations:
+- `CLAUDE.md` — mortgage calculator defaults documentation
+- `index.html` — rate input field default value, JS variable initialization, and fallback in parser
+
+No other changes this session.
+
+---
+
 ## 2026-05-03 — Remove Auth, Git Push Script (Session 26)
 
 ### Auth Removal
