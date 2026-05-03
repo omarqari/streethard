@@ -4,6 +4,34 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-03 — Verification + T6 Sort Defaults (Session 23)
+
+End-to-end verification of the three-bucket system, DNS cutover confirmation, and T6 sort defaults shipped.
+
+### Verification
+
+1. **DNS fully propagated.** Both `streethard.omarqari.com` (GitHub Pages) and `api.streethard.omarqari.com` (Railway) resolve and serve HTTPS. Custom domains confirmed working.
+2. **API health confirmed.** `/health` returns `{"ok":true,"db":"connected"}`. `GET /status` returns all 9 status rows.
+3. **A4 (rank clearing) verified end-to-end via API.** Test cycle: shortlist with OQ=2/RQ=5 → archive (ranks null) → inbox (still null) → re-shortlist (still null). Rank-clearing SQL works correctly.
+4. **Stale pre-migration ranks fixed.** Two archived listings (1810570, 1718666) had non-null ranks from before the Session 22 migration. Fixed by cycling them through shortlist→archive to trigger the rank-clearing SQL path.
+5. **App loads and renders.** All three tabs (Inbox 356, Shortlist 5, Archive 7) render correctly with proper badge counts, transition buttons, and column hiding.
+
+### T6 — Sort Defaults Per Tab (shipped, pushed commit 220aa44)
+
+- **Inbox:** Monthly Payment descending (unchanged default)
+- **Shortlist:** OQ# ascending, nulls last (priority order)
+- **Archive:** `bucket_changed_at` descending (most recently archived first — no column header highlighted since it's not a visible column)
+- Sort resets automatically on tab switch
+- Init block respects URL hash on page load (`#shortlist` loads with OQ# sort)
+- Removed hardcoded `↓` arrow from Monthly Pmt header; arrows now set dynamically
+- Added `archived_at` sort case to `sortListings()` comparator
+
+### User Activity Observed
+
+Omar has been actively triaging: 5 shortlisted (The Saratoga, 201 E 83rd, New Yorker Condo, 201 E 77th, 233 E 69th), 7 archived with notes like "Too expensive" and "Too expensive per month b/c of wild maint fees." System is getting real use.
+
+---
+
 ## 2026-05-02 — Three-Bucket MVP Build Complete (Session 22)
 
 Implemented the full three-bucket triage experience: backend migration + API rewrite + frontend tab navigation + transition buttons + auto-resurrection.

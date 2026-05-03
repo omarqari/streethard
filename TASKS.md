@@ -111,7 +111,7 @@ Replaces old F2 (status pill cycling) and F3 (watch toggle). Existing work retai
 - [x] **T3 — Server-side OQ/RQ clearing.** ✅ Session 22. `UPSERT_WITH_RANK_CLEAR_SQL` uses 7 params, hardcodes `oq_rank = NULL, rq_rank = NULL` when transitioning out of shortlist. `should_clear_ranks()` detects exit from shortlist.
 - [x] **T4 — Auto-resurrection on price drop.** ✅ Session 22. `autoResurrect()` on page load: scans archived listings, batch-transitions to inbox via `/status/batch` when current price < `price_at_archive`.
 - [x] **T5 — Tab badge counts.** ✅ Session 22 (built inline with T1). `updateBucketCounts()` updates badge numbers on every filter/render cycle.
-- [ ] **T6 — Sort defaults per tab.** Inbox: Monthly Payment descending (existing default). Shortlist: OQ# ascending (priority order). Archive: `bucket_changed_at` descending (most recently archived first).
+- [x] **T6 — Sort defaults per tab.** ✅ Session 23. Inbox: Monthly Payment desc. Shortlist: OQ# asc (nulls last). Archive: `bucket_changed_at` desc (most recently archived first). Sort resets on tab switch; init respects URL hash. Added `archived_at` sort case to `sortListings()`.
 - [ ] **T7 — Optimistic update helper.** `updateStatus(listingId, patch)` mutates in-memory, re-renders, then PUTs. On failure, queue in outbox. (Carried from old F5.)
 - [ ] **T8 — Offline outbox + flush.** `localStorage['streethard.outbox']` flushed via `POST /status/batch` on `online` / `visibilitychange`. (Carried from old F6.)
 - [ ] **T9 — Card view adaptation.** Cards in Shortlist show OQ/RQ notes; Inbox/Archive cards do not show ranking fields. Transition buttons visible in card view too.

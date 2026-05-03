@@ -100,7 +100,7 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 
 - **Default view**: Sortable table (dense, comparison-optimized)
 - **Toggle**: Card view
-- **Default sort**: Monthly Payment descending
+- **Default sort**: Per tab — Inbox: Monthly Payment desc, Shortlist: OQ# asc, Archive: bucket_changed_at desc
 - **Text search**: Free-text search bar filters by building, address, unit, neighborhood, agent name/firm
 - **Inline filters**: Beds, Type (Condo/Co-op), Max Price, Max Monthly Payment
 - **Mortgage calculator** in header: Down Payment · Rate · Term — interactive, recalculates all rows instantly
@@ -126,8 +126,8 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   merge ✅. OQ#/RQ# rankings (click-to-edit, nulls-last) ✅. OQ/RQ Notes
   (debounced) ✅. Tab navigation with badge counts (T1) ✅. Transition buttons
   (T2) ✅. Auto-resurrection on price drop (T4) ✅. URL hash routing ✅.
-  **Not yet built:** Sort defaults per tab (T6), offline outbox (T8), card view
-  adaptation (T9), chips (T10).
+  Sort defaults per tab (T6) ✅.
+  **Not yet built:** Offline outbox (T8), card view adaptation (T9), chips (T10).
 - **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
   actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
   drop). OQ/RQ cleared server-side on exit from Shortlist. URL hash for tab state.
@@ -137,15 +137,16 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   Reads are public.
 - **Cost:** $5/mo Hobby tier on Railway.
 
-Next session: **verify end-to-end flow on mobile + laptop**, then polish items
-(T6 sort defaults, T9 card view adaptation, T10 chips). See acceptance
-criteria A1–A10 in TASKS.md.
+Next session: **polish items** (T9 card view adaptation, T10 chips), **DNS
+cutover cleanup** (drop `ALLOWED_ORIGIN_FALLBACK` from Railway, enable Enforce
+HTTPS on GitHub Pages), and **product backlog selection**. See PRODUCT-BACKLOG.md
+for proposed features and TASKS.md for acceptance criteria A1–A10.
 
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
 - **Status API: LIVE on Railway** — `https://api.streethard.omarqari.com` (custom domain pending DNS propagation; Railway default URL `bu5x85os.up.railway.app` works now). FastAPI + asyncpg + managed Postgres. Hobby tier ($5/mo). All endpoints operational: `/health`, `GET /status`, `PUT /status/{id}`, `POST /status/batch`.
-- **DNS: migrated to Spaceship** (Session 18, 2026-05-02). Nameservers switched from Namecheap to Spaceship (`launch1.spaceship.net`, `launch2.spaceship.net`). Custom records: `streethard` CNAME, `api.streethard` CNAME, `_railway-verify` TXT, `www` CNAME (LinkedIn redirect). Propagation pending.
+- **DNS: migrated to Spaceship, PROPAGATED** (Session 18, 2026-05-02; confirmed Session 23). Nameservers switched from Namecheap to Spaceship (`launch1.spaceship.net`, `launch2.spaceship.net`). Custom records: `streethard` CNAME, `api.streethard` CNAME, `_railway-verify` TXT, `www` CNAME (LinkedIn redirect). Both custom domains verified working with HTTPS (Session 23). **TODO:** Remove `ALLOWED_ORIGIN_FALLBACK` from Railway env vars, enable "Enforce HTTPS" on GitHub Pages.
 - **www.omarqari.com redirect:** GitHub Pages repo `omarqari/www-redirect` serves a meta-refresh redirect to `https://www.linkedin.com/in/oqari/`. Will go live when DNS propagates.
 - **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 INTERMITTENT (proxy IP rotation; cron's Mon/Thu 09:00 UTC slot sometimes hits blocked IPs). Pass 2 for sales FIXED (Session 19): memo23 patched `/sale/{id}` path to pull financials from non-PX-blocked source. Pass 2 for rentals BROKEN: `/rental/{id}` URLs return "No results found" sentinels; flagged to memo23, awaiting fix. Actor's new build uses different field schema (`pricing_*`, `propertyDetails_*`, `saleCombineResponse_sale_*`) — `normalize()` in pull.py handles both old and new schemas.
 - **Pipeline: Incremental ("Puzzle" model) with resilience guards** — `data/db.json` is the canonical store. Each cron run discovers new listings via Pass 1 and fills in detail via Pass 2 (capped at 100/run). See PROJECTPLAN.md for full architecture.
