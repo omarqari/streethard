@@ -29,14 +29,17 @@ Per-listing icons derived from `price_history`, rendered in the DAYS LISTED colu
 Results cached per listing ID for performance. Added "✂ Price Cuts" checkbox filter in filter bar — filters to only listings with price reductions (202 of 368 sale listings have cuts).
 
 ### Cron Schedule
-Changed from Mon+Thu (twice weekly) to daily at 09:00 UTC. **Note:** Push of `refresh.yml` blocked by PAT missing `workflow` scope — Omar needs to either update the PAT or push the workflow change manually.
+Changed from Mon+Thu (twice weekly) to daily at 09:00 UTC. Initially blocked by PAT missing `workflow` scope — Omar added Workflows read/write permission to the `claude-streethard` fine-grained token (no regeneration needed), then pushed successfully.
 
 ### DNS Cutover Cleanup
 Removed `ALLOWED_ORIGIN_FALLBACK` env var from Railway. Enabled "Enforce HTTPS" on GitHub Pages.
 
+### PAT Token Update
+Added Workflows read/write permission to the `claude-streethard` fine-grained PAT. Fine-grained tokens update permissions in place — no regeneration or `.env` change needed.
+
 ### Git
 - Commit `176c809`: index.html with health strip + signal icons + price cuts filter
-- Workflow change (daily cron) in local file, not yet pushed (PAT scope)
+- Commit `31e0022`: refresh.yml changed to daily cron
 
 ---
 

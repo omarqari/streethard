@@ -26,7 +26,7 @@ Actionable next steps. Check things off as you go.
 
 ## Recurring (While Searching)
 
-- [ ] Mon + Thu: GitHub Actions auto-runs the pull. Verify output after each run.
+- [ ] Daily: GitHub Actions auto-runs the pull at 09:00 UTC. Verify output after each run.
 - [ ] Per serious candidate: run the 15-minute due diligence checklist.
 - [ ] Monthly: cross-check StreetEasy and CitySnap saved searches for anything the API missed.
 
@@ -67,6 +67,11 @@ Pass 1 (search), Pass 2 (detail pages), and the incremental pipeline are all ope
 - [x] **Cron silent-failure diagnosis + resilience patches (Session 12, 2026-05-02):** ✅ Pass 1 sentinel guard, `get_run` 5xx retry, Pass 2 `RequestException` catch, `refresh.yml` `if: success() || failure()` on the commit step. Workflow run #24 brought in 46 new listings (first fresh data in 12 days). Memo23 issue thread updated with run-ID evidence.
 - [x] **Partial Pass 2 backfill (Session 12, 2026-05-02):** ✅ Direct API call to memo23 actor on the 46 pass1 records. SaleListingDetailsFederated GraphQL endpoint was 403'd by StreetEasy's PX bot detection; the actor's fallback endpoint returned partials missing financial fields. Salvaged `listed_date`, `price_history`, agent contact, year_built, neighborhood, $/sqft for 38 of 38 sales.
 - [x] **Full Pass 2 backfill after memo23 PX fix (Session 19, 2026-05-02):** ✅ memo23 patched the `/sale/{id}` path to pull financials from a non-blocked source. All 38 sale listings backfilled to pass2 with full financial data (run `eEQfCNBuh0fTNihJ0`). Updated `normalize()` with new field schema (`saleCombineResponse_sale_*`, `pricing_*`, `propertyDetails_*`). DB now 411 pass2, 0 partial, 8 pass1 (rentals only).
+- [x] **Pipeline health strip (Session 24, 2026-05-03):** ✅ Green/yellow/red staleness indicator between summary bar and tabs. Shows last refresh date, age, data quality counts. Yellow at 3+ days, red at 5+ days stale.
+- [x] **Price-history signal icons (Session 24, 2026-05-03):** ✅ Per-listing icons in DAYS LISTED column: ✂ price cuts (red), ↻ re-listed (orange), ⏸ off-market-and-back (blue), ⏳ stale 90d+ (yellow). Cached per listing ID. 202/368 sale listings have cuts.
+- [x] **Price Cuts filter (Session 24, 2026-05-03):** ✅ Checkbox in filter bar. Filters to only listings with PRICE_DECREASE events.
+- [x] **Daily cron (Session 24, 2026-05-03):** ✅ Changed from Mon+Thu to daily 09:00 UTC. PAT updated with Workflows permission; pushed successfully.
+- [x] **DNS cutover cleanup (Session 24, 2026-05-03):** ✅ Removed `ALLOWED_ORIGIN_FALLBACK` from Railway. Enabled "Enforce HTTPS" on GitHub Pages.
 
 ---
 
@@ -122,7 +127,7 @@ Replaces old F2 (status pill cycling) and F3 (watch toggle). Existing work retai
 - [x] **D1–D5 — Railway infra.** ✅ Session 18. Project, Postgres, env vars, healthcheck, Hobby tier all done.
 - [x] **D6 — Schema migration for three-bucket system.** ✅ Session 22. Idempotent PL/pgSQL migration in `schema.sql`. Adds bucket/bucket_changed_at/price_at_archive, backfills from watch, drops old status+watch columns. Deployed live on Railway.
 - [x] **D7 — `API_BASE` wired into `index.html`.** ✅ Already done (Session 18). `const API_BASE = "https://api.streethard.omarqari.com"`.
-- [ ] **D8 — Mobile device key paste.** On the iPhone, open the live Pages URL → Settings → paste the `WRITE_API_KEY`. Verify Test Connection passes.
+- [x] **D8 — Mobile device key paste.** ✅ Obsolete — auth removed in Session 26. All endpoints are public (CORS-restricted).
 - [ ] **D9 — Deploy verification.** Push a deploy. Shortlist a listing on iPhone. Hard-refresh laptop. Confirm the change persists.
 
 ### v1 Acceptance Criteria
@@ -132,11 +137,11 @@ All must pass on a real iPhone + laptop pair before v1 is closed:
 - [ ] **A1 — Cross-device sync.** Shortlist a listing on iPhone. Refresh laptop. Same listing appears in Shortlist tab.
 - [ ] **A2 — Persistence across deploys.** Push a deploy. Shortlisted listing is still in Shortlist tab.
 - [ ] **A3 — Archive removes from Inbox.** Archive a listing. It disappears from Inbox, appears in Archive tab.
-- [ ] **A4 — OQ/RQ cleared on exit from Shortlist.** Rank a shortlisted listing OQ#1. Archive it. Unarchive it back to Inbox. Shortlist it again. OQ# is empty (was cleared on the first archive).
+- [x] **A4 — OQ/RQ cleared on exit from Shortlist.** ✅ Session 23: verified end-to-end via API test cycle (shortlist with OQ=2/RQ=5 → archive → inbox → re-shortlist, ranks null at every step).
 - [ ] **A5 — Auto-resurrection.** Archive a listing at $3M. Simulate a price drop to $2.8M in db.json. Reload app. Listing appears in Inbox with "Price dropped" badge.
 - [ ] **A6 — Offline tour.** Phone in airplane mode → shortlist a listing → toggle airplane mode off. Within ~3 seconds, change is on the laptop after refresh.
-- [ ] **A7 — Bad key fails clearly.** Wrong key in Settings → Test Connection shows a red error. Writes blocked with non-silent toast.
-- [ ] **A8 — Read without key.** Clean browser, no key. Listings render in Inbox. Transition buttons are hidden/disabled.
+- [x] **A7 — Bad key fails clearly.** ✅ Obsolete — auth removed in Session 26.
+- [x] **A8 — Read without key.** ✅ Obsolete — auth removed in Session 26. All endpoints public.
 - [ ] **A9 — Cron untouched.** A `refresh.yml` run completes; bucket assignments unchanged afterward.
 - [ ] **A10 — New listings land in Inbox.** Run cron. New listings appear in Inbox tab, not Shortlist or Archive.
 

@@ -139,15 +139,14 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   public; CORS restricts browser writes to `streethard.omarqari.com` origin.
 - **Cost:** $5/mo Hobby tier on Railway.
 
-Next session: **polish items** (T9 card view adaptation, T10 chips), **push
-daily cron workflow** (PAT needs `workflow` scope — Omar to update token or push
-manually), **product backlog selection** from PRODUCT-BACKLOG.md.
+Next session: **polish items** (T9 card view adaptation, T10 chips), **product
+backlog selection** from PRODUCT-BACKLOG.md.
 See TASKS.md for acceptance criteria A1–A10.
 
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
-- **Status API: LIVE on Railway** — `https://api.streethard.omarqari.com` (custom domain pending DNS propagation; Railway default URL `bu5x85os.up.railway.app` works now). FastAPI + asyncpg + managed Postgres. Hobby tier ($5/mo). All endpoints operational: `/health`, `GET /status`, `PUT /status/{id}`, `POST /status/batch`.
+- **Status API: LIVE on Railway** — `https://api.streethard.omarqari.com`. FastAPI + asyncpg + managed Postgres. Hobby tier ($5/mo). All endpoints operational: `/health`, `GET /status`, `PUT /status/{id}`, `POST /status/batch`. No auth — CORS-restricted to `streethard.omarqari.com`.
 - **DNS: migrated to Spaceship, PROPAGATED** (Session 18, 2026-05-02; confirmed Session 23). Nameservers switched from Namecheap to Spaceship (`launch1.spaceship.net`, `launch2.spaceship.net`). Custom records: `streethard` CNAME, `api.streethard` CNAME, `_railway-verify` TXT, `www` CNAME (LinkedIn redirect). Both custom domains verified working with HTTPS (Session 23). DNS cutover cleanup completed (Session 24): `ALLOWED_ORIGIN_FALLBACK` removed from Railway, "Enforce HTTPS" enabled on GitHub Pages.
 - **www.omarqari.com redirect:** GitHub Pages repo `omarqari/www-redirect` serves a meta-refresh redirect to `https://www.linkedin.com/in/oqari/`. Will go live when DNS propagates.
 - **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 INTERMITTENT (proxy IP rotation; cron's daily 09:00 UTC slot sometimes hits blocked IPs). Pass 2 for sales FIXED (Session 19): memo23 patched `/sale/{id}` path to pull financials from non-PX-blocked source. Pass 2 for rentals BROKEN: `/rental/{id}` URLs return "No results found" sentinels; flagged to memo23, awaiting fix. Actor's new build uses different field schema (`pricing_*`, `propertyDetails_*`, `saleCombineResponse_sale_*`) — `normalize()` in pull.py handles both old and new schemas.
