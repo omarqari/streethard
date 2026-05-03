@@ -6,10 +6,9 @@ OQ/RQ rankings cleared server-side on exit from shortlist.
 
 import os
 import json
-import hmac
 from contextlib import asynccontextmanager
 
-from fastapi import FastAPI, Header, HTTPException, Response, Depends
+from fastapi import FastAPI, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -18,16 +17,8 @@ from db import pool_startup, pool_shutdown, get_pool
 
 # --- Config ---
 
-WRITE_API_KEY = os.environ.get("WRITE_API_KEY", "")
 ALLOWED_ORIGIN = os.environ.get("ALLOWED_ORIGIN", "https://streethard.omarqari.com")
 ALLOWED_ORIGIN_FALLBACK = os.environ.get("ALLOWED_ORIGIN_FALLBACK", "")
-
-
-# --- Auth dependency ---
-
-async def require_write_key(x_api_key: str | None = Header(None)):
-    if not x_api_key or not WRITE_API_KEY or not hmac.compare_digest(x_api_key, WRITE_API_KEY):
-        raise HTTPException(status_code=401, detail="bad or missing X-API-Key")
 
 
 # --- Pydantic models ---
@@ -112,7 +103,7 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
     allow_methods=["GET", "PUT", "POST", "OPTIONS"],
-    allow_headers=["X-API-Key", "Content-Type"],
+    allow_headers=["Content-Type"],
 )
 
 
@@ -279,7 +270,7 @@ async def get_all_status(response: Response):
     return {"items": [row_to_dict(r) for r in rows]}
 
 
-@app.put("/status/{listing_id}", dependencies=[Depends(require_write_key)])
+@app.put("/status/{listing_id}")
 async def put_status(listing_id: str, patch: StatusPatch):
     pool = get_pool()
 
@@ -289,7 +280,7 @@ async def put_status(listing_id: str, patch: StatusPatch):
     return row_to_dict(row)
 
 
-@app.post("/status/batch", dependencies=[Depends(require_write_key)])
+@app.post("/status/batch")
 async def post_batch(body: BatchRequest):
     pool = get_pool()
     results = []

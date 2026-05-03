@@ -1573,7 +1573,7 @@ function renderTable() {
     }
 
     html += `
-      <tr class="${isExp ? 'row-expanded' : ''}${canEdit ? '' : ' no-api-key'}" onclick="toggleExpand('${listing.id}')">
+      <tr class="${isExp ? 'row-expanded' : ''}" onclick="toggleExpand('${listing.id}')">
         <td class="td-expand">${isExp ? '▾' : '▸'}</td>
         <td class="rank-cell rank-col" onclick="event.stopPropagation()">
           <span class="rank-val${oqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','oq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${oqR || '—'}</span>
