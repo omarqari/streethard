@@ -118,25 +118,25 @@ system** (Inbox / Shortlist / Archive). Read `STATUS-FEATURE.md` for the full
 spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
 
 - **Backend (MIGRATED, LIVE):** FastAPI on Python 3.12 + asyncpg + Railway
-  managed Postgres. `api/` directory. One table (`listing_status`), one shared
-  write key. **Columns:** `bucket` (inbox/shortlist/archive), `bucket_changed_at`,
+  managed Postgres. `api/` directory. One table (`listing_status`), no auth
+  (CORS-restricted to `streethard.omarqari.com`). **Columns:** `bucket` (inbox/shortlist/archive), `bucket_changed_at`,
   `price_at_archive`, `oq_rank`, `rq_rank`, `oq_notes`, `rq_notes`, `chips`,
   `updated_at`. Old `status` and `watch` columns dropped. Two SQL paths:
   `UPSERT_SQL` (normal) and `UPSERT_WITH_RANK_CLEAR_SQL` (clears ranks on
   shortlist exit).
-- **Frontend (MVP COMPLETE):** Settings panel + Test Connection ✅. Two-fetch
-  merge ✅. OQ#/RQ# rankings (click-to-edit, nulls-last) ✅. OQ/RQ Notes
-  (debounced) ✅. Tab navigation with badge counts (T1) ✅. Transition buttons
-  (T2) ✅. Auto-resurrection on price drop (T4) ✅. URL hash routing ✅.
-  Sort defaults per tab (T6) ✅.
+- **Frontend (MVP COMPLETE):** Two-fetch merge ✅. OQ#/RQ# rankings
+  (click-to-edit, nulls-last) ✅. OQ/RQ Notes (debounced) ✅. Tab navigation
+  with badge counts (T1) ✅. Transition buttons (T2) ✅. Auto-resurrection on
+  price drop (T4) ✅. URL hash routing ✅. Sort defaults per tab (T6) ✅.
+  Settings panel removed (Session 26) — no API key needed.
   **Not yet built:** Offline outbox (T8), card view adaptation (T9), chips (T10).
 - **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
   actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
   drop). OQ/RQ cleared server-side on exit from Shortlist. URL hash for tab state.
 - **Domains (Session 18):** `streethard.omarqari.com` (app), `api.streethard.omarqari.com` (API). Spaceship registrar.
 - **Cron unaffected.** New listings have no status row → implicitly in Inbox.
-- **Auth:** `WRITE_API_KEY` is `MLCzWI0Jj9_JiTsEU5UUB92Jn-ILmPnLhFbDK1tCnN4`.
-  Reads are public.
+- **Auth:** None. Write auth removed in Session 26. All endpoints are
+  public; CORS restricts browser writes to `streethard.omarqari.com` origin.
 - **Cost:** $5/mo Hobby tier on Railway.
 
 Next session: **polish items** (T9 card view adaptation, T10 chips), **push
@@ -224,13 +224,14 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `data/latest.json` — generated from db.json for the app to consume
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
 - `scripts/pull.py` — incremental Apify pull script
+- `scripts/git_push.py` — push to GitHub via REST API (avoids sandbox git lock issues)
 - `index.html` — StreetHard app shell
 - `api/main.py` — FastAPI status backend (all endpoints)
 - `api/db.py` — asyncpg connection pool
 - `api/schema.sql` — listing_status table DDL
 - `api/requirements.txt` — Python dependencies for the API
 - `api/railway.toml` — Railway deployment config
-- `.env` — local env vars (RAPIDAPI_KEY, APIFY_TOKEN, GITHUB_TOKEN, WRITE_API_KEY, STATUS_API_URL)
+- `.env` — local env vars (RAPIDAPI_KEY, APIFY_TOKEN, GITHUB_TOKEN, STATUS_API_URL)
 - `floorplans/` — gitignored scratch directory; user drops floor plan images here for sqft estimation
 
 ## Co-op SqFt Estimation

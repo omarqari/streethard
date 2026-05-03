@@ -4,6 +4,42 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-03 — Remove Auth, Git Push Script (Session 26)
+
+### Auth Removal
+Removed API key authentication from the status API. Write endpoints (`PUT /status/{id}`, `POST /status/batch`) are now public, restricted only by CORS to `streethard.omarqari.com`. This fixes the issue where family members couldn't edit notes or rankings from their own computers (the API key was stored in localStorage, per-browser). Removed from backend: `require_write_key` dependency, `WRITE_API_KEY` env var, `X-API-Key` CORS header. Removed from frontend: settings modal, gear icon, `getApiKey()`/`hasApiKey()` functions, all disabled-state logic for notes/rankings.
+
+### Git Push Script
+Created `scripts/git_push.py` — pushes to GitHub via the REST API instead of the git CLI. Solves the persistent `.lock` file problem where the Cowork sandbox mount creates lock files that can't be deleted by subsequent sessions. Updated CLAUDE.md to prohibit `git commit`/`push`/`pull`/`stash` from the sandbox and direct all future sessions to use this script.
+
+---
+
+## 2026-05-03 — Health Strip, Signal Icons, Daily Cron (Session 24, Part 2)
+
+### Pipeline Health Strip
+Added a staleness-aware info strip between the summary bar and bucket tabs. Shows last refresh date, age, and data quality count. Three visual states: green (fresh, <3 days), yellow warning (3–4 days stale), red error (5+ days stale). Hidden until JS computes from `generated_at` in latest.json.
+
+### Price-History Signal Score
+Per-listing icons derived from `price_history`, rendered in the DAYS LISTED column:
+- ✂ **Price cuts** (red) — listing has PRICE_DECREASE events
+- ↻ **Re-listed** (orange) — 2+ LISTED events (pulled and relisted)
+- ⏸ **Off-market-and-back** (blue) — was TEMPORARILY_OFF_MARKET or NO_LONGER_AVAILABLE, then relisted
+- ⏳ **Stale 90d+** (yellow) — most recent LISTED event > 90 days ago
+
+Results cached per listing ID for performance. Added "✂ Price Cuts" checkbox filter in filter bar — filters to only listings with price reductions (202 of 368 sale listings have cuts).
+
+### Cron Schedule
+Changed from Mon+Thu (twice weekly) to daily at 09:00 UTC. **Note:** Push of `refresh.yml` blocked by PAT missing `workflow` scope — Omar needs to either update the PAT or push the workflow change manually.
+
+### DNS Cutover Cleanup
+Removed `ALLOWED_ORIGIN_FALLBACK` env var from Railway. Enabled "Enforce HTTPS" on GitHub Pages.
+
+### Git
+- Commit `176c809`: index.html with health strip + signal icons + price cuts filter
+- Workflow change (daily cron) in local file, not yet pushed (PAT scope)
+
+---
+
 ## 2026-05-03 — Fix Missing Financial Data for 7 Listings (Session 24)
 
 Investigated and fixed 7 pass2 sale listings that had null `monthly_fees` in db.json, causing the app to show "—" for Common Charges and understate Monthly Payment.

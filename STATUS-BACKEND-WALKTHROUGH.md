@@ -8,6 +8,11 @@ the open architectural questions from Session 13.
 `STATUS-FEATURE.md` answers *what* and *why*. This doc answers *how to
 build it next*.
 
+> **Note (Session 26, 2026-05-03):** API key auth (`WRITE_API_KEY`,
+> `X-API-Key` header, `require_write_key` dependency) was removed.
+> Write endpoints are now public, restricted only by CORS. References
+> to auth in the code snippets below are historical.
+
 ---
 
 ## A. Stack & language pick
