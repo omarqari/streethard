@@ -106,15 +106,11 @@ All infrastructure tasks completed by Claude in Cowork mode (browser automation 
 
 Replaces old F2 (status pill cycling) and F3 (watch toggle). Existing work retained: F1 (Settings panel ✅), F7 (two-fetch load + merge ✅), OQ/RQ rankings ✅, OQ/RQ notes ✅.
 
-- [ ] **T1 — Tab navigation (Inbox / Shortlist / Archive).** Three tab pills in the filter bar. Inbox active on load. State read from URL hash (`#inbox`, `#shortlist`, `#archive`), persisted to localStorage as fallback. Column set adapts: Inbox/Archive hide OQ#/RQ# columns; Shortlist shows them.
-- [ ] **T2 — Transition buttons per row.** Contextual action buttons based on current bucket:
-  - Inbox: **★ Shortlist** button, **Archive ↓** button
-  - Shortlist: **Archive ↓** button, **← Inbox** (demote) button
-  - Archive: **← Inbox** (unarchive) button
-  Each fires `PUT /status/{id}` with new `bucket` + `bucket_changed_at`. Archive transitions also send `price_at_archive`.
-- [ ] **T3 — Server-side OQ/RQ clearing.** Update `PUT /status/{id}` in `api/main.py`: when bucket changes FROM `shortlist`, forcibly set `oq_rank = NULL`, `rq_rank = NULL` regardless of payload. Invariant: rankings only exist on shortlisted items.
-- [ ] **T4 — Auto-resurrection on price drop.** On frontend load, after merge: for each archived listing where current price < `price_at_archive`, auto-promote to inbox. Use `POST /status/batch` for efficiency. Tag with transient "Price dropped" badge. Skip if `price_at_archive` is null.
-- [ ] **T5 — Tab badge counts.** "Inbox (43) | Shortlist (7) | Archive (112)" — computed from filtered array on each render.
+- [x] **T1 — Tab navigation (Inbox / Shortlist / Archive).** ✅ Session 22. Three tab pills between summary bar and filter bar. Inbox active on load. URL hash routing (`#inbox`, `#shortlist`, `#archive`). OQ#/RQ# columns hidden via CSS class `hide-ranks` outside Shortlist.
+- [x] **T2 — Transition buttons per row.** ✅ Session 22. Actions column: Inbox shows ★Shortlist + ✕Archive, Shortlist shows Archive, Archive shows ↩Inbox. Optimistic UI. Fires `PUT /status/{id}` with `bucket` + `bucket_changed_at`. Archive sends `price_at_archive`.
+- [x] **T3 — Server-side OQ/RQ clearing.** ✅ Session 22. `UPSERT_WITH_RANK_CLEAR_SQL` uses 7 params, hardcodes `oq_rank = NULL, rq_rank = NULL` when transitioning out of shortlist. `should_clear_ranks()` detects exit from shortlist.
+- [x] **T4 — Auto-resurrection on price drop.** ✅ Session 22. `autoResurrect()` on page load: scans archived listings, batch-transitions to inbox via `/status/batch` when current price < `price_at_archive`.
+- [x] **T5 — Tab badge counts.** ✅ Session 22 (built inline with T1). `updateBucketCounts()` updates badge numbers on every filter/render cycle.
 - [ ] **T6 — Sort defaults per tab.** Inbox: Monthly Payment descending (existing default). Shortlist: OQ# ascending (priority order). Archive: `bucket_changed_at` descending (most recently archived first).
 - [ ] **T7 — Optimistic update helper.** `updateStatus(listingId, patch)` mutates in-memory, re-renders, then PUTs. On failure, queue in outbox. (Carried from old F5.)
 - [ ] **T8 — Offline outbox + flush.** `localStorage['streethard.outbox']` flushed via `POST /status/batch` on `online` / `visibilitychange`. (Carried from old F6.)
@@ -124,16 +120,8 @@ Replaces old F2 (status pill cycling) and F3 (watch toggle). Existing work retai
 ### Deployment & Ops
 
 - [x] **D1–D5 — Railway infra.** ✅ Session 18. Project, Postgres, env vars, healthcheck, Hobby tier all done.
-- [ ] **D6 — Schema migration for three-bucket system.** Run in sequence:
-  1. `ALTER TABLE listing_status ADD COLUMN bucket TEXT NOT NULL DEFAULT 'inbox';`
-  2. `ALTER TABLE listing_status ADD COLUMN bucket_changed_at TIMESTAMPTZ;`
-  3. `ALTER TABLE listing_status ADD COLUMN price_at_archive INTEGER;`
-  4. `UPDATE listing_status SET bucket = 'shortlist' WHERE watch = true;`
-  5. `UPDATE listing_status SET bucket_changed_at = updated_at;`
-  6. Deploy new API code that reads/writes `bucket`.
-  7. Verify everything works.
-  8. `ALTER TABLE listing_status DROP COLUMN status, DROP COLUMN watch;`
-- [ ] **D7 — `API_BASE` wired into `index.html`.** Set `const API_BASE = "https://api.streethard.omarqari.com"`.
+- [x] **D6 — Schema migration for three-bucket system.** ✅ Session 22. Idempotent PL/pgSQL migration in `schema.sql`. Adds bucket/bucket_changed_at/price_at_archive, backfills from watch, drops old status+watch columns. Deployed live on Railway.
+- [x] **D7 — `API_BASE` wired into `index.html`.** ✅ Already done (Session 18). `const API_BASE = "https://api.streethard.omarqari.com"`.
 - [ ] **D8 — Mobile device key paste.** On the iPhone, open the live Pages URL → Settings → paste the `WRITE_API_KEY`. Verify Test Connection passes.
 - [ ] **D9 — Deploy verification.** Push a deploy. Shortlist a listing on iPhone. Hard-refresh laptop. Confirm the change persists.
 

@@ -4,6 +4,46 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Three-Bucket MVP Build Complete (Session 22)
+
+Implemented the full three-bucket triage experience: backend migration + API rewrite + frontend tab navigation + transition buttons + auto-resurrection.
+
+### Backend (D6 — completed, deployed to Railway)
+
+1. **Schema migration** — `schema.sql` rewritten with idempotent DO $$ block: adds `bucket`, `bucket_changed_at`, `price_at_archive` columns; backfills `watch=true` → `shortlist`; drops all CHECK constraints then drops old `status` and `watch` columns; adds bucket CHECK constraint.
+2. **API rewrite** — `main.py` now uses two SQL paths: `UPSERT_SQL` (9 params, normal) and `UPSERT_WITH_RANK_CLEAR_SQL` (7 params, hardcodes NULL ranks on shortlist exit). Statement-by-statement migration execution for asyncpg compatibility. Non-fatal migration errors (logs but doesn't crash).
+3. **Pydantic models** updated: `StatusPatch` and `BatchItem` have `bucket`, `bucket_changed_at`, `price_at_archive` fields.
+4. **Verified live** — all transitions work: inbox→shortlist, shortlist→archive (ranks cleared), archive→inbox. Batch endpoint works for auto-resurrection.
+
+### Frontend (T1 + T2 + T4 — completed, pushed to GitHub Pages)
+
+1. **Tab navigation (T1)** — Inbox/Shortlist/Archive pill tabs between summary bar and filter bar. Active tab has blue bottom border + blue badge count. Badge counts update live as listings move between buckets.
+2. **Transition buttons (T2)** — Actions column in table. Inbox shows ★Shortlist + ✕ buttons. Shortlist shows Archive button. Archive shows ↩Inbox button. Optimistic UI updates (instant feedback before server responds).
+3. **OQ#/RQ# column hiding** — Rank columns hidden via CSS class `hide-ranks` on any tab other than Shortlist. Columns reappear when switching to Shortlist tab.
+4. **URL hash routing** — `#inbox`, `#shortlist`, `#archive` in URL. Bookmarkable, supports browser back/forward. Defaults to #inbox on fresh load.
+5. **Auto-resurrection (T4)** — On page load, scans archived listings. If current price < `price_at_archive`, batch-transitions them back to inbox via `/status/batch` endpoint.
+6. **Bucket filtering** — `applyFilters()` now filters by `getBucket(id)` matching `currentBucket`. Listings without a status row are implicitly in Inbox.
+
+### Key Fixes During Build
+
+- Git lock files (`.git/index.lock`) — used fresh clone to /tmp workaround
+- asyncpg multi-statement execute — split SQL on semicolons respecting $$ dollar-quoting
+- CHECK constraint blocking DROP COLUMN — drop all constraints first via PL/pgSQL loop
+- `IndeterminateDatatypeError` for NULL params — rewrote rank-clearing SQL to use only 7 params
+- `bucket_changed_at` type mismatch — convert ISO string to datetime in `do_upsert()`
+
+### What Remains (v1 MVP)
+
+- T5: Tab badge counts already done (inline with T1)
+- T6: Sort defaults per tab (shortlist sorts by oq_rank asc by default)
+- T7: Optimistic update helper (partially done — inline in `transitionBucket`)
+- T8: Offline outbox + flush
+- T9: Card view adaptation for buckets
+- T10: Chips (shortlist only)
+- Verification: Live test of full triage flow on production
+
+---
+
 ## 2026-05-02 — Three-Bucket Triage System Design (Session 21)
 
 Major design pivot: replaced the six-status pill cycling + watch toggle design (Sessions 13–19) with a simpler **three-bucket triage system** modeled on Gmail's Inbox/Archive pattern.

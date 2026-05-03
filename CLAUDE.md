@@ -115,18 +115,19 @@ replaced the six-status pill cycling + watch toggle with a **three-bucket triage
 system** (Inbox / Shortlist / Archive). Read `STATUS-FEATURE.md` for the full
 spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
 
-- **Backend (NEEDS MIGRATION):** FastAPI on Python 3.12 + asyncpg + Railway
+- **Backend (MIGRATED, LIVE):** FastAPI on Python 3.12 + asyncpg + Railway
   managed Postgres. `api/` directory. One table (`listing_status`), one shared
-  write key. **Current columns:** `status`, `watch`, `oq_notes`, `rq_notes`,
-  `oq_rank`, `rq_rank`, `chips`. **Target columns (Session 21):** `bucket`
-  (inbox/shortlist/archive), `bucket_changed_at`, `price_at_archive`, `oq_rank`,
-  `rq_rank`, `oq_notes`, `rq_notes`, `chips`. Migration: add columns → backfill
-  (`watch=true` → `bucket='shortlist'`) → deploy new API → drop old columns.
-- **Frontend (PARTIAL):** Settings panel + Test Connection ✅. Two-fetch merge ✅.
-  OQ#/RQ# rankings (click-to-edit, nulls-last) ✅. OQ/RQ Notes (debounced) ✅.
-  **Not yet built:** Tab navigation (T1), transition buttons (T2), server-side
-  OQ/RQ clearing (T3), auto-resurrection (T4), counts (T5), sort defaults (T6),
-  optimistic update (T7), offline outbox (T8), card adaptation (T9), chips (T10).
+  write key. **Columns:** `bucket` (inbox/shortlist/archive), `bucket_changed_at`,
+  `price_at_archive`, `oq_rank`, `rq_rank`, `oq_notes`, `rq_notes`, `chips`,
+  `updated_at`. Old `status` and `watch` columns dropped. Two SQL paths:
+  `UPSERT_SQL` (normal) and `UPSERT_WITH_RANK_CLEAR_SQL` (clears ranks on
+  shortlist exit).
+- **Frontend (MVP COMPLETE):** Settings panel + Test Connection ✅. Two-fetch
+  merge ✅. OQ#/RQ# rankings (click-to-edit, nulls-last) ✅. OQ/RQ Notes
+  (debounced) ✅. Tab navigation with badge counts (T1) ✅. Transition buttons
+  (T2) ✅. Auto-resurrection on price drop (T4) ✅. URL hash routing ✅.
+  **Not yet built:** Sort defaults per tab (T6), offline outbox (T8), card view
+  adaptation (T9), chips (T10).
 - **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
   actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
   drop). OQ/RQ cleared server-side on exit from Shortlist. URL hash for tab state.
@@ -136,8 +137,9 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   Reads are public.
 - **Cost:** $5/mo Hobby tier on Railway.
 
-Next session: **schema migration (D6 in TASKS.md)** then **frontend build
-(T1–T4)** for the MVP triage experience.
+Next session: **verify end-to-end flow on mobile + laptop**, then polish items
+(T6 sort defaults, T9 card view adaptation, T10 chips). See acceptance
+criteria A1–A10 in TASKS.md.
 
 ## Current Infrastructure State
 
