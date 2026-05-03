@@ -374,7 +374,7 @@ td {
   gap: 28px;
   flex-wrap: wrap;
 }
-.exp-col { flex: 1; min-width: 220px; }
+.exp-col { flex: 1; min-width: 200px; max-width: 420px; }
 .exp-title {
   font-size: 10px;
   font-weight: 800;
@@ -398,6 +398,21 @@ td {
 .ev-delisted { color: #9a2020; font-weight: 700; font-size: 10px; text-transform: uppercase; }
 .ev-cut      { color: #c07000; font-weight: 700; font-size: 10px; text-transform: uppercase; }
 .ev-other    { color: #888;    font-weight: 600; font-size: 10px; text-transform: uppercase; }
+.exp-notes { display: flex; gap: 16px; flex-wrap: wrap; }
+.exp-note-group { flex: 1; min-width: 140px; }
+.exp-note-label { font-size: 10px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+.exp-note-label.oq { color: #3461D9; }
+.exp-note-label.rq { color: #FF6000; }
+.exp-note-textarea {
+  width: 100%; box-sizing: border-box; padding: 6px 8px; border: 1px solid #d0d5e0;
+  border-radius: 4px; font-size: 11px; font-family: inherit; line-height: 1.5;
+  resize: vertical; min-height: 48px; background: #fff; color: #333;
+  transition: border-color 0.15s;
+}
+.exp-note-textarea:focus { border-color: #3461D9; outline: none; }
+.exp-note-textarea.rq:focus { border-color: #FF6000; }
+.exp-note-saved { font-size: 10px; color: #1a7a3c; margin-left: 6px; opacity: 0; transition: opacity 0.3s; }
+.exp-note-saved.show { opacity: 1; }
 .peak-note {
   margin-top: 8px;
   font-size: 10px;
@@ -1565,10 +1580,28 @@ function buildExpansion(listing) {
   }
   pmtHtml += '</div>';
 
+  // Notes (OQ & RQ)
+  const st = getStatus(listing.id);
+  const canEdit = hasApiKey();
+  let notesHtml = '<div class="exp-title">Notes</div>';
+  notesHtml += `<div class="exp-notes">
+    <div class="exp-note-group">
+      <div class="exp-note-label oq">OQ Notes <span class="exp-note-saved" id="exp-saved-oq-${listing.id}">Saved</span></div>
+      <textarea class="exp-note-textarea" placeholder="Add notes..." ${canEdit ? '' : 'disabled'}
+        oninput="debounceNote('${listing.id}','oq_notes',this.value,'exp')">${st.oq_notes || ''}</textarea>
+    </div>
+    <div class="exp-note-group">
+      <div class="exp-note-label rq">RQ Notes <span class="exp-note-saved" id="exp-saved-rq-${listing.id}">Saved</span></div>
+      <textarea class="exp-note-textarea rq" placeholder="Add notes..." ${canEdit ? '' : 'disabled'}
+        oninput="debounceNote('${listing.id}','rq_notes',this.value,'exp')">${st.rq_notes || ''}</textarea>
+    </div>
+  </div>`;
+
   return `<div class="expansion-panel">
     <div class="exp-col">${histHtml}</div>
     <div class="exp-col" style="flex:0 0 auto;">${agentHtml}</div>
     <div class="exp-col" style="flex:0 0 auto;">${pmtHtml}</div>
+    <div class="exp-col">${notesHtml}</div>
   </div>`;
 }
 
@@ -1639,8 +1672,8 @@ async function saveCardRank(listingId, field, value) {
   await putStatus(listingId, patch);
 }
 
-// ─── Notes Saving (Cards) ─────────────────────────────────────────
-function debounceNote(listingId, field, value) {
+// ─── Notes Saving (Cards + Expansion) ─────────────────────────────
+function debounceNote(listingId, field, value, source) {
   const key = listingId + '.' + field;
   clearTimeout(noteTimers[key]);
   // Optimistic in-memory update
@@ -1650,13 +1683,13 @@ function debounceNote(listingId, field, value) {
     const patch = {};
     patch[field] = value;
     const result = await putStatus(listingId, patch);
-    // Flash "Saved ✓"
-    const prefix = field === 'oq_notes' ? 'oq' : 'rq';
-    const badge = document.getElementById('ns-' + prefix + '-' + listingId);
-    if (badge && result) {
-      badge.style.opacity = '1';
-      setTimeout(() => { badge.style.opacity = '0'; }, 1500);
-    }
+    if (!result) return;
+    // Flash "Saved" on both card-view and expansion badges (whichever exist)
+    const oqrq = field === 'oq_notes' ? 'oq' : 'rq';
+    ['ns-' + oqrq + '-' + listingId, 'exp-saved-' + oqrq + '-' + listingId].forEach(id => {
+      const badge = document.getElementById(id);
+      if (badge) { badge.style.opacity = '1'; setTimeout(() => { badge.style.opacity = '0'; }, 1500); }
+    });
   }, 1000);
 }
 
