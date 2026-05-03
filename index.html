@@ -945,7 +945,7 @@ td {
           <th onclick="sortBy('oq_rank')" id="th-oq_rank" class="rank-col" style="width:52px;">OQ # <span class="sort-arrow" id="arr-oq_rank"></span></th>
           <th onclick="sortBy('rq_rank')" id="th-rq_rank" class="rank-col" style="width:52px;">RQ # <span class="sort-arrow" id="arr-rq_rank"></span></th>
           <th onclick="sortBy('building')" id="th-building">Building / Unit <span class="sort-arrow" id="arr-building"></span></th>
-          <th onclick="sortBy('monthly')" id="th-monthly"><span id="lbl-monthly">Monthly Pmt</span> <span class="sort-arrow" id="arr-monthly">↓</span></th>
+          <th onclick="sortBy('monthly')" id="th-monthly"><span id="lbl-monthly">Monthly Pmt</span> <span class="sort-arrow" id="arr-monthly"></span></th>
           <th onclick="sortBy('price')" id="th-price" class="col-price">Ask Price <span class="sort-arrow" id="arr-price"></span></th>
           <th onclick="sortBy('sqft')" id="th-sqft">SqFt <span class="sort-arrow" id="arr-sqft"></span></th>
           <th onclick="sortBy('beds')" id="th-beds">Beds / Baths <span class="sort-arrow" id="arr-beds"></span></th>
@@ -1307,6 +1307,17 @@ function setBucket(bucket) {
   });
   // Show/hide rank columns (only visible on shortlist)
   document.getElementById('table-view').classList.toggle('hide-ranks', bucket !== 'shortlist');
+  // T6: Sort defaults per tab
+  if (bucket === 'shortlist')     { sortCol = 'oq_rank'; sortDir = 'asc'; }
+  else if (bucket === 'archive')  { sortCol = 'archived_at'; sortDir = 'desc'; }
+  else                            { sortCol = 'monthly'; sortDir = 'desc'; }
+  // Update sort arrow UI
+  document.querySelectorAll('.sort-arrow').forEach(el => el.textContent = '');
+  document.querySelectorAll('thead th').forEach(el => el.classList.remove('sort-active'));
+  const arrow = document.getElementById('arr-' + sortCol);
+  const th    = document.getElementById('th-' + sortCol);
+  if (arrow) arrow.textContent = sortDir === 'desc' ? '↓' : '↑';
+  if (th)    th.classList.add('sort-active');
   expandedId = null;
   applyFilters();
 }
@@ -1460,6 +1471,11 @@ function sortListings() {
       case 'days':     av = daysListed(a) ?? 9999; bv = daysListed(b) ?? 9999; break;
       case 'type':     av = a.type || ''; bv = b.type || ''; return dir * av.localeCompare(bv);
       case 'building': av = (a.building || ''); bv = (b.building || ''); return dir * av.localeCompare(bv);
+      case 'archived_at': {
+        const at = (getStatus(a.id).bucket_changed_at || '');
+        const bt = (getStatus(b.id).bucket_changed_at || '');
+        return dir * at.localeCompare(bt);
+      }
       default: return 0;
     }
     return dir * (av - bv);
@@ -1886,7 +1902,16 @@ if (['inbox', 'shortlist', 'archive'].includes(hashBucket)) {
   document.getElementById('tab-' + b).classList.toggle('active', b === currentBucket);
 });
 document.getElementById('table-view').classList.toggle('hide-ranks', currentBucket !== 'shortlist');
-document.getElementById('th-monthly').classList.add('sort-active');
+// T6: Apply sort defaults on initial load based on hash
+if (currentBucket === 'shortlist')    { sortCol = 'oq_rank'; sortDir = 'asc'; }
+else if (currentBucket === 'archive') { sortCol = 'archived_at'; sortDir = 'desc'; }
+{
+  const initArrow = document.getElementById('arr-' + sortCol);
+  const initTh    = document.getElementById('th-' + sortCol);
+  if (initArrow) initArrow.textContent = sortDir === 'desc' ? '↓' : '↑';
+  if (initTh)    initTh.classList.add('sort-active');
+  // For inbox, sortCol is 'monthly' so initTh is found; for archive, sortCol is 'archived_at' which has no th — no header highlighted (expected)
+}
 
 // Listen for hash changes (back/forward navigation)
 window.addEventListener('hashchange', () => {
