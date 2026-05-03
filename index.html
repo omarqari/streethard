@@ -329,7 +329,7 @@ tbody tr {
 }
 tbody tr:hover { background: #f7f9ff; }
 tbody tr.row-expanded { background: #eef2ff; border-bottom: none; }
-tbody tr.row-expansion { background: #eef2ff; border-bottom: 2px solid #c5d0f0; cursor: default; }
+tbody tr.row-expansion { background: #eef2ff; border-bottom: 2px solid #c5d0f0; cursor: default; box-shadow: inset 4px 0 0 #3461D9; }
 tbody tr.row-expansion:hover { background: #eef2ff; }
 
 td {
@@ -640,7 +640,7 @@ td {
   transition: background 0.1s;
 }
 .rank-cell .rank-val:hover { background: #eef2ff; }
-.rank-cell .rank-val.empty { color: #ccc; font-weight: 400; }
+.rank-cell .rank-val.empty { color: #bbb; font-weight: 400; border: 1px dashed #d0d5e0; font-size: 11px; }
 .rank-input {
   width: 44px;
   padding: 2px 4px;
@@ -1395,10 +1395,10 @@ function renderTable() {
       <tr class="${isExp ? 'row-expanded' : ''}${canEdit ? '' : ' no-api-key'}" onclick="toggleExpand('${listing.id}')">
         <td class="td-expand">${isExp ? '▾' : '▸'}</td>
         <td class="rank-cell" onclick="event.stopPropagation()">
-          <span class="rank-val${oqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','oq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${oqR || '·'}</span>
+          <span class="rank-val${oqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','oq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${oqR || '—'}</span>
         </td>
         <td class="rank-cell rank-cell-rq" onclick="event.stopPropagation()">
-          <span class="rank-val${rqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','rq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${rqR || '·'}</span>
+          <span class="rank-val${rqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','rq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${rqR || '—'}</span>
         </td>
         <td>
           <div class="td-building">${listing.building || '—'}</div>
