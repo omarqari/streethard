@@ -754,6 +754,70 @@ td {
 .card-rank-input.rq-input:focus { border-color: #FF6000; }
 .card-rank-input:disabled { background: #f7f8fa; color: #aaa; cursor: not-allowed; }
 
+/* ─── Bucket Tabs ─────────────────────────────────────────────── */
+#bucket-tabs {
+  background: white;
+  border-bottom: 1px solid #e4e7ed;
+  padding: 0 28px;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+}
+.bucket-tab {
+  padding: 10px 20px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #888;
+  cursor: pointer;
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  font-family: inherit;
+  transition: color 0.15s, border-color 0.15s;
+  position: relative;
+}
+.bucket-tab:hover { color: #333; }
+.bucket-tab.active { color: #3461D9; border-bottom-color: #3461D9; }
+.bucket-tab .tab-count {
+  display: inline-block;
+  background: #e8f0fe;
+  color: #3461D9;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 8px;
+  margin-left: 6px;
+  min-width: 18px;
+  text-align: center;
+}
+.bucket-tab.active .tab-count { background: #3461D9; color: #fff; }
+
+/* ─── Transition Buttons ─────────────────────────────────────── */
+.transition-cell {
+  white-space: nowrap;
+  width: 100px;
+}
+.transition-cell button {
+  padding: 3px 8px;
+  font-size: 10px;
+  font-weight: 700;
+  border-radius: 3px;
+  border: 1px solid;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, color 0.15s;
+  margin-right: 3px;
+}
+.btn-shortlist { border-color: #3461D9; color: #3461D9; background: #eef2ff; }
+.btn-shortlist:hover { background: #3461D9; color: #fff; }
+.btn-archive { border-color: #999; color: #666; background: #f7f8fa; }
+.btn-archive:hover { background: #666; color: #fff; }
+.btn-inbox { border-color: #1a7a3c; color: #1a7a3c; background: #e6f4ec; }
+.btn-inbox:hover { background: #1a7a3c; color: #fff; }
+
+/* Hide rank columns outside shortlist */
+#table-view.hide-ranks .rank-col { display: none; }
+
 /* ─── Footer ───────────────────────────────────────────────────── */
 #page-footer {
   background: #fafbfc;
@@ -815,6 +879,13 @@ td {
   <div class="sum-stat"><span class="sv sum-new" id="s-new">—</span><span class="sl">new this week</span></div>
 </div>
 
+<!-- ─── Bucket Tabs ─────────────────────────────────────────────── -->
+<div id="bucket-tabs">
+  <button class="bucket-tab active" id="tab-inbox" onclick="setBucket('inbox')">Inbox <span class="tab-count" id="count-inbox">0</span></button>
+  <button class="bucket-tab" id="tab-shortlist" onclick="setBucket('shortlist')">Shortlist <span class="tab-count" id="count-shortlist">0</span></button>
+  <button class="bucket-tab" id="tab-archive" onclick="setBucket('archive')">Archive <span class="tab-count" id="count-archive">0</span></button>
+</div>
+
 <!-- ─── Filter Bar ──────────────────────────────────────────────── -->
 <div id="filter-bar">
   <div class="mode-toggle">
@@ -871,8 +942,8 @@ td {
       <thead>
         <tr>
           <th></th>
-          <th onclick="sortBy('oq_rank')" id="th-oq_rank" style="width:52px;">OQ # <span class="sort-arrow" id="arr-oq_rank"></span></th>
-          <th onclick="sortBy('rq_rank')" id="th-rq_rank" style="width:52px;">RQ # <span class="sort-arrow" id="arr-rq_rank"></span></th>
+          <th onclick="sortBy('oq_rank')" id="th-oq_rank" class="rank-col" style="width:52px;">OQ # <span class="sort-arrow" id="arr-oq_rank"></span></th>
+          <th onclick="sortBy('rq_rank')" id="th-rq_rank" class="rank-col" style="width:52px;">RQ # <span class="sort-arrow" id="arr-rq_rank"></span></th>
           <th onclick="sortBy('building')" id="th-building">Building / Unit <span class="sort-arrow" id="arr-building"></span></th>
           <th onclick="sortBy('monthly')" id="th-monthly"><span id="lbl-monthly">Monthly Pmt</span> <span class="sort-arrow" id="arr-monthly">↓</span></th>
           <th onclick="sortBy('price')" id="th-price" class="col-price">Ask Price <span class="sort-arrow" id="arr-price"></span></th>
@@ -883,6 +954,7 @@ td {
           <th onclick="sortBy('type')" id="th-type">Type <span class="sort-arrow" id="arr-type"></span></th>
           <th onclick="sortBy('year')" id="th-year">Yr Built <span class="sort-arrow" id="arr-year"></span></th>
           <th onclick="sortBy('days')" id="th-days">Days Listed <span class="sort-arrow" id="arr-days"></span></th>
+          <th style="width:100px;cursor:default;" id="th-actions"></th>
         </tr>
       </thead>
       <tbody id="table-body"></tbody>
@@ -919,9 +991,10 @@ td {
 // ─── State ────────────────────────────────────────────────────────
 let allListings = [];
 let filteredListings = [];
-let statusMap = {};  // listing_id → { oq_rank, rq_rank, oq_notes, rq_notes, ... }
+let statusMap = {};  // listing_id → { bucket, oq_rank, rq_rank, oq_notes, rq_notes, ... }
 let expandedId = null;
 let currentView = 'table';
+let currentBucket = 'inbox'; // 'inbox' | 'shortlist' | 'archive'
 let listingMode = 'sale'; // 'sale' | 'rent' | 'both'
 let sortCol = 'monthly';
 let sortDir = 'desc';
@@ -1125,6 +1198,35 @@ function getStatus(listingId) {
   return statusMap[listingId] || {};
 }
 
+// Auto-resurrection: move archived listings back to inbox if price dropped
+async function autoResurrect() {
+  if (!hasApiKey()) return;
+  const resurrectItems = [];
+  allListings.forEach(l => {
+    const st = statusMap[l.id];
+    if (!st || st.bucket !== 'archive') return;
+    if (!st.price_at_archive || !l.price) return;
+    if (l.price < st.price_at_archive) {
+      resurrectItems.push({ listing_id: l.id, bucket: 'inbox', bucket_changed_at: new Date().toISOString() });
+      // Optimistic local update
+      st.bucket = 'inbox';
+      st.bucket_changed_at = new Date().toISOString();
+    }
+  });
+  if (resurrectItems.length === 0) return;
+  console.log('Auto-resurrecting', resurrectItems.length, 'listings (price drop detected)');
+  try {
+    const key = getApiKey();
+    await fetch(API_BASE + '/status/batch', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-API-Key': key },
+      body: JSON.stringify({ items: resurrectItems }),
+    });
+  } catch (e) {
+    console.warn('Auto-resurrect batch failed:', e.message);
+  }
+}
+
 // ─── Data Load ─────────────────────────────────────────────────────
 async function loadData() {
   try {
@@ -1135,6 +1237,9 @@ async function loadData() {
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const data = await resp.json();
     allListings = data.listings || [];
+
+    // T4: Auto-resurrection — archived listings come back to Inbox on price drop
+    await autoResurrect();
 
     if (data.generated_at) {
       document.getElementById('last-updated').textContent = 'Updated ' + data.generated_at;
@@ -1191,6 +1296,66 @@ function setMode(mode) {
   applyFilters();
 }
 
+// ─── Bucket Tabs ─────────────────────────────────────────────────────
+function setBucket(bucket) {
+  currentBucket = bucket;
+  // Update URL hash
+  history.replaceState(null, '', '#' + bucket);
+  // Update tab active states
+  ['inbox', 'shortlist', 'archive'].forEach(b => {
+    document.getElementById('tab-' + b).classList.toggle('active', b === bucket);
+  });
+  // Show/hide rank columns (only visible on shortlist)
+  document.getElementById('table-view').classList.toggle('hide-ranks', bucket !== 'shortlist');
+  expandedId = null;
+  applyFilters();
+}
+
+function getBucket(listingId) {
+  const st = statusMap[listingId];
+  return (st && st.bucket) ? st.bucket : 'inbox';
+}
+
+function updateBucketCounts() {
+  // Count based on current mode filter (sale/rent/both) to match what user sees
+  const counts = { inbox: 0, shortlist: 0, archive: 0 };
+  allListings.forEach(l => {
+    if (listingMode === 'sale' && l.listing_type === 'rent') return;
+    if (listingMode === 'rent' && l.listing_type !== 'rent') return;
+    const b = getBucket(l.id);
+    if (counts[b] !== undefined) counts[b]++;
+  });
+  document.getElementById('count-inbox').textContent = counts.inbox;
+  document.getElementById('count-shortlist').textContent = counts.shortlist;
+  document.getElementById('count-archive').textContent = counts.archive;
+}
+
+async function transitionBucket(listingId, newBucket, event) {
+  if (event) event.stopPropagation();
+  if (!hasApiKey()) return;
+  const now = new Date().toISOString();
+  const patch = { bucket: newBucket, bucket_changed_at: now };
+  // If archiving, snapshot current price
+  if (newBucket === 'archive') {
+    const listing = allListings.find(l => l.id === listingId);
+    if (listing) patch.price_at_archive = listing.price || 0;
+  }
+  // Optimistic update
+  if (!statusMap[listingId]) statusMap[listingId] = { listing_id: listingId };
+  statusMap[listingId].bucket = newBucket;
+  statusMap[listingId].bucket_changed_at = now;
+  if (newBucket === 'archive') statusMap[listingId].price_at_archive = patch.price_at_archive;
+  // If exiting shortlist, clear ranks optimistically
+  if (newBucket !== 'shortlist') {
+    statusMap[listingId].oq_rank = null;
+    statusMap[listingId].rq_rank = null;
+  }
+  updateBucketCounts();
+  applyFilters();
+  // Fire and forget API call
+  await putStatus(listingId, patch);
+}
+
 // ─── Filters ────────────────────────────────────────────────────────
 function applyFilters() {
   const beds  = parseInt(document.getElementById('f-beds').value) || 0;
@@ -1210,6 +1375,8 @@ function applyFilters() {
   document.getElementById('f-search').classList.toggle('active', searchRaw !== '');
 
   filteredListings = allListings.filter(l => {
+    // Bucket filter
+    if (getBucket(l.id) !== currentBucket) return false;
     if (listingMode === 'sale' && l.listing_type === 'rent') return false;
     if (listingMode === 'rent' && l.listing_type !== 'rent') return false;
     if (beds > 0 && (l.beds || 0) < beds) return false;
@@ -1225,6 +1392,8 @@ function applyFilters() {
     }
     return true;
   });
+
+  updateBucketCounts();
 
   sortListings();
   updateSummary();
@@ -1371,8 +1540,8 @@ function renderTable() {
   wrap.style.display  = 'block';
   empty.style.display = 'none';
 
-  // colspan adjusts for hidden columns (Ask Price + Price/SqFt hidden in rent-only) + 2 rank cols
-  const colSpan  = listingMode === 'rent' ? 11 : 13;
+  // colspan adjusts for hidden columns (Ask Price + Price/SqFt hidden in rent-only) + 2 rank cols + actions
+  const colSpan  = listingMode === 'rent' ? 12 : 14;
   const showBoth = listingMode === 'both';
   const canEdit  = hasApiKey();
 
@@ -1406,13 +1575,25 @@ function renderTable() {
     const oqR = st.oq_rank || '';
     const rqR = st.rq_rank || '';
 
+    // Transition buttons per bucket
+    let actionsHtml = '';
+    if (canEdit) {
+      if (currentBucket === 'inbox') {
+        actionsHtml = `<button class="btn-shortlist" onclick="transitionBucket('${listing.id}','shortlist',event)">★ Shortlist</button><button class="btn-archive" onclick="transitionBucket('${listing.id}','archive',event)">✕</button>`;
+      } else if (currentBucket === 'shortlist') {
+        actionsHtml = `<button class="btn-archive" onclick="transitionBucket('${listing.id}','archive',event)">Archive</button>`;
+      } else {
+        actionsHtml = `<button class="btn-inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button>`;
+      }
+    }
+
     html += `
       <tr class="${isExp ? 'row-expanded' : ''}${canEdit ? '' : ' no-api-key'}" onclick="toggleExpand('${listing.id}')">
         <td class="td-expand">${isExp ? '▾' : '▸'}</td>
-        <td class="rank-cell" onclick="event.stopPropagation()">
+        <td class="rank-cell rank-col" onclick="event.stopPropagation()">
           <span class="rank-val${oqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','oq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${oqR || '—'}</span>
         </td>
-        <td class="rank-cell rank-cell-rq" onclick="event.stopPropagation()">
+        <td class="rank-cell rank-cell-rq rank-col" onclick="event.stopPropagation()">
           <span class="rank-val${rqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','rq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${rqR || '—'}</span>
         </td>
         <td>
@@ -1428,6 +1609,7 @@ function renderTable() {
         <td>${typeCell}</td>
         <td>${listing.year_built || '—'}</td>
         <td><span class="days-badge ${days.cls}">${days.text}</span></td>
+        <td class="transition-cell" onclick="event.stopPropagation()">${actionsHtml}</td>
       </tr>`;
 
     if (isExp) {
@@ -1694,7 +1876,26 @@ function debounceNote(listingId, field, value, source) {
 }
 
 // ─── Init ─────────────────────────────────────────────────────────────
+// URL hash routing for bucket tabs
+const hashBucket = location.hash.replace('#', '');
+if (['inbox', 'shortlist', 'archive'].includes(hashBucket)) {
+  currentBucket = hashBucket;
+}
+// Set initial tab state
+['inbox', 'shortlist', 'archive'].forEach(b => {
+  document.getElementById('tab-' + b).classList.toggle('active', b === currentBucket);
+});
+document.getElementById('table-view').classList.toggle('hide-ranks', currentBucket !== 'shortlist');
 document.getElementById('th-monthly').classList.add('sort-active');
+
+// Listen for hash changes (back/forward navigation)
+window.addEventListener('hashchange', () => {
+  const b = location.hash.replace('#', '');
+  if (['inbox', 'shortlist', 'archive'].includes(b) && b !== currentBucket) {
+    setBucket(b);
+  }
+});
+
 loadData();
 </script>
 </body>
