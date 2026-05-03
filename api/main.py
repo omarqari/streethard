@@ -70,8 +70,31 @@ async def lifespan(app: FastAPI):
     try:
         async with pool.acquire() as conn:
             with open(schema_path) as f:
-                await conn.execute(f.read())
-        print("Schema migration completed successfully")
+                sql = f.read()
+            # Split on semicolons outside of $$ blocks and execute each statement
+            # asyncpg doesn't support multi-statement execute well with DO blocks
+            # So we split: CREATE TABLE, CREATE INDEX, CREATE INDEX, DO block
+            statements = []
+            current = []
+            in_dollar = False
+            for line in sql.split('\n'):
+                stripped = line.strip()
+                if '$$' in stripped:
+                    in_dollar = not in_dollar
+                current.append(line)
+                if not in_dollar and stripped.endswith(';') and current:
+                    stmt = '\n'.join(current).strip()
+                    if stmt and stmt != ';':
+                        statements.append(stmt)
+                    current = []
+            # Execute each statement separately
+            for i, stmt in enumerate(statements):
+                try:
+                    await conn.execute(stmt)
+                except Exception as stmt_err:
+                    print(f"Migration statement {i} error: {stmt_err}")
+                    print(f"Statement: {stmt[:100]}...")
+        print(f"Schema migration completed ({len(statements)} statements)")
     except Exception as e:
         print(f"Schema migration error (non-fatal): {e}")
         # Log but don't crash — allows the service to start so we can debug
