@@ -182,15 +182,6 @@ SELECT_ALL_SQL = """
     FROM listing_status ORDER BY updated_at DESC
 """
 
-# Fallback if migration hasn't run yet
-SELECT_ALL_LEGACY_SQL = """
-    SELECT listing_id,
-           CASE WHEN watch THEN 'shortlist' ELSE 'inbox' END as bucket,
-           updated_at as bucket_changed_at,
-           NULL::integer as price_at_archive,
-           oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at
-    FROM listing_status ORDER BY updated_at DESC
-"""
 
 
 def row_to_dict(r):
@@ -284,11 +275,7 @@ async def get_all_status(response: Response):
     response.headers["Cache-Control"] = "no-store"
     pool = get_pool()
     async with pool.acquire() as conn:
-        try:
-            rows = await conn.fetch(SELECT_ALL_SQL)
-        except Exception:
-            # Migration hasn't run yet — use legacy query
-            rows = await conn.fetch(SELECT_ALL_LEGACY_SQL)
+        rows = await conn.fetch(SELECT_ALL_SQL)
     return {"items": [row_to_dict(r) for r in rows]}
 
 
@@ -296,18 +283,10 @@ async def get_all_status(response: Response):
 async def put_status(listing_id: str, patch: StatusPatch):
     pool = get_pool()
 
-    try:
-        async with pool.acquire() as conn:
-            clear_ranks = await should_clear_ranks(conn, listing_id, patch.bucket)
-            row = await do_upsert(conn, listing_id, patch, clear_ranks)
-        return row_to_dict(row)
-    except Exception as e:
-        import traceback
-        return Response(
-            content=json.dumps({"error": str(e), "trace": traceback.format_exc()}),
-            status_code=500,
-            media_type="application/json",
-        )
+    async with pool.acquire() as conn:
+        clear_ranks = await should_clear_ranks(conn, listing_id, patch.bucket)
+        row = await do_upsert(conn, listing_id, patch, clear_ranks)
+    return row_to_dict(row)
 
 
 @app.post("/status/batch", dependencies=[Depends(require_write_key)])
