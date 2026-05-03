@@ -4,6 +4,42 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-02 — Frontend: Rankings, Notes, Visual QA (Session 20)
+
+Built the remaining frontend features for the Status Feature and performed a comprehensive visual QA audit.
+
+### What We Did
+
+1. **OQ#/RQ# ranking columns in table view.** Click-to-edit inline rank inputs. Nulls-last sorting in both ascending and descending directions (early-return comparator, not sentinel values). Dashed border on empty cells for discoverability.
+
+2. **OQ Notes / RQ Notes textareas in card view.** Color-coded labels (blue OQ, orange RQ). 1-second debounced saves to the status API. "Saved" badge flash on successful PUT.
+
+3. **Settings panel (F1).** API key storage in localStorage, Test Connection button. Two-fetch load + merge via `Promise.all` (listings JSON + status API). Read-only mode when no API key configured.
+
+4. **Expansion panel improvements.** Added Notes as 4th column in the row expansion (table view). Constrained `.exp-col` to max-width 420px to prevent price history table from bleeding into rank columns. `debounceNote()` updated to flash saved badges in both card and expansion views.
+
+5. **Visual QA audit.** 22-item audit covering layout, hierarchy, interactivity, typography, data presentation, and polish. Fixed 2 items (rank input visibility, expansion row accent bar). Remaining 20 items logged for future work.
+
+6. **Sort fix.** OQ#/RQ# descending sort was putting unranked listings at the top (sentinel 9999). Replaced with early-return nulls-last comparator.
+
+### Commits
+
+- `57fbfe9` — Fix OQ#/RQ# sort: nulls always last regardless of sort direction
+- `d213f20` — Update CLAUDE.md: reflect frontend progress
+- `49ac0ac` — UI polish: dashed border on empty rank cells, blue accent bar on expanded rows
+- `256f7a6` — Expansion panel: constrain price history + add OQ/RQ notes
+
+### Status Feature Frontend Progress
+
+**Built:** F1 (Settings), F7 (two-fetch merge), OQ/RQ rankings, OQ/RQ notes (card + expansion)
+**Not yet built:** F2 (status pill cycling), F3 (watch toggle), F4 (chips), F5 (status filter tabs), F6 (offline outbox), F8 (card-view status controls)
+
+### Remaining QA Items (deferred)
+
+20 items from the visual audit need to be logged to PRODUCT-BACKLOG.md. Covers: filter bar layout, type column color system, search icon polish, card/table view consistency, price history styling, mortgage calculator presets, and more.
+
+---
+
 ## 2026-05-02 — Backfill Complete After memo23 PX Fix (Session 19)
 
 memo23 patched the actor's short-URL path (`/sale/{id}`) to pull financials from a non-PX-blocked source, resolving the `SaleListingDetailsFederated` 403 issue that had blocked financial fields since late April.
