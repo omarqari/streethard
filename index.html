@@ -750,7 +750,7 @@ td {
 /* ─── Transition Buttons ─────────────────────────────────────── */
 .transition-cell {
   white-space: nowrap;
-  width: 100px;
+  width: 120px;
 }
 .transition-cell button {
   padding: 3px 8px;
@@ -769,6 +769,19 @@ td {
 .btn-archive:hover { background: #666; color: #fff; }
 .btn-inbox { border-color: #1a7a3c; color: #1a7a3c; background: #e6f4ec; }
 .btn-inbox:hover { background: #1a7a3c; color: #fff; }
+
+/* ─── Seen Toggle ─────────────────────────────────────────────── */
+.seen-toggle {
+  cursor: pointer;
+  font-size: 14px;
+  opacity: 0.35;
+  transition: opacity 0.15s;
+  user-select: none;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+.seen-toggle:hover { opacity: 0.7; }
+.seen-toggle.is-seen { opacity: 1; color: #3461D9; }
 
 /* Hide rank columns outside shortlist */
 #table-view.hide-ranks .rank-col { display: none; }
@@ -1332,6 +1345,18 @@ async function transitionBucket(listingId, newBucket, event) {
   await putStatus(listingId, patch);
 }
 
+async function toggleSeen(listingId, event) {
+  if (event) event.stopPropagation();
+  if (!API_BASE) return;
+  const st = statusMap[listingId] || { listing_id: listingId };
+  const newVal = !st.seen;
+  // Optimistic update
+  if (!statusMap[listingId]) statusMap[listingId] = { listing_id: listingId };
+  statusMap[listingId].seen = newVal;
+  applyFilters();
+  await putStatus(listingId, { seen: newVal });
+}
+
 // ─── Filters ────────────────────────────────────────────────────────
 function applyFilters() {
   const beds  = parseInt(document.getElementById('f-beds').value) || 0;
@@ -1559,6 +1584,12 @@ function renderTable() {
     const st = getStatus(listing.id);
     const oqR = st.oq_rank || '';
     const rqR = st.rq_rank || '';
+    const isSeen = !!st.seen;
+
+    // Seen eye icon
+    const seenHtml = canEdit
+      ? `<span class="seen-toggle${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Visited' : 'Mark as visited'}">${isSeen ? '👁' : '👁‍🗨'}</span>`
+      : (isSeen ? `<span class="seen-toggle is-seen" title="Visited">👁</span>` : '');
 
     // Transition buttons per bucket
     let actionsHtml = '';
@@ -1594,7 +1625,7 @@ function renderTable() {
         <td>${typeCell}</td>
         <td>${listing.year_built || '—'}</td>
         <td><span class="days-badge ${days.cls}">${days.text}</span>${phSig.icons}</td>
-        <td class="transition-cell" onclick="event.stopPropagation()">${actionsHtml}</td>
+        <td class="transition-cell" onclick="event.stopPropagation()">${seenHtml}${actionsHtml}</td>
       </tr>`;
 
     if (isExp) {

@@ -11,6 +11,7 @@ CREATE TABLE IF NOT EXISTS listing_status (
     oq_rank           INTEGER,
     rq_rank           INTEGER,
     chips             JSONB NOT NULL DEFAULT '[]'::jsonb,
+    seen              BOOLEAN NOT NULL DEFAULT FALSE,
     updated_at        TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
@@ -104,5 +105,13 @@ BEGIN
         WHERE table_name = 'listing_status' AND column_name = 'rq_rank'
     ) THEN
         ALTER TABLE listing_status ADD COLUMN rq_rank INTEGER;
+    END IF;
+
+    -- Add 'seen' column (visited in person)
+    IF NOT EXISTS (
+        SELECT 1 FROM information_schema.columns
+        WHERE table_name = 'listing_status' AND column_name = 'seen'
+    ) THEN
+        ALTER TABLE listing_status ADD COLUMN seen BOOLEAN NOT NULL DEFAULT FALSE;
     END IF;
 END $$;

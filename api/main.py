@@ -32,6 +32,7 @@ class StatusPatch(BaseModel):
     oq_rank: int | None = None
     rq_rank: int | None = None
     chips: list[str] | None = None
+    seen: bool | None = None
 
 
 class BatchItem(BaseModel):
@@ -44,6 +45,7 @@ class BatchItem(BaseModel):
     oq_rank: int | None = None
     rq_rank: int | None = None
     chips: list[str] | None = None
+    seen: bool | None = None
 
 
 class BatchRequest(BaseModel):
@@ -112,7 +114,7 @@ app.add_middleware(
 UPSERT_SQL = """
     INSERT INTO listing_status
         (listing_id, bucket, bucket_changed_at, price_at_archive,
-         oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at)
+         oq_notes, rq_notes, oq_rank, rq_rank, chips, seen, updated_at)
     VALUES ($1,
             COALESCE($2, 'inbox'),
             $3,
@@ -122,6 +124,7 @@ UPSERT_SQL = """
             $7,
             $8,
             COALESCE($9::jsonb, '[]'::jsonb),
+            COALESCE($10, FALSE),
             NOW())
     ON CONFLICT (listing_id) DO UPDATE SET
         bucket            = COALESCE($2, listing_status.bucket),
@@ -132,17 +135,18 @@ UPSERT_SQL = """
         oq_rank           = CASE WHEN $7 IS NOT NULL THEN $7 ELSE listing_status.oq_rank END,
         rq_rank           = CASE WHEN $8 IS NOT NULL THEN $8 ELSE listing_status.rq_rank END,
         chips             = COALESCE($9::jsonb, listing_status.chips),
+        seen              = COALESCE($10, listing_status.seen),
         updated_at        = NOW()
     RETURNING listing_id, bucket, bucket_changed_at, price_at_archive,
-              oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at
+              oq_notes, rq_notes, oq_rank, rq_rank, chips, seen, updated_at
 """
 
 # When transitioning OUT of shortlist, clear rankings
-# Uses only 7 params ($1-$7): listing_id, bucket, bucket_changed_at, price_at_archive, oq_notes, rq_notes, chips
+# Uses only 8 params ($1-$8): listing_id, bucket, bucket_changed_at, price_at_archive, oq_notes, rq_notes, chips, seen
 UPSERT_WITH_RANK_CLEAR_SQL = """
     INSERT INTO listing_status
         (listing_id, bucket, bucket_changed_at, price_at_archive,
-         oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at)
+         oq_notes, rq_notes, oq_rank, rq_rank, chips, seen, updated_at)
     VALUES ($1,
             COALESCE($2, 'inbox'),
             $3,
@@ -152,6 +156,7 @@ UPSERT_WITH_RANK_CLEAR_SQL = """
             NULL,
             NULL,
             COALESCE($7::jsonb, '[]'::jsonb),
+            COALESCE($8, FALSE),
             NOW())
     ON CONFLICT (listing_id) DO UPDATE SET
         bucket            = COALESCE($2, listing_status.bucket),
@@ -162,14 +167,15 @@ UPSERT_WITH_RANK_CLEAR_SQL = """
         oq_rank           = NULL,
         rq_rank           = NULL,
         chips             = COALESCE($7::jsonb, listing_status.chips),
+        seen              = COALESCE($8, listing_status.seen),
         updated_at        = NOW()
     RETURNING listing_id, bucket, bucket_changed_at, price_at_archive,
-              oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at
+              oq_notes, rq_notes, oq_rank, rq_rank, chips, seen, updated_at
 """
 
 SELECT_ALL_SQL = """
     SELECT listing_id, bucket, bucket_changed_at, price_at_archive,
-           oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at
+           oq_notes, rq_notes, oq_rank, rq_rank, chips, seen, updated_at
     FROM listing_status ORDER BY updated_at DESC
 """
 
@@ -186,6 +192,7 @@ def row_to_dict(r):
         "oq_rank": r["oq_rank"],
         "rq_rank": r["rq_rank"],
         "chips": r["chips"],
+        "seen": r["seen"],
         "updated_at": r["updated_at"].isoformat(),
     }
 
@@ -216,7 +223,7 @@ async def do_upsert(conn, listing_id: str, patch, clear_ranks: bool):
             bucket_changed_at = datetime.now(timezone.utc)
 
     if clear_ranks:
-        # 7 params: listing_id, bucket, bucket_changed_at, price_at_archive, oq_notes, rq_notes, chips
+        # 8 params: listing_id, bucket, bucket_changed_at, price_at_archive, oq_notes, rq_notes, chips, seen
         row = await conn.fetchrow(
             UPSERT_WITH_RANK_CLEAR_SQL,
             listing_id,
@@ -226,9 +233,10 @@ async def do_upsert(conn, listing_id: str, patch, clear_ranks: bool):
             patch.oq_notes,
             patch.rq_notes,
             chips_json,
+            patch.seen,
         )
     else:
-        # 9 params: all fields
+        # 10 params: all fields
         row = await conn.fetchrow(
             UPSERT_SQL,
             listing_id,
@@ -240,6 +248,7 @@ async def do_upsert(conn, listing_id: str, patch, clear_ranks: bool):
             patch.oq_rank,
             patch.rq_rank,
             chips_json,
+            patch.seen,
         )
     return row
 
