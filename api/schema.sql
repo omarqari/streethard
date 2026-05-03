@@ -23,6 +23,8 @@ CREATE INDEX IF NOT EXISTS idx_listing_status_bucket
 -- Migration from old schema to three-bucket system.
 -- Idempotent: runs on every startup, no-ops when already migrated.
 DO $$
+DECLARE
+    _con text;
 BEGIN
     -- If old 'status' column exists, we need to migrate
     IF EXISTS (
@@ -56,10 +58,22 @@ BEGIN
         -- Set bucket_changed_at from updated_at
         UPDATE listing_status SET bucket_changed_at = updated_at WHERE bucket_changed_at IS NULL;
 
-        -- Drop old columns and indexes
+        -- Drop all CHECK constraints on the table (the old status CHECK blocks DROP COLUMN)
+        FOR _con IN
+            SELECT conname FROM pg_constraint
+            WHERE conrelid = 'listing_status'::regclass AND contype = 'c'
+        LOOP
+            EXECUTE format('ALTER TABLE listing_status DROP CONSTRAINT %I', _con);
+        END LOOP;
+
+        -- Now safe to drop old columns and indexes
         ALTER TABLE listing_status DROP COLUMN IF EXISTS status;
         ALTER TABLE listing_status DROP COLUMN IF EXISTS watch;
         DROP INDEX IF EXISTS idx_listing_status_status;
+
+        -- Re-add the bucket CHECK constraint
+        ALTER TABLE listing_status ADD CONSTRAINT listing_status_bucket_check
+            CHECK (bucket IN ('inbox', 'shortlist', 'archive'));
     END IF;
 
     -- Handle legacy 'notes' column rename
