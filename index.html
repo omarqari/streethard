@@ -174,6 +174,46 @@ a:hover { text-decoration: underline; }
 .sum-stat .sl { color: #888; font-size: 11px; margin-left: 3px; }
 .sum-new { color: #1a7a3c !important; }
 
+/* ─── Pipeline Health Strip ────────────────────────────────────── */
+#health-strip {
+  padding: 4px 28px;
+  font-size: 11px;
+  color: #666;
+  background: #f8faf8;
+  border-bottom: 1px solid #e4e7ed;
+  display: none;
+}
+#health-strip.stale-warn {
+  background: #fff8e1;
+  color: #8d6e00;
+}
+#health-strip.stale-error {
+  background: #fde8e8;
+  color: #b71c1c;
+}
+#health-strip .health-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 5px;
+  background: #4caf50;
+}
+#health-strip.stale-warn .health-dot { background: #f9a825; }
+#health-strip.stale-error .health-dot { background: #c62828; }
+
+/* ─── Price-History Signal Icons ──────────────────────────────── */
+.ph-signals { display: inline-flex; gap: 3px; margin-left: 6px; vertical-align: middle; }
+.ph-sig {
+  display: inline-block; font-size: 11px; line-height: 16px;
+  padding: 0 3px; border-radius: 3px; cursor: help;
+  background: rgba(0,0,0,0.04);
+}
+.ph-sig.sig-cut    { color: #c62828; }
+.ph-sig.sig-relist { color: #e65100; }
+.ph-sig.sig-stale  { color: #8d6e00; }
+.ph-sig.sig-back   { color: #1565c0; }
+
 /* ─── Filter Bar ───────────────────────────────────────────────── */
 #filter-bar {
   background: #fafbfc;
@@ -236,6 +276,11 @@ a:hover { text-decoration: underline; }
   display: none;
 }
 .clear-btn:hover { background: #eef2ff; }
+.filter-check {
+  font-size: 12px; color: #555; cursor: pointer; display: flex;
+  align-items: center; gap: 3px; white-space: nowrap; user-select: none;
+}
+.filter-check input { margin: 0; cursor: pointer; }
 
 /* ─── Mode Toggle ──────────────────────────────────────────────── */
 .mode-toggle {
@@ -551,93 +596,6 @@ td {
   display: none;
 }
 
-/* ─── Settings Modal ──────────────────────────────────────────── */
-.settings-btn {
-  background: none;
-  border: none;
-  color: rgba(255,255,255,0.5);
-  font-size: 18px;
-  cursor: pointer;
-  padding: 4px 8px;
-  border-radius: 4px;
-  flex-shrink: 0;
-  transition: color 0.15s;
-}
-.settings-btn:hover { color: rgba(255,255,255,0.9); }
-#settings-modal {
-  display: none;
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  z-index: 1000;
-  background: rgba(0,0,0,0.5);
-  align-items: center;
-  justify-content: center;
-}
-#settings-modal.open { display: flex; }
-.settings-panel {
-  background: white;
-  border-radius: 8px;
-  padding: 28px 32px;
-  width: 420px;
-  max-width: 90vw;
-  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
-}
-.settings-panel h2 {
-  margin: 0 0 18px;
-  font-size: 16px;
-  font-weight: 800;
-  color: #111;
-}
-.settings-panel label {
-  display: block;
-  font-size: 11px;
-  font-weight: 700;
-  color: #888;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  margin-bottom: 6px;
-}
-.settings-panel input[type="text"] {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #d0d5dd;
-  border-radius: 6px;
-  font-size: 13px;
-  font-family: monospace;
-  color: #333;
-}
-.settings-panel input[type="text"]:focus { outline: none; border-color: #3461D9; }
-.settings-actions {
-  display: flex;
-  gap: 8px;
-  margin-top: 16px;
-}
-.settings-actions button {
-  padding: 7px 16px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-  border: 1px solid #d0d5dd;
-  background: white;
-  color: #333;
-  font-family: inherit;
-}
-.settings-actions button.primary {
-  background: #3461D9;
-  color: white;
-  border-color: #3461D9;
-}
-.settings-actions button.primary:hover { background: #2a50b5; }
-#conn-result {
-  margin-top: 10px;
-  font-size: 12px;
-  font-weight: 600;
-  min-height: 18px;
-}
-.conn-ok { color: #1a7a3c; }
-.conn-fail { color: #d92d20; }
-
 /* ─── Rank Columns ────────────────────────────────────────────── */
 .rank-cell {
   width: 52px;
@@ -671,9 +629,6 @@ td {
 .rank-cell-rq { color: #FF6000; }
 .rank-cell-rq .rank-input { border-color: #FF6000; color: #FF6000; }
 .rank-cell-rq .rank-val:hover { background: #fff7ed; }
-.no-api-key .rank-val { cursor: default; }
-.no-api-key .rank-val:hover { background: transparent; }
-
 /* ─── Card Notes ──────────────────────────────────────────────── */
 .card-notes {
   border-top: 1px solid #f0f2f5;
@@ -845,7 +800,6 @@ td {
     <button class="view-btn active" id="btn-table" onclick="setView('table')">⊞ Table</button>
     <button class="view-btn" id="btn-cards" onclick="setView('cards')">▦ Cards</button>
   </div>
-  <button class="settings-btn" onclick="openSettings()" title="Settings">⚙</button>
 </header>
 
 <!-- ─── Mortgage Bar ────────────────────────────────────────────── -->
@@ -857,7 +811,7 @@ td {
   </div>
   <span class="mtg-sep">·</span>
   <div class="mtg-group">
-    <input type="text" id="rate-input" value="3.00" onchange="onMtgChange()" oninput="onMtgChange()">
+    <input type="text" id="rate-input" value="5.00" onchange="onMtgChange()" oninput="onMtgChange()">
     <span class="mtg-unit">% rate</span>
   </div>
   <span class="mtg-sep">·</span>
@@ -878,6 +832,9 @@ td {
   <div class="sum-stat"><span class="sv" id="s-types">—</span></div>
   <div class="sum-stat"><span class="sv sum-new" id="s-new">—</span><span class="sl">new this week</span></div>
 </div>
+
+<!-- ─── Pipeline Health Strip ───────────────────────────────────── -->
+<div id="health-strip"><span class="health-dot"></span><span id="health-text"></span></div>
 
 <!-- ─── Bucket Tabs ─────────────────────────────────────────────── -->
 <div id="bucket-tabs">
@@ -924,6 +881,7 @@ td {
     <option value="25000">$25K</option>
     <option value="30000">$30K</option>
   </select>
+  <label class="filter-check" title="Show only listings with price reductions"><input type="checkbox" id="f-cuts" onchange="applyFilters()"> ✂ Price Cuts</label>
   <button class="clear-btn" id="clear-btn" onclick="clearFilters()">✕ Clear</button>
   <div class="filter-spacer"></div>
   <div id="result-count"></div>
@@ -972,21 +930,6 @@ td {
 </footer>
 </div><!-- /scroll-content -->
 
-<!-- ─── Settings Modal ─────────────────────────────────────────── -->
-<div id="settings-modal" onclick="if(event.target===this)closeSettings()">
-  <div class="settings-panel">
-    <h2>Settings</h2>
-    <label for="api-key-input">API Key (for saving rankings &amp; notes)</label>
-    <input type="text" id="api-key-input" placeholder="Paste your write key here…" autocomplete="off">
-    <div class="settings-actions">
-      <button class="primary" onclick="testConnection()">Test Connection</button>
-      <button onclick="saveSettings()">Save</button>
-      <button onclick="closeSettings()">Cancel</button>
-    </div>
-    <div id="conn-result"></div>
-  </div>
-</div>
-
 <script>
 // ─── State ────────────────────────────────────────────────────────
 let allListings = [];
@@ -1003,12 +946,9 @@ let noteTimers = {};  // debounce timers for notes
 
 // API config
 const API_BASE = 'https://api.streethard.omarqari.com';
-function getApiKey() { return localStorage.getItem('streethard.api_key') || ''; }
-function hasApiKey() { return !!getApiKey(); }
-
 // Mortgage defaults
 let downPayment = 750000;
-let annualRate  = 3.00;
+let annualRate  = 5.00;
 let termYears   = 30;
 
 // ─── Mortgage Math ─────────────────────────────────────────────────
@@ -1083,6 +1023,46 @@ function fmtDays(n, listingType) {
   if (n <= 120) return { text: n + 'd', cls: 'days-yellow' };
   return { text: n + 'd', cls: 'days-red' };
 }
+/* ─── Price-History Signal Score ─────────────────────────────── */
+const _phCache = {};
+function priceSignals(listing) {
+  if (_phCache[listing.id]) return _phCache[listing.id];
+  const ph = listing.price_history;
+  if (!ph || !ph.length) { _phCache[listing.id] = { icons: '', hasCuts: false }; return _phCache[listing.id]; }
+  const signals = [];
+  // Current-cycle price decreases
+  const cuts = ph.filter(e => e.event === 'PRICE_DECREASE').length;
+  if (cuts > 0) {
+    const label = cuts === 1 ? '1 price cut' : cuts + ' price cuts';
+    signals.push({ icon: '✂', cls: 'sig-cut', title: label });
+  }
+  // Re-listed (2+ LISTED events = pulled off market and relisted)
+  const listedCount = ph.filter(e => e.event === 'LISTED').length;
+  if (listedCount >= 2) {
+    signals.push({ icon: '↻', cls: 'sig-relist', title: 'Re-listed ' + listedCount + '× — pulled and relisted' });
+  }
+  // Off-market-and-back
+  const offEvents = ph.filter(e => e.event === 'TEMPORARILY_OFF_MARKET' || e.event === 'NO_LONGER_AVAILABLE');
+  if (offEvents.length > 0 && listedCount >= 2) {
+    signals.push({ icon: '⏸', cls: 'sig-back', title: 'Was off market, then came back' });
+  }
+  // Stale 90d+ (most recent LISTED > 90 days ago)
+  const listedDates = ph.filter(e => e.event === 'LISTED').map(e => e.date).sort();
+  if (listedDates.length) {
+    const mostRecent = new Date(listedDates[listedDates.length - 1] + 'T00:00:00');
+    const daysSince = Math.floor((Date.now() - mostRecent.getTime()) / 86400000);
+    if (daysSince > 90) {
+      signals.push({ icon: '⏳', cls: 'sig-stale', title: 'Listed ' + daysSince + ' days ago — stale listing' });
+    }
+  }
+  if (!signals.length) { _phCache[listing.id] = { icons: '', hasCuts: false }; return _phCache[listing.id]; }
+  const html = '<span class="ph-signals">' +
+    signals.map(s => `<span class="ph-sig ${s.cls}" title="${s.title}">${s.icon}</span>`).join('') +
+    '</span>';
+  _phCache[listing.id] = { icons: html, hasCuts: cuts > 0 };
+  return _phCache[listing.id];
+}
+
 function parseMtgInput(val) {
   return parseFloat(String(val).replace(/[$,]/g, '')) || 0;
 }
@@ -1130,45 +1110,12 @@ function historyInsight(listing) {
   return null;
 }
 
-// ─── Settings ─────────────────────────────────────────────────────
-function openSettings() {
-  document.getElementById('api-key-input').value = getApiKey();
-  document.getElementById('conn-result').innerHTML = '';
-  document.getElementById('settings-modal').classList.add('open');
-}
-function closeSettings() {
-  document.getElementById('settings-modal').classList.remove('open');
-}
-function saveSettings() {
-  const key = document.getElementById('api-key-input').value.trim();
-  if (key) localStorage.setItem('streethard.api_key', key);
-  else localStorage.removeItem('streethard.api_key');
-  closeSettings();
-  render();
-}
-async function testConnection() {
-  const key = document.getElementById('api-key-input').value.trim();
-  const el = document.getElementById('conn-result');
-  if (!key) { el.innerHTML = '<span class="conn-fail">Enter a key first.</span>'; return; }
-  el.innerHTML = 'Testing…';
-  try {
-    const r = await fetch(API_BASE + '/health');
-    const d = await r.json();
-    if (d.ok) el.innerHTML = '<span class="conn-ok">✓ Connected — DB is healthy.</span>';
-    else el.innerHTML = '<span class="conn-fail">✗ DB error: ' + (d.detail || 'unknown') + '</span>';
-  } catch (e) {
-    el.innerHTML = '<span class="conn-fail">✗ Cannot reach API: ' + e.message + '</span>';
-  }
-}
-
 // ─── Status API ───────────────────────────────────────────────────
 async function putStatus(listingId, patch) {
-  const key = getApiKey();
-  if (!key) return null;
   try {
     const r = await fetch(API_BASE + '/status/' + encodeURIComponent(listingId), {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'X-API-Key': key },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(patch),
     });
     if (!r.ok) { console.error('PUT /status failed:', r.status); return null; }
@@ -1200,7 +1147,7 @@ function getStatus(listingId) {
 
 // Auto-resurrection: move archived listings back to inbox if price dropped
 async function autoResurrect() {
-  if (!hasApiKey()) return;
+  if (!API_BASE) return;
   const resurrectItems = [];
   allListings.forEach(l => {
     const st = statusMap[l.id];
@@ -1216,10 +1163,9 @@ async function autoResurrect() {
   if (resurrectItems.length === 0) return;
   console.log('Auto-resurrecting', resurrectItems.length, 'listings (price drop detected)');
   try {
-    const key = getApiKey();
     await fetch(API_BASE + '/status/batch', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'X-API-Key': key },
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ items: resurrectItems }),
     });
   } catch (e) {
@@ -1251,6 +1197,25 @@ async function loadData() {
     const costStr   = data.run_cost_usd ? ' · $' + data.run_cost_usd.toFixed(2) + ' this run' : '';
     document.getElementById('footer-right').textContent =
       saleCount + ' for sale · ' + rentCount + ' for rent' + costStr;
+
+    // Pipeline health strip
+    if (data.generated_at) {
+      const genDate = new Date(data.generated_at);
+      const now = new Date();
+      const daysAgo = Math.floor((now - genDate) / 86400000);
+      const pass2 = allListings.filter(l => l.data_quality === 'pass2').length;
+      const pass1 = allListings.filter(l => l.data_quality === 'pass1').length;
+      const total = allListings.length;
+      const dateStr = genDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+      let agoStr = daysAgo === 0 ? 'today' : daysAgo === 1 ? '1 day ago' : daysAgo + ' days ago';
+      let healthMsg = 'Last refresh: ' + dateStr + ' (' + agoStr + ') · ' + total + ' listings';
+      if (pass1 > 0) healthMsg += ' (' + pass1 + ' incomplete)';
+      document.getElementById('health-text').textContent = healthMsg;
+      const strip = document.getElementById('health-strip');
+      strip.style.display = 'block';
+      strip.className = daysAgo >= 5 ? 'stale-error' : daysAgo >= 3 ? 'stale-warn' : '';
+      strip.id = 'health-strip';
+    }
 
     document.getElementById('loading-state').style.display = 'none';
     applyFilters();
@@ -1343,7 +1308,7 @@ function updateBucketCounts() {
 
 async function transitionBucket(listingId, newBucket, event) {
   if (event) event.stopPropagation();
-  if (!hasApiKey()) return;
+  if (!API_BASE) return;
   const now = new Date().toISOString();
   const patch = { bucket: newBucket, bucket_changed_at: now };
   // If archiving, snapshot current price
@@ -1373,10 +1338,11 @@ function applyFilters() {
   const type  = document.getElementById('f-type').value;
   const maxPx = parseFloat(document.getElementById('f-price').value) || 0;
   const maxMo = parseFloat(document.getElementById('f-monthly').value) || 0;
+  const cutsOnly = document.getElementById('f-cuts').checked;
   const searchRaw = document.getElementById('f-search').value.trim();
   const searchQ   = searchRaw.toLowerCase();
 
-  const hasFilter = beds > 0 || type !== '' || maxPx > 0 || maxMo > 0 || searchRaw !== '';
+  const hasFilter = beds > 0 || type !== '' || maxPx > 0 || maxMo > 0 || cutsOnly || searchRaw !== '';
   document.getElementById('clear-btn').style.display = hasFilter ? 'inline-block' : 'none';
 
   ['f-beds','f-type','f-price','f-monthly'].forEach(id => {
@@ -1395,6 +1361,7 @@ function applyFilters() {
     // Max price filter only applies to sale listings
     if (maxPx > 0 && l.listing_type !== 'rent' && l.price > maxPx) return false;
     if (maxMo > 0 && calcMonthlyTotal(l) > maxMo) return false;
+    if (cutsOnly && !priceSignals(l).hasCuts) return false;
     // Text search — matches against building, address, unit, neighborhood, agent name/firm
     if (searchQ) {
       const haystack = [l.building, l.address, l.unit, l.neighborhood, l.agent_name, l.agent_firm]
@@ -1416,6 +1383,7 @@ function clearFilters() {
   document.getElementById('f-type').value    = '';
   document.getElementById('f-price').value   = '0';
   document.getElementById('f-monthly').value = '0';
+  document.getElementById('f-cuts').checked  = false;
   document.getElementById('f-search').value  = '';
   applyFilters();
 }
@@ -1559,7 +1527,7 @@ function renderTable() {
   // colspan adjusts for hidden columns (Ask Price + Price/SqFt hidden in rent-only) + 2 rank cols + actions
   const colSpan  = listingMode === 'rent' ? 12 : 14;
   const showBoth = listingMode === 'both';
-  const canEdit  = hasApiKey();
+  const canEdit  = true;
 
   let html = '';
   filteredListings.forEach(listing => {
@@ -1567,6 +1535,7 @@ function renderTable() {
     const monthly = calcMonthlyTotal(listing);
     const pmtSqft = calcPmtPerSqft(listing);
     const days    = fmtDays(daysListed(listing), listing.listing_type);
+    const phSig   = priceSignals(listing);
     const isExp   = expandedId === listing.id;
     const baths   = listing.baths ?? '—';
     // Estimated sqft (typical for co-ops where official sqft isn't published).
@@ -1624,7 +1593,7 @@ function renderTable() {
         <td>${pmtSq === '—' ? '—' : wrapEst(pmtSq)}</td>
         <td>${typeCell}</td>
         <td>${listing.year_built || '—'}</td>
-        <td><span class="days-badge ${days.cls}">${days.text}</span></td>
+        <td><span class="days-badge ${days.cls}">${days.text}</span>${phSig.icons}</td>
         <td class="transition-cell" onclick="event.stopPropagation()">${actionsHtml}</td>
       </tr>`;
 
@@ -1679,7 +1648,7 @@ function renderCards() {
             <label class="oq-label">OQ #</label>
             <input type="number" min="1" class="card-rank-input"
               value="${(getStatus(listing.id).oq_rank || '')}"
-              ${hasApiKey() ? '' : 'disabled'}
+              ${true ? '' : 'disabled'}
               onchange="saveCardRank('${listing.id}','oq_rank',this.value)"
               onclick="event.stopPropagation()">
           </div>
@@ -1687,7 +1656,7 @@ function renderCards() {
             <label class="rq-label">RQ #</label>
             <input type="number" min="1" class="card-rank-input rq-input"
               value="${(getStatus(listing.id).rq_rank || '')}"
-              ${hasApiKey() ? '' : 'disabled'}
+              ${true ? '' : 'disabled'}
               onchange="saveCardRank('${listing.id}','rq_rank',this.value)"
               onclick="event.stopPropagation()">
           </div>
@@ -1696,8 +1665,8 @@ function renderCards() {
           <div class="card-notes-group">
             <label class="oq-label">OQ Notes <span class="notes-saved" id="ns-oq-${listing.id}">Saved ✓</span></label>
             <textarea
-              ${hasApiKey() ? '' : 'disabled'}
-              placeholder="${hasApiKey() ? 'Add notes…' : 'Set API key to add notes'}"
+              ${true ? '' : 'disabled'}
+              placeholder="${true ? 'Add notes…' : 'Set API key to add notes'}"
               oninput="debounceNote('${listing.id}','oq_notes',this.value)"
               onclick="event.stopPropagation()"
             >${getStatus(listing.id).oq_notes || ''}</textarea>
@@ -1705,8 +1674,8 @@ function renderCards() {
           <div class="card-notes-group">
             <label class="rq-label">RQ Notes <span class="notes-saved" id="ns-rq-${listing.id}">Saved ✓</span></label>
             <textarea class="rq-textarea"
-              ${hasApiKey() ? '' : 'disabled'}
-              placeholder="${hasApiKey() ? 'Add notes…' : 'Set API key to add notes'}"
+              ${true ? '' : 'disabled'}
+              placeholder="${true ? 'Add notes…' : 'Set API key to add notes'}"
               oninput="debounceNote('${listing.id}','rq_notes',this.value)"
               onclick="event.stopPropagation()"
             >${getStatus(listing.id).rq_notes || ''}</textarea>
@@ -1780,7 +1749,7 @@ function buildExpansion(listing) {
 
   // Notes (OQ & RQ)
   const st = getStatus(listing.id);
-  const canEdit = hasApiKey();
+  const canEdit = true;
   let notesHtml = '<div class="exp-title">Notes</div>';
   notesHtml += `<div class="exp-notes">
     <div class="exp-note-group">
@@ -1826,7 +1795,7 @@ function onMtgChange() {
   document.getElementById('calc-indicator').style.opacity = '1';
   mtgCalcTimer = setTimeout(() => {
     downPayment = parseMtgInput(document.getElementById('down-input').value);
-    annualRate  = parseFloat(document.getElementById('rate-input').value) || 3.00;
+    annualRate  = parseFloat(document.getElementById('rate-input').value) || 5.00;
     termYears   = parseInt(document.getElementById('term-input').value)   || 30;
     applyFilters();
     document.getElementById('calc-indicator').style.opacity = '0';
@@ -1835,7 +1804,7 @@ function onMtgChange() {
 
 // ─── Rank Editing (Table) ──────────────────────────────────────────
 function startEditRank(el, listingId, field) {
-  if (!hasApiKey()) return;
+  if (!API_BASE) return;
   const current = getStatus(listingId)[field] || '';
   const cls = field === 'rq_rank' ? 'rank-cell-rq' : '';
   el.outerHTML = `<input type="number" min="1" class="rank-input ${cls ? 'rq-input' : ''}"
