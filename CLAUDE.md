@@ -139,8 +139,9 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
 
 Next session: **polish items** (T9 card view adaptation, T10 chips), **DNS
 cutover cleanup** (drop `ALLOWED_ORIGIN_FALLBACK` from Railway, enable Enforce
-HTTPS on GitHub Pages), and **product backlog selection**. See PRODUCT-BACKLOG.md
-for proposed features and TASKS.md for acceptance criteria A1–A10.
+HTTPS on GitHub Pages), **product backlog selection**, and **git lock file cleanup**
+(stale `.git/*.lock` files from a crashed prior operation — need host-side `rm`).
+See PRODUCT-BACKLOG.md for proposed features and TASKS.md for acceptance criteria A1–A10.
 
 ## Current Infrastructure State
 
@@ -150,7 +151,7 @@ for proposed features and TASKS.md for acceptance criteria A1–A10.
 - **www.omarqari.com redirect:** GitHub Pages repo `omarqari/www-redirect` serves a meta-refresh redirect to `https://www.linkedin.com/in/oqari/`. Will go live when DNS propagates.
 - **Primary data source: Apify `memo23/streeteasy-ppr`** — Pass 1 INTERMITTENT (proxy IP rotation; cron's Mon/Thu 09:00 UTC slot sometimes hits blocked IPs). Pass 2 for sales FIXED (Session 19): memo23 patched `/sale/{id}` path to pull financials from non-PX-blocked source. Pass 2 for rentals BROKEN: `/rental/{id}` URLs return "No results found" sentinels; flagged to memo23, awaiting fix. Actor's new build uses different field schema (`pricing_*`, `propertyDetails_*`, `saleCombineResponse_sale_*`) — `normalize()` in pull.py handles both old and new schemas.
 - **Pipeline: Incremental ("Puzzle" model) with resilience guards** — `data/db.json` is the canonical store. Each cron run discovers new listings via Pass 1 and fills in detail via Pass 2 (capped at 100/run). See PROJECTPLAN.md for full architecture.
-- **db.json state (Session 19, 2026-05-02 late evening):** 419 active listings (368 sale, 51 rental). 411 at pass2 quality, 0 partial, 8 at pass1 quality (all rentals — blocked on memo23 fixing `/rental/{id}` support). 366 of 368 sales have full financial data for monthly payment calculations.
+- **db.json state (Session 24, 2026-05-03):** 419 active listings (368 sale, 51 rental). 411 at pass2 quality, 0 partial, 8 at pass1 quality (all rentals — blocked on memo23 fixing `/rental/{id}` support). All 190 pass2 sale listings now have `monthly_fees` populated (0 for N/A new-dev condos, actual values where available). Fixed from 7 nulls in Session 24 via duplicate carry-forward + StreetEasy browser scraping.
 - **Secondary: RapidAPI NYC Real Estate API** — validated YELLOW, 25 req/mo free tier, good for fast single-listing lookups; no price history or agent contact
 - RapidAPI key in `.env`; Apify account on paid plan
 - No PLUTO, ACRIS, or other supplemental data downloaded yet

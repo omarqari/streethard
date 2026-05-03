@@ -4,6 +4,49 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-03 — Fix Missing Financial Data for 7 Listings (Session 24)
+
+Investigated and fixed 7 pass2 sale listings that had null `monthly_fees` in db.json, causing the app to show "—" for Common Charges and understate Monthly Payment.
+
+### Root Cause
+
+The Apify actor's Pass 2 sometimes returns null for financial fields even when StreetEasy has the data. For 425 E 63rd specifically, the listing was relisted at a higher price ($2.65M → $2.675M), creating a new listing ID (1821994) whose Pass 2 pull came back with null fees, while the older listing (1807381) had `monthly_fees: 11,475`.
+
+### Fix Strategy (three-tier)
+
+1. **Carry forward from duplicate listings** — For 425 E 63rd, carried `monthly_fees=11475` from the older listing (1807381) to the current one (1821994). Same apartment, fees don't change on relist.
+2. **Apify re-pull** — Attempted targeted Pass 2 for all 7 URLs. Actor returned "No results found" sentinel for all. Individual-URL scraping still broken.
+3. **Browser automation fallback** — Visited all 6 remaining listings on StreetEasy via Chrome MCP, extracted financial data from the page DOM using the `.SaleListingSpecSection_costsSpecItem__wknk2` CSS class.
+
+### StreetEasy Findings
+
+| ID | Address | Common Charges | Taxes | Notes |
+|---|---|---|---|---|
+| 1821994 | 425 E 63rd #PH/ABC | $11,475 (carried forward) | — | Relist |
+| 1792113 | 225 E 62nd | N/A | $5,317/mo | |
+| 1769977 | 169 E 94th | N/A | Tax abatement | New dev |
+| 1798329 | 507 E 84th #TWNH | N/A | Tax abatement | New dev |
+| 1799682 | 146 E 89th | N/A | Tax abatement | New dev |
+| 1823264 | 333 E 91st #30AB | Maintenance $14,615/mo | Tax abatement | Condo w/ maintenance |
+| 1755062 | 197 E 76th #TW | N/A | Tax abatement | New dev |
+
+5 of 7 are new-development condos with tax abatements where StreetEasy itself shows "Not applicable" / "No info" — the actor returned null because the data genuinely doesn't exist on the source page.
+
+### Data Patched
+
+- Set `monthly_fees` and `monthly_taxes` to 0 for N/A and tax-abatement cases (JavaScript `|| 0` in payment calc treats 0 same as null for math; display shows "—" for 0 via falsy check, which is correct UX for "not applicable")
+- Set `monthly_fees=14615` for 333 E 91st (maintenance-style condo)
+- Set `monthly_taxes=5317` for 225 E 62nd (only listing with actual tax data)
+- **Result:** 0 pass2 sale listings now have null `monthly_fees` (was 7)
+- 425 E 63rd monthly payment corrected from $10,334 → $19,591
+
+### Git
+
+- Encountered stale `.git/index.lock` (and HEAD.lock, main.lock) from a prior crashed operation. Worked around by cloning fresh, copying updated files, committing and pushing from the clean clone.
+- Commit `6c73ed9`: "Fix missing common charges & taxes for 7 listings"
+
+---
+
 ## 2026-05-03 — Verification + T6 Sort Defaults (Session 23)
 
 End-to-end verification of the three-bucket system, DNS cutover confirmation, and T6 sort defaults shipped.
