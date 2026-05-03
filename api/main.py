@@ -259,11 +259,18 @@ async def get_all_status(response: Response):
 async def put_status(listing_id: str, patch: StatusPatch):
     pool = get_pool()
 
-    async with pool.acquire() as conn:
-        clear_ranks = await should_clear_ranks(conn, listing_id, patch.bucket)
-        row = await do_upsert(conn, listing_id, patch, clear_ranks)
-
-    return row_to_dict(row)
+    try:
+        async with pool.acquire() as conn:
+            clear_ranks = await should_clear_ranks(conn, listing_id, patch.bucket)
+            row = await do_upsert(conn, listing_id, patch, clear_ranks)
+        return row_to_dict(row)
+    except Exception as e:
+        import traceback
+        return Response(
+            content=json.dumps({"error": str(e), "trace": traceback.format_exc()}),
+            status_code=500,
+            media_type="application/json",
+        )
 
 
 @app.post("/status/batch", dependencies=[Depends(require_write_key)])
