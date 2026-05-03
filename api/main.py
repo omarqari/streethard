@@ -147,6 +147,7 @@ UPSERT_SQL = """
 """
 
 # When transitioning OUT of shortlist, clear rankings
+# Uses only 7 params ($1-$7): listing_id, bucket, bucket_changed_at, price_at_archive, oq_notes, rq_notes, chips
 UPSERT_WITH_RANK_CLEAR_SQL = """
     INSERT INTO listing_status
         (listing_id, bucket, bucket_changed_at, price_at_archive,
@@ -159,7 +160,7 @@ UPSERT_WITH_RANK_CLEAR_SQL = """
             COALESCE($6, ''),
             NULL,
             NULL,
-            COALESCE($9::jsonb, '[]'::jsonb),
+            COALESCE($7::jsonb, '[]'::jsonb),
             NOW())
     ON CONFLICT (listing_id) DO UPDATE SET
         bucket            = COALESCE($2, listing_status.bucket),
@@ -169,7 +170,7 @@ UPSERT_WITH_RANK_CLEAR_SQL = """
         rq_notes          = COALESCE($6, listing_status.rq_notes),
         oq_rank           = NULL,
         rq_rank           = NULL,
-        chips             = COALESCE($9::jsonb, listing_status.chips),
+        chips             = COALESCE($7::jsonb, listing_status.chips),
         updated_at        = NOW()
     RETURNING listing_id, bucket, bucket_changed_at, price_at_archive,
               oq_notes, rq_notes, oq_rank, rq_rank, chips, updated_at
@@ -232,19 +233,32 @@ async def do_upsert(conn, listing_id: str, patch, clear_ranks: bool):
         except (ValueError, AttributeError):
             bucket_changed_at = datetime.now(timezone.utc)
 
-    sql = UPSERT_WITH_RANK_CLEAR_SQL if clear_ranks else UPSERT_SQL
-    row = await conn.fetchrow(
-        sql,
-        listing_id,
-        patch.bucket,
-        bucket_changed_at,
-        patch.price_at_archive,
-        patch.oq_notes,
-        patch.rq_notes,
-        patch.oq_rank,
-        patch.rq_rank,
-        chips_json,
-    )
+    if clear_ranks:
+        # 7 params: listing_id, bucket, bucket_changed_at, price_at_archive, oq_notes, rq_notes, chips
+        row = await conn.fetchrow(
+            UPSERT_WITH_RANK_CLEAR_SQL,
+            listing_id,
+            patch.bucket,
+            bucket_changed_at,
+            patch.price_at_archive,
+            patch.oq_notes,
+            patch.rq_notes,
+            chips_json,
+        )
+    else:
+        # 9 params: all fields
+        row = await conn.fetchrow(
+            UPSERT_SQL,
+            listing_id,
+            patch.bucket,
+            bucket_changed_at,
+            patch.price_at_archive,
+            patch.oq_notes,
+            patch.rq_notes,
+            patch.oq_rank,
+            patch.rq_rank,
+            chips_json,
+        )
     return row
 
 
