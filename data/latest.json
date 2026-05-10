@@ -1,9 +1,9 @@
 {
   "generated_at": "2026-05-10",
   "listing_count": 436,
-  "sale_count": 168,
-  "rental_count": 22,
-  "delisted_count": 246,
+  "sale_count": 377,
+  "rental_count": 59,
+  "delisted_count": 0,
   "run_cost_usd": 0.0,
   "mode": "both",
   "listings": [
@@ -132,7 +132,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-13"
     },
     {
@@ -269,7 +269,7 @@
           "broker": "Stribling"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-03"
     },
     {
@@ -427,7 +427,7 @@
           "broker": "Maxwell Jacobs"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-07"
     },
     {
@@ -597,7 +597,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-24"
     },
     {
@@ -947,7 +947,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-30"
     },
     {
@@ -1215,7 +1215,7 @@
           "broker": "Extell Development Company (Legacy)"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-11"
     },
     {
@@ -1249,7 +1249,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-12"
     },
     {
@@ -1313,7 +1313,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-11-05"
     },
     {
@@ -1353,7 +1353,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-05-07",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
@@ -1420,7 +1420,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-04-18"
     },
     {
@@ -1583,7 +1583,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-06"
     },
     {
@@ -1671,7 +1671,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-01-29"
     },
     {
@@ -1906,7 +1906,7 @@
           "broker": "Coldwell Banker Warburg"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-09"
     },
     {
@@ -2060,7 +2060,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-18"
     },
     {
@@ -2412,7 +2412,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-14"
     },
     {
@@ -2494,7 +2494,7 @@
           "broker": "Extell Development Company (Legacy)"
         }
       ],
-      "status": "delisted"
+      "status": "active"
     },
     {
       "listing_type": "sale",
@@ -2777,7 +2777,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-10"
     },
     {
@@ -2823,7 +2823,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-11-17"
     },
     {
@@ -2973,7 +2973,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-17"
     },
     {
@@ -3135,7 +3135,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-20"
     },
     {
@@ -3427,7 +3427,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-16"
     },
     {
@@ -3676,7 +3676,7 @@
           "broker": "Extell Development Company (Legacy)"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-16"
     },
     {
@@ -3746,7 +3746,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-04"
     },
     {
@@ -4213,7 +4213,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-30"
     },
     {
@@ -4311,7 +4311,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-13"
     },
     {
@@ -4345,7 +4345,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-07"
     },
     {
@@ -4385,7 +4385,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-17"
     },
     {
@@ -4612,7 +4612,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-14"
     },
     {
@@ -4810,7 +4810,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-03"
     },
     {
@@ -4862,7 +4862,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-17"
     },
     {
@@ -4948,7 +4948,7 @@
           "broker": "Dolly Lenz Real Estate LLC"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-17"
     },
     {
@@ -5040,7 +5040,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-05"
     },
     {
@@ -5098,7 +5098,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-04"
     },
     {
@@ -5144,7 +5144,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-12"
     },
     {
@@ -5202,7 +5202,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-07-07"
     },
     {
@@ -5266,7 +5266,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -5837,7 +5837,7 @@
           "broker": "Fox Residential Group"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-13"
     },
     {
@@ -5925,7 +5925,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-12"
     },
     {
@@ -6063,7 +6063,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-27"
     },
     {
@@ -6238,7 +6238,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-02"
     },
     {
@@ -6326,7 +6326,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-09"
     },
     {
@@ -6390,7 +6390,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-31"
     },
     {
@@ -6470,7 +6470,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-04"
     },
     {
@@ -6552,7 +6552,7 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-11-18"
     },
     {
@@ -6688,7 +6688,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-29"
     },
     {
@@ -6886,7 +6886,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-25"
     },
     {
@@ -6920,7 +6920,7 @@
           "broker": "Christie's International Real Estate Group, LLC"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-26"
     },
     {
@@ -7168,7 +7168,7 @@
           "broker": "Kleier Residential"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-16"
     },
     {
@@ -7416,7 +7416,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-03"
     },
     {
@@ -7610,7 +7610,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-27"
     },
     {
@@ -7650,7 +7650,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-12-04"
     },
     {
@@ -7836,7 +7836,7 @@
           "broker": "Berkshire Hathaway HomeServices New York Properties"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-02"
     },
     {
@@ -8227,7 +8227,7 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-11-14"
     },
     {
@@ -8273,7 +8273,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-06-17"
     },
     {
@@ -8362,7 +8362,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-24"
     },
     {
@@ -8616,7 +8616,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-15"
     },
     {
@@ -8768,7 +8768,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-13"
     },
     {
@@ -8808,7 +8808,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-08-11"
     },
     {
@@ -8933,7 +8933,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-12-05"
     },
     {
@@ -9039,7 +9039,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-26"
     },
     {
@@ -9085,7 +9085,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-20"
     },
     {
@@ -9331,7 +9331,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-23"
     },
     {
@@ -9631,7 +9631,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-17"
     },
     {
@@ -9817,7 +9817,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-02"
     },
     {
@@ -10935,7 +10935,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-05"
     },
     {
@@ -11504,7 +11504,7 @@
           "broker": "Reuveni LLC"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-07"
     },
     {
@@ -11592,7 +11592,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-06",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -11629,7 +11629,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-20",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
@@ -11778,7 +11778,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-09"
     },
     {
@@ -11902,7 +11902,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-02"
     },
     {
@@ -11960,7 +11960,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-20"
     },
     {
@@ -12018,7 +12018,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-06"
     },
     {
@@ -12350,7 +12350,7 @@
           "broker": "Fox Residential Group"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-16"
     },
     {
@@ -12390,7 +12390,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-07"
     },
     {
@@ -12454,7 +12454,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-02",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -12521,7 +12521,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-05"
     },
     {
@@ -12669,7 +12669,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-16",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -12981,7 +12981,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-04",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -13024,7 +13024,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-23"
     },
     {
@@ -13612,7 +13612,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-08",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -13685,7 +13685,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-25",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -13752,7 +13752,7 @@
           "broker": "Stribling"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-11"
     },
     {
@@ -13798,7 +13798,7 @@
           "broker": "Christie's International Real Estate Group, LLC"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-03"
     },
     {
@@ -14499,7 +14499,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-26"
     },
     {
@@ -14545,7 +14545,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-14",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -14735,7 +14735,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-11"
     },
     {
@@ -14811,7 +14811,7 @@
           "broker": "Extell Development Company (Legacy)"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-12-10"
     },
     {
@@ -14881,7 +14881,7 @@
           "broker": "Elegran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-12-04"
     },
     {
@@ -14915,7 +14915,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-05"
     },
     {
@@ -14979,7 +14979,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-05"
     },
     {
@@ -15091,7 +15091,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2024-07-31"
     },
     {
@@ -15237,7 +15237,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-15",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -15682,7 +15682,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted"
+      "status": "active"
     },
     {
       "listing_type": "sale",
@@ -15921,7 +15921,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-18"
     },
     {
@@ -16015,7 +16015,7 @@
           "broker": "Warburg"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-20",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
@@ -16292,7 +16292,7 @@
           "broker": "Extell Development Company (Legacy)"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-23"
     },
     {
@@ -16410,7 +16410,7 @@
           "broker": "Extell Development Company (Legacy)"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-06"
     },
     {
@@ -16534,7 +16534,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-03"
     },
     {
@@ -16758,7 +16758,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-02"
     },
     {
@@ -16928,7 +16928,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-08",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -17111,7 +17111,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-05-07"
     },
     {
@@ -17169,7 +17169,7 @@
           "broker": "Andrew Shipper, LREB"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2024-10-15"
     },
     {
@@ -17489,7 +17489,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-16"
     },
     {
@@ -17732,7 +17732,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-16",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -17769,7 +17769,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-13",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -17854,7 +17854,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-17"
     },
     {
@@ -18072,7 +18072,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-13"
     },
     {
@@ -18166,7 +18166,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-12-19"
     },
     {
@@ -18200,7 +18200,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -18363,7 +18363,7 @@
           "broker": "Bellmarc Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-02"
     },
     {
@@ -18557,7 +18557,7 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-02"
     },
     {
@@ -18911,7 +18911,7 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-04",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
@@ -18948,7 +18948,7 @@
           "broker": "Coldwell Banker Warburg"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-08"
     },
     {
@@ -19096,7 +19096,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-02"
     },
     {
@@ -19185,7 +19185,7 @@
           "broker": "Fox Residential Group"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-04",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
@@ -19341,7 +19341,7 @@
           "broker": "Coldwell Banker Warburg"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-16"
     },
     {
@@ -19453,7 +19453,7 @@
           "broker": "Stribling"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-26",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -19568,7 +19568,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-11-05"
     },
     {
@@ -19614,7 +19614,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-11-05"
     },
     {
@@ -19660,7 +19660,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-15",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
@@ -19775,7 +19775,7 @@
           "broker": "Stribling"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-26"
     },
     {
@@ -19833,7 +19833,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-02"
     },
     {
@@ -19927,7 +19927,7 @@
           "broker": "Stribling"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-19"
     },
     {
@@ -19979,7 +19979,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2024-04-25"
     },
     {
@@ -20163,7 +20163,7 @@
           "broker": "Stribling"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2024-03-18"
     },
     {
@@ -20221,7 +20221,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-15"
     },
     {
@@ -20285,7 +20285,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-14"
     },
     {
@@ -20643,7 +20643,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-08"
     },
     {
@@ -20707,7 +20707,7 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-15"
     },
     {
@@ -20913,7 +20913,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-14"
     },
     {
@@ -21101,7 +21101,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-13"
     },
     {
@@ -21225,7 +21225,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-08"
     },
     {
@@ -21465,7 +21465,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -21511,7 +21511,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-26"
     },
     {
@@ -21661,7 +21661,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-08"
     },
     {
@@ -21765,7 +21765,7 @@
           "broker": "SERHANT."
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-21"
     },
     {
@@ -21911,7 +21911,7 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -21951,7 +21951,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-11"
     },
     {
@@ -22045,7 +22045,7 @@
           "broker": "Stribling"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-02"
     },
     {
@@ -22163,7 +22163,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-06"
     },
     {
@@ -22261,7 +22261,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-10"
     },
     {
@@ -22665,7 +22665,7 @@
           "broker": "Town Residential"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-27"
     },
     {
@@ -22747,7 +22747,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-08"
     },
     {
@@ -22926,7 +22926,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-02"
     },
     {
@@ -23356,7 +23356,7 @@
           "broker": "Harlem Lofts"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-09"
     },
     {
@@ -23396,7 +23396,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-06"
     },
     {
@@ -23514,7 +23514,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-12"
     },
     {
@@ -23578,7 +23578,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-08"
     },
     {
@@ -23826,7 +23826,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-11-14"
     },
     {
@@ -23872,7 +23872,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-30"
     },
     {
@@ -23984,7 +23984,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-25"
     },
     {
@@ -24064,7 +24064,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-29"
     },
     {
@@ -24134,7 +24134,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-16"
     },
     {
@@ -24303,7 +24303,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-13",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
@@ -24877,7 +24877,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-16"
     },
     {
@@ -24941,7 +24941,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -25135,7 +25135,7 @@
           "broker": "Bellmarc Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-09"
     },
     {
@@ -25438,7 +25438,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-24"
     },
     {
@@ -25502,7 +25502,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-15"
     },
     {
@@ -25548,7 +25548,7 @@
           "broker": "Coldwell Banker Warburg"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-03"
     },
     {
@@ -25582,7 +25582,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-23"
     },
     {
@@ -25616,7 +25616,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-10"
     },
     {
@@ -25674,7 +25674,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-22"
     },
     {
@@ -25876,7 +25876,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-16"
     },
     {
@@ -25928,7 +25928,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-08-06"
     },
     {
@@ -26076,7 +26076,7 @@
           "broker": "Warburg"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-09-02"
     },
     {
@@ -26128,7 +26128,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-21"
     },
     {
@@ -26204,7 +26204,7 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -26370,7 +26370,7 @@
           "broker": "Metro Spire"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-19"
     },
     {
@@ -26428,7 +26428,7 @@
           "broker": "Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-08-27"
     },
     {
@@ -26713,7 +26713,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted"
+      "status": "active"
     },
     {
       "listing_type": "sale",
@@ -26878,7 +26878,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-15"
     },
     {
@@ -26990,7 +26990,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-08"
     },
     {
@@ -27072,7 +27072,7 @@
           "broker": "Keller Williams NYC"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-07"
     },
     {
@@ -27474,7 +27474,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-22"
     },
     {
@@ -27580,7 +27580,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-16"
     },
     {
@@ -27853,7 +27853,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-10-02"
     },
     {
@@ -27984,7 +27984,7 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-02"
     },
     {
@@ -28058,7 +28058,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-31"
     },
     {
@@ -28098,7 +28098,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-16"
     },
     {
@@ -28180,7 +28180,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-21"
     },
     {
@@ -28312,7 +28312,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-04-08"
     },
     {
@@ -28448,7 +28448,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-10"
     },
     {
@@ -28542,7 +28542,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-14"
     },
     {
@@ -28606,7 +28606,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -28718,7 +28718,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-01"
     },
     {
@@ -28782,7 +28782,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-20"
     },
     {
@@ -28816,7 +28816,7 @@
           "broker": "SERHANT."
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-19"
     },
     {
@@ -28898,7 +28898,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-05"
     },
     {
@@ -28944,7 +28944,7 @@
           "broker": "Furumoto Realty of New York City Inc"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-13"
     },
     {
@@ -29026,7 +29026,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2023-10-16"
     },
     {
@@ -29352,7 +29352,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-27"
     },
     {
@@ -29404,7 +29404,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-29"
     },
     {
@@ -29438,7 +29438,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-09"
     },
     {
@@ -29472,7 +29472,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-03"
     },
     {
@@ -29572,7 +29572,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-30"
     },
     {
@@ -29716,7 +29716,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-27"
     },
     {
@@ -29768,7 +29768,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-02-22"
     },
     {
@@ -29905,7 +29905,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-23"
     },
     {
@@ -29945,7 +29945,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-23"
     },
     {
@@ -30117,7 +30117,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-18"
     },
     {
@@ -30205,7 +30205,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-01-29"
     },
     {
@@ -30257,7 +30257,7 @@
           "broker": "Elegran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-17"
     },
     {
@@ -30375,7 +30375,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -30499,7 +30499,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-13"
     },
     {
@@ -30539,7 +30539,7 @@
           "broker": "Closing record"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-02"
     },
     {
@@ -30573,7 +30573,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-23",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
@@ -30640,7 +30640,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-16"
     },
     {
@@ -30834,7 +30834,7 @@
           "broker": "Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2024-03-05"
     },
     {
@@ -30956,7 +30956,7 @@
           "broker": "Listed by Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -31298,7 +31298,7 @@
           "broker": "Listed by Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-09"
     },
     {
@@ -31434,7 +31434,7 @@
           "broker": "Listed by Luiman Real Estate"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-15"
     },
     {
@@ -31700,7 +31700,7 @@
           "broker": "Listed by G. Laurie Cooper"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-17"
     },
     {
@@ -31746,7 +31746,7 @@
           "broker": "Listed by Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-15"
     },
     {
@@ -31955,7 +31955,7 @@
           "broker": "Listed by DJK Residential"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-12"
     },
     {
@@ -31989,7 +31989,7 @@
           "broker": "Listed by Rove Travel LLC"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-23"
     },
     {
@@ -33224,7 +33224,7 @@
           "broker": "Listed by Town Residential"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-11-11"
     },
     {
@@ -33342,7 +33342,7 @@
           "broker": "Listed by Solow Realty"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -33400,7 +33400,7 @@
           "broker": "Listed by Owner"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-01"
     },
     {
@@ -33446,7 +33446,7 @@
           "broker": "Listed by CitySites Real Estate Group"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-14"
     },
     {
@@ -33555,7 +33555,7 @@
           "broker": "Listed by Maidman Realty Group LLC"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-14"
     },
     {
@@ -33643,7 +33643,7 @@
           "broker": "Listed by Kleier Residential"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-14"
     },
     {
@@ -33707,7 +33707,7 @@
           "broker": "Listed by Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-10"
     },
     {
@@ -33817,7 +33817,7 @@
           "broker": "Listed by Peter Ashe"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -33886,7 +33886,7 @@
           "broker": "Listed by REAL New York"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-09"
     },
     {
@@ -34173,7 +34173,7 @@
           "broker": "Listed by Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-06"
     },
     {
@@ -34267,7 +34267,7 @@
           "broker": "Listed by Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2025-12-04"
     },
     {
@@ -34319,7 +34319,7 @@
           "broker": "Listed by Koriny NYC LLC"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-31"
     },
     {
@@ -34383,7 +34383,7 @@
           "broker": "Listed by Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-13"
     },
     {
@@ -34435,7 +34435,7 @@
           "broker": "Listed by Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-11"
     },
     {
@@ -34487,7 +34487,7 @@
           "broker": "Listed by Siderow Residential Group"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-02"
     },
     {
@@ -34539,7 +34539,7 @@
           "broker": "Listed by 165 E 66 Street Residential Owner LLC"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-20"
     },
     {
@@ -34621,7 +34621,7 @@
           "broker": "Listed by Douglas Elliman"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-20"
     },
     {
@@ -34961,7 +34961,7 @@
           "broker": "Listed by Rose Associates, Inc."
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-16"
     },
     {
@@ -35001,7 +35001,7 @@
           "broker": "Listed by Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-17"
     },
     {
@@ -35175,7 +35175,7 @@
           "broker": "Listed by Corcoran"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-18"
     },
     {
@@ -35467,7 +35467,7 @@
           "broker": "Listed by Stribling"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-24"
     },
     {
@@ -35604,7 +35604,7 @@
           "broker": "Listed by R New York"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-16"
     },
     {
@@ -35770,7 +35770,7 @@
           "broker": "Listed by Judith Moschera, LREB"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -35828,7 +35828,7 @@
           "broker": "Listed by Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-03-23"
     },
     {
@@ -35886,7 +35886,7 @@
           "broker": "Listed by Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-06"
     },
     {
@@ -35950,7 +35950,7 @@
           "broker": "Listed by Owner"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-19"
     },
     {
@@ -36044,7 +36044,7 @@
           "broker": "Listed by Equity Residential"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-14"
     },
     {
@@ -36102,7 +36102,7 @@
           "broker": "Listed by Bond New York"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-09"
     },
     {
@@ -36136,7 +36136,7 @@
           "broker": "Listed by Compass"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-11"
     },
     {
@@ -36188,7 +36188,7 @@
           "broker": "Listed by Brown Harris Stevens"
         }
       ],
-      "status": "delisted",
+      "status": "active",
       "listed_date": "2026-04-13"
     }
   ],
