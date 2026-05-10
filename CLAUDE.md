@@ -63,11 +63,11 @@ Fields the user cares about for each property:
 
 These are the non-obvious pitfalls that matter for Manhattan real estate data:
 
-**Co-ops don't appear in ACRIS at the unit level.** Co-op shares aren't deeded real property. Only the underlying building transfers show up. If the user is looking at co-ops, unit-level sale history effectively exists only in StreetEasy / RLS.
+**Co-ops don’t appear in ACRIS at the unit level.** Co-op shares aren’t deeded real property. Only the underlying building transfers show up. If the user is looking at co-ops, unit-level sale history effectively exists only in StreetEasy / RLS.
 
 **PLUTO aggregates condos to the building level.** One record per condo complex, not per unit. So PLUTO tells you about the building; listings/ACRIS tell you about the unit.
 
-**StreetEasy already does ~90% of browsing.** Price history, comps, $/sqft, days-on-market are all on every listing page. Any tool built is a supplement for custom queries StreetEasy's UI can't answer — not a replacement.
+**StreetEasy already does ~90% of browsing.** Price history, comps, $/sqft, days-on-market are all on every listing page. Any tool built is a supplement for custom queries StreetEasy’s UI can’t answer — not a replacement.
 
 **Building-level financial risk is invisible in public data.** Reserve funds, pending assessments, underlying mortgage, litigation — all from the offering plan package and financial statements from the broker. No dataset has this.
 
