@@ -39,7 +39,7 @@ Fields the user cares about for each property:
 - Zillow Bridge API — gated to approved commercial customers
 - Scraping StreetEasy directly — ToS violation, aggressive bot detection
 - Heavy infrastructure: production databases, real-time pipelines, BBL-joined data lake, etc.
-- Padded responses with generic "consult a professional" filler
+- Padded responses with generic “consult a professional” filler
 
 ## Preferred Approach (Current Plan)
 
@@ -137,8 +137,7 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   price drop (T4) ✅. URL hash routing ✅. Sort defaults per tab (T6) ✅.
   Settings panel removed (Session 26) — no API key needed. Seen toggle
   (Session 28) ✅ — eye icon per row + filter checkbox.
-  Card action buttons + seen toggle in card view (Session 29) ✅.
-  **Not yet built:** Offline outbox (T8), T9 OQ/RQ rank/note hiding in Inbox/Archive cards, chips (T10).
+  **Not yet built:** Offline outbox (T8), card view adaptation (T9), chips (T10).
 - **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
   actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
   drop). OQ/RQ cleared server-side on exit from Shortlist. URL hash for tab state.
@@ -148,18 +147,8 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   public; CORS restricts browser writes to `streethard.omarqari.com` origin.
 - **Cost:** $5/mo Hobby tier on Railway.
 
-## Mobile (Session 29 — COMPLETE)
-
-App is fully mobile-responsive as of 2026-05-10. Key facts for future sessions:
-
-- **No `min-width` on body.** Removed the 1100px blocker. `body` uses `min-width: 320px; height: 100dvh`.
-- **Single `@media (max-width: 768px)` block** at the end of the `<style>` section (before `</style>`). All mobile overrides live there — desktop untouched.
-- **Sticky header model on mobile:** `body { height: auto; overflow-y: auto }` + `#sticky-top { position: static }` + `#main-header { position: sticky; top: 0 }` + `#scroll-content { overflow: visible }`. Only the logo bar sticks; everything else scrolls.
-- **Card view is the mobile default:** `if (window.innerWidth <= 768) setView('cards')` at the end of the init block (just before `loadData()`).
-- **`renderCards()` is now feature-complete:** includes per-bucket transition buttons (★ Shortlist / ✕ Archive / ↩ Inbox) and seen-eye toggle in a `.card-actions` div.
-- **Swipe-to-triage:** `initCardSwipe(cardEl, listingId)` attached to every `.listing-card[data-id]` after `container.innerHTML = html` in `renderCards()`. Reads `currentBucket` global at gesture time. Right swipe = shortlist/inbox; left = archive; blocked direction rubber-bands. Calls existing `transitionBucket()`.
-
-Next session: **T9 remaining** (hide OQ/RQ rank inputs + note textareas in Inbox/Archive card view), **T10 chips**, **product backlog selection** from PRODUCT-BACKLOG.md.
+Next session: **polish items** (T9 card view adaptation, T10 chips), **product
+backlog selection** from PRODUCT-BACKLOG.md.
 See TASKS.md for acceptance criteria A1–A10.
 
 ## Current Infrastructure State
