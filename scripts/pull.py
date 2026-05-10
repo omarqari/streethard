@@ -1325,11 +1325,26 @@ def verify_stale_shortlists(client, db):
     for lid, entry in candidates:
         item = items_by_id.get(str(lid))
         # Off-market signal: no item returned for this URL, OR the actor
-        # returned only its "No results found" / sentinel placeholder
+        # returned only its "No results found" / sentinel placeholder.
+        # For rentals, price is embedded in price_histories_json (not top-level),
+        # so we check all three rental namespace prefixes in addition to the
+        # sale-side fields. Without this, valid rental responses would always
+        # be misclassified as sentinels.
+        is_rental_entry = entry.get('listing_type') == 'rent'
+        has_price = bool(
+            item and (
+                item.get('price') or item.get('pricing_price') or
+                item.get('saleCombineResponse_sale_price') or
+                (is_rental_entry and (
+                    item.get('combineData_rental_price_histories_json') or
+                    item.get('rentalCombineResponse_rental_price_histories_json') or
+                    item.get('rental_price_histories_json')
+                ))
+            )
+        )
         is_sentinel = bool(item) and (
             item.get('message') in ('No results found',) or
-            (not item.get('price') and not item.get('pricing_price') and
-             not item.get('saleCombineResponse_sale_price'))
+            not has_price
         )
         if not item or is_sentinel:
             entry['pass2_confirmed_off_market'] = True
