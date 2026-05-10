@@ -104,7 +104,7 @@ allowed_origins = [o for o in (ALLOWED_ORIGIN, ALLOWED_ORIGIN_FALLBACK) if o]
 app.add_middleware(
     CORSMiddleware,
     allow_origins=allowed_origins,
-    allow_methods=["GET", "PUT", "POST", "OPTIONS"],
+    allow_methods=["GET", "PUT", "POST", "DELETE", "OPTIONS"],
     allow_headers=["Content-Type"],
 )
 
@@ -287,6 +287,21 @@ async def put_status(listing_id: str, patch: StatusPatch):
         clear_ranks = await should_clear_ranks(conn, listing_id, patch.bucket)
         row = await do_upsert(conn, listing_id, patch, clear_ranks)
     return row_to_dict(row)
+
+
+@app.delete("/status/{listing_id}")
+async def delete_status(listing_id: str):
+    """Delete a status row. The history table retains the row's audit trail
+    (the trigger does not fire on DELETE, so no history entry is created;
+    existing history entries are preserved)."""
+    pool = get_pool()
+    async with pool.acquire() as conn:
+        result = await conn.execute(
+            "DELETE FROM listing_status WHERE listing_id = $1", listing_id
+        )
+    # asyncpg returns "DELETE 1" or "DELETE 0"
+    deleted = result.endswith("1")
+    return {"listing_id": listing_id, "deleted": deleted}
 
 
 @app.post("/status/batch")
