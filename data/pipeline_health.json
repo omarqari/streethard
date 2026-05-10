@@ -2,8 +2,8 @@
   {
     "date": "2026-05-10",
     "pass1_sale": 221,
-    "pass1_rent": null,
-    "active": 455,
+    "pass1_rent": 22,
+    "active": 382,
     "delisted": 0,
     "status": "ok"
   },
