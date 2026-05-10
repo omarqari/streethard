@@ -89,7 +89,7 @@ The app is called **StreetHard**. It is a static web app hosted on **GitHub Page
 ### Architecture
 - `index.html` — static app shell; all UI and mortgage math in client-side JavaScript
 - `data/db.json` — **canonical store**; persistent dict of all listings keyed by ID; each has `data_quality` ("pass1" or "pass2"); never overwritten destructively
-- `data/latest.json` — generated from db.json each run; flat array for the app to fetch on load
+- `data/latest.json` — generated from db.json each run; flat array for the app to fetch on load. **Includes both active AND delisted listings**, with `status` field (`"active"` or `"delisted"`) preserved on each. Frontend filters Inbox to active-only; Shortlist & Archive show all (delisted ones get a DELISTED badge). Headline counts (`sale_count`, `rental_count`) and the footer/health-strip count active only; `delisted_count` is exposed separately.
 - `data/YYYY-MM-DD.json` — immutable dated archive of every past run
 - `scripts/pull.py` — **incremental** Apify pull script; Pass 1 discovers listings, Pass 2 only fills in what's missing (capped at 100/run); saves db.json after every step
 - `.github/workflows/refresh.yml` — cron daily 9 AM UTC; calls Apify, commits data/, Pages auto-deploys
@@ -107,6 +107,7 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Row expansion**: Price History, Agent info, Payment Breakdown
 - **Days Listed**: NEW/blue <7d, green 7–44d, yellow 45–120d, red 121d+
 - **Price-history signal icons**: Per-listing icons next to days badge — ✂ price cuts (red), ↻ re-listed (orange), ⏸ off-market-and-back (blue), ⏳ stale 90d+ (yellow). Cached per listing ID.
+- **Delisted listings**: Listings that fall off StreetEasy keep their status row in Postgres and stay visible in Shortlist & Archive (filtered out of Inbox) with a gray DELISTED badge. The Shortlist tab also shows a yellow alert strip when shortlisted listings have delisted in the last 14 days — strong signal for contract-signed/withdrawn.
 - **Pipeline health strip**: Between summary bar and tabs. Green/yellow/red staleness indicator from `generated_at` in latest.json.
 - Single `index.html`, no server, opens in any browser
 
@@ -118,12 +119,16 @@ system** (Inbox / Shortlist / Archive). Read `STATUS-FEATURE.md` for the full
 spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
 
 - **Backend (MIGRATED, LIVE):** FastAPI on Python 3.12 + asyncpg + Railway
-  managed Postgres. `api/` directory. One table (`listing_status`), no auth
-  (CORS-restricted to `streethard.omarqari.com`). **Columns:** `bucket` (inbox/shortlist/archive), `bucket_changed_at`,
-  `price_at_archive`, `oq_rank`, `rq_rank`, `oq_notes`, `rq_notes`, `chips`,
-  `seen` (boolean, visited in person), `updated_at`. Old `status` and `watch`
-  columns dropped. Two SQL paths: `UPSERT_SQL` (normal) and
-  `UPSERT_WITH_RANK_CLEAR_SQL` (clears ranks on shortlist exit).
+  managed Postgres. `api/` directory. Two tables: `listing_status` (current
+  state) and `listing_status_history` (append-only audit log, populated by
+  `listing_status_audit_trg` trigger on bucket change). No auth (CORS-restricted
+  to `streethard.omarqari.com`). **Columns on listing_status:** `bucket`
+  (inbox/shortlist/archive), `bucket_changed_at`, `price_at_archive`,
+  `oq_rank`, `rq_rank`, `oq_notes`, `rq_notes`, `chips`, `seen` (boolean,
+  visited in person), `updated_at`. Old `status` and `watch` columns dropped.
+  Two SQL paths: `UPSERT_SQL` (normal) and `UPSERT_WITH_RANK_CLEAR_SQL`
+  (clears ranks on shortlist exit). **Audit log endpoint:** `GET /history`
+  with optional `?listing_id=` and `?limit=` (default 500, max 5000).
 - **Frontend (MVP COMPLETE):** Two-fetch merge ✅. OQ#/RQ# rankings
   (click-to-edit, nulls-last) ✅. OQ/RQ Notes (debounced) ✅. Tab navigation
   with badge counts (T1) ✅. Transition buttons (T2) ✅. Auto-resurrection on
@@ -233,6 +238,9 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `api/railway.toml` — Railway deployment config
 - `.env` — local env vars (RAPIDAPI_KEY, APIFY_TOKEN, GITHUB_TOKEN, STATUS_API_URL)
 - `floorplans/` — gitignored scratch directory; user drops floor plan images here for sqft estimation
+- `floorplans/processed.json` — tracks which floor plan images have been estimated vs. new; keyed by filename
+- `skills/floorplan-estimator/SKILL.md` — skill for processing floor plans: scan, estimate, validate, update db.json, push
+- `skills/floorplan-estimator/scripts/estimate_sqft.py` — pixel-polygon computation script (bundled with skill)
 
 ## Co-op SqFt Estimation
 
@@ -269,6 +277,17 @@ roughly $900–$1,800/sqft. If the algorithm produces $/sqft outside
 that band, something is wrong — usually multi-floor plan misdetection
 or a calibration-room pixel-read off by ~25%. Fall back to a labeled-room
 sum + walls estimate and document the override in `sqft_estimate_note`.
+
+### Floor Plan Skill
+
+The full estimation workflow is captured in `skills/floorplan-estimator/`.
+When the user mentions floor plans, sqft estimation, or drops images into
+`floorplans/`, read the skill's SKILL.md and follow it. The skill handles:
+scanning for new images, matching to listings, running the pixel-polygon
+script, validating $/sqft, updating db.json, tracking processed files in
+`floorplans/processed.json`, and pushing to GitHub. The bundled script at
+`skills/floorplan-estimator/scripts/estimate_sqft.py` does the computation;
+Claude provides the calibration room measurements visually.
 
 ## Bottom-Up Validation Rule — READ THIS BEFORE BUILDING ANYTHING
 
