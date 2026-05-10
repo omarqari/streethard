@@ -137,7 +137,8 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   price drop (T4) ✅. URL hash routing ✅. Sort defaults per tab (T6) ✅.
   Settings panel removed (Session 26) — no API key needed. Seen toggle
   (Session 28) ✅ — eye icon per row + filter checkbox.
-  **Not yet built:** Offline outbox (T8), card view adaptation (T9), chips (T10).
+  **Not yet built:** Offline outbox (T8), chips (T10).
+  **Mobile (Session 30) ✅** — card view auto-selected on ≤768px; swipe right = Shortlist, swipe left = Archive; card-actions row with seen toggle + transition buttons; responsive CSS via `@media (max-width: 768px)`. T9 (card view adaptation for buckets) is now effectively shipped via the mobile overhaul.
 - **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
   actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
   drop). OQ/RQ cleared server-side on exit from Shortlist. URL hash for tab state.
@@ -147,8 +148,7 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   public; CORS restricts browser writes to `streethard.omarqari.com` origin.
 - **Cost:** $5/mo Hobby tier on Railway.
 
-Next session: **polish items** (T9 card view adaptation, T10 chips), **product
-backlog selection** from PRODUCT-BACKLOG.md.
+Next session: **T10 chips** (shortlist only), **product backlog selection** from PRODUCT-BACKLOG.md.
 See TASKS.md for acceptance criteria A1–A10.
 
 ## Current Infrastructure State

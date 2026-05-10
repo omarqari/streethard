@@ -4,6 +4,35 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-10 — Mobile Optimization Shipped (Session 30)
+
+### Investigation
+User reported mobile view was broken. Initial check of local `index.html` and `main` branch confirmed `body { min-width: 1100px }` with zero `@media` queries — the app was desktop-only and unusable on phones.
+
+Discovered that mobile work **had** been done in a prior session (Session 29 or earlier) on branch `claude/mobile-optimize-streethard-DEsLX` (commit `2fee1b08`, 2026-05-03T15:56) but was **never merged to main**. The branch had diverged from main and accumulated 10+ commits of gap (W1–W7 pipeline resilience, rental normalization fixes, seen toggle, etc.).
+
+### Fix
+Ported all mobile changes from `claude/mobile-optimize-streethard-DEsLX` forward onto the current `main` state of `index.html`. Key changes applied:
+
+- `min-width: 1100px` → `min-width: 320px` — unblocks mobile rendering
+- `height: 100vh` → `height: 100dvh` — fixes iOS Safari viewport height bug
+- `touch-action: manipulation` on all interactive elements — removes 300ms tap delay on iOS
+- `position: relative; overflow: hidden; will-change: transform` on `.listing-card` — enables swipe animation
+- `.card-actions` CSS — seen toggle + transition buttons row in card view
+- `.swipe-indicator` CSS — visual feedback during drag gesture
+- `@media (max-width: 768px)` block — single-column cards, wrapped filter/mortgage bars, tighter header, bigger tap targets, full-width search
+- `initCardSwipe()` JS function — touchstart/touchmove/touchend handlers; swipe right = Shortlist, swipe left = Archive, snap-back on incomplete swipe
+- Updated `renderCards()` — adds `data-id`, swipe indicator divs, card-actions row (seen toggle + bucket buttons), calls `initCardSwipe()` after render
+- `if (window.innerWidth <= 768) setView('cards')` at init — auto-switches to card view on mobile
+
+### Merge
+Committed to feature branch `claude/fix-streethard-mobile-6pzOx`, user merged via GitHub mobile app (PR `8224ed6`). Feature branch deleted post-merge. GitHub Pages redeployed automatically.
+
+### Key lesson for future sessions
+When a Claude branch is pushed but not merged, the work is effectively undeployed. Always verify the live site after a session, not just the branch.
+
+---
+
 ## 2026-05-03 — Seen Toggle for Visited Apartments (Session 28)
 
 ### Feature: "Seen" indicator
