@@ -4,6 +4,35 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-10 — Fix Rental Pass 2 Normalization + W7 Sentinel Bug (Session 29)
+
+### Context
+memo23 (Apify actor author) shipped a bypass fix for `/rental/{id}` URLs using the same approach previously applied to `/sale/{id}`. Previously, all `/rental/{id}` Pass 2 requests returned "No results found" sentinels, leaving 4 rental listings permanently stuck at `pass1` quality (missing year_built, agent contact, price history).
+
+### Fix 1: normalize_rental multi-namespace support (`scripts/pull.py`)
+Added two new namespace constants alongside the existing `_RC = "combineData_rental_"`:
+- `_RCnew = "rentalCombineResponse_rental_"` — mirrors `_SC` for sales (May 2026 bypass)
+- `_RCP = "rental_"` — bare prefix fallback, mirrors `_PP` for sales
+
+Every field lookup in `normalize_rental` now checks all three namespaces: price_histories_json, id, building_building_type, building_title, area_name, building_year_built, days_on_market, contacts_json, listed_at. The original `combineData_rental_*` is still checked first (verified working schema).
+
+**Validation caveat:** The new namespace names (`rentalCombineResponse_rental_*`, `rental_*`) are inferred by analogy from the sale schema — memo23's actual response was not inspected directly (no APIFY_TOKEN in sandbox). The defensive multi-namespace approach means the fix works even if the schema is unchanged; but if memo23 used a completely different naming convention, the listings will remain at pass1. **Verify after the next cron run (2026-05-11 09:00 UTC) that listings 5022439, 5022432, 5020246, 5025162 have upgraded to pass2.**
+
+### Fix 2: W7 sentinel detection for rental listings (`scripts/pull.py`)
+`verify_stale_shortlists()` checked for off-market status by looking for `price`, `pricing_price`, or `saleCombineResponse_sale_price` — none of which exist in rental Pass 2 responses (rental price is nested inside `price_histories_json`). This pre-existing bug would have incorrectly flagged any shortlisted rental as "confirmed off-market" the moment it was checked via W7.
+
+Fixed by detecting the listing type from the db entry and additionally checking `combineData_rental_price_histories_json`, `rentalCombineResponse_rental_price_histories_json`, and `rental_price_histories_json` for rental listings.
+
+### CLAUDE.md update
+Updated infrastructure state: rental Pass 2 status changed from BROKEN → FIXED.
+
+### CTO notes
+- Both fixes are low-risk and additive (no existing logic removed)
+- Validation gap: new rental namespace names are inferred, not confirmed from actor output
+- Next action: verify the 4 pass1 rentals upgrade on 2026-05-11 cron; if not, dump raw response on listing 5022439 and update namespace constants
+
+---
+
 ## 2026-05-03 — Seen Toggle for Visited Apartments (Session 28)
 
 ### Feature: "Seen" indicator
