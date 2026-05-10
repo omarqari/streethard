@@ -115,3 +115,56 @@ BEGIN
         ALTER TABLE listing_status ADD COLUMN seen BOOLEAN NOT NULL DEFAULT FALSE;
     END IF;
 END $$;
+
+-- ─── Audit log ─────────────────────────────────────────────────────
+-- Append-only history of every bucket transition. Captures
+-- (listing_id, old_bucket, new_bucket, ranks before/after, when).
+-- Populated by trigger; never written to directly. Idempotent.
+CREATE TABLE IF NOT EXISTS listing_status_history (
+    id              BIGSERIAL PRIMARY KEY,
+    listing_id      TEXT NOT NULL,
+    old_bucket      TEXT,
+    new_bucket      TEXT NOT NULL,
+    old_oq_rank     INTEGER,
+    new_oq_rank     INTEGER,
+    old_rq_rank     INTEGER,
+    new_rq_rank     INTEGER,
+    op              TEXT NOT NULL,           -- 'INSERT' or 'UPDATE'
+    changed_at      TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_lsh_listing
+    ON listing_status_history (listing_id, changed_at DESC);
+
+CREATE INDEX IF NOT EXISTS idx_lsh_changed_at
+    ON listing_status_history (changed_at DESC);
+
+-- Trigger function: only logs when bucket actually changes (or row is inserted).
+-- Idempotent via CREATE OR REPLACE.
+-- NOTE: uses `$$ ... $$` (not `$audit$`) so api/main.py's naive statement
+-- splitter (which only toggles on `$$`) handles it correctly.
+CREATE OR REPLACE FUNCTION listing_status_audit_fn() RETURNS TRIGGER AS $$
+BEGIN
+    IF TG_OP = 'INSERT' THEN
+        INSERT INTO listing_status_history
+            (listing_id, old_bucket, new_bucket,
+             old_oq_rank, new_oq_rank, old_rq_rank, new_rq_rank, op)
+        VALUES
+            (NEW.listing_id, NULL, NEW.bucket,
+             NULL, NEW.oq_rank, NULL, NEW.rq_rank, 'INSERT');
+    ELSIF TG_OP = 'UPDATE' AND OLD.bucket IS DISTINCT FROM NEW.bucket THEN
+        INSERT INTO listing_status_history
+            (listing_id, old_bucket, new_bucket,
+             old_oq_rank, new_oq_rank, old_rq_rank, new_rq_rank, op)
+        VALUES
+            (NEW.listing_id, OLD.bucket, NEW.bucket,
+             OLD.oq_rank, NEW.oq_rank, OLD.rq_rank, NEW.rq_rank, 'UPDATE');
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS listing_status_audit_trg ON listing_status;
+CREATE TRIGGER listing_status_audit_trg
+    AFTER INSERT OR UPDATE ON listing_status
+    FOR EACH ROW EXECUTE FUNCTION listing_status_audit_fn();

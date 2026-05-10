@@ -312,3 +312,53 @@ async def post_batch(body: BatchRequest):
             media_type="application/json",
         )
     return {"items": results}
+
+
+# ─── Audit log (listing_status_history) ─────────────────────────────
+# Append-only history of every bucket transition, populated by the
+# listing_status_audit_trg trigger. Read-only endpoint.
+@app.get("/history")
+async def get_history(response: Response, listing_id: str | None = None, limit: int = 500):
+    response.headers["Cache-Control"] = "no-store"
+    limit = max(1, min(int(limit), 5000))
+    pool = get_pool()
+    if listing_id:
+        sql = """
+            SELECT id, listing_id, old_bucket, new_bucket,
+                   old_oq_rank, new_oq_rank, old_rq_rank, new_rq_rank,
+                   op, changed_at
+              FROM listing_status_history
+             WHERE listing_id = $1
+             ORDER BY changed_at DESC
+             LIMIT $2
+        """
+        async with pool.acquire() as conn:
+            rows = await conn.fetch(sql, listing_id, limit)
+    else:
+        sql = """
+            SELECT id, listing_id, old_bucket, new_bucket,
+                   old_oq_rank, new_oq_rank, old_rq_rank, new_rq_rank,
+                   op, changed_at
+              FROM listing_status_history
+             ORDER BY changed_at DESC
+             LIMIT $1
+        """
+        async with pool.acquire() as conn:
+            rows = await conn.fetch(sql, limit)
+    return {
+        "items": [
+            {
+                "id": r["id"],
+                "listing_id": r["listing_id"],
+                "old_bucket": r["old_bucket"],
+                "new_bucket": r["new_bucket"],
+                "old_oq_rank": r["old_oq_rank"],
+                "new_oq_rank": r["new_oq_rank"],
+                "old_rq_rank": r["old_rq_rank"],
+                "new_rq_rank": r["new_rq_rank"],
+                "op": r["op"],
+                "changed_at": r["changed_at"].isoformat() if r["changed_at"] else None,
+            }
+            for r in rows
+        ]
+    }

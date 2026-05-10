@@ -803,37 +803,48 @@ def save_db(db, total_events=0):
           f"{stats['pass1_only']} pass1, {stats['delisted']} delisted)")
 
 def generate_latest(db, mode, total_events, sale_url=None, rental_url=None):
-    """Generate data/latest.json from the canonical db for the app to consume."""
+    """Generate data/latest.json from the canonical db for the app to consume.
+
+    Includes ALL listings (active + delisted), with their `status` field
+    intact, so the app can keep delisted listings visible in Shortlist /
+    Archive (where the user has invested triage effort) while still defaulting
+    Inbox to active-only. Summary counts in the app filter on `status`.
+    """
     data_dir = DB_PATH.parent
     today = datetime.date.today().isoformat()
 
-    # Only include active (non-delisted) listings matching the mode
-    active = []
+    # Include every listing matching the mode. Keep `status` field on the
+    # output so the frontend can distinguish active vs. delisted.
+    keep = []
     for l in db.values():
-        if l.get("status") == "delisted":
-            continue
         if mode == "sale" and l.get("listing_type") == "rent":
             continue
         if mode == "rent" and l.get("listing_type") != "rent":
             continue
-        # Strip internal db fields before writing to latest.json
+        # Strip internal pipeline fields, but KEEP `status` so the app
+        # can render a "delisted" badge and filter Inbox accordingly.
         out = {k: v for k, v in l.items()
                if k not in ("data_quality", "last_pass1", "last_pass2",
-                            "needs_refresh", "status")}
-        active.append(out)
+                            "needs_refresh")}
+        keep.append(out)
 
     # Sort: sales by price desc, then rentals by price desc
-    sales   = sorted([l for l in active if l.get("listing_type") != "rent"],
+    sales   = sorted([l for l in keep if l.get("listing_type") != "rent"],
                      key=lambda x: x.get("price", 0), reverse=True)
-    rentals = sorted([l for l in active if l.get("listing_type") == "rent"],
+    rentals = sorted([l for l in keep if l.get("listing_type") == "rent"],
                      key=lambda x: x.get("price", 0), reverse=True)
     all_listings = sales + rentals
+
+    # Counts: headline counts are active-only (matches what user sees in Inbox)
+    active_sales   = sum(1 for l in sales   if l.get("status") != "delisted")
+    active_rentals = sum(1 for l in rentals if l.get("status") != "delisted")
 
     payload = {
         "generated_at":  today,
         "listing_count": len(all_listings),
-        "sale_count":    len(sales),
-        "rental_count":  len(rentals),
+        "sale_count":    active_sales,
+        "rental_count":  active_rentals,
+        "delisted_count": sum(1 for l in all_listings if l.get("status") == "delisted"),
         "run_cost_usd":  estimate_cost(total_events),
         "mode":          mode,
         "listings":      all_listings,
@@ -851,7 +862,8 @@ def generate_latest(db, mode, total_events, sale_url=None, rental_url=None):
         json.dump(payload, f, indent=2)
 
     print(f"  ✓ latest.json — {len(all_listings)} listings "
-          f"({len(sales)} sale, {len(rentals)} rental)")
+          f"({active_sales} active sale, {active_rentals} active rental, "
+          f"{payload['delisted_count']} delisted)")
     return all_listings
 
 def merge_pass1_into_db(db, search_items, listing_type, normalize_fn):
