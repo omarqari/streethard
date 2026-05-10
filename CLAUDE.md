@@ -225,6 +225,7 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `STATUS-FEATURE.md` — design spec for in-app listing-status tracking (Session 13, refined Session 14, custom-domain update Session 16)
 - `STATUS-BACKEND-WALKTHROUGH.md` — CTO build guide for the FastAPI+Postgres status backend on Railway (Session 15, custom-domain update Session 16)
 - `PRODUCT-BACKLOG.md` — CPO slate of 14 proposed product improvements, themed by Decision Quality / Data Quality / UX / Signal & Noise / DD Integration / Automation, plus open decisions awaiting user selection (Session 17, 2026-05-02)
+- `PIPELINE-RESILIENCE-PLAN.md` — 7-workstream plan written 2026-05-09 in response to the false-flag delisting incident. Phase 1 (W1+W2) stops the bleeding; Phase 2 (W3–W5) makes the pipeline observable; Phase 3 (W6–W7) protects user triage investment. Rec D (broader pull) explicitly excluded.
 - `data/db.json` — canonical listing store (the source of truth; never overwritten destructively)
 - `data/latest.json` — generated from db.json for the app to consume
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
