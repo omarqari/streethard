@@ -910,24 +910,32 @@ td {
 /* ─── Mobile (≤768px) ─────────────────────────────────────────── */
 @media (max-width: 768px) {
 
-  /* Header: hide non-essential items */
+  /* Header: hide non-essential items, show calc toggle */
   .header-tag, #last-updated { display: none; }
   #main-header { padding: 0 16px; gap: 10px; }
+  #mtg-toggle {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 4px;
+    color: rgba(255,255,255,0.85);
+    font-size: 11px;
+    font-weight: 700;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-family: inherit;
+    flex-shrink: 0;
+  }
 
-  /* Mortgage bar: hide label + spacer, allow wrap */
+  /* Mortgage bar: hidden by default on mobile, revealed by toggle */
+  #mortgage-bar { display: none; padding: 6px 16px; gap: 6px; flex-wrap: wrap; }
+  #mortgage-bar.mobile-open { display: flex; }
   .mtg-label, .mtg-bar-spacer { display: none; }
-  #mortgage-bar { padding: 6px 16px; gap: 6px; flex-wrap: wrap; }
   #calc-indicator { font-size: 9px; }
 
-  /* Summary bar: 2-column grid */
-  #summary-bar { padding: 6px 16px; flex-wrap: wrap; }
-  .sum-stat {
-    flex: 1 1 45%;
-    padding: 4px 8px;
-    border-right: none;
-    border-bottom: 1px solid #e4e7ed;
-  }
-  .sum-stat:last-child { border-bottom: none; }
+  /* Summary bar: hidden on mobile to free up screen space */
+  #summary-bar { display: none; }
 
   /* Health strip */
   #health-strip { padding: 4px 16px; }
@@ -969,6 +977,7 @@ td {
   <div class="header-tag" id="run-badge" style="display:none;"></div>
   <div class="header-spacer"></div>
   <div id="last-updated"></div>
+  <button id="mtg-toggle" onclick="toggleMortgageBar()" style="display:none;">Calc ▾</button>
   <div class="view-toggle" style="margin-left:16px;">
     <button class="view-btn active" id="btn-table" onclick="setView('table')">⊞ Table</button>
     <button class="view-btn" id="btn-cards" onclick="setView('cards')">▦ Cards</button>
@@ -2205,6 +2214,13 @@ function toggleExpand(id) {
 }
 
 // ─── View Toggle ─────────────────────────────────────────────────────
+function toggleMortgageBar() {
+  const bar = document.getElementById('mortgage-bar');
+  const btn = document.getElementById('mtg-toggle');
+  const open = bar.classList.toggle('mobile-open');
+  btn.textContent = open ? 'Calc ▴' : 'Calc ▾';
+}
+
 function setView(mode) {
   currentView = mode;
   document.getElementById('table-view').style.display = mode === 'table' ? 'block' : 'none';
