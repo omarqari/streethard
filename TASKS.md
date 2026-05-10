@@ -119,7 +119,7 @@ Replaces old F2 (status pill cycling) and F3 (watch toggle). Existing work retai
 - [x] **T6 — Sort defaults per tab.** ✅ Session 23. Inbox: Monthly Payment desc. Shortlist: OQ# asc (nulls last). Archive: `bucket_changed_at` desc (most recently archived first). Sort resets on tab switch; init respects URL hash. Added `archived_at` sort case to `sortListings()`.
 - [ ] **T7 — Optimistic update helper.** `updateStatus(listingId, patch)` mutates in-memory, re-renders, then PUTs. On failure, queue in outbox. (Carried from old F5.)
 - [ ] **T8 — Offline outbox + flush.** `localStorage['streethard.outbox']` flushed via `POST /status/batch` on `online` / `visibilitychange`. (Carried from old F6.)
-- [ ] **T9 — Card view adaptation.** Cards in Shortlist show OQ/RQ notes; Inbox/Archive cards do not show ranking fields. Transition buttons visible in card view too.
+- [x] **T9 — Card view adaptation (partial, Session 29).** Transition buttons (★ Shortlist / ✕ Archive / ↩ Inbox) and seen-eye toggle now visible in card view for all tabs. Remaining: hide OQ/RQ rank inputs and note textareas in Inbox/Archive card view (currently shown in all tabs).
 - [ ] **T10 — Chips (Shortlist only).** Multi-select chip selector in expanded row for shortlisted items. Fixed vocabulary. Fires immediately on change. (Carried from old F4, scoped to Shortlist.)
 
 ### Deployment & Ops
@@ -129,6 +129,16 @@ Replaces old F2 (status pill cycling) and F3 (watch toggle). Existing work retai
 - [x] **D7 — `API_BASE` wired into `index.html`.** ✅ Already done (Session 18). `const API_BASE = "https://api.streethard.omarqari.com"`.
 - [x] **D8 — Mobile device key paste.** ✅ Obsolete — auth removed in Session 26. All endpoints are public (CORS-restricted).
 - [ ] **D9 — Deploy verification.** Push a deploy. Shortlist a listing on iPhone. Hard-refresh laptop. Confirm the change persists.
+
+### Mobile (Session 29 — COMPLETE)
+
+- [x] Remove `min-width: 1100px` body blocker; use `100dvh` for iOS Safari
+- [x] `@media (max-width: 768px)` responsive block: single-col cards, wrapped filter/summary/mortgage bars, tighter header/tabs, bigger touch targets
+- [x] Only `#main-header` sticky on mobile; rest scrolls with content
+- [x] `touch-action: manipulation` on all buttons (removes 300ms iOS tap delay)
+- [x] Auto-switch to card view on mobile at init
+- [x] Card action buttons + seen toggle added to `renderCards()` (was functional gap — cards were read-only)
+- [x] Swipe-to-triage: right → Shortlist/Inbox, left → Archive; rubber-band on blocked directions; green/red tint + tilted label feedback
 
 ### v1 Acceptance Criteria
 
