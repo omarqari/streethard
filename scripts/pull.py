@@ -571,20 +571,30 @@ def normalize(raw):
 # Actual namespace: "combineData_rental_*" — completely different from the
 # sale namespace and from what was originally guessed.
 #
+# 2026-05-10: memo23 shipped a rental bypass fix ("same approach as /sale/").
+# The sale bypass uses "saleCombineResponse_sale_*" (_SC). By analogy, the
+# rental bypass may use "rentalCombineResponse_rental_*" (_RCnew) or bare
+# "rental_*" (_RCP). All three namespaces are checked below so normalize_rental
+# works regardless of which one memo23's new build emits.
+#
 # Key gaps vs. sale Pass 2:
 #   - No direct price field — extract from price_histories_json[0].price
 #   - No beds/baths/sqft/unit — not in Pass 2 at all; come from Pass 1 search
 #   - run_two_pass() merges Pass 1 stub data back in after normalization
 #
 # Pass 1 rental search items use "node_*" prefix (__typename == OrganicRentalEdge).
-_RC = "combineData_rental_"   # Pass 2 rental namespace (verified)
+_RC    = "combineData_rental_"          # Pass 2 rental namespace (verified Apr 2026)
+_RCnew = "rentalCombineResponse_rental_"  # May 2026 bypass (mirrors _SC for sales)
+_RCP   = "rental_"                      # bare prefix fallback (mirrors _PP for sales)
 
 def normalize_rental(raw):
     """Normalize a rental listing. Returns None if rent price is missing.
     For rentals, price = monthly rent (not a purchase price).
 
-    Two schemas handled (in priority order):
-      Pass 2 detail  — combineData_rental_* prefix (verified)
+    Schemas handled (in priority order):
+      Pass 2 detail  — combineData_rental_* prefix (verified Apr 2026)
+      Pass 2 bypass  — rentalCombineResponse_rental_* (May 2026 fix, mirrors sale _SC)
+      Pass 2 bare    — rental_* prefix (mirrors sale _PP fallback)
       Pass 1 search  — node_* prefix (__typename == OrganicRentalEdge)
     """
     # Price is not a top-level field in rental Pass 2 — extract from price history.
@@ -597,7 +607,9 @@ def normalize_rental(raw):
     )
     if price is None:
         # Pass 2: extract from most recent price history entry
-        ph_raw = raw.get(f"{_RC}price_histories_json")
+        ph_raw = (raw.get(f"{_RC}price_histories_json")
+                  or raw.get(f"{_RCnew}price_histories_json")
+                  or raw.get(f"{_RCP}price_histories_json"))
         if ph_raw:
             try:
                 ph = json.loads(ph_raw) if isinstance(ph_raw, str) else ph_raw
@@ -610,6 +622,8 @@ def normalize_rental(raw):
 
     listing_id = str(_get(
         raw.get(f"{_RC}id"),
+        raw.get(f"{_RCnew}id"),
+        raw.get(f"{_RCP}id"),
         raw.get("basicInfo_id"),
         raw.get("node_id"),           # Pass 1 rental search
         raw.get("listingId"),
@@ -645,6 +659,8 @@ def normalize_rental(raw):
 
     btype = (_get(
         raw.get(f"{_RC}building_building_type"),
+        raw.get(f"{_RCnew}building_building_type"),
+        raw.get(f"{_RCP}building_building_type"),
         raw.get("node_buildingType"),    # Pass 1 rental search
         raw.get("building_building_type"),
         raw.get("propertyType"), raw.get("buildingType"),
@@ -654,6 +670,8 @@ def normalize_rental(raw):
     # For Pass 2, building_title is the street address ("549 East 86th Street")
     building = _get(
         raw.get(f"{_RC}building_title"),
+        raw.get(f"{_RCnew}building_title"),
+        raw.get(f"{_RCP}building_title"),
         raw.get("building_title"), raw.get("buildingTitle"), raw.get("buildingName"),
         raw.get("node_street"),          # Pass 1 rental search
         raw.get("street"),
@@ -662,11 +680,15 @@ def normalize_rental(raw):
     street = _get(
         raw.get("node_street"),          # Pass 1 rental search
         raw.get("address_street"), raw.get("addressStreet"), raw.get("street"),
-        raw.get(f"{_RC}building_title"), # Pass 2 fallback: building_title is the address
+        raw.get(f"{_RC}building_title"),
+        raw.get(f"{_RCnew}building_title"),
+        raw.get(f"{_RCP}building_title"),
     ) or ""
 
     neighborhood = _get(
         raw.get(f"{_RC}area_name"),
+        raw.get(f"{_RCnew}area_name"),
+        raw.get(f"{_RCP}area_name"),
         raw.get("node_areaName"),        # Pass 1 rental search
         raw.get("area_name"), raw.get("neighborhood"),
         raw.get("neighborhoodName"), raw.get("areaName"),
@@ -674,15 +696,22 @@ def normalize_rental(raw):
 
     year_built = _get(
         raw.get(f"{_RC}building_year_built"),
+        raw.get(f"{_RCnew}building_year_built"),
+        raw.get(f"{_RCP}building_year_built"),
         raw.get("building_year_built"), raw.get("yearBuilt"), raw.get("builtIn"),
     )
     days_on_market = _get(
         raw.get(f"{_RC}days_on_market"),
+        raw.get(f"{_RCnew}days_on_market"),
+        raw.get(f"{_RCP}days_on_market"),
         raw.get("days_on_market"), raw.get("daysOnMarket"),
     )
 
     agent_name = agent_phone = agent_email = agent_firm = None
-    contacts_raw = raw.get(f"{_RC}contacts_json") or raw.get("contacts_json")
+    contacts_raw = (raw.get(f"{_RC}contacts_json")
+                    or raw.get(f"{_RCnew}contacts_json")
+                    or raw.get(f"{_RCP}contacts_json")
+                    or raw.get("contacts_json"))
     if contacts_raw:
         try:
             contacts = json.loads(contacts_raw) if isinstance(contacts_raw, str) else contacts_raw
@@ -703,7 +732,9 @@ def normalize_rental(raw):
                             raw.get("sourceGroupLabel")))
 
     history = []
-    ph_raw = raw.get(f"{_RC}price_histories_json")
+    ph_raw = (raw.get(f"{_RC}price_histories_json")
+              or raw.get(f"{_RCnew}price_histories_json")
+              or raw.get(f"{_RCP}price_histories_json"))
     if ph_raw:
         try:
             ph_list = json.loads(ph_raw) if isinstance(ph_raw, str) else ph_raw
@@ -731,7 +762,9 @@ def normalize_rental(raw):
     # to most recent LISTED event in price history. Stored so JS can compute
     # days-on-market at render time rather than relying on a stale snapshot.
     listed_date = None
-    listed_at_raw = raw.get(f"{_RC}listed_at")
+    listed_at_raw = (raw.get(f"{_RC}listed_at")
+                     or raw.get(f"{_RCnew}listed_at")
+                     or raw.get(f"{_RCP}listed_at"))
     if listed_at_raw:
         listed_date = listed_at_raw[:10]   # "2026-04-16" from "2026-04-16T13:33:58-04:00"
     else:
