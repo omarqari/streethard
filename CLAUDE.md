@@ -174,23 +174,54 @@ See TASKS.md for acceptance criteria A1–A10.
 - **Pass 2 batch loop catches `requests.RequestException`** alongside `ApifyRunError`. Affected listings remain at `data_quality=pass1` and re-queue automatically on the next run.
 - **`refresh.yml` commit step uses `if: success() || failure()`** so Pass 1 progress that was already saved survives a Pass 2 crash. The existing `git diff --cached --quiet` check still no-ops on truly empty runs.
 
-## Git Operations from Cowork
+## Git Operations from Claude Code (Mobile and Web)
 
-**DO NOT use `git` CLI commands from the sandbox.** The Cowork sandbox mounts the user's folder, but git operations (commit, push, pull, stash) create `.lock` files owned by the sandbox process. When the sandbox exits or crashes, these locks persist and cannot be deleted by the next session — leading to cascading failures. This was validated across Sessions 24–25 and is a fundamental limitation of the mount model.
+**DO NOT use `git push/commit/pull/stash` from the sandbox.** Claude Code (mobile and web) routes all git write operations through a local proxy (`127.0.0.1:42269`) which returns 403 — it is not authenticated for pushes. This is a fundamental sandbox constraint, not a config issue. Additionally, git write commands create `.lock` files owned by the sandbox process; when the session exits, those locks persist and block future sessions. Validated across Sessions 24–25.
 
-**Use `scripts/git_push.py` instead.** It pushes via the GitHub REST API — no local git CLI, no lock files, no conflicts:
+### Push method priority (use in order)
 
-```bash
-python3 scripts/git_push.py "commit message" api/main.py index.html
+**1. GitHub MCP server (preferred — works in every Claude Code session, no credentials needed)**
+
+The `mcp__github__push_files` tool is pre-wired in Claude Code sessions and bypasses all local git issues. Use it for all file pushes:
+
+```
+mcp__github__push_files(
+  owner="omarqari", repo="streethard",
+  branch="<current branch>",
+  message="commit message",
+  files=[{"path": "index.html", "content": "<full file content>"}]
+)
 ```
 
-If no files are listed, it auto-detects changed files via `git status`. The script creates blobs, builds a tree, commits, and fast-forwards `main` — all via the API. It reads `GITHUB_TOKEN` from `.env`.
+Always detect the current branch first via `git rev-parse --abbrev-ref HEAD` (read-only — safe in sandbox). Push to that branch, not blindly to `main`.
 
-**For reading remote state** (e.g., checking what's deployed): use `curl` against the GitHub API or read files directly from the mount. The mount is fine for reads — it's only git's lock-file writes that break.
+**2. `scripts/git_push.py` (fallback — requires `.env` with GITHUB_TOKEN)**
 
-**For pulling remote changes:** ask the user to run `git pull` from their Terminal, or read specific files via the GitHub Contents API: `curl -s -H "Authorization: token $TOKEN" "https://api.github.com/repos/omarqari/streethard/contents/path/to/file" | python3 -c "import sys,json,base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())"`.
+When `.env` is present (typically desktop sessions), this script pushes via the GitHub REST API:
 
-**Rules:**
+```bash
+python3 scripts/git_push.py "commit message" [file1] [file2] ...
+# Omit files to auto-detect changed files via git status
+# Uses current branch automatically (no --branch flag needed for most cases)
+# Override: python3 scripts/git_push.py "msg" --branch main file1
+```
+
+The script auto-detects the current branch from `git rev-parse --abbrev-ref HEAD`. It reads `GITHUB_TOKEN` from `.env`.
+
+### Reading remote state
+
+Use `curl` against the GitHub API or read files directly from the mount. Reads are safe — only write operations break.
+
+```bash
+# Read a remote file without git pull:
+curl -s -H "Authorization: token $TOKEN" \
+  "https://api.github.com/repos/omarqari/streethard/contents/path/to/file" \
+  | python3 -c "import sys,json,base64; print(base64.b64decode(json.load(sys.stdin)['content']).decode())"
+```
+
+For pulling remote changes: ask the user to run `git pull` from their Terminal (not from the sandbox).
+
+### Token rules
 - Never print, log, or echo the token value
 - Never write the token to any file other than `.env`
 - Never store the token in memory files, CLAUDE.md, or chat

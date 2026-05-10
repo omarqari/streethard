@@ -25,7 +25,6 @@ import urllib.error
 
 REPO = "omarqari/streethard"
 API = f"https://api.github.com/repos/{REPO}"
-BRANCH = "main"
 
 
 def load_token():
@@ -74,18 +73,35 @@ def get_changed_files(repo_root):
     return files
 
 
-def main():
-    if len(sys.argv) < 2:
-        print("Usage: git_push.py \"commit message\" [file1] [file2] ...")
-        sys.exit(1)
+def current_branch(repo_root):
+    """Detect the current git branch (read-only — safe in sandbox)."""
+    result = subprocess.run(
+        ["git", "rev-parse", "--abbrev-ref", "HEAD"],
+        cwd=repo_root, capture_output=True, text=True
+    )
+    branch = result.stdout.strip()
+    if result.returncode != 0 or not branch or branch == "HEAD":
+        return "main"
+    return branch
 
-    message = sys.argv[1]
+
+def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Push files to GitHub via REST API")
+    parser.add_argument("message", help="Commit message")
+    parser.add_argument("files", nargs="*", help="Files to push (default: all changed)")
+    parser.add_argument("--branch", help="Target branch (default: current branch)")
+    args = parser.parse_args()
+
+    message = args.message
     repo_root = os.path.normpath(os.path.join(os.path.dirname(__file__), ".."))
     token = load_token()
+    branch = args.branch or current_branch(repo_root)
+    print(f"Target branch: {branch}")
 
     # Determine files to push
-    if len(sys.argv) > 2:
-        files = sys.argv[2:]
+    if args.files:
+        files = args.files
     else:
         files = get_changed_files(repo_root)
         if not files:
@@ -94,8 +110,8 @@ def main():
 
     print(f"Pushing {len(files)} file(s): {', '.join(files)}")
 
-    # 1. Get current main SHA and tree
-    ref = api("GET", f"git/ref/heads/{BRANCH}", token=token)
+    # 1. Get current branch SHA and tree
+    ref = api("GET", f"git/ref/heads/{branch}", token=token)
     main_sha = ref["object"]["sha"]
     commit = api("GET", f"git/commits/{main_sha}", token=token)
     base_tree = commit["tree"]["sha"]
@@ -140,11 +156,11 @@ def main():
     }, token=token)
     print(f"  commit: {new_commit['sha'][:10]}")
 
-    # 5. Fast-forward main
-    api("PATCH", f"git/refs/heads/{BRANCH}", {
+    # 5. Fast-forward branch
+    api("PATCH", f"git/refs/heads/{branch}", {
         "sha": new_commit["sha"]
     }, token=token)
-    print(f"✓ Pushed to {BRANCH}: {new_commit['sha'][:10]}")
+    print(f"✓ Pushed to {branch}: {new_commit['sha'][:10]}")
 
 
 if __name__ == "__main__":
