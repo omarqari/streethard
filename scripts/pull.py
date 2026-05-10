@@ -50,16 +50,23 @@ PASS1_TIMEOUT_SEC    = 600    # 10 min — search pages are fast
 PASS2_TIMEOUT_SEC    = 600    # 10 min per batch — abort and salvage if stuck
 PASS2_BATCH_SIZE     = 50     # max URLs per Pass 2 Apify run (tested up to 100 in Session 9; 50 balances speed vs. blast radius)
 PASS2_PER_RUN_CAP   = 100    # max listings to send through Pass 2 per run; rest queue for next run
-DELIST_DAYS          = 14    # listings not seen in Pass 1 for this many days are marked delisted
+DELIST_DAYS          = 14    # DEPRECATED — see PIPELINE-RESILIENCE-PLAN.md (W2). detect_delistings() is no longer called from the pipeline. Staleness is now expressed via last_pass1 (W3 stale pill) and confirmed off-market via Pass 2 sniffing (W7), never by absence-timer alone.
+W7_STALE_DAYS        = 7     # W7: shortlisted listings unseen in Pass 1 this many days are run through Pass 2 to definitively check for off-market state
+W7_PER_RUN_CAP       = 20    # W7: max stale shortlists to verify per cron run; caps actor cost
 PARTIAL_RETRY_DAYS   = 7     # if a listing came back partial (PX_api_v6 block), wait this many days before retrying — avoids hammering the actor while memo23 is fixing the block. See SQFT-METHODOLOGY.md / CHANGELOG Session 12.
 
+# Bedrooms (universally published) instead of sqft (null for co-ops).
+# This URL filter is robust against the kind of behavior change StreetEasy
+# made around 2026-04-22 — when they started excluding null-sqft listings
+# from sqft-filtered searches, dropping ~240 co-ops from Pass 1 results.
+# See PIPELINE-RESILIENCE-PLAN.md (W1) for full rationale.
 SALE_URL = (
     "https://streeteasy.com/for-sale/upper-east-side"
-    "/price:2000000-5000000%7Csqft:1500-"
+    "/price:2000000-5000000%7Cbeds:3-"
 )
 RENTAL_URL = (
     "https://streeteasy.com/for-rent/upper-east-side"
-    "/price:10000-20000%7Csqft:1500-"
+    "/price:10000-20000%7Cbeds:3-"
 )
 DEFAULT_MAX_ITEMS = 500
 
@@ -79,6 +86,11 @@ def parse_args():
     p.add_argument("--force-pass2", action="store_true",
                    help="Queue all listings for Pass 2 (not just pass1-quality ones). "
                         "Still capped at PASS2_PER_RUN_CAP. Use to refresh stale pass2 data.")
+    p.add_argument("--force-merge", action="store_true",
+                   help="W5: bypass the Pass 1 coverage cliff guard. Use only after "
+                        "investigating a legitimate <50% drop (StreetEasy down, real "
+                        "market shift, etc.). Without this flag, runs that look like "
+                        "the 2026-04-22 cliff incident abort before merging.")
     return p.parse_args()
 
 # ─── Apify Client ──────────────────────────────────────────────────
@@ -821,11 +833,11 @@ def generate_latest(db, mode, total_events, sale_url=None, rental_url=None):
             continue
         if mode == "rent" and l.get("listing_type") != "rent":
             continue
-        # Strip internal pipeline fields, but KEEP `status` so the app
-        # can render a "delisted" badge and filter Inbox accordingly.
+        # Strip internal pipeline fields. Keep `status`, `last_pass1`,
+        # `last_pass2`, `pass2_confirmed_off_market` so the app can render
+        # the W3 stale pill and the W7 verified-off-market badge.
         out = {k: v for k, v in l.items()
-               if k not in ("data_quality", "last_pass1", "last_pass2",
-                            "needs_refresh")}
+               if k not in ("data_quality", "needs_refresh")}
         keep.append(out)
 
     # Sort: sales by price desc, then rentals by price desc
@@ -1103,6 +1115,204 @@ def merge_pass2_into_db(db, detail_items, listing_type, normalize_fn, pass1_stub
     print(f"  Pass 2 merge: {upgraded} upgraded to pass2, "
           f"{partial_count} partial (PX-blocked), {skipped} skipped")
     return upgraded + partial_count
+
+# ─── W4: Pipeline health observability ──────────────────────────────
+HEALTH_HISTORY_DAYS = 60   # how many days of records to keep in pipeline_health.json
+COVERAGE_WINDOW     = 7    # rolling-median window for cliff guard
+COVERAGE_WARN_PCT   = 0.75
+COVERAGE_ABORT_PCT  = 0.50
+
+def health_path():
+    return DB_PATH.parent / "pipeline_health.json"
+
+def load_health():
+    p = health_path()
+    if not p.exists():
+        return []
+    try:
+        return json.load(p.open())
+    except (json.JSONDecodeError, ValueError):
+        # Fail-open: if the file is corrupt, treat as no history
+        print(f"  WARNING: {p} is corrupt; treating as no history", file=sys.stderr)
+        return []
+
+def save_health(records):
+    """Sort newest-first, cap at HEALTH_HISTORY_DAYS, write."""
+    records = sorted(records, key=lambda r: r.get('date',''), reverse=True)[:HEALTH_HISTORY_DAYS]
+    with health_path().open('w') as f:
+        json.dump(records, f, indent=2)
+
+def update_pipeline_health(today, pass1_counts_by_type, db, guard_status='ok'):
+    """Append/replace today's record in pipeline_health.json.
+
+    pass1_counts_by_type: {'sale': int, 'rent': int} — counts of unique
+        listing IDs returned by Pass 1 for each listing type this run.
+        A type missing from the dict means we didn't pull that type today.
+    db: the listing dict for active/delisted snapshot.
+    guard_status: 'ok' | 'warn' | 'abort' from W5 cliff guard.
+    """
+    active = sum(1 for l in db.values() if l.get('status') != 'delisted')
+    delisted = sum(1 for l in db.values() if l.get('status') == 'delisted')
+    record = {
+        'date':     today,
+        'pass1_sale': pass1_counts_by_type.get('sale'),
+        'pass1_rent': pass1_counts_by_type.get('rent'),
+        'active':   active,
+        'delisted': delisted,
+        'status':   guard_status,
+    }
+    history = load_health()
+    history = [r for r in history if r.get('date') != today]  # replace today
+    history.append(record)
+    save_health(history)
+    return record
+
+# ─── W5: Pass 1 coverage cliff guard ─────────────────────────────────
+def check_pass1_coverage(listing_type, today_count, force_merge=False):
+    """W5 cliff guard. Compares today's Pass 1 count for this listing type
+    to the rolling-7-day median of historical pass1_<type> counts.
+
+    Returns (status, message):
+      ('ok',    msg) — proceed normally
+      ('warn',  msg) — proceed but log warning (50–75% of median)
+      ('abort', msg) — abort the run; this looks like a coverage cliff
+
+    --force-merge bypasses 'abort' (downgrades to 'warn') for cases where
+    the user has investigated and confirmed the drop is legitimate (e.g.,
+    StreetEasy temporarily down, real market shift).
+    """
+    history = load_health()
+    key = f'pass1_{listing_type}'
+    counts = sorted([r[key] for r in history[:COVERAGE_WINDOW]
+                     if r.get(key) is not None and r.get(key, 0) > 0])
+    if len(counts) < 3:
+        return ('ok', f'no baseline yet for {listing_type} (have {len(counts)} days)')
+    median = counts[len(counts)//2]
+    if median == 0:
+        return ('ok', f'baseline median is 0 for {listing_type}')
+    pct = today_count / median
+    base_msg = f'{listing_type}: today={today_count}, 7d median={median} ({pct*100:.0f}%)'
+    if pct >= COVERAGE_WARN_PCT:
+        return ('ok', base_msg)
+    if pct >= COVERAGE_ABORT_PCT:
+        return ('warn', f'⚠️  {base_msg} — below {int(COVERAGE_WARN_PCT*100)}% threshold')
+    full = f'{base_msg} — below {int(COVERAGE_ABORT_PCT*100)}% threshold'
+    if force_merge:
+        return ('warn', f'⚠️  {full} — overridden by --force-merge')
+    return ('abort', full)
+
+
+# ─── W7: Per-Shortlist Pass 2 verification ──────────────────────────
+# For shortlisted listings unseen in Pass 1 for ≥W7_STALE_DAYS, run the
+# actor's single-listing detail endpoint to definitively check whether
+# they're still on StreetEasy. Sets `pass2_confirmed_off_market: true` when
+# the actor returns no data; clears the flag when it returns a real
+# listing (so a re-listed apartment auto-recovers).
+#
+# READ-only access to Postgres status: this function calls /status to
+# learn what's in the user's Shortlist bucket, but never writes there.
+# Sticky-shortlist contract (see STATUS-FEATURE.md) preserved.
+def verify_stale_shortlists(client, db):
+    status_url = os.environ.get('STATUS_API_URL', '').rstrip('/')
+    if not status_url:
+        # Try .env fallback
+        env_path = Path(__file__).parent.parent / '.env'
+        if env_path.exists():
+            for line in env_path.read_text().splitlines():
+                if line.startswith('STATUS_API_URL='):
+                    status_url = line.split('=', 1)[1].strip().rstrip('/')
+                    break
+    if not status_url:
+        print("  W7: skipped — STATUS_API_URL not configured")
+        return
+
+    try:
+        resp = requests.get(status_url + '/status', timeout=15)
+        resp.raise_for_status()
+        items = resp.json().get('items', [])
+    except Exception as e:
+        print(f"  W7: skipped — Status API read failed ({e})")
+        return
+
+    today = datetime.date.today()
+    candidates = []
+    for r in items:
+        if r.get('bucket') != 'shortlist':
+            continue
+        lid = r['listing_id']
+        entry = db.get(lid)
+        if not entry:
+            continue   # status row points at a listing not in db (e.g. test row)
+        last_pass1 = entry.get('last_pass1')
+        if not last_pass1:
+            candidates.append((lid, entry))
+            continue
+        try:
+            age = (today - datetime.date.fromisoformat(last_pass1)).days
+            if age >= W7_STALE_DAYS:
+                candidates.append((lid, entry))
+        except ValueError:
+            pass
+
+    if not candidates:
+        print("  W7: no stale shortlist listings to verify")
+        return
+
+    candidates = candidates[:W7_PER_RUN_CAP]
+    print(f"  W7: verifying {len(candidates)} stale shortlist listing(s) via Pass 2")
+
+    # Build URLs (sale or rental path per listing's listing_type)
+    urls = []
+    for lid, entry in candidates:
+        ltype = entry.get('listing_type', 'sale')
+        path = 'rental' if ltype == 'rent' else 'sale'
+        urls.append(f"https://streeteasy.com/{path}/{lid}")
+
+    try:
+        detail_items = client.run_and_wait(
+            start_urls=urls,
+            max_items=len(urls),
+            label=f"W7 — Verify {len(urls)} stale shortlist",
+            timeout_sec=PASS2_TIMEOUT_SEC,
+        )
+    except Exception as e:
+        print(f"  W7: Pass 2 actor run failed — {e}")
+        return
+
+    # Map returned items by listing id (handle the actor's varying field names)
+    items_by_id = {}
+    for item in detail_items:
+        iid = str(item.get('id') or item.get('listingId') or item.get('node_id') or '')
+        if iid:
+            items_by_id[iid] = item
+
+    today_str = today.isoformat()
+    confirmed_off = 0
+    confirmed_active = 0
+    for lid, entry in candidates:
+        item = items_by_id.get(str(lid))
+        # Off-market signal: no item returned for this URL, OR the actor
+        # returned only its "No results found" / sentinel placeholder
+        is_sentinel = bool(item) and (
+            item.get('message') in ('No results found',) or
+            (not item.get('price') and not item.get('pricing_price') and
+             not item.get('saleCombineResponse_sale_price'))
+        )
+        if not item or is_sentinel:
+            entry['pass2_confirmed_off_market'] = True
+            entry['pass2_confirmed_at'] = today_str
+            confirmed_off += 1
+        else:
+            # Got real data → clear any prior off-market flag (re-listed)
+            if entry.get('pass2_confirmed_off_market'):
+                entry.pop('pass2_confirmed_off_market', None)
+                entry.pop('pass2_confirmed_at', None)
+            # Also bump last_pass2 since we just confirmed presence
+            entry['last_pass2'] = today_str
+            confirmed_active += 1
+
+    print(f"  W7 results: {confirmed_active} still active, {confirmed_off} confirmed off-market")
+
 
 def detect_delistings(db, ids_seen_by_type):
     """Mark listings not seen in Pass 1 for DELIST_DAYS+ days as delisted."""
@@ -1448,7 +1658,8 @@ def main():
           f"({pass2_before} pass2 complete)")
 
     total_events    = 0
-    ids_seen_by_type = {}  # {listing_type: set(ids)} for delisting detection
+    ids_seen_by_type = {}     # {listing_type: set(ids)} for delisting detection (deprecated, kept for W7)
+    pass1_counts_by_type = {} # {listing_type: int} for W4 pipeline health
 
     # ── Process each listing type ──────────────────────────────────
     for listing_type in ["sale", "rent"]:
@@ -1508,10 +1719,32 @@ def main():
                   f"different proxy IPs typically work.", file=sys.stderr)
             sys.exit(1)
 
+        # ── W5: Pass 1 coverage cliff guard ───────────────────────
+        # Compares this Pass 1 result count to the rolling 7-day median.
+        # Aborts the run *before merging* if today's count is <50% of
+        # baseline — the failure mode that produced the 2026-04-22 cliff.
+        guard_status, guard_msg = check_pass1_coverage(
+            listing_type, len(real_items), args.force_merge)
+        print(f"  W5 coverage check — {guard_msg}")
+        if guard_status == 'abort':
+            print(f"\nERROR: Pass 1 coverage cliff detected. {guard_msg}", file=sys.stderr)
+            print(f"  This looks like the 2026-04-22 incident. Refusing to merge "
+                  f"{listing_type} results. Override with --force-merge if intentional.",
+                  file=sys.stderr)
+            # Record the cliff in pipeline_health so the in-app strip flags it
+            if not args.dry_run:
+                update_pipeline_health(
+                    datetime.date.today().isoformat(),
+                    {listing_type: len(real_items)},
+                    db, guard_status='abort')
+                save_db(db, total_events)
+            sys.exit(1)
+
         # ── Merge Pass 1 into db ──────────────────────────────────
         ids_seen, urls_by_id, pass1_stubs = merge_pass1_into_db(
             db, search_items, listing_type, normalize_fn)
         ids_seen_by_type[listing_type] = set(ids_seen)
+        pass1_counts_by_type[listing_type] = len(real_items)  # W4 health
 
         # Save db after Pass 1 merge — even if Pass 2 fails, we keep the Pass 1 data
         if not args.dry_run:
@@ -1580,7 +1813,37 @@ def main():
             save_db(db, total_events)
 
     # ── Delisting detection ────────────────────────────────────────
-    detect_delistings(db, ids_seen_by_type)
+    # DISABLED — see PIPELINE-RESILIENCE-PLAN.md (W2). The previous absence-
+    # timer logic produced a 246-listing false-flag incident on 2026-05-05
+    # when StreetEasy changed null-sqft handling. Pure absence-from-Pass-1
+    # is too noisy a signal to trip a status flag from. Staleness is now
+    # surfaced per-listing via the W3 stale pill (last_pass1 in latest.json),
+    # and shortlisted listings get definitive confirmation via Pass 2
+    # sniffing (W7).
+    # detect_delistings(db, ids_seen_by_type)
+
+    # ── W7: Per-Shortlist Pass 2 verification ──────────────────────
+    # For shortlisted listings unseen in Pass 1 for ≥7 days, definitively
+    # check via Pass 2 detail. Replaces the absence-timer auto-delisting
+    # (W2) for the listings that actually matter to the user (the ones
+    # they've shortlisted).
+    if not args.dry_run:
+        try:
+            verify_stale_shortlists(client, db)
+            save_db(db, total_events)  # persist any pass2_confirmed_off_market changes
+        except Exception as e:
+            # W7 failure is non-fatal — pipeline continues
+            print(f"  W7: verification step failed ({e}); continuing", file=sys.stderr)
+
+    # ── W4: Update pipeline_health.json ────────────────────────────
+    # Today's record: pass1 counts per type, active count, status. Drives
+    # the in-app coverage strip and the W5 cliff guard's median baseline.
+    if not args.dry_run:
+        update_pipeline_health(
+            datetime.date.today().isoformat(),
+            pass1_counts_by_type,
+            db,
+            guard_status='ok')
 
     # ── Final save + generate latest.json ──────────────────────────
     if args.dry_run:

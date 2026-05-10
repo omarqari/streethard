@@ -202,6 +202,32 @@ a:hover { text-decoration: underline; }
 #health-strip.stale-warn .health-dot { background: #f9a825; }
 #health-strip.stale-error .health-dot { background: #c62828; }
 
+/* W4: Pass 1 coverage sparkline — 14-day mini bar chart inside the
+   health strip. Bars sized proportional to total Pass 1 count; bars below
+   75% of 7-day median highlighted amber, below 50% highlighted red. */
+#coverage-strip {
+  padding: 6px 28px 8px 28px;
+  background: #f8faf8;
+  border-bottom: 1px solid #e4e7ed;
+  display: none;
+  font-size: 11px;
+  color: #666;
+}
+#coverage-strip .cov-label {
+  margin-right: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 10px;
+  color: #888;
+}
+#coverage-strip svg { vertical-align: middle; margin-right: 6px; }
+#coverage-strip .cov-bar       { fill: #4caf50; cursor: help; }
+#coverage-strip .cov-bar.warn  { fill: #f9a825; }
+#coverage-strip .cov-bar.abort { fill: #c62828; }
+#coverage-strip .cov-summary { font-size: 11px; color: #888; }
+#coverage-strip.has-warn  { background: #fff8e1; color: #7a5c00; }
+#coverage-strip.has-abort { background: #fde8e8; color: #9a2020; }
+
 /* ─── Price-History Signal Icons ──────────────────────────────── */
 .ph-signals { display: inline-flex; gap: 3px; margin-left: 6px; vertical-align: middle; }
 .ph-sig {
@@ -412,8 +438,11 @@ td {
 .days-yellow { background: #fff8e0; color: #7a5c00; }
 .days-red    { background: #fde8e8; color: #9a2020; }
 
-/* Delisted badge — listing is gone from StreetEasy; rendered next to days-listed */
-.delisted-badge {
+/* W3 stale pill — soft signal that Pass 1 hasn't confirmed this listing
+   in N days. Gray for >7d, amber for >21d. Communicates data freshness,
+   not market state — we don't claim the listing is gone, just that we
+   haven't seen it in our search results recently. */
+.stale-pill {
   display: inline-block;
   margin-left: 6px;
   padding: 2px 7px;
@@ -421,15 +450,32 @@ td {
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.04em;
-  background: #e9ecef;
-  color: #6b7280;
   text-transform: uppercase;
   cursor: help;
 }
-.row-delisted { background: #fafbfc; }
-.row-delisted .td-building,
-.row-delisted .td-price,
-.row-delisted .td-monthly { color: #6b7280; }
+.stale-pill.stale-soft  { background: #e9ecef; color: #6b7280; }
+.stale-pill.stale-amber { background: #fff3d4; color: #8a5b00; }
+
+/* W7 verified-off-market badge — distinct visual weight from the soft
+   stale pill because this is a *confirmed* observation from Pass 2,
+   not an inference from Pass 1 absence. */
+.off-market-badge {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 7px;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #fde8e8;
+  color: #9a2020;
+  cursor: help;
+}
+.row-stale { background: #fafbfc; }
+.row-stale .td-building,
+.row-stale .td-price,
+.row-stale .td-monthly { color: #6b7280; }
 
 /* Recently-delisted alert strip on Shortlist tab */
 #shortlist-alert {
@@ -888,6 +934,11 @@ td {
 
 <!-- ─── Pipeline Health Strip ───────────────────────────────────── -->
 <div id="health-strip"><span class="health-dot"></span><span id="health-text"></span></div>
+<div id="coverage-strip">
+  <span class="cov-label">Pass 1 coverage (14d)</span>
+  <span id="cov-spark"></span>
+  <span class="cov-summary" id="cov-summary"></span>
+</div>
 
 <!-- ─── Bucket Tabs ─────────────────────────────────────────────── -->
 <div id="bucket-tabs">
@@ -1198,6 +1249,76 @@ async function loadStatus() {
   }
 }
 
+// W4: Pass 1 coverage strip. Fetches data/pipeline_health.json and renders
+// a 14-day SVG bar chart of total Pass 1 counts. Bars below 75%/50% of the
+// 14-day median get amber/red highlighting. Strip is fail-open: if the
+// file is missing or malformed, the strip is hidden (not an error).
+async function loadCoverageStrip() {
+  try {
+    const r = await fetch('data/pipeline_health.json?t=' + Date.now());
+    if (!r.ok) return;  // fail-open
+    const records = await r.json();
+    if (!Array.isArray(records) || records.length === 0) return;
+
+    // Sort newest-first, take last 14
+    const sorted = records.slice().sort((a,b) => (b.date||'').localeCompare(a.date||''));
+    const days = sorted.slice(0, 14);
+    const totals = days.map(r => (r.pass1_sale || 0) + (r.pass1_rent || 0));
+    const maxT = Math.max(1, ...totals);
+
+    // Median over the visible window for warn/abort thresholds
+    const sortedTotals = totals.slice().sort((a,b) => a-b).filter(v => v > 0);
+    const median = sortedTotals.length
+      ? sortedTotals[Math.floor(sortedTotals.length / 2)]
+      : 0;
+
+    // Render: 14 bars, oldest on left (so reverse the array)
+    const ordered = days.slice().reverse();
+    const W = 4, GAP = 2, H = 22;
+    const totalW = ordered.length * (W + GAP);
+    let bars = '';
+    let warnDays = 0, abortDays = 0;
+    ordered.forEach((rec, i) => {
+      const total = (rec.pass1_sale || 0) + (rec.pass1_rent || 0);
+      const h = Math.max(2, Math.round((total / maxT) * H));
+      const y = H - h;
+      let cls = 'cov-bar';
+      if (median > 0) {
+        const pct = total / median;
+        if (pct < 0.5) { cls += ' abort'; abortDays++; }
+        else if (pct < 0.75) { cls += ' warn'; warnDays++; }
+      }
+      // Also honor explicit guard_status if recorded
+      if (rec.status === 'abort') { cls = 'cov-bar abort'; abortDays++; }
+      else if (rec.status === 'warn' && !cls.includes('abort') && !cls.includes('warn')) {
+        cls += ' warn'; warnDays++;
+      }
+      const tooltip = `${rec.date} — Pass 1: ${rec.pass1_sale||0} sale + ${rec.pass1_rent||0} rent = ${total}` +
+                      `\nActive: ${rec.active||0}, status: ${rec.status||'ok'}` +
+                      (rec.backfilled ? '\n(backfilled — pre-W4 archive)' : '');
+      bars += `<rect class="${cls}" x="${i*(W+GAP)}" y="${y}" width="${W}" height="${h}"><title>${tooltip}</title></rect>`;
+    });
+
+    document.getElementById('cov-spark').innerHTML =
+      `<svg width="${totalW}" height="${H}" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;">${bars}</svg>`;
+
+    const today = ordered[ordered.length - 1] || {};
+    const todayTotal = (today.pass1_sale || 0) + (today.pass1_rent || 0);
+    let summary = `today ${todayTotal}, 14d median ${median}`;
+    if (abortDays > 0) summary += ` · ${abortDays} day${abortDays===1?'':'s'} below 50% threshold`;
+    else if (warnDays > 0) summary += ` · ${warnDays} day${warnDays===1?'':'s'} below 75%`;
+    document.getElementById('cov-summary').textContent = summary;
+
+    const strip = document.getElementById('coverage-strip');
+    strip.classList.remove('has-warn', 'has-abort');
+    if (abortDays > 0) strip.classList.add('has-abort');
+    else if (warnDays > 0) strip.classList.add('has-warn');
+    strip.style.display = 'block';
+  } catch (e) {
+    console.warn('Coverage strip unavailable:', e.message);
+  }
+}
+
 function getStatus(listingId) {
   return statusMap[listingId] || {};
 }
@@ -1235,7 +1356,8 @@ async function loadData() {
   try {
     const [resp] = await Promise.all([
       fetch('data/latest.json?t=' + Date.now()),
-      loadStatus(),  // populates statusMap; tolerates failure
+      loadStatus(),         // populates statusMap; tolerates failure
+      loadCoverageStrip(),  // W4 pipeline health sparkline; fail-open
     ]);
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const data = await resp.json();
@@ -1369,24 +1491,43 @@ function updateBucketCounts() {
   updateShortlistAlert();
 }
 
-// Returns a Date for when a delisted listing came off the market, derived
-// from the latest DELIST/NO_LONGER_AVAILABLE event in price_history. Falls
-// back to null if we can't determine.
-function delistedAt(listing) {
-  if (listing.status !== 'delisted' || !listing.price_history) return null;
-  const events = listing.price_history.filter(h => {
-    const e = (h.event || '').toUpperCase();
-    return e.includes('DELIST') || e.includes('NO_LONGER');
-  });
-  if (events.length === 0) return null;
-  // price_history is reverse-chronological in the actor's payload
-  const d = events[0].date;
-  return d ? new Date(d + 'T00:00:00') : null;
+// W3 stale pill — returns days since last_pass1 as a small int, or null.
+// Communicates data freshness only ("we haven't seen this in Pass 1 in N
+// days"), not market state.
+function daysSinceLastPass1(listing) {
+  if (!listing.last_pass1) return null;
+  try {
+    const d = new Date(listing.last_pass1 + 'T00:00:00');
+    return Math.floor((Date.now() - d.getTime()) / 86400000);
+  } catch (e) {
+    return null;
+  }
 }
 
-// Recently-delisted shortlist alert. Surface when listings the user
-// shortlisted have come off StreetEasy in the last 14 days — that's
+function stalePillHtml(listing) {
+  const n = daysSinceLastPass1(listing);
+  if (n === null || n <= 7) return '';
+  const cls = n > 21 ? 'stale-amber' : 'stale-soft';
+  const title = `Last seen in Pass 1 search results ${n} days ago. Doesn't mean delisted — could be a search-filter blind spot.`;
+  return `<span class="stale-pill ${cls}" title="${title}">not seen ${n}d</span>`;
+}
+
+// W7 verified-off-market badge — set by Pass 2 sniffing (in pull.py).
+// Different visual weight from stale pill: this is confirmed, not inferred.
+function offMarketBadgeHtml(listing) {
+  if (!listing.pass2_confirmed_off_market) return '';
+  const date = listing.pass2_confirmed_at || listing.last_pass2 || '';
+  const title = date
+    ? `Verified off-market via StreetEasy detail page on ${date}`
+    : 'Verified off-market via StreetEasy detail page';
+  return `<span class="off-market-badge" title="${title}">off-market</span>`;
+}
+
+// Recently-confirmed off-market shortlist alert. Surface when shortlisted
+// listings have been *verified* off-market by Pass 2 in the last 14 days —
 // strong signal (contract signed, withdrawn) and easy to miss otherwise.
+// Replaces the old delisted-flag-based version (which produced false alerts
+// during the 2026-05-05 incident).
 function updateShortlistAlert() {
   const alert = document.getElementById('shortlist-alert');
   if (!alert) return;
@@ -1396,12 +1537,15 @@ function updateShortlistAlert() {
   }
   const cutoff = Date.now() - 14 * 86400000;
   const recent = allListings.filter(l => {
-    if (l.status !== 'delisted') return false;
+    if (!l.pass2_confirmed_off_market) return false;
     if (getBucket(l.id) !== 'shortlist') return false;
-    const d = delistedAt(l);
-    // If we can't pin a date, still surface — better to over-notify here.
-    if (!d) return true;
-    return d.getTime() >= cutoff;
+    const dateStr = l.pass2_confirmed_at || l.last_pass2;
+    if (!dateStr) return true;
+    try {
+      return new Date(dateStr + 'T00:00:00').getTime() >= cutoff;
+    } catch (e) {
+      return true;
+    }
   });
   if (recent.length === 0) {
     alert.style.display = 'none';
@@ -1412,7 +1556,7 @@ function updateShortlistAlert() {
     return `<a href="${l.url || '#'}" target="_blank" rel="noopener" style="color:inherit;">${label}</a>`;
   }).join(', ');
   const more = recent.length > 3 ? ` and ${recent.length - 3} more` : '';
-  alert.innerHTML = `<b>${recent.length} shortlisted listing${recent.length === 1 ? ' has' : 's have'} been delisted</b> from StreetEasy in the last 14 days — possibly contract-signed or withdrawn. (${names}${more})`;
+  alert.innerHTML = `<b>${recent.length} shortlisted listing${recent.length === 1 ? ' has' : 's have'} been verified off-market</b> in the last 14 days — possibly contract-signed or withdrawn. (${names}${more})`;
   alert.style.display = 'block';
 }
 
@@ -1661,21 +1805,16 @@ function renderTable() {
   let html = '';
   filteredListings.forEach(listing => {
     const isRent  = listing.listing_type === 'rent';
-    const isDelisted = listing.status === 'delisted';
+    const isOffMarket = !!listing.pass2_confirmed_off_market;
+    const stalePill = stalePillHtml(listing);
+    const offMarket = offMarketBadgeHtml(listing);
+    const isStale = stalePill !== '' || isOffMarket;
     const monthly = calcMonthlyTotal(listing);
     const pmtSqft = calcPmtPerSqft(listing);
     const days    = fmtDays(daysListed(listing), listing.listing_type);
     const phSig   = priceSignals(listing);
     const isExp   = expandedId === listing.id;
     const baths   = listing.baths ?? '—';
-    // DELISTED badge — listing is gone from StreetEasy. Tooltip shows when.
-    const delDate = isDelisted ? delistedAt(listing) : null;
-    const delTitle = delDate
-      ? `Delisted from StreetEasy on ${delDate.toISOString().slice(0,10)}`
-      : 'Delisted from StreetEasy';
-    const delistedBadgeHtml = isDelisted
-      ? `<span class="delisted-badge" title="${delTitle}">delisted</span>`
-      : '';
     // Estimated sqft (typical for co-ops where official sqft isn't published).
     // When true, render sqft + any sqft-derived figures in gray with a tooltip.
     const sqEst   = !!listing.sqft_estimated;
@@ -1717,7 +1856,7 @@ function renderTable() {
     }
 
     html += `
-      <tr class="${isExp ? 'row-expanded' : ''}${isDelisted ? ' row-delisted' : ''}" onclick="toggleExpand('${listing.id}')">
+      <tr class="${isExp ? 'row-expanded' : ''}${isStale ? ' row-stale' : ''}" onclick="toggleExpand('${listing.id}')">
         <td class="td-expand">${isExp ? '▾' : '▸'}</td>
         <td class="rank-cell rank-col" onclick="event.stopPropagation()">
           <span class="rank-val${oqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','oq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${oqR || '—'}</span>
@@ -1737,7 +1876,7 @@ function renderTable() {
         <td>${pmtSq === '—' ? '—' : wrapEst(pmtSq)}</td>
         <td>${typeCell}</td>
         <td>${listing.year_built || '—'}</td>
-        <td><span class="days-badge ${days.cls}">${days.text}</span>${phSig.icons}${delistedBadgeHtml}</td>
+        <td><span class="days-badge ${days.cls}">${days.text}</span>${phSig.icons}${stalePill}${offMarket}</td>
         <td class="transition-cell" onclick="event.stopPropagation()">${seenHtml}${actionsHtml}</td>
       </tr>`;
 
@@ -1758,7 +1897,9 @@ function renderCards() {
   let html = '';
   filteredListings.forEach(listing => {
     const isRent  = listing.listing_type === 'rent';
-    const isDelisted = listing.status === 'delisted';
+    const stalePill = stalePillHtml(listing);
+    const offMarket = offMarketBadgeHtml(listing);
+    const isStale = stalePill !== '' || !!listing.pass2_confirmed_off_market;
     const monthly = calcMonthlyTotal(listing);
     const days    = fmtDays(daysListed(listing), listing.listing_type);
     const sqEst   = !!listing.sqft_estimated;
@@ -1767,23 +1908,16 @@ function renderCards() {
     const wrapEst = (txt) => sqEst
       ? `<span class="estimated" title="${sqTitle}">${txt}</span>`
       : txt;
-    const delDate = isDelisted ? delistedAt(listing) : null;
-    const delTitle = delDate
-      ? `Delisted from StreetEasy on ${delDate.toISOString().slice(0,10)}`
-      : 'Delisted from StreetEasy';
-    const delistedBadgeHtml = isDelisted
-      ? `<span class="delisted-badge" title="${delTitle}">delisted</span>`
-      : '';
     // For rentals, the monthly rent IS the headline price
     const priceRow = isRent
       ? `<span class="card-ask">${fmtMoney(monthly)}<span style="font-size:13px;font-weight:500;">/mo</span></span>`
       : `<span class="card-ask">${fmtPrice(listing.price)}</span><span class="card-monthly">${fmtMoney(monthly)}/mo</span>`;
 
     html += `
-      <div class="listing-card${isDelisted ? ' row-delisted' : ''}">
+      <div class="listing-card${isStale ? ' row-stale' : ''}">
         <div class="card-type-row">
           <div>${showBoth ? listingTypeBadge(listing) + ' ' : ''}${typePill(listing.type)}</div>
-          <span class="days-badge ${days.cls}">${days.text}</span>${delistedBadgeHtml}
+          <span class="days-badge ${days.cls}">${days.text}</span>${stalePill}${offMarket}
         </div>
         <div class="card-building">${listing.building || '—'}</div>
         <div class="card-address">${listing.address}${listing.unit ? ' #' + listing.unit : ''} · ${listing.neighborhood || ''}</div>

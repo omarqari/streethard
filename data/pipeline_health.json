@@ -1,0 +1,128 @@
+[
+  {
+    "date": "2026-05-09",
+    "pass1_sale": 168,
+    "pass1_rent": 22,
+    "active": 190,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-05-08",
+    "pass1_sale": 166,
+    "pass1_rent": 21,
+    "active": 187,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-05-07",
+    "pass1_sale": 165,
+    "pass1_rent": 21,
+    "active": 186,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-05-06",
+    "pass1_sale": 164,
+    "pass1_rent": 20,
+    "active": 184,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-05-05",
+    "pass1_sale": 163,
+    "pass1_rent": 18,
+    "active": 181,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-05-04",
+    "pass1_sale": 368,
+    "pass1_rent": 53,
+    "active": 421,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-05-03",
+    "pass1_sale": 368,
+    "pass1_rent": 53,
+    "active": 421,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-05-02",
+    "pass1_sale": 368,
+    "pass1_rent": 51,
+    "active": 419,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-04-30",
+    "pass1_sale": 330,
+    "pass1_rent": 43,
+    "active": 373,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-04-27",
+    "pass1_sale": 330,
+    "pass1_rent": 43,
+    "active": 373,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-04-23",
+    "pass1_sale": 330,
+    "pass1_rent": 43,
+    "active": 373,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-04-21",
+    "pass1_sale": 330,
+    "pass1_rent": 43,
+    "active": 373,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-04-20",
+    "pass1_sale": 330,
+    "pass1_rent": 42,
+    "active": 372,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  },
+  {
+    "date": "2026-04-19",
+    "pass1_sale": 0,
+    "pass1_rent": 0,
+    "active": 50,
+    "delisted": 0,
+    "status": "ok",
+    "backfilled": true
+  }
+]

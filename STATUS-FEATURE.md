@@ -583,3 +583,51 @@ When 40 new listings land from a cron run, archiving one-by-one is tedious. Gmai
 10. **New listings land in Inbox.** Run cron. New listings appear in Inbox, not Shortlist or Archive.
 
 When all ten pass on a real iPhone + laptop pair, v1 is done.
+
+---
+
+## Sticky-Shortlist Contract (W6, added 2026-05-09)
+
+**Invariant:** No automated process modifies a `listing_status` row in
+Postgres except via:
+
+1. Explicit user action — UI click (transition button, rank edit, notes
+   edit, seen toggle), or a manual API call by the user.
+2. Auto-resurrection on price drop — handled in `index.html`'s
+   `autoResurrect()`, which runs once per page load. Triggers only when a
+   listing's current price is below `price_at_archive`.
+
+**Specifically forbidden:**
+
+- The cron pipeline (`scripts/pull.py`, `.github/workflows/refresh.yml`)
+  must never write to the Status API. It writes only to `data/db.json`,
+  `data/latest.json`, `data/YYYY-MM-DD.json`, and `data/pipeline_health.json`.
+- No upstream signal (delisting, price change, days-on-market threshold,
+  search-result absence) may trigger an automated bucket transition.
+- The frontend may *filter what it shows* based on data flags (e.g.,
+  Inbox excludes `status: "delisted"` if any such flag survives), but
+  must never change a Postgres row in response to such a flag.
+
+**Why:** the user's triage labor — OQ/RQ rankings, notes, visit dates,
+moves between buckets — is the highest-value data in the system. The
+2026-05-05 incident silently invalidated 8 shortlisted listings (some
+with notes describing in-person visits) due to a single upstream filter
+change. Sticky-shortlist makes that class of failure structurally
+impossible by separating "data signals" from "user state."
+
+**Verification (informal):**
+
+- Code-grep: `pull.py` should not import `requests` calls to
+  `STATUS_API_URL` or `api.streethard.omarqari.com`.
+- Audit log spot-check: after a cron run, `GET /history?limit=20`
+  should show no entries with timestamps inside the cron window.
+- The `listing_status_history` table itself enforces the audit trail —
+  if anything ever does write to `listing_status` from automation, the
+  trigger captures it visibly.
+
+**Future hardening (not in v1):**
+
+- Add a smoke test that runs `pull.py --dry-run` against a test DB and
+  asserts `listing_status_history` row count is unchanged before/after.
+- Add a CI check on `scripts/pull.py` that greps for forbidden API
+  hostnames and fails the workflow if found.
