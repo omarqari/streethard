@@ -513,9 +513,15 @@ def normalize(raw):
     # Extract listed_date: prefer explicit listed_at timestamp (2026-05-02
     # build), fall back to most recent LISTED event in price history. Stored
     # so the JS app can compute days-on-market at render time.
+    # 2026-05-12 build flipped to flat `on_market_at` / `onMarketAt` keys
+    # (no prefix). Without these the field came through null for every
+    # listing ingested on/after 5/12 — bug surfaced by 5-day "nothing new"
+    # report; see CHANGELOG.md.
     listed_date = None
     listed_at_raw = (raw.get(f"{_SC}listed_at")  # 2026-05-02 build
-                     or raw.get(f"{_PP}listed_at"))
+                     or raw.get(f"{_PP}listed_at")
+                     or raw.get("on_market_at")    # 2026-05-12 build (flat)
+                     or raw.get("onMarketAt"))
     if listed_at_raw:
         listed_date = listed_at_raw[:10]  # "2026-04-30" from "2026-04-30T12:43:04-04:00"
     else:
@@ -761,10 +767,14 @@ def normalize_rental(raw):
     # listed_date: prefer the explicit listed_at timestamp (Pass 2), fall back
     # to most recent LISTED event in price history. Stored so JS can compute
     # days-on-market at render time rather than relying on a stale snapshot.
+    # 2026-05-12 build flipped to flat `on_market_at` / `onMarketAt` keys
+    # (no prefix). See sale normalize() above for context.
     listed_date = None
     listed_at_raw = (raw.get(f"{_RC}listed_at")
                      or raw.get(f"{_RCnew}listed_at")
-                     or raw.get(f"{_RCP}listed_at"))
+                     or raw.get(f"{_RCP}listed_at")
+                     or raw.get("on_market_at")    # 2026-05-12 build (flat)
+                     or raw.get("onMarketAt"))
     if listed_at_raw:
         listed_date = listed_at_raw[:10]   # "2026-04-16" from "2026-04-16T13:33:58-04:00"
     else:
