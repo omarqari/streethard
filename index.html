@@ -1585,6 +1585,20 @@ function listingTypeBadge(listing) {
   if (listing.listing_type === 'rent') return '<span class="type-pill pill-rent">Rent</span>';
   return '<span class="type-pill pill-sale">Sale</span>';
 }
+
+/* Flat eye SVG used by both card and table render. Color and opacity
+   come from the .seen-toggle / .is-seen CSS rules — currentColor lets
+   the SVG inherit. */
+function seenIconSvg() {
+  return '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg>';
+}
+
+/* Auto-resize a textarea to fit its content. Browser min-height CSS
+   still applies as a floor when scrollHeight is smaller. */
+function autoGrowTextarea(el) {
+  el.style.height = 'auto';
+  el.style.height = el.scrollHeight + 'px';
+}
 function eventClass(ev) {
   if (!ev) return 'ev-other';
   const e = ev.toUpperCase();
@@ -2257,8 +2271,8 @@ function renderTable() {
 
     // Seen eye icon
     const seenHtml = canEdit
-      ? `<span class="seen-toggle${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Visited' : 'Mark as visited'}">${isSeen ? '👁' : '👁‍🗨'}</span>`
-      : (isSeen ? `<span class="seen-toggle is-seen" title="Visited">👁</span>` : '');
+      ? `<span class="seen-toggle${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Visited' : 'Mark as visited'}">${seenIconSvg()}</span>`
+      : (isSeen ? `<span class="seen-toggle is-seen" title="Visited">${seenIconSvg()}</span>` : '');
 
     // Transition buttons per bucket
     let actionsHtml = '';
@@ -2283,7 +2297,7 @@ function renderTable() {
         </td>
         <td>
           <div class="td-building">${listing.building || '—'}</div>
-          <div class="td-sub">${listing.address}${listing.unit ? ' #' + listing.unit : ''} · ${listing.neighborhood || ''}</div>
+          <div class="td-sub">${listing.address}${listing.unit ? ' #' + String(listing.unit).replace(/^#+/, '') : ''} · ${listing.neighborhood || ''}</div>
         </td>
         <td class="td-monthly">${fmtMoney(monthly)}<span style="font-size:10px;font-weight:500;color:#888;">/mo</span></td>
         <td class="td-price col-price">${askCell}</td>
@@ -2440,7 +2454,7 @@ function renderCards() {
             <div class="v4-title">${listing.building || '—'}${listing.neighborhood ? ` <span class="v4-nb">· ${listing.neighborhood}</span>` : ''}</div>
             ${lastSeen ? `<span class="v4-last-seen ${lsCls}"><span class="v4-ls-dot"></span>${lastSeen}</span>` : ''}
           </div>
-          <div class="v4-address">${listing.address}${listing.unit ? ' #' + listing.unit : ''}</div>
+          <div class="v4-address">${listing.address}${listing.unit ? ' #' + String(listing.unit).replace(/^#+/, '') : ''}</div>
           <div class="v4-badge-row">
             ${showBoth ? listingTypeBadge(listing) : ''}
             ${typePill(listing.type)}
@@ -2492,7 +2506,7 @@ function renderCards() {
           >${st.rq_notes || ''}</textarea>
         </div>
         <div class="v4-utility" onclick="event.stopPropagation()">
-          <span class="seen-toggle${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Visited' : 'Mark as visited'}">${isSeen ? '👁' : '👁‍🗨'}</span>
+          <span class="seen-toggle${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Visited' : 'Mark as visited'}">${seenIconSvg()}</span>
           <a class="v4-utility-link" href="${listing.url}" target="_blank" onclick="event.stopPropagation()">View on StreetEasy ↗</a>
         </div>
       </div>`;
@@ -2500,6 +2514,12 @@ function renderCards() {
   container.innerHTML = html;
   container.querySelectorAll('.listing-card[data-id]').forEach(el => {
     initCardSwipe(el, el.dataset.id);
+  });
+  // Auto-grow note textareas to fit content, and keep growing as the user
+  // types. Pre-existing min-height in CSS still applies as a floor.
+  container.querySelectorAll('.v4-notes').forEach(el => {
+    autoGrowTextarea(el);
+    el.addEventListener('input', () => autoGrowTextarea(el));
   });
 }
 
