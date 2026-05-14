@@ -137,7 +137,8 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   price drop (T4) ✅. URL hash routing ✅. Sort defaults per tab (T6) ✅.
   Settings panel removed (Session 26) — no API key needed. Seen toggle
   (Session 28) ✅ — eye icon per row + filter checkbox.
-  **Not yet built:** Offline outbox (T8), card view adaptation (T9), chips (T10).
+  Card action buttons + seen toggle in card view (Session 29) ✅.
+  **Not yet built:** Offline outbox (T8), T9 OQ/RQ rank/note hiding in Inbox/Archive cards, chips (T10).
 - **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
   actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
   drop). OQ/RQ cleared server-side on exit from Shortlist. URL hash for tab state.
@@ -147,8 +148,20 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   public; CORS restricts browser writes to `streethard.omarqari.com` origin.
 - **Cost:** $5/mo Hobby tier on Railway.
 
-Next session: **polish items** (T9 card view adaptation, T10 chips), **product
-backlog selection** from PRODUCT-BACKLOG.md.
+## Mobile (Sessions 29–31 — COMPLETE)
+
+App is fully mobile-responsive as of 2026-05-10, with swipe refinements recovered 2026-05-13. Key facts for future sessions:
+
+- **No `min-width` on body.** Removed the 1100px blocker. `body` uses `min-width: 320px; height: 100dvh`.
+- **Single `@media (max-width: 768px)` block** at the end of the `<style>` section (before `</style>`). All mobile overrides live there — desktop untouched.
+- **Sticky header model on mobile:** `body { height: auto; overflow-y: auto }` + `#sticky-top { position: static }` + `#main-header { position: sticky; top: 0 }` + `#scroll-content { overflow: visible }`. Only the logo bar sticks; everything else scrolls.
+- **Card view is the mobile default:** `if (window.innerWidth <= 768) setView('cards')` at the end of the init block (just before `loadData()`).
+- **`renderCards()` is feature-complete:** includes per-bucket transition buttons (★ Shortlist / ✕ Archive / ↩ Inbox) and seen-eye toggle in a `.card-actions` div. Contextual `rightLabel` (`★ Shortlist` for inbox/shortlist; `↩ Inbox` for archive).
+- **Swipe-to-triage:** `initCardSwipe(cardEl, listingId)` attached to every `.listing-card[data-id]` after `container.innerHTML = html` in `renderCards()`. Reads `currentBucket` global at gesture time. Right swipe = shortlist (or inbox if currently in archive); left = archive. **Rubber-band resistance (`RESIST = 20px`) on blocked directions** — can't swipe shortlisted card right or archived card left. **Visual feedback during drag:** card background tints green (`rgba(26,122,60,...)`) when swiping right, red (`rgba(198,40,40,...)`) when swiping left, intensity proportional to drag distance. Green/red rotated swipe-indicator badges.
+- **Mobile header tweaks (Session 31):** Mortgage bar collapsed by default on mobile, revealed by `Calc ▾` toggle button in the header. Summary bar hidden on mobile to free up screen space.
+- **Calc toggle CSS specificity gotcha:** the `#mtg-toggle` button uses base-style `display: none` + media-query `display: flex`. Do NOT add inline `style="display:none"` (specificity 1000 beats media-query 100, would hide it on mobile too).
+
+Next session: **T9 remaining** (hide OQ/RQ rank inputs + note textareas in Inbox/Archive card view), **T10 chips**, **product backlog selection** from PRODUCT-BACKLOG.md.
 See TASKS.md for acceptance criteria A1–A10.
 
 ## Current Infrastructure State
@@ -221,6 +234,8 @@ curl -s -H "Authorization: token $TOKEN" \
 
 For pulling remote changes: ask the user to run `git pull` from their Terminal (not from the sandbox).
 
+**After any push via `scripts/git_push.py` or `mcp__github__push_files`, the user must run `git reset --hard origin/main` from Terminal**, not `git pull`. The API-driven push doesn't update the local index, so `git pull` will see the pushed-from-disk files as "modified" and refuse to merge. Hard-reset is safe because the local file content already matches the remote (we just pushed it).
+
 ### Token rules
 - Never print, log, or echo the token value
 - Never write the token to any file other than `.env`
@@ -267,6 +282,7 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
 - `scripts/pull.py` — incremental Apify pull script
 - `scripts/git_push.py` — push to GitHub via REST API (avoids sandbox git lock issues)
+- `scripts/audit_silent_reverts.py` — audits every commit on main for content silently overwritten by later "rebase-forward" commits (Session 31 lesson; `--help` for usage)
 - `index.html` — StreetHard app shell
 - `api/main.py` — FastAPI status backend (all endpoints)
 - `api/db.py` — asyncpg connection pool

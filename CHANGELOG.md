@@ -37,9 +37,33 @@ After the initial cleanup, found that two further commits had been silently reve
 
 **Diagnosis:** Session 30 ported forward from `2fee1b08` (May 3, 15:56), the *initial* mobile commit, not the *latest* tip of the mobile branch (`a272ec69`, May 3, 17:10). The two refinement commits remained in git history as standalone commits, but their content was overwritten by the rebased-forward `802dcd44`. They never got into the merged PR.
 
-**Fix:** re-applied all the missing content directly to current main (commit pending).
+**Fix:** re-applied all the missing content directly to current main (commit `55f9049a`, "Recover swipe refinements silently reverted by Session 30").
 
 **Lesson reinforced:** when forward-porting work from an older branch, always rebase from the BRANCH TIP, not a snapshot. `git log <branch>` to see the latest, then port the cumulative state. The standalone commit hashes in main's history are misleading — the SHAs are present, but the patches were undone.
+
+### Repo-wide silent-revert audit (`scripts/audit_silent_reverts.py`)
+After two silent reverts in one day, ran a systematic audit across the entire main history (139 commits, 27 unique code files) to find any others. Method: for each commit, sample distinctive added lines per file, substring-search current main, flag <50% survival. Codified as a reusable script in `scripts/audit_silent_reverts.py` — invoke with `python3 scripts/audit_silent_reverts.py [--threshold 0.3] [--since YYYY-MM-DD] [--include-docs]`.
+
+Result: **no additional silent reverts found.** 43 commits flagged at <50% survival; all explained by:
+- Intentional removals (Settings panel — Session 26 dropped it; old `delisted-badge` UI — Session 28 W2 retired it for the cleaner `pass2_confirmed_off_market` design)
+- Schema/refactor evolution (`scripts/pull.py` `normalize()` rewritten ~5 times during April Apify schema thrashing)
+- Doc evolution (CLAUDE.md/TASKS.md/STATUS-FEATURE.md continuously rewritten — script now skips `.md` by default; use `--include-docs` to re-include)
+- Line-level edits to existing lines (exact-substring match fails when a line gains an extra class attribute or trailing parenthetical, but the surrounding feature is intact)
+
+OQ/RQ rankings, notes, status API, audit log, off-market badges, stale pills, three-bucket triage — all functional code checked out. The only real silent reverts in the whole repo were `9a28476c`, `a272ec69`, and `f1de7704` (the third was redesigned via W3+W7, not lost).
+
+### Third recovery: `de5d9f4f` dangling docs commit
+`de5d9f4f` ("Docs: Session 29 — mobile optimization closeout") was a *dangling* commit — its parent (`412b23c6`) is on main but it itself is `behind_by: 11, ahead_by: 0`, meaning it was branched off main and never merged back. Lives only as an orphan SHA in GitHub's object database.
+
+11 of 12 distinctive CLAUDE.md lines from that commit were missing from current main. They were architectural documentation describing the mobile work — content the next Claude session would benefit from. Ported the missing content forward (with light updates to reflect today's recoveries — added the green/red drag tint, rubber-band resistance, contextual `rightLabel`, Calc-toggle CSS specificity gotcha — none of which were in the original Session 29 docs because the bucket-aware swipe behavior they describe was technically silently-reverted at the time the docs were authored). New section title: `## Mobile (Sessions 29–31 — COMPLETE)`.
+
+### Session 31 final commit summary
+1. `9ab1176f` — Recovered Calc ▾ toggle (`8fe17a3f` cherry-pick) + CSS specificity bug fix
+2. `47e4bca` — Tracked `skills/floorplan-estimator/`; gitignored `*.skill` exports
+3. `55f9049a` — Recovered green/red bucket-aware swipe (`9a28476c` + `a272ec69` cherry-pick)
+4. (this commit) — Added `scripts/audit_silent_reverts.py`; ported `de5d9f4f` Mobile architecture docs into CLAUDE.md; closed out Session 31
+
+Five stale GitHub branches deleted: `claude/explore-project-V2hAM`, `claude/project-onboarding-Sn2cV`, `claude/mobile-optimize-streethard-DEsLX`, `claude/fix-streethard-mobile-6pzOx`, `claude/fix-rental-listings-wE8pD`. Only `main` remains on remote.
 
 ### Lesson reinforced
 Sandbox-side git is brittle: stale `.git/*.lock` files persist across sessions, `git fetch` partially fails on sandbox-mounted `.git/objects` (the new branch refs may or may not actually land), and the proxy used in mobile sessions can't push. The combination produces a clone that *looks* slightly behind but is actually full of stale local versions of files that have moved forward on remote — pushing those would silently destroy live work. Recovery: always `git reset --hard origin/main` from real Terminal before doing anything; never trust the sandbox's view of what's local-vs-remote.
