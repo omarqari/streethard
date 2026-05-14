@@ -4,7 +4,7 @@
   "sale_count": 326,
   "rental_count": 71,
   "delisted_count": 0,
-  "run_cost_usd": 0.966,
+  "run_cost_usd": 0.0,
   "mode": "both",
   "listings": [
     {
@@ -892,7 +892,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-11",
+          "price": 4995000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -2939,7 +2946,32 @@
       "agent_phone": "(212) 906-9313",
       "agent_email": "fpeters@bhsusa.com",
       "agent_firm": "Brown Harris Stevens",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 4495000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-05-13",
+          "price": 4500000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-01-06",
+          "price": 4795000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2025-05-20",
+          "price": 4995000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ],
       "last_pass1": "2026-05-14",
       "last_pass2": "2026-05-14",
       "status": "active",
@@ -5053,7 +5085,20 @@
       "agent_phone": "(212) 727-6134",
       "agent_email": "jane.powers@elliman.com",
       "agent_firm": "Douglas Elliman",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 4200000,
+          "event": "",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-04-17",
+          "price": 4500000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
       "last_pass1": "2026-05-14",
       "last_pass2": "2026-05-14",
       "status": "active",
@@ -5620,7 +5665,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-11",
+          "price": 4195000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -6137,9 +6189,22 @@
       "agent_phone": "(917) 545-7208",
       "agent_email": "francine.crocker@corcoran.com",
       "agent_firm": "Corcoran",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-11",
+          "price": 3995000,
+          "event": "",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-04-07",
+          "price": 4395000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-05-13",
+      "last_pass2": "2026-05-14",
       "status": "active",
       "listed_date": "2026-04-07"
     },
@@ -7850,7 +7915,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-12",
+          "price": 3950000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -8353,7 +8425,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-12",
+          "price": 3795000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -8384,9 +8463,28 @@
       "agent_phone": "(917) 597-1851",
       "agent_email": "pat.wheatley@sothebyshomes.com",
       "agent_firm": "Sotheby's International Realty",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-11",
+          "price": 3790000,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-04-15",
+          "price": 3875000,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-03-24",
+          "price": 4050000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        }
+      ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-05-13",
+      "last_pass2": "2026-05-14",
       "status": "active",
       "listed_date": "2026-03-24"
     },
@@ -11255,7 +11353,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 3495000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -11287,7 +11392,20 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "SERHANT.",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 3495000,
+          "event": "",
+          "broker": "SERHANT."
+        },
+        {
+          "date": "2026-05-13",
+          "price": 3450000,
+          "event": "LISTED",
+          "broker": "SERHANT."
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -11662,9 +11780,28 @@
       "agent_phone": "(917) 848-1338",
       "agent_email": "mgulker@elliman.com",
       "agent_firm": "Douglas Elliman",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-11",
+          "price": 3395000,
+          "event": "",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-03-23",
+          "price": 3495000,
+          "event": "",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-01-28",
+          "price": 3695000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-05-13",
+      "last_pass2": "2026-05-14",
       "status": "active",
       "listed_date": "2026-01-28"
     },
@@ -12519,7 +12656,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-12",
+          "price": 3295000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -14993,7 +15137,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 3000000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -15874,7 +16025,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 2995000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -17353,9 +17511,28 @@
       "agent_phone": "(212) 606-4154",
       "agent_email": "geoff.mckernan@sothebys.realty",
       "agent_firm": "Sotheby's International Realty",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-11",
+          "price": 2775000,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-03-16",
+          "price": 2845000,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-02-02",
+          "price": 2995000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        }
+      ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-05-13",
+      "last_pass2": "2026-05-14",
       "status": "active",
       "listed_date": "2026-02-02"
     },
@@ -19738,7 +19915,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-12",
+          "price": 2600000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -20543,7 +20727,20 @@
       "agent_phone": "(917) 828-0361",
       "agent_email": "ilb@corcoran.com",
       "agent_firm": "Corcoran",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 2500000,
+          "event": "",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-04-06",
+          "price": 2675000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
       "last_pass1": "2026-05-14",
       "last_pass2": "2026-05-14",
       "status": "active",
@@ -21224,7 +21421,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 2495000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -21582,9 +21786,64 @@
       "agent_phone": "(631) 351-6000",
       "agent_email": "todd@iarny.com",
       "agent_firm": "Island Advantage Realty",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-12",
+          "price": 2405000,
+          "event": "",
+          "broker": "Island Advantage Realty"
+        },
+        {
+          "date": "2026-05-01",
+          "price": 2420000,
+          "event": "",
+          "broker": "Island Advantage Realty"
+        },
+        {
+          "date": "2026-03-12",
+          "price": 2430000,
+          "event": "",
+          "broker": "Island Advantage Realty"
+        },
+        {
+          "date": "2026-01-07",
+          "price": 2649900,
+          "event": "",
+          "broker": "Island Advantage Realty"
+        },
+        {
+          "date": "2025-12-17",
+          "price": 2699900,
+          "event": "",
+          "broker": "Island Advantage Realty"
+        },
+        {
+          "date": "2025-11-25",
+          "price": 2785000,
+          "event": "",
+          "broker": "Island Advantage Realty"
+        },
+        {
+          "date": "2025-10-01",
+          "price": 2800000,
+          "event": "",
+          "broker": "Island Advantage Realty"
+        },
+        {
+          "date": "2025-08-06",
+          "price": 2900000,
+          "event": "",
+          "broker": "Island Advantage Realty"
+        },
+        {
+          "date": "2025-07-21",
+          "price": 2800000,
+          "event": "LISTED",
+          "broker": "Island Advantage Realty"
+        }
+      ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-05-13",
+      "last_pass2": "2026-05-14",
       "status": "active",
       "listed_date": "2025-07-21"
     },
@@ -22316,7 +22575,20 @@
       "agent_phone": "(917) 572-3368",
       "agent_email": "rachel.white@corcoran.com",
       "agent_firm": "Corcoran",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 2300000,
+          "event": "",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-01-13",
+          "price": 2445000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
       "last_pass1": "2026-05-14",
       "last_pass2": "2026-05-14",
       "status": "active",
@@ -31340,5 +31612,5 @@
     }
   ],
   "sale_search_url": "https://streeteasy.com/for-sale/upper-east-side/price:2000000-5000000%7Cbeds:3-",
-  "rental_search_url": "https://streeteasy.com/for-rent/upper-east-side/price:10000-20000%7Cbeds:3-"
+  "rental_search_url": "https://streeteasy.com/for-rent/upper-east-side/beds:3-"
 }
