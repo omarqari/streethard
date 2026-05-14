@@ -176,59 +176,17 @@ a:hover { text-decoration: underline; }
 .sum-stat .sl { color: #888; font-size: 11px; margin-left: 3px; }
 .sum-new { color: #1a7a3c !important; }
 
-/* ─── Pipeline Health Strip ────────────────────────────────────── */
-#health-strip {
-  padding: 4px 28px;
-  font-size: 11px;
-  color: #666;
-  background: #f8faf8;
+/* ─── Freshness Banner (stale-only, user-facing) ──────────────── */
+/* Shown only when data is >24h old. Plain English, no operator
+   jargon. Pipeline diagnostics live on diagnostics.html. */
+#freshness-banner {
+  padding: 6px 28px;
+  font-size: 12px;
   border-bottom: 1px solid #e4e7ed;
   display: none;
 }
-#health-strip.stale-warn {
-  background: #fff8e1;
-  color: #8d6e00;
-}
-#health-strip.stale-error {
-  background: #fde8e8;
-  color: #b71c1c;
-}
-#health-strip .health-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  margin-right: 5px;
-  background: #4caf50;
-}
-#health-strip.stale-warn .health-dot { background: #f9a825; }
-#health-strip.stale-error .health-dot { background: #c62828; }
-
-/* W4: Pass 1 coverage sparkline — 14-day mini bar chart inside the
-   health strip. Bars sized proportional to total Pass 1 count; bars below
-   75% of 7-day median highlighted amber, below 50% highlighted red. */
-#coverage-strip {
-  padding: 6px 28px 8px 28px;
-  background: #f8faf8;
-  border-bottom: 1px solid #e4e7ed;
-  display: none;
-  font-size: 11px;
-  color: #666;
-}
-#coverage-strip .cov-label {
-  margin-right: 8px;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  font-size: 10px;
-  color: #888;
-}
-#coverage-strip svg { vertical-align: middle; margin-right: 6px; }
-#coverage-strip .cov-bar       { fill: #4caf50; cursor: help; }
-#coverage-strip .cov-bar.warn  { fill: #f9a825; }
-#coverage-strip .cov-bar.abort { fill: #c62828; }
-#coverage-strip .cov-summary { font-size: 11px; color: #888; }
-#coverage-strip.has-warn  { background: #fff8e1; color: #7a5c00; }
-#coverage-strip.has-abort { background: #fde8e8; color: #9a2020; }
+#freshness-banner.stale-warn  { background: #fff8e1; color: #7a5c00; }
+#freshness-banner.stale-error { background: #fde8e8; color: #9a2020; }
 
 /* ─── Price-History Signal Icons ──────────────────────────────── */
 .ph-signals { display: inline-flex; gap: 3px; margin-left: 6px; vertical-align: middle; }
@@ -896,7 +854,17 @@ td {
   align-items: center;
   font-size: 11px;
   color: #aaa;
+  gap: 14px;
 }
+#footer-diag {
+  color: #c4c8d0;
+  text-decoration: none;
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: lowercase;
+  transition: color 0.15s;
+}
+#footer-diag:hover { color: #3461D9; }
 
 /* ─── Swipe Indicators (card triage) ──────────────────────────── */
 .swipe-indicator {
@@ -944,8 +912,8 @@ td {
   /* Summary bar: hidden on mobile to free up screen space */
   #summary-bar { display: none; }
 
-  /* Health strip */
-  #health-strip { padding: 4px 16px; }
+  /* Freshness banner: tighter horizontal padding to match content gutters */
+  #freshness-banner { padding: 6px 16px; }
 
   /* Bucket tabs: equal-width, full row */
   #bucket-tabs { padding: 0; }
@@ -1022,13 +990,8 @@ td {
   <div class="sum-stat"><span class="sv sum-new" id="s-new">—</span><span class="sl">new this week</span></div>
 </div>
 
-<!-- ─── Pipeline Health Strip ───────────────────────────────────── -->
-<div id="health-strip"><span class="health-dot"></span><span id="health-text"></span></div>
-<div id="coverage-strip">
-  <span class="cov-label">Pass 1 coverage (14d)</span>
-  <span id="cov-spark"></span>
-  <span class="cov-summary" id="cov-summary"></span>
-</div>
+<!-- ─── Freshness Banner (hidden when fresh) ────────────────────── -->
+<div id="freshness-banner"></div>
 
 <!-- ─── Bucket Tabs ─────────────────────────────────────────────── -->
 <div id="bucket-tabs">
@@ -1062,21 +1025,21 @@ td {
   </select>
   <span id="f-price-wrap">
     <select class="filter-select" id="f-price" onchange="applyFilters()">
-      <option value="0">Max Price: Any</option>
-      <option value="2500000">$2.5M</option>
-      <option value="3000000">$3M</option>
-      <option value="3500000">$3.5M</option>
-      <option value="4000000">$4M</option>
-      <option value="5000000">$5M</option>
-      <option value="6000000">$6M</option>
+      <option value="0">Price: Any</option>
+      <option value="2500000">≤ $2.5M</option>
+      <option value="3000000">≤ $3M</option>
+      <option value="3500000">≤ $3.5M</option>
+      <option value="4000000">≤ $4M</option>
+      <option value="5000000">≤ $5M</option>
+      <option value="6000000">≤ $6M</option>
     </select>
   </span>
   <select class="filter-select" id="f-monthly" onchange="applyFilters()">
-    <option value="0">Max Monthly: Any</option>
-    <option value="15000">$15K</option>
-    <option value="20000">$20K</option>
-    <option value="25000">$25K</option>
-    <option value="30000">$30K</option>
+    <option value="0">Monthly: Any</option>
+    <option value="15000">≤ $15K</option>
+    <option value="20000">≤ $20K</option>
+    <option value="25000">≤ $25K</option>
+    <option value="30000">≤ $30K</option>
   </select>
   <label class="filter-check" title="Show only listings with price reductions"><input type="checkbox" id="f-cuts" onchange="applyFilters()"> ✂ Price Cuts</label>
   <label class="filter-check" title="Show only listings you've visited"><input type="checkbox" id="f-seen" onchange="applyFilters()"> 👁 Seen</label>
@@ -1125,6 +1088,7 @@ td {
 <footer id="page-footer">
   <span id="footer-left">StreetHard · Data via Apify memo23/streeteasy-ppr</span>
   <span id="footer-right"></span>
+  <a id="footer-diag" href="diagnostics.html" title="Pipeline diagnostics (operator-only)">diagnostics</a>
 </footer>
 </div><!-- /scroll-content -->
 
@@ -1339,74 +1303,23 @@ async function loadStatus() {
   }
 }
 
-// W4: Pass 1 coverage strip. Fetches data/pipeline_health.json and renders
-// a 14-day SVG bar chart of total Pass 1 counts. Bars below 75%/50% of the
-// 14-day median get amber/red highlighting. Strip is fail-open: if the
-// file is missing or malformed, the strip is hidden (not an error).
-async function loadCoverageStrip() {
-  try {
-    const r = await fetch('data/pipeline_health.json?t=' + Date.now());
-    if (!r.ok) return;  // fail-open
-    const records = await r.json();
-    if (!Array.isArray(records) || records.length === 0) return;
-
-    // Sort newest-first, take last 14
-    const sorted = records.slice().sort((a,b) => (b.date||'').localeCompare(a.date||''));
-    const days = sorted.slice(0, 14);
-    const totals = days.map(r => (r.pass1_sale || 0) + (r.pass1_rent || 0));
-    const maxT = Math.max(1, ...totals);
-
-    // Median over the visible window for warn/abort thresholds
-    const sortedTotals = totals.slice().sort((a,b) => a-b).filter(v => v > 0);
-    const median = sortedTotals.length
-      ? sortedTotals[Math.floor(sortedTotals.length / 2)]
-      : 0;
-
-    // Render: 14 bars, oldest on left (so reverse the array)
-    const ordered = days.slice().reverse();
-    const W = 4, GAP = 2, H = 22;
-    const totalW = ordered.length * (W + GAP);
-    let bars = '';
-    let warnDays = 0, abortDays = 0;
-    ordered.forEach((rec, i) => {
-      const total = (rec.pass1_sale || 0) + (rec.pass1_rent || 0);
-      const h = Math.max(2, Math.round((total / maxT) * H));
-      const y = H - h;
-      let cls = 'cov-bar';
-      if (median > 0) {
-        const pct = total / median;
-        if (pct < 0.5) { cls += ' abort'; abortDays++; }
-        else if (pct < 0.75) { cls += ' warn'; warnDays++; }
-      }
-      // Also honor explicit guard_status if recorded
-      if (rec.status === 'abort') { cls = 'cov-bar abort'; abortDays++; }
-      else if (rec.status === 'warn' && !cls.includes('abort') && !cls.includes('warn')) {
-        cls += ' warn'; warnDays++;
-      }
-      const tooltip = `${rec.date} — Pass 1: ${rec.pass1_sale||0} sale + ${rec.pass1_rent||0} rent = ${total}` +
-                      `\nActive: ${rec.active||0}, status: ${rec.status||'ok'}` +
-                      (rec.backfilled ? '\n(backfilled — pre-W4 archive)' : '');
-      bars += `<rect class="${cls}" x="${i*(W+GAP)}" y="${y}" width="${W}" height="${h}"><title>${tooltip}</title></rect>`;
-    });
-
-    document.getElementById('cov-spark').innerHTML =
-      `<svg width="${totalW}" height="${H}" xmlns="http://www.w3.org/2000/svg" style="display:inline-block;">${bars}</svg>`;
-
-    const today = ordered[ordered.length - 1] || {};
-    const todayTotal = (today.pass1_sale || 0) + (today.pass1_rent || 0);
-    let summary = `today ${todayTotal}, 14d median ${median}`;
-    if (abortDays > 0) summary += ` · ${abortDays} day${abortDays===1?'':'s'} below 50% threshold`;
-    else if (warnDays > 0) summary += ` · ${warnDays} day${warnDays===1?'':'s'} below 75%`;
-    document.getElementById('cov-summary').textContent = summary;
-
-    const strip = document.getElementById('coverage-strip');
-    strip.classList.remove('has-warn', 'has-abort');
-    if (abortDays > 0) strip.classList.add('has-abort');
-    else if (warnDays > 0) strip.classList.add('has-warn');
-    strip.style.display = 'block';
-  } catch (e) {
-    console.warn('Coverage strip unavailable:', e.message);
-  }
+// Freshness banner: silent on the cron's normal cadence (0-1 days old).
+// Amber at 2-3 days old (one run missed). Red at 4+ days (sustained outage).
+// `generated_at` is a date string, so we measure in whole-day differences
+// rather than milliseconds — same approach the old health-strip used.
+// Operator-facing diagnostics (Pass 1 coverage, W5 guard, pass1/pass2 split)
+// live on diagnostics.html — see footer link.
+function renderFreshnessBanner(generatedAt) {
+  const banner = document.getElementById('freshness-banner');
+  if (!banner) return;
+  if (!generatedAt) { banner.style.display = 'none'; return; }
+  const daysAgo = Math.floor((Date.now() - new Date(generatedAt).getTime()) / 86400000);
+  if (daysAgo < 2) { banner.style.display = 'none'; return; }
+  banner.className = daysAgo >= 4 ? 'stale-error' : 'stale-warn';
+  banner.textContent = daysAgo >= 4
+    ? `Listings haven't refreshed in ${daysAgo} days — Omar may need to check.`
+    : `Listings last updated ${daysAgo} days ago.`;
+  banner.style.display = 'block';
 }
 
 function getStatus(listingId) {
@@ -1447,7 +1360,6 @@ async function loadData() {
     const [resp] = await Promise.all([
       fetch('data/latest.json?t=' + Date.now()),
       loadStatus(),         // populates statusMap; tolerates failure
-      loadCoverageStrip(),  // W4 pipeline health sparkline; fail-open
     ]);
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const data = await resp.json();
@@ -1458,35 +1370,15 @@ async function loadData() {
 
     if (data.generated_at) {
       document.getElementById('last-updated').textContent = 'Updated ' + data.generated_at;
-      document.getElementById('footer-left').textContent =
-        'StreetHard · Data via Apify memo23/streeteasy-ppr · ' + data.generated_at;
     }
     // Footer counts active inventory only — matches what's in Inbox.
     const saleCount = allListings.filter(l => l.listing_type !== 'rent' && l.status !== 'delisted').length;
     const rentCount = allListings.filter(l => l.listing_type === 'rent' && l.status !== 'delisted').length;
-    const costStr   = data.run_cost_usd ? ' · $' + data.run_cost_usd.toFixed(2) + ' this run' : '';
     document.getElementById('footer-right').textContent =
-      saleCount + ' for sale · ' + rentCount + ' for rent' + costStr;
+      saleCount + ' for sale · ' + rentCount + ' for rent';
 
-    // Pipeline health strip
-    if (data.generated_at) {
-      const genDate = new Date(data.generated_at);
-      const now = new Date();
-      const daysAgo = Math.floor((now - genDate) / 86400000);
-      const active = allListings.filter(l => l.status !== 'delisted');
-      const pass2 = active.filter(l => l.data_quality === 'pass2').length;
-      const pass1 = active.filter(l => l.data_quality === 'pass1').length;
-      const total = active.length;
-      const dateStr = genDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
-      let agoStr = daysAgo === 0 ? 'today' : daysAgo === 1 ? '1 day ago' : daysAgo + ' days ago';
-      let healthMsg = 'Last refresh: ' + dateStr + ' (' + agoStr + ') · ' + total + ' listings';
-      if (pass1 > 0) healthMsg += ' (' + pass1 + ' incomplete)';
-      document.getElementById('health-text').textContent = healthMsg;
-      const strip = document.getElementById('health-strip');
-      strip.style.display = 'block';
-      strip.className = daysAgo >= 5 ? 'stale-error' : daysAgo >= 3 ? 'stale-warn' : '';
-      strip.id = 'health-strip';
-    }
+    // Freshness banner — hidden when fresh, amber/red when stale.
+    renderFreshnessBanner(data.generated_at);
 
     document.getElementById('loading-state').style.display = 'none';
     applyFilters();

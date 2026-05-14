@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StreetHard — Diagnostics</title>
+<style>
+* { box-sizing: border-box; }
+body {
+  margin: 0; padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  background: #f6f7f9; color: #222;
+}
+header {
+  background: #0E1730; color: white;
+  padding: 14px 28px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+header h1 { margin: 0; font-size: 16px; font-weight: 700; letter-spacing: 0.02em; }
+header a { color: #9bb2f0; font-size: 12px; text-decoration: none; }
+header a:hover { color: white; text-decoration: underline; }
+
+main { max-width: 880px; margin: 0 auto; padding: 24px 20px 40px 20px; }
+
+section {
+  background: white; border: 1px solid #e4e7ed; border-radius: 6px;
+  padding: 18px 22px; margin-bottom: 18px;
+}
+section h2 {
+  margin: 0 0 12px 0; font-size: 12px; font-weight: 700;
+  text-transform: uppercase; letter-spacing: 0.08em; color: #888;
+}
+.kvs { display: flex; flex-wrap: wrap; gap: 22px 36px; }
+.kv .k { font-size: 11px; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
+.kv .v { font-size: 18px; font-weight: 700; color: #111; margin-top: 2px; }
+.kv .v.warn { color: #c47700; }
+.kv .v.bad  { color: #c62828; }
+
+.spark-wrap { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+.spark-wrap svg { display: block; }
+.spark-summary { font-size: 12px; color: #555; }
+.spark-summary strong { color: #111; }
+.cov-bar       { fill: #4caf50; cursor: help; }
+.cov-bar.warn  { fill: #f9a825; }
+.cov-bar.abort { fill: #c62828; }
+
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+th, td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #eef0f3; }
+th { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #888; font-weight: 700; }
+td.num { text-align: right; font-variant-numeric: tabular-nums; }
+tr.warn td  { background: #fff8e1; }
+tr.abort td { background: #fde8e8; color: #9a2020; }
+.status-pill {
+  display: inline-block; padding: 1px 8px; border-radius: 10px;
+  font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+}
+.status-pill.ok    { background: #e7f5ea; color: #1a7a3c; }
+.status-pill.warn  { background: #fff3cd; color: #7a5c00; }
+.status-pill.abort { background: #f8d7da; color: #842029; }
+
+.muted { color: #888; font-size: 11px; }
+.error { color: #c62828; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>StreetHard — Diagnostics</h1>
+  <a href="/">← back to listings</a>
+</header>
+
+<main>
+  <section>
+    <h2>Latest Run</h2>
+    <div class="kvs" id="latest-kvs">
+      <div class="kv"><div class="k">Generated</div><div class="v" id="kv-gen">—</div></div>
+      <div class="kv"><div class="k">Age</div><div class="v" id="kv-age">—</div></div>
+      <div class="kv"><div class="k">Active listings</div><div class="v" id="kv-active">—</div></div>
+      <div class="kv"><div class="k">Sale / Rental</div><div class="v" id="kv-mix">—</div></div>
+      <div class="kv"><div class="k">Pass 2 complete</div><div class="v" id="kv-pass2">—</div></div>
+      <div class="kv"><div class="k">Pass 1 only</div><div class="v" id="kv-pass1">—</div></div>
+      <div class="kv"><div class="k">Partial</div><div class="v" id="kv-partial">—</div></div>
+      <div class="kv"><div class="k">Run cost</div><div class="v" id="kv-cost">—</div></div>
+    </div>
+    <div class="muted" style="margin-top:10px;">
+      "Active listings" is total inventory in the database, not the count updated on the latest run.
+      The pipeline is incremental — most days only a handful of listings change.
+      Pass-quality counts come from <code>db.json</code>.
+    </div>
+  </section>
+
+  <section>
+    <h2>Search URLs</h2>
+    <div id="search-urls" class="muted">loading…</div>
+    <div class="muted" style="margin-top:10px;">
+      These are the StreetEasy queries the cron polls each day. Changing them
+      changes what Pass 1 discovers.
+    </div>
+  </section>
+
+  <section>
+    <h2>Pass 1 Coverage (14 days)</h2>
+    <div class="spark-wrap">
+      <span id="cov-spark"></span>
+      <span class="spark-summary" id="cov-summary">loading…</span>
+    </div>
+    <div class="muted" style="margin-top:10px;">
+      Daily count of listings returned by the StreetEasy search URL. Bars below
+      75% of the 14-day median are amber; below 50% are red. A sustained drop
+      usually means the Apify actor's proxy hit a blocked IP — not that the
+      market vanished.
+    </div>
+  </section>
+
+  <section>
+    <h2>W5 Cliff Guard — Last 7 Days</h2>
+    <table id="guard-table">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th class="num">Pass 1 (sale + rent)</th>
+          <th class="num">Active</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody><tr><td colspan="4" class="muted">loading…</td></tr></tbody>
+    </table>
+    <div class="muted" style="margin-top:10px;">
+      <code>pull.py</code> aborts the merge if today's Pass 1 count drops below
+      50% of the 7-day median. Warns at 75%. Abort rows mean nothing was
+      merged that day — db.json carries forward unchanged.
+    </div>
+  </section>
+
+  <section>
+    <h2>Reference</h2>
+    <div class="muted">
+      Data sources: <code>data/latest.json</code> · <code>data/pipeline_health.json</code><br>
+      Operator runbook: <code>CLAUDE.md</code> + <code>PIPELINE-RESILIENCE-PLAN.md</code> in the repo.
+    </div>
+  </section>
+</main>
+
+<script>
+async function loadDiagnostics() {
+  // Latest run summary: latest.json + db.json (db has pass1/pass2 split)
+  try {
+    const [latestR, dbR] = await Promise.all([
+      fetch('data/latest.json?t=' + Date.now()),
+      fetch('data/db.json?t=' + Date.now()),
+    ]);
+    if (!latestR.ok) throw new Error('latest.json HTTP ' + latestR.status);
+    const latest = await latestR.json();
+    const db = dbR.ok ? await dbR.json() : { stats: {} };
+    const stats = db.stats || {};
+
+    document.getElementById('kv-gen').textContent = latest.generated_at || '—';
+
+    if (latest.generated_at) {
+      const genDate = new Date(latest.generated_at);
+      const daysAgo = Math.floor((Date.now() - genDate.getTime()) / 86400000);
+      const ageEl = document.getElementById('kv-age');
+      ageEl.textContent = daysAgo === 0 ? 'today' : daysAgo + 'd';
+      if (daysAgo >= 4) ageEl.classList.add('bad');
+      else if (daysAgo >= 2) ageEl.classList.add('warn');
+    }
+
+    const active = stats.total ?? latest.listing_count ?? '—';
+    const sale   = stats.sale  ?? latest.sale_count    ?? 0;
+    const rent   = stats.rent  ?? latest.rental_count  ?? 0;
+    document.getElementById('kv-active').textContent = active;
+    document.getElementById('kv-mix').textContent = sale + ' / ' + rent;
+
+    const pass2 = stats.pass2_complete;
+    const pass1 = stats.pass1_only;
+    const partial = stats.partial;
+    document.getElementById('kv-pass2').textContent =
+      (pass2 !== undefined ? pass2 : '—');
+    const pass1El = document.getElementById('kv-pass1');
+    pass1El.textContent = (pass1 !== undefined ? pass1 : '—');
+    if (pass1 && pass1 > 0) pass1El.classList.add('warn');
+    const partialEl = document.getElementById('kv-partial');
+    partialEl.textContent = (partial !== undefined ? partial : '—');
+    if (partial && partial > 0) partialEl.classList.add('warn');
+
+    document.getElementById('kv-cost').textContent =
+      latest.run_cost_usd ? '$' + latest.run_cost_usd.toFixed(2) : '—';
+
+    // Search URLs
+    const urls = [];
+    if (latest.sale_search_url) {
+      urls.push(`<div><strong>Sale:</strong> <a href="${latest.sale_search_url}" target="_blank" rel="noopener" style="color:#3461D9;">${latest.sale_search_url}</a></div>`);
+    }
+    if (latest.rental_search_url) {
+      urls.push(`<div style="margin-top:6px;"><strong>Rental:</strong> <a href="${latest.rental_search_url}" target="_blank" rel="noopener" style="color:#3461D9;">${latest.rental_search_url}</a></div>`);
+    }
+    document.getElementById('search-urls').innerHTML =
+      urls.length ? urls.join('') : '<em>none recorded</em>';
+  } catch (e) {
+    document.getElementById('latest-kvs').innerHTML =
+      '<div class="error">Could not load data: ' + e.message + '</div>';
+  }
+
+  // Coverage sparkline + cliff-guard table
+  try {
+    const r = await fetch('data/pipeline_health.json?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const records = await r.json();
+    if (!Array.isArray(records) || records.length === 0) {
+      document.getElementById('cov-summary').textContent = 'no health records yet';
+      return;
+    }
+    const sorted = records.slice().sort((a,b) => (b.date||'').localeCompare(a.date||''));
+    const days = sorted.slice(0, 14);
+    const totals = days.map(r => (r.pass1_sale || 0) + (r.pass1_rent || 0));
+    const maxT = Math.max(1, ...totals);
+    const sortedTotals = totals.slice().sort((a,b) => a-b).filter(v => v > 0);
+    const median = sortedTotals.length
+      ? sortedTotals[Math.floor(sortedTotals.length / 2)]
+      : 0;
+
+    // Sparkline (larger than the old in-app strip — this page can afford space)
+    const ordered = days.slice().reverse();
+    const W = 8, GAP = 4, H = 44;
+    const totalW = ordered.length * (W + GAP);
+    let bars = '';
+    let warnDays = 0, abortDays = 0;
+    ordered.forEach((rec, i) => {
+      const total = (rec.pass1_sale || 0) + (rec.pass1_rent || 0);
+      const h = Math.max(2, Math.round((total / maxT) * H));
+      const y = H - h;
+      let cls = 'cov-bar';
+      if (median > 0) {
+        const pct = total / median;
+        if (pct < 0.5) { cls += ' abort'; abortDays++; }
+        else if (pct < 0.75) { cls += ' warn'; warnDays++; }
+      }
+      if (rec.status === 'abort') { cls = 'cov-bar abort'; }
+      const tooltip = `${rec.date} — Pass 1: ${rec.pass1_sale||0} sale + ${rec.pass1_rent||0} rent = ${total}` +
+                      `\nActive: ${rec.active||0}, status: ${rec.status||'ok'}`;
+      bars += `<rect class="${cls}" x="${i*(W+GAP)}" y="${y}" width="${W}" height="${h}"><title>${tooltip}</title></rect>`;
+    });
+    document.getElementById('cov-spark').innerHTML =
+      `<svg width="${totalW}" height="${H}" xmlns="http://www.w3.org/2000/svg">${bars}</svg>`;
+    const today = ordered[ordered.length - 1] || {};
+    const todayTotal = (today.pass1_sale || 0) + (today.pass1_rent || 0);
+    let summary = `today <strong>${todayTotal}</strong> · 14-day median <strong>${median}</strong>`;
+    if (abortDays > 0) summary += ` · ${abortDays} day${abortDays===1?'':'s'} below 50%`;
+    else if (warnDays > 0) summary += ` · ${warnDays} day${warnDays===1?'':'s'} below 75%`;
+    document.getElementById('cov-summary').innerHTML = summary;
+
+    // Cliff guard table: last 7 days
+    const last7 = sorted.slice(0, 7);
+    const rows = last7.map(rec => {
+      const total = (rec.pass1_sale || 0) + (rec.pass1_rent || 0);
+      let rowCls = '';
+      let pillCls = 'ok';
+      let pillTxt = rec.status || 'ok';
+      if (rec.status === 'abort') { rowCls = 'abort'; pillCls = 'abort'; }
+      else if (rec.status === 'warn') { rowCls = 'warn'; pillCls = 'warn'; }
+      else if (median > 0 && total < median * 0.5) { rowCls = 'abort'; pillCls = 'abort'; pillTxt = 'low'; }
+      else if (median > 0 && total < median * 0.75) { rowCls = 'warn'; pillCls = 'warn'; pillTxt = 'low'; }
+      return `<tr class="${rowCls}">
+        <td>${rec.date || '—'}</td>
+        <td class="num">${rec.pass1_sale||0} + ${rec.pass1_rent||0} = ${total}</td>
+        <td class="num">${rec.active||0}</td>
+        <td><span class="status-pill ${pillCls}">${pillTxt}</span></td>
+      </tr>`;
+    }).join('');
+    document.querySelector('#guard-table tbody').innerHTML =
+      rows || '<tr><td colspan="4" class="muted">no records</td></tr>';
+  } catch (e) {
+    document.getElementById('cov-summary').innerHTML =
+      '<span class="error">Could not load pipeline_health.json: ' + e.message + '</span>';
+    document.querySelector('#guard-table tbody').innerHTML =
+      '<tr><td colspan="4" class="error">load failed</td></tr>';
+  }
+}
+loadDiagnostics();
+</script>
+</body>
+</html>
