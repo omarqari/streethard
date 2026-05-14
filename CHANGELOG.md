@@ -4,6 +4,62 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-14 — Pipeline Schema Drift Recovery (Session 34)
+
+### Context
+Omar opened the app and reported "nothing new in the last 5 days — is it broken again?" Cron had been running through 5/13 with green commits, the W5 cliff guard showed OK on every successful day, but the freshest `listed_date` anywhere in `db.json` was stuck at 2026-05-09.
+
+### Diagnosis
+
+1. **5/12 cron run actually failed.** Apify returned the sentinel `{message: "No results found"}` (residential-proxy IP blocked). `pull.py`'s sentinel guard correctly aborted the merge with `sys.exit(1)` before writing to `pipeline_health.json`. So the missed day is *invisible* on the diagnostics page — the W5 cliff-guard table jumps straight from 5/11 to 5/13.
+
+2. **5/13 cron run "succeeded" but silently dropped data.** Pass 1 found 9 new IDs (6 sale + 3 rental). Pass 2 ran detail pulls for all of them. `normalize()` executed without error. The listings landed in `db.json` flagged `data_quality=pass2`. But every one of them had `listed_date=None`. Root cause: memo23 pushed a schema change around 5/12 that returns the listed-at timestamp under flat top-level keys `on_market_at` / `onMarketAt` instead of the prefixed `saleCombineResponse_sale_listed_at` / `sale_listed_at` that `normalize()` reads. The fallback chain returned `None`, the field stayed null, no exception was raised.
+
+3. **Same schema flip silently broke rentals more deeply.** The new build also moved rental address, beds, baths, sqft, unit, and price history under the `propertyDetails_*` / `pricing_*` flat namespace (mirroring sale since 5/2). `normalize_rental()` had never been updated for any of this — it still only knew `combineData_rental_*`, `rentalCombineResponse_rental_*`, and bare `rental_*`. Result: 3 new rentals ingested with null address/beds/baths/sqft. Plus 4 older rentals (5022439, 5022432, 5020246, 5025162) had been stuck at pass1-only since 5/4 for the same underlying reason — the memo23 fix logged in Session 28 was actually a half-fix; the schema variant it added wasn't the one the actor settled on by 5/12.
+
+### Fix — Two surgical commits
+
+**`89c3004dc2`** — Added `on_market_at` and `onMarketAt` to the `listed_at` fallback chain in both `normalize()` (sale) and `normalize_rental()`.
+
+**`d41a6b6e6f`** — Added `propertyDetails_*` / `pricing_*` fallbacks to `normalize_rental()` for price, beds, baths, sqft, unit, street; parses `propertyHistory_json[0].rentalEventsOfInterest` (with status → event mapping: ACTIVE→LISTED, DELISTED→OFF_MARKET, PRICE_DECREASED→PRICE_DECREASED, etc.) for price history, falling back to `pricing_priceChanges_json` when `propertyHistory_json` is absent.
+
+### Backfill — Two data commits
+
+**`f555752e81`** — Re-pulled the 9 listings that came through with `listed_date=None` since 5/12. All 9 now have correct listed_date (3 from 5/11, 6 from 5/12).
+
+**`a811180cf3`** — Re-pulled 7 rentals through the patched normalizer: the 3 new (5039434 → 400 East 67th #28B; 5040766 → 223 East 80th #4; 5041266 → 420 East 64th #W7J) plus the 4 stuck pass1-only rentals (5022439, 5022432, 5020246, 5025162) which are now pass2 with listed_date and price history. `db.json` is fully pass2 for the first time since 5/4: `pass1_only=0`, `pass2_complete=391`.
+
+### Known new-schema limitations (not fixable on our side)
+- **Rental agent contact is firm-only.** No more name / phone / email per listing — only `sourceGroupLabel`. `agent_firm` still populates via the existing fallback. Agent name/phone/email fields will read null on new-schema rentals.
+- **Rental neighborhood missing.** Field absent from the new schema.
+
+### Diagnostics gap — surfaced but deferred
+
+The whole failure mode is the "Cron Green ≠ Data Flowing" pattern, third instance. Two specific gaps in `diagnostics.html` let it run for four days unnoticed:
+
+1. **Sentinel-aborts are invisible.** `pull.py` exits *before* writing to `pipeline_health.json`, so missed-cron rows never appear in the W5 table. The diagnostics page already has CSS for `abort`-status rows — there is just no data path.
+2. **No data-freshness signal anywhere on the diagnostics page.** Pass 1 counts and the W5 cliff guard both monitor *volume*, not field-level data quality. A panel showing "newest `listed_date` in db.json" with red >5d old would have caught this on day one.
+
+Both deferred to the next session by Omar's call. Tracked in TASKS.md "Open from Session 34."
+
+### Commits
+- `89c3004dc2` — Fix listed_date extraction for memo23 2026-05-12 schema
+- `f555752e81` — Backfill listed_date for 9 affected listings
+- `d41a6b6e6f` — Rental normalize: propertyDetails_* + propertyHistory_json
+- `a811180cf3` — Backfill 7 rentals using patched normalize_rental
+
+### Files touched
+- `scripts/pull.py` — `normalize()` and `normalize_rental()` schema fallbacks
+- `data/db.json`, `data/latest.json`, `data/2026-05-14.json` — backfilled records
+
+### Lessons reinforced
+- **"Cron Green ≠ Data Flowing" — third instance.** Memory entry exists; this is its third validation. Green exit code + green Pass 1 count + green `normalize()` execution does not equal good data. The only reliable check is on the *content* of the data, not the act of producing it.
+- **Schema-tolerant normalizers beat vendor stability.** memo23 is a one-developer Apify actor patching against StreetEasy's anti-bot. Field-name churn is the steady-state. Cheaper to harden our normalizers to read every reasonable key variant than to chase upstream stability we won't get.
+- **Pipeline assertions should test data, not just shape.** The W5 cliff guard catches *too few listings*. It does not catch *too few populated fields*. A `max(listed_date) >= today − N` or `non_null_address_rate >= 0.9` style guard would catch a different class of failure than the count-based ones already in place.
+- **Bottom-up validation, again.** Before patching `normalize_rental()`, fetched a real rental response via Apify and dumped 91 keys. Caught the rental-agent-contact gap up front (actor genuinely doesn't return it under the new schema) — avoided shipping a fix that wouldn't have worked. The session prior had paid for this lesson; this session collected.
+
+---
+
 ## 2026-05-14 — Card View v4: Mobile-First Redesign (Session 33)
 
 ### Context
