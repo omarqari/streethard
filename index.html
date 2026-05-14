@@ -293,9 +293,14 @@ a:hover { text-decoration: underline; }
   background: white; border: 1px solid #d0d5dd; border-radius: 8px;
   box-shadow: 0 6px 24px rgba(0,0,0,0.12);
   padding: 10px 12px; z-index: 200;
-  min-width: 220px;
+  min-width: 240px;
 }
 .filter-popover[hidden] { display: none; }
+.filter-popover .popover-handle,
+.filter-popover .popover-header,
+.filter-popover .popover-label,
+.filter-popover .popover-primary-btn { display: none; }
+.filter-popover .popover-body { display: flex; flex-direction: column; }
 .filter-popover .popover-row { margin-bottom: 6px; }
 .filter-popover .popover-row:last-of-type { margin-bottom: 0; }
 .filter-popover .filter-select.full {
@@ -309,7 +314,15 @@ a:hover { text-decoration: underline; }
 .filter-popover .popover-footer {
   display: flex; justify-content: flex-end; padding-top: 4px;
 }
-.filter-popover .clear-btn { display: inline-block; }
+.filter-popover .clear-btn { display: inline-block; padding: 4px 0; }
+
+/* Backdrop element exists in the DOM but is mobile-only;
+   desktop never reveals it regardless of [hidden] state. */
+#filter-backdrop { display: none; }
+
+/* Locks body scroll when mobile bottom sheet is open. No-op on desktop
+   since the scroll container is #scroll-content there, not body. */
+body.sheet-open { overflow: hidden; }
 
 /* ─── Mode Toggle ──────────────────────────────────────────────── */
 .mode-toggle {
@@ -962,15 +975,107 @@ td {
   #bucket-tabs { padding: 0; }
   .bucket-tab { flex: 1; text-align: center; padding: 12px 4px; font-size: 11px; }
 
-  /* Filter bar: search full-width top row, rest wraps below */
-  #filter-bar { padding: 8px 16px; flex-wrap: wrap; gap: 6px; }
-  #f-search { flex: 0 0 100%; width: 100%; }
+  /* Filter bar: mode-toggle + Filters button on row 1 (justified left/right),
+     search on row 2 (full width). Achieved via flex order so DOM stays
+     desktop-friendly. */
+  #filter-bar { padding: 8px 16px; flex-wrap: wrap; gap: 6px; row-gap: 8px; }
+  .mode-toggle { order: 1; }
+  .filter-wrap { order: 2; margin-left: auto; }
+  #f-search { order: 3; flex: 0 0 100%; width: 100%; }
   #f-search:focus { width: 100%; }
   .filter-spacer { display: none; }
 
-  /* Filters popover full-width on mobile so the dropdowns are tap-friendly */
-  #filter-popover { right: auto; left: 0; width: calc(100vw - 32px); max-width: 360px; }
-  .filter-wrap { margin-left: auto; }
+  /* Filters popover becomes a bottom sheet on mobile — anchored to the
+     viewport, not the button. 58vh leaves a slim band of listings visible
+     through the backdrop so the user retains visual context. */
+  .filter-popover {
+    position: fixed;
+    left: 0; right: 0; bottom: 0; top: auto;
+    width: 100%; min-width: 0; max-width: 100%;
+    height: 58vh; max-height: 58vh;
+    border-radius: 16px 16px 0 0;
+    border: none;
+    box-shadow: 0 -12px 32px rgba(0,0,0,0.18);
+    padding: 6px 20px 14px 20px;
+    z-index: 1000;
+    display: flex; flex-direction: column;
+    overflow: hidden;
+  }
+  .filter-popover[hidden] { display: none; }
+  /* Reveal the sheet-only elements */
+  .filter-popover .popover-handle {
+    display: block;
+    width: 36px; height: 4px;
+    background: #d0d5dd; border-radius: 2px;
+    margin: 4px auto 6px auto;
+  }
+  .filter-popover .popover-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 6px 0 10px 0;
+    border-bottom: 1px solid #eef0f3;
+    margin-bottom: 4px;
+  }
+  .filter-popover .popover-title {
+    font-size: 16px; font-weight: 700; color: #0E1730;
+  }
+  .filter-popover .popover-close {
+    background: none; border: none; cursor: pointer;
+    font-size: 20px; color: #888;
+    padding: 4px 8px; line-height: 1;
+    font-family: inherit;
+  }
+  .filter-popover .popover-close:active { color: #c62828; }
+  .filter-popover .popover-body {
+    flex: 1; overflow-y: auto;
+    padding-top: 8px;
+  }
+  .filter-popover .popover-row { margin-bottom: 14px; }
+  .filter-popover .popover-label {
+    display: block;
+    font-size: 10px; font-weight: 700;
+    color: #888; letter-spacing: 0.07em;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+  }
+  .filter-popover .filter-select.full {
+    height: 38px; padding: 8px 32px 8px 14px; font-size: 14px;
+  }
+  .filter-popover .popover-checks {
+    flex-direction: row; gap: 24px;
+    padding: 12px 2px; margin: 4px 0 0 0;
+  }
+  .filter-popover .filter-check { font-size: 14px; }
+  .filter-popover .popover-footer {
+    border-top: 1px solid #eef0f3;
+    margin-top: 8px;
+    padding: 10px 0 0 0;
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .filter-popover .clear-btn {
+    display: inline-block !important;  /* always visible in sheet footer */
+    color: #3461D9; font-size: 13px;
+    padding: 8px 0;
+  }
+  .filter-popover .popover-primary-btn {
+    display: inline-block;
+    background: #0E1730; color: #fff;
+    border: none; border-radius: 20px;
+    padding: 10px 22px; font-size: 13px; font-weight: 700;
+    font-family: inherit; cursor: pointer;
+    min-width: 110px;
+  }
+  .filter-popover .popover-primary-btn:active { background: #1f2940; }
+
+  /* Backdrop: full-screen dim while sheet is open. Tap to close. */
+  #filter-backdrop {
+    display: block;
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.45);
+    z-index: 998;
+    animation: fade-in 0.15s ease-out;
+  }
+  #filter-backdrop[hidden] { display: none; }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
 
   /* Card view: single column */
   #card-view { padding: 10px 12px; gap: 10px; }
@@ -1061,53 +1166,66 @@ td {
     <button class="filter-toggle-btn" id="filter-toggle-btn" onclick="toggleFiltersPopover(event)" aria-expanded="false" aria-controls="filter-popover">
       <span>Filters</span><span class="filter-badge" id="filter-badge" hidden></span>
     </button>
-    <div class="filter-popover" id="filter-popover" hidden>
-      <div class="popover-row">
-        <select class="filter-select full" id="f-beds" onchange="applyFilters()">
-          <option value="0">Beds: All</option>
-          <option value="2">2+ beds</option>
-          <option value="3">3+ beds</option>
-          <option value="4">4+ beds</option>
-        </select>
+    <div class="filter-popover" id="filter-popover" hidden role="dialog" aria-label="Filters">
+      <div class="popover-handle" aria-hidden="true"></div>
+      <div class="popover-header">
+        <span class="popover-title">Filters</span>
+        <button class="popover-close" onclick="toggleFiltersPopover(event)" aria-label="Close filters">✕</button>
       </div>
-      <div class="popover-row">
-        <select class="filter-select full" id="f-type" onchange="applyFilters()">
-          <option value="">Type: All</option>
-          <option value="condo">Condo</option>
-          <option value="coop">Co-op</option>
-        </select>
-      </div>
-      <div class="popover-row" id="f-price-wrap">
-        <select class="filter-select full" id="f-price" onchange="applyFilters()">
-          <option value="0">Price: Any</option>
-          <option value="2500000">≤ $2.5M</option>
-          <option value="3000000">≤ $3M</option>
-          <option value="3500000">≤ $3.5M</option>
-          <option value="4000000">≤ $4M</option>
-          <option value="5000000">≤ $5M</option>
-          <option value="6000000">≤ $6M</option>
-        </select>
-      </div>
-      <div class="popover-row">
-        <select class="filter-select full" id="f-monthly" onchange="applyFilters()">
-          <option value="0">Monthly: Any</option>
-          <option value="15000">≤ $15K</option>
-          <option value="20000">≤ $20K</option>
-          <option value="25000">≤ $25K</option>
-          <option value="30000">≤ $30K</option>
-        </select>
-      </div>
-      <div class="popover-row popover-checks">
-        <label class="filter-check" title="Show only listings with price reductions"><input type="checkbox" id="f-cuts" onchange="applyFilters()"> ✂ Price Cuts</label>
-        <label class="filter-check" title="Show only listings you've visited"><input type="checkbox" id="f-seen" onchange="applyFilters()"> 👁 Seen</label>
+      <div class="popover-body">
+        <div class="popover-row">
+          <span class="popover-label">Beds</span>
+          <select class="filter-select full" id="f-beds" onchange="applyFilters()">
+            <option value="0">Beds: All</option>
+            <option value="2">2+ beds</option>
+            <option value="3">3+ beds</option>
+            <option value="4">4+ beds</option>
+          </select>
+        </div>
+        <div class="popover-row">
+          <span class="popover-label">Type</span>
+          <select class="filter-select full" id="f-type" onchange="applyFilters()">
+            <option value="">Type: All</option>
+            <option value="condo">Condo</option>
+            <option value="coop">Co-op</option>
+          </select>
+        </div>
+        <div class="popover-row" id="f-price-wrap">
+          <span class="popover-label">Max price</span>
+          <select class="filter-select full" id="f-price" onchange="applyFilters()">
+            <option value="0">Price: Any</option>
+            <option value="2500000">≤ $2.5M</option>
+            <option value="3000000">≤ $3M</option>
+            <option value="3500000">≤ $3.5M</option>
+            <option value="4000000">≤ $4M</option>
+            <option value="5000000">≤ $5M</option>
+            <option value="6000000">≤ $6M</option>
+          </select>
+        </div>
+        <div class="popover-row">
+          <span class="popover-label">Max monthly</span>
+          <select class="filter-select full" id="f-monthly" onchange="applyFilters()">
+            <option value="0">Monthly: Any</option>
+            <option value="15000">≤ $15K</option>
+            <option value="20000">≤ $20K</option>
+            <option value="25000">≤ $25K</option>
+            <option value="30000">≤ $30K</option>
+          </select>
+        </div>
+        <div class="popover-row popover-checks">
+          <label class="filter-check" title="Show only listings with price reductions"><input type="checkbox" id="f-cuts" onchange="applyFilters()"> ✂ Price Cuts</label>
+          <label class="filter-check" title="Show only listings you've visited"><input type="checkbox" id="f-seen" onchange="applyFilters()"> 👁 Seen</label>
+        </div>
       </div>
       <div class="popover-footer">
         <button class="clear-btn" id="clear-btn" onclick="clearFilters()">✕ Clear all</button>
+        <button class="popover-primary-btn" onclick="toggleFiltersPopover(event)">Show <span id="show-count">—</span></button>
       </div>
     </div>
   </div>
   <div class="filter-spacer"></div>
 </div>
+<div id="filter-backdrop" hidden></div>
 </div><!-- /sticky-top -->
 
 <div id="scroll-content">
@@ -1710,6 +1828,11 @@ function applyFilters() {
 
   updateBucketCounts();
 
+  // Mobile bottom-sheet: update the "Show N" primary button so the user
+  // can see how many listings will be visible once they dismiss the sheet.
+  const showCount = document.getElementById('show-count');
+  if (showCount) showCount.textContent = filteredListings.length;
+
   sortListings();
   updateSummary();
   render();
@@ -1726,30 +1849,54 @@ function clearFilters() {
   applyFilters();
 }
 
-// Filters popover: open/close + close-on-outside-click. Filters apply live
-// as the user changes them, so the popover is just a visibility container.
+// Filters popover (desktop) / bottom sheet (mobile). Filters apply live as
+// the user changes them, so the popover is just a visibility container.
+// Backdrop is mobile-only by CSS — DOM toggle is harmless on desktop.
 function toggleFiltersPopover(e) {
   if (e) e.stopPropagation();
   const pop = document.getElementById('filter-popover');
   const btn = document.getElementById('filter-toggle-btn');
-  const open = !pop.hidden;
-  pop.hidden = open;
-  btn.classList.toggle('open', !open);
-  btn.setAttribute('aria-expanded', String(!open));
+  const bdr = document.getElementById('filter-backdrop');
+  const isOpen = !pop.hidden;
+  pop.hidden = isOpen;
+  if (bdr) bdr.hidden = isOpen;
+  btn.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', String(!isOpen));
+  // Lock body scroll only when sheet is becoming visible (no-op on desktop
+  // since body isn't the scroll container there).
+  document.body.classList.toggle('sheet-open', !isOpen);
 }
+function closeFiltersPopover() {
+  const pop = document.getElementById('filter-popover');
+  const btn = document.getElementById('filter-toggle-btn');
+  const bdr = document.getElementById('filter-backdrop');
+  if (pop) pop.hidden = true;
+  if (bdr) bdr.hidden = true;
+  if (btn) {
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  document.body.classList.remove('sheet-open');
+}
+// Outside-click (desktop popover) — anything not inside the sheet/popover
+// or the trigger button closes it. The mobile backdrop has its own click
+// handler below; both code paths converge on closeFiltersPopover().
 document.addEventListener('click', (e) => {
   const pop = document.getElementById('filter-popover');
   const btn = document.getElementById('filter-toggle-btn');
   if (!pop || pop.hidden) return;
   if (pop.contains(e.target) || btn.contains(e.target)) return;
-  pop.hidden = true;
-  btn.classList.remove('open');
-  btn.setAttribute('aria-expanded', 'false');
+  closeFiltersPopover();
+});
+// Tapping the backdrop closes the sheet (mobile bottom-sheet pattern).
+document.addEventListener('DOMContentLoaded', () => {
+  const bdr = document.getElementById('filter-backdrop');
+  if (bdr) bdr.addEventListener('click', closeFiltersPopover);
 });
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
   const pop = document.getElementById('filter-popover');
-  if (pop && !pop.hidden) toggleFiltersPopover();
+  if (pop && !pop.hidden) closeFiltersPopover();
 });
 
 // ─── Sort ────────────────────────────────────────────────────────────
