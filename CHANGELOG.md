@@ -32,6 +32,8 @@ First pass tried to be clever — collapse the strip into a small green/amber/re
 - Mode toggle anchored left, Filters button anchored right on the same row (via `flex order` + `margin-left: auto`); search field drops to its own full-width row below. No more orphan Filters floating in empty space.
 - On `@media (max-width: 768px)` the popover transforms into a bottom sheet: `position: fixed` at the viewport bottom, 58vh tall, with a drag handle, "Filters" + ✕ header, labeled rows (BEDS / TYPE / MAX PRICE / MAX MONTHLY), larger 14px controls, and a sticky footer with Clear all (left) + dark navy **Show N** primary button (right). The N updates live so the user knows what dismissing will reveal. Full-screen backdrop dims everything else; tap-to-close. Body scroll locked while sheet is open. Desktop popover untouched — same anchored-to-button behavior as before.
 
+**8. Bucket tab counts now reflect active filters.** User-reported follow-up: applying a 4+ beds filter visibly shrank the list but "Inbox 115" stayed at 115. Felt broken — the tab badge implied total bucket inventory was always 115 regardless of what the list showed. Fixed by extracting `readActiveFilters()` + `passesActiveFilters(l, f)` and making `updateBucketCounts()` consume the same predicate as `applyFilters()`. With the filter on, "Inbox 115" becomes "Inbox 12" (the count of 4+ bed inbox listings); same treatment for Shortlist and Archive so the user sees how the filter would affect each bucket. Clearing the filter restores the badges to full bucket counts.
+
 ### CPO/Design lessons reinforced
 - *Family-facing app ≠ operator dashboard.* When the audience is mixed, operator diagnostics need a separate URL, not a smaller version of themselves in the main UI.
 - *Build the mockup before the code on visual changes.* The first mobile filter implementation shipped without a high-fidelity mock and had to be redone after the user pushed back. Second pass started from an SVG mockup, got sign-off, then implemented — much less rework.
@@ -41,6 +43,8 @@ First pass tried to be clever — collapse the strip into a small green/amber/re
 - `ad28afdf75` — Diagnostics relocation, freshness banner, ≤ glyph relabel, footer diagnostics link
 - `5965d47067` — Filters popover, dropped result count
 - `065cc6204e` — Mobile: Filters on mode row, bottom sheet, backdrop, Show N
+- `f32bb18e36` — Docs (CHANGELOG + CLAUDE.md) for the above
+- `62182bc73b` — Bucket tab counts respect active filters (Inbox/Shortlist/Archive badges)
 
 ### Files touched
 - `index.html` — substantial UI surgery in markup, CSS (added ~120 lines for mobile bottom sheet), and JS (popover toggle + outside-click + backdrop wiring)
