@@ -829,23 +829,12 @@ td {
    section owns its spacing and can have its own background tint. */
 .listing-card.v4 { padding: 0; overflow: hidden; }
 .v4-header { padding: 12px 14px 0; }
-.v4-header-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 2px; }
 .v4-title {
   font-size: 16px; font-weight: 800; color: #0E1730;
-  flex: 1; min-width: 0; overflow: hidden;
-  text-overflow: ellipsis; white-space: nowrap;
+  margin-bottom: 2px;
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
 }
 .v4-title .v4-nb { font-weight: 400; font-size: 13px; color: #888; }
-.v4-last-seen {
-  font-size: 11px; color: #888; white-space: nowrap;
-  display: inline-flex; align-items: center; gap: 5px;
-}
-.v4-ls-dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: #1a7a3c; display: inline-block;
-}
-.v4-last-seen.stale .v4-ls-dot { background: #c89000; }
-.v4-last-seen.cold  .v4-ls-dot { background: #999; }
 .v4-address { font-size: 12px; color: #666; margin-bottom: 8px; }
 .v4-badge-row { display: flex; flex-wrap: wrap; gap: 4px; padding-bottom: 10px; align-items: center; }
 .v4-badge {
@@ -1518,10 +1507,9 @@ function priceSignals(listing) {
 }
 
 /* ─── Card v4 derived signals ───────────────────────────────────────
-   Three small pure functions used by renderCards() to surface signals
+   Two small pure functions used by renderCards() to surface signals
    that are already implicit in the data:
    • priceCutAmount — peak ask vs current price (matches v4 "−$250K")
-   • lastSeenLabel  — human label for daysSinceLastPass1
    • psfDeltaVsShortlist — current listing's $/ft² vs shortlist median,
      memoized on shortlist contents
 */
@@ -1534,14 +1522,6 @@ function priceCutAmount(listing) {
   const absolute = peak - listing.price;
   const percent = Math.round((absolute / peak) * 100);
   return { absolute, percent, priorPrice: peak };
-}
-
-function lastSeenLabel(listing) {
-  const n = daysSinceLastPass1(listing);
-  if (n === null || n === undefined) return null;
-  if (n === 0) return 'seen today';
-  if (n === 1) return 'seen 1d ago';
-  return 'seen ' + n + 'd ago';
 }
 
 let _shortlistMedianCache = { key: null, median: null };
@@ -2415,10 +2395,6 @@ function renderCards() {
       ? `<span class="estimated" title="${sqTitle}">${txt}</span>`
       : txt;
     const cut = priceCutAmount(listing);
-    const lastSeen = lastSeenLabel(listing);
-    const lastSeenN = daysSinceLastPass1(listing);
-    const lsCls = (lastSeenN === null || lastSeenN === undefined) ? 'cold'
-                : (lastSeenN > 7 ? 'stale' : '');
     const psfDelta = psfDeltaVsShortlist(listing);
     const isPass1Only = listing.data_quality === 'pass1';
     const rightLabel = currentBucket === 'archive' ? '↩ Inbox' : '★ Shortlist';
@@ -2450,10 +2426,7 @@ function renderCards() {
         <div class="swipe-indicator swipe-right">${rightLabel}</div>
         <div class="swipe-indicator swipe-left">✕ Archive</div>
         <div class="v4-header">
-          <div class="v4-header-row">
-            <div class="v4-title">${listing.building || '—'}${listing.neighborhood ? ` <span class="v4-nb">· ${listing.neighborhood}</span>` : ''}</div>
-            ${lastSeen ? `<span class="v4-last-seen ${lsCls}"><span class="v4-ls-dot"></span>${lastSeen}</span>` : ''}
-          </div>
+          <div class="v4-title">${listing.building || '—'}${listing.neighborhood ? ` <span class="v4-nb">· ${listing.neighborhood}</span>` : ''}</div>
           <div class="v4-address">${listing.address}${listing.unit ? ' #' + String(listing.unit).replace(/^#+/, '') : ''}</div>
           <div class="v4-badge-row">
             ${showBoth ? listingTypeBadge(listing) : ''}
@@ -2478,8 +2451,10 @@ function renderCards() {
         <div class="v4-oq">
           <div class="v4-rank-row">
             <span class="v4-rank-label oq">OQ</span>
-            <input type="number" min="1" class="v4-rank-input"
+            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3"
+              class="v4-rank-input"
               value="${(st.oq_rank || '')}"
+              oninput="this.value = this.value.replace(/\\D/g, '')"
               onchange="saveCardRank('${listing.id}','oq_rank',this.value)"
               onclick="event.stopPropagation()">
             <span class="v4-rank-saved" id="ns-oq-${listing.id}">Saved ✓</span>
@@ -2493,8 +2468,10 @@ function renderCards() {
         <div class="v4-rq">
           <div class="v4-rank-row">
             <span class="v4-rank-label rq">RQ</span>
-            <input type="number" min="1" class="v4-rank-input rq"
+            <input type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3"
+              class="v4-rank-input rq"
               value="${(st.rq_rank || '')}"
+              oninput="this.value = this.value.replace(/\\D/g, '')"
               onchange="saveCardRank('${listing.id}','rq_rank',this.value)"
               onclick="event.stopPropagation()">
             <span class="v4-rank-saved" id="ns-rq-${listing.id}">Saved ✓</span>
