@@ -87,10 +87,11 @@ Total monthly = mortgage payment + common charges/HOA + taxes
 The app is called **StreetHard**. It is a static web app hosted on **GitHub Pages**, auto-refreshed weekly via **GitHub Actions**. The whole family can access it at a shared URL.
 
 ### Architecture
-- `index.html` — static app shell; all UI and mortgage math in client-side JavaScript
-- `data/db.json` — **canonical store**; persistent dict of all listings keyed by ID; each has `data_quality` ("pass1" or "pass2"); never overwritten destructively
-- `data/latest.json` — generated from db.json each run; flat array for the app to fetch on load. Includes ALL listings with `status`, `last_pass1`, `last_pass2`, and `pass2_confirmed_off_market` fields per listing. Frontend renders W3 stale pill (gray "not seen Nd" if last_pass1 >7d) and W7 verified off-market badge.
-- `data/pipeline_health.json` — W4 observability log; last 60 days of `{date, pass1_sale, pass1_rent, active, delisted, status}`. Drives the in-app Pass 1 coverage sparkline AND the W5 cliff guard's rolling-7-day median baseline.
+- `index.html` — static app shell; family-facing; all UI and mortgage math in client-side JavaScript
+- `diagnostics.html` — separate operator page; reads `data/db.json` + `data/pipeline_health.json` + `data/latest.json`; shows Pass 1 coverage sparkline, W5 cliff guard last-7-days table, pass1/pass2 quality split, search URLs. Reachable via a tiny gray `diagnostics` link in the main app's footer (Session 32). The main app deliberately does *not* expose operator diagnostics.
+- `data/db.json` — **canonical store**; persistent dict of all listings keyed by ID; each has `data_quality` ("pass1" or "pass2"); never overwritten destructively. Top-level `stats` block (`total`, `pass1_only`, `partial`, `pass2_complete`, `sale`, `rent`, `delisted`) is what `diagnostics.html` reads.
+- `data/latest.json` — generated from db.json each run; flat array for the app to fetch on load. Includes ALL listings with `status`, `last_pass1`, `last_pass2`, and `pass2_confirmed_off_market` fields per listing. Frontend renders W3 stale pill (gray "not seen Nd" if last_pass1 >7d) and W7 verified off-market badge. *Note:* `data_quality` is NOT carried into latest.json — that field lives only on db.json.
+- `data/pipeline_health.json` — W4 observability log; last 60 days of `{date, pass1_sale, pass1_rent, active, delisted, status}`. Drives the diagnostics.html Pass 1 coverage sparkline AND the W5 cliff guard's rolling-7-day median baseline.
 - `data/YYYY-MM-DD.json` — immutable dated archive of every past run
 - `scripts/pull.py` — **incremental** Apify pull script; Pass 1 discovers listings, Pass 2 only fills in what's missing (capped at 100/run); saves db.json after every step
 - `.github/workflows/refresh.yml` — cron daily 9 AM UTC; calls Apify, commits data/, Pages auto-deploys
@@ -102,16 +103,16 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Default view**: Sortable table (dense, comparison-optimized)
 - **Toggle**: Card view
 - **Default sort**: Per tab — Inbox: Monthly Payment desc, Shortlist: OQ# asc, Archive: bucket_changed_at desc
-- **Text search**: Free-text search bar filters by building, address, unit, neighborhood, agent name/firm
-- **Inline filters**: Beds, Type (Condo/Co-op), Max Price, Max Monthly Payment, Price Cuts (checkbox)
+- **Text search**: Free-text search bar filters by building, address, unit, neighborhood, agent name/firm. Always visible in the filter bar — used constantly.
+- **Filters button + popover/sheet (Session 32)**: All other filter controls (Beds, Type, Price ≤, Monthly ≤, ✂ Price Cuts, 👁 Seen, Clear all) live behind a single **Filters** button. A blue count badge appears on the button when any filter is set. Filters apply live as the user changes them — no Apply button. **Desktop:** anchored popover that opens below the button, dismisses on outside-click or Escape. **Mobile (≤768px):** transforms into a **bottom sheet** — `position: fixed` at the viewport bottom, 58vh tall, drag handle, "Filters" + ✕ header, labeled rows (BEDS / TYPE / MAX PRICE / MAX MONTHLY), larger 14px controls, sticky footer with Clear all + a dark navy **Show N** primary button whose N updates live. Full-screen backdrop dims everything else; tap-to-close. Body scroll locked while open. Mode toggle (For Sale / Rent / Both) stays inline to the left of the Filters button on the same row.
+- **Price filter glyph**: Price and Monthly dropdowns use `≤` prefix on options (`≤ $3M`) instead of the older "Max Price" wording. Beds is an equality match, no glyph.
 - **Mortgage calculator** in header: Down Payment · Rate · Term — interactive, recalculates all rows instantly
 - **Row expansion**: Price History, Agent info, Payment Breakdown
 - **Days Listed**: NEW/blue <7d, green 7–44d, yellow 45–120d, red 121d+
 - **Price-history signal icons**: Per-listing icons next to days badge — ✂ price cuts (red), ↻ re-listed (orange), ⏸ off-market-and-back (blue), ⏳ stale 90d+ (yellow). Cached per listing ID.
 - **Stale & off-market signals (W3 + W7)**: Listings unseen in Pass 1 for >7 days render a gray "not seen Nd" pill (amber if >21d). Listings *definitively* verified off-market via Pass 2 detail render a red "off-market" badge (separate, stronger signal). Shortlisted listings unseen >7d are auto-verified each cron run (capped 20/run). The Shortlist tab shows a yellow alert strip when shortlisted listings get verified off-market in the last 14 days.
-- **Pass 1 coverage strip (W4)**: 14-day SVG sparkline near the health-strip showing daily Pass 1 result counts. Days <75% of 14-day median highlighted amber; <50% highlighted red. Drove from `data/pipeline_health.json`.
-- **Pipeline health strip**: Between summary bar and tabs. Green/yellow/red staleness indicator from `generated_at` in latest.json.
-- Single `index.html`, no server, opens in any browser
+- **Freshness banner (Session 32)**: User-facing data-staleness indicator. Hidden when the data is ≤1 day old (cron's normal cadence). Amber 2–3 days, red 4+ days, with plain-English copy: "Listings last updated 2 days ago." or "Listings haven't refreshed in 4 days — Omar may need to check." Replaces the older `#health-strip` and `#coverage-strip` operator-facing elements (both removed from the main app). The operator-facing Pass 1 coverage sparkline + W5 cliff-guard view moved to `diagnostics.html`.
+- Single `index.html` for the main app + a separate `diagnostics.html` for operator-only views. No server, opens in any browser.
 
 ## Status Feature Architecture (Sessions 13–21)
 
@@ -137,8 +138,7 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   price drop (T4) ✅. URL hash routing ✅. Sort defaults per tab (T6) ✅.
   Settings panel removed (Session 26) — no API key needed. Seen toggle
   (Session 28) ✅ — eye icon per row + filter checkbox.
-  Card action buttons + seen toggle in card view (Session 29) ✅.
-  **Not yet built:** Offline outbox (T8), T9 OQ/RQ rank/note hiding in Inbox/Archive cards, chips (T10).
+  **Not yet built:** Offline outbox (T8), card view adaptation (T9), chips (T10).
 - **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
   actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
   drop). OQ/RQ cleared server-side on exit from Shortlist. URL hash for tab state.
@@ -148,20 +148,8 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   public; CORS restricts browser writes to `streethard.omarqari.com` origin.
 - **Cost:** $5/mo Hobby tier on Railway.
 
-## Mobile (Sessions 29–31 — COMPLETE)
-
-App is fully mobile-responsive as of 2026-05-10, with swipe refinements recovered 2026-05-13. Key facts for future sessions:
-
-- **No `min-width` on body.** Removed the 1100px blocker. `body` uses `min-width: 320px; height: 100dvh`.
-- **Single `@media (max-width: 768px)` block** at the end of the `<style>` section (before `</style>`). All mobile overrides live there — desktop untouched.
-- **Sticky header model on mobile:** `body { height: auto; overflow-y: auto }` + `#sticky-top { position: static }` + `#main-header { position: sticky; top: 0 }` + `#scroll-content { overflow: visible }`. Only the logo bar sticks; everything else scrolls.
-- **Card view is the mobile default:** `if (window.innerWidth <= 768) setView('cards')` at the end of the init block (just before `loadData()`).
-- **`renderCards()` is feature-complete:** includes per-bucket transition buttons (★ Shortlist / ✕ Archive / ↩ Inbox) and seen-eye toggle in a `.card-actions` div. Contextual `rightLabel` (`★ Shortlist` for inbox/shortlist; `↩ Inbox` for archive).
-- **Swipe-to-triage:** `initCardSwipe(cardEl, listingId)` attached to every `.listing-card[data-id]` after `container.innerHTML = html` in `renderCards()`. Reads `currentBucket` global at gesture time. Right swipe = shortlist (or inbox if currently in archive); left = archive. **Rubber-band resistance (`RESIST = 20px`) on blocked directions** — can't swipe shortlisted card right or archived card left. **Visual feedback during drag:** card background tints green (`rgba(26,122,60,...)`) when swiping right, red (`rgba(198,40,40,...)`) when swiping left, intensity proportional to drag distance. Green/red rotated swipe-indicator badges.
-- **Mobile header tweaks (Session 31):** Mortgage bar collapsed by default on mobile, revealed by `Calc ▾` toggle button in the header. Summary bar hidden on mobile to free up screen space.
-- **Calc toggle CSS specificity gotcha:** the `#mtg-toggle` button uses base-style `display: none` + media-query `display: flex`. Do NOT add inline `style="display:none"` (specificity 1000 beats media-query 100, would hide it on mobile too).
-
-Next session: **T9 remaining** (hide OQ/RQ rank inputs + note textareas in Inbox/Archive card view), **T10 chips**, **product backlog selection** from PRODUCT-BACKLOG.md.
+Next session: **polish items** (T9 card view adaptation, T10 chips), **product
+backlog selection** from PRODUCT-BACKLOG.md.
 See TASKS.md for acceptance criteria A1–A10.
 
 ## Current Infrastructure State
@@ -234,8 +222,6 @@ curl -s -H "Authorization: token $TOKEN" \
 
 For pulling remote changes: ask the user to run `git pull` from their Terminal (not from the sandbox).
 
-**After any push via `scripts/git_push.py` or `mcp__github__push_files`, the user must run `git reset --hard origin/main` from Terminal**, not `git pull`. The API-driven push doesn't update the local index, so `git pull` will see the pushed-from-disk files as "modified" and refuse to merge. Hard-reset is safe because the local file content already matches the remote (we just pushed it).
-
 ### Token rules
 - Never print, log, or echo the token value
 - Never write the token to any file other than `.env`
@@ -282,8 +268,8 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
 - `scripts/pull.py` — incremental Apify pull script
 - `scripts/git_push.py` — push to GitHub via REST API (avoids sandbox git lock issues)
-- `scripts/audit_silent_reverts.py` — audits every commit on main for content silently overwritten by later "rebase-forward" commits (Session 31 lesson; `--help` for usage)
-- `index.html` — StreetHard app shell
+- `index.html` — StreetHard app shell (family-facing)
+- `diagnostics.html` — operator-only ops page (Pass 1 coverage, W5 cliff guard, pass1/pass2 split, search URLs); reachable via tiny gray footer link in the main app
 - `api/main.py` — FastAPI status backend (all endpoints)
 - `api/db.py` — asyncpg connection pool
 - `api/schema.sql` — listing_status table DDL

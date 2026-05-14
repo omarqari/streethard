@@ -4,6 +4,50 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-14 — UI Cleanup: Diagnostics Off the Main Surface; Mobile Filter Sheet (Session 32)
+
+### Context
+Two complaints kicked this off. First: the Pass 1 Coverage strip was visually loud at the top of the app on both desktop and mobile — operator diagnostic on a family-facing surface, with copy ("today 310, 14d median 310 · 5 days below 75%") that only Omar could parse. Second: the inline filter dropdowns (Beds / Type / Max Price / Max Monthly / ✂ Cuts / 👁 Seen) consumed a lot of horizontal space for controls the family rarely touches, and on mobile the layout was visibly broken — search bar pushed everything else to wrap awkwardly, and at one point a Filters popover overflowed off the right edge of the viewport.
+
+Also confirmed during the session: the user-facing line "Updated 1 day ago · 391 listings" read as "391 listings updated this run" but `391` was actually total active inventory in `db.json`. The pipeline is incremental — most days only a handful of listings change. Wording was misleading.
+
+### CPO review (mid-session)
+First pass tried to be clever — collapse the strip into a small green/amber/red pill in the header that always shows, even on mobile. Caught it on review: this is a family app for four users; the operator concern is one person's. Putting any always-on indicator (even a 12-pixel green dot) in the product surface to serve one person was wrong. Reset: build operator tools *off* the product surface. Keep the user-facing signal in human English, only when something is actually wrong.
+
+### Changes shipped
+
+**1. Removed `#coverage-strip` and `#health-strip` from `index.html`.** Their markup, CSS, and `loadCoverageStrip()` JS function all gone. Footer no longer carries `data.generated_at` or `run_cost_usd` — both were operator-y.
+
+**2. Added `renderFreshnessBanner()`.** Single user-facing element. Hidden when data is ≤1 day old (cron's normal cadence). Amber 2–3 days, red 4+ days. Plain copy: "Listings last updated 2 days ago." or "Listings haven't refreshed in 4 days — Omar may need to check." Day-granular math because `latest.json.generated_at` is a date string, not a timestamp.
+
+**3. New `diagnostics.html` — standalone operator page.** Reachable via a tiny gray `diagnostics` link in the footer. Sections: latest run summary (generated_at, age, active total, sale/rent mix, Pass 2 complete, Pass 1 only, partial, run cost) pulled from `data/db.json`'s pre-computed `stats` block; **Pass 1 coverage 14-day sparkline** lifted from the old strip; **W5 cliff guard last 7 days** as a table with warn/abort row highlighting; **Search URLs** that the cron polls (operator-relevant: changing these changes what Pass 1 discovers). Uses StreetHard colors (navy `#0E1730`, blue `#3461D9`, orange `#FF6000`) so it feels native.
+
+**4. Relabeled price/monthly filter dropdowns.** "Max Price: Any / $2.5M / $3M..." → "Price: Any / ≤ $2.5M / ≤ $3M..." Same for Max Monthly → Monthly. The ≤ glyph carries the "max" semantic without the word. "Beds" left alone since it's an equality match (`≥` would be ambiguous).
+
+**5. Collapsed all filter controls into a single Filters button.** Beds, Type, Price, Monthly, ✂ Cuts, 👁 Seen, Clear all — all live in a popover that opens on click. Mode toggle (For Sale / Rent / Both) and the search field stay visible since those are used constantly. A blue count badge appears on the button when filters are active (e.g. "Filters 2"). Filters still apply live as the user changes them — no Apply button. The popover dismisses on outside-click or Escape.
+
+**6. Dropped the redundant "115 of 321 listings" result count.** The bucket-tab count already shows in-bucket inventory; the Filters-button badge now signals when filters are reducing the visible set.
+
+**7. Mobile layout reflow + bottom sheet.** Initial popover-on-mobile was broken — anchored to a button that wraps to its own row, popover overflows the viewport. Redesigned:
+- Mode toggle anchored left, Filters button anchored right on the same row (via `flex order` + `margin-left: auto`); search field drops to its own full-width row below. No more orphan Filters floating in empty space.
+- On `@media (max-width: 768px)` the popover transforms into a bottom sheet: `position: fixed` at the viewport bottom, 58vh tall, with a drag handle, "Filters" + ✕ header, labeled rows (BEDS / TYPE / MAX PRICE / MAX MONTHLY), larger 14px controls, and a sticky footer with Clear all (left) + dark navy **Show N** primary button (right). The N updates live so the user knows what dismissing will reveal. Full-screen backdrop dims everything else; tap-to-close. Body scroll locked while sheet is open. Desktop popover untouched — same anchored-to-button behavior as before.
+
+### CPO/Design lessons reinforced
+- *Family-facing app ≠ operator dashboard.* When the audience is mixed, operator diagnostics need a separate URL, not a smaller version of themselves in the main UI.
+- *Build the mockup before the code on visual changes.* The first mobile filter implementation shipped without a high-fidelity mock and had to be redone after the user pushed back. Second pass started from an SVG mockup, got sign-off, then implemented — much less rework.
+- *"X of Y" is ambiguous when the audience varies.* The same line read three different ways depending on whether the reader was operator-thinking ("X listings shown of Y in the database") or family-thinking ("Y listings were updated last night"). Either remove the phrase or surface the same fact in two places with clearer framing.
+
+### Commits
+- `ad28afdf75` — Diagnostics relocation, freshness banner, ≤ glyph relabel, footer diagnostics link
+- `5965d47067` — Filters popover, dropped result count
+- `065cc6204e` — Mobile: Filters on mode row, bottom sheet, backdrop, Show N
+
+### Files touched
+- `index.html` — substantial UI surgery in markup, CSS (added ~120 lines for mobile bottom sheet), and JS (popover toggle + outside-click + backdrop wiring)
+- `diagnostics.html` — new file, ~180 lines
+
+---
+
 ## 2026-05-13 — Branch Cleanup + Recovered Mobile Calc-Toggle Tweak (Session 31)
 
 ### Context
@@ -37,33 +81,9 @@ After the initial cleanup, found that two further commits had been silently reve
 
 **Diagnosis:** Session 30 ported forward from `2fee1b08` (May 3, 15:56), the *initial* mobile commit, not the *latest* tip of the mobile branch (`a272ec69`, May 3, 17:10). The two refinement commits remained in git history as standalone commits, but their content was overwritten by the rebased-forward `802dcd44`. They never got into the merged PR.
 
-**Fix:** re-applied all the missing content directly to current main (commit `55f9049a`, "Recover swipe refinements silently reverted by Session 30").
+**Fix:** re-applied all the missing content directly to current main (commit pending).
 
 **Lesson reinforced:** when forward-porting work from an older branch, always rebase from the BRANCH TIP, not a snapshot. `git log <branch>` to see the latest, then port the cumulative state. The standalone commit hashes in main's history are misleading — the SHAs are present, but the patches were undone.
-
-### Repo-wide silent-revert audit (`scripts/audit_silent_reverts.py`)
-After two silent reverts in one day, ran a systematic audit across the entire main history (139 commits, 27 unique code files) to find any others. Method: for each commit, sample distinctive added lines per file, substring-search current main, flag <50% survival. Codified as a reusable script in `scripts/audit_silent_reverts.py` — invoke with `python3 scripts/audit_silent_reverts.py [--threshold 0.3] [--since YYYY-MM-DD] [--include-docs]`.
-
-Result: **no additional silent reverts found.** 43 commits flagged at <50% survival; all explained by:
-- Intentional removals (Settings panel — Session 26 dropped it; old `delisted-badge` UI — Session 28 W2 retired it for the cleaner `pass2_confirmed_off_market` design)
-- Schema/refactor evolution (`scripts/pull.py` `normalize()` rewritten ~5 times during April Apify schema thrashing)
-- Doc evolution (CLAUDE.md/TASKS.md/STATUS-FEATURE.md continuously rewritten — script now skips `.md` by default; use `--include-docs` to re-include)
-- Line-level edits to existing lines (exact-substring match fails when a line gains an extra class attribute or trailing parenthetical, but the surrounding feature is intact)
-
-OQ/RQ rankings, notes, status API, audit log, off-market badges, stale pills, three-bucket triage — all functional code checked out. The only real silent reverts in the whole repo were `9a28476c`, `a272ec69`, and `f1de7704` (the third was redesigned via W3+W7, not lost).
-
-### Third recovery: `de5d9f4f` dangling docs commit
-`de5d9f4f` ("Docs: Session 29 — mobile optimization closeout") was a *dangling* commit — its parent (`412b23c6`) is on main but it itself is `behind_by: 11, ahead_by: 0`, meaning it was branched off main and never merged back. Lives only as an orphan SHA in GitHub's object database.
-
-11 of 12 distinctive CLAUDE.md lines from that commit were missing from current main. They were architectural documentation describing the mobile work — content the next Claude session would benefit from. Ported the missing content forward (with light updates to reflect today's recoveries — added the green/red drag tint, rubber-band resistance, contextual `rightLabel`, Calc-toggle CSS specificity gotcha — none of which were in the original Session 29 docs because the bucket-aware swipe behavior they describe was technically silently-reverted at the time the docs were authored). New section title: `## Mobile (Sessions 29–31 — COMPLETE)`.
-
-### Session 31 final commit summary
-1. `9ab1176f` — Recovered Calc ▾ toggle (`8fe17a3f` cherry-pick) + CSS specificity bug fix
-2. `47e4bca` — Tracked `skills/floorplan-estimator/`; gitignored `*.skill` exports
-3. `55f9049a` — Recovered green/red bucket-aware swipe (`9a28476c` + `a272ec69` cherry-pick)
-4. (this commit) — Added `scripts/audit_silent_reverts.py`; ported `de5d9f4f` Mobile architecture docs into CLAUDE.md; closed out Session 31
-
-Five stale GitHub branches deleted: `claude/explore-project-V2hAM`, `claude/project-onboarding-Sn2cV`, `claude/mobile-optimize-streethard-DEsLX`, `claude/fix-streethard-mobile-6pzOx`, `claude/fix-rental-listings-wE8pD`. Only `main` remains on remote.
 
 ### Lesson reinforced
 Sandbox-side git is brittle: stale `.git/*.lock` files persist across sessions, `git fetch` partially fails on sandbox-mounted `.git/objects` (the new branch refs may or may not actually land), and the proxy used in mobile sessions can't push. The combination produces a clone that *looks* slightly behind but is actually full of stale local versions of files that have moved forward on remote — pushing those would silently destroy live work. Recovery: always `git reset --hard origin/main` from real Terminal before doing anything; never trust the sandbox's view of what's local-vs-remote.
