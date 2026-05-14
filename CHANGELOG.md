@@ -4,6 +4,36 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-13 — Branch Cleanup + Recovered Mobile Calc-Toggle Tweak (Session 31)
+
+### Context
+Local clone had drifted ~20 commits behind `origin/main`. Multiple sandbox-leftover `.git/*.lock` files were blocking writes, the working tree carried stale versions of `index.html` and `scripts/pull.py` (older than what's on main), and a redundant local commit (`b8ceaa6`, "Remove API key auth") existed even though that change had already shipped to main via a different commit. Five unmerged-looking branches were sitting on the remote: two from the early days of the project (`claude/explore-project-V2hAM`, `claude/project-onboarding-Sn2cV`), one fully merged mobile branch (`claude/mobile-optimize-streethard-DEsLX`, `behind_by: 30, ahead_by: 0` vs main), and two recently-merged branches that still had a couple of unmerged trailing commits (`claude/fix-streethard-mobile-6pzOx`, `claude/fix-rental-listings-wE8pD`).
+
+### Audit findings
+- The big mobile overhaul (responsive CSS, swipe-to-triage, card-view default at ≤768px, seen toggle in cards) — already on main from PR #3 (merge `8224ed6`, May 10). Live on streethard.omarqari.com.
+- The rental normalize fix (`_RCnew`/`_RCP` fallbacks) and W7 sentinel fix — already on main from PRs #1+#2 (May 10). Session 29 changelog also already on main.
+- One genuinely unmerged piece on `claude/fix-streethard-mobile-6pzOx`: commit `8fe17a3f` — a follow-on mobile UI tweak that adds a `Calc ▾` toggle button in the header to free up screen real estate by hiding the mortgage bar and summary bar by default on mobile.
+
+### Recovered: Calc ▾ toggle (`index.html`)
+Cherry-picked the `8fe17a3f` tweak. On ≤768px viewports:
+- `#mortgage-bar { display: none; }` by default; `.mobile-open` class reveals it
+- `#summary-bar { display: none; }` (was previously a 2-column wrap)
+- New `#mtg-toggle` button in the header (`Calc ▾`/`Calc ▴`); `toggleMortgageBar()` flips the class
+
+**Bug fix while cherry-picking:** the original commit set `style="display:none;"` inline on the toggle button AND tried to override it from inside `@media (max-width: 768px)` with `#mtg-toggle { display: flex }`. Inline `style` has CSS specificity 1000; the media-query rule (specificity 100) loses. The button would have been hidden on mobile too — never visible to users. Fix: dropped the inline style, added `#mtg-toggle { display: none; }` to the base stylesheet (so desktop still hides it), and the media-query `display: flex` now wins on mobile as intended.
+
+### Branches deleted from remote
+- `claude/explore-project-V2hAM` — stale exploration branch from project init
+- `claude/project-onboarding-Sn2cV` — stale onboarding branch
+- `claude/mobile-optimize-streethard-DEsLX` — fully merged into main
+- `claude/fix-streethard-mobile-6pzOx` — `8fe17a3f` cherry-picked here; rest already merged
+- `claude/fix-rental-listings-wE8pD` — fully merged into main; trailing commits were duplicate docs
+
+### Lesson reinforced
+Sandbox-side git is brittle: stale `.git/*.lock` files persist across sessions, `git fetch` partially fails on sandbox-mounted `.git/objects` (the new branch refs may or may not actually land), and the proxy used in mobile sessions can't push. The combination produces a clone that *looks* slightly behind but is actually full of stale local versions of files that have moved forward on remote — pushing those would silently destroy live work. Recovery: always `git reset --hard origin/main` from real Terminal before doing anything; never trust the sandbox's view of what's local-vs-remote.
+
+---
+
 ## 2026-05-10 — Fix Rental Pass 2 Normalization + W7 Sentinel Bug (Session 29)
 
 ### Context
