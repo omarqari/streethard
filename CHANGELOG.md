@@ -4,6 +4,81 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-14 — Card View v4: Mobile-First Redesign (Session 33)
+
+### Context
+Omar uses the card view almost exclusively on his phone, and the previous layout was a desktop card squeezed onto a 380px viewport. Too much chrome, OQ/RQ rank + notes (the primary actions on every card) buried below the action buttons, agent contact and bucket toggle taking up space that didn't earn it on mobile. Photo was missing entirely — there's no `images` field in `db.json` — so the "where do I look first?" affordance was the building name in 15px text.
+
+### Design iteration (mockup-before-code)
+Followed the Session 32 lesson: build the high-fidelity mockup, get sign-off, *then* implement. Four mockup rounds in chat with Omar driving:
+1. **v1 (desktop):** Photo hero on the left, badge row, price+stats compact, OQ/RQ block, agent strip, quick actions row.
+2. **v2 (mobile):** Full-width hero photo with badges overlaid, then header + price + stats + tinted OQ/RQ blocks + agent + actions.
+3. **v3 (no photos):** Audit caught that `db.json` has no `images` field. Redesigned around what we actually have — price-history hero, monthly breakdown cards, description blurb, agent strip.
+4. **v4 (compact):** Stripped the price-history hero and monthly breakdown (over-engineered), dropped the bucket toggle (swipe is already built), dropped agent contact (not used from cards), promoted OQ/RQ + notes as the centerpiece. Final.
+
+### Architect + CTO review
+Plan v1 written, reviewed in parallel by two independent agents. Both converged on the same cuts: kill the `?card-v4=1` feature flag (10 LOC of tax for one user; `git revert` is free), drop the shared component refactor (premature for n=1), collapse six rollout phases into one PR. Architect added: rename `comparePsfToShortlist` → `psfDeltaVsShortlist` returning a raw number formatted at the call site; flush pending debounced notes on swipe-start (later moot — see verification below); key the shortlist-median memo on filter set, not just per-render; `last_pass1` null fallback for `lastSeenLabel`. CTO added: time-box 3 hours / hard cap 5; if comparison line or textarea-swipe each eat >45 min, ship without; pass1-only listings decide rendering now, not on device; desktop ≥769px explicitly unchanged. Plan v2 written incorporating all of it.
+
+### Pre-implementation verification
+Two of the v2 risks turned out to already be handled in the existing code:
+- **Textarea/swipe conflict.** `initCardSwipe()` line 2152 already bails on `e.target.closest('input,textarea,a,button,.seen-toggle,.rank-val')`. The new OQ/RQ textareas inherit the protection.
+- **Debounced note loss on swipe-archive.** `debounceNote()` stores its timer in module-scoped `noteTimers` and captures `value` in the setTimeout closure. The save fires regardless of DOM state; the "Saved ✓" badge flash is gated with `if (badge)` and silently skips when gone. No flush needed.
+
+Lesson reinforced: **ground claims about risk in actual code reading**, not assumption.
+
+### What shipped — v4 card structure
+
+Five full-bleed sections inside `.listing-card.v4` (legacy 16px padding zeroed out, each section owns its spacing):
+
+1. **Header** (`.v4-header`) — building + neighborhood inline, address (with `#` strip on `unit`), badge row: type pill, ✂−$XK price-cut amount, days badge, "Built YYYY" chip, stale + off-market pills.
+2. **Price + stats** (`.v4-price-stats`) — `$X.XXM` + "↓ from $Y.YYM" trend line on the left, monthly all-in below; bed/bath/sqft/$psf laddered right with `±N% $/ft² vs shortlist` comparison delta underneath (green = cheaper, red = more expensive).
+3. **OQ block** (`.v4-oq`) — `#F5F8FD` blue tint, OQ label + numeric-only rank input + Saved ✓ flag, always-visible auto-growing notes textarea.
+4. **RQ block** (`.v4-rq`) — `#FDF6F3` coral tint, same shape.
+5. **Utility row** (`.v4-utility`) — labeled `[👁 Seen]` button (32px tap, blue tint when active) on the left, `View on StreetEasy ↗` on the right.
+
+Cut from the previous card: Inbox/Shortlist/Archive button cluster (swipe at line 2316 handles it), built-year cell (promoted to badge), per-card mortgage rate/term, agent contact buttons (never used from cards), footer "Yorkville" duplication.
+
+### New JS helpers
+- `priceCutAmount(listing)` → `{absolute, percent, priorPrice}` from peak ask in `price_history` vs current `price`.
+- `psfDeltaVsShortlist(listing)` → integer percent vs `shortlistPsfMedian()`, which is memoized on shortlist contents + their $/ft² sum (invalidates on changes).
+- `seenIconSvg()` → inline flat eye SVG used by both card and table render so the icon stays consistent.
+- `autoGrowTextarea(el)` → resize-to-fit on render and on `input`; CSS `min-height` still floors empty state.
+
+### Polish rounds (post-ship, in commit order)
+1. **Address `##` bug.** Both card and table render concatenated `' #' + listing.unit` — but some listings have `unit = "#14C"` already, producing `##14C`. Pre-existing bug, more visible in the v4 card. Fixed with `String(listing.unit).replace(/^#+/, '')`.
+2. **Notes textarea cropped.** Default 56px min-height clipped multi-line notes. Added `autoGrowTextarea` wiring after `container.innerHTML` — sets height to `scrollHeight` on render and on every `input`. Empty textareas still get the floor.
+3. **Emoji eye → flat SVG.** The `👁` / `👁‍🗨` emojis rendered too cute at card density. Replaced with a 16×16 outline SVG using `stroke="currentColor"` so the existing `.seen-toggle` / `.is-seen` CSS still drives color and opacity. Single helper consumed by both renders.
+4. **Numeric-only OQ/RQ inputs.** Switched from `type="number"` (accepts decimals, "e", "+", "-") to `type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3"` plus `oninput="this.value = this.value.replace(/\D/g, '')"`. iPhone keypad now shows digits only; paste of non-numeric becomes empty.
+5. **Removed redundant "seen 1d ago" pill.** It was duplicating the existing W3 `stalePillHtml`, which already shows only when actionable (>7d). Pulled the v4 pill, the unused `lastSeenLabel` helper, and the orphan `.v4-last-seen` / `.v4-ls-dot` / `.v4-header-row` CSS. Family-app UI principle reinforced: silent-when-fine beats reassurance-pill-everywhere.
+6. **Seen toggle as labeled button.** v4 mockup had a bordered `[👁 Seen]` button; first implementation reverted to bare icon. Fixed: 32px-tall bordered button, gray outline default, blue tint + blue border when `.is-seen`. Table view stays icon-only (cells too tight for the label).
+
+### Mobile table view fix
+Audit catch: tapping the Table button on a phone showed a wide table bleeding past the viewport with no scroll affordance, because `body { overflow-x: hidden }` + `#scroll-content { overflow: visible }` (Session 28) means the table extends into nothing. Not introduced by v4 work — table view has been bad on mobile since Session 28's auto-switch-to-cards landed. First fix hid the view toggle on mobile entirely; Omar flipped it: kept the toggle and made the table horizontally scrollable. `.table-wrap` gets `max-width: 100vw + overflow-x: auto` on mobile; `table { min-width: 900px }` keeps cells legible instead of compressing.
+
+### Commits
+- `b8f5bb5aed` — Card v4 markup + CSS + signal helpers + CARD-REDESIGN-PLAN.md
+- `3ab9d26239` — Polish: `##` strip, auto-grow textareas, SVG eye (both card and table)
+- `3855b4df09` — Polish: numeric-only OQ/RQ inputs, remove redundant last-seen pill
+- `60548d4fa9` — Polish: labeled Seen button
+- `cf2717c6c6` — Mobile: hide view toggle (subsequently flipped)
+- `78f5628fff` — Mobile: restore toggle, table horizontally scrollable
+
+### Files touched
+- `index.html` — `renderCards()` rewritten (~125 lines replaced); `renderTable()` updated for SVG eye + `#` strip; ~120 lines of new CSS (v4 sections, mobile table scroll); 4 new pure helpers
+- `CARD-REDESIGN-PLAN.md` — created during planning, kept as a record of intent vs ship
+
+### Lessons reinforced / new
+- **Mockup-before-code on visual changes** (Session 32 lesson) — held up. Four rounds in chat caught the photo-doesn't-exist problem, the OQ/RQ-buried problem, and the over-engineered price-history hero *before* a line of code shipped.
+- **Audit your mockup against the data first.** Designing a hero photo for a card whose listings have no `images` field cost a full revision. Bottom-up validation isn't only for pipelines — it applies to UI fields too.
+- **Audit shipped UI against the mockup.** Implementation drifted from the v4 mockup on two specific items (no labeled Seen button, redundant last-seen pill). Both surfaced from Omar's screenshots, not from my own review. For visual work, the verification step should include a side-by-side mockup-vs-shipped check, not just "the diff applied cleanly."
+- **Ground risk claims in code.** The two risks the plan flagged about swipe and auto-save (textarea event capture, debounced note loss) were both *already handled* in the existing code. Reading the actual implementation before claiming risk would have saved a paragraph in the plan and a chunk of Omar's worry.
+- **For n=1, kill the feature flag.** Both reviewers said this independently. Shipping `?card-v4=1` would have been pure tax — one user, one phone, `git revert` is free.
+
+### TASKS.md cross-reference
+T9 (card view adaptation) moves from "partial — buttons + seen eye visible" (Session 29) to fully complete: the v4 layout is the card view, with OQ/RQ + notes elevated as the centerpiece across all tabs. (The Session 29 "remaining: hide OQ/RQ inputs and notes in Inbox/Archive" item is intentionally rejected — keeping them visible across buckets is what the v4 design calls for.)
+
+---
+
 ## 2026-05-14 — UI Cleanup: Diagnostics Off the Main Surface; Mobile Filter Sheet (Session 32)
 
 ### Context

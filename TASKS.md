@@ -119,7 +119,7 @@ Replaces old F2 (status pill cycling) and F3 (watch toggle). Existing work retai
 - [x] **T6 — Sort defaults per tab.** ✅ Session 23. Inbox: Monthly Payment desc. Shortlist: OQ# asc (nulls last). Archive: `bucket_changed_at` desc (most recently archived first). Sort resets on tab switch; init respects URL hash. Added `archived_at` sort case to `sortListings()`.
 - [ ] **T7 — Optimistic update helper.** `updateStatus(listingId, patch)` mutates in-memory, re-renders, then PUTs. On failure, queue in outbox. (Carried from old F5.)
 - [ ] **T8 — Offline outbox + flush.** `localStorage['streethard.outbox']` flushed via `POST /status/batch` on `online` / `visibilitychange`. (Carried from old F6.)
-- [x] **T9 — Card view adaptation (partial, Session 29).** Transition buttons (★ Shortlist / ✕ Archive / ↩ Inbox) and seen-eye toggle now visible in card view for all tabs. Remaining: hide OQ/RQ rank inputs and note textareas in Inbox/Archive card view (currently shown in all tabs).
+- [x] **T9 — Card view adaptation (complete, Session 33).** Full v4 redesign superseded the partial Session 29 work. Five-section mobile-first card with tinted OQ/RQ blocks as the centerpiece, badge row, price + comparison-delta stats, labeled Seen button, swipe-to-triage replacing the bucket button cluster. OQ/RQ + notes intentionally stay visible across all buckets (the "hide in Inbox/Archive" item from Session 29 was rejected — v4 design wants them everywhere). Full architecture in CLAUDE.md "Card View v4" section; full build trail in CARD-REDESIGN-PLAN.md.
 - [ ] **T10 — Chips (Shortlist only).** Multi-select chip selector in expanded row for shortlisted items. Fixed vocabulary. Fires immediately on change. (Carried from old F4, scoped to Shortlist.)
 
 ### Deployment & Ops

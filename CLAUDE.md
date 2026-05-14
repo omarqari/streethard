@@ -100,8 +100,9 @@ The app is called **StreetHard**. It is a static web app hosted on **GitHub Page
 ### Design Language
 Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange accent (`#FF6000`).
 
-- **Default view**: Sortable table (dense, comparison-optimized)
-- **Toggle**: Card view
+- **Default view**: Sortable table on desktop (dense, comparison-optimized); auto-switches to card view on mobile (`window.innerWidth <= 768`) at page-init time.
+- **Toggle**: Card view button always visible on both desktop and mobile.
+- **Mobile table view (Session 33)**: `.table-wrap` is constrained to `max-width: 100vw` with `overflow-x: auto`; the table itself keeps `min-width: 900px` so cells stay legible and the user swipes horizontally to reach the rightmost columns. Body still has `overflow-x: hidden` so horizontal scroll is contained inside `.table-wrap`, not the page.
 - **Default sort**: Per tab — Inbox: Monthly Payment desc, Shortlist: OQ# asc, Archive: bucket_changed_at desc
 - **Text search**: Free-text search bar filters by building, address, unit, neighborhood, agent name/firm. Always visible in the filter bar — used constantly.
 - **Filters button + popover/sheet (Session 32)**: All other filter controls (Beds, Type, Price ≤, Monthly ≤, ✂ Price Cuts, 👁 Seen, Clear all) live behind a single **Filters** button. A blue count badge appears on the button when any filter is set. Filters apply live as the user changes them — no Apply button. **Desktop:** anchored popover that opens below the button, dismisses on outside-click or Escape. **Mobile (≤768px):** transforms into a **bottom sheet** — `position: fixed` at the viewport bottom, 58vh tall, drag handle, "Filters" + ✕ header, labeled rows (BEDS / TYPE / MAX PRICE / MAX MONTHLY), larger 14px controls, sticky footer with Clear all + a dark navy **Show N** primary button whose N updates live. Full-screen backdrop dims everything else; tap-to-close. Body scroll locked while open. Mode toggle (For Sale / Rent / Both) stays inline to the left of the Filters button on the same row.
@@ -113,6 +114,28 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Stale & off-market signals (W3 + W7)**: Listings unseen in Pass 1 for >7 days render a gray "not seen Nd" pill (amber if >21d). Listings *definitively* verified off-market via Pass 2 detail render a red "off-market" badge (separate, stronger signal). Shortlisted listings unseen >7d are auto-verified each cron run (capped 20/run). The Shortlist tab shows a yellow alert strip when shortlisted listings get verified off-market in the last 14 days.
 - **Freshness banner (Session 32)**: User-facing data-staleness indicator. Hidden when the data is ≤1 day old (cron's normal cadence). Amber 2–3 days, red 4+ days, with plain-English copy: "Listings last updated 2 days ago." or "Listings haven't refreshed in 4 days — Omar may need to check." Replaces the older `#health-strip` and `#coverage-strip` operator-facing elements (both removed from the main app). The operator-facing Pass 1 coverage sparkline + W5 cliff-guard view moved to `diagnostics.html`.
 - Single `index.html` for the main app + a separate `diagnostics.html` for operator-only views. No server, opens in any browser.
+
+### Card View v4 (Session 33) — `.listing-card.v4`
+
+Mobile-first, compact. The legacy 16px padding is zeroed out; each section owns its spacing. Five full-bleed sections, top to bottom:
+
+1. **Header** (`.v4-header`) — building name + neighborhood inline (font-weight 800 + muted), address with `String(listing.unit).replace(/^#+/, '')` so units already-prefixed with `#` don't double up, badge row: type pill, `✂ −$XK` price-cut amount badge, days-badge, "Built YYYY" chip, plus the W3 stale pill and W7 off-market badge.
+2. **Price + stats** (`.v4-price-stats`) — `$X.XXM` (font-size 22, weight 800) with "↓ from $Y.YYM" trend (red) inline, monthly all-in below. Right column: bed/bath, sqft/$psf, `±N% $/ft² vs shortlist` delta (green when cheaper than the shortlist median, red when more expensive). Pass1-only listings render `—/mo all-in` with a "pending Pass 2 data" tooltip; no math is changed in `calcMonthlyTotal`.
+3. **OQ block** (`.v4-oq`) — `#F5F8FD` blue tint. OQ label + numeric-only rank input + `Saved ✓` flag in a row, always-visible auto-growing notes textarea below.
+4. **RQ block** (`.v4-rq`) — `#FDF6F3` coral tint. Same structure.
+5. **Utility row** (`.v4-utility`) — labeled `[👁 Seen]` button on the left (32px-tall bordered, blue tint when `.is-seen`), `View on StreetEasy ↗` on the right.
+
+**Cut from the previous card:** Inbox/Shortlist/Archive button cluster (swipe at `initCardSwipe` line 2316 replaces it), built-year cell in stats row (promoted to a badge), per-card mortgage rate/term display (already global in the header), agent contact action buttons (never used from cards), footer "Yorkville" duplicate (already in header).
+
+**Helpers** (defined near the other render helpers, all pure):
+- `priceCutAmount(listing)` — returns `{absolute, percent, priorPrice}` from peak ask in `price_history` vs current `price`, or null when no cut.
+- `psfDeltaVsShortlist(listing)` — returns an integer percent vs `shortlistPsfMedian()`. The median is memoized on a key built from shortlist member IDs + their $/ft² sum, so filter changes invalidate correctly. Returns null on empty shortlist or rentals; call site omits the line.
+- `seenIconSvg()` — inline 16×16 outline eye SVG with `stroke="currentColor"`. Consumed by both `renderCards()` and `renderTable()`.
+- `autoGrowTextarea(el)` — sets `style.height = 'auto'; style.height = scrollHeight + 'px'`. Wired after `container.innerHTML` and on each textarea's `input` event. CSS `min-height` floors the empty state (52px desktop, 56px mobile).
+
+**Numeric-only rank inputs:** OQ/RQ use `type="text" inputmode="numeric" pattern="[0-9]*" maxlength="3"` plus `oninput="this.value = this.value.replace(/\D/g, '')"`. Mobile keypad shows digits only; paste of non-numeric becomes empty; saveCardRank validation still enforces `val >= 1` server-side.
+
+**What's untouched by v4:** `initCardSwipe`, `debounceNote`, `saveCardRank`, `putStatus`, `toggleSeen`, `transitionBucket`, `getStatus`, `_phCache`, `calcMonthlyTotal`, `stalePillHtml`, `offMarketBadgeHtml`. The swipe gesture handler at line 2152 already bails on touchstart inside `input, textarea, a, button, .seen-toggle, .rank-val` — the new textareas inherit that protection for free.
 
 ## Status Feature Architecture (Sessions 13–21)
 
@@ -263,6 +286,7 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `STATUS-BACKEND-WALKTHROUGH.md` — CTO build guide for the FastAPI+Postgres status backend on Railway (Session 15, custom-domain update Session 16)
 - `PRODUCT-BACKLOG.md` — CPO slate of 14 proposed product improvements, themed by Decision Quality / Data Quality / UX / Signal & Noise / DD Integration / Automation, plus open decisions awaiting user selection (Session 17, 2026-05-02)
 - `PIPELINE-RESILIENCE-PLAN.md` — 7-workstream plan written 2026-05-09 in response to the false-flag delisting incident. Phase 1 (W1+W2) stops the bleeding; Phase 2 (W3–W5) makes the pipeline observable; Phase 3 (W6–W7) protects user triage investment. Rec D (broader pull) explicitly excluded.
+- `CARD-REDESIGN-PLAN.md` — build plan for the Card View v4 redesign (Session 33). Records the intent (architect/CTO-reviewed plan v2) plus a "What actually shipped" addendum capturing every divergence from plan to ship.
 - `data/db.json` — canonical listing store (the source of truth; never overwritten destructively)
 - `data/latest.json` — generated from db.json for the app to consume
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing

@@ -131,3 +131,40 @@ and re-push. Blast radius: card view degraded for one evening.
   textarea focus.
 - "Mark seen" and "View on StreetEasy" both work.
 - Desktop card view unchanged (visual check at ≥1024px).
+
+---
+
+## What actually shipped (post-ship addendum)
+
+### Commits (in order)
+- `b8f5bb5aed` — Card v4 markup + CSS + signal helpers
+- `3ab9d26239` — Polish: `##` strip, auto-grow textareas, SVG eye
+- `3855b4df09` — Polish: numeric-only OQ/RQ inputs, remove last-seen pill
+- `60548d4fa9` — Polish: labeled Seen button
+- `cf2717c6c6` — Mobile: hide view toggle (subsequently flipped)
+- `78f5628fff` — Mobile: restore view toggle, table horizontally scrollable
+
+### Where ship matched the plan
+- One PR. No `?card-v4=1` flag. Confirmed correct call.
+- All three derived signals shipped. `psfDeltaVsShortlist` returns a number; call site formats. `priceCutAmount` uses peak-vs-current and matches the "−$XK" mockup.
+- Pass1-only listings render `—/mo all-in` with a "pending Pass 2 data" tooltip. Decided up-front, not on device.
+- Desktop card view at ≥769px completely unchanged.
+- Real-device test on Omar's iPhone was the verification step. No CI.
+
+### Where ship diverged from the plan
+- **Two flagged risks turned out to be non-issues.** The plan listed "textarea touch vs swipe conflict" and "debounced note loss on swipe-archive" as items to mitigate. Verified in code before implementing: `initCardSwipe` line 2152 already filters by `event.target.closest('input,textarea,a,button,...')` and `debounceNote`'s setTimeout closure preserves the value across DOM removal. Both mitigations dropped from the work.
+- **Swipe-affordance hint deferred.** The plan had a "show subtle '‹ swipe ›' chevron hint for first 3 sessions, localStorage-gated" item. Skipped at implementation time on the grounds that you'd discover swipe quickly enough. Revisit if needed — the localStorage-counter sketch is in the project notes if so.
+- **Last-seen pill shipped, then removed.** The plan called for `lastSeenLabel` driving a `.v4-last-seen` chip ("seen 1d ago" with a green dot when fresh, amber when stale). Shipped that way, then pulled after Omar pointed out it was a noisy reassurance signal on every fresh card and duplicated the existing W3 `stalePillHtml`. W3 already shows only when actionable (>7d). The v4 pill, `lastSeenLabel` helper, and `.v4-last-seen` / `.v4-ls-dot` / `.v4-header-row` CSS all removed.
+- **Seen toggle drifted from mockup, then was fixed.** v4 mockup had a bordered `[👁 Seen]` button. First implementation reverted to a bare icon. Caught by Omar; rebuilt as `.v4-seen-btn` (32px-tall bordered, blue tint when active). Table view stays icon-only.
+
+### Bugs / polish surfaced by Omar's screenshot audits (not in the plan)
+- **`##14C` in addresses.** Pre-existing bug in both card and table renderers — `' #' + listing.unit` doubled when `unit` was already `#14C`. Fixed with `String(listing.unit).replace(/^#+/, '')`.
+- **Notes textarea cropped multi-line content.** 56px min-height was a hard ceiling; added `autoGrowTextarea` that sets height to `scrollHeight` on render and on `input`. Min-height still floors empty state.
+- **Emoji eye looked unintentionally cute.** Swapped `👁` / `👁‍🗨` for a 16×16 outline SVG via `seenIconSvg()` helper. Single source consumed by both card and table.
+- **OQ/RQ inputs accepted non-digits.** `type="number"` allows decimals, "e", "+", "-". Switched to `type="text" inputmode="numeric" pattern="[0-9]*"` plus an `oninput` strip. Mobile keypad shows digits only.
+- **Mobile table view bled past viewport.** Not introduced by v4 — Session 28's `#scroll-content { overflow: visible }` mobile rule plus `body { overflow-x: hidden }` meant any wide content got clipped without scroll. Fix: `.table-wrap { max-width: 100vw; overflow-x: auto }` on mobile + `table { min-width: 900px }` so cells stay legible. View toggle stays visible on mobile by Omar's preference.
+
+### Time
+Estimated 3 hours, hard cap 5. Actual session covered the initial v4 markup/CSS plus all six commits in one continuous session. Roughly on-budget; the polish rounds were small.
+
+### Closed
