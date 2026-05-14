@@ -1094,12 +1094,16 @@ td {
   #bucket-tabs { padding: 0; }
   .bucket-tab { flex: 1; text-align: center; padding: 12px 4px; font-size: 11px; }
 
-  /* Card v4: single-column on mobile, full width */
-  #card-view { padding: 12px; gap: 12px; }
-  .listing-card { width: 100%; min-width: 0; }
+  /* Card v4: bump price + rank inputs for mobile readability (basic
+     card-view + listing-card mobile sizing is set further down). */
   .listing-card.v4 .v4-price { font-size: 24px; }
   .listing-card.v4 .v4-rank-input { width: 48px; height: 36px; }
   .listing-card.v4 .v4-notes { min-height: 56px; }
+
+  /* Table view is not mobile-friendly — hide the toggle so users stay on
+     card view (auto-selected at init). Table view stays available on
+     desktop. */
+  .view-toggle { display: none; }
 
   /* Filter bar: mode-toggle + Filters button on row 1 (justified left/right),
      search on row 2 (full width). Achieved via flex order so DOM stays
