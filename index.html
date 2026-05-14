@@ -823,6 +823,112 @@ td {
 .card-rank-input.rq-input:focus { border-color: #FF6000; }
 .card-rank-input:disabled { background: #f7f8fa; color: #aaa; cursor: not-allowed; }
 
+/* ─── Card v4 (compact, mobile-first redesign) ─────────────────
+   Five full-bleed sections: header / price+stats / OQ / RQ / utility.
+   The .listing-card.v4 class zeros out the legacy 16px padding so each
+   section owns its spacing and can have its own background tint. */
+.listing-card.v4 { padding: 0; overflow: hidden; }
+.v4-header { padding: 12px 14px 0; }
+.v4-header-row { display: flex; align-items: baseline; gap: 6px; margin-bottom: 2px; }
+.v4-title {
+  font-size: 16px; font-weight: 800; color: #0E1730;
+  flex: 1; min-width: 0; overflow: hidden;
+  text-overflow: ellipsis; white-space: nowrap;
+}
+.v4-title .v4-nb { font-weight: 400; font-size: 13px; color: #888; }
+.v4-last-seen {
+  font-size: 11px; color: #888; white-space: nowrap;
+  display: inline-flex; align-items: center; gap: 5px;
+}
+.v4-ls-dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: #1a7a3c; display: inline-block;
+}
+.v4-last-seen.stale .v4-ls-dot { background: #c89000; }
+.v4-last-seen.cold  .v4-ls-dot { background: #999; }
+.v4-address { font-size: 12px; color: #666; margin-bottom: 8px; }
+.v4-badge-row { display: flex; flex-wrap: wrap; gap: 4px; padding-bottom: 10px; align-items: center; }
+.v4-badge {
+  font-size: 10px; font-weight: 700;
+  padding: 2px 7px; border-radius: 4px;
+  letter-spacing: 0.03em;
+}
+.v4-badge.cut {
+  background: #fde8e8; color: #9a2020;
+  display: inline-flex; align-items: center; gap: 3px;
+}
+.v4-badge.built { background: #f4f6f8; color: #888; font-weight: 600; }
+
+.v4-price-stats {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: 8px; padding: 8px 14px 10px;
+  border-top: 1px solid #f0f2f5;
+}
+.v4-price-block { min-width: 0; }
+.v4-price-line { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.v4-price { font-size: 22px; font-weight: 800; color: #0E1730; line-height: 1; }
+.v4-price-trend { font-size: 11px; color: #9a2020; }
+.v4-monthly { font-size: 12px; color: #444; margin-top: 4px; }
+.v4-monthly.pending { color: #aaa; cursor: help; }
+.v4-stats { text-align: right; font-size: 11px; color: #666; line-height: 1.5; }
+.v4-stats strong { color: #111; font-weight: 700; }
+.v4-psf-delta { font-size: 10px; margin-top: 1px; }
+.v4-psf-delta.good { color: #1a7a3c; }
+.v4-psf-delta.bad  { color: #9a2020; }
+
+.v4-oq, .v4-rq { padding: 10px 12px; border-top: 1px solid #f0f2f5; }
+.v4-oq { background: #F5F8FD; }
+.v4-rq { background: #FDF6F3; }
+.v4-rank-row { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+.v4-rank-label { font-size: 11px; font-weight: 800; letter-spacing: 0.04em; }
+.v4-rank-label.oq { color: #185FA5; }
+.v4-rank-label.rq { color: #993C1D; }
+.v4-rank-input {
+  width: 44px; height: 30px;
+  text-align: center;
+  font-size: 14px; font-weight: 700;
+  border: 1px solid #B5D4F4;
+  border-radius: 6px;
+  background: white;
+  color: #0C447C;
+  font-family: inherit;
+}
+.v4-rank-input.rq { border-color: #F5C4B3; color: #712B13; }
+.v4-rank-input:focus { outline: 2px solid #3461D9; outline-offset: -1px; }
+.v4-rank-input.rq:focus { outline-color: #FF6000; }
+.v4-rank-saved {
+  font-size: 10px; color: #1a7a3c; font-weight: 600;
+  opacity: 0; transition: opacity 0.3s;
+  margin-left: auto;
+}
+.v4-notes {
+  width: 100%; min-height: 52px;
+  font-size: 13px; padding: 7px 9px;
+  border: 1px solid #e4e7ed;
+  border-radius: 6px;
+  background: white; color: #333;
+  font-family: inherit; line-height: 1.4;
+  resize: vertical;
+  box-sizing: border-box;
+}
+.v4-notes:focus { outline: none; border-color: #3461D9; }
+.v4-notes.rq:focus { border-color: #FF6000; }
+
+.v4-utility {
+  display: flex; align-items: center; gap: 8px;
+  padding: 8px 12px;
+  border-top: 1px solid #f0f2f5;
+}
+.v4-utility .seen-toggle { margin: 0; opacity: 0.5; font-size: 16px; }
+.v4-utility .seen-toggle.is-seen { opacity: 1; }
+.v4-utility-link {
+  margin-left: auto;
+  font-size: 12px; font-weight: 600;
+  color: #3461D9; text-decoration: none;
+  padding: 6px 10px; border-radius: 6px;
+}
+.v4-utility-link:hover { background: #eef2ff; }
+
 /* ─── Bucket Tabs ─────────────────────────────────────────────── */
 #bucket-tabs {
   background: white;
@@ -974,6 +1080,13 @@ td {
   /* Bucket tabs: equal-width, full row */
   #bucket-tabs { padding: 0; }
   .bucket-tab { flex: 1; text-align: center; padding: 12px 4px; font-size: 11px; }
+
+  /* Card v4: single-column on mobile, full width */
+  #card-view { padding: 12px; gap: 12px; }
+  .listing-card { width: 100%; min-width: 0; }
+  .listing-card.v4 .v4-price { font-size: 24px; }
+  .listing-card.v4 .v4-rank-input { width: 48px; height: 36px; }
+  .listing-card.v4 .v4-notes { min-height: 56px; }
 
   /* Filter bar: mode-toggle + Filters button on row 1 (justified left/right),
      search on row 2 (full width). Achieved via flex order so DOM stays
@@ -1402,6 +1515,57 @@ function priceSignals(listing) {
     '</span>';
   _phCache[listing.id] = { icons: html, hasCuts: cuts > 0 };
   return _phCache[listing.id];
+}
+
+/* ─── Card v4 derived signals ───────────────────────────────────────
+   Three small pure functions used by renderCards() to surface signals
+   that are already implicit in the data:
+   • priceCutAmount — peak ask vs current price (matches v4 "−$250K")
+   • lastSeenLabel  — human label for daysSinceLastPass1
+   • psfDeltaVsShortlist — current listing's $/ft² vs shortlist median,
+     memoized on shortlist contents
+*/
+function priceCutAmount(listing) {
+  if (!listing.price_history || !listing.price_history.length) return null;
+  const prices = listing.price_history.map(h => h.price).filter(Boolean);
+  if (!prices.length) return null;
+  const peak = Math.max(...prices, listing.price || 0);
+  if (!peak || peak <= listing.price) return null;
+  const absolute = peak - listing.price;
+  const percent = Math.round((absolute / peak) * 100);
+  return { absolute, percent, priorPrice: peak };
+}
+
+function lastSeenLabel(listing) {
+  const n = daysSinceLastPass1(listing);
+  if (n === null || n === undefined) return null;
+  if (n === 0) return 'seen today';
+  if (n === 1) return 'seen 1d ago';
+  return 'seen ' + n + 'd ago';
+}
+
+let _shortlistMedianCache = { key: null, median: null };
+function shortlistPsfMedian() {
+  const ids = Object.keys(statusMap).filter(id => statusMap[id] && statusMap[id].bucket === 'shortlist');
+  if (!ids.length) return null;
+  const vals = [];
+  ids.forEach(id => {
+    const l = allListings.find(x => x.id === id);
+    if (l && l.price_per_sqft && l.listing_type !== 'rent') vals.push(l.price_per_sqft);
+  });
+  if (!vals.length) return null;
+  const key = ids.sort().join(',') + ':' + vals.reduce((a, b) => a + b, 0);
+  if (_shortlistMedianCache.key === key) return _shortlistMedianCache.median;
+  const med = median(vals);
+  _shortlistMedianCache = { key, median: med };
+  return med;
+}
+
+function psfDeltaVsShortlist(listing) {
+  if (listing.listing_type === 'rent' || !listing.price_per_sqft) return null;
+  const med = shortlistPsfMedian();
+  if (!med) return null;
+  return Math.round(((listing.price_per_sqft - med) / med) * 100);
 }
 
 function parseMtgInput(val) {
@@ -2236,84 +2400,100 @@ function renderCards() {
     const wrapEst = (txt) => sqEst
       ? `<span class="estimated" title="${sqTitle}">${txt}</span>`
       : txt;
-    const priceRow = isRent
-      ? `<span class="card-ask">${fmtMoney(monthly)}<span style="font-size:13px;font-weight:500;">/mo</span></span>`
-      : `<span class="card-ask">${fmtPrice(listing.price)}</span><span class="card-monthly">${fmtMoney(monthly)}/mo</span>`;
-
-    const isSeen = !!getStatus(listing.id).seen;
-    const cardSeenHtml = `<span class="seen-toggle${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Visited' : 'Mark as visited'}">${isSeen ? '👁' : '👁‍🗨'}</span>`;
-    let cardActionsHtml = '';
-    if (currentBucket === 'inbox') {
-      cardActionsHtml = `<button class="btn-shortlist" onclick="transitionBucket('${listing.id}','shortlist',event)">★ Shortlist</button><button class="btn-archive" onclick="transitionBucket('${listing.id}','archive',event)">✕ Archive</button>`;
-    } else if (currentBucket === 'shortlist') {
-      cardActionsHtml = `<button class="btn-archive" onclick="transitionBucket('${listing.id}','archive',event)">Archive</button>`;
-    } else {
-      cardActionsHtml = `<button class="btn-inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button>`;
-    }
-
+    const cut = priceCutAmount(listing);
+    const lastSeen = lastSeenLabel(listing);
+    const lastSeenN = daysSinceLastPass1(listing);
+    const lsCls = (lastSeenN === null || lastSeenN === undefined) ? 'cold'
+                : (lastSeenN > 7 ? 'stale' : '');
+    const psfDelta = psfDeltaVsShortlist(listing);
+    const isPass1Only = listing.data_quality === 'pass1';
     const rightLabel = currentBucket === 'archive' ? '↩ Inbox' : '★ Shortlist';
+    const st = getStatus(listing.id);
+    const isSeen = !!st.seen;
+
+    const priceLine = isRent
+      ? `<div class="v4-price">${fmtMoney(monthly)}<span style="font-size:13px;font-weight:500;color:#444;">/mo</span></div>`
+      : `<div class="v4-price-line"><span class="v4-price">${fmtPrice(listing.price)}</span>${cut ? `<span class="v4-price-trend">↓ from ${fmtPrice(cut.priorPrice)}</span>` : ''}</div>`;
+    const monthlyLine = isRent ? '' : (isPass1Only || !monthly
+      ? `<div class="v4-monthly pending" title="Awaiting Pass 2 data — fees/taxes not yet pulled">—/mo all-in</div>`
+      : `<div class="v4-monthly">${fmtMoney(monthly)}/mo all-in</div>`);
+
+    const psfDeltaHtml = (psfDelta === null) ? '' :
+      `<div class="v4-psf-delta ${psfDelta < 0 ? 'good' : 'bad'}">${psfDelta > 0 ? '+' : ''}${psfDelta}% $/ft² vs shortlist</div>`;
+
+    const psfStat = !isRent && listing.price_per_sqft
+      ? ' · ' + wrapEst('<strong>' + fmtMoney(listing.price_per_sqft) + '</strong>/ft²')
+      : '';
+    const sqftStat = listing.sqft
+      ? wrapEst('<strong>' + listing.sqft.toLocaleString() + '</strong> ft²')
+      : '<strong>—</strong> ft²';
+
+    const cutBadge = cut ? `<span class="v4-badge cut" title="${cut.percent}% off peak ask">✂ −${fmtPrice(cut.absolute)}</span>` : '';
+    const builtBadge = listing.year_built ? `<span class="v4-badge built">Built ${listing.year_built}</span>` : '';
+
     html += `
-      <div class="listing-card${isStale ? ' row-stale' : ''}" data-id="${listing.id}">
+      <div class="listing-card v4${isStale ? ' row-stale' : ''}" data-id="${listing.id}">
         <div class="swipe-indicator swipe-right">${rightLabel}</div>
         <div class="swipe-indicator swipe-left">✕ Archive</div>
-        <div class="card-type-row">
-          <div>${showBoth ? listingTypeBadge(listing) + ' ' : ''}${typePill(listing.type)}</div>
-          <span class="days-badge ${days.cls}">${days.text}</span>${stalePill}${offMarket}
+        <div class="v4-header">
+          <div class="v4-header-row">
+            <div class="v4-title">${listing.building || '—'}${listing.neighborhood ? ` <span class="v4-nb">· ${listing.neighborhood}</span>` : ''}</div>
+            ${lastSeen ? `<span class="v4-last-seen ${lsCls}"><span class="v4-ls-dot"></span>${lastSeen}</span>` : ''}
+          </div>
+          <div class="v4-address">${listing.address}${listing.unit ? ' #' + listing.unit : ''}</div>
+          <div class="v4-badge-row">
+            ${showBoth ? listingTypeBadge(listing) : ''}
+            ${typePill(listing.type)}
+            ${cutBadge}
+            <span class="days-badge ${days.cls}">${days.text}</span>
+            ${builtBadge}
+            ${stalePill}${offMarket}
+          </div>
         </div>
-        <div class="card-building">${listing.building || '—'}</div>
-        <div class="card-address">${listing.address}${listing.unit ? ' #' + listing.unit : ''} · ${listing.neighborhood || ''}</div>
-        <div class="card-price-row">${priceRow}</div>
-        <div class="card-stats">
-          <span><strong>${listing.beds ?? '—'}</strong> bd</span>
-          <span><strong>${listing.baths ?? '—'}</strong> ba</span>
-          <span>${listing.sqft ? wrapEst('<strong>' + listing.sqft.toLocaleString() + '</strong> sqft') : '<strong>—</strong> sqft'}</span>
-          ${!isRent && listing.price_per_sqft ? `<span>${wrapEst('<strong>' + fmtMoney(listing.price_per_sqft) + '</strong>/sqft')}</span>` : ''}
-          <span>Built <strong>${listing.year_built || '—'}</strong></span>
+        <div class="v4-price-stats">
+          <div class="v4-price-block">
+            ${priceLine}
+            ${monthlyLine}
+          </div>
+          <div class="v4-stats">
+            <div><strong>${listing.beds ?? '—'}</strong>bd · <strong>${listing.baths ?? '—'}</strong>ba</div>
+            <div>${sqftStat}${psfStat}</div>
+            ${psfDeltaHtml}
+          </div>
         </div>
-        <div class="card-actions" onclick="event.stopPropagation()">
-          ${cardSeenHtml}${cardActionsHtml}
-        </div>
-        <div class="card-ranks">
-          <div class="card-rank-group">
-            <label class="oq-label">OQ #</label>
-            <input type="number" min="1" class="card-rank-input"
-              value="${(getStatus(listing.id).oq_rank || '')}"
-              ${true ? '' : 'disabled'}
+        <div class="v4-oq">
+          <div class="v4-rank-row">
+            <span class="v4-rank-label oq">OQ</span>
+            <input type="number" min="1" class="v4-rank-input"
+              value="${(st.oq_rank || '')}"
               onchange="saveCardRank('${listing.id}','oq_rank',this.value)"
               onclick="event.stopPropagation()">
+            <span class="v4-rank-saved" id="ns-oq-${listing.id}">Saved ✓</span>
           </div>
-          <div class="card-rank-group">
-            <label class="rq-label">RQ #</label>
-            <input type="number" min="1" class="card-rank-input rq-input"
-              value="${(getStatus(listing.id).rq_rank || '')}"
-              ${true ? '' : 'disabled'}
+          <textarea class="v4-notes"
+            placeholder="Notes…"
+            oninput="debounceNote('${listing.id}','oq_notes',this.value)"
+            onclick="event.stopPropagation()"
+          >${st.oq_notes || ''}</textarea>
+        </div>
+        <div class="v4-rq">
+          <div class="v4-rank-row">
+            <span class="v4-rank-label rq">RQ</span>
+            <input type="number" min="1" class="v4-rank-input rq"
+              value="${(st.rq_rank || '')}"
               onchange="saveCardRank('${listing.id}','rq_rank',this.value)"
               onclick="event.stopPropagation()">
+            <span class="v4-rank-saved" id="ns-rq-${listing.id}">Saved ✓</span>
           </div>
+          <textarea class="v4-notes rq"
+            placeholder="Notes…"
+            oninput="debounceNote('${listing.id}','rq_notes',this.value)"
+            onclick="event.stopPropagation()"
+          >${st.rq_notes || ''}</textarea>
         </div>
-        <div class="card-notes">
-          <div class="card-notes-group">
-            <label class="oq-label">OQ Notes <span class="notes-saved" id="ns-oq-${listing.id}">Saved ✓</span></label>
-            <textarea
-              ${true ? '' : 'disabled'}
-              placeholder="${true ? 'Add notes…' : 'Set API key to add notes'}"
-              oninput="debounceNote('${listing.id}','oq_notes',this.value)"
-              onclick="event.stopPropagation()"
-            >${getStatus(listing.id).oq_notes || ''}</textarea>
-          </div>
-          <div class="card-notes-group">
-            <label class="rq-label">RQ Notes <span class="notes-saved" id="ns-rq-${listing.id}">Saved ✓</span></label>
-            <textarea class="rq-textarea"
-              ${true ? '' : 'disabled'}
-              placeholder="${true ? 'Add notes…' : 'Set API key to add notes'}"
-              oninput="debounceNote('${listing.id}','rq_notes',this.value)"
-              onclick="event.stopPropagation()"
-            >${getStatus(listing.id).rq_notes || ''}</textarea>
-          </div>
-        </div>
-        <div class="card-footer">
-          <span>${listing.neighborhood || ''}</span>
-          <a href="${listing.url}" target="_blank" onclick="event.stopPropagation()">View on StreetEasy ↗</a>
+        <div class="v4-utility" onclick="event.stopPropagation()">
+          <span class="seen-toggle${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Visited' : 'Mark as visited'}">${isSeen ? '👁' : '👁‍🗨'}</span>
+          <a class="v4-utility-link" href="${listing.url}" target="_blank" onclick="event.stopPropagation()">View on StreetEasy ↗</a>
         </div>
       </div>`;
   });
