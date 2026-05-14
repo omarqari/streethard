@@ -4,6 +4,34 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-14 — Sale price_history schema backport (Session 35, follow-up)
+
+### Context
+Verifying that the Session 34 schema-drift patches held in production: today's 10:03 UTC cron ingested 6 new listings via the patched `normalize()` / `normalize_rental()`. Five sales + one rental, all with `listed_date` populated correctly. But the audit also surfaced that **5/6 of the new listings had empty `price_history`** — and a broader sweep found 20 sale listings across the database (some going back to mid-2025) where `price_history` was zeroed out.
+
+### Root cause
+Session 34's rental normalize patch added `propertyHistory_json[0].rentalEventsOfInterest` parsing. I scoped it to `normalize_rental()` only per the explicit "fix that rental thing" instruction, with a note flagging that sales also needed it. The note got captured but the work didn't get done until today. Meanwhile every sale listing ingested under the 2026-05-12 schema went through `normalize()`, hit the comment that said *"propertyHistory_json — NOT the flat date/price/event format, don't add it here"* (true under the 2026-05-02 schema), and ended up with empty `price_history`.
+
+### Fix
+**`6c0b017087`** — Backport the `propertyHistory_json` + `pricing_priceChanges_json` parsing to `normalize()`. Same `STATUS_MAP` (ACTIVE→LISTED, PRICE_DECREASED, DELISTED→OFF_MARKET, etc.), same fallback chain, just keyed on `saleEventsOfInterest` instead of `rentalEventsOfInterest`. Deleted the stale "don't add it here" comment.
+
+### Backfill
+**`8e4b923c92`** — Re-pulled all 20 sale listings with empty `price_history` and merged the new histories. Range of recovery:
+- 11 brand-new listings (5/11–5/13) → 1 LISTED entry each (initial event, only event)
+- 9 older listings (back to 2025-07-21) → 2–9 entries each
+- Most striking: **`1782178` (90 East End Ave, listed 2025-07-21) → 9 entries** showing $2.9M → $2.405M over 10 months. That price-decay history was silently zeroed by the schema drift; now back.
+
+Sale-side price-cut signals (✂ red badge) will work again on these listings.
+
+### Verification
+On `origin/main` after the backfill: 326 sales total, **326 with non-empty `price_history`, 0 empty**. Lesson re-reinforces the Session 34 memory entry — schema-tolerant normalizers beat vendor stability, and "fix the class of failure, not just this instance" applied to instrumentation last session also applies to data extraction this session.
+
+### Commits
+- `6c0b017087` — normalize() backport for sale propertyHistory_json
+- `8e4b923c92` — Backfill price_history on 20 sale listings
+
+---
+
 ## 2026-05-14 — Diagnostics Gaps Closed (Session 35)
 
 Closeout work for the two diagnostics gaps surfaced by the Session 34 schema-drift incident.
