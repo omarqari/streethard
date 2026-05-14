@@ -192,9 +192,9 @@ All must pass on a real iPhone + laptop pair before v1 is closed:
 
 Both deferred from the schema-drift recovery session — see CHANGELOG entry "Pipeline Schema Drift Recovery" for the incident that surfaced them.
 
-- [ ] **D-G1 — Log sentinel-aborts to `pipeline_health.json`.** When `pull.py` hits the actor's "No results found" sentinel and exits with `sys.exit(1)`, write a row `{date, pass1_sale: 0, pass1_rent: 0, active: <prior>, delisted: 0, status: "abort"}` to `pipeline_health.json` *before* exiting. Today the abort path bypasses all logging, so missed cron days are invisible on `diagnostics.html`'s W5 table. The diagnostics page already has CSS styling for `abort`-status rows — only the data path is missing.
+- [x] **D-G1 — Log sentinel-aborts to `pipeline_health.json`.** ✅ Session 35 (`0bb9da6e12`). `pull.py`'s sentinel-abort branch now sets `pass1_counts_by_type[listing_type] = 0` and calls `update_pipeline_health(..., guard_status='abort')` before `sys.exit(1)`. Preserves any pass1 counts already captured earlier in the run (e.g., sale succeeds then rent aborts — sale's count stays in the abort record). Verified via in-process simulation. The diagnostics page's W5 table already had CSS for `abort`-status rows; this closes the data path.
 
-- [ ] **D-G2 — Add data-freshness panel to `diagnostics.html`.** New card showing the newest `listed_date` in `db.json` and its age in days. Amber at >3 days, red at >5 days. Backed by `max(listed_date)` over the listings array. (This promotes the long-standing Session 12 item "Add a pipeline health assertion" — same underlying ask, sharper framing.)
+- [x] **D-G2 — Add data-freshness panel to `diagnostics.html`.** ✅ Session 35 (`0bb9da6e12`). New "Newest listing" kv in the Latest Run panel showing `max(listed_date)` across all listings as age in days. Green ≤2d, amber 3–4d, red ≥5d. Tooltip shows the actual date. Today's render: "2d" (green), max listed_date 2026-05-12. Promotes and closes the long-standing Session 12 "pipeline health assertion" item — same underlying ask.
 
 - [ ] **(stretch) Sweep the remaining 12 rentals with null address / listed_date.** The Session 34 backfill only re-pulled the 7 most-affected rentals. 12 other rentals still have stale pre-schema-flip data. The next cron run will re-Pass-2 them naturally; force-refresh only if it doesn't.
 

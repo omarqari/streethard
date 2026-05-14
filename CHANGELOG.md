@@ -4,6 +4,35 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-14 — Diagnostics Gaps Closed (Session 35)
+
+Closeout work for the two diagnostics gaps surfaced by the Session 34 schema-drift incident.
+
+### D-G1 — Sentinel-aborts now show on the diagnostics page
+
+`scripts/pull.py`'s sentinel-abort branch (the one that fires when memo23 returns `{message: "No results found"}` placeholder rows) used to `sys.exit(1)` immediately with no record written. That made missed cron days *invisible* on `diagnostics.html` — the W5 cliff-guard table jumped over them. The 5/12 missed run only surfaced during Session 34's manual audit of GitHub Actions runs.
+
+Fix: before `sys.exit(1)`, set `pass1_counts_by_type[listing_type] = 0` and call `update_pipeline_health(..., guard_status='abort')`. Preserves any counts already captured earlier in the run — if sale Pass 1 succeeded with 280 listings and rent then sentinel-aborts, the row is `{pass1_sale: 280, pass1_rent: 0, status: 'abort'}`, not `{pass1_sale: null}`. The page's existing `tr.abort` CSS lights it up red. Verified via in-process simulation.
+
+### D-G2 — Freshness floor on the diagnostics page
+
+New "Newest listing" kv in the Latest Run panel showing `max(listed_date)` across `latest.json`'s listings as an age in days. Thresholds match the existing "Age" kv: green ≤2d, amber 3–4d, red ≥5d. Tooltip carries the actual date.
+
+This is the metric that would have caught Session 34's bug on day one. Pass 1 counts and the W5 cliff guard both watch *volume* — Pass 1 was returning 310 listings/day right through the schema-drift window. None of those panels could see that `normalize()` was silently setting `listed_date=None` on every new ingestion. A freshness floor measures *content* instead.
+
+Promotes the long-standing Session 12 item "Add a pipeline health assertion" — same underlying ask.
+
+### Commits
+- `0bb9da6e12` — D-G1 (pull.py) + D-G2 (diagnostics.html) in one commit
+
+### Render today (sanity check)
+`Newest listing: 2d` (green) — `max(listed_date) = 2026-05-12`, two days behind the 2026-05-14 viewing date. Same panel would have read `5d` red on the morning Omar asked the original "nothing new in 5 days" question, instead of silently sitting on a cliff-guard-green "OK" everywhere.
+
+### Lesson
+Diagnostics is a UI for failure modes you've already named. Adding the "newest listing" panel didn't take new metrics — `listed_date` was already in `latest.json`. The instrument is cheap; the *insight that this was a class of failure worth instrumenting* is what took an incident to learn. Both items here move that insight into the operator surface so we won't have to relearn it from a third instance.
+
+---
+
 ## 2026-05-14 — Pipeline Schema Drift Recovery (Session 34)
 
 ### Context
