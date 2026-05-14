@@ -900,16 +900,22 @@ td {
 
 /* ─── Swipe Indicators (card triage) ──────────────────────────── */
 .swipe-indicator {
-  position: absolute; top: 50%; transform: translateY(-50%);
-  font-size: 15px; font-weight: 900; opacity: 0; pointer-events: none;
-  padding: 6px 12px; border-radius: 6px; border: 3px solid;
-  z-index: 2; white-space: nowrap;
+  position: absolute; top: 50%;
+  font-size: 18px; font-weight: 900; opacity: 0; pointer-events: none;
+  padding: 8px 14px; border-radius: 6px; border: 3px solid;
+  z-index: 2; white-space: nowrap; letter-spacing: 0.04em;
 }
-.swipe-right { left: 14px;  color: #3461D9; border-color: #3461D9; background: rgba(52,97,217,0.1); }
-.swipe-left  { right: 14px; color: #888;   border-color: #999;    background: rgba(0,0,0,0.06); }
+.swipe-right { left: 14px;  transform: translateY(-50%) rotate(-15deg); color: #1a7a3c; border-color: #1a7a3c; background: rgba(26,122,60,0.1); }
+.swipe-left  { right: 14px; transform: translateY(-50%) rotate(15deg);  color: #c62828; border-color: #c62828; background: rgba(198,40,40,0.1); }
 
 /* ─── Mobile (≤768px) ─────────────────────────────────────────── */
 @media (max-width: 768px) {
+
+  /* Switch to full-page scroll; only #main-header stays pinned */
+  body { height: auto; min-height: 100dvh; overflow-y: auto; overflow-x: hidden; }
+  #sticky-top { position: static; box-shadow: none; }
+  #main-header { position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.15); }
+  #scroll-content { overflow: visible; flex: none; }
 
   /* Header: hide non-essential items, show calc toggle */
   .header-tag, #last-updated { display: none; }
@@ -1975,6 +1981,7 @@ function renderTable() {
 function initCardSwipe(cardEl, listingId) {
   let startX = null, startY = null, currentX = 0, dragging = false;
   const THRESHOLD = 80;
+  const RESIST = 20; // max drag px for a blocked direction
   const indRight = cardEl.querySelector('.swipe-right');
   const indLeft  = cardEl.querySelector('.swipe-left');
 
@@ -1988,31 +1995,57 @@ function initCardSwipe(cardEl, listingId) {
 
   cardEl.addEventListener('touchmove', e => {
     if (startX === null) return;
-    const dx = e.touches[0].clientX - startX;
-    const dy = e.touches[0].clientY - startY;
-    if (!dragging && Math.abs(dy) > Math.abs(dx)) { startX = null; return; }
-    dragging = true; currentX = dx;
+    const rawDx = e.touches[0].clientX - startX;
+    const dy    = e.touches[0].clientY - startY;
+    if (!dragging && Math.abs(dy) > Math.abs(rawDx)) { startX = null; return; }
+    dragging = true;
+
+    const canRight = currentBucket !== 'shortlist';
+    const canLeft  = currentBucket !== 'archive';
+
+    // Rubber-band resistance for blocked directions
+    let dx = rawDx;
+    if (rawDx > 0 && !canRight) dx = Math.min(rawDx * 0.15, RESIST);
+    if (rawDx < 0 && !canLeft)  dx = Math.max(rawDx * 0.15, -RESIST);
+    currentX = dx;
+
     cardEl.style.transform = `translateX(${dx}px) rotate(${dx * 0.04}deg)`;
     const pct = Math.min(Math.abs(dx) / THRESHOLD, 1);
-    indRight.style.opacity = dx > 0 ? pct : 0;
-    indLeft.style.opacity  = dx < 0 ? pct : 0;
+
+    if (dx > 0 && canRight) {
+      indRight.style.opacity = pct;
+      indLeft.style.opacity  = 0;
+      cardEl.style.background = `rgba(26,122,60,${pct * 0.18})`;
+    } else if (dx < 0 && canLeft) {
+      indRight.style.opacity = 0;
+      indLeft.style.opacity  = pct;
+      cardEl.style.background = `rgba(198,40,40,${pct * 0.15})`;
+    } else {
+      indRight.style.opacity = indLeft.style.opacity = 0;
+      cardEl.style.background = '';
+    }
   }, { passive: true });
 
   cardEl.addEventListener('touchend', () => {
     if (!dragging) { startX = null; return; }
-    if (currentX > THRESHOLD) {
+    const canRight = currentBucket !== 'shortlist';
+    const canLeft  = currentBucket !== 'archive';
+
+    if (currentX > THRESHOLD && canRight) {
+      const target = currentBucket === 'archive' ? 'inbox' : 'shortlist';
       cardEl.style.transition = 'transform 0.25s ease-out, opacity 0.25s';
       cardEl.style.transform  = 'translateX(120%) rotate(15deg)';
       cardEl.style.opacity = '0';
-      setTimeout(() => transitionBucket(listingId, 'shortlist', null), 250);
-    } else if (currentX < -THRESHOLD) {
+      setTimeout(() => transitionBucket(listingId, target, null), 250);
+    } else if (currentX < -THRESHOLD && canLeft) {
       cardEl.style.transition = 'transform 0.25s ease-out, opacity 0.25s';
       cardEl.style.transform  = 'translateX(-120%) rotate(-15deg)';
       cardEl.style.opacity = '0';
       setTimeout(() => transitionBucket(listingId, 'archive', null), 250);
     } else {
-      cardEl.style.transition = 'transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275)';
+      cardEl.style.transition = 'transform 0.3s cubic-bezier(0.175,0.885,0.32,1.275), background 0.2s';
       cardEl.style.transform  = '';
+      cardEl.style.background = '';
       indRight.style.opacity = indLeft.style.opacity = 0;
     }
     startX = null; dragging = false;
@@ -2055,9 +2088,10 @@ function renderCards() {
       cardActionsHtml = `<button class="btn-inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button>`;
     }
 
+    const rightLabel = currentBucket === 'archive' ? '↩ Inbox' : '★ Shortlist';
     html += `
       <div class="listing-card${isStale ? ' row-stale' : ''}" data-id="${listing.id}">
-        <div class="swipe-indicator swipe-right">★ Shortlist</div>
+        <div class="swipe-indicator swipe-right">${rightLabel}</div>
         <div class="swipe-indicator swipe-left">✕ Archive</div>
         <div class="card-type-row">
           <div>${showBoth ? listingTypeBadge(listing) + ' ' : ''}${typePill(listing.type)}</div>

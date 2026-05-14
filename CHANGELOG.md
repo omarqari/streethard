@@ -29,6 +29,18 @@ Cherry-picked the `8fe17a3f` tweak. On ≤768px viewports:
 - `claude/fix-streethard-mobile-6pzOx` — `8fe17a3f` cherry-picked here; rest already merged
 - `claude/fix-rental-listings-wE8pD` — fully merged into main; trailing commits were duplicate docs
 
+### Second recovery: swipe refinements silently overwritten by Session 30
+After the initial cleanup, found that two further commits had been silently reverted by the same Session 30 "restore mobile" commit (`802dcd44`, May 10):
+
+- **`9a28476c` (May 3, 16:27) — "Mobile UX: swipe green/red feedback + minimal sticky header"** — bigger badge font with letter-spacing, green (`#1a7a3c`) right + red (`#c62828`) left swipe colors with rotation, drag-tinted card background (`rgba(26,122,60,...)` / `rgba(198,40,40,...)`) that intensifies with drag distance, mobile sticky-header layout (`body { min-height: 100dvh; overflow-y: auto }` + `#main-header { position: sticky }` so only the header stays pinned and the rest scrolls naturally).
+- **`a272ec69` (May 3, 17:10) — "Swipe: respect bucket context"** — `RESIST` constant + rubber-band resistance for blocked directions (you can't swipe a shortlisted card right into shortlist again, can't swipe an archived card left into archive again — the card resists with 15% sensitivity capped at 20px), contextual transition target (swiping right on an archived card restores it to inbox; swiping right on inbox sends to shortlist), contextual `rightLabel` in `renderCards()` so the swipe indicator reads "↩ Inbox" on archived cards.
+
+**Diagnosis:** Session 30 ported forward from `2fee1b08` (May 3, 15:56), the *initial* mobile commit, not the *latest* tip of the mobile branch (`a272ec69`, May 3, 17:10). The two refinement commits remained in git history as standalone commits, but their content was overwritten by the rebased-forward `802dcd44`. They never got into the merged PR.
+
+**Fix:** re-applied all the missing content directly to current main (commit pending).
+
+**Lesson reinforced:** when forward-porting work from an older branch, always rebase from the BRANCH TIP, not a snapshot. `git log <branch>` to see the latest, then port the cumulative state. The standalone commit hashes in main's history are misleading — the SHAs are present, but the patches were undone.
+
 ### Lesson reinforced
 Sandbox-side git is brittle: stale `.git/*.lock` files persist across sessions, `git fetch` partially fails on sandbox-mounted `.git/objects` (the new branch refs may or may not actually land), and the proxy used in mobile sessions can't push. The combination produces a clone that *looks* slightly behind but is actually full of stale local versions of files that have moved forward on remote — pushing those would silently destroy live work. Recovery: always `git reset --hard origin/main` from real Terminal before doing anything; never trust the sandbox's view of what's local-vs-remote.
 
