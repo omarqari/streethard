@@ -2,9 +2,9 @@
   "last_updated": "2026-05-14",
   "stats": {
     "total": 391,
-    "pass1_only": 4,
+    "pass1_only": 0,
     "partial": 0,
-    "pass2_complete": 387,
+    "pass2_complete": 391,
     "sale": 321,
     "rent": 70,
     "delisted": 0
@@ -28211,9 +28211,9 @@
       "baths": 3.0,
       "price_per_sqft": null,
       "type": "rental",
-      "year_built": null,
-      "days_on_market": null,
-      "listed_date": null,
+      "year_built": 2001,
+      "days_on_market": 12,
+      "listed_date": "2026-04-22",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -28221,10 +28221,29 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Vector New York, LLC",
-      "price_history": [],
-      "data_quality": "pass1",
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 12900,
+          "event": "RENTED",
+          "broker": "Vector New York, LLC"
+        },
+        {
+          "date": "2026-05-04",
+          "price": 12900,
+          "event": "IN_CONTRACT",
+          "broker": "Vector New York, LLC"
+        },
+        {
+          "date": "2026-04-22",
+          "price": 12900,
+          "event": "LISTED",
+          "broker": "Vector New York, LLC"
+        }
+      ],
+      "data_quality": "pass2",
       "last_pass1": "2026-05-04",
-      "last_pass2": null,
+      "last_pass2": "2026-05-14",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data"
@@ -28237,15 +28256,15 @@
       "address": "1113 York Avenue",
       "unit": "#32E",
       "neighborhood": "Lenox Hill",
-      "price": 17500,
+      "price": 16500,
       "sqft": 1750,
       "beds": 3,
       "baths": 3.0,
       "price_per_sqft": null,
       "type": "rental",
-      "year_built": null,
-      "days_on_market": null,
-      "listed_date": null,
+      "year_built": 2014,
+      "days_on_market": 12,
+      "listed_date": "2026-04-22",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -28253,10 +28272,29 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Vector New York, LLC",
-      "price_history": [],
-      "data_quality": "pass1",
+      "price_history": [
+        {
+          "date": "2026-05-04",
+          "price": 16500,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Vector New York, LLC"
+        },
+        {
+          "date": "2026-05-04",
+          "price": 16500,
+          "event": "",
+          "broker": "Vector New York, LLC"
+        },
+        {
+          "date": "2026-04-22",
+          "price": 17500,
+          "event": "LISTED",
+          "broker": "Vector New York, LLC"
+        }
+      ],
+      "data_quality": "pass2",
       "last_pass1": "2026-05-04",
-      "last_pass2": null,
+      "last_pass2": "2026-05-14",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data"
@@ -28315,9 +28353,9 @@
       "baths": 3.0,
       "price_per_sqft": null,
       "type": "rental",
-      "year_built": null,
-      "days_on_market": null,
-      "listed_date": null,
+      "year_built": 2014,
+      "days_on_market": 12,
+      "listed_date": "2026-04-22",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -28325,10 +28363,23 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Vector New York, LLC",
-      "price_history": [],
-      "data_quality": "pass1",
+      "price_history": [
+        {
+          "date": "2026-05-04",
+          "price": 15500,
+          "event": "RENTED",
+          "broker": "Vector New York, LLC"
+        },
+        {
+          "date": "2026-04-22",
+          "price": 15500,
+          "event": "LISTED",
+          "broker": "Vector New York, LLC"
+        }
+      ],
+      "data_quality": "pass2",
       "last_pass1": "2026-05-04",
-      "last_pass2": null,
+      "last_pass2": "2026-05-14",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data"
@@ -28718,10 +28769,10 @@
       "beds": 3,
       "baths": 3.5,
       "price_per_sqft": null,
-      "type": "coop",
-      "year_built": null,
-      "days_on_market": null,
-      "listed_date": null,
+      "type": "rental",
+      "year_built": 1963,
+      "days_on_market": 7,
+      "listed_date": "2026-04-25",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -28729,10 +28780,41 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": [],
-      "data_quality": "pass1",
+      "price_history": [
+        {
+          "date": "2026-05-12",
+          "price": 14500,
+          "event": "RENTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2026-05-05",
+          "price": 14500,
+          "event": "IN_CONTRACT",
+          "broker": "Compass"
+        },
+        {
+          "date": "2026-05-01",
+          "price": 14500,
+          "event": "LISTED",
+          "broker": "Compass"
+        },
+        {
+          "date": "2026-04-28",
+          "price": 14500,
+          "event": "IN_CONTRACT",
+          "broker": "Compass"
+        },
+        {
+          "date": "2026-04-25",
+          "price": 14500,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
+      "data_quality": "pass2",
       "last_pass1": "2026-05-05",
-      "last_pass2": null,
+      "last_pass2": "2026-05-14",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data"
@@ -31843,9 +31925,9 @@
       "listing_type": "rent",
       "id": "5039434",
       "url": "https://streeteasy.com/rental/5039434",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "400 East 67th Street",
+      "address": "400 East 67th Street",
+      "unit": "#28B",
       "neighborhood": "",
       "price": 19500,
       "sqft": 1964,
@@ -31863,7 +31945,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Douglas Elliman",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-11",
+          "price": 19500,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -31877,9 +31966,9 @@
       "listing_type": "rent",
       "id": "5040766",
       "url": "https://streeteasy.com/rental/5040766",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "223 East 80th Street",
+      "address": "223 East 80th Street",
+      "unit": "#4",
       "neighborhood": "",
       "price": 14500,
       "sqft": 1640,
@@ -31897,7 +31986,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Fifth & Forever LLC",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-12",
+          "price": 14500,
+          "event": "LISTED",
+          "broker": "Fifth & Forever LLC"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -31911,9 +32007,9 @@
       "listing_type": "rent",
       "id": "5041266",
       "url": "https://streeteasy.com/rental/5041266",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "420 East 64th Street",
+      "address": "420 East 64th Street",
+      "unit": "#W7J",
       "neighborhood": "",
       "price": 15000,
       "sqft": 0,
@@ -31931,7 +32027,14 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Inbaly Realty Corp",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-12",
+          "price": 15000,
+          "event": "LISTED",
+          "broker": "Inbaly Realty Corp"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
