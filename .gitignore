@@ -6,3 +6,5 @@ __pycache__/
 floorplans/
 .DS_Store
 scripts/__pycache__/
+*.skill
+
