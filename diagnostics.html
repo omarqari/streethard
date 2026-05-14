@@ -75,6 +75,7 @@ tr.abort td { background: #fde8e8; color: #9a2020; }
     <div class="kvs" id="latest-kvs">
       <div class="kv"><div class="k">Generated</div><div class="v" id="kv-gen">—</div></div>
       <div class="kv"><div class="k">Age</div><div class="v" id="kv-age">—</div></div>
+      <div class="kv" title="Most recent listed_date across all listings. Catches silent normalize() drops on schema drift — the failure mode that hid 5 days of new listings before Session 34."><div class="k">Newest listing</div><div class="v" id="kv-newest-listed">—</div></div>
       <div class="kv"><div class="k">Active listings</div><div class="v" id="kv-active">—</div></div>
       <div class="kv"><div class="k">Sale / Rental</div><div class="v" id="kv-mix">—</div></div>
       <div class="kv"><div class="k">Pass 2 complete</div><div class="v" id="kv-pass2">—</div></div>
@@ -163,6 +164,31 @@ async function loadDiagnostics() {
       ageEl.textContent = daysAgo === 0 ? 'today' : daysAgo + 'd';
       if (daysAgo >= 4) ageEl.classList.add('bad');
       else if (daysAgo >= 2) ageEl.classList.add('warn');
+    }
+
+    // D-G2 (Session 35): freshness floor — newest listed_date across all
+    // listings. Catches the schema-drift class of failures where Pass 1 is
+    // still discovering IDs and Pass 2 still upserts records, but
+    // normalize() silently sets listed_date=null because the actor's field
+    // names moved. Volume metrics stay green; content goes stale. The 2026-
+    // 05-09 → 2026-05-13 gap (Session 34) would have lit this up on day one.
+    let maxLd = null;
+    for (const l of (latest.listings || [])) {
+      const ld = l.listed_date;
+      if (typeof ld === 'string' && ld > (maxLd || '')) maxLd = ld;
+    }
+    const newestEl = document.getElementById('kv-newest-listed');
+    if (maxLd) {
+      const lDate = new Date(maxLd + 'T00:00:00');
+      const lDays = Math.floor((Date.now() - lDate.getTime()) / 86400000);
+      newestEl.textContent = lDays <= 0 ? 'today' : lDays + 'd';
+      newestEl.title = `Most recent listed_date in db.json: ${maxLd}`;
+      if (lDays >= 5) newestEl.classList.add('bad');
+      else if (lDays >= 3) newestEl.classList.add('warn');
+    } else {
+      newestEl.textContent = 'none';
+      newestEl.classList.add('bad');
+      newestEl.title = 'No listing in db.json has a non-null listed_date — normalize() is probably dropping the field.';
     }
 
     const active = stats.total ?? latest.listing_count ?? '—';

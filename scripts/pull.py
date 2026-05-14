@@ -1847,6 +1847,16 @@ def main():
                   f"regression). Aborting before commit so db.json is not "
                   f"re-saved as if the run succeeded. Retry the workflow; "
                   f"different proxy IPs typically work.", file=sys.stderr)
+            # D-G1 (Session 35): log the abort to pipeline_health.json so the
+            # diagnostics page can show the missed day. Without this, sentinel-
+            # aborted runs bypass all logging and the W5 table jumps over them
+            # (e.g. 5/12 was invisible until Session 34's audit dug it up).
+            if not args.dry_run:
+                pass1_counts_by_type[listing_type] = 0
+                update_pipeline_health(
+                    datetime.date.today().isoformat(),
+                    pass1_counts_by_type,
+                    db, guard_status='abort')
             sys.exit(1)
 
         # ── W5: Pass 1 coverage cliff guard ───────────────────────
