@@ -908,13 +908,37 @@ td {
   padding: 8px 12px;
   border-top: 1px solid #f0f2f5;
 }
-.v4-utility .seen-toggle { margin: 0; opacity: 0.5; font-size: 16px; }
-.v4-utility .seen-toggle.is-seen { opacity: 1; }
+.v4-seen-btn {
+  height: 32px;
+  padding: 0 12px;
+  border: 1px solid #d0d5dd;
+  background: white;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #666;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.v4-seen-btn svg { opacity: 0.7; }
+.v4-seen-btn:hover { background: #f7f8fa; border-color: #aaa; }
+.v4-seen-btn.is-seen {
+  background: #eef2ff;
+  border-color: #3461D9;
+  color: #3461D9;
+}
+.v4-seen-btn.is-seen svg { opacity: 1; }
 .v4-utility-link {
   margin-left: auto;
   font-size: 12px; font-weight: 600;
   color: #3461D9; text-decoration: none;
-  padding: 6px 10px; border-radius: 6px;
+  padding: 7px 10px;
+  border: 1px solid transparent;
+  border-radius: 6px;
 }
 .v4-utility-link:hover { background: #eef2ff; }
 
@@ -2483,7 +2507,9 @@ function renderCards() {
           >${st.rq_notes || ''}</textarea>
         </div>
         <div class="v4-utility" onclick="event.stopPropagation()">
-          <span class="seen-toggle${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Visited' : 'Mark as visited'}">${seenIconSvg()}</span>
+          <button type="button" class="v4-seen-btn${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Marked as visited — click to undo' : 'Mark as visited in person'}">
+            ${seenIconSvg()}<span>Seen</span>
+          </button>
           <a class="v4-utility-link" href="${listing.url}" target="_blank" onclick="event.stopPropagation()">View on StreetEasy ↗</a>
         </div>
       </div>`;
