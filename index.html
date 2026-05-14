@@ -1100,10 +1100,16 @@ td {
   .listing-card.v4 .v4-rank-input { width: 48px; height: 36px; }
   .listing-card.v4 .v4-notes { min-height: 56px; }
 
-  /* Table view is not mobile-friendly — hide the toggle so users stay on
-     card view (auto-selected at init). Table view stays available on
-     desktop. */
-  .view-toggle { display: none; }
+  /* Table view on mobile: constrain the wrap to viewport width and let
+     it scroll horizontally so all columns stay reachable via swipe. The
+     table itself keeps its natural intrinsic width — cells don't get
+     compressed into illegibility. */
+  .table-wrap {
+    max-width: 100vw;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .table-wrap table { min-width: 900px; }
 
   /* Filter bar: mode-toggle + Filters button on row 1 (justified left/right),
      search on row 2 (full width). Achieved via flex order so DOM stays
