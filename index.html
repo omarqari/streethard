@@ -1634,12 +1634,53 @@ function getBucket(listingId) {
   return (st && st.bucket) ? st.bucket : 'inbox';
 }
 
+// Snapshot the current filter UI state once per filtering cycle. Both
+// applyFilters() and updateBucketCounts() consume the same snapshot so
+// the tab counts always agree with the list the user is looking at.
+function readActiveFilters() {
+  const searchRaw = document.getElementById('f-search').value.trim();
+  return {
+    beds:     parseInt(document.getElementById('f-beds').value) || 0,
+    type:     document.getElementById('f-type').value,
+    maxPx:    parseFloat(document.getElementById('f-price').value) || 0,
+    maxMo:    parseFloat(document.getElementById('f-monthly').value) || 0,
+    cutsOnly: document.getElementById('f-cuts').checked,
+    seenOnly: document.getElementById('f-seen').checked,
+    searchRaw,
+    searchQ:  searchRaw.toLowerCase(),
+  };
+}
+
+// Returns true if listing matches the *non-bucket* filter context — mode,
+// dropdowns, checkboxes, search. Bucket membership is the caller's
+// responsibility so this helper can be reused for tab-count math (which
+// needs to count matches *per bucket*).
+function passesActiveFilters(l, f) {
+  if (listingMode === 'sale' && l.listing_type === 'rent') return false;
+  if (listingMode === 'rent' && l.listing_type !== 'rent') return false;
+  if (f.beds > 0 && (l.beds || 0) < f.beds) return false;
+  if (f.type && l.type !== f.type) return false;
+  // Max price filter only applies to sale listings
+  if (f.maxPx > 0 && l.listing_type !== 'rent' && l.price > f.maxPx) return false;
+  if (f.maxMo > 0 && calcMonthlyTotal(l) > f.maxMo) return false;
+  if (f.cutsOnly && !priceSignals(l).hasCuts) return false;
+  if (f.seenOnly && !getStatus(l.id).seen) return false;
+  if (f.searchQ) {
+    const haystack = [l.building, l.address, l.unit, l.neighborhood, l.agent_name, l.agent_firm]
+      .filter(Boolean).join(' ').toLowerCase();
+    if (!haystack.includes(f.searchQ)) return false;
+  }
+  return true;
+}
+
 function updateBucketCounts() {
-  // Count based on current mode filter (sale/rent/both) to match what user sees
+  // Counts respect every active filter so the tab badges match what the
+  // user would see if they switched to that tab. "Inbox 12" with a 4+
+  // beds filter means 12 inbox listings have 4+ beds — not 12 total.
+  const f = readActiveFilters();
   const counts = { inbox: 0, shortlist: 0, archive: 0 };
   allListings.forEach(l => {
-    if (listingMode === 'sale' && l.listing_type === 'rent') return;
-    if (listingMode === 'rent' && l.listing_type !== 'rent') return;
+    if (!passesActiveFilters(l, f)) return;
     const b = getBucket(l.id);
     // Inbox excludes delisted listings (they have no status row → would
     // default to 'inbox', but they're noise the user never triaged).
@@ -1761,35 +1802,29 @@ async function toggleSeen(listingId, event) {
 
 // ─── Filters ────────────────────────────────────────────────────────
 function applyFilters() {
-  const beds  = parseInt(document.getElementById('f-beds').value) || 0;
-  const type  = document.getElementById('f-type').value;
-  const maxPx = parseFloat(document.getElementById('f-price').value) || 0;
-  const maxMo = parseFloat(document.getElementById('f-monthly').value) || 0;
-  const cutsOnly = document.getElementById('f-cuts').checked;
-  const seenOnly = document.getElementById('f-seen').checked;
-  const searchRaw = document.getElementById('f-search').value.trim();
-  const searchQ   = searchRaw.toLowerCase();
+  const f = readActiveFilters();
 
-  const hasFilter = beds > 0 || type !== '' || maxPx > 0 || maxMo > 0 || cutsOnly || seenOnly || searchRaw !== '';
+  const hasFilter = f.beds > 0 || f.type !== '' || f.maxPx > 0 || f.maxMo > 0
+                    || f.cutsOnly || f.seenOnly || f.searchRaw !== '';
   document.getElementById('clear-btn').style.display = hasFilter ? 'inline-block' : 'none';
 
   ['f-beds','f-type','f-price','f-monthly'].forEach(id => {
     const el = document.getElementById(id);
     el.classList.toggle('active', el.value !== '0' && el.value !== '');
   });
-  document.getElementById('f-search').classList.toggle('active', searchRaw !== '');
+  document.getElementById('f-search').classList.toggle('active', f.searchRaw !== '');
 
   // Filters button: badge counts active filters in the popover (excluding
   // the search bar, which has its own visible field). Price is excluded
   // when the price-wrap row is hidden (i.e., rent mode).
   const priceWrapHidden = document.getElementById('f-price-wrap').style.display === 'none';
   let activeCount = 0;
-  if (beds > 0) activeCount++;
-  if (type !== '') activeCount++;
-  if (maxPx > 0 && !priceWrapHidden) activeCount++;
-  if (maxMo > 0) activeCount++;
-  if (cutsOnly) activeCount++;
-  if (seenOnly) activeCount++;
+  if (f.beds > 0) activeCount++;
+  if (f.type !== '') activeCount++;
+  if (f.maxPx > 0 && !priceWrapHidden) activeCount++;
+  if (f.maxMo > 0) activeCount++;
+  if (f.cutsOnly) activeCount++;
+  if (f.seenOnly) activeCount++;
   const badge = document.getElementById('filter-badge');
   const toggleBtn = document.getElementById('filter-toggle-btn');
   if (activeCount > 0) {
@@ -1808,22 +1843,7 @@ function applyFilters() {
     // would otherwise leak into Inbox as noise — filter them out. Shortlist
     // and Archive keep delisted listings (rendered with a DELISTED badge).
     if (currentBucket === 'inbox' && l.status === 'delisted') return false;
-    if (listingMode === 'sale' && l.listing_type === 'rent') return false;
-    if (listingMode === 'rent' && l.listing_type !== 'rent') return false;
-    if (beds > 0 && (l.beds || 0) < beds) return false;
-    if (type && l.type !== type) return false;
-    // Max price filter only applies to sale listings
-    if (maxPx > 0 && l.listing_type !== 'rent' && l.price > maxPx) return false;
-    if (maxMo > 0 && calcMonthlyTotal(l) > maxMo) return false;
-    if (cutsOnly && !priceSignals(l).hasCuts) return false;
-    if (seenOnly && !getStatus(l.id).seen) return false;
-    // Text search — matches against building, address, unit, neighborhood, agent name/firm
-    if (searchQ) {
-      const haystack = [l.building, l.address, l.unit, l.neighborhood, l.agent_name, l.agent_firm]
-        .filter(Boolean).join(' ').toLowerCase();
-      if (!haystack.includes(searchQ)) return false;
-    }
-    return true;
+    return passesActiveFilters(l, f);
   });
 
   updateBucketCounts();
