@@ -604,8 +604,11 @@ def normalize_rental(raw):
       Pass 1 search  — node_* prefix (__typename == OrganicRentalEdge)
     """
     # Price is not a top-level field in rental Pass 2 — extract from price history.
+    # 2026-05-12 build added flat `pricing_price` (mirrors the sale build);
+    # try it before falling back to the price-history dive.
     price = _get(
         raw.get("node_price"),        # Pass 1 rental search
+        raw.get("pricing_price"),     # 2026-05-12 build (flat)
         raw.get("price"),
         raw.get("askingRent"), raw.get("asking_rent"),
         raw.get("monthlyRent"), raw.get("monthly_rent"),
@@ -641,24 +644,31 @@ def normalize_rental(raw):
         or (f"https://streeteasy.com/rental/{listing_id}" if listing_id else "")
     )
 
-    # beds/baths/sqft/unit are NOT in rental Pass 2 data.
-    # These fields will be None here; run_two_pass() merges Pass 1 stub values in.
+    # The 2026-05-12 build adds rental beds/baths/sqft/unit at top level under
+    # the `propertyDetails_*` namespace (mirrors what the sale schema has had
+    # since 2026-05-02). Prefer those when present; fall back to the Pass 1
+    # `node_*` stubs and the older bare keys.
     beds = _get(
+        raw.get("propertyDetails_bedroomCount"),  # 2026-05-12 build
         raw.get("node_bedroomCount"),   # Pass 1 rental search
         raw.get("bedroomCount"), raw.get("bedrooms"), raw.get("beds"),
     )
-    full = _get(raw.get("node_fullBathroomCount"),   # Pass 1 rental search
+    full = _get(raw.get("propertyDetails_fullBathroomCount"),  # 2026-05-12 build
+                raw.get("node_fullBathroomCount"),   # Pass 1 rental search
                 raw.get("fullBathroomCount"), raw.get("bathrooms")) or 0
-    half = _get(raw.get("node_halfBathroomCount"),   # Pass 1 rental search
+    half = _get(raw.get("propertyDetails_halfBathroomCount"),  # 2026-05-12 build
+                raw.get("node_halfBathroomCount"),   # Pass 1 rental search
                 raw.get("halfBathroomCount")) or 0
     baths = (full or 0) + (half or 0) * 0.5
 
     sqft = _get(
+        raw.get("propertyDetails_livingAreaSize"),  # 2026-05-12 build
         raw.get("node_livingAreaSize"),  # Pass 1 rental search
         raw.get("livingAreaSize"), raw.get("sqft"), raw.get("squareFeet"),
     )
 
     unit = _get(
+        raw.get("propertyDetails_address_displayUnit"),  # 2026-05-12 build
         raw.get("node_unit"),            # Pass 1 rental search
         raw.get("address_unit"), raw.get("addressUnit"), raw.get("unit"),
     ) or ""
@@ -673,8 +683,10 @@ def normalize_rental(raw):
     ) or "").lower()
     ptype = "coop" if any(s in btype for s in ("co-op", "coop", "co_op")) else "rental"
 
-    # For Pass 2, building_title is the street address ("549 East 86th Street")
+    # For Pass 2, building_title is the street address ("549 East 86th Street").
+    # 2026-05-12 build drops building_title; use propertyDetails_address_street.
     building = _get(
+        raw.get("propertyDetails_address_street"),  # 2026-05-12 build
         raw.get(f"{_RC}building_title"),
         raw.get(f"{_RCnew}building_title"),
         raw.get(f"{_RCP}building_title"),
@@ -684,6 +696,7 @@ def normalize_rental(raw):
     ) or ""
 
     street = _get(
+        raw.get("propertyDetails_address_street"),  # 2026-05-12 build
         raw.get("node_street"),          # Pass 1 rental search
         raw.get("address_street"), raw.get("addressStreet"), raw.get("street"),
         raw.get(f"{_RC}building_title"),
@@ -763,6 +776,65 @@ def normalize_rental(raw):
             if date or hprice:
                 history.append({"date": date, "price": int(hprice) if hprice else None,
                                 "event": event, "broker": broker})
+
+    # 2026-05-12 build returns price history under propertyHistory_json — a list
+    # where the FIRST element corresponds to the current listing (with nested
+    # `rentalEventsOfInterest`), and subsequent elements are PRIOR listings at
+    # the same unit. Don't merge prior-listing events into the current record.
+    # As a simpler fallback when propertyHistory_json is absent, the same build
+    # offers pricing_priceChanges_json with flat {price, changedAt} entries.
+    if not history:
+        ph_new = raw.get("propertyHistory_json")
+        if ph_new:
+            try:
+                ph_list = json.loads(ph_new) if isinstance(ph_new, str) else ph_new
+                if ph_list:
+                    first = ph_list[0] or {}
+                    # Confirm the first record matches the current listing.
+                    first_id = str(first.get("listingId") or "")
+                    if not first_id or not listing_id or first_id == listing_id:
+                        broker = first.get("sourceGroupLabel")
+                        events = (first.get("rentalEventsOfInterest")
+                                  or first.get("saleEventsOfInterest") or [])
+                        # Map StreetEasy statuses → our event vocabulary so the
+                        # app's "price cut" / "re-listed" badges still work.
+                        STATUS_MAP = {
+                            "ACTIVE":           "LISTED",
+                            "PRICE_DECREASED":  "PRICE_DECREASED",
+                            "PRICE_INCREASED":  "PRICE_INCREASED",
+                            "DELISTED":         "OFF_MARKET",
+                            "SOLD":             "SOLD",
+                            "RENTED":           "RENTED",
+                        }
+                        for ev in events:
+                            d      = ev.get("date")
+                            hprice = ev.get("price")
+                            status = (ev.get("status") or "").upper()
+                            event  = STATUS_MAP.get(status, status)
+                            if d or hprice:
+                                history.append({"date": d,
+                                                "price": int(hprice) if hprice else None,
+                                                "event": event,
+                                                "broker": broker})
+            except (json.JSONDecodeError, AttributeError, IndexError, KeyError):
+                pass
+
+    if not history:
+        pc_raw = raw.get("pricing_priceChanges_json")
+        if pc_raw:
+            try:
+                pc_list = json.loads(pc_raw) if isinstance(pc_raw, str) else pc_raw
+                for entry in (pc_list or []):
+                    hprice = entry.get("price")
+                    ts = entry.get("changedAt")
+                    d = ts[:10] if isinstance(ts, str) else None
+                    if d or hprice:
+                        history.append({"date": d,
+                                        "price": int(hprice) if hprice else None,
+                                        "event": "PRICE_CHANGE",
+                                        "broker": None})
+            except (json.JSONDecodeError, AttributeError):
+                pass
 
     # listed_date: prefer the explicit listed_at timestamp (Pass 2), fall back
     # to most recent LISTED event in price history. Stored so JS can compute
