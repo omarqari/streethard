@@ -483,9 +483,6 @@ def normalize(raw):
               or raw.get(f"{_P2}price_histories_json")
               or raw.get(f"{_PP}price_histories_json")
               or raw.get(f"{_SC}price_histories_json")  # 2026-05-02 build (flat format)
-              # NOTE: propertyHistory_json (also 2026-05-02) has a nested
-              # saleEventsOfInterest structure — NOT the flat date/price/event
-              # format. Don't add it here; the flat source above is preferred.
               )
     if ph_raw:
         try:
@@ -509,6 +506,63 @@ def normalize(raw):
             if date or hprice:
                 history.append({"date": date, "price": int(hprice) if hprice else None,
                                 "event": event, "broker": broker})
+
+    # 2026-05-12 build (Session 35 follow-up) returns price history under
+    # propertyHistory_json — a list where the FIRST element matches the
+    # current listing (nested `saleEventsOfInterest`) and subsequent
+    # elements are PRIOR listings at the same unit. Don't merge prior-
+    # listing events into the current record. Fallback when
+    # propertyHistory_json is absent: flat pricing_priceChanges_json.
+    # Mirrors the parsing already in normalize_rental() (commit d41a6b6e).
+    if not history:
+        ph_new = raw.get("propertyHistory_json")
+        if ph_new:
+            try:
+                ph_list = json.loads(ph_new) if isinstance(ph_new, str) else ph_new
+                if ph_list:
+                    first = ph_list[0] or {}
+                    first_id = str(first.get("listingId") or "")
+                    if not first_id or not listing_id or first_id == listing_id:
+                        broker = first.get("sourceGroupLabel")
+                        events = (first.get("saleEventsOfInterest")
+                                  or first.get("rentalEventsOfInterest") or [])
+                        STATUS_MAP = {
+                            "ACTIVE":           "LISTED",
+                            "PRICE_DECREASED":  "PRICE_DECREASED",
+                            "PRICE_INCREASED":  "PRICE_INCREASED",
+                            "DELISTED":         "OFF_MARKET",
+                            "SOLD":             "SOLD",
+                            "RENTED":           "RENTED",
+                        }
+                        for ev in events:
+                            d      = ev.get("date")
+                            hprice = ev.get("price")
+                            status = (ev.get("status") or "").upper()
+                            event  = STATUS_MAP.get(status, status)
+                            if d or hprice:
+                                history.append({"date": d,
+                                                "price": int(hprice) if hprice else None,
+                                                "event": event,
+                                                "broker": broker})
+            except (json.JSONDecodeError, AttributeError, IndexError, KeyError):
+                pass
+
+    if not history:
+        pc_raw = raw.get("pricing_priceChanges_json")
+        if pc_raw:
+            try:
+                pc_list = json.loads(pc_raw) if isinstance(pc_raw, str) else pc_raw
+                for entry in (pc_list or []):
+                    hprice = entry.get("price")
+                    ts = entry.get("changedAt")
+                    d = ts[:10] if isinstance(ts, str) else None
+                    if d or hprice:
+                        history.append({"date": d,
+                                        "price": int(hprice) if hprice else None,
+                                        "event": "PRICE_CHANGE",
+                                        "broker": None})
+            except (json.JSONDecodeError, AttributeError):
+                pass
 
     # Extract listed_date: prefer explicit listed_at timestamp (2026-05-02
     # build), fall back to most recent LISTED event in price history. Stored
