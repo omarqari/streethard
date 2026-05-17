@@ -4,6 +4,58 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-17 — normalize() misclassification fix + 15-listing manual patch (Session 36)
+
+### Context
+User noticed 300 East 85th Street #2705 (listed 2026-05-15) was showing no fees in StreetHard. Investigation found 15 sale listings with completely null financial data, all typed as `"condo"` in the DB.
+
+### Diagnosis
+Browser audit of all 15 listings on StreetEasy revealed three distinct misclassification classes:
+
+- **6 actual co-ops** — actor returned `type: "condo"` but StreetEasy shows Co-op. All had maintenance fees on the page ($4,567–$9,657/mo), taxes included in maintenance.
+- **3 condops** — actor returned `type: "condo"` but StreetEasy shows Condop (300 E 85th, 45 E 89th #21E, 45 E 89th #18G). Same maintenance-based financial structure as co-ops.
+- **6 townhouses/houses** — actor returned `type: "condo"` but StreetEasy shows Two-family home, House, or Multifamily. No common charges; separate property taxes ($3,126–$5,639/mo). Taxes are not returned by the actor at all for these property types.
+
+**Root cause in normalize():** The condo path (`ptype != "coop"`) set `maint = None` unconditionally, silently discarding `old_maint` (pricing_monthlyMaintenance, maintenance, etc.) even when it was populated. Co-ops/condops misclassified as condo had their maintenance fee in `old_maint` — it was extracted but then thrown away.
+
+### Fix — normalize() (commit `07ade8fdfd`)
+Added fallback in the condo path: `maint = old_maint if (old_maint and not fees) else None`. When the actor returns no common-charge fee but does return a maintenance field, the maintenance is preserved. This auto-corrects future co-ops/condops misclassified as condo without touching properly-classified listings.
+
+### Manual patch — db.json + latest.json (commit `bf9f691281`)
+All 15 listings patched with data read directly from StreetEasy:
+
+| Listing | Type fix | Financial data |
+|---|---|---|
+| 784 Park #5B | condo→coop | maintenance $6,084 |
+| 340 E 72nd 4-SOUTH | condo→coop | maintenance $7,977 |
+| 863 Park #9W | condo→coop | maintenance $6,024 |
+| 535 E 86th #16F | condo→coop | maintenance $4,567 |
+| 140 E 72nd #15C | condo→coop | maintenance $6,002 |
+| 45 E 66th #4NW | condo→coop | maintenance $9,657 |
+| 300 E 85th #2705 | condo→coop (condop) | maintenance $7,974 |
+| 45 E 89th #21E | condo→coop (condop) | maintenance $5,782 |
+| 45 E 89th #18G | condo→coop (condop) | maintenance $3,080 |
+| 326 E 69th #1 | condo→house | taxes $4,825 |
+| 225 E 62nd | condo→house | taxes $5,317 |
+| 146 E 89th | condo→house | taxes $5,639 |
+| 507 E 84th TWNH | condo→house | taxes $3,513 |
+| 169 E 94th | condo→house | taxes $3,126 |
+| 197 E 76th #TW | condo→house | taxes $4,604 |
+
+Note: `type: "house"` listings fall through to the condo path in `calcMonthlyTotal` (`monthly_fees||0 + monthly_taxes||0`), which is correct — no common charges, taxes-only.
+
+### Known limitation
+Townhouse/house taxes are not returned by the actor; they can only be sourced from the StreetEasy page directly. Future house-type listings entering the DB will have null taxes until manually patched.
+
+### Pipeline health check
+Cron ran cleanly on 5/15 and 5/16 (both `status: ok`). "2-day-old listings" user observed was expected: the 5/16 run found 4 new sale listings all dated 5/15 (listed on StreetEasy the day before ingestion). Not a bug.
+
+### Commits
+- `07ade8fdfd` — normalize() fallback: preserve old_maint for condo-typed co-ops/condops
+- `bf9f691281` — Manual patch: 15 misclassified listings (type + fees/taxes)
+
+---
+
 ## 2026-05-14 — Sale price_history schema backport (Session 35, follow-up)
 
 ### Context

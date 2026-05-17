@@ -161,7 +161,7 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   price drop (T4) ✅. URL hash routing ✅. Sort defaults per tab (T6) ✅.
   Settings panel removed (Session 26) — no API key needed. Seen toggle
   (Session 28) ✅ — eye icon per row + filter checkbox.
-  **Not yet built:** Offline outbox (T8), card view adaptation (T9), chips (T10).
+  **Not yet built:** Offline outbox (T8), chips (T10). T9 card view: complete (Session 33).
 - **Three-Bucket Model:** Inbox = untriaged (cron drops here). Shortlist =
   actively pursuing (has OQ/RQ). Archive = rejected (auto-resurrects on price
   drop). OQ/RQ cleared server-side on exit from Shortlist. URL hash for tab state.
@@ -171,8 +171,7 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
   public; CORS restricts browser writes to `streethard.omarqari.com` origin.
 - **Cost:** $5/mo Hobby tier on Railway.
 
-Next session: **polish items** (T9 card view adaptation, T10 chips), **product
-backlog selection** from PRODUCT-BACKLOG.md.
+Next session: **T10 chips**, **product backlog selection** from PRODUCT-BACKLOG.md.
 See TASKS.md for acceptance criteria A1–A10.
 
 ## Current Infrastructure State
@@ -186,7 +185,8 @@ See TASKS.md for acceptance criteria A1–A10.
 - **Auto-delisting: DISABLED (W2, 2026-05-09)** — `detect_delistings()` retired. Pure absence-from-Pass-1 is too noisy to flip a status flag from. Replaced by W3 (per-listing stale pill) + W7 (definitive Pass 2 verification for shortlists).
 - **Pass 1 cliff guard (W5)** — `pull.py` aborts the merge if today's Pass 1 count drops to <50% of the 7-day median; warns at <75%. `--force-merge` bypass available for legit market shifts. Records `status: 'abort'` in `pipeline_health.json` so the cliff is visible in the in-app strip.
 - **Pipeline: Incremental ("Puzzle" model) with resilience guards** — `data/db.json` is the canonical store. Each cron run discovers new listings via Pass 1 and fills in detail via Pass 2 (capped at 100/run). See PROJECTPLAN.md for full architecture.
-- **db.json state (Session 34, 2026-05-14):** 391 active listings (321 sale, 70 rental). **391 at pass2 quality, 0 pass1, 0 partial — fully pass2 for the first time since 5/4** after the Session 34 backfill. Note: 12 rentals still have null address / `listed_date` from pre-5/12 schema-drift exposure; next cron run picks them up automatically via the patched `normalize_rental()`. Volume drop vs. Session 24's 419 is expected — W1 changed the Pass 1 filter from `sqft:1500-` to `beds:3-` on 5/9, which excludes ~30 sub-3BR listings that used to qualify on sqft alone.
+- **db.json state (Session 36, 2026-05-17):** 409 active listings (337 sale, 72 rental). **409 at pass2 quality, 0 pass1, 0 partial.** Cron running cleanly daily; 5/15 and 5/16 both green. Volume growth from 391 (Session 34) reflects normal daily ingestion. 15 misclassified listings manually patched this session (see normalize() misclassification note below and CHANGELOG 2026-05-17).
+- **normalize() misclassification (Session 36, 2026-05-17):** The actor sometimes returns `"condo"` for listings that are actually co-ops, condops, or houses. Previously, normalize()'s non-coop path silently ignored `old_maint` (pricing_monthlyMaintenance etc.), leaving maintenance null on those listings. **Fix:** the condo path now falls back to `old_maint` when `maint_fee` is None. **15 listings manually patched:** 6 co-ops and 3 condops got `type→coop` + `maintenance` populated from StreetEasy; 6 townhouses/houses got `type→house` + `monthly_taxes` populated. Houses have no common charges — `calcMonthlyTotal`'s condo path handles them correctly (`monthly_fees||0 + monthly_taxes||0`). Townhouse taxes are not returned by the actor at all; those must be patched manually if the listing matters.
 - **Secondary: RapidAPI NYC Real Estate API** — validated YELLOW, 25 req/mo free tier, good for fast single-listing lookups; no price history or agent contact
 - RapidAPI key in `.env`; Apify account on paid plan
 - No PLUTO, ACRIS, or other supplemental data downloaded yet
