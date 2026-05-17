@@ -453,7 +453,10 @@ def normalize(raw):
     else:
         fees   = maint_fee
         taxes  = taxes_fee if taxes_fee else None
-        maint  = None
+        # Fallback: actor sometimes returns "condo" for co-ops/condops.
+        # If there's no common-charge fee but there IS a maintenance field,
+        # the listing is behaving like a co-op financially — preserve it.
+        maint  = old_maint if (old_maint and not fees) else None
 
     agent_name = agent_phone = agent_email = agent_firm = None
     contacts_raw = (raw.get(f"{_P2}contacts_json")
