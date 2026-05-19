@@ -80,10 +80,10 @@ jobs:
           if git diff --cached --quiet; then
             echo "No changes to data/ — skipping commit."
           else
-            COUNT=$(python -c "import json; d=json.load(open('data/latest.json')); print(d['listing_count'])")
+            COUNT=$(python -c "import json; d=json.load(open('data/latest.json')); print(d.get('listing_count', len(d.get('listings', []))))")
             SALE=$(python  -c "import json; d=json.load(open('data/latest.json')); print(d.get('sale_count','?'))")
             RENT=$(python  -c "import json; d=json.load(open('data/latest.json')); print(d.get('rental_count','?'))")
-            COST=$(python  -c "import json; d=json.load(open('data/latest.json')); print(d['run_cost_usd'])")
+            COST=$(python  -c "import json; d=json.load(open('data/latest.json')); print(d.get('run_cost_usd','?'))")
             git commit -m "chore: refresh listings — ${COUNT} listings (${SALE} sale, ${RENT} rent), \$${COST} [skip ci]"
             git push
           fi
