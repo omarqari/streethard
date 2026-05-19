@@ -251,7 +251,7 @@ For pulling remote changes: ask the user to run `git pull` from their Terminal (
 - Never print, log, or echo the token value
 - Never write the token to any file other than `.env`
 - Never store the token in memory files, CLAUDE.md, or chat
-- The token is scoped to the `streethard` repo only (Contents read/write)
+- The token is scoped to the `streethard` repo only (Contents read/write). **Does NOT have `actions:write`** — cannot trigger `workflow_dispatch` programmatically. To enable that, Omar must add `actions:write` to the token at GitHub → Settings → Developer settings → Fine-grained tokens. Until then, manual runs must be triggered via the GitHub Actions UI.
 - Token expires every 90 days; if auth fails, ask the user to rotate it at GitHub → Settings → Developer settings → Fine-grained tokens
 - **Never run `git commit`, `git push`, `git pull`, `git stash`, or any write-mode git command against the mounted .git directory**
 

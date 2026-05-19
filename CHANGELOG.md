@@ -45,12 +45,23 @@ User-provided: 3,100 sqft. Updated `sqft: 3100`, `price_per_sqft: 774` ($2.4M ÷
 ### Stale pill investigation — 737 Park Avenue #10A
 Listing showed "not seen 27 days." Investigation confirmed: listing has `beds: 3`, `sqft: 2254`, `price: $3.95M` — meets all Pass 1 filter criteria. Pipeline health shows 9+ consecutive clean cron runs without it appearing. Conclusion: listing went in-contract ~4/27 (confirmed by user). StreetEasy removes in-contract listings from search results, so they naturally fall out of Pass 1. Stale pill is working correctly. No action needed. Documented in CLAUDE.md as expected behavior.
 
+### refresh.yml commit-step KeyError fix
+
+The 2026-05-19 09:00 UTC cron triggered by the docs push (commit `78d397b`) failed with two errors:
+
+1. **Sentinel abort** — Pass 1 returned 1 placeholder item with no listing ID. Sentinel guard correctly exited with code 1. Expected/transient proxy block; no data lost.
+2. **`KeyError: 'listing_count'`** in the commit step — the workflow reads `d['listing_count']` and `d['run_cost_usd']` from `latest.json` to build the commit message. When pull.py sentinel-aborts before regenerating `latest.json`, the file on disk is our manually-rebuilt version (which only has `listings` + `generated_at`). Hard key access → crash. Fixed by switching both to `.get()` with fallbacks: `d.get('listing_count', len(d.get('listings', [])))` and `d.get('run_cost_usd', '?')`. `sale_count` and `rental_count` were already using `.get()`.
+
+**Note on PAT scope:** `workflow_dispatch` requires `actions:write` permission. The current PAT is `Contents read/write` only. To trigger runs programmatically from Cowork, Omar needs to add `actions:write` to the token at GitHub → Settings → Developer settings → Fine-grained tokens.
+
 ### Commits
 - `78df45e0e3` — Manual patch: 190 E 72nd #17AB sqft=3100
 - `32e4bda237` — Fix latest.json: restore {listings:[...], generated_at} wrapper
 - `26b6128e29` — Add Fees/Mo + % Fees columns (table + card v4)
 - `8fef9d8688` — Manual patch: 233 E 69th #14K condo→coop
 - `d25d706d7c` — Manual patch: 8 more condo→coop misclassifications
+- `78d397be4b` — Session 37 docs: CHANGELOG, CLAUDE.md, TASKS.md
+- `04f0efc2a0` — Fix refresh.yml: .get() fallbacks for listing_count + run_cost_usd
 
 ---
 

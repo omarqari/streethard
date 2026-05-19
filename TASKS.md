@@ -194,6 +194,8 @@ All must pass on a real iPhone + laptop pair before v1 is closed:
 
 - [ ] **Fees/Mo + % Fees — verify on live app.** Confirm both columns render and sort correctly in table view, and that the sub-line appears in card v4. Spot-check a known co-op (e.g. 875 5th Ave: fees ~$8,865, ~28%) and a known condo (200 E 65th: fees ~$9,218, ~30%).
 
+- [ ] **Add `actions:write` to GitHub PAT** to enable programmatic `workflow_dispatch` from Cowork. Currently Contents read/write only — manual runs require clicking through the GitHub Actions UI. Rotate at GitHub → Settings → Developer settings → Fine-grained tokens.
+
 ---
 
 ## Open from Session 34 (2026-05-14)
