@@ -188,6 +188,14 @@ All must pass on a real iPhone + laptop pair before v1 is closed:
 
 ---
 
+## Open from Session 37 (2026-05-18)
+
+- [ ] **normalize() auto-correction for condo→coop misclassification.** Add to `normalize()`: if `ptype == "condo"` and `old_maint > 0` and `fees is None`, set `type = "coop"`. Eliminates the need for manual sweeps on future ingestions. Sweep query to validate before/after: `[v for v in listings.values() if v.get('type')=='condo' and v.get('maintenance') and not v.get('monthly_fees')]` should return 0 after fix.
+
+- [ ] **Fees/Mo + % Fees — verify on live app.** Confirm both columns render and sort correctly in table view, and that the sub-line appears in card v4. Spot-check a known co-op (e.g. 875 5th Ave: fees ~$8,865, ~28%) and a known condo (200 E 65th: fees ~$9,218, ~30%).
+
+---
+
 ## Open from Session 34 (2026-05-14)
 
 Both deferred from the schema-drift recovery session — see CHANGELOG entry "Pipeline Schema Drift Recovery" for the incident that surfaced them.

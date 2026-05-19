@@ -4,6 +4,56 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-18 — Fees/Mo columns, condo→coop sweep, sqft patch (Session 37)
+
+### Fees/Mo + % Fees columns
+Added two new sortable columns immediately right of Monthly Pmt, visible in the desktop table and as a sub-line in the mobile card v4.
+
+- `calcFees(listing)` — returns the non-P&I carry cost: co-op: `maintenance`; condo/house: `monthly_fees + monthly_taxes`. Returns null for rentals and listings with no fee data (shows `—`).
+- `calcFeesPct(listing)` — `round(fees / total_monthly * 100)`. Bare number, no color thresholds.
+- Card v4 (mobile): muted sub-line `.v4-fees-sub` under the all-in total — `Fees/mo $X,XXX · N%`.
+- Both columns sortable. colSpan updated (+2) for table expansion rows.
+
+### condo→coop misclassification — Session 36 gap + sweep
+
+**Gap discovered:** Session 36's normalize() fix preserved the `maintenance` field for misclassified co-ops but did not correct the `type` field. Result: maintenance was in the DB but `calcMonthlyTotal` still branched on `type === 'coop'` → maintenance silently zeroed in the monthly payment calc. Surfaced when user reported 233 East 69th Street #14K showing no fees despite having `maintenance: $7,228`.
+
+**Full-DB sweep** for fingerprint `type=condo` + `maintenance>0` + `monthly_fees=null` found 9 listings total (1 user-reported + 8 from sweep). All patched to `type→coop`:
+
+| ID | Address | Maintenance | Monthly (corrected) | % Fees |
+|---|---|---|---|---|
+| 1805766 | 233 East 69th Street #14K | $7,228 | $15,549 | 46% |
+| 1772338 | 3 East 71st Street #7/8C | $9,534 | $29,665 | 32% |
+| 1822675 | 770 Park Avenue #1D | $6,116 | $24,636 | 25% |
+| 1820532 | 1158 5th Avenue #4A | $6,427 | $25,457 | 25% |
+| 1820301 | 710 Park Avenue #2A | $8,500 | $25,920 | 33% |
+| 1817776 | 1155 Park Avenue #4NE | $5,973 | $22,292 | 27% |
+| 1815232 | 201 East 79th Street #6I | $4,716 | $16,526 | 29% |
+| 1808409 | 116 East 63rd Street #3B | $6,160 | $17,031 | 36% |
+| 1819962 | 162 East 80th Street #2A | $5,013 | $14,407 | 35% |
+
+Running total of misclassified listings manually patched: **24** (15 in Session 36 + 9 in Session 37).
+
+**Open follow-up:** add auto-correction to `normalize()` — if `ptype == "condo"` and `old_maint > 0` and `fees is None`, set `type = "coop"` so future ingestions self-heal without manual sweeps.
+
+### latest.json wrapper bug fixed
+Quick-rebuild of `latest.json` during sqft patch accidentally wrote a bare array instead of the required `{listings: [...], generated_at: "..."}` wrapper. App read `data.listings` → undefined → 0 listings rendered. Fixed immediately. CLAUDE.md updated to document the expected format explicitly.
+
+### Manual sqft patch — 190 East 72nd Street #17AB
+User-provided: 3,100 sqft. Updated `sqft: 3100`, `price_per_sqft: 774` ($2.4M ÷ 3,100), `sqft_estimated: true`, `sqft_estimate_method: "manual"`.
+
+### Stale pill investigation — 737 Park Avenue #10A
+Listing showed "not seen 27 days." Investigation confirmed: listing has `beds: 3`, `sqft: 2254`, `price: $3.95M` — meets all Pass 1 filter criteria. Pipeline health shows 9+ consecutive clean cron runs without it appearing. Conclusion: listing went in-contract ~4/27 (confirmed by user). StreetEasy removes in-contract listings from search results, so they naturally fall out of Pass 1. Stale pill is working correctly. No action needed. Documented in CLAUDE.md as expected behavior.
+
+### Commits
+- `78df45e0e3` — Manual patch: 190 E 72nd #17AB sqft=3100
+- `32e4bda237` — Fix latest.json: restore {listings:[...], generated_at} wrapper
+- `26b6128e29` — Add Fees/Mo + % Fees columns (table + card v4)
+- `8fef9d8688` — Manual patch: 233 E 69th #14K condo→coop
+- `d25d706d7c` — Manual patch: 8 more condo→coop misclassifications
+
+---
+
 ## 2026-05-17 — normalize() misclassification fix + 15-listing manual patch (Session 36)
 
 ### Context
