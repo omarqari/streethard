@@ -859,6 +859,7 @@ td {
 .v4-price-trend { font-size: 11px; color: #9a2020; }
 .v4-monthly { font-size: 12px; color: #444; margin-top: 4px; }
 .v4-monthly.pending { color: #aaa; cursor: help; }
+.v4-fees-sub { font-size: 11px; color: #888; margin-top: 2px; }
 .v4-stats { text-align: right; font-size: 11px; color: #666; line-height: 1.5; }
 .v4-stats strong { color: #111; font-weight: 700; }
 .v4-psf-delta { font-size: 10px; margin-top: 1px; }
@@ -1380,6 +1381,8 @@ td {
           <th onclick="sortBy('rq_rank')" id="th-rq_rank" class="rank-col" style="width:52px;">RQ # <span class="sort-arrow" id="arr-rq_rank"></span></th>
           <th onclick="sortBy('building')" id="th-building">Building / Unit <span class="sort-arrow" id="arr-building"></span></th>
           <th onclick="sortBy('monthly')" id="th-monthly"><span id="lbl-monthly">Monthly Pmt</span> <span class="sort-arrow" id="arr-monthly"></span></th>
+          <th onclick="sortBy('fees')" id="th-fees">Fees/Mo <span class="sort-arrow" id="arr-fees"></span></th>
+          <th onclick="sortBy('feespct')" id="th-feespct">% Fees <span class="sort-arrow" id="arr-feespct"></span></th>
           <th onclick="sortBy('price')" id="th-price" class="col-price">Ask Price <span class="sort-arrow" id="arr-price"></span></th>
           <th onclick="sortBy('sqft')" id="th-sqft">SqFt <span class="sort-arrow" id="arr-sqft"></span></th>
           <th onclick="sortBy('beds')" id="th-beds">Beds / Baths <span class="sort-arrow" id="arr-beds"></span></th>
@@ -1447,6 +1450,27 @@ function calcMonthlyTotal(listing) {
   } else {
     return mtg + (listing.monthly_fees || 0) + (listing.monthly_taxes || 0);
   }
+}
+
+function calcFees(listing) {
+  // Returns the non-P&I portion of the monthly payment (carry costs only).
+  // Co-op: maintenance (taxes included). Condo/house: common charges + taxes.
+  // Rentals and listings with no fee data return null.
+  if (listing.listing_type === 'rent') return null;
+  if (listing.type === 'coop') {
+    return listing.maintenance != null ? listing.maintenance : null;
+  } else {
+    const fees = (listing.monthly_fees || 0) + (listing.monthly_taxes || 0);
+    return (listing.monthly_fees != null || listing.monthly_taxes != null) ? fees : null;
+  }
+}
+
+function calcFeesPct(listing) {
+  const fees = calcFees(listing);
+  if (fees === null) return null;
+  const total = calcMonthlyTotal(listing);
+  if (!total) return null;
+  return Math.round((fees / total) * 100);
 }
 
 function calcPmtPerSqft(listing) {
@@ -2149,6 +2173,8 @@ function sortListings() {
         return dir * (ar - br);
       }
       case 'monthly':  av = calcMonthlyTotal(a); bv = calcMonthlyTotal(b); break;
+      case 'fees':     av = calcFees(a) ?? -1; bv = calcFees(b) ?? -1; break;
+      case 'feespct':  av = calcFeesPct(a) ?? -1; bv = calcFeesPct(b) ?? -1; break;
       // Ask Price sorts rentals to bottom (no purchase price)
       case 'price':    av = a.listing_type === 'rent' ? 0 : (a.price || 0);
                        bv = b.listing_type === 'rent' ? 0 : (b.price || 0); break;
@@ -2243,7 +2269,7 @@ function renderTable() {
   empty.style.display = 'none';
 
   // colspan adjusts for hidden columns (Ask Price + Price/SqFt hidden in rent-only) + 2 rank cols + actions
-  const colSpan  = listingMode === 'rent' ? 12 : 14;
+  const colSpan  = listingMode === 'rent' ? 14 : 16;
   const showBoth = listingMode === 'both';
   const canEdit  = true;
 
@@ -2314,6 +2340,8 @@ function renderTable() {
           <div class="td-sub">${listing.address}${listing.unit ? ' #' + String(listing.unit).replace(/^#+/, '') : ''} · ${listing.neighborhood || ''}</div>
         </td>
         <td class="td-monthly">${fmtMoney(monthly)}<span style="font-size:10px;font-weight:500;color:#888;">/mo</span></td>
+        <td class="td-fees">${(() => { const f = calcFees(listing); return f !== null ? fmtMoney(f) + '<span style="font-size:10px;font-weight:500;color:#888;">/mo</span>' : '—'; })()}</td>
+        <td class="td-feespct">${(() => { const p = calcFeesPct(listing); return p !== null ? p + '%' : '—'; })()}</td>
         <td class="td-price col-price">${askCell}</td>
         <td>${listing.sqft ? wrapEst(listing.sqft.toLocaleString()) : '—'}</td>
         <td>${listing.beds ?? '—'} bd · ${baths} ba</td>
@@ -2438,9 +2466,14 @@ function renderCards() {
     const priceLine = isRent
       ? `<div class="v4-price">${fmtMoney(monthly)}<span style="font-size:13px;font-weight:500;color:#444;">/mo</span></div>`
       : `<div class="v4-price-line"><span class="v4-price">${fmtPrice(listing.price)}</span>${cut ? `<span class="v4-price-trend">↓ from ${fmtPrice(cut.priorPrice)}</span>` : ''}</div>`;
+    const feesForCard = calcFees(listing);
+    const feesPctForCard = calcFeesPct(listing);
+    const feesSubLine = (!isRent && !isPass1Only && feesForCard !== null)
+      ? `<div class="v4-fees-sub">Fees/mo ${fmtMoney(feesForCard)} · ${feesPctForCard}%</div>`
+      : '';
     const monthlyLine = isRent ? '' : (isPass1Only || !monthly
       ? `<div class="v4-monthly pending" title="Awaiting Pass 2 data — fees/taxes not yet pulled">—/mo all-in</div>`
-      : `<div class="v4-monthly">${fmtMoney(monthly)}/mo all-in</div>`);
+      : `<div class="v4-monthly">${fmtMoney(monthly)}/mo all-in</div>${feesSubLine}`);
 
     const psfDeltaHtml = (psfDelta === null) ? '' :
       `<div class="v4-psf-delta ${psfDelta < 0 ? 'good' : 'bad'}">${psfDelta > 0 ? '+' : ''}${psfDelta}% $/ft² vs shortlist</div>`;
