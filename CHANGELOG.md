@@ -45,12 +45,11 @@ User-provided: 3,100 sqft. Updated `sqft: 3100`, `price_per_sqft: 774` ($2.4M ÷
 ### Stale pill investigation — 737 Park Avenue #10A
 Listing showed "not seen 27 days." Investigation confirmed: listing has `beds: 3`, `sqft: 2254`, `price: $3.95M` — meets all Pass 1 filter criteria. Pipeline health shows 9+ consecutive clean cron runs without it appearing. Conclusion: listing went in-contract ~4/27 (confirmed by user). StreetEasy removes in-contract listings from search results, so they naturally fall out of Pass 1. Stale pill is working correctly. No action needed. Documented in CLAUDE.md as expected behavior.
 
-### refresh.yml commit-step KeyError fix
+### refresh.yml — two workflow fixes (2026-05-19)
 
-The 2026-05-19 09:00 UTC cron triggered by the docs push (commit `78d397b`) failed with two errors:
+**Fix 1 — `KeyError: 'listing_count'` in commit step:** The 09:00 UTC cron (triggered by docs push `78d397b`) sentinel-aborted cleanly, but the commit step then crashed trying to read `d['listing_count']` and `d['run_cost_usd']` from `latest.json`. When pull.py aborts before regenerating `latest.json`, the file on disk is our manually-rebuilt version (only has `listings` + `generated_at`). Fixed by switching both hard accesses to `.get()` with fallbacks: `d.get('listing_count', len(d.get('listings', [])))` and `d.get('run_cost_usd', '?')`.
 
-1. **Sentinel abort** — Pass 1 returned 1 placeholder item with no listing ID. Sentinel guard correctly exited with code 1. Expected/transient proxy block; no data lost.
-2. **`KeyError: 'listing_count'`** in the commit step — the workflow reads `d['listing_count']` and `d['run_cost_usd']` from `latest.json` to build the commit message. When pull.py sentinel-aborts before regenerating `latest.json`, the file on disk is our manually-rebuilt version (which only has `listings` + `generated_at`). Hard key access → crash. Fixed by switching both to `.get()` with fallbacks: `d.get('listing_count', len(d.get('listings', [])))` and `d.get('run_cost_usd', '?')`. `sale_count` and `rental_count` were already using `.get()`.
+**Fix 2 — `git push` rejected on concurrent commits:** The manual re-run succeeded through Pass 1 + Pass 2 (6 new listings, 415 total) and committed locally, but the push was rejected because our docs commit (`e06e31f9`) had landed on main during the run. Fixed by adding `git pull --rebase origin main` before `git push` in the commit step. Verified working on the subsequent manual run: 416 active listings, `status: ok`.
 
 **Note on PAT scope:** `workflow_dispatch` requires `actions:write` permission. The current PAT is `Contents read/write` only. To trigger runs programmatically from Cowork, Omar needs to add `actions:write` to the token at GitHub → Settings → Developer settings → Fine-grained tokens.
 
@@ -62,6 +61,8 @@ The 2026-05-19 09:00 UTC cron triggered by the docs push (commit `78d397b`) fail
 - `d25d706d7c` — Manual patch: 8 more condo→coop misclassifications
 - `78d397be4b` — Session 37 docs: CHANGELOG, CLAUDE.md, TASKS.md
 - `04f0efc2a0` — Fix refresh.yml: .get() fallbacks for listing_count + run_cost_usd
+- `83a409232f` — Fix refresh.yml: git pull --rebase before push to handle concurrent commits
+- `e06e31f904` — Session 37 close-out docs
 
 ---
 
