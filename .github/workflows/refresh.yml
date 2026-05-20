@@ -85,5 +85,6 @@ jobs:
             RENT=$(python  -c "import json; d=json.load(open('data/latest.json')); print(d.get('rental_count','?'))")
             COST=$(python  -c "import json; d=json.load(open('data/latest.json')); print(d.get('run_cost_usd','?'))")
             git commit -m "chore: refresh listings — ${COUNT} listings (${SALE} sale, ${RENT} rent), \$${COST} [skip ci]"
+            git pull --rebase origin main
             git push
           fi
