@@ -4,6 +4,65 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-19 — normalize() type auto-correction, rental Pass 2 regression, Railway outage (Session 37 cont.)
+
+### normalize() — type field now auto-corrected (not just maintenance preserved)
+
+**Root cause of the Session 37 gap:** The Session 36 normalize() fix (`maint = old_maint if ...`) preserved the `maintenance` field for misclassified co-ops but left `ptype = "condo"`. So every cron re-pull of a misclassified listing would re-save it with the correct maintenance value but the wrong type — and `calcMonthlyTotal` still took the condo branch (zeroing fees). Manual patches were overwritten by the next cron run.
+
+**Fix (commit `bad6cb7cda`):** The condo path in `normalize()` now sets `ptype = "coop"` when the fingerprint matches (`old_maint` populated, `fees` is None):
+
+```python
+if old_maint and not fees:
+    ptype = "coop"
+    maint = old_maint
+else:
+    maint = None
+```
+
+This self-heals misclassified listings permanently — no more manual re-patching after each cron run.
+
+### Second condo→coop sweep — 8 more listings patched
+
+After fixing the normalize() type correction, a second full-DB sweep found 8 more listings with the fingerprint (`type=condo` + `maintenance>0` + `monthly_fees=null`). All patched to `type→coop`:
+
+| ID | Address |
+|---|---|
+| 1772338 | 3 East 71st Street #7/8C (re-broken by cron; now self-healing) |
+| 1806823 | (additional from sweep) |
+| 1806824 | (additional from sweep) |
+| 1809511 | (additional from sweep) |
+| 1810032 | (additional from sweep) |
+| 1813405 | (additional from sweep) |
+| 1817776 | 1155 Park Avenue #4NE |
+| 1820532 | 1158 5th Avenue #4A |
+
+Running total of misclassified listings manually patched across sessions 36–37: **24**.
+Future misclassifications self-heal via the normalize() fix.
+
+### Rental Pass 2 regression — bug reported to memo23
+
+**Discovery:** User reported that rental listings had no Fees data and no recent `listed_date`. Investigation found:
+- 24–27 rentals/day appearing in Pass 1 (healthy)
+- 0 rentals upgraded from pass1 → pass2 since ~2026-05-14
+- Direct Apify test: `/rental/5046232` (220 E 72nd #10C0) → run SUCCEEDED but returned string `"error"` as the dataset item
+- Direct Apify test: `/building/220-east-72nd-street-new_york/10c0` → run hung indefinitely (>15 min, still RUNNING)
+- Both rental Pass 2 URL formats are broken
+
+**Bug report filed** on Apify console issues thread (session session 37, 2026-05-19): reported to memo23 with run IDs (`uDnT94fMy5ZhlM4cs`, `WxwPXhPMgDDNlq3Zq`) and reproduction steps. Awaiting response.
+
+**Impact:** All rental listings are stuck at `data_quality: pass1`. No rental fees, listed_dates, or price history will be populated until memo23 patches the actor.
+
+### Railway outage — Shortlist/Archive temporarily unavailable
+
+Railway experienced a major platform outage on 2026-05-19. The status API at `api.streethard.omarqari.com` returned 404/Not Found. The app fell back to all listings showing as Inbox (341 total), Shortlist 0, Archive 0. Data in Postgres is safe — Railway's managed Postgres was not affected by the compute outage. Shortlist/Archive curation restored automatically when Railway recovered.
+
+### Commits
+- `bad6cb7cda` — normalize(): auto-correct ptype to "coop" when maintenance fingerprint matches
+- `[db patch]` — Manual patch: 8 more condo→coop misclassifications (second sweep)
+
+---
+
 ## 2026-05-18 — Fees/Mo columns, condo→coop sweep, sqft patch (Session 37)
 
 ### Fees/Mo + % Fees columns
@@ -34,7 +93,7 @@ Added two new sortable columns immediately right of Monthly Pmt, visible in the 
 
 Running total of misclassified listings manually patched: **24** (15 in Session 36 + 9 in Session 37).
 
-**Open follow-up:** add auto-correction to `normalize()` — if `ptype == "condo"` and `old_maint > 0` and `fees is None`, set `type = "coop"` so future ingestions self-heal without manual sweeps.
+**Follow-up completed (2026-05-19):** `normalize()` now auto-corrects `ptype = "coop"` when the fingerprint matches — future ingestions self-heal without manual sweeps. See session entry above.
 
 ### latest.json wrapper bug fixed
 Quick-rebuild of `latest.json` during sqft patch accidentally wrote a bare array instead of the required `{listings: [...], generated_at: "..."}` wrapper. App read `data.listings` → undefined → 0 listings rendered. Fixed immediately. CLAUDE.md updated to document the expected format explicitly.

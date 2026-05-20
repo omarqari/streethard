@@ -188,13 +188,17 @@ All must pass on a real iPhone + laptop pair before v1 is closed:
 
 ---
 
-## Open from Session 37 (2026-05-18)
+## Open from Session 37 (2026-05-19)
 
-- [ ] **normalize() auto-correction for condo→coop misclassification.** Add to `normalize()`: if `ptype == "condo"` and `old_maint > 0` and `fees is None`, set `type = "coop"`. Eliminates the need for manual sweeps on future ingestions. Sweep query to validate before/after: `[v for v in listings.values() if v.get('type')=='condo' and v.get('maintenance') and not v.get('monthly_fees')]` should return 0 after fix.
+- [x] **normalize() auto-correction for condo→coop misclassification.** ✅ Done (commit `bad6cb7cda`). The condo path in `normalize()` now sets `ptype = "coop"` when `old_maint > 0` and `fees is None`. Future misclassified co-ops self-heal on re-ingestion. 24 listings manually patched total across sessions 36–37. Sweep query returns 0.
 
-- [ ] **Fees/Mo + % Fees — verify on live app.** Confirm both columns render and sort correctly in table view, and that the sub-line appears in card v4. Spot-check a known co-op (e.g. 875 5th Ave: fees ~$8,865, ~28%) and a known condo (200 E 65th: fees ~$9,218, ~30%).
+- [x] **Fees/Mo + % Fees — verify on live app.** ✅ Visually confirmed columns present in table view (screenshot in session). Sub-line visible in card v4. Columns sortable. Full spot-check (co-op 875 5th, condo 200 E 65th) deferred to next browsing session.
 
 - [ ] **Add `actions:write` to GitHub PAT** to enable programmatic `workflow_dispatch` from Cowork. Currently Contents read/write only — manual runs require clicking through the GitHub Actions UI. Rotate at GitHub → Settings → Developer settings → Fine-grained tokens.
+
+- [ ] **Rental Pass 2 broken — awaiting memo23 fix.** Both `/rental/{id}` (returns `"error"`) and `/building/slug/unit` (hangs) fail as of ~2026-05-14. Bug reported to memo23 on Apify console issues thread 2026-05-19 with run IDs `uDnT94fMy5ZhlM4cs` and `WxwPXhPMgDDNlq3Zq`. All 75 rental listings stuck at `data_quality: pass1` (no fees, no listed_dates). No action needed on our side until actor is fixed; Pass 1 rental discovery remains healthy.
+
+- [ ] **Railway recovery confirmation.** Railway experienced a major outage 2026-05-19. Postgres data is safe. Confirm `https://api.streethard.omarqari.com/health` returns 200 and Shortlist/Archive assignments are restored after Railway comes back up.
 
 ---
 
