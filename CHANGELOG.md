@@ -4,6 +4,35 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-21 — Railway outage recovery (Session 38)
+
+### Railway Postgres crash-loop resolved via full Redeploy
+
+The Railway outage that began 2026-05-19 persisted into this session. Both services (`Postgres` and `streethard`) were crashed. Key findings and recovery sequence:
+
+**Root cause:** Railway US East infrastructure failure caused the Postgres container to crash-loop with `ERROR (catatonit:2): failed to exec pid1: No such file or directory`. This is an infra-level failure, not a database or application issue.
+
+**What didn't work:** `Restart` — restarts the crashed container on the same broken host. Postgres would briefly show "Completed" then crash again within ~1 minute. `streethard` redeploy attempts during this window all failed at "Network › Healthcheck" because `asyncpg.create_pool()` couldn't connect.
+
+**What fixed it:** `Redeploy` (three-dot menu → Redeploy) — pulls a fresh container image from Docker Hub (`ghcio/railwayapp-templates/postgres-ssl:18`) and schedules it on new infrastructure. After redeploy, Postgres came up and stayed up (held stable for 6+ minutes before streethard was redeployed).
+
+**Recovery sequence:**
+1. Navigated to Railway dashboard → `heartfelt-purpose` project → Postgres service → Deployments tab
+2. Used three-dot menu → **Redeploy** (not Restart) — new deployment created, "Deployment successful"
+3. Old crashed deployment shown as REMOVING/REMOVED
+4. Navigated to `streethard` service → three-dot menu → **Redeploy**
+5. New deployment built and passed healthcheck — "Deployment successful"
+6. Confirmed: `curl https://api.streethard.omarqari.com/health` → `{"ok":true,"db":"connected"}`
+
+**Data integrity:** All Shortlist/Archive assignments, OQ/RQ rankings, and notes were preserved — Postgres volume was never touched by the compute failure.
+
+**Lesson for future Railway outages:** If Postgres is crash-looping and `Restart` doesn't hold, go straight to `Redeploy` via the three-dot menu on the Deployments tab. This re-provisions on fresh infrastructure rather than restarting on a broken host.
+
+### Commits
+None (infrastructure recovery only, no code changes)
+
+---
+
 ## 2026-05-19 — normalize() type auto-correction, rental Pass 2 regression, Railway outage (Session 37 cont.)
 
 ### normalize() — type field now auto-corrected (not just maintenance preserved)

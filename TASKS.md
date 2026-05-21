@@ -198,7 +198,7 @@ All must pass on a real iPhone + laptop pair before v1 is closed:
 
 - [ ] **Rental Pass 2 broken — awaiting memo23 fix.** Both `/rental/{id}` (returns `"error"`) and `/building/slug/unit` (hangs) fail as of ~2026-05-14. Bug reported to memo23 on Apify console issues thread 2026-05-19 with run IDs `uDnT94fMy5ZhlM4cs` and `WxwPXhPMgDDNlq3Zq`. All 75 rental listings stuck at `data_quality: pass1` (no fees, no listed_dates). No action needed on our side until actor is fixed; Pass 1 rental discovery remains healthy.
 
-- [ ] **Railway recovery confirmation.** Railway experienced a major outage 2026-05-19. Postgres data is safe. Confirm `https://api.streethard.omarqari.com/health` returns 200 and Shortlist/Archive assignments are restored after Railway comes back up.
+- [x] **Railway recovery confirmation.** ✅ Session 38 (2026-05-21). Used Redeploy (not Restart) to fix Postgres crash-loop. Redeployed streethard. Confirmed `{"ok":true,"db":"connected"}`. All Shortlist/Archive data intact.
 
 ---
 
