@@ -308,6 +308,7 @@ When the Apify actor breaks or needs a feature, the fastest path is the Apify co
 - `data/YYYY-MM-DD.json` — dated snapshots for badge diffing
 - `scripts/pull.py` — incremental Apify pull script
 - `scripts/git_push.py` — push to GitHub via REST API (avoids sandbox git lock issues)
+- `scripts/rental_backfill.py` — targeted rental Pass 2 backfill (two-phase: `--start` submits run, `--finish RUN_ID` polls + merges); use when rentals accumulate at pass1 after an actor outage
 - `index.html` — StreetHard app shell (family-facing)
 - `diagnostics.html` — operator-only ops page (Pass 1 coverage, W5 cliff guard, pass1/pass2 split, search URLs); reachable via tiny gray footer link in the main app
 - `api/main.py` — FastAPI status backend (all endpoints)
