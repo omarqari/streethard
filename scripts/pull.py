@@ -1202,6 +1202,23 @@ def build_pass2_queue(db, ids_seen, urls_by_id, listing_type):
         elif entry.get("needs_refresh"):
             price_changed.append((lid, url))
 
+    # Also queue pass1-quality listings of this type that were NOT seen in
+    # today's Pass 1. StreetEasy search returns a sample (~30-50% of total
+    # rentals on a given run), so listings discovered on day N may not appear
+    # in Pass 1 on day N+1. Without this sweep they'd be orphaned at pass1
+    # forever. We use the `url` stored on the listing at first ingest.
+    seen_set = set(ids_seen)
+    for lid, entry in db.items():
+        if lid in seen_set:
+            continue
+        if entry.get("listing_type") != listing_type:
+            continue
+        if entry.get("data_quality") != "pass1":
+            continue
+        url = entry.get("url")
+        if url:
+            never_scraped.append((lid, url))
+
     # Priority: never-scraped > stale partials > price-changed
     queue = never_scraped + stale_partial + price_changed
     capped = queue[:PASS2_PER_RUN_CAP]
