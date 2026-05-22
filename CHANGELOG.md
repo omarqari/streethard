@@ -4,6 +4,49 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-21 — Rental Pass 2 fix validated + manual full refresh (Session 39)
+
+### memo23 rental Pass 2 fix confirmed working
+
+memo23 patched two stacked issues blocking rental Pass 2 since ~2026-05-14:
+1. **PerimeterX escalation** — PX had expanded its block to cover `/rental/{id}` and `/building/.../...` HTML pages from the residential IP pool (previously only the mobile API was blocked).
+2. **Redirect not followed** — the actor's curl invocation wasn't following redirects, so the `/rental/{id}` → `/building/...` 308 redirect was dropped silently.
+
+Both fixed. memo23 tested end-to-end against listing 5046232 (220 East 72nd Street) and confirmed full data including agent contact.
+
+### Validation confounded by bad proxy day
+
+Our initial validation attempts all returned "No results found" sentinels — including sale listings, confirming it was an actor-wide proxy throttle day, not a rental-specific failure. The fix was confirmed only after the proxy situation cleared (same session, ~2 hours later) when the manual backfill succeeded cleanly.
+
+### Manual rental backfill
+
+4 pass1 rentals had accumulated during the 7-day outage window and missed the two cron runs since the fix (May 20 aborted, May 21 not yet run). Ran a targeted pass2-only backfill via `rental_backfill.py` (written this session):
+
+- 4/4 upgraded to pass2, 0 sentinel, 0 partial
+- Agent contact returns null for rentals — known gap, actor only returns firm name now
+- All 76 rentals now at pass2 quality (first time since regression started)
+
+### Manual sales Pass 1 + Pass 2
+
+May 20 cron had aborted (proxy bad day), leaving sales stale by ~2 days. Ran manual Pass 1 + Pass 2:
+
+- Pass 1: 286 real listings returned, **6 new listings** discovered, 2 price changes
+- Pass 2: all 6 immediately upgraded to pass2 (fees, taxes, agent data)
+- 423 total active listings, 422 pass2, 1 pass1 (likely a duplicate: 243 East 77th Street #PHA appears as both 1826929 and 1829073)
+
+### DB state after session
+
+- **423 active** listings (341 sale, 76 rental, 1 delisted)
+- **422 pass2, 1 pass1, 0 partial**
+- All rentals at pass2 for first time since ~2026-05-14
+
+### Commits
+
+- `d122cf3408` — backfill: upgrade 4 pass1 rentals to pass2 (memo23 fix validated)
+- `040d55f9e2` — manual refresh: +6 new sale listings, pass2 complete (423 total)
+
+---
+
 ## 2026-05-21 — Railway outage recovery (Session 38)
 
 ### Railway Postgres crash-loop resolved via full Redeploy
