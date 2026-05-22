@@ -369,6 +369,28 @@ script, validating $/sqft, updating db.json, tracking processed files in
 `skills/floorplan-estimator/scripts/estimate_sqft.py` does the computation;
 Claude provides the calibration room measurements visually.
 
+## Post-Schema-Fix Audit Rule — READ THIS AFTER ANY normalize() PATCH
+
+**Any time `normalize()` or `normalize_rental()` is patched for a schema change, run a data quality audit before closing out.** Listings that were upgraded to pass2 under the broken normalizer will have empty strings (not None) for fields like `address`, `unit`, `neighborhood`. They won't be re-fetched by the normal pipeline because they're already marked pass2.
+
+**Audit query to run after every normalize patch:**
+
+```python
+# Blank-address pass2 rentals (schema bug fingerprint)
+[lid for lid, v in listings.items()
+ if v.get('listing_type') == 'rent'
+ and v.get('data_quality') == 'pass2'
+ and not v.get('address')]
+
+# Blank-address pass2 sales
+[lid for lid, v in listings.items()
+ if v.get('listing_type') == 'sale'
+ and v.get('data_quality') == 'pass2'
+ and not v.get('address')]
+```
+
+If either returns results, force a pass2 re-fetch on those IDs before pushing. This pattern burned us in Session 39: 12 rentals upgraded on 2026-05-10 under a broken normalizer had empty addresses for weeks until noticed in the UI.
+
 ## Bottom-Up Validation Rule — READ THIS BEFORE BUILDING ANYTHING
 
 **Always validate from the smallest unit up before wiring components together.** This rule exists because we wasted significant time building and debugging a rental pipeline top-down, only to discover fundamental assumptions about how the Apify actor handles search URLs were wrong.
