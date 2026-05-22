@@ -40,10 +40,29 @@ May 20 cron had aborted (proxy bad day), leaving sales stale by ~2 days. Ran man
 - **422 pass2, 1 pass1, 0 partial**
 - All rentals at pass2 for first time since ~2026-05-14
 
+### 12 blank-address rentals patched
+
+**Root cause:** memo23 pushed the flat schema on 2026-05-10 before our `normalize_rental` was updated to read it. Those 12 rentals were upgraded to pass2 that day with empty strings for `address`, `unit`, and `neighborhood`. The normalize fix landed 2026-05-14 but only affected new pass1 → pass2 transitions — already-pass2 listings were never re-fetched.
+
+**Fix:** Forced pass2 re-fetch on all 12 IDs. All 12 returned correct addresses (e.g. "350 East 79th Street", "420 East 64th Street", etc).
+
+**Prevention:** Added "Post-Schema-Fix Audit Rule" to CLAUDE.md — after any normalize() patch, run a blank-address query against all pass2 listings and re-fetch any that return results before closing out.
+
+### latest.json was stale after backfills
+
+`save_db()` only writes `db.json` — `generate_latest()` is a separate call that the manual backfill scripts weren't making. Both the rental backfill and sale refresh pushed the old `latest.json` (417 listings, generated_at 2026-05-20), causing the "Listings last updated 2 days ago" banner to persist. Fixed by calling `generate_latest()` explicitly and re-pushing. `rental_backfill.py` patched to always call `generate_latest` after `save_db`.
+
 ### Commits
 
 - `d122cf3408` — backfill: upgrade 4 pass1 rentals to pass2 (memo23 fix validated)
 - `040d55f9e2` — manual refresh: +6 new sale listings, pass2 complete (423 total)
+- `77a79f8ead` — session 39 docs: CHANGELOG + CLAUDE.md
+- `74c7f56451` — fix: document correct local sync command
+- `c37eecf559` — rental_backfill.py + CLAUDE.md file list
+- `7ce8cc3e64` — fix: regenerate latest.json (423 listings)
+- `a27d20f642` — fix: rental_backfill.py now calls generate_latest
+- `001996c73d` — fix: re-fetch 12 blank-address rentals
+- `0326be1883` — docs: post-schema-fix audit rule in CLAUDE.md
 
 ---
 
