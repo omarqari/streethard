@@ -1,10 +1,10 @@
 {
-  "last_updated": "2026-05-20",
+  "last_updated": "2026-05-22",
   "stats": {
     "total": 417,
-    "pass1_only": 4,
+    "pass1_only": 0,
     "partial": 0,
-    "pass2_complete": 413,
+    "pass2_complete": 417,
     "sale": 341,
     "rent": 76,
     "delisted": 0
@@ -32649,16 +32649,16 @@
       "building": "220 East 72nd Street",
       "address": "220 East 72nd Street",
       "unit": "#10C0",
-      "neighborhood": "Lenox Hill",
+      "neighborhood": "",
       "price": 14495,
       "sqft": 0,
       "beds": 3,
       "baths": 2.0,
       "price_per_sqft": null,
       "type": "rental",
-      "year_built": null,
-      "days_on_market": null,
-      "listed_date": null,
+      "year_built": 1974,
+      "days_on_market": 2,
+      "listed_date": "2026-05-18",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -32666,14 +32666,34 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "The Dermot Realty Management Company",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-21",
+          "price": 14495,
+          "event": "RENTED",
+          "broker": "The Dermot Realty Management Company"
+        },
+        {
+          "date": "2026-05-20",
+          "price": 14495,
+          "event": "IN_CONTRACT",
+          "broker": "The Dermot Realty Management Company"
+        },
+        {
+          "date": "2026-05-18",
+          "price": 14495,
+          "event": "LISTED",
+          "broker": "The Dermot Realty Management Company"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "data_quality": "pass1",
+      "data_quality": "pass2",
       "last_pass1": "2026-05-20",
-      "last_pass2": null,
-      "status": "active"
+      "last_pass2": "2026-05-22",
+      "status": "active",
+      "needs_refresh": false
     },
     "5046494": {
       "listing_type": "rent",
@@ -32682,16 +32702,16 @@
       "building": "40 East 94th Street",
       "address": "40 East 94th Street",
       "unit": "#30EF",
-      "neighborhood": "Carnegie Hill",
+      "neighborhood": "",
       "price": 18500,
       "sqft": 2115,
       "beds": 3,
       "baths": 3.5,
       "price_per_sqft": null,
       "type": "rental",
-      "year_built": null,
-      "days_on_market": null,
-      "listed_date": null,
+      "year_built": 1984,
+      "days_on_market": 3,
+      "listed_date": "2026-05-18",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -32699,14 +32719,22 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-18",
+          "price": 18500,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "data_quality": "pass1",
+      "data_quality": "pass2",
       "last_pass1": "2026-05-20",
-      "last_pass2": null,
-      "status": "active"
+      "last_pass2": "2026-05-22",
+      "status": "active",
+      "needs_refresh": false
     },
     "5045534": {
       "listing_type": "rent",
@@ -32715,16 +32743,16 @@
       "building": "220 East 60th Street",
       "address": "220 East 60th Street",
       "unit": "#7CD",
-      "neighborhood": "Lenox Hill",
+      "neighborhood": "",
       "price": 10000,
       "sqft": 1500,
       "beds": 4,
       "baths": 2.0,
       "price_per_sqft": null,
       "type": "rental",
-      "year_built": null,
-      "days_on_market": null,
-      "listed_date": null,
+      "year_built": 1965,
+      "days_on_market": 4,
+      "listed_date": "2026-05-17",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -32732,14 +32760,22 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Compass",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-17",
+          "price": 10000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "data_quality": "pass1",
+      "data_quality": "pass2",
       "last_pass1": "2026-05-20",
-      "last_pass2": null,
-      "status": "active"
+      "last_pass2": "2026-05-22",
+      "status": "active",
+      "needs_refresh": false
     },
     "5039102": {
       "listing_type": "rent",
@@ -32748,16 +32784,16 @@
       "building": "111 East 88th Street",
       "address": "111 East 88th Street",
       "unit": "#9A",
-      "neighborhood": "Carnegie Hill",
+      "neighborhood": "",
       "price": 13800,
       "sqft": 1695,
       "beds": 3,
       "baths": 3.0,
       "price_per_sqft": null,
       "type": "rental",
-      "year_built": null,
-      "days_on_market": null,
-      "listed_date": null,
+      "year_built": 1929,
+      "days_on_market": 4,
+      "listed_date": "2026-05-17",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -32765,14 +32801,22 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Paulette Brown",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-17",
+          "price": 13800,
+          "event": "LISTED",
+          "broker": "Paulette Brown"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "data_quality": "pass1",
+      "data_quality": "pass2",
       "last_pass1": "2026-05-20",
-      "last_pass2": null,
-      "status": "active"
+      "last_pass2": "2026-05-22",
+      "status": "active",
+      "needs_refresh": false
     }
   }
 }
