@@ -17,7 +17,8 @@ load_dotenv(REPO_ROOT / ".env")
 
 from pull import (
     ApifyClient, normalize_rental, merge_pass2_into_db,
-    load_db, save_db, ACTOR_ID, PASS2_TIMEOUT_SEC
+    load_db, save_db, generate_latest, ACTOR_ID, PASS2_TIMEOUT_SEC,
+    SALE_URL, RENTAL_URL
 )
 
 
@@ -130,7 +131,8 @@ def phase_finish(run_id):
     print(f"Upgraded: {upgraded} listings to pass2")
 
     save_db(db, len(detail_items))
-    print("db.json saved.")
+    generate_latest(db, "both", len(detail_items), sale_url=SALE_URL, rental_url=RENTAL_URL)
+    print("db.json + latest.json saved.")
 
     remaining = sum(1 for l in db.values() if isinstance(l, dict) and l.get("listing_type") == "rent" and l.get("data_quality") == "pass1")
     print(f"Remaining pass1 rentals: {remaining}")
