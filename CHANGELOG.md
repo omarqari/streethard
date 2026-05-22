@@ -1863,3 +1863,32 @@ After fix: 50 normalized, 0 skipped. Field fill rates:
 | Supplemental: NYC Open Data (PLUTO, ACRIS) | Authoritative building + sales data, free |
 | Run in Claude Cowork mode | Moved from Chat; Cowork can call APIs and write files directly |
 | API key rotation deferred | Free tier, no payment info, will rotate post-validation |
+
+---
+
+## 2026-05-22 — Fix orphaned pass1 rentals + build_pass2_queue bug (Session 40)
+
+### Bug: 6 rental listings stuck at pass1 forever
+
+Six new rental listings were discovered in a recent Pass 1 run but were never upgraded to pass2. Root cause: `build_pass2_queue` only iterated over `ids_seen` — the listings returned by *today's* Pass 1 run. Since StreetEasy search returns a sample (~30-50% of total rentals on any given run), listings discovered on day N but absent from day N+1's results were permanently invisible to Pass 2. They'd stay at pass1 with no `listed_date`, `year_built`, `price_history`, or fees data indefinitely.
+
+**Affected listings:** 356 East 78th #19B, 360 East 65th #PHA, 200 East 71st #7A, 500A East 87th #2EE, 1235 Park #2A, 389 East 89th #15G
+
+### Code fix: `build_pass2_queue` sweeps orphaned pass1 listings
+
+After the `ids_seen` loop, the function now does a second pass over the entire db for any same-type `data_quality=pass1` listings that have a stored `url` and weren't seen in today's Pass 1. They're added to `never_scraped` and get queued just like any other new listing. Self-healing going forward — any future orphaned pass1 listings are caught on the next cron run.
+
+### Manual Pass 2 backfill
+
+Ran targeted Pass 2 via Apify directly for all 6 IDs. All upgraded to pass2:
+- All 6 now have `listed_date` (2026-05-20 or 2026-05-21), `year_built`, `price_history`
+- 3 listings (1235 Park, 200 E 71st, 356 E 78th) returned `sqft=0` → stored as `None`
+- No per-agent contact returned (known rental schema gap — firm only)
+
+### DB state after session
+- **429 active** listings (347 sale, 82 rental, 1 delisted)
+- **428 pass2, 1 pass1** (the known duplicate: 243 East 77th #PHA, ID 1826929)
+- All 82 rentals at pass2
+
+### Commits
+- `fix: queue orphaned pass1 listings in build_pass2_queue; backfill 6 rental listings`
