@@ -249,6 +249,18 @@ curl -s -H "Authorization: token $TOKEN" \
 
 For pulling remote changes: ask the user to run `git pull` from their Terminal (not from the sandbox).
 
+### Bringing local up to date at session close
+
+Because all pushes go via the GitHub API (bypassing local git entirely), the local working tree accumulates unstaged changes that block a normal `git pull`. **Never tell the user to run `git pull` alone** — it will always fail with "Please commit your changes or stash them before you merge."
+
+The correct command to give the user at session close is always:
+
+```bash
+git fetch origin && git reset --hard origin/main
+```
+
+This discards local state and syncs to exactly what's on remote. It is always safe because every file change was already pushed via `git_push.py` or `mcp__github__push_files` before this step.
+
 ### Token rules
 - Never print, log, or echo the token value
 - Never write the token to any file other than `.env`
