@@ -4,7 +4,7 @@
   "sale_count": 347,
   "rental_count": 76,
   "delisted_count": 0,
-  "run_cost_usd": 0.0,
+  "run_cost_usd": 0.036,
   "mode": "both",
   "listings": [
     {
@@ -26592,9 +26592,9 @@
       "listing_type": "rent",
       "id": "5028544",
       "url": "https://streeteasy.com/rental/5028544",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "405 East 78th Street",
+      "address": "405 East 78th Street",
+      "unit": "#4B",
       "neighborhood": "",
       "price": 18500,
       "sqft": 1079,
@@ -26603,8 +26603,8 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2015,
-      "days_on_market": 11,
-      "listed_date": null,
+      "days_on_market": 12,
+      "listed_date": "2026-04-30",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -26612,12 +26612,25 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Rove Travel LLC",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-12",
+          "price": 18500,
+          "event": "OFF_MARKET",
+          "broker": "Rove Travel LLC"
+        },
+        {
+          "date": "2026-04-30",
+          "price": 18500,
+          "event": "LISTED",
+          "broker": "Rove Travel LLC"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -27038,9 +27051,9 @@
       "listing_type": "rent",
       "id": "5034185",
       "url": "https://streeteasy.com/rental/5034185",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "210 East 78th Street",
+      "address": "210 East 78th Street",
+      "unit": "#PARLOR",
       "neighborhood": "",
       "price": 17500,
       "sqft": 0,
@@ -27049,8 +27062,8 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1899,
-      "days_on_market": 4,
-      "listed_date": null,
+      "days_on_market": 12,
+      "listed_date": "2026-05-06",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -27058,21 +27071,34 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Brown Harris Stevens",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-18",
+          "price": 17500,
+          "event": "RENTED",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 17500,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
       "listing_type": "rent",
       "id": "5036172",
       "url": "https://streeteasy.com/rental/5036172",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "350 East 79th Street",
+      "address": "350 East 79th Street",
+      "unit": "#25B",
       "neighborhood": "",
       "price": 17400,
       "sqft": 0,
@@ -27082,7 +27108,7 @@
       "type": "rental",
       "year_built": 1989,
       "days_on_market": 3,
-      "listed_date": null,
+      "listed_date": "2026-05-07",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -27090,12 +27116,25 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Glenwood",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-10",
+          "price": 17400,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Glenwood"
+        },
+        {
+          "date": "2026-05-07",
+          "price": 17400,
+          "event": "LISTED",
+          "broker": "Glenwood"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-10",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -27509,9 +27548,9 @@
       "listing_type": "rent",
       "id": "5021704",
       "url": "https://streeteasy.com/rental/5021704",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "222 East 34th Street",
+      "address": "222 East 34th Street",
+      "unit": "#2404",
       "neighborhood": "",
       "price": 16400,
       "sqft": 0,
@@ -27520,8 +27559,8 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2002,
-      "days_on_market": 19,
-      "listed_date": null,
+      "days_on_market": 29,
+      "listed_date": "2026-04-22",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -27529,12 +27568,25 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "The Anthem NYC",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-16",
+          "price": 16400,
+          "event": "",
+          "broker": "The Anthem NYC"
+        },
+        {
+          "date": "2026-04-22",
+          "price": 17000,
+          "event": "LISTED",
+          "broker": "The Anthem NYC"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -28731,9 +28783,9 @@
       "listing_type": "rent",
       "id": "5024905",
       "url": "https://streeteasy.com/rental/5024905",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "40 East 94th Street",
+      "address": "40 East 94th Street",
+      "unit": "#10A",
       "neighborhood": "",
       "price": 15600,
       "sqft": 0,
@@ -28742,8 +28794,8 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1984,
-      "days_on_market": 14,
-      "listed_date": null,
+      "days_on_market": 18,
+      "listed_date": "2026-04-27",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -28751,12 +28803,31 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Sotheby's International Realty",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-15",
+          "price": 15600,
+          "event": "IN_CONTRACT",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-04-27",
+          "price": 15600,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-04-27",
+          "price": 15000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -29389,9 +29460,9 @@
       "listing_type": "rent",
       "id": "5036240",
       "url": "https://streeteasy.com/rental/5036240",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "420 East 64th Street",
+      "address": "420 East 64th Street",
+      "unit": "#W7H",
       "neighborhood": "",
       "price": 15000,
       "sqft": 0,
@@ -29400,8 +29471,8 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": null,
-      "days_on_market": 4,
-      "listed_date": null,
+      "days_on_market": 14,
+      "listed_date": "2026-05-07",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -29409,12 +29480,25 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Inbaly Realty Corp",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-08",
+          "price": 15000,
+          "event": "",
+          "broker": "Inbaly Realty Corp"
+        },
+        {
+          "date": "2026-05-07",
+          "price": 16000,
+          "event": "LISTED",
+          "broker": "Inbaly Realty Corp"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -29561,9 +29645,9 @@
       "listing_type": "rent",
       "id": "5037742",
       "url": "https://streeteasy.com/rental/5037742",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "175 East 62nd Street",
+      "address": "175 East 62nd Street",
+      "unit": "#PHA",
       "neighborhood": "",
       "price": 14500,
       "sqft": 0,
@@ -29572,8 +29656,8 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1963,
-      "days_on_market": 13,
-      "listed_date": null,
+      "days_on_market": 23,
+      "listed_date": "2026-05-09",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -29581,12 +29665,19 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-09",
+          "price": 14500,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -30806,9 +30897,9 @@
       "listing_type": "rent",
       "id": "5020458",
       "url": "https://streeteasy.com/rental/5020458",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "301 East 94th Street",
+      "address": "301 East 94th Street",
+      "unit": "#22C",
       "neighborhood": "",
       "price": 12864,
       "sqft": 1450,
@@ -30817,8 +30908,8 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1989,
-      "days_on_market": 20,
-      "listed_date": null,
+      "days_on_market": 22,
+      "listed_date": "2026-04-21",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -30826,12 +30917,25 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Rose Associates, Inc.",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-13",
+          "price": 12864,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Rose Associates, Inc."
+        },
+        {
+          "date": "2026-04-21",
+          "price": 12864,
+          "event": "LISTED",
+          "broker": "Rose Associates, Inc."
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-13",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -31065,9 +31169,9 @@
       "listing_type": "rent",
       "id": "5031793",
       "url": "https://streeteasy.com/rental/5031793",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "265 East 66th Street",
+      "address": "265 East 66th Street",
+      "unit": "#18C",
       "neighborhood": "",
       "price": 12250,
       "sqft": 0,
@@ -31076,8 +31180,8 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1979,
-      "days_on_market": 8,
-      "listed_date": null,
+      "days_on_market": 18,
+      "listed_date": "2026-05-03",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -31085,12 +31189,19 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "MNS",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-03",
+          "price": 12250,
+          "event": "LISTED",
+          "broker": "MNS"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -31523,19 +31634,19 @@
       "listing_type": "rent",
       "id": "5038443",
       "url": "https://streeteasy.com/rental/5038443",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "305 East 86th Street",
+      "address": "305 East 86th Street",
+      "unit": "#20JE",
       "neighborhood": "",
-      "price": 10795,
+      "price": 11000,
       "sqft": 1218,
       "beds": 3,
       "baths": 2.0,
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1964,
-      "days_on_market": 1,
-      "listed_date": null,
+      "days_on_market": 2,
+      "listed_date": "2026-05-10",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -31543,12 +31654,37 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "UES Management",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-14",
+          "price": 11000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "UES Management"
+        },
+        {
+          "date": "2026-05-12",
+          "price": 11000,
+          "event": "",
+          "broker": "UES Management"
+        },
+        {
+          "date": "2026-05-12",
+          "price": 11000,
+          "event": "IN_CONTRACT",
+          "broker": "UES Management"
+        },
+        {
+          "date": "2026-05-10",
+          "price": 10795,
+          "event": "LISTED",
+          "broker": "UES Management"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -32155,9 +32291,9 @@
       "listing_type": "rent",
       "id": "5035734",
       "url": "https://streeteasy.com/rental/5035734",
-      "building": "",
-      "address": "",
-      "unit": "",
+      "building": "444 East 82nd Street",
+      "address": "444 East 82nd Street",
+      "unit": "#7V",
       "neighborhood": "",
       "price": 10000,
       "sqft": 1370,
@@ -32166,8 +32302,8 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1966,
-      "days_on_market": 5,
-      "listed_date": null,
+      "days_on_market": 8,
+      "listed_date": "2026-05-06",
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -32175,44 +32311,31 @@
       "agent_phone": null,
       "agent_email": null,
       "agent_firm": "Corcoran",
-      "price_history": [],
+      "price_history": [
+        {
+          "date": "2026-05-14",
+          "price": 10000,
+          "event": "RENTED",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-05-14",
+          "price": 10000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 10000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-05-10",
-      "status": "active"
-    },
-    {
-      "listing_type": "rent",
-      "id": "5034197",
-      "url": "https://streeteasy.com/rental/5034197",
-      "building": "",
-      "address": "",
-      "unit": "",
-      "neighborhood": "",
-      "price": 10000,
-      "sqft": 0,
-      "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "rental",
-      "year_built": 1910,
-      "days_on_market": 4,
-      "listed_date": null,
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": "REAL New York",
-      "price_history": [],
-      "_is_partial": false,
-      "_partial_reason": null,
-      "_partial_error": null,
-      "last_pass1": "2026-05-10",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-05-22",
       "status": "active"
     },
     {
@@ -32251,6 +32374,63 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-20",
+      "last_pass2": "2026-05-22",
+      "status": "active"
+    },
+    {
+      "listing_type": "rent",
+      "id": "5034197",
+      "url": "https://streeteasy.com/rental/5034197",
+      "building": "318 East 62nd Street",
+      "address": "318 East 62nd Street",
+      "unit": "#4/5",
+      "neighborhood": "",
+      "price": 9295,
+      "sqft": 0,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": 1910,
+      "days_on_market": 12,
+      "listed_date": "2026-05-06",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "REAL New York",
+      "price_history": [
+        {
+          "date": "2026-05-18",
+          "price": 9295,
+          "event": "OFF_MARKET",
+          "broker": "REAL New York"
+        },
+        {
+          "date": "2026-05-18",
+          "price": 9295,
+          "event": "",
+          "broker": "REAL New York"
+        },
+        {
+          "date": "2026-05-10",
+          "price": 9500,
+          "event": "",
+          "broker": "REAL New York"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 10000,
+          "event": "LISTED",
+          "broker": "REAL New York"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-05-10",
       "last_pass2": "2026-05-22",
       "status": "active"
     }
