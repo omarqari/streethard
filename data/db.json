@@ -31952,10 +31952,10 @@
       "unit": "#9W",
       "neighborhood": "",
       "price": 2495000,
-      "sqft": 1550,
+      "sqft": 1700,
       "beds": 3,
       "baths": 2.5,
-      "price_per_sqft": 1610,
+      "price_per_sqft": 1468,
       "type": "coop",
       "year_built": 1920,
       "days_on_market": 1,
@@ -31985,7 +31985,7 @@
       "needs_refresh": false,
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
-      "sqft_estimate_note": "Room sum from chat-provided floor plan; 3BR pre-war co-op; ~1,550 sqft"
+      "sqft_estimate_note": "Room sum from chat floor plan; pre-war Park Ave thick masonry walls (8%); revised up from 1,550; ~1,700 sqft"
     },
     "1828104": {
       "listing_type": "sale",
