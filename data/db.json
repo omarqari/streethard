@@ -8711,10 +8711,10 @@
       "unit": "#12AB",
       "neighborhood": "Lenox Hill",
       "price": 3200000,
-      "sqft": null,
+      "sqft": 2400,
       "beds": 4,
       "baths": 2.5,
-      "price_per_sqft": null,
+      "price_per_sqft": 1333,
       "type": "coop",
       "year_built": 1983,
       "days_on_market": 39,
@@ -8834,7 +8834,10 @@
       "last_pass2": "2026-05-10",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-02"
+      "listed_date": "2026-04-02",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "user_provided",
+      "sqft_estimate_note": "User-provided sqft (2,400)"
     },
     "1817198": {
       "listing_type": "sale",
