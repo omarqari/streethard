@@ -34209,10 +34209,10 @@
       "unit": "#1",
       "neighborhood": "",
       "price": 14000,
-      "sqft": 0,
+      "sqft": 1850,
       "beds": 3,
       "baths": 2.5,
-      "price_per_sqft": null,
+      "price_per_sqft": 8,
       "type": "rental",
       "year_built": 1901,
       "days_on_market": 1,
@@ -34245,7 +34245,10 @@
       "last_pass1": "2026-05-29",
       "last_pass2": "2026-05-29",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "sqft_estimated": true,
+      "sqft_estimate_method": "floorplan_sum",
+      "sqft_estimate_note": "Duplex room sum (First Floor + Garden); built 1901; ~1,850 sqft interior"
     }
   }
 }
