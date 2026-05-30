@@ -16494,10 +16494,10 @@
       "unit": "12CE",
       "neighborhood": "Lenox Hill",
       "price": 2500000,
-      "sqft": null,
+      "sqft": 1850,
       "beds": 5,
       "baths": 3.0,
-      "price_per_sqft": null,
+      "price_per_sqft": 1351,
       "type": "coop",
       "year_built": 1957,
       "days_on_market": 63,
@@ -16569,7 +16569,10 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-09"
+      "listed_date": "2026-03-09",
+      "sqft_estimated": true,
+      "sqft_estimate_method": "floorplan_sum",
+      "sqft_estimate_note": "Room sum; combined unit 12CE; 4BR+den+office; post-war ~5% walls; ~1,850 sqft"
     },
     "1806036": {
       "listing_type": "sale",
