@@ -942,6 +942,17 @@ td {
   border-radius: 6px;
 }
 .v4-utility-link:hover { background: #eef2ff; }
+.v4-triage-btn {
+  height: 30px; padding: 0 10px;
+  border-radius: 6px; font-size: 12px; font-weight: 600;
+  cursor: pointer; font-family: inherit;
+  display: inline-flex; align-items: center; gap: 4px;
+  white-space: nowrap; transition: opacity 0.15s;
+}
+.v4-triage-btn:hover { opacity: 0.8; }
+.v4-triage-btn.shortlist { border: 1px solid #1a7a3c; background: #edfaf3; color: #1a7a3c; }
+.v4-triage-btn.archive   { border: 1px solid #c62828; background: #fef2f2; color: #c62828; }
+.v4-triage-btn.inbox     { border: 1px solid #888;    background: #f5f5f5; color: #444; }
 
 /* ─── Bucket Tabs ─────────────────────────────────────────────── */
 #bucket-tabs {
@@ -1423,6 +1434,9 @@ let sortCol = 'monthly';
 let sortDir = 'desc';
 let mtgCalcTimer = null;
 let noteTimers = {};  // debounce timers for notes
+
+// Feature flags
+const ENABLE_SWIPE = false; // set true to restore swipe-to-triage on cards
 
 // API config
 const API_BASE = 'https://api.streethard.omarqari.com';
@@ -2494,8 +2508,7 @@ function renderCards() {
 
     html += `
       <div class="listing-card v4${isStale ? ' row-stale' : ''}" data-id="${listing.id}">
-        <div class="swipe-indicator swipe-right">${rightLabel}</div>
-        <div class="swipe-indicator swipe-left">✕ Archive</div>
+        ${ENABLE_SWIPE ? `<div class="swipe-indicator swipe-right">${rightLabel}</div><div class="swipe-indicator swipe-left">✕ Archive</div>` : ''}
         <div class="v4-header">
           <div class="v4-title">${listing.building || '—'}${listing.neighborhood ? ` <span class="v4-nb">· ${listing.neighborhood}</span>` : ''}</div>
           <div class="v4-address">${listing.address}${listing.unit ? ' #' + String(listing.unit).replace(/^#+/, '') : ''}</div>
@@ -2557,13 +2570,19 @@ function renderCards() {
           <button type="button" class="v4-seen-btn${isSeen ? ' is-seen' : ''}" onclick="toggleSeen('${listing.id}',event)" title="${isSeen ? 'Marked as visited — click to undo' : 'Mark as visited in person'}">
             ${seenIconSvg()}<span>Seen</span>
           </button>
+          ${!ENABLE_SWIPE ? (() => {
+            if (bucket === 'inbox')     return `<button class="v4-triage-btn shortlist" onclick="transitionBucket('${listing.id}','shortlist',event)">★ Shortlist</button><button class="v4-triage-btn archive" onclick="transitionBucket('${listing.id}','archive',event)">✕ Archive</button>`;
+            if (bucket === 'shortlist') return `<button class="v4-triage-btn inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button><button class="v4-triage-btn archive" onclick="transitionBucket('${listing.id}','archive',event)">✕ Archive</button>`;
+            if (bucket === 'archive')   return `<button class="v4-triage-btn inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button>`;
+            return '';
+          })() : ''}
           <a class="v4-utility-link" href="${listing.url}" target="_blank" onclick="event.stopPropagation()">View on StreetEasy ↗</a>
         </div>
       </div>`;
   });
   container.innerHTML = html;
   container.querySelectorAll('.listing-card[data-id]').forEach(el => {
-    initCardSwipe(el, el.dataset.id);
+    if (ENABLE_SWIPE) initCardSwipe(el, el.dataset.id);
   });
   // Auto-grow note textareas to fit content, and keep growing as the user
   // types. Pre-existing min-height in CSS still applies as a floor.
