@@ -4,7 +4,7 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
-## 2026-05-30 — Replace card swipe with triage buttons (Session 41)
+## 2026-05-31 — Replace card swipe with triage buttons (Session 41)
 
 ### Problem: swipe-to-triage too sensitive
 
@@ -16,9 +16,9 @@ Replaced swipe with per-tab action buttons in the card's utility row (bottom str
 
 - **Inbox tab**: `[★ Shortlist]` + `[✕ Archive]`
 - **Shortlist tab**: `[↩ Inbox]` + `[✕ Archive]`
-- **Archive tab**: `[↩ Inbox]`
+- **Archive tab**: `[↩ Inbox]` + `[★ Shortlist]` (direct Archive → Shortlist without going via Inbox)
 
-All three call the existing `transitionBucket()` function — no backend changes.
+All buttons call the existing `transitionBucket()` function — no backend changes.
 
 ### Swipe preserved behind feature flag
 
@@ -28,9 +28,20 @@ Rather than deleting the swipe code, gated it behind `const ENABLE_SWIPE = false
 
 Added `.v4-triage-btn` base style + `.shortlist` (green tint), `.archive` (red tint), `.inbox` (neutral gray) modifiers — same height and shape as the existing `.v4-seen-btn`.
 
-### Commit
+### Other changes this session
+
+- Renamed "View on StreetEasy ↗" link to "StreetEasy Link ↗" for brevity.
+
+### Bug fixed this session
+
+Initial push used `bucket` (undefined) instead of `currentBucket` in the triage button IIFE — caused a ReferenceError that blanked all listings. Fixed immediately in `1c2e0fad0e`.
+
+### Commits
 
 - `c8da355711` — feat: replace card swipe with triage buttons (ENABLE_SWIPE flag)
+- `1c2e0fad0e` — fix: use currentBucket (not bucket) in triage button IIFE
+- `e6d8dc678a` — chore: rename 'View on StreetEasy' to 'StreetEasy Link'
+- `3e7cf2afcf` — feat: add Shortlist button to Archive card utility row
 
 ---
 
