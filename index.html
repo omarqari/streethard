@@ -2576,7 +2576,7 @@ function renderCards() {
             if (currentBucket === 'archive')   return `<button class="v4-triage-btn inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button>`;
             return '';
           })() : ''}
-          <a class="v4-utility-link" href="${listing.url}" target="_blank" onclick="event.stopPropagation()">View on StreetEasy ↗</a>
+          <a class="v4-utility-link" href="${listing.url}" target="_blank" onclick="event.stopPropagation()">StreetEasy Link ↗</a>
         </div>
       </div>`;
   });
@@ -2627,7 +2627,7 @@ function buildExpansion(listing) {
   } else {
     agentHtml += '<div style="font-size:11px;color:#aaa;">No agent info available</div>';
   }
-  agentHtml += `<a class="se-link" href="${listing.url}" target="_blank">View on StreetEasy ↗</a>`;
+  agentHtml += `<a class="se-link" href="${listing.url}" target="_blank">StreetEasy Link ↗</a>`;
 
   // Payment breakdown: simplified for rentals
   let pmtHtml = '<div class="exp-title">Payment Breakdown</div><div class="pmt-breakdown">';
