@@ -4,6 +4,36 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-05-30 — Replace card swipe with triage buttons (Session 41)
+
+### Problem: swipe-to-triage too sensitive
+
+The swipe gesture on listing cards was triggering accidental shortlists and archives during normal scrolling. The threshold and resistance settings weren't enough to prevent mis-fires in practice.
+
+### Solution: explicit triage buttons in the utility row
+
+Replaced swipe with per-tab action buttons in the card's utility row (bottom strip), sitting next to the existing `[👁 Seen]` button:
+
+- **Inbox tab**: `[★ Shortlist]` + `[✕ Archive]`
+- **Shortlist tab**: `[↩ Inbox]` + `[✕ Archive]`
+- **Archive tab**: `[↩ Inbox]`
+
+All three call the existing `transitionBucket()` function — no backend changes.
+
+### Swipe preserved behind feature flag
+
+Rather than deleting the swipe code, gated it behind `const ENABLE_SWIPE = false` at the top of the script block. To re-enable: flip to `true`. When `true`: swipe indicators render, `initCardSwipe` is called, triage buttons are hidden. When `false` (current): no swipe, buttons visible.
+
+### CSS
+
+Added `.v4-triage-btn` base style + `.shortlist` (green tint), `.archive` (red tint), `.inbox` (neutral gray) modifiers — same height and shape as the existing `.v4-seen-btn`.
+
+### Commit
+
+- `c8da355711` — feat: replace card swipe with triage buttons (ENABLE_SWIPE flag)
+
+---
+
 ## 2026-05-21 — Rental Pass 2 fix validated + manual full refresh (Session 39)
 
 ### memo23 rental Pass 2 fix confirmed working
