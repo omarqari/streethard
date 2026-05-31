@@ -2573,7 +2573,7 @@ function renderCards() {
           ${!ENABLE_SWIPE ? (() => {
             if (currentBucket === 'inbox')     return `<button class="v4-triage-btn shortlist" onclick="transitionBucket('${listing.id}','shortlist',event)">★ Shortlist</button><button class="v4-triage-btn archive" onclick="transitionBucket('${listing.id}','archive',event)">✕ Archive</button>`;
             if (currentBucket === 'shortlist') return `<button class="v4-triage-btn inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button><button class="v4-triage-btn archive" onclick="transitionBucket('${listing.id}','archive',event)">✕ Archive</button>`;
-            if (currentBucket === 'archive')   return `<button class="v4-triage-btn inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button>`;
+            if (currentBucket === 'archive')   return `<button class="v4-triage-btn inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button><button class="v4-triage-btn shortlist" onclick="transitionBucket('${listing.id}','shortlist',event)">★ Shortlist</button>`;
             return '';
           })() : ''}
           <a class="v4-utility-link" href="${listing.url}" target="_blank" onclick="event.stopPropagation()">StreetEasy Link ↗</a>
