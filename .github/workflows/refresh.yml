@@ -22,6 +22,10 @@ on:
         description: "Bypass delta cache, run Pass 2 on all listings — use once after Pass 2 was broken to backfill fees/taxes/agent/history (true/false)"
         required: false
         default: "false"
+      stale_cap:
+        description: "Stale-refresh: # of most-stale listings to re-price per run (rotating). 0 disables. Default 60."
+        required: false
+        default: "60"
 
 jobs:
   refresh:
@@ -59,6 +63,28 @@ jobs:
           python scripts/pull.py --mode "$MODE" --max-items "$MAX" $EXTRA_FLAGS
         # If pull.py exits with code 1 (guard clause triggered), this step fails
         # and the workflow stops here — data/latest.json is NOT committed.
+
+      - name: Refresh stale listing prices (rotating, capped)
+        # Runs ONLY if pull.py succeeded (skip on a guard/cliff abort day).
+        # The UES Pass 1 search only surfaces ~207 of ~380 sale listings, so
+        # the rest age out of the sample while staying active — sometimes with
+        # price cuts. This re-prices the N least-recently-refreshed stale
+        # listings each run (oldest last_pass2 first), walking the whole stale
+        # set over ~ceil(stale/cap) days. See stale_refresh.py + CHANGELOG S43.
+        if: success()
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: |
+          CAP="${{ github.event.inputs.stale_cap }}"
+          CAP="${CAP:-60}"
+          if [ "$CAP" != "0" ]; then
+            # Non-fatal: a stale-refresh hiccup must never block the commit of
+            # Pass 1/Pass 2 results below. Missed listings just rotate in later.
+            python scripts/stale_refresh.py --run --type both --cap "$CAP" \
+              || echo "stale refresh non-fatal failure (exit $?) — continuing"
+          else
+            echo "stale_cap=0 — skipping stale refresh"
+          fi
 
       - name: Commit updated data
         # Run even if pull.py exited non-zero. Pass 1 progress is saved to

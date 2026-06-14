@@ -165,6 +165,61 @@ def sweep_type(client, db, listing_type, stale_days, batch_size, dry_run):
             "failed_batches": failed_batches}
 
 
+def run_capped(client, db, types, stale_days, batch_size, cap):
+    """Blocking refresh of the `cap` MOST-stale listings across `types`
+    (oldest last_pass1 first). Designed for the daily cron: keeps prices from
+    drifting between manual sweeps without re-fetching the whole stale set
+    every day. CI runs the process to completion, so the blocking path is fine
+    (the sandbox's submit/collect phases are only needed inside Cowork).
+    """
+    # Candidate set = listings that have aged out of the Pass 1 search sample
+    # (last_pass1 > stale_days). Among them, prioritise the ones whose PRICE
+    # data is least-recently refreshed — i.e. oldest last_pass2 — NOT oldest
+    # last_pass1 (the sweep doesn't touch last_pass1, so sorting by it would
+    # pick the same listings every day and never rotate). Refreshing a listing
+    # bumps its last_pass2 to today, pushing it to the back of the queue, so
+    # the cap walks through the whole stale set over ~ceil(N/cap) days.
+    scored = []
+    for t in types:
+        for lid in stale_ids(db, t, stale_days):
+            refresh_age = _age_days(db[lid].get("last_pass2")
+                                    or db[lid].get("last_pass1")) or 0
+            scored.append((refresh_age, lid, t))
+    scored.sort(reverse=True)             # least-recently refreshed first
+    chosen = scored[:cap]
+    by_type = {}
+    for _, lid, t in chosen:
+        by_type.setdefault(t, []).append(lid)
+    print(f"Capped sweep: {len(chosen)} of {len(scored)} stale listings "
+          f"(oldest first, cap={cap})", flush=True)
+
+    refreshed = missed = 0
+    price_changes = []
+    for t, ids in by_type.items():
+        for bnum, start in enumerate(range(0, len(ids), batch_size), 1):
+            batch = ids[start:start + batch_size]
+            urls = [build_url(lid, t, db[lid]) for lid in batch]
+            before = {lid: db[lid].get("price") for lid in batch}
+            try:
+                items = client.run_and_wait(
+                    start_urls=urls, max_items=len(urls) + 5,
+                    label=f"StaleRefresh(cron) {t} batch {bnum}",
+                    timeout_sec=PASS2_TIMEOUT_SEC, paginate=False)
+            except Exception as e:
+                print(f"  {t} batch {bnum} FAILED: {e}", flush=True)
+                continue
+            r, m, pc = apply_batch(db, items, batch, t, before)
+            refreshed += r; missed += m; price_changes += pc
+            save_db(db, 0)               # durability after each batch
+    generate_latest(db, "both", 0, sale_url=SALE_URL, rental_url=RENTAL_URL)
+    print(f"\nCAPPED SWEEP DONE — refreshed={refreshed}, "
+          f"missed={missed} (not flagged off-market)")
+    for lid, bef, aft, addr in price_changes:
+        arrow = "DOWN" if aft < bef else "UP"
+        print(f"   {arrow} {str(addr)[:32]:32} ${bef:,} -> ${aft:,} ({aft-bef:+,})")
+    return refreshed
+
+
 # ── Phased operation for sandboxed environments (submit-all then collect) ──
 STATE_PATH = Path("/tmp/stale_sweep_state.json")
 
@@ -267,6 +322,9 @@ def main():
     ap.add_argument("--type", choices=["sale", "rent", "both"], default="both")
     ap.add_argument("--stale-days", type=int, default=STALE_DAYS_DEFAULT)
     ap.add_argument("--batch", type=int, default=40)
+    ap.add_argument("--cap", type=int, default=0,
+                    help="with --run: refresh only the N most-stale listings "
+                         "(oldest last_pass1 first). 0 = no cap. Used by cron.")
     args = ap.parse_args()
 
     token = os.environ.get("APIFY_TOKEN")
@@ -281,6 +339,8 @@ def main():
     elif args.dry_run:
         for t in types:
             sweep_type(None, db, t, args.stale_days, args.batch, True)
+    elif args.run and args.cap:
+        run_capped(client, db, types, args.stale_days, args.batch, args.cap)
     elif args.run:
         results = {t: sweep_type(client, db, t, args.stale_days,
                                  args.batch, False) for t in types}
