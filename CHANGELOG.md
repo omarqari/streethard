@@ -4,6 +4,100 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-06-14 — Actor fix confirmed; stale-listing catch-up + pipeline hardening (Session 43)
+
+### Roadblock resolved: memo23's actor is working again
+
+Followed up on the Session 42 outage. memo23 shipped a real fix ~13h before this
+session (issue `3IaeZ3gM0Vc2dPfaa`, now **Closed**). Root cause of every prior
+failed fix: the storage key used to track each search's normal result count
+contained a character Apify's storage rejects, so **every baseline write
+silently failed** and throttle-detection never had anything to compare against.
+Fix mechanism: a "managed unblocker" backup network path (observed in run logs as
+a **Scrape.do** race-winner returning clean 200s) + per-search baseline detection
++ an explicit incomplete signal (`SEARCH_HEALTH_WARNING` in the dataset /
+`SEARCH_HEALTH` in the run KV) — "no more silent zeros."
+
+**Confirmed live this session:** test runs returned full real listing data; the
+last two cron runs (Jun 13, Jun 14) both pulled the full **207** sale set. New
+listings are flowing again. No action needed on the actor.
+
+### Catch-up: stale-listing Pass 2 refresh sweep
+
+Discovered the "161 stale" listings from Session 42 are NOT off-market — the UES
+Pass 1 search only surfaces ~207 listings, but db.json holds 382 sale listings
+accumulated over time; the rest age out of the search *sample* while staying
+active on StreetEasy, sometimes picking up price cuts we never saw. A spot-check
+of the 12 oldest-stale (54d unseen) found all 12 active (`offMarketAt=None`).
+
+Built `scripts/stale_refresh.py` (phased `--submit`/`--collect` for the sandbox;
+`--run` end-to-end elsewhere). Swept all 160 stale sale + 78 stale rent through
+Pass 2. **Result: 133 sale + 75 rent (241 listings) refreshed**, surfacing 13
+sale price cuts that the stale pipeline had missed, including:
+
+- 923 5th Avenue: $4,495,000 → **$3,995,000** (−$500K)
+- 781 5th Avenue: $2,750,000 → $2,500,000 (−$250K)
+- 900 Park Avenue: $3,200,000 → $2,995,000 (−$205K)
+- 530 Park Avenue: $5,000,000 → $4,800,000 (−$200K)
+- 1349 Lexington Ave: $2,195,000 → $1,995,000 (−$200K)
+- 21 East 61st: $3,195,000 → $2,999,999 (−$195K)
+- 44 East 67th: $4,675,000 → $4,495,000 (−$180K)
+- plus 29 E 64th (−$150K), 141 E 88th (−$150K), 450 E 83rd (−$150K), and more
+
+**Off-market lesson:** the sweep initially flagged 30 listings off-market (no data
+returned on a single Pass 2 miss). A re-verify run returned data for **all 30** —
+every one a transient backup-path drop, not a real off-market. `stale_refresh.py`
+was changed to **never** flag off-market from a single bulk-sweep miss; definitive
+off-market detection stays with W7 (`verify_stale_shortlists`), which re-checks
+shortlists every cron run. `last_pass1` is deliberately untouched by the sweep
+(the W3 stale pill correctly still means "not in the Pass 1 search sample"); only
+the *price* the family sees is now current.
+
+### Hardening: pull.py against the silent-throttle class (W8 + baseline repair)
+
+1. **Baseline-pollution fix (the core bug).** `check_pass1_coverage` seeded its
+   rolling-7-day median from *any* day with count > 0, so the June throttle days
+   (15/45/69/92 vs a normal ~280) dragged the baseline down — making the guard
+   both miss real cliffs and false-abort on recovery. Now it seeds **only from
+   `status=='ok'` days**, taking the 7 most-recent healthy days. Healthy median
+   recovered to 212 (was effectively ~76).
+2. **Retroactive history repair.** Relabeled the 3 degraded-but-merged June sale
+   days (Jun 10/11/12) from `ok` → `degraded` in `pipeline_health.json` so they
+   never seed the baseline. (`abort` would be inaccurate — data *was* committed
+   those days.) diagnostics.html renders them red ("low"), no schema change.
+3. **W8 — honor the actor's explicit signal.** New `detect_search_health_warning()`
+   + a guard in the Pass 1 flow (before the W5 heuristic): if memo23's
+   `SEARCH_HEALTH_WARNING` marker is present, abort before merge regardless of
+   count (`--force-merge` overrides). Detection is defensive on the marker shape
+   (only emitted on throttled runs, so not capturable from a healthy run) — tighten
+   once a throttled run is observed.
+
+### DB state after session
+
+- **513 active** (382 sale, 131 rent), **511 pass2, 2 pass1** (the known 243 E 77th
+  #PHA duplicate + 1). 0 off-market false-positives. latest.json regenerated.
+
+### Files
+
+- `scripts/stale_refresh.py` — NEW: stale Pass 2 refresh sweep (phased).
+- `scripts/pull.py` — W8 SEARCH_HEALTH guard + baseline-from-ok-days fix.
+- `data/db.json`, `data/latest.json` — 241 listings refreshed.
+- `data/pipeline_health.json` — June degraded days relabeled.
+
+### Open follow-ups (not done this session)
+
+- **Single-vendor risk remains.** Even the fix leans on memo23's private infra
+  (his managed-unblocker account + a PX token his phone captures via Pushcut).
+  Evaluating a backup actor (kawsar / crawlerbros / jupri / aurumworks) as a
+  failover is still open (Omar deferred it this session).
+- **Stale-pill UX:** a Pass2-verified-active listing still shows the W3 "not seen
+  Nd" pill. Consider suppressing it when `last_pass2` is recent AND `offMarketAt`
+  is null. App-side change — mock first per project convention.
+- Consider promoting the stale sweep into the cron (capped) so prices don't drift
+  between manual sweeps.
+
+---
+
 ## 2026-06-14 — Pass 1 outage diagnosed; actor broken by memo23 regression (Session 42)
 
 ### Problem: no new listings for 3+ days

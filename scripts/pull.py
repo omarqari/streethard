@@ -1376,10 +1376,20 @@ def check_pass1_coverage(listing_type, today_count, force_merge=False):
     """
     history = load_health()
     key = f'pass1_{listing_type}'
-    counts = sorted([r[key] for r in history[:COVERAGE_WINDOW]
-                     if r.get(key) is not None and r.get(key, 0) > 0])
+    # Seed the baseline ONLY from healthy ('ok') runs. Degraded/aborted days
+    # (soft-throttled partials) still record their low count in
+    # pipeline_health for observability, but must NOT feed the median.
+    # Otherwise a run of throttled days (the 2026-06 PerimeterX incident:
+    # 15/45/69/92 instead of ~280) drags the baseline down, and the guard
+    # both (a) stops catching the next real cliff and (b) false-aborts when
+    # coverage recovers to normal. `history` is newest-first, so this takes
+    # the COVERAGE_WINDOW most-recent *healthy* days.
+    ok_counts = [r[key] for r in history
+                 if r.get(key) is not None and r.get(key, 0) > 0
+                 and r.get('status') == 'ok']
+    counts = sorted(ok_counts[:COVERAGE_WINDOW])
     if len(counts) < 3:
-        return ('ok', f'no baseline yet for {listing_type} (have {len(counts)} days)')
+        return ('ok', f'no healthy baseline yet for {listing_type} (have {len(counts)} ok days)')
     median = counts[len(counts)//2]
     if median == 0:
         return ('ok', f'baseline median is 0 for {listing_type}')
@@ -1393,6 +1403,40 @@ def check_pass1_coverage(listing_type, today_count, force_merge=False):
     if force_merge:
         return ('warn', f'⚠️  {full} — overridden by --force-merge')
     return ('abort', full)
+
+
+# ─── W8: Honor the actor's explicit incomplete-results signal ────────
+# memo23 shipped a fix on 2026-06-14 for the PerimeterX soft-throttle class
+# (the actor used to return a fake-200 with a shrunken/empty result set,
+# indistinguishable from a clean run). The fix emits an EXPLICIT signal when
+# a search comes back incomplete: a `SEARCH_HEALTH_WARNING` marker item in
+# the dataset (and a `SEARCH_HEALTH` record in the run's key-value store).
+#
+# This is a stronger signal than our W5 count heuristic — it's the actor
+# telling us directly "this set is partial." We treat it like a sentinel:
+# abort before merge so a throttled partial is never committed as complete.
+#
+# The marker's exact shape isn't pinned (only emitted on throttled runs, so
+# it can't be captured from a healthy run). Detection is therefore defensive:
+# any non-listing dataset item that names SEARCH_HEALTH / incomplete /
+# throttle / degraded counts. Tighten once a throttled run is observed.
+def detect_search_health_warning(search_items):
+    """Return (warned: bool, detail: str|None) for memo23's SEARCH_HEALTH
+    incomplete-results signal embedded in the Pass 1 dataset."""
+    for it in search_items:
+        if not isinstance(it, dict):
+            continue
+        if it.get("id") or it.get("listingId") or it.get("node_id"):
+            continue  # a real listing, not a health marker
+        for k, v in it.items():
+            kl = str(k).lower()
+            if "search_health" in kl or kl in ("health", "health_warning"):
+                return True, f"{k}={v}"
+        msg = str(it.get("message") or it.get("type") or "").lower()
+        if any(t in msg for t in ("search_health", "incomplete",
+                                  "throttle", "degraded")):
+            return True, str(it.get("message") or it.get("type"))
+    return False, None
 
 
 # ─── W7: Per-Shortlist Pass 2 verification ──────────────────────────
@@ -1936,6 +1980,29 @@ def main():
                     pass1_counts_by_type,
                     db, guard_status='abort')
             sys.exit(1)
+
+        # ── W8: Honor the actor's explicit SEARCH_HEALTH warning ───
+        # Takes precedence over the W5 count heuristic: if memo23's actor
+        # explicitly flags the result set incomplete (soft-throttle), refuse
+        # to merge a partial set, regardless of count. --force-merge overrides.
+        wh_warned, wh_detail = detect_search_health_warning(search_items)
+        if wh_warned and not args.force_merge:
+            print(f"\nERROR: Pass 1 ({label_tag}) flagged INCOMPLETE by the "
+                  f"actor's SEARCH_HEALTH signal ({wh_detail}). This is "
+                  f"memo23's explicit soft-throttle warning — refusing to "
+                  f"merge a partial set as if it were complete. Override with "
+                  f"--force-merge only if you've confirmed it's actually "
+                  f"complete.", file=sys.stderr)
+            if not args.dry_run:
+                pass1_counts_by_type[listing_type] = len(real_items)
+                update_pipeline_health(
+                    datetime.date.today().isoformat(),
+                    pass1_counts_by_type,
+                    db, guard_status='abort')
+            sys.exit(1)
+        elif wh_warned:
+            print(f"  ⚠️  SEARCH_HEALTH warning ({wh_detail}) — "
+                  f"overridden by --force-merge")
 
         # ── W5: Pass 1 coverage cliff guard ───────────────────────
         # Compares this Pass 1 result count to the rolling 7-day median.

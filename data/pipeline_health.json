@@ -21,7 +21,7 @@
     "pass1_rent": 31,
     "active": 509,
     "delisted": 0,
-    "status": "ok"
+    "status": "degraded"
   },
   {
     "date": "2026-06-11",
@@ -29,7 +29,7 @@
     "pass1_rent": 31,
     "active": 503,
     "delisted": 0,
-    "status": "ok"
+    "status": "degraded"
   },
   {
     "date": "2026-06-10",
@@ -37,7 +37,7 @@
     "pass1_rent": 32,
     "active": 500,
     "delisted": 0,
-    "status": "ok"
+    "status": "degraded"
   },
   {
     "date": "2026-06-09",
