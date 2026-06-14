@@ -4,6 +4,51 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-06-14 — Pass 1 outage diagnosed; actor broken by memo23 regression (Session 42)
+
+### Problem: no new listings for 3+ days
+
+User noticed StreetHard showed only "3d" listings — nothing newer. Investigation confirmed a coverage gap: 161 of 379 active sale listings hadn't appeared in Pass 1 for >7 days, with Park Ave / 5th Ave listings missing for 52+ days.
+
+### Root cause (PerimeterX soft-throttling)
+
+Not proxy IP rotation. StreetEasy's PerimeterX layer soft-throttles the shared Apify session on heavy days, returning fake-200 responses with shrunken result sets. A day that normally returns ~280 listings came back as 45 — indistinguishable from a clean run. The W5 cliff guard baseline was also corrupted by repeated low-count days, causing it to abort on legitimate low-count days (Jun 8: 15 results, Jun 9: 76 results aborted).
+
+### memo23 fixes — all introduced a regression
+
+Three rounds of fixes were shipped. Each initially appeared to address the issue but left the actor non-functional for paying users:
+
+**Fix 1:** Detection baseline + backup network path re-fetch on throttle. Broken on arrival — the storage key for the baseline contained a character Apify's backend rejects, so every write silently failed. Detection never triggered.
+
+**Fix 2:** Storage key bug fixed; baseline seeded on memo23's side (run `VC4F5JCPedRyl08QM`, `LoOt4y9bhnTbbZTQ9` etc. — all returned 0 listings).
+
+**Fix 3 (regression):** Root cause finally identified in the `SE_INTERNAL_RUN_STATE.pushedKeys: {}` finding. Memo23's new code path (`USE_HTML_SEARCH_PATH=true` / `USE_INTERNAL_HANDLER=true`) requires a live PerimeterX auth token, fetched from a Pushcut phone automation tied to his Apify account. Paying users without this automation get `Built 0 start requests` / `processedStartUrls: []` — the actor exits in 5 seconds without making a single HTTP request. This is a regression: the old code path worked without a PX token.
+
+### Current state (session close)
+
+Actor is broken for us on build 0.0.217. Every manual run returns 0 listings in ~5s. Issue thread open at `https://console.apify.com/actors/ptsXZUXADV3OKZ5kd/issues/3IaeZ3gM0Vc2dPfaa`. Last comment sent to memo23 describing the Pushcut regression and asking for a fallback path.
+
+Cron (`refresh.yml`) has been running daily but producing no new Pass 1 data since ~2026-06-07. The 161 stale sale listings remain at pass2 quality but with outdated `last_pass1` timestamps.
+
+### Diagnostic commands used
+
+```bash
+# Check recent pipeline_health entries (newest-first)
+curl -s https://streethard.omarqari.com/data/pipeline_health.json | python3 -c "import sys,json; [print(d) for d in json.load(sys.stdin)[:10]]"
+
+# Check actor run log for processedStartUrls
+curl -s "https://api.apify.com/v2/actor-runs/{RUN_ID}/log?token=$APIFY_TOKEN" | tail -20
+
+# Check KV store state
+curl -s "https://api.apify.com/v2/key-value-stores/{KV_ID}/records/SE_INTERNAL_RUN_STATE?token=$APIFY_TOKEN"
+```
+
+### Key diagnostic finding
+
+`processedStartUrls: []` in the run log is the definitive signal that the actor is bailing before any HTTP request — not a PX block, not a network issue. The `[SE_PX] Pushcut triggered shortcut` log line confirms the actor is waiting for a private token refresh that never arrives for non-memo23 accounts.
+
+---
+
 ## 2026-05-31 — Replace card swipe with triage buttons (Session 41)
 
 ### Problem: swipe-to-triage too sensitive
