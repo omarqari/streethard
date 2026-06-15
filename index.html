@@ -1569,7 +1569,7 @@ function buildingKey(s) {
 }
 
 function isTargetBuilding(listing) {
-  return targetSet.has(buildingKey(listing.building));
+  return targetSet.has(canonKey(listing.building));
 }
 
 // ─── Architect registry ──────────────────────────────────────────────
@@ -1701,6 +1701,22 @@ const ARCHITECT_PLACEHOLDERS = [
   // Beyer Blinder Belle
   { name: '200 East 75th Street', address: '200 East 75th Street', nbhd: 'Lenox Hill' },
 ];
+
+// Building aliases: the same physical building sometimes appears under different
+// labels in the data (proper name vs street address — e.g. "The Chatham" and
+// "181 East 65th Street"). Map every alias key to one canonical key so it
+// collapses to a single Buildings-tab row / target / architect match. Derived
+// from the name↔address pairs we already maintain above. buildingKey() itself is
+// left untouched (it's the frozen DB key); this is a thin layer on top of it.
+const _bldgCanon = {};
+ARCHITECT_PLACEHOLDERS.forEach(p => {
+  const nk = buildingKey(p.name), ak = buildingKey(p.address);
+  if (nk && ak && nk !== ak) _bldgCanon[ak] = nk;   // canonical = proper-name key
+});
+function canonKey(building) {
+  const k = buildingKey(building);
+  return _bldgCanon[k] || k;
+}
 let noteTimers = {};  // debounce timers for notes
 
 // Feature flags
@@ -2141,7 +2157,7 @@ function buildBuildingIndex(listings) {
   const idx = {};
   listings.forEach(l => {
     if (l.status === 'delisted') return;
-    const key = buildingKey(l.building);
+    const key = canonKey(l.building);
     if (!key) return;
     let b = idx[key];
     if (!b) b = idx[key] = { key, names:{}, bnames:{}, nbhd:{}, years:{}, types:{}, count:0, sale:0, rent:0, prices:[], psf:[], listings:[] };
