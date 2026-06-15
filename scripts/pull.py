@@ -294,6 +294,47 @@ _PP = "sale_"
 # fields (maintenance, monthly_taxes, monthly_fees) are also present.
 _SC = "saleCombineResponse_sale_"
 
+# Small words kept lowercase mid-name when de-slugging a building name.
+_SLUG_SMALL = {"at", "of", "on", "the", "and", "de", "la", "by"}
+
+def deslugify_building_name(slug):
+    """Derive a building's proper name from the actor's `slug` field.
+
+    StreetEasy slugs are either a building NAME ("the-seville", "bristol-plaza")
+    or a plain ADDRESS ("1220-park-avenue-new_york", "340-east-72-street-new_york").
+    Address slugs always carry a trailing city token ("-new_york"); name slugs
+    do not. We only return a name for the non-address case — addresses already
+    surface via the `building`/`address` fields, so a de-slugged address would be
+    a redundant, lower-quality duplicate. Returns None when there's no usable name.
+    Validated 2026-06-15 across a sale sample (see CHANGELOG).
+    """
+    if not slug or not isinstance(slug, str):
+        return None
+    s = slug.strip().lower()
+    if not s:
+        return None
+    # Address slugs start with the street number ("135-east-74th-street",
+    # "530-park-avenue-new_york", "1289-lexington") — a real building name
+    # starts with a letter ("the-seville", "bristol-plaza", "leighton-house").
+    # This is the reliable discriminator (validated 2026-06-15 against the full
+    # backfill: the trailing city-token rule alone let too many addresses through).
+    if re.match(r'^\d', s):
+        return None
+    # Belt-and-suspenders: also drop anything tagged with a trailing city token.
+    if re.search(r'[-_](new[-_]york|nyc|manhattan)$', s):
+        return None
+    tokens = [t for t in re.split(r'[-_]+', s) if t]
+    if not tokens:
+        return None
+    words = []
+    for i, t in enumerate(tokens):
+        if t.isdigit() or (i > 0 and t in _SLUG_SMALL):
+            words.append(t)
+        else:
+            words.append(t[:1].upper() + t[1:])
+    name = ' '.join(words).strip()
+    return name or None
+
 def normalize(raw):
     """Normalize a sale listing. Returns None if price is missing."""
     price = (
@@ -607,6 +648,7 @@ def normalize(raw):
         "id":             listing_id,
         "url":            url,
         "building":       building,
+        "building_name":  deslugify_building_name(raw.get("slug")),
         "address":        street,
         "unit":           unit,
         "neighborhood":   neighborhood,
@@ -934,6 +976,7 @@ def normalize_rental(raw):
         "id":             listing_id,
         "url":            url,
         "building":       building,
+        "building_name":  deslugify_building_name(raw.get("slug")),
         "address":        street,
         "unit":           unit,
         "neighborhood":   neighborhood,

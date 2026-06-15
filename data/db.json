@@ -309,7 +309,8 @@
       "last_pass2": "2026-05-03",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-01-06"
+      "listed_date": "2026-01-06",
+      "building_name": "Bristol Plaza"
     },
     "1794438": {
       "listing_type": "sale",
@@ -475,7 +476,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-01"
+      "listed_date": "2026-04-01",
+      "building_name": "The Promenade"
     },
     "1820699": {
       "listing_type": "sale",
@@ -525,7 +527,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-08"
+      "listed_date": "2026-04-08",
+      "building_name": "Carnegie Tower"
     },
     "1817995": {
       "listing_type": "sale",
@@ -610,7 +613,8 @@
       "listed_date": "2026-02-12",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Promenade"
     },
     "1792113": {
       "listing_type": "sale",
@@ -968,7 +972,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-09-30"
+      "listed_date": "2025-09-30",
+      "building_name": "The Chatham"
     },
     "1810506": {
       "listing_type": "sale",
@@ -1012,7 +1017,8 @@
       "last_pass2": "2026-05-10",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-12"
+      "listed_date": "2026-02-12",
+      "building_name": null
     },
     "1799022": {
       "listing_type": "sale",
@@ -1295,7 +1301,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-23"
+      "listed_date": "2026-03-23",
+      "building_name": "The Brompton"
     },
     "1772338": {
       "listing_type": "sale",
@@ -1489,7 +1496,8 @@
       "last_pass2": "2026-05-20",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-09"
+      "listed_date": "2026-03-09",
+      "building_name": "Barbizon63 Condominium"
     },
     "1798329": {
       "listing_type": "sale",
@@ -1589,7 +1597,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2024-11-18"
+      "listed_date": "2024-11-18",
+      "building_name": "The Savoy"
     },
     "1716165": {
       "listing_type": "sale",
@@ -1752,7 +1761,8 @@
       "listed_date": "2026-04-10",
       "off_market_date": "2026-05-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "1799302": {
       "listing_type": "sale",
@@ -1802,7 +1812,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-13"
+      "listed_date": "2026-04-13",
+      "building_name": "Leighton House"
     },
     "1819023": {
       "listing_type": "sale",
@@ -1946,7 +1957,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-01-13"
+      "listed_date": "2026-01-13",
+      "building_name": "Gracie Green at 427 East 90"
     },
     "1803569": {
       "listing_type": "sale",
@@ -1999,7 +2011,8 @@
       "listed_date": "2025-12-15",
       "off_market_date": "2026-05-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Archive Lofts"
     },
     "1822675": {
       "listing_type": "sale",
@@ -2090,7 +2103,8 @@
       "listed_date": "2026-04-16",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Parc V"
     },
     "1822201": {
       "listing_type": "sale",
@@ -2128,7 +2142,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-15"
+      "listed_date": "2026-04-15",
+      "building_name": "Lux 74"
     },
     "1817181": {
       "listing_type": "sale",
@@ -2216,7 +2231,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-19"
+      "listed_date": "2026-03-19",
+      "building_name": "The Seville"
     },
     "1816146": {
       "listing_type": "sale",
@@ -2404,7 +2420,8 @@
       "last_pass2": "2026-05-07",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-16"
+      "listed_date": "2026-03-16",
+      "building_name": "The Empire Condominium"
     },
     "1807490": {
       "listing_type": "sale",
@@ -2542,7 +2559,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-11-13"
+      "listed_date": "2025-11-13",
+      "building_name": "The Laurel"
     },
     "1818078": {
       "listing_type": "sale",
@@ -2580,7 +2598,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-25"
+      "listed_date": "2026-03-25",
+      "building_name": "The Legacy"
     },
     "1816093": {
       "listing_type": "sale",
@@ -2618,7 +2637,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-16"
+      "listed_date": "2026-03-16",
+      "building_name": "Carlton House"
     },
     "1813798": {
       "listing_type": "sale",
@@ -2915,7 +2935,8 @@
       "listed_date": "2026-02-12",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Promenade"
     },
     "1806052": {
       "listing_type": "sale",
@@ -3139,7 +3160,8 @@
       "listed_date": "2026-01-14",
       "off_market_date": "2026-04-27",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Manhattan House"
     },
     "1791742": {
       "listing_type": "sale",
@@ -3207,7 +3229,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-09-22"
+      "listed_date": "2025-09-22",
+      "building_name": "Brisbane House"
     },
     "1809433": {
       "listing_type": "sale",
@@ -3890,7 +3913,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-10-29"
+      "listed_date": "2025-10-29",
+      "building_name": null
     },
     "1821445": {
       "listing_type": "sale",
@@ -3934,7 +3958,8 @@
       "last_pass2": "2026-06-13",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-13"
+      "listed_date": "2026-04-13",
+      "building_name": null
     },
     "1810960": {
       "listing_type": "sale",
@@ -4120,7 +4145,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-15"
+      "listed_date": "2026-04-15",
+      "building_name": null
     },
     "1808452": {
       "listing_type": "sale",
@@ -4258,7 +4284,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-18"
+      "listed_date": "2026-04-18",
+      "building_name": "Evans Tower Condominium"
     },
     "1809238": {
       "listing_type": "sale",
@@ -4373,7 +4400,8 @@
       "listed_date": "2025-09-09",
       "off_market_date": "2026-04-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "1819085": {
       "listing_type": "sale",
@@ -4561,7 +4589,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-10-18"
+      "listed_date": "2025-10-18",
+      "building_name": null
     },
     "1801982": {
       "listing_type": "sale",
@@ -4793,7 +4822,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-16"
+      "listed_date": "2026-03-16",
+      "building_name": "The Verona"
     },
     "1814620": {
       "listing_type": "sale",
@@ -4927,7 +4957,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-09"
+      "listed_date": "2026-03-09",
+      "building_name": "The Lucida"
     },
     "1812995": {
       "listing_type": "sale",
@@ -4965,7 +4996,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-03"
+      "listed_date": "2026-03-03",
+      "building_name": null
     },
     "1811726": {
       "listing_type": "sale",
@@ -5012,7 +5044,8 @@
       "listed_date": "2026-02-18",
       "off_market_date": "2026-06-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Viscaya Condominium"
     },
     "1808299": {
       "listing_type": "sale",
@@ -5200,7 +5233,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-30"
+      "listed_date": "2026-03-30",
+      "building_name": "Richmond Condominium"
     },
     "1815017": {
       "listing_type": "sale",
@@ -5274,7 +5308,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-10"
+      "listed_date": "2026-03-10",
+      "building_name": "Trump Park Avenue"
     },
     "1800256": {
       "listing_type": "sale",
@@ -5509,7 +5544,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-13"
+      "listed_date": "2026-04-13",
+      "building_name": "The Belaire"
     },
     "1821281": {
       "listing_type": "sale",
@@ -5692,7 +5728,8 @@
       "listed_date": "2025-08-11",
       "off_market_date": "2026-04-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Promenade"
     },
     "1802131": {
       "listing_type": "sale",
@@ -5736,7 +5773,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-12-05"
+      "listed_date": "2025-12-05",
+      "building_name": "The Touraine"
     },
     "1818474": {
       "listing_type": "sale",
@@ -5824,7 +5862,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-01-12"
+      "listed_date": "2026-01-12",
+      "building_name": "The Dunhill"
     },
     "1794114": {
       "listing_type": "sale",
@@ -5886,7 +5925,8 @@
       "last_pass2": "2026-06-07",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-10-06"
+      "listed_date": "2025-10-06",
+      "building_name": null
     },
     "1761794": {
       "listing_type": "sale",
@@ -5992,7 +6032,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-17"
+      "listed_date": "2026-04-17",
+      "building_name": "The Savoy"
     },
     "1822183": {
       "listing_type": "sale",
@@ -6083,7 +6124,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-08"
+      "listed_date": "2026-04-08",
+      "building_name": "The Harper"
     },
     "1802386": {
       "listing_type": "sale",
@@ -6407,7 +6449,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-12"
+      "listed_date": "2026-03-12",
+      "building_name": "The Charles House"
     },
     "1802604": {
       "listing_type": "sale",
@@ -6721,7 +6764,8 @@
       "listed_date": "2026-02-09",
       "off_market_date": "2026-05-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Chatham"
     },
     "1810114": {
       "listing_type": "sale",
@@ -6909,7 +6953,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-10-09"
+      "listed_date": "2025-10-09",
+      "building_name": null
     },
     "1819021": {
       "listing_type": "sale",
@@ -7294,7 +7339,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-07"
+      "listed_date": "2026-04-07",
+      "building_name": "Park 900"
     },
     "1819673": {
       "listing_type": "sale",
@@ -7638,7 +7684,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-01-05"
+      "listed_date": "2026-01-05",
+      "building_name": "Barbizon63 Condominium"
     },
     "1809687": {
       "listing_type": "sale",
@@ -7685,7 +7732,8 @@
       "listed_date": "2026-02-04",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
-      "sqft_estimate_note": "245 East 87th Street PH: pixel-method on Zweben Team plan; calibrated off Primary Bedroom 23'3\" \u00d7 19'7\". Polygon includes ~400 sqft of terraces (not counted as interior). Interior estimate ~3,000, range 2,700-3,300."
+      "sqft_estimate_note": "245 East 87th Street PH: pixel-method on Zweben Team plan; calibrated off Primary Bedroom 23'3\" \u00d7 19'7\". Polygon includes ~400 sqft of terraces (not counted as interior). Interior estimate ~3,000, range 2,700-3,300.",
+      "building_name": "The Mayflower"
     },
     "1797135": {
       "listing_type": "sale",
@@ -7729,7 +7777,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-10-23"
+      "listed_date": "2025-10-23",
+      "building_name": "The Verona"
     },
     "1811063": {
       "listing_type": "sale",
@@ -7912,7 +7961,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-04-21",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Saratoga"
     },
     "1820589": {
       "listing_type": "sale",
@@ -8050,7 +8100,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-11"
+      "listed_date": "2026-02-11",
+      "building_name": "Philip House"
     },
     "1787651": {
       "listing_type": "sale",
@@ -8153,7 +8204,8 @@
       "listed_date": "2022-09-15",
       "off_market_date": "2026-05-18",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Barbizon63 Condominium"
     },
     "1812780": {
       "listing_type": "sale",
@@ -8197,7 +8249,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-26"
+      "listed_date": "2026-02-26",
+      "building_name": "Park 900"
     },
     "1802031": {
       "listing_type": "sale",
@@ -8338,7 +8391,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-06"
+      "listed_date": "2026-04-06",
+      "building_name": "Maison East"
     },
     "1798162": {
       "listing_type": "sale",
@@ -8432,7 +8486,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-12-10"
+      "listed_date": "2025-12-10",
+      "building_name": "Carlton House"
     },
     "1802273": {
       "listing_type": "sale",
@@ -8532,7 +8587,8 @@
       "last_pass2": "2026-05-10",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-05"
+      "listed_date": "2026-03-05",
+      "building_name": "Cumberland House"
     },
     "1822440": {
       "listing_type": "sale",
@@ -8576,7 +8632,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-16"
+      "listed_date": "2026-04-16",
+      "building_name": "Brisbane House"
     },
     "1815232": {
       "listing_type": "sale",
@@ -8717,7 +8774,8 @@
       "listed_date": "2026-03-18",
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Manhattan House"
     },
     "1811766": {
       "listing_type": "sale",
@@ -8811,7 +8869,8 @@
       "listed_date": "2026-03-23",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Carlton House"
     },
     "1804279": {
       "listing_type": "sale",
@@ -8870,7 +8929,8 @@
       "listed_date": "2025-12-29",
       "off_market_date": "2026-05-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Carlton House"
     },
     "1813145": {
       "listing_type": "sale",
@@ -9034,7 +9094,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-03"
+      "listed_date": "2026-03-03",
+      "building_name": "The Clare"
     },
     "1813213": {
       "listing_type": "sale",
@@ -9283,7 +9344,8 @@
       "listed_date": "2025-09-08",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
-      "sqft_estimate_note": "1215 5th Avenue 5B: pixel-method, calibrated off Living Room 29'6\" wall. Large pre-war on Carnegie Hill. Range 3,200-3,600."
+      "sqft_estimate_note": "1215 5th Avenue 5B: pixel-method, calibrated off Living Room 29'6\" wall. Large pre-war on Carnegie Hill. Range 3,200-3,600.",
+      "building_name": "Brisbane House"
     },
     "1787579": {
       "listing_type": "sale",
@@ -9336,7 +9398,8 @@
       "listed_date": "2025-09-02",
       "off_market_date": "2026-05-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Clare"
     },
     "1776382": {
       "listing_type": "sale",
@@ -10057,7 +10120,8 @@
       "listed_date": "2025-05-16",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Laurel"
     },
     "1820909": {
       "listing_type": "sale",
@@ -10236,7 +10300,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-11-06"
+      "listed_date": "2025-11-06",
+      "building_name": "Cumberland House"
     },
     "1823188": {
       "listing_type": "sale",
@@ -10523,7 +10588,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-16"
+      "listed_date": "2026-04-16",
+      "building_name": "The New Yorker Condominium"
     },
     "1813477": {
       "listing_type": "sale",
@@ -11264,7 +11330,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2024-04-25"
+      "listed_date": "2024-04-25",
+      "building_name": "Sherry Netherland"
     },
     "1705239": {
       "listing_type": "sale",
@@ -11344,7 +11411,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2024-03-18"
+      "listed_date": "2024-03-18",
+      "building_name": "Sherry Netherland"
     },
     "1817847": {
       "listing_type": "sale",
@@ -11993,7 +12061,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-06"
+      "listed_date": "2026-04-06",
+      "building_name": "The Impala"
     },
     "1820150": {
       "listing_type": "sale",
@@ -12090,7 +12159,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-01-06"
+      "listed_date": "2026-01-06",
+      "building_name": "Carnegie Park Condominium"
     },
     "1818777": {
       "listing_type": "sale",
@@ -12314,7 +12384,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-27"
+      "listed_date": "2026-03-27",
+      "building_name": "Riverview South"
     },
     "1816570": {
       "listing_type": "sale",
@@ -12579,7 +12650,8 @@
       "last_pass2": "2026-05-27",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-19"
+      "listed_date": "2026-02-19",
+      "building_name": "The Royale"
     },
     "1808823": {
       "listing_type": "sale",
@@ -13032,7 +13104,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2024-07-19"
+      "listed_date": "2024-07-19",
+      "building_name": "East Winds Condominium"
     },
     "1782178": {
       "listing_type": "sale",
@@ -13686,7 +13759,8 @@
       "listed_date": "2026-02-05",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Bridge Tower Place"
     },
     "1784395": {
       "listing_type": "sale",
@@ -13956,7 +14030,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-19"
+      "listed_date": "2026-03-19",
+      "building_name": "Evans Tower Condominium"
     },
     "1786610": {
       "listing_type": "sale",
@@ -14610,7 +14685,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-20"
+      "listed_date": "2026-02-20",
+      "building_name": "The Laurel"
     },
     "1792513": {
       "listing_type": "sale",
@@ -14666,7 +14742,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2025-09-25"
+      "listed_date": "2025-09-25",
+      "building_name": "Manhattan House"
     },
     "1821497": {
       "listing_type": "sale",
@@ -14710,7 +14787,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-13"
+      "listed_date": "2026-04-13",
+      "building_name": "The Concorde"
     },
     "1685555": {
       "listing_type": "sale",
@@ -14801,7 +14879,8 @@
       "listed_date": "2026-01-29",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Channel Club"
     },
     "1820992": {
       "listing_type": "sale",
@@ -15081,7 +15160,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-10"
+      "listed_date": "2026-03-10",
+      "building_name": "Sherry Netherland"
     },
     "1812765": {
       "listing_type": "sale",
@@ -15125,7 +15205,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-27"
+      "listed_date": "2026-02-27",
+      "building_name": "Cielo Condominium"
     },
     "1812120": {
       "listing_type": "sale",
@@ -15225,7 +15306,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-23"
+      "listed_date": "2026-03-23",
+      "building_name": "The Kingsley"
     },
     "1808948": {
       "listing_type": "sale",
@@ -15275,7 +15357,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-01-29"
+      "listed_date": "2026-01-29",
+      "building_name": "Manhattan House"
     },
     "1816171": {
       "listing_type": "sale",
@@ -15404,7 +15487,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-13"
+      "listed_date": "2026-04-13",
+      "building_name": "The Channel Club"
     },
     "1818329": {
       "listing_type": "sale",
@@ -15642,7 +15726,8 @@
       "listed_date": "2024-03-05",
       "off_market_date": "2026-05-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "5015416": {
       "listing_type": "rent",
@@ -15798,7 +15883,8 @@
       "listed_date": "2025-10-24",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Savoy"
     },
     "4901095": {
       "listing_type": "rent",
@@ -16016,7 +16102,8 @@
       "listed_date": "2026-04-15",
       "off_market_date": "2026-05-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Carlton House"
     },
     "5018654": {
       "listing_type": "rent",
@@ -16169,7 +16256,8 @@
       "listed_date": "2026-04-15",
       "off_market_date": "2026-04-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Duchess"
     },
     "5012799": {
       "listing_type": "rent",
@@ -16345,7 +16433,8 @@
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-04-12"
+      "listed_date": "2026-04-12",
+      "building_name": null
     },
     "4996952": {
       "listing_type": "rent",
@@ -16392,7 +16481,8 @@
       "listed_date": "2026-03-23",
       "off_market_date": "2026-04-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Citizen360 Condominium"
     },
     "4906039": {
       "listing_type": "rent",
@@ -17326,7 +17416,8 @@
       "listed_date": "2026-04-06",
       "off_market_date": "2026-04-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "One East River Place"
     },
     "5004178": {
       "listing_type": "rent",
@@ -17526,7 +17617,8 @@
       "listed_date": "2026-04-14",
       "off_market_date": "2026-05-05",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Carlton House"
     },
     "4986600": {
       "listing_type": "rent",
@@ -17632,7 +17724,8 @@
       "listed_date": "2026-04-02",
       "off_market_date": "2026-05-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "5007748": {
       "listing_type": "rent",
@@ -17744,7 +17837,8 @@
       "listed_date": "2026-04-09",
       "off_market_date": "2026-06-05",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Barbizon63 Condominium"
     },
     "4983631": {
       "listing_type": "rent",
@@ -17791,7 +17885,8 @@
       "listed_date": "2026-03-06",
       "off_market_date": "2026-04-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "4922320": {
       "listing_type": "rent",
@@ -17868,7 +17963,8 @@
       "listed_date": "2025-12-04",
       "off_market_date": "2026-05-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "5004128": {
       "listing_type": "rent",
@@ -17921,7 +18017,8 @@
       "listed_date": "2026-03-31",
       "off_market_date": "2026-05-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "5007283": {
       "listing_type": "rent",
@@ -17968,7 +18065,8 @@
       "listed_date": "2026-04-13",
       "off_market_date": "2026-04-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Carnegie Park Condominium"
     },
     "4984605": {
       "listing_type": "rent",
@@ -18027,7 +18125,8 @@
       "listed_date": "2026-03-11",
       "off_market_date": "2026-04-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Duchess"
     },
     "4979115": {
       "listing_type": "rent",
@@ -18121,7 +18220,8 @@
       "listed_date": "2026-04-20",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "5019716": {
       "listing_type": "rent",
@@ -18274,7 +18374,8 @@
       "listed_date": "2026-03-17",
       "off_market_date": "2026-05-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Rivers Bend"
     },
     "5015047": {
       "listing_type": "rent",
@@ -18365,7 +18466,8 @@
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-24"
+      "listed_date": "2026-03-24",
+      "building_name": "Sherry Netherland"
     },
     "5017524": {
       "listing_type": "rent",
@@ -18418,7 +18520,8 @@
       "listed_date": "2026-04-16",
       "off_market_date": "2026-05-06",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Citizen360 Condominium"
     },
     "5007964": {
       "listing_type": "rent",
@@ -18471,7 +18574,8 @@
       "listed_date": "2026-04-06",
       "off_market_date": "2026-05-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Leonori"
     },
     "4996637": {
       "listing_type": "rent",
@@ -18642,7 +18746,8 @@
       "listed_date": "2026-04-19",
       "off_market_date": "2026-05-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "5014303": {
       "listing_type": "rent",
@@ -18749,7 +18854,8 @@
       "listed_date": "2026-04-14",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "5010804": {
       "listing_type": "rent",
@@ -18928,7 +19034,8 @@
       "description": "Welcome to Residence 8B at 1212 Fifth Avenue \u2014 a breathtaking triple-mint condominium where pre-war grandeur meets 21st-century luxury, with unobstructed Central Park views from every major room. Featured in House Beautiful as the building's model apartment, this three-bedroom, three-bath home was finished with upgrades well beyond the already stunning sponsor specifications.\n\nLiving/Dining Room: Step through the gracious entry foyer \u2014 finished in Venetian plaster \u2014 into a showstopping great room framed by sweeping views of Central Park, the Vanderbilt Gate, and the Conservatory Gardens. Soaring 9-foot beamed ceilings, plaster crown moldings, solid oak floors, and oversized tilt-and-turn windows make this space perfect for grand entertaining or quiet evenings above the treetops.\n\nKitchen: The open chef's kitchen features Caesarstone countertops, custom Italian cabinetry, and a powerhouse lineup of Bertazzoni, Viking, and Miele appliances. Dornbracht fixtures, a garbage disposer, and recessed LED lighting round out this sleek, functional space.\n\nPrimary Suite: A private sanctuary in its own south wing with direct park views and two custom walk-in closets. The extraordinary primary bath is clad in Bianco Dolomiti marble with radiant heated floors, a Kohler cast-iron Jacuzzi soaking tub, separate walk-in shower, and the legendary Kohler Numi toilet \u2014 recently serviced and unique to this model apartment. A custom Robern mirror cabinet with built-in television and music system adds another layer of luxury.\n\nSecond Bedroom / Home Office: A generous room with direct Central Park views, currently configured as a home office with a queen-size Resource Furniture Murphy bed for seamless guest conversion. A full hall bath with Robern illuminated mirror doubles as a powder room.\nThird Bedroom / Flex Room: Park views, twin Milano wall beds by Resource Furniture, and a full en-suite bath with Robern lighted mirror make this room endlessly versatile \u2014 guest room, children's room, or creative studio.\n\nLaundry: A dedicated closet with Miele washer and dryer \u2014 no trips to the basement, ever.\n\nAdditional Features: Individually controlled thermostats in every room, zoned heating and AC, custom-milled HVAC enclosures, and solid oak flooring throughout.\n\nThe Building: Designed by George and Edward Blum in 1925 and gut-renovated by S. Russell Groves, 1212 Fifth is the first classic pre-war building in NYC to earn LEED Gold certification. Full-service white-glove living includes a 24-hour attended lobby, concierge, live-in resident manager, residents' lounge, playroom, and 2,600 sq. ft. fitness center. Pool, terrace, screening room, and parking available at adjacent 1214 Fifth Avenue. International buyers, pied-\u00e0-terres, and pets welcome \u2014 no board approval required.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Twelve Twelve Fifth Avenue"
     },
     "1825309": {
       "listing_type": "sale",
@@ -19010,7 +19117,8 @@
       "description": "PENTHOUSE E2103 | Manhattan House\r\n\r\nRARE OFFERING - This triple-mint penthouse -  part of The Penthouse Collection in the coveted and prestigious Manhattan House Condominium is the definition of elevated luxury\u2014offered for the first time since the sponsor sale. \r\n\r\nMasterfully designed by AD100 visionary Vicente Wolf, this exceptional home embodies quiet luxury at its highest level. Originally conceived as a two-bedroom, two-bath layout, it has been elegantly reimagined to feature a grand primary suite with an extra  bespoke dressing room\u2014 easily adaptable to a third bedroom or private office.\r\n\r\nRESIDENCE HIGHLIGHTS:\r\nBathed in natural light & surrounded by Manhattan skyline views\r\nNorthern & Southern Exposures\r\nPenthouses offer extra height 9 foot ceilings with integrated Lutron lighting system and recessed lighting. \r\nCustom millwork, built-ins, and exceptional dressing/closet space\r\nArt Deco wood-burning fireplace with bespoke stainless steel surround\r\nSpa-caliber primary bath with Waterworks soaking tub, Dornbracht fixtures, and custom bleached oak vanity\r\nDesigner kitchen with honed Basaltina countertops, custom oak & stainless cabinetry, and Wolf/Miele appliances \r\nIn-Unit Washer/Dryer\r\nWide-plank rift-cut white oak floors with custom gray stain and Basaltina inlays\r\nMotorized window treatments throughout\r\nOffered unfurnished, or with curated art and furniture priced separately.\r\nA storage unit is included in the sale! \r\n\r\nTHE MANHATTAN HOUSE:\r\nIconic and Prestigious Full-Service Luxury Living\r\nGrand glass-enclosed lobby with porte-coch\u00e8re arrival\r\nPrivate landscaped gardens\u2014among the largest in Manhattan\r\n24-hour doorman, concierge & resident manager\r\nThe Manhattan Club: ~10,000 sq ft rooftop lounge with sweeping skyline views\r\nState-of-the-art fitness center & on-site parking\r\nValet, dry cleaning, playroom, bike storage & additional storage\r\nParking in the building\r\n\r\nOffered unfurnished, or furnished with fine art and furniture priced separately.\r\nA storage unit is included in the sale! \r\n\r\nINTERESTED IN THE MANHATTAN HOUSE? - CONTACT DEVIN & KELLY - ON & OFF MARKET OPPORTUNITIES!",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Manhattan House"
     },
     "1823933": {
       "listing_type": "sale",
@@ -19092,7 +19200,8 @@
       "description": "Experience the epitome of sophisticated urban living in this distinguished cooperative, Residence 7E on Fifth Avenue's Upper East Side.\n\nEnter this residence from a semi-private landing, a nice touch that offers you the luxury of privacy. This mint condition two-bedroom home boasts generously proportioned rooms, 9\" ceilings, a grand open living space for entertaining and dining. The kitchen opens on to a spacious dining area currently configured like a den or gathering room and features a built-in breakfast bar.\n\nThe Primary bedroom centered on a fireplace features two large walk-in closets and a marble en-suite bathroom. The second bedroom also has an en-suite bathroom. There is also a powder room connected the gracious entry for your guests. This apartment has a small staff room with a full en-suite bathroom.\n\nPurchase as a primary residence or Pied-a-Terre; International purchasers are welcome.\n\nOne of Fifth Avenue's premier White Glove buildings, the Parc V was designed by renowned architect, Emory Roth where residents enjoy the highest level of service, discretion and security. An exceptional full-service staff, 2 doormen on at all times & live-in superintendent provide unparalleled service. The lobby has undergone a complete renovation and rivals any building on Fifth Avenue. Mail and newspapers are delivered to your door on a daily basis. Maintenance includes all utilities.\n\nOf Special Note... This building has recently secured a premier tenant, Audemars Piguet which will establish its U.S. flagship store at this property on Fifth Avenue. A highly respected Swiss luxury watch purveyor, we are delighted to have them as our retail tenant.\n\nAmenities offered are a fitness center outfitted with machines and weights, individual storage facility and parking garage. Washer/dryers are permitted with board approval. Financing is 50%. Flip Tax is 2.5% of purchase price payable by Buyer. No pets please.\n\nThe nexus of culture, high-end retail and fine dining, 785 Fifth Avenue is in close proximity to Museum Mile and New York's most coveted retail boutiques and restaurants. The building is perfectly situated between The Sherry Netherlands, Cipriani and The Pierre, across from The Metropolitan Club and adjacent to The Plaza, Bergdorf Goodman, Louis Vuitton, Zegna, Prada and Harry Winston. And, for the best cuisine, Avra, Le Bibliotheque and Il Mulino are around the corner. Directly across the park is the Time Warner Center, Tavern on the Green and in the cultural heart of the westside, Lincoln Center.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Parc V"
     },
     "1743882": {
       "listing_type": "sale",
@@ -19139,7 +19248,8 @@
       "description": "PLEASE INQUIRE FOR OUR PARKING INCENTIVE FOR THIS RESIDENCE\n\nIMMEDIATE OCCUPANCY\n\nOffering unobstructed views over the Hudson River and Riverside Park, abundant light and air, and an open layout that invites stylish entertaining and gracious everyday living, Residence 29F features three bedrooms, three bathrooms, and nearly 1,800 square feet of elegant living space. This residence is centered on a spacious, L-shaped living and dining room and open kitchen, all offering western sunset views, and includes a primary bedroom with a large 3-panel window, ensuite bath with double vanity, and extra-large walk-in closet. Also facing west is a well-proportioned second bedroom. The third bedroom occupies its own wing, with an ensuite bath that maximizes privacy.\n\nDisplaying a refined finish palette hand-selected by Robert A.M. Stern Architects, all residences at Claremont Hall include a custom-designed solid wood entrance door with polished chrome hardware, wide plank European white oak flooring, expansive, high-performance windows, and up to 10\" ceilings. Select residences feature generous bay picture windows and Gothic-inspired arched windows. Kitchens at Claremont Hall feature custom Italian cabinetry in soothing Classic Bianco or Modern Grigio lacquer, topped by Calacatta Laza quartz countertops and backed by a ceramic tile backsplash and a paneled appliance package from Bosch, with a custom range hood with integrated spice shelf. Paneled wine refrigerators are included in select residences.\n\nPrimary baths are finished with Arabescato Cervaiole marble and feature marble mosaic tile flooring and custom sconces in polished chrome. Each primary bath includes a RAMSA-designed Italian walnut vanity with Arabescato Cervaiole marble countertop, polished chrome fixtures by Kallista, custom designed mirrored medicine cabinet by Robern, and water closet fixtures by Toto.\nSecondary baths are well appointed with marble mosaic tile flooring framed by Bianco Carrara border and ceramic tile surround, ceramic tile shower surround, custom vanities designed by RAMSA, Grigio Toscana marble countertops, and Kohler undermount sinks with polished chrome hardware from Purist by Kohler. Secondary baths also include oversized mirrored medicine cabinets with polished chrome frames by Robern, Kohler soaking tubs or showers with polished chrome Purist rain showerheads and hand-held sprayers by Kohler, and water closets by Toto.\n\nClaremont Hall's robust amenities span over three floors and include spaces for socializing, working, and relaxing. The experience is centered on the Refectory Pool, a grand historic dining hall transformed into a swimming and events space, featuring a 48' salt-water swimming pool. Claremont Hall is complete with a grand, double-height lobby, a Reading Room with Great Books Collection, a Gymnasium with Flex Space, the Little Castle playroom, media room, and a Residents\" Lounge and Terrace overlooking tranquil Sakura Park. The building also features a concierge, handyman, porters, and a live-in resident manager, as well as a bicycle room, and the opportunity to purchase on-site parking and private storage.\n\nFOR A LIMITED TIME, PLEASE INQUIRE FOR OUR PARKING INCENTIVE FOR THIS RESIDENCE. Exclusive Sales and Marketing Agent: Corcoran Sunshine Marketing Group. The complete offering terms are in an offering plan available from Sponsor. File No. CD-20-0302. Sponsor: Broadway Community Owner LLC, c/o Lendlease, 200 Park Avenue, 9th Floor, New York, NY 10166. The sponsor makes no warranties except for those that may be set forth in the offering plan. Equal Housing Opportunity.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Claremont Hall"
     },
     "1825162": {
       "listing_type": "sale",
@@ -19189,7 +19299,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Leyton"
     },
     "1825156": {
       "listing_type": "sale",
@@ -19239,7 +19350,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Leyton"
     },
     "1824989": {
       "listing_type": "sale",
@@ -19362,7 +19474,8 @@
       "description": "Experience elevated Upper East Side living at Bridge Tower. EXCEPTIONAL VALUE PRICED AT $1,050 PER SQUARE FOOT!\nResidence 4ABC is a rare, sprawling ~3,500 sq ft home that delivers the scale of a townhouse with the convenience of full-service luxury condominium living.\n\nThis exceptional five-bedroom, five-bath residence features 9-foot ceilings and triple exposures to the north, south, and west, filling the home with natural light throughout the day. The layout is thoughtfully designed with a clear separation between entertaining and private living spaces, offering both flow and discretion.\n\nThe bedroom wing is quietly tucked away from the main living areas, creating a true sense of retreat. The primary suite serves as a private sanctuary, complete with generous proportions, and a spa-like en-suite bath. Additional bedrooms are equally well-scaled, each offering flexibility for family living, guest accommodations, or dedicated home offices. Multiple bathrooms within the wing ensure both comfort and convenience, while the separation from the great room enhances privacy\u2014ideal for both everyday living and hosting.\n\nA grand great room anchors the home, complemented by a formal dining area and adaptable living spaces suited to a variety of lifestyles. High-end finishes include hardwood floors, central air, and an in-unit washer/dryer, while open city and skyline views add to the home\u2019s appeal.\n\nDesigned by Costa Kondylis & David Rockwell, Bridge Tower Place is one of the Upper East Side's premier condominiums. This pet-friendly building is replete with a welcoming lobby, 24-hour doorman & concierge, resident manager, parking garage, complimentary fitness center, roof deck, children's playroom, laundry room & bike storage.\n\nSituated in one of New York's City's most desirable neighborhoods Lenox Hill. Just moments from the East River Esplanade, residents can enjoy peaceful morning walks by the water.\nThe neighborhood offers many fine dining options, shopping, cultural venues, Central Park & easy access to the Ed Koch Queensboro Bridge, the FDR Drive, and a variety of public transportation options. Trader Joe's across the street & Whole Foods is steps away offering true convenience!",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Bridge Tower Place"
     },
     "1824698": {
       "listing_type": "sale",
@@ -19403,7 +19516,8 @@
       "description": "The Marx Condominiums, a stunning new development, graces Manhattan\u2019s Upper East Side\u2014an iconic neighborhood renowned for its world-class museums, serene parks, high-end shopping, and refined dining. This is quintessential New York City living, where charm and sophistication meet.\n\nWelcome to Unit #2, a full-floor residence with private elevator access. This exquisite home boasts 3 generously sized bedrooms, 3 impeccably designed bathrooms, and a dedicated laundry room. The primary suite is a true sanctuary, complete with garden views where you can unwind and take in the city\u2019s energy from a serene vantage point.\n\nJust a few blocks from Central Park, the Guggenheim Museum, and the Q, 4, 5, and 6 subway lines, The Marx offers unparalleled convenience while maintaining a peaceful retreat on a quiet, tree-lined street. Designed by the esteemed Isaac & Stern Architects, the building\u2019s striking facade\u2014featuring ebonized metal and oversized casement windows\u2014seamlessly merges Art Deco inspiration with modern sensibilities. The architectural design not only reflects the neighborhood\u2019s storied charm but also elevates it with innovative materials and light-filled spaces.\n\nInside, every detail has been thoughtfully curated. The interiors exude understated elegance, with a palette of pearly whites and earthy neutrals complemented by luxurious white oak flooring, sleek porcelain finishes, and stainless steel accents. The Scandinavian-inspired kitchens are a chef\u2019s dream, equipped with top-tier appliances from brands like Asko, Kohler, and Viking. Bathrooms are equally indulgent, showcasing Kohler fixtures and custom teak millwork.\n\nTo top it all off, The Marx features a sprawling rooftop deck, where residents can soak in panoramic city views or host a BBQ in this tranquil escape above the bustling streets of New York City.\n\nThe Marx Condominiums redefine luxury living on the Upper East Side\u2014don\u2019t miss the chance to make this extraordinary residence your own.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Marx"
     },
     "1824384": {
       "listing_type": "sale",
@@ -19444,7 +19558,8 @@
       "description": "Brand new listing 3 bedrooms 3 bathrooms on a high floor with direct river and city views. Brilliant natural light, and breathtaking open views of the East River, bridges, and stunning cityscapes. 21HJ is an expansive southeastern corner apartment with a gracious layout brightened by walls of windows facing the river, and 2 private balconies (off the living room and primary suite) for the ultimate outdoor enjoyment. Beautiful hardwood floors and refined finishes grace the ambience throughout. Entertain in the large living room and serve cocktails on the balcony, while preparing meals in the spacious eat-in kitchen appointed for the chef. There's also a washer-dryer, and abundant closet space that includes a huge walk-in closet in the primary bedroom.\n\nBuilt in 1987, The Promenade at 530 East 76th Street is a distinguished dark-glass condominium nestled in a serene cul-de-sac by the East River. Amenities are extensive and unparalleled. Enjoy the services of an attentive 24-hour doorman, concierge, and live-in-superintendent. Work out in the state-of-the-art fitness center with a Pilates and yoga studio, rooftop running track with panoramic views, heated indoor pool, and soothing sauna and steam rooms. Additional highlights are a lounge, big party room, rooftop business center with a wet bar and catering kitchen, playroom, parking garage, bike room, maid and dry cleaning service, and storage for a fee. Pets are allowed.\n\nTopping the allure is the coveted address moments from John Jay Park across the street, the East River Promenade affording outdoor recreation along the waterfront, plus great restaurants, shops and other conveniences. Temporary assessment of $376.51 per month.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Promenade"
     },
     "1806726": {
       "listing_type": "sale",
@@ -19485,7 +19600,8 @@
       "description": "Now Offering 2 Years of Sponsor-Paid Common Charges at Claremont Hall\n\nIMMEDIATE OCCUPANCY\n\nResidence 11F is a 1,577 square-foot three-bedroom, three-bathroom home situated on Claremont Hall's tranquil northwest corner. Overlooking iconic Riverside Church, Sakura Park, Riverside Park, and Grant's Tomb, this home's open concept corner living and dining room incorporates four oversized windows, including one of the property's signature 8\" bay picture windows. The primary bedroom features an ensuite bath with double vanity and glass-enclosed walk-in shower, and a large walk-in-closet. Two additional bedrooms and two full baths complete this gracious residence.\n\nDisplaying a refined finish palette hand-selected by Robert A.M. Stern Architects, all residences at Claremont Hall include a custom-designed solid wood entrance door with polished chrome hardware, wide plank European white oak flooring, expansive, high-performance windows, and up to 10\" ceilings. Select residences feature generous bay picture windows and Gothic-inspired arched windows. Kitchens at Claremont Hall feature custom Italian cabinetry in soothing Classic Bianco or Modern Grigio lacquer, topped by Calacatta Laza quartz countertops and backed by a ceramic tile backsplash and a paneled appliance package from Bosch, with a custom range hood with integrated spice shelf. Paneled wine refrigerators are included in select residences.\n\nPrimary baths are finished with Arabescato Cervaiole marble and feature marble mosaic tile flooring and custom sconces in polished chrome. Each primary bath includes a RAMSA-designed Italian walnut vanity with Arabescato Cervaiole marble countertop, polished chrome fixtures by Kallista, custom designed mirrored medicine cabinet by Robern, and water closet fixtures by Toto.\n\nSecondary baths are well appointed with marble mosaic tile flooring framed by Bianco Carrara border and ceramic tile surround, ceramic tile shower surround, custom vanities designed by RAMSA, Grigio Toscana marble countertops, and Kohler undermount sinks with polished chrome hardware from Purist by Kohler. Secondary baths also include oversized mirrored medicine cabinets with polished chrome frames by Robern, Kohler soaking tubs or showers with polished chrome Purist rain showerheads and hand-held sprayers by Kohler, and water closets by Toto.\n\nClaremont Hall's robust amenities span over three floors and include spaces for socializing, working, and relaxing. The experience is centered on the Refectory Pool, a grand historic dining hall transformed into a swimming and events space, featuring a 48\" salt-water swimming pool. Claremont Hall is complete with a grand, double-height lobby, a Reading Room with Great Books Collection, a Gymnasium with Flex Space, the Little Castle playroom, media room, and a Residents\" Lounge and Terrace overlooking tranquil Sakura Park. The building also features a concierge, handyman, porters, and a live-in resident manager, as well as a bicycle room, and the opportunity to purchase on-site parking and private storage.\n\nFOR A LIMITED-TIME: BUYER RECEIVES TWO YEARS FREE COMMON CHARGES! Exclusive Sales and Marketing Agent: Corcoran Sunshine Marketing Group. The complete offering terms are in an offering plan available from Sponsor. File No. CD-20-0302. Sponsor: Broadway Community Owner LLC, c/o Lendlease, 200 Park Avenue, 9th Floor, New York, NY 10166. The sponsor makes no warranties except for those that may be set forth in the offering plan. Equal Housing Opportunity.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Claremont Hall"
     },
     "1824365": {
       "listing_type": "sale",
@@ -19526,7 +19642,8 @@
       "description": "The Manhattan Residence of Robert A. M. Stern\n\nA rare and distinguished offering, this exceptional two-bedroom residence was the private home of the late, renowned architect Robert A. M. Stern. Defined by grand scale, refined detail, and serene outlooks, the apartment is graced with soaring 11-foot ceilings and dramatic floor-to-ceiling French windows overlooking one of Manhattan's most beautiful private landscaped gardens.\n\nA gracious 20-foot gallery creates a striking first impression and leads to an impressive 35-foot-long great room, where natural light pours in from three exposures. At its northern end, oversized French doors open onto a charming terrace-an idyllic setting for quiet moments or entertaining-enjoying tranquil garden views below.\n\nOccupying the south wing, the primary suite is a peaceful retreat, featuring a generous dressing room and an expansive en-suite bath. With its lovely western exposures over the garden, the suite is both sunlit and pin-drop quiet.\n\nAcross the gallery, a handsome library or study-lined with custom floor-to-ceiling bookshelves-offers flexibility as a guest bedroom, complemented by an adjacent full bath.\n\nThe beautifully proportioned, 17-foot windowed kitchen is appointed with abundant counter space and top-tier appliances from Miele, Thermador, and Sub-Zero.\n\nThe Chatham, a distinguished white-glove condominium designed by Robert A. M. Stern, offers residents an exceptional level of service and amenities, including a full-time doorman, concierge, state-of-the-art fitness center, and on-site garage. Ideally located in the heart of the Upper East Side, the finest dining, shopping, and cultural institutions are just moments away.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Chatham"
     },
     "1824240": {
       "listing_type": "sale",
@@ -19567,7 +19684,8 @@
       "description": "Simply stunning and sophisticated, this breathtaking triple corner residence has been carefully designed and combined  by the developer making it a Crown Jewel of this very desirable address!  The gracious entry foyer with beautiful flooring leads into this sprawling 4 bedrooms but currently configured as a 3 bedroom / 3 full marble bath home with an expansive  44\u201d living and dining area flooded with light!  Brilliant sun light pours in through floor-to-ceiling windows all day long and enjoy the cross breeze from the triple exposure. The floors are Brazilian Mahogany, the crown moldings and baseboard are very elegant with ceiling at 9.3\u2019 as are the custom cabinetry and closets throughout. The gourmet kitchen is windowed with granite countertops and flooring as well as a gorgeous onyx backsplash, 36\u201d sub-zero stainless-steel refrigerator, Viking gas range and twin Paykel dishwasher drawers. Captivating bright & open views to the West, East & North City skyline set the backdrop to this magnificent home with oversized picture windows all framed by custom Hunter-Douglas Silhouette shades.   The primary bedroom is flooded with natural light and has great Eastern Views and has a very generous number of closets and storage. The adjoining windowed bathroom also has a large window and spacious. The views are captivating not only during the day but beautiful at night with open and bright views to the East, West and North and serve as a backdrop to this magnificent home. The oversized picture windows are all complimented with custom Hunter Douglas Silhouette shades. Additionally, the Washer and Dryer is vented out which is rare. A private storage bin is included. Everything is in  move-in condition. Must be seen to appreciate the luxurious ambiance of this fabulous residence!\nPLEASE NOTE THE VERY LOW MONTHLY CHARGES FOR THIS LOVELY CONDO.\n\nRichmond Condominium is a full-service luxury building in the most sought-after area of the Upper Eastside. Residents are welcomed by a beautiful lobby and treated to white-glove service with a 24-hour doorman, concierge and live-in resident manager. This pet-friendly building has a beautifully landscaped 4000sf roof garden with barbecue grills for residents to enjoy!  A CONDO TO CALL WONDERFUL HOME!",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Richmond Condominium"
     },
     "1823742": {
       "listing_type": "sale",
@@ -19655,7 +19773,8 @@
       "description": "Residence 8A at Carnegie Hill Tower presents a rare opportunity to own a masterfully reimagined home in one of Manhattan\u2019s most distinguished enclaves.\nThis pristine three-bedroom, two-and-a-half-bathroom residence has undergone a comprehensive, top-tier renovation, seamlessly blending timeless elegance with modern sophistication. Every element has been thoughtfully upgraded, including new electrical and plumbing systems, state-of-the-art HVAC, wide-plank flooring, floor-to-ceiling solid core doors, and integrated LED lighting with dimmable controls throughout. A discreet in-unit washer and dryer complete the home\u2019s modern conveniences.\nA gracious entry foyer sets the tone, featuring dual sets of custom closets and refined cove lighting. Beyond, a dramatic 25-by-24-foot great room unfolds, wrapped in a wall of glass with triple exposures to the south, east, and west. The result is extraordinary natural light throughout the day, complemented by open city vistas over prime Carnegie Hill and subtle glimpses of Central Park.\nThe open-concept kitchen has been meticulously redesigned for both everyday living and elegant entertaining, featuring a dining bar, a full suite of Miele appliances, striking quartzite countertops, and bespoke cabinetry of the highest quality.\nThe king-sized primary suite offers a tranquil retreat, complete with a generously proportioned walk-in closet and a spa-like en-suite bath with a large glass-enclosed shower. Two additional bedrooms are equally well-scaled and appointed, each offering excellent proportions, abundant closet space, and custom built-ins with integrated lighting. All closets throughout the residence have been fully customized. A private storage unit transfers with the sale.\nCarnegie Hill Tower is a full-service, 32-story luxury condominium that has recently completed a comprehensive renovation of all common areas, now reflecting the finish of a newly developed property. Residents enjoy an exceptional suite of amenities, including a beautifully landscaped terrace with multiple areas for dining, lounging, and entertaining, as well as a manicured lawn and barbecue facilities. The building also offers a striking lobby set within a serene interior atrium, a fully equipped fitness center, private storage, and on-site parking.\nIdeally positioned in Carnegie Hill, one of Manhattan\u2019s most enduring and refined neighborhoods, the residence is moments from Central Park, including the Great Lawn and the Jacqueline Kennedy Onassis Reservoir, as well as the cultural landmarks of Museum Mile such as the Metropolitan Museum of Art, Cooper Hewitt, Smithsonian Design Museum, and the Solomon R. Guggenheim Museum. The surrounding neighborhood offers a curated lifestyle of fine dining, boutique shopping, gourmet markets, and effortless access to the New York City Subway.\nIn a market where true craftsmanship and scale are increasingly rare, Residence 8A stands apart\u2014a home defined by light, proportion, and enduring luxury, representing Carnegie Hill living at its finest.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Carnegie Hill Tower"
     },
     "1823805": {
       "listing_type": "sale",
@@ -19907,7 +20026,8 @@
       "description": "1 FREE PARKING LICENSE INCLUDED WITH THIS RESIDENCE FOR A LIMITED TIME\n\nIMMEDIATE OCCUPANCY\n\nResidence 31C is a corner three-bedroom, two-bathroom home with powder room that offers sweeping northern and western views over the Hudson River, Riverside and Sakura Parks, and the iconic spire of Riverside Church. Boasting over 1,600 square feet of finely detailed living space, this residence features a gracious corner living and dining room that adjoins both a covered outdoor loggia space and a windowed kitchen that can be elegantly concealed behind a solid wood pocket door. The west-facing primary bedroom suite incorporates a 5-fixture bathroom with deep soaking tub and large glass-enclosed walk-in shower, and a walk-in closet. Two additional bedrooms share this residence's spectacular views over the Hudson River, as well as a conveniently located hall bath.\nDisplaying a refined finish palette hand-selected by Robert A.M. Stern Architects, all residences at Claremont Hall include a custom-designed solid wood entrance door with polished chrome hardware, wide plank European white oak flooring, expansive, high-performance windows, and up to 10' ceilings.\n\nSelect residences feature generous bay picture windows and Gothic-inspired arched windows. Kitchens at Claremont Hall feature custom Italian cabinetry in soothing Classic Bianco or Modern Grigio lacquer, topped by Calacatta Laza quartz countertops and backed by a ceramic tile backsplash and a paneled appliance package from Bosch, with a custom range hood with integrated spice shelf. Paneled wine refrigerators are included in select residences.\n\nPrimary baths are finished with Arabescato Cervaiole marble and feature marble mosaic tile flooring and custom sconces in polished chrome. Each primary bath includes a RAMSA-designed Italian walnut vanity with Arabescato Cervaiole marble countertop, polished chrome fixtures by Kallista, custom designed mirrored medicine cabinet by Robern, and water closet fixtures by Toto.\nSecondary baths are well appointed with marble mosaic tile flooring framed by Bianco Carrara border and ceramic tile surround, ceramic tile shower surround, custom vanities designed by RAMSA, Grigio Toscana marble countertops, and Kohler undermount sinks with polished chrome hardware from Purist by Kohler. Secondary baths also include oversized mirrored medicine cabinets with polished chrome frames by Robern, Kohler soaking tubs or showers with polished chrome Purist rain showerheads and hand-held sprayers by Kohler, and water closets by Toto.\nPowder rooms offer five-inch-wide European white oak flooring with Gothic-inspired wainscoting, custom Italian vanities designed by RAMSA with Nero Marquina marble countertops, RAMSA-designed Central Park West Collection fixtures by Kallista, custom oversized mirrors by Robern, polished chrome sconces, and water closet fixtures by Toto. Select homes feature private outdoor loggias or terraces. Each residence conveniently features a washer and dryer by Bosch.\n\nClaremont Hall's robust amenities span over three floors and include spaces for socializing, working, and relaxing. The experience is centered on the Refectory Pool, a grand historic dining hall transformed into a swimming and events space, featuring a 48' salt-water swimming pool. Claremont Hall is complete with a grand, double-height lobby, a Reading Room with Great Books Collection, a Gymnasium with Flex Space, the Little Castle playroom, media room, and a Residents' Lounge and Terrace overlooking tranquil Sakura Park. The building also features a concierge, handyman, porters, and a live-in resident manager, as well as a bicycle room, and the opportunity to purchase on-site parking and private storage.\n\nFOR A LIMITED TIME, SPONSOR WILL INCLUDE 1 FREE PARKING LICENSE WITH THIS RESIDENCE. The complete offering terms are in an offering plan available from Sponsor. File No. CD-20-0302. Sponsor: Broadway Community Owner LLC, c/o Lendlease, 200 Park Avenue, 9th Floor, NY, NY 10166",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Claremont Hall"
     },
     "1823383": {
       "listing_type": "sale",
@@ -20039,7 +20159,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-05",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Carnegie Park Condominium"
     },
     "1823012": {
       "listing_type": "sale",
@@ -20133,7 +20254,8 @@
       "description": "Situated in the heart of Manhattan's coveted Gold Coast, Residence 5BC at 900 Park Avenue is a grand, sun-drenched three bedroom, three bathroom home boasting stunning views over Park Avenue. Originally architected by Annabelle Selldorf and recently updated in 2021, and beautifully laid out over approximately 1,890 square feet, this spectacular home boasts spacious rooms and a carefully considered separation of the private quarters from the entertaining spaces. \n\nA gracious foyer welcomes you into the home and leads directly into the corner great room with sweeping views over Park Avenue. The chef\u2019s eat-in kitchen features a suite of top-of-the-line appliances by Viking, SubZero, Wolf, and Gaggenau, elegant soapstone counters as well as endless glass cabinetry, and can be enclosed via pocket doors. A full bathroom, ample closets and a Bosch washer and dryer round out the offerings in the entertaining wing.\n\nOverlooking Park Avenue through a wall of windows, the palatial primary suite features floor to ceiling closets, a large walk-in closet, and an ensuite designed with Selldorf\u2019s signature glass tiles, a large soapstone soaking tub, a walk-in shower with dual showerhead and a double vanity. A second bedroom features a walk-in closet and an ensuite with a combined soaking tub and shower. The third bedroom could be a guest room or reappropriated as a media room/den.\n\nA full-service condominium building, The Park 900 boasts amenities and conveniences that include a 24-hour doorman and concierge staff, a newly renovated fitness center and residents\u2019 lounge, a convenient building driveway and an in-house garage.\n\nCentral Park, renowned boutiques and restaurants, the Metropolitan Museum of Art, and top-rated public and private schools are all just moments away.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Park 900"
     },
     "1755062": {
       "listing_type": "sale",
@@ -20265,7 +20387,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "One Sutton Place North"
     },
     "5022432": {
       "listing_type": "rent",
@@ -20316,7 +20439,8 @@
       "last_pass2": "2026-06-14",
       "status": "active",
       "_is_partial": true,
-      "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data"
+      "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
+      "building_name": "Two Sutton Place North"
     },
     "5016112": {
       "listing_type": "rent",
@@ -20371,7 +20495,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Lotus Nyc Midtown East"
     },
     "5020246": {
       "listing_type": "rent",
@@ -20417,7 +20542,8 @@
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Two Sutton Place North"
     },
     "5027181": {
       "listing_type": "rent",
@@ -20463,7 +20589,8 @@
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Bridge Tower Place"
     },
     "5026731": {
       "listing_type": "rent",
@@ -20512,7 +20639,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Merritt House"
     },
     "4629592": {
       "listing_type": "rent",
@@ -20558,7 +20686,8 @@
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": null
     },
     "5025162": {
       "listing_type": "rent",
@@ -20672,7 +20801,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "St Tropez"
     },
     "1826186": {
       "listing_type": "sale",
@@ -20846,7 +20976,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Two Sutton Place North"
     },
     "5032429": {
       "listing_type": "rent",
@@ -20893,7 +21024,8 @@
       "last_pass1": "2026-05-11",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Forum"
     },
     "1826327": {
       "listing_type": "sale",
@@ -21173,7 +21305,8 @@
       "last_pass1": "2026-06-10",
       "last_pass2": "2026-05-06",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Belaire"
     },
     "1826682": {
       "listing_type": "sale",
@@ -21220,7 +21353,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Evans Tower Condominium"
     },
     "1827146": {
       "listing_type": "sale",
@@ -21302,7 +21436,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": null
     },
     "5038003": {
       "listing_type": "rent",
@@ -22171,7 +22306,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Yorkville Tower 2"
     },
     "1783654": {
       "listing_type": "sale",
@@ -22382,7 +22518,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-10",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Anthem"
     },
     "5031793": {
       "listing_type": "rent",
@@ -22529,7 +22666,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-18",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "5036172": {
       "listing_type": "rent",
@@ -22579,7 +22717,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-10",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Lucerne"
     },
     "5020458": {
       "listing_type": "rent",
@@ -22691,7 +22830,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Yorkshire Towers"
     },
     "5034197": {
       "listing_type": "rent",
@@ -22903,7 +23043,8 @@
       "last_pass1": "2026-05-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Carnegie Hill Tower"
     },
     "5037742": {
       "listing_type": "rent",
@@ -23044,7 +23185,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Siena"
     },
     "1827460": {
       "listing_type": "sale",
@@ -23085,7 +23227,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": null
     },
     "1827710": {
       "listing_type": "sale",
@@ -23126,7 +23269,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Royale"
     },
     "1827608": {
       "listing_type": "sale",
@@ -23261,7 +23405,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-11",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Laurel"
     },
     "5040766": {
       "listing_type": "rent",
@@ -23308,7 +23453,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-05-28",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Frame Building"
     },
     "5041266": {
       "listing_type": "rent",
@@ -23487,7 +23633,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Henderson House"
     },
     "1827805": {
       "listing_type": "sale",
@@ -23575,7 +23722,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": null
     },
     "5039027": {
       "listing_type": "rent",
@@ -23769,7 +23917,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Richmond Condominium"
     },
     "1828308": {
       "listing_type": "sale",
@@ -23892,7 +24041,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Citizen360 Condominium"
     },
     "1828282": {
       "listing_type": "sale",
@@ -23980,7 +24130,8 @@
       "last_pass1": "2026-05-26",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Clare"
     },
     "1827858": {
       "listing_type": "sale",
@@ -24068,7 +24219,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Charles"
     },
     "1828599": {
       "listing_type": "sale",
@@ -24109,7 +24261,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The America"
     },
     "1814720": {
       "listing_type": "sale",
@@ -24156,7 +24309,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-05-16",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Georgica Condominium"
     },
     "1829155": {
       "listing_type": "sale",
@@ -24279,7 +24433,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "St Tropez"
     },
     "1828871": {
       "listing_type": "sale",
@@ -24417,7 +24572,8 @@
       "last_pass1": "2026-06-12",
       "last_pass2": "2026-05-22",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Carnegie Hill Tower"
     },
     "5045534": {
       "listing_type": "rent",
@@ -24546,7 +24702,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Henderson House"
     },
     "1829296": {
       "listing_type": "sale",
@@ -24823,7 +24980,8 @@
       "last_pass2": "2026-05-22",
       "status": "active",
       "last_pass1": "2026-06-14",
-      "days_on_market": 24
+      "days_on_market": 24,
+      "building_name": "Stonehenge 65"
     },
     "5049436": {
       "id": "5049436",
@@ -24861,7 +25019,8 @@
       "status": "active",
       "last_pass1": "2026-06-07",
       "days_on_market": 18,
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Maison 78"
     },
     "5048124": {
       "id": "5048124",
@@ -25018,7 +25177,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Empire House"
     },
     "5050842": {
       "listing_type": "rent",
@@ -25115,7 +25275,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-06",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Serrano"
     },
     "5051079": {
       "listing_type": "rent",
@@ -25212,7 +25373,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Siena"
     },
     "1828296": {
       "listing_type": "sale",
@@ -25302,7 +25464,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "One East River Place"
     },
     "5052919": {
       "listing_type": "rent",
@@ -25343,7 +25506,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-05-27",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Laurel"
     },
     "5049434": {
       "listing_type": "rent",
@@ -25595,7 +25759,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-05-29",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Ventura"
     },
     "5053166": {
       "listing_type": "rent",
@@ -25648,7 +25813,8 @@
       "last_pass1": "2026-06-03",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "One Sutton Place North"
     },
     "5049775": {
       "listing_type": "rent",
@@ -25736,7 +25902,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-05-28",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Savoy"
     },
     "5054446": {
       "listing_type": "rent",
@@ -25818,7 +25985,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Forum"
     },
     "1830158": {
       "listing_type": "sale",
@@ -25900,7 +26068,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Twelve Twelve Fifth Avenue"
     },
     "1830654": {
       "listing_type": "sale",
@@ -25941,7 +26110,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Archive Lofts"
     },
     "1830583": {
       "listing_type": "sale",
@@ -26170,7 +26340,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Richmond Condominium"
     },
     "1830813": {
       "listing_type": "sale",
@@ -26267,7 +26438,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Yorkshire Towers"
     },
     "5055070": {
       "listing_type": "rent",
@@ -26314,7 +26486,8 @@
       "last_pass1": "2026-06-02",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "One Museum Mile"
     },
     "5056628": {
       "listing_type": "rent",
@@ -26396,7 +26569,8 @@
       "last_pass1": "2026-06-12",
       "last_pass2": "2026-05-31",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Kenilworth"
     },
     "1831320": {
       "listing_type": "sale",
@@ -26478,7 +26652,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Manhattan House"
     },
     "1831186": {
       "listing_type": "sale",
@@ -26651,7 +26826,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "5054879": {
       "listing_type": "rent",
@@ -26692,7 +26868,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-02",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Bridge Tower Place"
     },
     "5043436": {
       "listing_type": "rent",
@@ -26733,7 +26910,8 @@
       "last_pass1": "2026-06-07",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": null
     },
     "5043438": {
       "listing_type": "rent",
@@ -26774,7 +26952,8 @@
       "last_pass1": "2026-06-06",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": null
     },
     "1830897": {
       "listing_type": "sale",
@@ -26979,7 +27158,8 @@
       "last_pass1": "2026-06-07",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": null
     },
     "5056279": {
       "listing_type": "rent",
@@ -27143,7 +27323,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Rio"
     },
     "5062794": {
       "listing_type": "rent",
@@ -27184,7 +27365,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-06",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "One Sutton Place North"
     },
     "5062867": {
       "listing_type": "rent",
@@ -27228,7 +27410,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "Two Sutton Place North"
     },
     "5063304": {
       "listing_type": "rent",
@@ -27310,7 +27493,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-06",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "One East River Place"
     },
     "5061223": {
       "listing_type": "rent",
@@ -27351,7 +27535,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-06",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "St Tropez"
     },
     "5063481": {
       "listing_type": "rent",
@@ -27392,7 +27577,8 @@
       "last_pass1": "2026-06-12",
       "last_pass2": "2026-06-06",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Duchess"
     },
     "5056382": {
       "listing_type": "rent",
@@ -27433,7 +27619,8 @@
       "last_pass1": "2026-06-11",
       "last_pass2": "2026-06-06",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": null
     },
     "5059449": {
       "listing_type": "rent",
@@ -27483,7 +27670,8 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": "The Forum"
     },
     "5064108": {
       "listing_type": "rent",
@@ -27606,7 +27794,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Merritt House"
     },
     "1831978": {
       "listing_type": "sale",
@@ -27647,7 +27836,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Carnegie Park Condominium"
     },
     "1832455": {
       "listing_type": "sale",
@@ -27770,7 +27960,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Promenade"
     },
     "5066824": {
       "listing_type": "rent",
@@ -27817,7 +28008,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-10",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Ventura"
     },
     "5066389": {
       "listing_type": "rent",
@@ -27858,7 +28050,8 @@
       "last_pass1": "2026-06-11",
       "last_pass2": "2026-06-10",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Langdon"
     },
     "4942783": {
       "listing_type": "rent",
@@ -27899,7 +28092,8 @@
       "last_pass1": "2026-06-12",
       "last_pass2": "2026-06-10",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Brooklyn Tower Rentals"
     },
     "5067526": {
       "listing_type": "rent",
@@ -27981,7 +28175,8 @@
       "last_pass1": "2026-06-13",
       "last_pass2": "2026-06-10",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Langdon"
     },
     "4734250": {
       "listing_type": "rent",
@@ -28028,7 +28223,8 @@
       "last_pass1": "2026-06-11",
       "last_pass2": "2026-06-10",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Brooklyn Tower Rentals"
     },
     "5066614": {
       "listing_type": "rent",
@@ -28151,7 +28347,8 @@
       "last_pass1": "2026-06-11",
       "last_pass2": "2026-06-11",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Yorkshire Towers"
     },
     "5042200": {
       "listing_type": "rent",
@@ -28280,7 +28477,8 @@
       "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "Philip House"
     },
     "1833250": {
       "listing_type": "sale",
@@ -28403,7 +28601,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-12",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Langdon"
     },
     "5061868": {
       "listing_type": "rent",
@@ -28485,7 +28684,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-13",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Anthem"
     },
     "5070217": {
       "listing_type": "rent",
@@ -28526,7 +28726,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-14",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "La Bourgogne"
     },
     "5071029": {
       "listing_type": "rent",
@@ -28567,7 +28768,8 @@
       "last_pass1": "2026-06-14",
       "last_pass2": "2026-06-14",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "building_name": "The Fairfax"
     },
     "5062725": {
       "listing_type": "rent",
@@ -28600,7 +28802,8 @@
       "status": "active",
       "off_market_date": "2026-04-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-15",
+      "building_name": null
     },
     "1833715": {
       "listing_type": "sale",

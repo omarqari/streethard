@@ -1987,10 +1987,11 @@ function buildBuildingIndex(listings) {
     const key = buildingKey(l.building);
     if (!key) return;
     let b = idx[key];
-    if (!b) b = idx[key] = { key, names:{}, nbhd:{}, years:{}, types:{}, count:0, sale:0, rent:0, prices:[], psf:[], listings:[] };
+    if (!b) b = idx[key] = { key, names:{}, bnames:{}, nbhd:{}, years:{}, types:{}, count:0, sale:0, rent:0, prices:[], psf:[], listings:[] };
     b.count++;
     if (l.listing_type === 'rent') b.rent++; else b.sale++;
-    if (l.building)     b.names[l.building] = (b.names[l.building]||0)+1;
+    if (l.building)      b.names[l.building] = (b.names[l.building]||0)+1;
+    if (l.building_name) b.bnames[l.building_name] = (b.bnames[l.building_name]||0)+1;
     if (l.neighborhood) b.nbhd[l.neighborhood] = (b.nbhd[l.neighborhood]||0)+1;
     if (l.year_built)   b.years[l.year_built] = (b.years[l.year_built]||0)+1;
     if (l.type)         b.types[l.type] = (b.types[l.type]||0)+1;
@@ -1999,8 +2000,12 @@ function buildBuildingIndex(listings) {
     b.listings.push(l);
   });
   Object.values(idx).forEach(b => {
-    // prettiest display name = longest variant seen (e.g. "920 Park Avenue" > "920 Park")
-    b.display_name = Object.keys(b.names).sort((a,c) => c.length - a.length)[0] || b.key;
+    // prettiest address = longest variant seen (e.g. "920 Park Avenue" > "920 Park")
+    b.address_label = Object.keys(b.names).sort((a,c) => c.length - a.length)[0] || b.key;
+    // proper building name (e.g. "The Seville") if any listing carries one; else null
+    b.building_name = mostCommon(b.bnames) || null;
+    // primary label: proper name when known, else the address
+    b.display_name = b.building_name || b.address_label;
     b.neighborhood = mostCommon(b.nbhd) || '';
     b.year_built   = mostCommon(b.years) || null;
     b.type         = mostCommon(b.types) || '';
@@ -2032,7 +2037,10 @@ function renderBuildings() {
   let rows = Object.values(idx);
   if (targetsOnly) rows = rows.filter(b => targetSet.has(b.key));
   if (q) rows = rows.filter(b =>
-    (b.display_name || '').toLowerCase().includes(q) || (b.neighborhood || '').toLowerCase().includes(q));
+    (b.display_name || '').toLowerCase().includes(q) ||
+    (b.address_label || '').toLowerCase().includes(q) ||
+    (b.building_name || '').toLowerCase().includes(q) ||
+    (b.neighborhood || '').toLowerCase().includes(q));
 
   // targeted first, then most listings, then name
   rows.sort((a, b) => {
@@ -2061,7 +2069,11 @@ function renderBuildings() {
     const listingsCell = b.count === 0
       ? '<span class="bldg-nolistings">no active listings</span>'
       : `${b.count} <span style="color:#aaa;">(${b.sale}·${b.rent})</span>`;
-    const sub = b.neighborhood ? `<div class="bldg-sub">${b.neighborhood}</div>` : '';
+    // When a proper name is shown as the label, surface the address in the subline too.
+    const subParts = [];
+    if (b.building_name && b.address_label) subParts.push(b.address_label);
+    if (b.neighborhood) subParts.push(b.neighborhood);
+    const sub = subParts.length ? `<div class="bldg-sub">${subParts.join(' · ')}</div>` : '';
 
     html += `
       <tr onclick="toggleBuildingExpand('${b.key}')" style="cursor:pointer;">
@@ -2207,7 +2219,7 @@ function passesActiveFilters(l, f) {
   if (f.cutsOnly && !priceSignals(l).hasCuts) return false;
   if (f.seenOnly && !getStatus(l.id).seen) return false;
   if (f.searchQ) {
-    const haystack = [l.building, l.address, l.unit, l.neighborhood, l.agent_name, l.agent_firm]
+    const haystack = [l.building, l.building_name, l.address, l.unit, l.neighborhood, l.agent_name, l.agent_firm]
       .filter(Boolean).join(' ').toLowerCase();
     if (!haystack.includes(f.searchQ)) return false;
   }
@@ -2662,7 +2674,7 @@ function renderTable() {
           <span class="rank-val${rqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','rq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${rqR || '—'}</span>
         </td>
         <td>
-          <div class="td-building">${listing.building || '—'}${isTarget ? '<span class="target-pill" title="A building you\'ve targeted">★ Target</span>' : ''}</div>
+          <div class="td-building">${listing.building_name || listing.building || '—'}${isTarget ? '<span class="target-pill" title="A building you\'ve targeted">★ Target</span>' : ''}</div>
           <div class="td-sub">${listing.address}${listing.unit ? ' #' + String(listing.unit).replace(/^#+/, '') : ''} · ${listing.neighborhood || ''}</div>
         </td>
         <td class="td-monthly">${fmtMoney(monthly)}<span style="font-size:10px;font-weight:500;color:#888;">/mo</span></td>
@@ -2820,7 +2832,7 @@ function renderCards() {
       <div class="listing-card v4${isStale ? ' row-stale' : ''}${isTarget ? ' target-bldg' : ''}" data-id="${listing.id}">
         ${ENABLE_SWIPE ? `<div class="swipe-indicator swipe-right">${rightLabel}</div><div class="swipe-indicator swipe-left">✕ Archive</div>` : ''}
         <div class="v4-header">
-          <div class="v4-title">${listing.building || '—'}${listing.neighborhood ? ` <span class="v4-nb">· ${listing.neighborhood}</span>` : ''}</div>
+          <div class="v4-title">${listing.building_name || listing.building || '—'}${listing.neighborhood ? ` <span class="v4-nb">· ${listing.neighborhood}</span>` : ''}</div>
           <div class="v4-address">${listing.address}${listing.unit ? ' #' + String(listing.unit).replace(/^#+/, '') : ''}</div>
           <div class="v4-badge-row">
             ${showBoth ? listingTypeBadge(listing) : ''}
