@@ -1048,6 +1048,28 @@ tr.target-bldg > td:first-child { box-shadow: inset 3px 0 0 #FF6000; }
 .listing-card.v4.target-bldg { border-left: 3px solid #FF6000; background: #FFF8F2; }
 .v4-badge.target { color: #FF6000; border: 1px solid #FF6000; background: #fff; font-weight: 800; }
 
+/* ─── Architect tag (slate — distinct from orange target accent) ── */
+.architect-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  color: #54608A; font-size: 12px; font-weight: 600; line-height: 1.2; white-space: nowrap;
+}
+.architect-tag .ar-ico { flex: 0 0 auto; }
+.bldg-architect { margin-top: 3px; }
+.architect-card {
+  background: #EEF1F8; border-radius: 6px; padding: 7px 10px; margin-top: 4px;
+  display: inline-block;
+}
+
+/* ─── Buildings table — sortable headers + sticky toolbar ──────── */
+#buildings-table thead th.b-sortable { cursor: pointer; user-select: none; }
+#buildings-table thead th.b-sortable:hover { color: #FF6000; }
+#buildings-table thead th.b-sort-active { color: #FF6000; }
+#buildings-table thead th { top: var(--b-thead-top, 0px); z-index: 20; }
+#buildings-toolbar { position: sticky; top: var(--b-tb-top, 0px); z-index: 30; }
+@media (max-width: 768px) {
+  #buildings-toolbar { top: var(--b-tb-top, 52px); }
+}
+
 /* ─── Transition Buttons ─────────────────────────────────────── */
 .transition-cell {
   white-space: nowrap;
@@ -1484,12 +1506,13 @@ tr.target-bldg > td:first-child { box-shadow: inset 3px 0 0 #FF6000; }
       <thead>
         <tr>
           <th style="width:40px;"></th>
-          <th>Building</th>
-          <th style="width:64px;">Built</th>
-          <th style="width:64px;">Type</th>
-          <th style="width:96px;">Listings</th>
-          <th style="width:160px;">Price range</th>
-          <th style="width:84px;">$/ft²</th>
+          <th class="b-sortable" onclick="sortBuildings('name')" id="bth-name">Building <span class="sort-arrow" id="barr-name"></span></th>
+          <th class="b-sortable" style="width:64px;" onclick="sortBuildings('built')" id="bth-built">Built <span class="sort-arrow" id="barr-built"></span></th>
+          <th class="b-sortable" style="width:64px;" onclick="sortBuildings('type')" id="bth-type">Type <span class="sort-arrow" id="barr-type"></span></th>
+          <th class="b-sortable" style="width:96px;" onclick="sortBuildings('listings')" id="bth-listings">Listings <span class="sort-arrow" id="barr-listings"></span></th>
+          <th class="b-sortable" style="width:160px;" onclick="sortBuildings('price')" id="bth-price">Price range <span class="sort-arrow" id="barr-price"></span></th>
+          <th class="b-sortable" style="width:84px;" onclick="sortBuildings('psf')" id="bth-psf">$/ft² <span class="sort-arrow" id="barr-psf"></span></th>
+          <th class="b-sortable" style="width:150px;" onclick="sortBuildings('architect')" id="bth-architect">Architect <span class="sort-arrow" id="barr-architect"></span></th>
         </tr>
       </thead>
       <tbody id="buildings-body"></tbody>
@@ -1521,6 +1544,8 @@ let mtgCalcTimer = null;
 let targetSet = new Set();   // building_key set of targeted "great buildings" (shared family list)
 let targetMeta = {};         // building_key → { display_name, note }
 let expandedBldg = null;     // currently expanded building_key on the Buildings tab
+let bldgSortCol = null;      // null = default (targeted-first); else explicit column sort
+let bldgSortDir = 'asc';
 
 // buildingKey(): normalize a building name to a stable join/target key.
 // Conservative — collapses known spelling drift (ordinals, directionals,
@@ -1543,6 +1568,37 @@ function buildingKey(s) {
 
 function isTargetBuilding(listing) {
   return targetSet.has(buildingKey(listing.building));
+}
+
+// ─── Architect registry ──────────────────────────────────────────────
+// Static, curated reference data (not user-editable) so it lives client-side
+// rather than in the building_targets table. Keyed via the frozen buildingKey()
+// normalizer so it matches whatever name/address a listing carries. Seeded with
+// both the proper name and the street address where both are known.
+const ARCHITECT_BUILDINGS = {
+  'Robert A.M. Stern': [
+    '200 East 83rd Street',
+    '520 Park Avenue',
+    '255 East 77th Street',
+    'The Chatham', '181 East 65th Street',
+    'The Brompton', '205 East 85th Street',
+    'The Bellemont', '1165 Madison Avenue',
+    '20 East End Avenue',
+    '150 East 78th Street',
+    '800 Fifth Avenue',
+  ],
+};
+const _architectByKey = {};
+Object.entries(ARCHITECT_BUILDINGS).forEach(([arch, names]) =>
+  names.forEach(n => { const k = buildingKey(n); if (k) _architectByKey[k] = arch; }));
+
+function architectOf(building) {
+  if (!building) return null;
+  return _architectByKey[buildingKey(building)] || null;
+}
+// Small ruler glyph — slate, deliberately not the orange ★ Target accent.
+function architectIconSvg() {
+  return '<svg class="ar-ico" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;"><path d="M3 8l5-5 13 13-5 5z"/><path d="M7 9l1.5 1.5M10.5 12.5l1.5 1.5M14 16l1.5 1.5"/></svg>';
 }
 let noteTimers = {};  // debounce timers for notes
 
@@ -2012,13 +2068,15 @@ function buildBuildingIndex(listings) {
     b.price_min    = b.prices.length ? Math.min(...b.prices) : null;
     b.price_max    = b.prices.length ? Math.max(...b.prices) : null;
     b.psf_median   = b.psf.length ? median(b.psf) : null;
+    b.architect    = _architectByKey[b.key] || null;
   });
   // Include targeted buildings that currently have no active listings.
   targetSet.forEach(key => {
     if (!idx[key]) {
       idx[key] = { key, display_name: (targetMeta[key] && targetMeta[key].display_name) || key,
                    neighborhood:'', year_built:null, type:'', count:0, sale:0, rent:0,
-                   prices:[], psf:[], price_min:null, price_max:null, psf_median:null, listings:[] };
+                   prices:[], psf:[], price_min:null, price_max:null, psf_median:null,
+                   architect: _architectByKey[key] || null, listings:[] };
     }
   });
   return idx;
@@ -2040,15 +2098,36 @@ function renderBuildings() {
     (b.display_name || '').toLowerCase().includes(q) ||
     (b.address_label || '').toLowerCase().includes(q) ||
     (b.building_name || '').toLowerCase().includes(q) ||
-    (b.neighborhood || '').toLowerCase().includes(q));
+    (b.neighborhood || '').toLowerCase().includes(q) ||
+    (b.architect || '').toLowerCase().includes(q));
 
-  // targeted first, then most listings, then name
-  rows.sort((a, b) => {
-    const ta = targetSet.has(a.key) ? 1 : 0, tb = targetSet.has(b.key) ? 1 : 0;
-    if (ta !== tb) return tb - ta;
-    if (b.count !== a.count) return b.count - a.count;
-    return (a.display_name || '').localeCompare(b.display_name || '');
-  });
+  if (bldgSortCol) {
+    // Explicit column sort: pure sort by the clicked column, nulls last.
+    const dir = bldgSortDir === 'desc' ? -1 : 1;
+    const num = { built:'year_built', listings:'count', price:'price_min', psf:'psf_median' };
+    const str = { name:'display_name', type:'type', architect:'architect' };
+    rows.sort((a, b) => {
+      if (str[bldgSortCol]) {
+        const av = (a[str[bldgSortCol]] || ''), bv = (b[str[bldgSortCol]] || '');
+        if (!av && !bv) return 0;
+        if (!av) return 1; if (!bv) return -1;   // blanks last regardless of dir
+        return dir * av.localeCompare(bv);
+      }
+      const f = num[bldgSortCol];
+      const av = a[f], bv = b[f];
+      if (av == null && bv == null) return 0;
+      if (av == null) return 1; if (bv == null) return -1;
+      return dir * (av - bv);
+    });
+  } else {
+    // Default: targeted first, then most listings, then name.
+    rows.sort((a, b) => {
+      const ta = targetSet.has(a.key) ? 1 : 0, tb = targetSet.has(b.key) ? 1 : 0;
+      if (ta !== tb) return tb - ta;
+      if (b.count !== a.count) return b.count - a.count;
+      return (a.display_name || '').localeCompare(b.display_name || '');
+    });
+  }
 
   document.getElementById('b-count').textContent =
     `${Object.keys(idx).length} buildings · ${targetSet.size} targeted`;
@@ -2087,6 +2166,7 @@ function renderBuildings() {
         <td>${listingsCell}</td>
         <td>${priceRange}</td>
         <td>${psf}</td>
+        <td>${b.architect ? `<span class="architect-tag">${b.architect}</span>` : '<span style="color:#ccc;">—</span>'}</td>
       </tr>`;
 
     if (isExp && b.listings.length) {
@@ -2101,11 +2181,46 @@ function renderBuildings() {
             <a href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#3461D9;">StreetEasy ↗</a>
           </div>`;
       }).join('');
-      html += `<tr class="bldg-units"><td colspan="7">${units}</td></tr>`;
+      html += `<tr class="bldg-units"><td colspan="8">${units}</td></tr>`;
     }
   });
   body.innerHTML = html;
+
+  // Reflect active sort column in the header arrows.
+  document.querySelectorAll('#buildings-table .sort-arrow').forEach(el => el.textContent = '');
+  document.querySelectorAll('#buildings-table thead th').forEach(el => el.classList.remove('b-sort-active'));
+  if (bldgSortCol) {
+    const arrow = document.getElementById('barr-' + bldgSortCol);
+    const th    = document.getElementById('bth-' + bldgSortCol);
+    if (arrow) arrow.textContent = bldgSortDir === 'desc' ? '↓' : '↑';
+    if (th)    th.classList.add('b-sort-active');
+  }
+  syncBuildingsSticky();
 }
+
+function sortBuildings(col) {
+  if (bldgSortCol === col) {
+    // name/built/type/listings/price/psf/architect → toggle, then clear back to default
+    if (bldgSortDir === 'asc') { bldgSortDir = 'desc'; }
+    else { bldgSortCol = null; bldgSortDir = 'asc'; }   // 3rd click restores default order
+  } else {
+    bldgSortCol = col; bldgSortDir = 'asc';
+  }
+  renderBuildings();
+}
+
+// Keep the sticky Buildings toolbar and the (already-sticky) thead from overlapping.
+// Desktop: toolbar pins at the top of the scroll area (0); thead pins just below it.
+// Mobile: the dark #main-header is sticky at 0, so everything shifts down by its height.
+function syncBuildingsSticky() {
+  const tb = document.getElementById('buildings-toolbar');
+  if (!tb) return;
+  const headerH = window.innerWidth <= 768 ? 52 : 0;
+  const root = document.documentElement.style;
+  root.setProperty('--b-tb-top', headerH + 'px');
+  root.setProperty('--b-thead-top', (headerH + tb.offsetHeight) + 'px');
+}
+window.addEventListener('resize', syncBuildingsSticky);
 
 function toggleBuildingExpand(key) {
   expandedBldg = (expandedBldg === key) ? null : key;
@@ -2949,6 +3064,11 @@ function buildExpansion(listing) {
     </div>`;
   } else {
     agentHtml += '<div style="font-size:11px;color:#aaa;">No agent info available</div>';
+  }
+  const expArch = architectOf(listing.building);
+  if (expArch) {
+    agentHtml += `<div class="exp-title" style="margin-top:14px;">Architect</div>
+      <div class="architect-card"><span class="architect-tag">${architectIconSvg()}${expArch}</span></div>`;
   }
   agentHtml += `<a class="se-link" href="${listing.url}" target="_blank">StreetEasy Link ↗</a>`;
 
