@@ -991,6 +991,62 @@ td {
   text-align: center;
 }
 .bucket-tab.active .tab-count { background: #3461D9; color: #fff; }
+/* Buildings is a different object than the listing buckets — push it to the
+   right of a divider so Inbox/Shortlist/Archive read as one triage flow. */
+.bucket-tabs-spacer { flex: 1 1 auto; }
+.bucket-tabs-divider { align-self: center; width: 1px; height: 18px; background: #d7dbe4; margin: 0 4px; }
+.bucket-tab.buildings-tab { display: inline-flex; align-items: center; gap: 6px; }
+.bucket-tab.buildings-tab svg { width: 14px; height: 14px; }
+
+/* ─── Buildings view ─────────────────────────────────────────── */
+#buildings-view { display: none; padding: 0; }
+body.mode-buildings #filter-bar,
+body.mode-buildings #summary-bar,
+body.mode-buildings #mortgage-bar,
+body.mode-buildings #mtg-toggle,
+body.mode-buildings .view-toggle,
+body.mode-buildings #shortlist-alert,
+body.mode-buildings #table-view,
+body.mode-buildings #card-view { display: none !important; }
+body.mode-buildings #buildings-view { display: block; }
+#buildings-toolbar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 12px 28px; background: #fff; border-bottom: 1px solid #e4e7ed;
+  flex-wrap: wrap;
+}
+#buildings-toolbar input[type="text"] {
+  flex: 1; min-width: 180px; max-width: 360px; padding: 7px 11px;
+  border: 1px solid #d7dbe4; border-radius: 7px; font-size: 13px; font-family: inherit;
+}
+#buildings-toolbar .b-count { color: #888; font-size: 12px; margin-left: auto; }
+#buildings-table th { white-space: nowrap; }
+.bldg-star {
+  background: none; border: none; cursor: pointer; font-size: 17px;
+  line-height: 1; padding: 2px 4px; color: #c9ccd3; transition: color .12s, transform .08s;
+}
+.bldg-star:hover { transform: scale(1.15); }
+.bldg-star.on { color: #FF6000; }
+.bldg-name { font-weight: 700; color: #1a1a2e; }
+.bldg-sub { font-size: 11px; color: #999; margin-top: 1px; }
+.bldg-nolistings { color: #b06a2c; font-size: 11px; }
+.bldg-units { background: #fafbfd; }
+.bldg-units td { padding: 8px 14px; }
+.bldg-unit-row { display: flex; align-items: center; gap: 10px; font-size: 12px; padding: 3px 0; border-bottom: 1px solid #eef0f4; }
+.bldg-unit-row:last-child { border-bottom: none; }
+.bldg-unit-bucket { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .3px; padding: 1px 6px; border-radius: 6px; }
+.bldg-unit-bucket.inbox { background: #e8f0fe; color: #3461D9; }
+.bldg-unit-bucket.shortlist { background: #fff1e6; color: #FF6000; }
+.bldg-unit-bucket.archive { background: #eef0f4; color: #888; }
+
+/* ─── Target-building highlight (main app, all buckets) ──────── */
+.target-pill {
+  display: inline-block; font-size: 10px; font-weight: 800; color: #FF6000;
+  border: 1px solid #FF6000; border-radius: 10px; padding: 0 6px; margin-left: 6px; vertical-align: 1px;
+}
+tr.target-bldg > td { background: #FFF8F2; }
+tr.target-bldg > td:first-child { box-shadow: inset 3px 0 0 #FF6000; }
+.listing-card.v4.target-bldg { border-left: 3px solid #FF6000; background: #FFF8F2; }
+.v4-badge.target { color: #FF6000; border: 1px solid #FF6000; background: #fff; font-weight: 800; }
 
 /* ─── Transition Buttons ─────────────────────────────────────── */
 .transition-cell {
@@ -1297,6 +1353,9 @@ td {
   <button class="bucket-tab active" id="tab-inbox" onclick="setBucket('inbox')">Inbox <span class="tab-count" id="count-inbox">0</span></button>
   <button class="bucket-tab" id="tab-shortlist" onclick="setBucket('shortlist')">Shortlist <span class="tab-count" id="count-shortlist">0</span></button>
   <button class="bucket-tab" id="tab-archive" onclick="setBucket('archive')">Archive <span class="tab-count" id="count-archive">0</span></button>
+  <span class="bucket-tabs-spacer"></span>
+  <span class="bucket-tabs-divider" aria-hidden="true"></span>
+  <button class="bucket-tab buildings-tab" id="tab-buildings" onclick="showBuildings()" title="Mark the buildings you're targeting"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-4M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>Buildings <span class="tab-count" id="count-buildings">0</span></button>
 </div>
 
 <!-- ─── Recently-delisted alert strip (Shortlist tab only) ──────── -->
@@ -1413,6 +1472,32 @@ td {
 <!-- ─── Card View ────────────────────────────────────────────────── -->
 <div id="card-view"></div>
 
+<!-- ─── Buildings View ───────────────────────────────────────────── -->
+<div id="buildings-view">
+  <div id="buildings-toolbar">
+    <input type="text" id="b-search" placeholder="Search buildings…" oninput="renderBuildings()" autocomplete="off">
+    <label class="filter-check" title="Show only buildings you've targeted"><input type="checkbox" id="b-targets-only" onchange="renderBuildings()"> ★ Only targets</label>
+    <span class="b-count" id="b-count"></span>
+  </div>
+  <div class="table-wrap">
+    <table id="buildings-table">
+      <thead>
+        <tr>
+          <th style="width:40px;"></th>
+          <th>Building</th>
+          <th style="width:64px;">Built</th>
+          <th style="width:64px;">Type</th>
+          <th style="width:96px;">Listings</th>
+          <th style="width:160px;">Price range</th>
+          <th style="width:84px;">$/ft²</th>
+        </tr>
+      </thead>
+      <tbody id="buildings-body"></tbody>
+    </table>
+  </div>
+  <div id="buildings-empty" style="display:none; padding:32px; text-align:center; color:#888;">No buildings match.</div>
+</div>
+
 <!-- ─── Footer ───────────────────────────────────────────────────── -->
 <footer id="page-footer">
   <span id="footer-left">StreetHard · Data via Apify memo23/streeteasy-ppr</span>
@@ -1433,6 +1518,32 @@ let listingMode = 'sale'; // 'sale' | 'rent' | 'both'
 let sortCol = 'monthly';
 let sortDir = 'desc';
 let mtgCalcTimer = null;
+let targetSet = new Set();   // building_key set of targeted "great buildings" (shared family list)
+let targetMeta = {};         // building_key → { display_name, note }
+let expandedBldg = null;     // currently expanded building_key on the Buildings tab
+
+// buildingKey(): normalize a building name to a stable join/target key.
+// Conservative — collapses known spelling drift (ordinals, directionals,
+// suffix spelling, "NNN Park" === "NNN Park Avenue") but never strips the
+// street-type suffix, so 66th St and 66th Pl stay distinct. Frozen behind a
+// unit test (see BUILDINGS-FEATURE-PLAN.md §2.1 / §7); any change needs a re-key.
+function buildingKey(s) {
+  if (!s) return '';
+  let k = String(s).toLowerCase().trim();
+  const ord = {first:'1st',second:'2nd',third:'3rd',fourth:'4th',fifth:'5th',
+               sixth:'6th',seventh:'7th',eighth:'8th',ninth:'9th',tenth:'10th'};
+  k = k.replace(/\b(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth)\b/g, m => ord[m]);
+  k = k.replace(/\beast\b/g,'e').replace(/\bwest\b/g,'w').replace(/\bnorth\b/g,'n').replace(/\bsouth\b/g,'s');
+  k = k.replace(/\bavenue\b/g,'ave').replace(/\bstreet\b/g,'st').replace(/\bplace\b/g,'pl')
+       .replace(/\bboulevard\b/g,'blvd').replace(/\bdrive\b/g,'dr').replace(/\bterrace\b/g,'ter');
+  k = k.replace(/[.,#'’\-\/]/g,' ').replace(/\s+/g,' ').trim();
+  k = k.replace(/\bpark$/,'park ave');
+  return k.replace(/\s+/g,'');
+}
+
+function isTargetBuilding(listing) {
+  return targetSet.has(buildingKey(listing.building));
+}
 let noteTimers = {};  // debounce timers for notes
 
 // Feature flags
@@ -1739,6 +1850,26 @@ function getStatus(listingId) {
   return statusMap[listingId] || {};
 }
 
+// Shared family list of targeted buildings. Tolerates API failure exactly like
+// loadStatus(): on error nothing is highlighted and the app still works.
+async function loadBuildingTargets() {
+  try {
+    const r = await fetch(API_BASE + '/building-targets?t=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const d = await r.json();
+    targetSet = new Set();
+    targetMeta = {};
+    (d.items || []).forEach(it => {
+      targetSet.add(it.building_key);
+      targetMeta[it.building_key] = { display_name: it.display_name, note: it.note };
+    });
+  } catch (e) {
+    console.warn('Building targets unavailable:', e.message);
+    targetSet = new Set();
+    targetMeta = {};
+  }
+}
+
 // Auto-resurrection: move archived listings back to inbox if price dropped
 async function autoResurrect() {
   if (!API_BASE) return;
@@ -1772,7 +1903,8 @@ async function loadData() {
   try {
     const [resp] = await Promise.all([
       fetch('data/latest.json?t=' + Date.now()),
-      loadStatus(),         // populates statusMap; tolerates failure
+      loadStatus(),            // populates statusMap; tolerates failure
+      loadBuildingTargets(),   // populates targetSet/targetMeta; tolerates failure
     ]);
     if (!resp.ok) throw new Error('HTTP ' + resp.status);
     const data = await resp.json();
@@ -1795,6 +1927,8 @@ async function loadData() {
 
     document.getElementById('loading-state').style.display = 'none';
     applyFilters();
+    updateBuildingsCount();
+    if (currentTab === 'buildings') renderBuildings();
   } catch (e) {
     document.getElementById('loading-state').innerHTML =
       '<div style="color:#c00;">⚠ Could not load listings data.<br><small>' + e.message + '</small></div>';
@@ -1837,8 +1971,181 @@ function setMode(mode) {
   applyFilters();
 }
 
+// ─── Buildings tab ───────────────────────────────────────────────────
+// Aggregate active listings into buildings via buildingKey(). Targeted
+// buildings with zero current listings are still included (decision E) so a
+// target is never silently lost when a building's last listing delists.
+function mostCommon(obj) {
+  let best = null, bestN = -1;
+  for (const k in obj) { if (obj[k] > bestN) { best = k; bestN = obj[k]; } }
+  return best;
+}
+function buildBuildingIndex(listings) {
+  const idx = {};
+  listings.forEach(l => {
+    if (l.status === 'delisted') return;
+    const key = buildingKey(l.building);
+    if (!key) return;
+    let b = idx[key];
+    if (!b) b = idx[key] = { key, names:{}, nbhd:{}, years:{}, types:{}, count:0, sale:0, rent:0, prices:[], psf:[], listings:[] };
+    b.count++;
+    if (l.listing_type === 'rent') b.rent++; else b.sale++;
+    if (l.building)     b.names[l.building] = (b.names[l.building]||0)+1;
+    if (l.neighborhood) b.nbhd[l.neighborhood] = (b.nbhd[l.neighborhood]||0)+1;
+    if (l.year_built)   b.years[l.year_built] = (b.years[l.year_built]||0)+1;
+    if (l.type)         b.types[l.type] = (b.types[l.type]||0)+1;
+    if (l.listing_type !== 'rent' && l.price) b.prices.push(l.price);
+    if (l.listing_type !== 'rent' && l.price_per_sqft) b.psf.push(l.price_per_sqft);
+    b.listings.push(l);
+  });
+  Object.values(idx).forEach(b => {
+    // prettiest display name = longest variant seen (e.g. "920 Park Avenue" > "920 Park")
+    b.display_name = Object.keys(b.names).sort((a,c) => c.length - a.length)[0] || b.key;
+    b.neighborhood = mostCommon(b.nbhd) || '';
+    b.year_built   = mostCommon(b.years) || null;
+    b.type         = mostCommon(b.types) || '';
+    b.price_min    = b.prices.length ? Math.min(...b.prices) : null;
+    b.price_max    = b.prices.length ? Math.max(...b.prices) : null;
+    b.psf_median   = b.psf.length ? median(b.psf) : null;
+  });
+  // Include targeted buildings that currently have no active listings.
+  targetSet.forEach(key => {
+    if (!idx[key]) {
+      idx[key] = { key, display_name: (targetMeta[key] && targetMeta[key].display_name) || key,
+                   neighborhood:'', year_built:null, type:'', count:0, sale:0, rent:0,
+                   prices:[], psf:[], price_min:null, price_max:null, psf_median:null, listings:[] };
+    }
+  });
+  return idx;
+}
+
+const TYPE_LABEL = { coop:'Co-op', condo:'Condo', house:'House', townhouse:'Townhouse' };
+
+function renderBuildings() {
+  const body = document.getElementById('buildings-body');
+  const empty = document.getElementById('buildings-empty');
+  if (!body) return;
+  const idx = buildBuildingIndex(allListings);
+  const q = (document.getElementById('b-search').value || '').trim().toLowerCase();
+  const targetsOnly = document.getElementById('b-targets-only').checked;
+
+  let rows = Object.values(idx);
+  if (targetsOnly) rows = rows.filter(b => targetSet.has(b.key));
+  if (q) rows = rows.filter(b =>
+    (b.display_name || '').toLowerCase().includes(q) || (b.neighborhood || '').toLowerCase().includes(q));
+
+  // targeted first, then most listings, then name
+  rows.sort((a, b) => {
+    const ta = targetSet.has(a.key) ? 1 : 0, tb = targetSet.has(b.key) ? 1 : 0;
+    if (ta !== tb) return tb - ta;
+    if (b.count !== a.count) return b.count - a.count;
+    return (a.display_name || '').localeCompare(b.display_name || '');
+  });
+
+  document.getElementById('b-count').textContent =
+    `${Object.keys(idx).length} buildings · ${targetSet.size} targeted`;
+
+  if (rows.length === 0) {
+    body.innerHTML = ''; empty.style.display = 'block'; return;
+  }
+  empty.style.display = 'none';
+
+  let html = '';
+  rows.forEach(b => {
+    const on = targetSet.has(b.key);
+    const isExp = expandedBldg === b.key;
+    const dn = (b.display_name || '').replace(/"/g, '&quot;');
+    const priceRange = b.price_min == null ? '—'
+      : (b.price_min === b.price_max ? fmtPrice(b.price_min) : fmtPrice(b.price_min) + ' – ' + fmtPrice(b.price_max));
+    const psf = b.psf_median ? '$' + Math.round(b.psf_median).toLocaleString() : '—';
+    const listingsCell = b.count === 0
+      ? '<span class="bldg-nolistings">no active listings</span>'
+      : `${b.count} <span style="color:#aaa;">(${b.sale}·${b.rent})</span>`;
+    const sub = b.neighborhood ? `<div class="bldg-sub">${b.neighborhood}</div>` : '';
+
+    html += `
+      <tr onclick="toggleBuildingExpand('${b.key}')" style="cursor:pointer;">
+        <td onclick="event.stopPropagation()" style="text-align:center;">
+          <button class="bldg-star${on ? ' on' : ''}" title="${on ? 'Targeted — click to remove' : 'Mark as a target building'}"
+            onclick="toggleBuildingTarget('${b.key}','${dn}',event)">${on ? '★' : '☆'}</button>
+        </td>
+        <td><span class="bldg-name">${b.display_name || '—'}</span>${sub}</td>
+        <td>${b.year_built || '—'}</td>
+        <td>${TYPE_LABEL[b.type] || (b.type || '—')}</td>
+        <td>${listingsCell}</td>
+        <td>${priceRange}</td>
+        <td>${psf}</td>
+      </tr>`;
+
+    if (isExp && b.listings.length) {
+      const units = b.listings.slice().sort((x, y) => (y.price || 0) - (x.price || 0)).map(l => {
+        const bk = getBucket(l.id);
+        const unit = l.unit ? ' #' + String(l.unit).replace(/^#+/, '') : '';
+        const px = l.listing_type === 'rent' ? (l.price ? fmtPrice(l.price) + '/mo' : '—') : fmtPrice(l.price);
+        return `<div class="bldg-unit-row">
+            <span class="bldg-unit-bucket ${bk}">${bk}</span>
+            <span style="flex:1;">${l.address || b.display_name}${unit}</span>
+            <span style="color:#555;">${px}</span>
+            <a href="${l.url}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#3461D9;">StreetEasy ↗</a>
+          </div>`;
+      }).join('');
+      html += `<tr class="bldg-units"><td colspan="7">${units}</td></tr>`;
+    }
+  });
+  body.innerHTML = html;
+}
+
+function toggleBuildingExpand(key) {
+  expandedBldg = (expandedBldg === key) ? null : key;
+  renderBuildings();
+}
+
+async function toggleBuildingTarget(key, displayName, ev) {
+  if (ev) ev.stopPropagation();
+  const willTarget = !targetSet.has(key);
+  if (willTarget) { targetSet.add(key); targetMeta[key] = { display_name: displayName }; }
+  else { targetSet.delete(key); delete targetMeta[key]; }
+  renderBuildings();
+  updateBuildingsCount();
+  if (!API_BASE) return;
+  try {
+    const r = await fetch(API_BASE + '/building-targets/' + encodeURIComponent(key), {
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ targeted: willTarget, display_name: displayName }),
+    });
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+  } catch (e) {
+    console.warn('Building target toggle failed, reverting:', e.message);
+    if (willTarget) { targetSet.delete(key); delete targetMeta[key]; }
+    else { targetSet.add(key); targetMeta[key] = { display_name: displayName }; }
+    renderBuildings();
+    updateBuildingsCount();
+  }
+}
+
+function updateBuildingsCount() {
+  const el = document.getElementById('count-buildings');
+  if (el) el.textContent = targetSet.size;
+}
+
+function showBuildings() {
+  currentTab = 'buildings';
+  document.body.classList.add('mode-buildings');
+  ['inbox', 'shortlist', 'archive'].forEach(b => document.getElementById('tab-' + b).classList.remove('active'));
+  document.getElementById('tab-buildings').classList.add('active');
+  history.replaceState(null, '', '#buildings');
+  expandedBldg = null;
+  renderBuildings();
+}
+
 // ─── Bucket Tabs ─────────────────────────────────────────────────────
+let currentTab = 'inbox';     // 'inbox' | 'shortlist' | 'archive' | 'buildings'
 function setBucket(bucket) {
+  currentTab = bucket;
+  // Leaving the Buildings view (if we were in it)
+  document.body.classList.remove('mode-buildings');
+  document.getElementById('tab-buildings').classList.remove('active');
   currentBucket = bucket;
   // Update URL hash
   history.replaceState(null, '', '#' + bucket);
@@ -2344,8 +2651,9 @@ function renderTable() {
       }
     }
 
+    const isTarget = isTargetBuilding(listing);
     html += `
-      <tr class="${isExp ? 'row-expanded' : ''}${isStale ? ' row-stale' : ''}" onclick="toggleExpand('${listing.id}')">
+      <tr class="${isExp ? 'row-expanded' : ''}${isStale ? ' row-stale' : ''}${isTarget ? ' target-bldg' : ''}" onclick="toggleExpand('${listing.id}')">
         <td class="td-expand">${isExp ? '▾' : '▸'}</td>
         <td class="rank-cell rank-col" onclick="event.stopPropagation()">
           <span class="rank-val${oqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','oq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${oqR || '—'}</span>
@@ -2354,7 +2662,7 @@ function renderTable() {
           <span class="rank-val${rqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','rq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${rqR || '—'}</span>
         </td>
         <td>
-          <div class="td-building">${listing.building || '—'}</div>
+          <div class="td-building">${listing.building || '—'}${isTarget ? '<span class="target-pill" title="A building you\'ve targeted">★ Target</span>' : ''}</div>
           <div class="td-sub">${listing.address}${listing.unit ? ' #' + String(listing.unit).replace(/^#+/, '') : ''} · ${listing.neighborhood || ''}</div>
         </td>
         <td class="td-monthly">${fmtMoney(monthly)}<span style="font-size:10px;font-weight:500;color:#888;">/mo</span></td>
@@ -2505,9 +2813,11 @@ function renderCards() {
 
     const cutBadge = cut ? `<span class="v4-badge cut" title="${cut.percent}% off peak ask">✂ −${fmtPrice(cut.absolute)}</span>` : '';
     const builtBadge = listing.year_built ? `<span class="v4-badge built">Built ${listing.year_built}</span>` : '';
+    const isTarget = isTargetBuilding(listing);
+    const targetBadge = isTarget ? `<span class="v4-badge target" title="A building you've targeted">★ Target</span>` : '';
 
     html += `
-      <div class="listing-card v4${isStale ? ' row-stale' : ''}" data-id="${listing.id}">
+      <div class="listing-card v4${isStale ? ' row-stale' : ''}${isTarget ? ' target-bldg' : ''}" data-id="${listing.id}">
         ${ENABLE_SWIPE ? `<div class="swipe-indicator swipe-right">${rightLabel}</div><div class="swipe-indicator swipe-left">✕ Archive</div>` : ''}
         <div class="v4-header">
           <div class="v4-title">${listing.building || '—'}${listing.neighborhood ? ` <span class="v4-nb">· ${listing.neighborhood}</span>` : ''}</div>
@@ -2515,6 +2825,7 @@ function renderCards() {
           <div class="v4-badge-row">
             ${showBoth ? listingTypeBadge(listing) : ''}
             ${typePill(listing.type)}
+            ${targetBadge}
             ${cutBadge}
             <span class="days-badge ${days.cls}">${days.text}</span>
             ${builtBadge}
@@ -2790,11 +3101,14 @@ else if (currentBucket === 'archive') { sortCol = 'archived_at'; sortDir = 'desc
   if (initTh)    initTh.classList.add('sort-active');
   // For inbox, sortCol is 'monthly' so initTh is found; for archive, sortCol is 'archived_at' which has no th — no header highlighted (expected)
 }
+// Buildings is its own view (not a listing bucket); enter it if the hash asks.
+if (hashBucket === 'buildings') showBuildings();
 
 // Listen for hash changes (back/forward navigation)
 window.addEventListener('hashchange', () => {
   const b = location.hash.replace('#', '');
-  if (['inbox', 'shortlist', 'archive'].includes(b) && b !== currentBucket) {
+  if (b === 'buildings') { if (currentTab !== 'buildings') showBuildings(); return; }
+  if (['inbox', 'shortlist', 'archive'].includes(b) && (b !== currentBucket || currentTab === 'buildings')) {
     setBucket(b);
   }
 });
