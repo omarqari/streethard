@@ -415,3 +415,44 @@ That last item is the real test — and it's what would have saved the user
 
 Phase 1 is the only urgent work. Phases 2 and 3 can be paced over the
 next 1–2 weeks.
+
+---
+
+## Phase 4 — Post-plan workstreams (added Session 43, 2026-06-14/15)
+
+Two workstreams added beyond the original W1–W7 plan, both responses to the
+June 2026 PerimeterX soft-throttle incident and the off-market gaps it exposed.
+Full detail in CHANGELOG (Session 42, 43, and the 2026-06-15 W9 entry).
+
+### W8: Honor the actor's explicit incomplete-results signal + baseline repair
+
+The W5 cliff guard seeded its rolling-median baseline from *any* day with
+results > 0, so a run of soft-throttled days (June: 15/45/69/92 vs a normal
+~280) dragged the baseline down — making the guard miss real cliffs *and*
+false-abort on recovery. Fixes:
+
+- `check_pass1_coverage()` now seeds the baseline **only from `status=='ok'`
+  days** (the 7 most-recent healthy days). Degraded/aborted days still get
+  logged for observability but never feed the median.
+- Retroactively relabeled the throttle-degraded June sale days (Jun 10/11/12)
+  `ok → degraded` in `pipeline_health.json`.
+- New `detect_search_health_warning()` + a guard in the Pass 1 flow (before W5):
+  if memo23's explicit `SEARCH_HEALTH_WARNING` marker is present, abort before
+  merge regardless of count. `--force-merge` overrides. This explicit signal
+  takes precedence over the W5 count heuristic.
+
+### W9: Inbox-wide off-market detection keyed on `offMarketAt`
+
+W7 only verified the Shortlist, and used a noisy "Pass 2 returned no data"
+heuristic (validated false-positive 30/30). W9 makes off-market detection
+reliable and Inbox-wide:
+
+- The definitive signal is the detail page's **`offMarketAt`** date (StreetEasy
+  serves full data even for rented/sold listings, with this field set).
+- `normalize()`/`normalize_rental()` emit `off_market_date`;
+  `merge_pass2_into_db()` sets/clears `pass2_confirmed_off_market` accordingly on
+  **every** Pass 2 — so the 4×/day capped stale sweep auto-covers all buckets.
+- W7 `verify_stale_shortlists()` switched to the same signal; a blank response is
+  now *inconclusive*, not flagged.
+- Initial sweep flagged 106 listings off-market (40 sale, 66 rent). Off-market
+  listings keep `status='active'` (badge only — not auto-archived; Omar's call).
