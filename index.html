@@ -1591,6 +1591,17 @@ const ARCHITECT_BUILDINGS = {
     'The Seville', '300 East 77th Street',
     '1228 Madison Avenue',
   ],
+  'Peter Pennoyer': [
+    '151 East 78th Street',
+    'The Benson', '1045 Madison Avenue',
+  ],
+  'Rosario Candela': [
+    '740 Park Avenue', '720 Park Avenue', '770 Park Avenue', '778 Park Avenue',
+    '775 Park Avenue', '1021 Park Avenue', '1035 Park Avenue', '1220 Park Avenue',
+    '1105 Park Avenue', '1040 Fifth Avenue', '834 Fifth Avenue', '960 Fifth Avenue',
+    '955 Fifth Avenue', '2 East 67th Street', '19 East 72nd Street',
+    '12 East 88th Street', '44 East 67th Street', '1 East 66th Street',
+  ],
 };
 const _architectByKey = {};
 Object.entries(ARCHITECT_BUILDINGS).forEach(([arch, names]) =>
@@ -1621,6 +1632,28 @@ const ARCHITECT_PLACEHOLDERS = [
   { name: '800 Fifth Avenue',   address: '800 Fifth Avenue',   nbhd: 'Lenox Hill' },
   { name: 'The Seville',        address: '300 East 77th Street', nbhd: 'Lenox Hill' },
   { name: '1228 Madison Avenue', address: '1228 Madison Avenue', nbhd: 'Carnegie Hill' },
+  // Peter Pennoyer
+  { name: '151 East 78th Street', address: '151 East 78th Street', nbhd: 'Lenox Hill' },
+  { name: 'The Benson',         address: '1045 Madison Avenue', nbhd: 'Lenox Hill' },
+  // Rosario Candela (UES)
+  { name: '740 Park Avenue',    address: '740 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '720 Park Avenue',    address: '720 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '770 Park Avenue',    address: '770 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '778 Park Avenue',    address: '778 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '775 Park Avenue',    address: '775 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '1021 Park Avenue',   address: '1021 Park Avenue',   nbhd: 'Carnegie Hill' },
+  { name: '1035 Park Avenue',   address: '1035 Park Avenue',   nbhd: 'Carnegie Hill' },
+  { name: '1220 Park Avenue',   address: '1220 Park Avenue',   nbhd: 'Carnegie Hill' },
+  { name: '1105 Park Avenue',   address: '1105 Park Avenue',   nbhd: 'Carnegie Hill' },
+  { name: '1040 Fifth Avenue',  address: '1040 Fifth Avenue',  nbhd: 'Carnegie Hill' },
+  { name: '834 Fifth Avenue',   address: '834 Fifth Avenue',   nbhd: 'Lenox Hill' },
+  { name: '960 Fifth Avenue',   address: '960 Fifth Avenue',   nbhd: 'Lenox Hill' },
+  { name: '955 Fifth Avenue',   address: '955 Fifth Avenue',   nbhd: 'Lenox Hill' },
+  { name: '2 East 67th Street',  address: '2 East 67th Street',  nbhd: 'Lenox Hill' },
+  { name: '19 East 72nd Street', address: '19 East 72nd Street', nbhd: 'Lenox Hill' },
+  { name: '12 East 88th Street', address: '12 East 88th Street', nbhd: 'Carnegie Hill' },
+  { name: '44 East 67th Street', address: '44 East 67th Street', nbhd: 'Lenox Hill' },
+  { name: '1 East 66th Street',  address: '1 East 66th Street',  nbhd: 'Lenox Hill' },
 ];
 let noteTimers = {};  // debounce timers for notes
 
