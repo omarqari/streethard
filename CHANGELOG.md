@@ -84,17 +84,24 @@ the *price* the family sees is now current.
 - `data/db.json`, `data/latest.json` — 241 listings refreshed.
 - `data/pipeline_health.json` — June degraded days relabeled.
 
+### Also shipped this session
+
+- **Rotating stale-refresh added to the daily cron** (`refresh.yml` + a `--cap`
+  mode in `stale_refresh.py`). After the normal Pass 1/Pass 2 run, the cron
+  re-prices the 60 least-recently-refreshed stale listings (oldest `last_pass2`
+  first), walking the whole stale set every ~4 days so prices don't drift
+  between manual sweeps. Runs only on a successful pull; non-fatal so it can't
+  block the day's commit. Tunable via the `stale_cap` workflow input (0 = off).
+
 ### Open follow-ups (not done this session)
 
-- **Single-vendor risk remains.** Even the fix leans on memo23's private infra
-  (his managed-unblocker account + a PX token his phone captures via Pushcut).
-  Evaluating a backup actor (kawsar / crawlerbros / jupri / aurumworks) as a
-  failover is still open (Omar deferred it this session).
 - **Stale-pill UX:** a Pass2-verified-active listing still shows the W3 "not seen
   Nd" pill. Consider suppressing it when `last_pass2` is recent AND `offMarketAt`
   is null. App-side change — mock first per project convention.
-- Consider promoting the stale sweep into the cron (capped) so prices don't drift
-  between manual sweeps.
+
+**Decided NOT to pursue:** evaluating a backup/secondary scraper actor. Per Omar
+(Session 43): it's memo23 or nothing — the single-vendor dependency is accepted,
+not a risk to mitigate. Do not re-raise a backup-actor proposal.
 
 ---
 
