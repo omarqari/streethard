@@ -168,3 +168,20 @@ DROP TRIGGER IF EXISTS listing_status_audit_trg ON listing_status;
 CREATE TRIGGER listing_status_audit_trg
     AFTER INSERT OR UPDATE ON listing_status
     FOR EACH ROW EXECUTE FUNCTION listing_status_audit_fn();
+
+-- ─── Building targets ──────────────────────────────────────────────
+-- One shared family list of "great buildings" to target. Keyed on the
+-- client-computed buildingKey() (normalized building name) so it survives
+-- spelling variants. Binary star; un-targeting DELETEs the row. No audit log
+-- (targeting is low-stakes and reversible). Plain statements only — safe for
+-- the cold-start migration splitter in main.py.
+CREATE TABLE IF NOT EXISTS building_targets (
+    building_key  TEXT PRIMARY KEY,
+    display_name  TEXT NOT NULL DEFAULT '',
+    note          TEXT NOT NULL DEFAULT '',
+    targeted_at   TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    updated_at    TIMESTAMPTZ NOT NULL DEFAULT NOW()
+);
+
+CREATE INDEX IF NOT EXISTS idx_building_targets_updated
+    ON building_targets (updated_at DESC);

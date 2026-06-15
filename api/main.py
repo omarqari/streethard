@@ -52,6 +52,12 @@ class BatchRequest(BaseModel):
     items: list[BatchItem] = Field(..., max_length=200)
 
 
+class BuildingTargetPatch(BaseModel):
+    targeted: bool
+    display_name: str | None = None
+    note: str | None = None
+
+
 # --- App lifecycle ---
 
 @asynccontextmanager
@@ -377,3 +383,60 @@ async def get_history(response: Response, listing_id: str | None = None, limit: 
             for r in rows
         ]
     }
+
+
+# ─── Building targets (building_targets) ────────────────────────────
+# One shared family list of targeted "great buildings". Keyed on the
+# client-computed buildingKey(). Binary star; un-targeting deletes the row.
+@app.get("/building-targets")
+async def get_building_targets(response: Response):
+    response.headers["Cache-Control"] = "no-store"
+    pool = get_pool()
+    async with pool.acquire() as conn:
+        rows = await conn.fetch(
+            "SELECT building_key, display_name, note, targeted_at, updated_at "
+            "FROM building_targets ORDER BY updated_at DESC"
+        )
+    return {
+        "items": [
+            {
+                "building_key": r["building_key"],
+                "display_name": r["display_name"],
+                "note": r["note"],
+                "targeted_at": r["targeted_at"].isoformat() if r["targeted_at"] else None,
+                "updated_at": r["updated_at"].isoformat() if r["updated_at"] else None,
+            }
+            for r in rows
+        ]
+    }
+
+
+@app.put("/building-targets/{building_key}")
+async def put_building_target(building_key: str, patch: BuildingTargetPatch):
+    pool = get_pool()
+    async with pool.acquire() as conn:
+        if not patch.targeted:
+            result = await conn.execute(
+                "DELETE FROM building_targets WHERE building_key = $1", building_key
+            )
+            return {"building_key": building_key, "targeted": False, "deleted": result.endswith("1")}
+        row = await conn.fetchrow(
+            """
+            INSERT INTO building_targets (building_key, display_name, note, targeted_at, updated_at)
+            VALUES ($1, COALESCE($2, ''), COALESCE($3, ''), NOW(), NOW())
+            ON CONFLICT (building_key) DO UPDATE SET
+                display_name = COALESCE($2, building_targets.display_name),
+                note         = COALESCE($3, building_targets.note),
+                updated_at   = NOW()
+            RETURNING building_key, display_name, note, targeted_at, updated_at
+            """,
+            building_key, patch.display_name, patch.note,
+        )
+        return {
+            "building_key": row["building_key"],
+            "targeted": True,
+            "display_name": row["display_name"],
+            "note": row["note"],
+            "targeted_at": row["targeted_at"].isoformat() if row["targeted_at"] else None,
+            "updated_at": row["updated_at"].isoformat() if row["updated_at"] else None,
+        }
