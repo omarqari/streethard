@@ -94,7 +94,7 @@ The app is called **StreetHard**. It is a static web app hosted on **GitHub Page
 - `data/pipeline_health.json` — W4 observability log; last 60 days of `{date, pass1_sale, pass1_rent, active, delisted, status}`. Drives the diagnostics.html Pass 1 coverage sparkline AND the W5 cliff guard's rolling-7-day median baseline.
 - `data/YYYY-MM-DD.json` — immutable dated archive of every past run
 - `scripts/pull.py` — **incremental** Apify pull script; Pass 1 discovers listings, Pass 2 only fills in what's missing (capped at 100/run); saves db.json after every step
-- `.github/workflows/refresh.yml` — cron daily 9 AM UTC; calls Apify, commits data/, Pages auto-deploys
+- `.github/workflows/refresh.yml` — cron every 6h (00:00/06:00/12:00/18:00 UTC, 4×/day as of Session 43); calls Apify (Pass 1/2 + capped stale-refresh), commits data/, Pages auto-deploys
 - Apify token in `.env` locally; `APIFY_TOKEN` GitHub Secret in CI
 
 ### Design Language
