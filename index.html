@@ -1601,6 +1601,24 @@ const ARCHITECT_BUILDINGS = {
     '1105 Park Avenue', '1040 Fifth Avenue', '834 Fifth Avenue', '960 Fifth Avenue',
     '955 Fifth Avenue', '2 East 67th Street', '19 East 72nd Street',
     '12 East 88th Street', '44 East 67th Street', '1 East 66th Street',
+    '1 Sutton Place South',
+  ],
+  'J.E.R. Carpenter': [
+    '907 Fifth Avenue', '825 Fifth Avenue', '1030 Fifth Avenue', '1115 Fifth Avenue',
+    '1120 Fifth Avenue', '1148 Fifth Avenue', '1150 Fifth Avenue', '1165 Fifth Avenue',
+    '1170 Fifth Avenue', '845 Fifth Avenue', '4 East 66th Street', '550 Park Avenue',
+    '580 Park Avenue', '620 Park Avenue', '625 Park Avenue', '630 Park Avenue',
+    '635 Park Avenue', '640 Park Avenue', '655 Park Avenue', '819 Park Avenue',
+    '960 Park Avenue', '1060 Park Avenue', '115 East 82nd Street', '3 East 85th Street',
+  ],
+  'Delano & Aldrich': [
+    '925 Park Avenue', '1040 Park Avenue',
+  ],
+  'William Sofield': [
+    'Beckford House', '301 East 81st Street', 'Beckford Tower',
+  ],
+  'Beyer Blinder Belle': [
+    'The Kent', '200 East 95th Street', '200 East 75th Street',
   ],
 };
 const _architectByKey = {};
@@ -1654,6 +1672,34 @@ const ARCHITECT_PLACEHOLDERS = [
   { name: '12 East 88th Street', address: '12 East 88th Street', nbhd: 'Carnegie Hill' },
   { name: '44 East 67th Street', address: '44 East 67th Street', nbhd: 'Lenox Hill' },
   { name: '1 East 66th Street',  address: '1 East 66th Street',  nbhd: 'Lenox Hill' },
+  { name: '1 Sutton Place South', address: '1 Sutton Place South', nbhd: 'Sutton Place' },
+  // J.E.R. Carpenter (UES)
+  { name: '907 Fifth Avenue',   address: '907 Fifth Avenue',   nbhd: 'Lenox Hill' },
+  { name: '825 Fifth Avenue',   address: '825 Fifth Avenue',   nbhd: 'Lenox Hill' },
+  { name: '1030 Fifth Avenue',  address: '1030 Fifth Avenue',  nbhd: 'Carnegie Hill' },
+  { name: '1115 Fifth Avenue',  address: '1115 Fifth Avenue',  nbhd: 'Carnegie Hill' },
+  { name: '1120 Fifth Avenue',  address: '1120 Fifth Avenue',  nbhd: 'Carnegie Hill' },
+  { name: '1150 Fifth Avenue',  address: '1150 Fifth Avenue',  nbhd: 'Carnegie Hill' },
+  { name: '1165 Fifth Avenue',  address: '1165 Fifth Avenue',  nbhd: 'Carnegie Hill' },
+  { name: '845 Fifth Avenue',   address: '4 East 66th Street', nbhd: 'Lenox Hill' },
+  { name: '620 Park Avenue',    address: '620 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '625 Park Avenue',    address: '625 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '630 Park Avenue',    address: '630 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '635 Park Avenue',    address: '635 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '640 Park Avenue',    address: '640 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '819 Park Avenue',    address: '819 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '960 Park Avenue',    address: '960 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '1060 Park Avenue',   address: '1060 Park Avenue',   nbhd: 'Carnegie Hill' },
+  { name: '115 East 82nd Street', address: '115 East 82nd Street', nbhd: 'Carnegie Hill' },
+  { name: '3 East 85th Street', address: '3 East 85th Street', nbhd: 'Carnegie Hill' },
+  // Delano & Aldrich
+  { name: '925 Park Avenue',    address: '925 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '1040 Park Avenue',   address: '1040 Park Avenue',   nbhd: 'Carnegie Hill' },
+  // William Sofield (Studio Sofield)
+  { name: 'Beckford House',     address: '301 East 81st Street', nbhd: 'Yorkville' },
+  { name: 'Beckford Tower',     address: 'Beckford Tower',     nbhd: 'Yorkville' },
+  // Beyer Blinder Belle
+  { name: '200 East 75th Street', address: '200 East 75th Street', nbhd: 'Lenox Hill' },
 ];
 let noteTimers = {};  // debounce timers for notes
 
