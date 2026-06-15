@@ -24,6 +24,22 @@ Actionable next steps. Check things off as you go.
 
 ---
 
+## Future projects (not urgent)
+
+- [ ] **Geofence out non-UES "featured" listings.** StreetEasy pads the
+  `for-rent/upper-east-side` and `for-sale/upper-east-side` search results with
+  promoted out-of-area new-development listings, and Pass 1 ingests them. As of
+  2026-06-15 there are **9 in the data** (~1.7%): 6 rentals — 255 East 39th #PH4D,
+  622 11th Ave #1202 & #1203, 222 East 34th #2404 & #PH2, 400 West 61st #1414 —
+  plus 3 sales at 100 Claremont Ave (Claremont Hall, Morningside Heights). The
+  neighborhood field can't catch them (rentals return it blank), so the fix is an
+  **address-based `is_ues_address()` guard in `pull.py`** that drops listings
+  outside the UES (West side, non-UES avenues, East streets <59 or >~96) at Pass 1
+  merge, plus a one-time archive of the existing 9. A cleanup alone won't hold —
+  the next cron re-pulls them — so the guard is the real fix. **Open decision:**
+  Claremont Hall is non-UES (Morningside) but *is* a RAMSA building being tracked —
+  drop it with the rest, or keep those 3 as an exception?
+
 ## Recurring (While Searching)
 
 - [ ] Daily: GitHub Actions auto-runs the pull at 09:00 UTC. Verify output after each run.
