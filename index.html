@@ -1027,8 +1027,10 @@ body.mode-buildings #buildings-view { display: block; }
 .bldg-star:hover { transform: scale(1.15); }
 .bldg-star.on { color: #FF6000; }
 .bldg-name { font-weight: 700; color: #1a1a2e; }
+.bldg-name.placeholder { color: #d11a1a; }
 .bldg-sub { font-size: 11px; color: #999; margin-top: 1px; }
 .bldg-nolistings { color: #b06a2c; font-size: 11px; }
+.bldg-placeholder-tag { color: #d11a1a; font-size: 11px; font-weight: 600; }
 .bldg-units { background: #fafbfd; }
 .bldg-units td { padding: 8px 14px; }
 .bldg-unit-row { display: flex; align-items: center; gap: 10px; font-size: 12px; padding: 3px 0; border-bottom: 1px solid #eef0f4; }
@@ -1600,6 +1602,22 @@ function architectOf(building) {
 function architectIconSvg() {
   return '<svg class="ar-ico" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px;"><path d="M3 8l5-5 13 13-5 5z"/><path d="M7 9l1.5 1.5M10.5 12.5l1.5 1.5M14 16l1.5 1.5"/></svg>';
 }
+
+// Permanent placeholder buildings we track because of the architect, even when
+// they've never had a listing in our data. Rendered with red text on the
+// Buildings tab. Each auto-converts to a normal row the moment a real listing
+// for it appears (the placeholder is only injected when no alias key is present).
+const ARCHITECT_PLACEHOLDERS = [
+  { name: 'The Chatham',        address: '181 East 65th Street', nbhd: 'Lenox Hill' },
+  { name: 'The Brompton',       address: '205 East 85th Street', nbhd: 'Yorkville' },
+  { name: 'The Bellemont',      address: '1165 Madison Avenue',  nbhd: 'Carnegie Hill' },
+  { name: '200 East 83rd Street', address: '200 East 83rd Street', nbhd: 'Yorkville' },
+  { name: '520 Park Avenue',    address: '520 Park Avenue',    nbhd: 'Lenox Hill' },
+  { name: '255 East 77th Street', address: '255 East 77th Street', nbhd: 'Lenox Hill' },
+  { name: '20 East End Avenue', address: '20 East End Avenue', nbhd: 'Yorkville' },
+  { name: '150 East 78th Street', address: '150 East 78th Street', nbhd: 'Lenox Hill' },
+  { name: '800 Fifth Avenue',   address: '800 Fifth Avenue',   nbhd: 'Lenox Hill' },
+];
 let noteTimers = {};  // debounce timers for notes
 
 // Feature flags
@@ -2079,6 +2097,22 @@ function buildBuildingIndex(listings) {
                    architect: _architectByKey[key] || null, listings:[] };
     }
   });
+  // Inject architect placeholders for buildings that have never appeared in our
+  // data under any of their alias keys (name or address). Skipped automatically
+  // once a real listing arrives.
+  ARCHITECT_PLACEHOLDERS.forEach(p => {
+    const nameKey = buildingKey(p.name), addrKey = buildingKey(p.address);
+    if (idx[nameKey] || idx[addrKey]) return;   // already a real (or targeted) row
+    const named = nameKey !== addrKey;
+    idx[nameKey] = {
+      key: nameKey, display_name: p.name,
+      address_label: p.address, building_name: named ? p.name : null,
+      neighborhood: p.nbhd || '', year_built: null, type: '',
+      count: 0, sale: 0, rent: 0, prices: [], psf: [],
+      price_min: null, price_max: null, psf_median: null,
+      architect: architectOf(p.name), listings: [], isPlaceholder: true,
+    };
+  });
   return idx;
 }
 
@@ -2145,9 +2179,11 @@ function renderBuildings() {
     const priceRange = b.price_min == null ? '—'
       : (b.price_min === b.price_max ? fmtPrice(b.price_min) : fmtPrice(b.price_min) + ' – ' + fmtPrice(b.price_max));
     const psf = b.psf_median ? '$' + Math.round(b.psf_median).toLocaleString() : '—';
-    const listingsCell = b.count === 0
-      ? '<span class="bldg-nolistings">no active listings</span>'
-      : `${b.count} <span style="color:#aaa;">(${b.sale}·${b.rent})</span>`;
+    const listingsCell = b.isPlaceholder
+      ? '<span class="bldg-placeholder-tag">never listed</span>'
+      : (b.count === 0
+        ? '<span class="bldg-nolistings">no active listings</span>'
+        : `${b.count} <span style="color:#aaa;">(${b.sale}·${b.rent})</span>`);
     // When a proper name is shown as the label, surface the address in the subline too.
     const subParts = [];
     if (b.building_name && b.address_label) subParts.push(b.address_label);
@@ -2160,7 +2196,7 @@ function renderBuildings() {
           <button class="bldg-star${on ? ' on' : ''}" title="${on ? 'Targeted — click to remove' : 'Mark as a target building'}"
             onclick="toggleBuildingTarget('${b.key}','${dn}',event)">${on ? '★' : '☆'}</button>
         </td>
-        <td><span class="bldg-name">${b.display_name || '—'}</span>${sub}</td>
+        <td><span class="bldg-name${b.isPlaceholder ? ' placeholder' : ''}">${b.display_name || '—'}</span>${sub}</td>
         <td>${b.year_built || '—'}</td>
         <td>${TYPE_LABEL[b.type] || (b.type || '—')}</td>
         <td>${listingsCell}</td>
