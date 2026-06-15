@@ -222,6 +222,66 @@ buckets. Full spec + 3-hat review in `BUILDINGS-FEATURE-PLAN.md`.
   Pass 2). To re-backfill after a normalizer change: `rm /tmp/bf_processed.json`
   then `--submit 600` / `--collect`.
 
+## Architect Tracking Feature (Session 45, LIVE)
+
+Track notable architects' UES buildings; every listing in one gets the architect
+surfaced, and curated buildings are tracked even with no listings. All in
+`index.html` (client-side only — no backend, no db.json, no API).
+
+- **Data model — `ARCHITECT_BUILDINGS`** (const near `buildingKey`): a plain
+  `{ architectName: [building strings...] }` map, seeded with both the proper
+  name AND the street address where both are known (so it matches whatever label
+  a listing carries). Built once into `_architectByKey` (buildingKey → architect).
+  `architectOf(building)` returns the architect or null. **It's a general
+  mechanism** — add an architect by adding one array.
+- **Display:** muted slate tag (`#54608A`) with a ruler glyph (`architectIconSvg()`),
+  deliberately NOT the orange ★ Target color. Shows as: (1) a sortable **Architect
+  column** on the Buildings tab, (2) an **Architect box** under Listing Agent in
+  the listing expansion (`buildExpansion`). Search box matches architect, so
+  typing e.g. "Candela" filters to that architect.
+- **Buildings tab is now fully sortable** — `sortBuildings(col)` + `bldgSortCol/Dir`
+  state; click any header (Building/Built/Type/Listings/Price/$ft²/Architect),
+  asc→desc→default (targeted-first) on the 3rd click; nulls last. The search/filter
+  toolbar is **sticky** (`#buildings-toolbar` position:sticky; `syncBuildingsSticky()`
+  sets `--b-tb-top`/`--b-thead-top` CSS vars so it sits above the already-pinned
+  thead, adjusting for the mobile 52px header).
+- **Red placeholders — `ARCHITECT_PLACEHOLDERS`**: curated `{name,address,nbhd}`
+  list of every tracked building. `buildBuildingIndex` injects a placeholder row
+  (red name + "never listed", `isPlaceholder:true`) for any whose name/address
+  key is NOT already in the data. **Auto-converts to a normal row the moment a
+  real listing appears.** So the full architect portfolio is always visible even
+  with zero listings.
+- **`canonKey()` alias layer** (built from the `ARCHITECT_PLACEHOLDERS` name↔address
+  pairs): collapses the same physical building appearing under different labels
+  (e.g. "The Chatham" vs "181 East 65th Street") into ONE Buildings row / target /
+  architect match. Used in `buildBuildingIndex` and `isTargetBuilding`. **`buildingKey()`
+  itself is untouched** (still the frozen DB key for `building_targets`) — canonKey
+  is a thin layer on top. The Fifth↔5th and Park↔Park Ave merges are already handled
+  inside buildingKey; canonKey only adds the name↔address pairs.
+
+### Tracked architects (7, UES-only scope)
+Robert A.M. Stern (~11 bldgs), Rosario Candela (19 incl. 1 Sutton Place South),
+J.E.R. Carpenter (~23), Peter Pennoyer (151 E 78th, The Benson), Delano & Aldrich
+(925 + 1040 Park), William Sofield (Beckford House & Tower), Beyer Blinder Belle
+(The Kent, 200 E 75th). **~16 of these have active listings in our data and render
+tagged; the rest are red placeholders.**
+
+### Scope decisions (Session 45)
+- **UES-only** (Lenox Hill / Carnegie Hill / Yorkville / Sutton, ≤~98th on Fifth).
+  Non-UES RAMSA/Candela/etc. buildings deliberately excluded.
+- **Carnegie Park (200 E 94th) EXCLUDED** — it's a Davis Brody building (1986);
+  RAMSA only did an amenities reno, not the architecture. Don't re-add it.
+- **Architect → building credit only for ground-up design**, not interior/amenity
+  work (the Carnegie Park rule). Sofield/Beckford is included because Sofield was
+  the design architect (SLCE = architect of record).
+- **No UES residential found for: David Chipperfield, Herzog & de Meuron, Kohn
+  Pedersen Fox, Perkins Eastman** — checked and deliberately NOT added (their NYC
+  residential is downtown/Midtown/UWS, or unbuilt). Don't re-research without a
+  specific building address.
+- Data limit: db.json has no description/room-count/floor-plan field, so a "formal
+  dining room / classic prewar layout" detector isn't buildable from current data;
+  prewar + co-op is the proxy (user will just remember "prewar").
+
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit

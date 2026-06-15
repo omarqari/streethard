@@ -4,6 +4,54 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-06-15 — Architect tracking on the Buildings tab (Session 45)
+
+Track notable architects' UES buildings: every listing in one surfaces the
+architect, and curated buildings are tracked even with zero listings. All
+client-side in `index.html` (no backend / db.json / API changes). Full design
+notes in CLAUDE.md → "Architect Tracking Feature."
+
+### What shipped
+- **Architect registry** — general `ARCHITECT_BUILDINGS` map (`architectOf()`),
+  keyed via `buildingKey()`, seeded with proper name + street address per building.
+  Adding an architect = adding one array.
+- **Buildings tab** — new sortable **Architect column**; **all columns now
+  click-to-sort** (`sortBuildings()`, asc→desc→default, nulls last); search box
+  matches architect; **search/filter toolbar is sticky** above the pinned header.
+- **Listing expansion** — **Architect box** under Listing Agent (only when known).
+- **Red placeholders** — `ARCHITECT_PLACEHOLDERS`: every tracked building shows as
+  a red "never listed" row until a real listing appears, then auto-converts to a
+  normal row.
+- **Duplicate-row fix** — `canonKey()` alias layer collapses the same building
+  under different labels (e.g. "The Chatham" / "181 East 65th Street") into one
+  row/target/architect match. `buildingKey()` left untouched (frozen DB key).
+- Styling: muted slate tag + ruler glyph, deliberately distinct from the orange
+  ★ Target accent.
+
+### Architects added (7, UES-only)
+Robert A.M. Stern (incl. The Seville + 1228 Madison, found via portfolio
+cross-check), Rosario Candela (19, incl. 1 Sutton Place South), J.E.R. Carpenter
+(~23 prewar Fifth/Park), Peter Pennoyer (151 E 78th, The Benson), Delano & Aldrich
+(925 + 1040 Park), William Sofield (Beckford House & Tower), Beyer Blinder Belle
+(The Kent, 200 E 75th). ~16 buildings already in our data render tagged; the rest
+are placeholders. Each architect list was cross-checked against all 327 db
+buildings.
+
+### Decisions
+- **UES-only** scope (Lenox Hill / Carnegie Hill / Yorkville / Sutton, ≤~98th on
+  Fifth). Non-UES works of these firms excluded.
+- **Carnegie Park (200 E 94th) excluded** — Davis Brody building (1986); RAMSA only
+  did an amenities reno. Credit ground-up design only, not interior/amenity work.
+- **No UES residential to add for David Chipperfield, Herzog & de Meuron, KPF,
+  Perkins Eastman** — researched and confirmed absent (downtown/Midtown/UWS or
+  unbuilt).
+- A "formal dining room / classic prewar layout" filter isn't buildable — db.json
+  has no description/room-count/floor-plan field. Prewar + co-op is the proxy.
+- Commits: `5fe5abf` (Pennoyer+Candela), `eed928b` (Carpenter/Delano/Sofield/BBB),
+  `d14c142` (canonKey alias merge), plus earlier RAMSA + Seville + 1228 Madison.
+
+---
+
 ## 2026-06-15 — Building proper-names from actor `slug` (Session 44 cont.)
 
 Show building names (e.g. "The Seville" for 300 East 77th) wherever buildings
