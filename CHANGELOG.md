@@ -4,6 +4,23 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-06-15 — Non-UES "featured" listings diagnosed (Session 45 cont.)
+
+Noticed non-UES listings in the app (e.g. The Lotus / 255 East 39th, 622 11th
+Avenue). **Root cause:** StreetEasy pads `for-{sale,rent}/upper-east-side` search
+results with promoted out-of-area new-development listings, and Pass 1 ingests
+whatever the search returns — the search URLs themselves are correctly scoped to
+upper-east-side. **9 currently in the data** (~1.7%): 6 rentals (255 E 39th, 622
+11th Ave ×2, 222 E 34th ×2, 400 W 61st) + 3 sales at 100 Claremont Ave (Claremont
+Hall, Morningside Heights — a RAMSA building, which is how it slipped into the sale
+search). The neighborhood field can't catch them (rentals return it blank).
+**Deferred, not urgent** (user's call) — logged in TASKS.md "Future projects": an
+address-based `is_ues_address()` guard in `pull.py` + one-time archive; open
+decision on whether to keep Claremont Hall as a RAMSA exception. Also documented
+safe `.git/` cruft cleanup in the Git Operations section.
+
+---
+
 ## 2026-06-15 — Architect tracking on the Buildings tab (Session 45)
 
 Track notable architects' UES buildings: every listing in one surfaces the

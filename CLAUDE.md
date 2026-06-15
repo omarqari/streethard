@@ -312,6 +312,8 @@ tagged; the rest are red placeholders.**
 
 **DO NOT use `git push/commit/pull/stash` from the sandbox.** Claude Code (mobile and web) routes all git write operations through a local proxy (`127.0.0.1:42269`) which returns 403 — it is not authenticated for pushes. This is a fundamental sandbox constraint, not a config issue. Additionally, git write commands create `.lock` files owned by the sandbox process; when the session exits, those locks persist and block future sessions. Validated across Sessions 24–25.
 
+**Safe `.git` cleanup (Session 45):** if git operations start failing with "index.lock exists" or similar, these files inside `.git/` are stale cruft and safe to delete (only when no git command is running): `index.lock`, plus any leftover scratch from prior sandbox workarounds — `HEAD.lock.old`, `index.lock.bak.old`, `index.stash.4`, `index2`, `test_can_write`. **Never delete** the real internals: `objects/`, `refs/`, `index` (no suffix), `HEAD`, `config`, `packed-refs`, `logs/`. Rule of thumb: names ending in `.lock`/`.old`/`.bak` or odd ones like `index2`/`test_can_write` are disposable; plain-named files are git's.
+
 ### Push method priority (use in order)
 
 **1. GitHub MCP server (preferred — works in every Claude Code session, no credentials needed)**
