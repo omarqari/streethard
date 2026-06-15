@@ -4,6 +4,48 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-06-15 — Buildings tab + targeted-building highlight (Session 44)
+
+New family-facing feature: mark "great buildings" once, see every listing in
+them highlighted across all buckets. Plan + 3-hat (CPO/CTO/Architect) review in
+`BUILDINGS-FEATURE-PLAN.md`.
+
+### What shipped
+- **Buildings tab** — 4th tab, deliberately **right-aligned past a divider**
+  (with a building icon) so Inbox/Shortlist/Archive read as one listing-triage
+  flow and Buildings reads as a separate object. Aggregates active listings by
+  `buildingKey()`: star toggle, text search, "★ Only targets" filter,
+  click-to-expand showing each unit with its bucket chip + StreetEasy link.
+  Tab count = number of targeted buildings.
+- **`buildingKey()` normalizer** — conservative: ordinals (`fifth↔5th`),
+  directionals (`east↔e`), suffix-spelling (`avenue↔ave`, never *stripped*),
+  and `NNN Park` === `NNN Park Avenue`. Collapses the 5 known spelling-variant
+  groups (327→322 distinct), zero accidental merges. **Frozen behind a unit
+  test** — it's the DB primary key, so any change needs a re-key migration.
+- **Shared target list** (decision A) — one family list, not per-person. Backend
+  `building_targets` table (building_key PK, display_name, note, timestamps) on
+  the existing Railway Postgres. `GET /building-targets` + `PUT
+  /building-targets/{key}` (un-target DELETEs the row). No auth/audit (low-stakes,
+  reversible). Table SQL written to survive main.py's cold-start migration
+  splitter. Live round-trip verified.
+- **Highlight** (decision: subtle) — targeted-building listings get an orange
+  left border + warm `#FFF8F2` tint + `★ Target` pill, in **table and card**
+  views, across **Inbox/Shortlist/Archive**. Read-only in the main app (decision
+  B: target only from the Buildings tab). No new-listing signal (decision C).
+  Verified live on all four surfaces.
+
+### Decisions (locked Session 44)
+A = one shared list · B = target from Buildings tab only (main-app highlight
+read-only) · C = highlight only, no count/banner · D = conservative
+normalization · E = persist zero-listing targets · binary star · no
+auto-resurrect from Archive.
+
+### Files touched
+`api/schema.sql`, `api/main.py` (commit `667a6d7e83`); `index.html` (commit
+`7e3e017ad0`); new `BUILDINGS-FEATURE-PLAN.md`.
+
+---
+
 ## 2026-06-15 — Inbox-wide off-market detection (W9) + 4×/day cron (Session 43 cont.)
 
 ### Freshness check: sales + rentals are current (cron timing, not staleness)

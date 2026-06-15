@@ -177,6 +177,33 @@ spec and `STATUS-BACKEND-WALKTHROUGH.md` for the build guide.
 Next session: **T10 chips**, **product backlog selection** from PRODUCT-BACKLOG.md.
 See TASKS.md for acceptance criteria A1–A10.
 
+## Buildings Targeting Feature (Session 44, LIVE)
+
+Mark "great buildings" once; every listing in them gets highlighted across all
+buckets. Full spec + 3-hat review in `BUILDINGS-FEATURE-PLAN.md`.
+
+- **`buildingKey(s)` in `index.html`** is the canonical building identity and the
+  **DB primary key** for targets. Conservative normalizer (ordinals,
+  directionals, suffix-spelling — never strips Street/Ave/Place; `NNN Park` ===
+  `NNN Park Avenue`). **FROZEN behind a unit test** (327→322 distinct, only the 5
+  known spelling groups merge). Changing it orphans existing target rows — any
+  change needs a one-time re-key migration. Same function does aggregation
+  (`buildBuildingIndex`) and highlight (`isTargetBuilding`).
+- **Backend:** `building_targets` table (building_key PK, display_name, note,
+  timestamps) on the same Railway Postgres. `GET /building-targets`,
+  `PUT /building-targets/{key}` with `{targeted, display_name?, note?}` —
+  `targeted:false` DELETEs the row. No auth/audit. One **shared** family list
+  (not per-person). Table SQL is plain statements (survives main.py's `$$`
+  cold-start splitter).
+- **Frontend:** Buildings is a 4th tab, **right-aligned past a divider** — NOT a
+  `currentBucket` value. `currentTab` ∈ {inbox,shortlist,archive,buildings};
+  buildings mode is a `body.mode-buildings` CSS class that swaps listing chrome
+  for `#buildings-view`. Targeting is **Buildings-tab-only**; the main-app
+  highlight (`tr.target-bldg` / `.listing-card.v4.target-bldg` + `★ Target` pill)
+  is read-only. `loadBuildingTargets()` is the 3rd fetch in `loadData` and
+  tolerates API failure (nothing highlighted, app still works). Hash `#buildings`
+  routes to the tab.
+
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit
