@@ -68,7 +68,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-01-13"
@@ -195,7 +195,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-01-12"
@@ -321,7 +321,7 @@
           "broker": "Maxwell Jacobs"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-10-07"
@@ -608,7 +608,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-24"
@@ -648,7 +648,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-10",
       "status": "active"
     },
@@ -801,7 +801,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-10",
       "status": "active"
     },
@@ -892,7 +892,7 @@
       "building": "188 East 76th Street",
       "address": "188 East 76th Street",
       "unit": "#5ABC",
-      "neighborhood": "Lenox Hill",
+      "neighborhood": "",
       "price": 4995000,
       "sqft": 3022,
       "beds": 5,
@@ -962,7 +962,8 @@
       "_partial_error": null,
       "last_pass1": "2026-06-15",
       "last_pass2": null,
-      "status": "active"
+      "status": "active",
+      "building_name": "The Siena"
     },
     {
       "listing_type": "sale",
@@ -1262,7 +1263,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-09-30",
@@ -1368,7 +1369,7 @@
           "broker": "Compass"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-11-05"
@@ -1417,7 +1418,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-14",
+      "last_pass2": "2026-06-15",
       "status": "active",
       "listed_date": "2025-05-07",
       "sqft_estimated": true,
@@ -1485,7 +1486,7 @@
           "broker": "Compass"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-04-18"
@@ -1579,7 +1580,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-16",
       "status": "active",
       "building_name": "Georgica Condominium"
@@ -1631,7 +1632,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-22",
       "status": "active"
     },
@@ -1700,7 +1701,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-22",
       "status": "active"
     },
@@ -1961,7 +1962,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-03",
       "status": "active",
       "listed_date": "2026-01-06",
@@ -2280,7 +2281,7 @@
           "broker": "Blue Line Realty NY LLC"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-04-13",
@@ -2505,7 +2506,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-20",
       "status": "active",
       "listed_date": "2026-03-09",
@@ -2548,7 +2549,7 @@
           "broker": "Listed by Compass"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-10",
       "status": "active",
       "listed_date": "2026-02-12",
@@ -2825,7 +2826,7 @@
           "broker": "Compass"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-01-21"
@@ -2867,7 +2868,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-11-20"
@@ -3169,7 +3170,7 @@
           "broker": "Compass"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-25",
@@ -3261,7 +3262,7 @@
           "broker": "Olshan Realty"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2024-05-23"
@@ -3705,7 +3706,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-01-13"
@@ -3999,7 +4000,7 @@
           "broker": "Corcoran"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-09-22",
@@ -4153,7 +4154,7 @@
           "broker": "Dolly Lenz Real Estate LLC"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-17"
@@ -4300,7 +4301,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-02-04"
@@ -4432,7 +4433,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-04-06"
@@ -4681,7 +4682,7 @@
           "broker": "Alchemy Properties Inc"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-10-29",
@@ -4910,7 +4911,7 @@
           "broker": "Listed by Bellmarc Realty"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-07",
       "status": "active",
       "listed_date": "2026-03-16",
@@ -5001,7 +5002,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-02-12"
@@ -5049,7 +5050,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-01-02"
@@ -5266,7 +5267,7 @@
           "broker": "Classic Marketing"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-04-29"
@@ -5463,13 +5464,13 @@
       "price_per_sqft": 1818,
       "type": "condo",
       "year_built": 1924,
-      "days_on_market": 65,
+      "days_on_market": 50,
       "monthly_fees": 3642,
       "monthly_taxes": 2806,
       "maintenance": null,
-      "agent_name": "Anne Aransaenz",
+      "agent_name": "Naum Goldenstein",
       "agent_phone": "(917) 612-9955",
-      "agent_email": "anne.aransaenz@sothebys.realty",
+      "agent_email": "naum.gold@compass.com",
       "agent_firm": "Sotheby's International Realty",
       "price_history": [
         {
@@ -5581,7 +5582,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-10-18",
@@ -5642,7 +5643,7 @@
           "broker": "William Raveis Real Estate"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-03",
       "status": "active",
       "listed_date": "2026-01-12"
@@ -6144,7 +6145,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-09",
@@ -6271,7 +6272,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-14",
+      "last_pass2": "2026-06-15",
       "status": "active",
       "listed_date": "2026-01-27"
     },
@@ -6760,7 +6761,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-13",
       "status": "active",
       "listed_date": "2026-04-13",
@@ -6821,7 +6822,7 @@
           "broker": "Listed by Sotheby's International Realty"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-10",
       "status": "active",
       "listed_date": "2026-02-02"
@@ -6893,7 +6894,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-10",
@@ -7153,7 +7154,7 @@
           "broker": "Classic Marketing"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-01-16"
@@ -7361,7 +7362,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-02-14"
@@ -7589,7 +7590,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-14",
       "status": "active",
       "listed_date": "2026-03-24"
@@ -7862,7 +7863,7 @@
       "price_per_sqft": 1402,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 25,
+      "days_on_market": 26,
       "listed_date": "2026-05-20",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -7893,7 +7894,7 @@
       "building": "243 East 77th Street",
       "address": "243 East 77th Street",
       "unit": "#PHA",
-      "neighborhood": "Lenox Hill",
+      "neighborhood": "",
       "price": 3750000,
       "sqft": 2675,
       "beds": 4,
@@ -7901,14 +7902,14 @@
       "price_per_sqft": 1402,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 25,
+      "days_on_market": 26,
       "listed_date": "2026-05-20",
       "monthly_fees": null,
       "monthly_taxes": null,
-      "maintenance": 4889,
-      "agent_name": "diane johnson",
+      "maintenance": 4890,
+      "agent_name": "Roberta Golubock",
       "agent_phone": null,
-      "agent_email": "djohnson@elliman.com",
+      "agent_email": "roberta.golubock@sothebys.realty",
       "agent_firm": "Douglas Elliman",
       "price_history": [
         {
@@ -8165,7 +8166,7 @@
           "broker": "Corcoran"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-01-02"
@@ -8522,7 +8523,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-12",
@@ -8565,7 +8566,7 @@
           "broker": "Compass"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-12-04"
@@ -8871,7 +8872,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-02-17"
@@ -9067,7 +9068,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-06-14",
+      "last_pass2": "2026-06-15",
       "status": "active"
     },
     {
@@ -9125,7 +9126,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-07",
       "status": "active",
       "listed_date": "2025-10-06",
@@ -9204,7 +9205,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-02-20",
@@ -9822,7 +9823,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-14",
       "status": "active",
       "listed_date": "2026-01-28"
@@ -9999,7 +10000,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-01-05",
@@ -10244,7 +10245,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-10-23",
@@ -10398,7 +10399,7 @@
           "broker": "Corcoran"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-22",
       "status": "active",
       "listed_date": "2026-02-09"
@@ -10446,7 +10447,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-02-13"
@@ -10578,7 +10579,7 @@
           "broker": "Warburg"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "building_name": "The Saratoga"
@@ -11151,7 +11152,7 @@
           "broker": "Compass"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-04-14",
@@ -11476,7 +11477,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-10",
       "status": "active",
       "listed_date": "2026-02-16",
@@ -11521,7 +11522,7 @@
           "broker": "Compass"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-13",
       "status": "active",
       "listed_date": "2026-02-04",
@@ -12036,7 +12037,7 @@
           "broker": "Listed by Compass"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-10",
       "status": "active",
       "listed_date": "2026-03-05",
@@ -12199,7 +12200,7 @@
           "broker": "Halstead Real Estate"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-03",
@@ -12266,7 +12267,7 @@
           "broker": "Corcoran"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-02"
@@ -12350,7 +12351,7 @@
           "broker": "Argent Advisors LLC"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-02-24"
@@ -12550,7 +12551,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-06-13"
@@ -12610,7 +12611,7 @@
           "broker": "Andrew Shipper, LREB"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2024-10-15"
@@ -12850,7 +12851,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2023-02-15"
@@ -13107,7 +13108,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-16",
       "status": "active",
       "listed_date": "2026-03-11"
@@ -13244,7 +13245,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-13",
       "status": "active",
       "listed_date": "2025-12-04"
@@ -13418,7 +13419,7 @@
           "broker": "Corcoran"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-16",
@@ -13983,7 +13984,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-04-16",
@@ -14481,7 +14482,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2024-04-25",
@@ -14675,7 +14676,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-14",
+      "last_pass2": "2026-06-15",
       "status": "active",
       "listed_date": "2025-09-08"
     },
@@ -14939,7 +14940,7 @@
           "broker": "Sotheby's International Realty"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-30",
       "status": "active",
       "listed_date": "2025-04-11"
@@ -15143,7 +15144,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-09-08"
@@ -15450,7 +15451,7 @@
           "broker": "Listed by Fox Residential Group"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-10",
       "status": "active",
       "listed_date": "2026-02-04",
@@ -15841,7 +15842,7 @@
           "broker": "In contract"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-03",
       "status": "active",
       "listed_date": "2025-07-14"
@@ -15973,7 +15974,7 @@
           "broker": "Stribling"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-01-21"
@@ -16102,7 +16103,7 @@
           "broker": "Listed by Coldwell Banker Warburg"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-10",
       "status": "active",
       "listed_date": "2026-04-08"
@@ -16615,7 +16616,7 @@
           "broker": "Harlem Lofts"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-09",
@@ -16939,7 +16940,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-02",
       "status": "active",
       "listed_date": "2025-09-26"
@@ -16993,7 +16994,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-09-15"
@@ -17278,7 +17279,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2024-07-19",
@@ -17363,7 +17364,7 @@
           "broker": "Island Advantage Realty"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-14",
       "status": "active",
       "listed_date": "2025-07-21"
@@ -17429,7 +17430,7 @@
           "broker": "Corcoran"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-04-06"
@@ -17543,7 +17544,7 @@
           "broker": "Owner"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-01-01"
@@ -17774,7 +17775,7 @@
           "broker": "Brown Harris Stevens"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-17"
@@ -17855,7 +17856,7 @@
           "broker": "Peter Ashe"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-27",
       "status": "active",
       "listed_date": "2026-02-19",
@@ -18143,7 +18144,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1929,
-      "days_on_market": 311,
+      "days_on_market": 312,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4682,
@@ -18177,7 +18178,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-13",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2025-08-06"
@@ -18387,7 +18388,7 @@
           "broker": "Metro Spire"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-19",
@@ -18683,7 +18684,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-02-16"
@@ -19108,7 +19109,7 @@
           "broker": "Douglas Elliman"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-04-14"
@@ -19596,7 +19597,7 @@
           "broker": "Closing record"
         }
       ],
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-04-21",
       "status": "active",
       "listed_date": "2026-03-30"
@@ -20805,7 +20806,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1910,
-      "days_on_market": 31,
+      "days_on_market": 32,
       "listed_date": "2026-05-13",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -20831,7 +20832,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-13",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-11",
       "status": "active"
     },
@@ -20876,7 +20877,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-28",
       "status": "active",
       "building_name": "The Savoy"
@@ -20908,8 +20909,8 @@
       "url": "https://streeteasy.com/rental/5049524",
       "last_pass2": "2026-05-22",
       "status": "active",
-      "last_pass1": "2026-06-14",
-      "days_on_market": 24,
+      "last_pass1": "2026-06-15",
+      "days_on_market": 25,
       "building_name": "Stonehenge 65"
     },
     {
@@ -21095,7 +21096,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-11",
       "status": "active",
       "building_name": "The Laurel"
@@ -21115,7 +21116,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1984,
-      "days_on_market": 25,
+      "days_on_market": 27,
       "listed_date": "2026-05-18",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21135,7 +21136,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-12",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-22",
       "status": "active",
       "building_name": "Carnegie Hill Tower"
@@ -21460,7 +21461,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2015,
-      "days_on_market": 10,
+      "days_on_market": 11,
       "listed_date": "2026-06-04",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21480,7 +21481,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-06",
       "status": "active"
     },
@@ -21568,7 +21569,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-27",
       "status": "active"
     },
@@ -21675,7 +21676,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2026,
-      "days_on_market": 4,
+      "days_on_market": 5,
       "listed_date": "2026-06-09",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21695,7 +21696,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-13",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-10",
       "status": "active",
       "building_name": "The Langdon"
@@ -21780,7 +21781,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-07",
       "status": "active"
     },
@@ -21965,7 +21966,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-12",
       "status": "active",
       "building_name": "The Langdon"
@@ -22381,7 +22382,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2002,
-      "days_on_market": 2,
+      "days_on_market": 3,
       "listed_date": "2026-06-12",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -22401,7 +22402,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-13",
       "status": "active",
       "building_name": "The Anthem"
@@ -22583,7 +22584,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-06",
       "status": "active",
       "building_name": "One East River Place"
@@ -22901,11 +22902,14 @@
         }
       ],
       "last_pass1": "2026-05-04",
-      "last_pass2": "2026-06-14",
+      "last_pass2": "2026-06-15",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
-      "building_name": "Two Sutton Place North"
+      "building_name": "Two Sutton Place North",
+      "off_market_date": "2026-05-04",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-06-15"
     },
     {
       "listing_type": "rent",
@@ -23321,51 +23325,6 @@
     },
     {
       "listing_type": "rent",
-      "id": "5036240",
-      "url": "https://streeteasy.com/rental/5036240",
-      "building": "420 East 64th Street",
-      "address": "420 East 64th Street",
-      "unit": "#W7H",
-      "neighborhood": "",
-      "price": 15000,
-      "sqft": 0,
-      "beds": 4,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "rental",
-      "year_built": null,
-      "days_on_market": 37,
-      "listed_date": "2026-05-07",
-      "monthly_fees": null,
-      "monthly_taxes": null,
-      "maintenance": null,
-      "agent_name": null,
-      "agent_phone": null,
-      "agent_email": null,
-      "agent_firm": "Inbaly Realty Corp",
-      "price_history": [
-        {
-          "date": "2026-05-08",
-          "price": 15000,
-          "event": "",
-          "broker": "Inbaly Realty Corp"
-        },
-        {
-          "date": "2026-05-07",
-          "price": 16000,
-          "event": "LISTED",
-          "broker": "Inbaly Realty Corp"
-        }
-      ],
-      "_is_partial": false,
-      "_partial_reason": null,
-      "_partial_error": null,
-      "last_pass1": "2026-06-13",
-      "last_pass2": "2026-05-22",
-      "status": "active"
-    },
-    {
-      "listing_type": "rent",
       "id": "5041266",
       "url": "https://streeteasy.com/rental/5041266",
       "building": "420 East 64th Street",
@@ -23478,7 +23437,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-28",
       "status": "active"
     },
@@ -23497,7 +23456,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1960,
-      "days_on_market": 13,
+      "days_on_market": 16,
       "listed_date": "2026-05-29",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -23517,7 +23476,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-11",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-30",
       "status": "active"
     },
@@ -23759,6 +23718,57 @@
     },
     {
       "listing_type": "rent",
+      "id": "5036240",
+      "url": "https://streeteasy.com/rental/5036240",
+      "building": "420 East 64th Street",
+      "address": "420 East 64th Street",
+      "unit": "#W7H",
+      "neighborhood": "",
+      "price": 14500,
+      "sqft": 0,
+      "beds": 4,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": null,
+      "days_on_market": 38,
+      "listed_date": "2026-05-07",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Inbaly Realty Corp",
+      "price_history": [
+        {
+          "date": "2026-06-14",
+          "price": 14500,
+          "event": "",
+          "broker": "Inbaly Realty Corp"
+        },
+        {
+          "date": "2026-05-08",
+          "price": 15000,
+          "event": "",
+          "broker": "Inbaly Realty Corp"
+        },
+        {
+          "date": "2026-05-07",
+          "price": 16000,
+          "event": "LISTED",
+          "broker": "Inbaly Realty Corp"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-06-15",
+      "last_pass2": "2026-06-15",
+      "status": "active"
+    },
+    {
+      "listing_type": "rent",
       "id": "5037742",
       "url": "https://streeteasy.com/rental/5037742",
       "building": "175 East 62nd Street",
@@ -23799,7 +23809,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-28",
-      "last_pass2": "2026-06-14",
+      "last_pass2": "2026-06-15",
       "status": "active"
     },
     {
@@ -23946,7 +23956,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-28",
       "status": "active",
       "building_name": "The Frame Building"
@@ -23986,7 +23996,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-12",
       "status": "active"
     },
@@ -24372,7 +24382,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2003,
-      "days_on_market": 12,
+      "days_on_market": 13,
       "listed_date": "2026-06-01",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24392,7 +24402,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-13",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-03",
       "status": "active"
     },
@@ -24509,7 +24519,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1997,
-      "days_on_market": 5,
+      "days_on_market": 6,
       "listed_date": "2026-06-08",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24535,7 +24545,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-10",
       "status": "active",
       "building_name": "The Ventura"
@@ -24555,7 +24565,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1997,
-      "days_on_market": 17,
+      "days_on_market": 18,
       "listed_date": "2026-05-27",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24581,7 +24591,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-29",
       "status": "active",
       "building_name": "The Ventura"
@@ -25035,7 +25045,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1989,
-      "days_on_market": 13,
+      "days_on_market": 14,
       "listed_date": "2026-06-01",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25055,7 +25065,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-02",
       "status": "active"
     },
@@ -25439,7 +25449,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-22",
       "status": "active"
     },
@@ -25535,7 +25545,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-06",
       "status": "active",
       "building_name": "The Serrano"
@@ -25702,7 +25712,7 @@
       "url": "https://streeteasy.com/rental/5048174",
       "last_pass2": "2026-05-27",
       "status": "active",
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "days_on_market": 25
     },
     {
@@ -26863,7 +26873,7 @@
       "url": "https://streeteasy.com/rental/5046517",
       "last_pass2": "2026-05-22",
       "status": "active",
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "days_on_market": 25
     },
     {
@@ -26901,7 +26911,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-06-06",
       "status": "active",
       "building_name": "One Sutton Place North"
@@ -27575,7 +27585,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-14",
+      "last_pass1": "2026-06-15",
       "last_pass2": "2026-05-28",
       "status": "active"
     },
