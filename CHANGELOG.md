@@ -4,6 +4,67 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-06-15 — Inbox-wide off-market detection (W9) + 4×/day cron (Session 43 cont.)
+
+### Freshness check: sales + rentals are current (cron timing, not staleness)
+
+User saw "newest listing is 2–3 days old" on both tabs. Investigated with fresh
+live Pass 1 pulls:
+- **Sales:** one genuinely new listing (1833715, 11 E 87th #10FGH, $3.2M co-op,
+  listed Jun 14) existed on StreetEasy but wasn't in our data — it was posted
+  *after* the Jun-14 10:29 UTC cron ran. Pulled it in manually; app now current.
+- **Rentals:** fresh pull returned the full live set (30 listings, newest Jun 12)
+  — **identical to our data, zero newcomers.** Not stale; the 3BR+ $10–20k UES
+  rental segment is just thin and quiet (Jun 13–14 was the weekend).
+
+### Cron bumped to 4×/day
+
+`refresh.yml` schedule `0 9 * * *` → `0 0,6,12,18 * * *` (every 6h). New listings
+now surface within ~6h instead of next-morning. Tunable via `stale_cap` input.
+
+### W9 — off-market detection across the whole Inbox (not just Shortlist)
+
+**Problem:** off-market/rented listings only got flagged for the Shortlist (W7),
+and W7 used a noisy "Pass 2 returned no data" heuristic. The Inbox had ~100
+rentals that StreetEasy's live set didn't include (only 30 live vs 131 in db) —
+mostly already rented, but shown as active.
+
+**Root signal:** validated that StreetEasy's detail page serves full data even
+for off-market listings, with a populated **`offMarketAt`** date. Of 10 sampled
+"not in live set" rentals, 9 had `offMarketAt` set (rented) and 1 had
+`offMarketAt=None` (genuinely still active). So `offMarketAt` is the definitive
+signal — far better than "no data returned" (which today's earlier sweep proved
+is a transient false-positive 30/30 times).
+
+**Implementation:**
+- `normalize()` + `normalize_rental()` now emit `off_market_date` (from
+  `offMarketAt`/`off_market_at`, date-only).
+- `merge_pass2_into_db()` (runs on **every** Pass 2, all buckets): non-null
+  `off_market_date` → set `pass2_confirmed_off_market=True` + store the date;
+  null → clear the flag (re-listed / recovered). Auto-covers the whole Inbox via
+  the 4×/day stale sweep.
+- W7 `verify_stale_shortlists()` upgraded to the same `offMarketAt` signal; a
+  blank/no-data response is now **inconclusive** (not flagged), killing the
+  single-miss false-positive class.
+- `stale_refresh.py` `apply_batch()` no longer clears the flag on return — merge
+  owns off-market state now.
+- App needs no change: `offMarketBadgeHtml()` already renders the red badge from
+  `pass2_confirmed_off_market` in both table and card views; `generate_latest`
+  already carries the field (+ the new `off_market_date`).
+
+**Applied now:** swept all stale listings through Pass 2 → **106 listings flagged
+off-market (40 sale, 66 rent)**, each with a real off-market date. Spot-checked:
+active listings (`offMarketAt=None`) and the new Jun-14 listing correctly stay
+unflagged. db: 514 active, 512 pass2.
+
+### Files
+- `scripts/pull.py` — W9 off-market detection (normalize ×2, merge, W7).
+- `scripts/stale_refresh.py` — apply_batch no longer touches the off-market flag.
+- `.github/workflows/refresh.yml` — 4×/day schedule.
+- `data/db.json`, `data/latest.json` — new Jun-14 listing + 106 off-market flags.
+
+---
+
 ## 2026-06-14 — Actor fix confirmed; stale-listing catch-up + pipeline hardening (Session 43)
 
 ### Roadblock resolved: memo23's actor is working again

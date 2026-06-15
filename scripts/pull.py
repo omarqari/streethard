@@ -619,6 +619,14 @@ def normalize(raw):
         "year_built":     year_built,
         "days_on_market": days_on_market,
         "listed_date":    listed_date,
+        # off_market_date: the date StreetEasy marked the listing off-market
+        # (sold / rented / withdrawn). None = still on market. This is the
+        # DEFINITIVE off-market signal — far more reliable than "Pass 2 returned
+        # no data" (validated 2026-06-15: detail pages serve full data even for
+        # off-market listings, with this field populated). merge_pass2_into_db
+        # turns a non-null value into pass2_confirmed_off_market.
+        "off_market_date": (lambda x: str(x)[:10] if x else None)(
+            _get(raw.get("offMarketAt"), raw.get("off_market_at"))),
         "monthly_fees":   int(fees)  if fees  else None,
         "monthly_taxes":  int(taxes) if taxes else None,
         "maintenance":    int(maint) if maint else None,
@@ -938,6 +946,11 @@ def normalize_rental(raw):
         "year_built":     year_built,
         "days_on_market": days_on_market,
         "listed_date":    listed_date,
+        # off_market_date: date the rental was marked off-market (rented /
+        # withdrawn). None = still available. See normalize() for the full
+        # rationale; this is the definitive off-market signal.
+        "off_market_date": (lambda x: str(x)[:10] if x else None)(
+            _get(raw.get("offMarketAt"), raw.get("off_market_at"))),
         "monthly_fees":   None,
         "monthly_taxes":  None,
         "maintenance":    None,
@@ -1253,6 +1266,7 @@ def merge_pass2_into_db(db, detail_items, listing_type, normalize_fn, pass1_stub
     upgraded = 0
     partial_count = 0
     skipped  = 0
+    off_market_count = 0
 
     for item in detail_items:
         result = normalize_fn(item)
@@ -1266,6 +1280,11 @@ def merge_pass2_into_db(db, detail_items, listing_type, normalize_fn, pass1_stub
         is_partial    = result.pop("_is_partial", False)
         partial_reason = result.pop("_partial_reason", None)
         partial_error  = result.pop("_partial_error", None)
+        # Pop off_market_date so the generic merge below doesn't write it
+        # (and so a None — meaning "active" — is handled explicitly rather than
+        # being skipped by the `if v is not None` filter, which would otherwise
+        # leave a stale off-market flag in place after a re-listing).
+        off_market_date = result.pop("off_market_date", None)
 
         # For rentals: backfill beds/baths/sqft/unit from Pass 1 stub
         if is_rental and lid in pass1_stubs:
@@ -1303,10 +1322,30 @@ def merge_pass2_into_db(db, detail_items, listing_type, normalize_fn, pass1_stub
             upgraded += 1
 
         existing["status"] = "active"
+
+        # ── Off-market detection (W9, 2026-06-15) ──────────────────
+        # Reliable, runs on EVERY Pass 2 merge → covers the whole Inbox (and
+        # every bucket), not just the Shortlist W7 path. Keys on the detail
+        # page's offMarketAt date, NOT on "no data returned" (which is noisy —
+        # validated 2026-06-15: a single empty Pass 2 response is almost always
+        # a transient backup-path drop, not a real off-market).
+        if off_market_date:
+            existing["off_market_date"]            = off_market_date
+            existing["pass2_confirmed_off_market"] = True
+            existing["pass2_confirmed_at"]         = today
+            off_market_count += 1
+        else:
+            # Detail page says still on-market — clear any prior off-market
+            # flag (re-listed, or a previously mis-flagged listing recovering).
+            for k in ("off_market_date", "pass2_confirmed_off_market",
+                      "pass2_confirmed_at"):
+                existing.pop(k, None)
+
         db[lid] = existing
 
     print(f"  Pass 2 merge: {upgraded} upgraded to pass2, "
-          f"{partial_count} partial (PX-blocked), {skipped} skipped")
+          f"{partial_count} partial (PX-blocked), {skipped} skipped, "
+          f"{off_market_count} confirmed off-market")
     return upgraded + partial_count
 
 # ─── W4: Pipeline health observability ──────────────────────────────
@@ -1526,14 +1565,9 @@ def verify_stale_shortlists(client, db):
     today_str = today.isoformat()
     confirmed_off = 0
     confirmed_active = 0
+    inconclusive = 0
     for lid, entry in candidates:
         item = items_by_id.get(str(lid))
-        # Off-market signal: no item returned for this URL, OR the actor
-        # returned only its "No results found" / sentinel placeholder.
-        # For rentals, price is embedded in price_histories_json (not top-level),
-        # so we check all three rental namespace prefixes in addition to the
-        # sale-side fields. Without this, valid rental responses would always
-        # be misclassified as sentinels.
         is_rental_entry = entry.get('listing_type') == 'rent'
         has_price = bool(
             item and (
@@ -1546,24 +1580,31 @@ def verify_stale_shortlists(client, db):
                 ))
             )
         )
-        is_sentinel = bool(item) and (
-            item.get('message') in ('No results found',) or
-            not has_price
-        )
-        if not item or is_sentinel:
+        # W9 (2026-06-15): decide off-market from the detail page's offMarketAt
+        # date — the DEFINITIVE signal — not from "no data returned". Validated
+        # 2026-06-15: a single empty Pass 2 response is almost always a
+        # transient backup-path drop, not a real off-market (30/30 such flags
+        # were false positives). So a missing/empty response is now treated as
+        # INCONCLUSIVE and leaves prior state untouched, rather than flagging.
+        omv = (item.get('offMarketAt') or item.get('off_market_at')) if item else None
+        off_market_date = str(omv)[:10] if omv else None
+        if off_market_date:
+            entry['off_market_date'] = off_market_date
             entry['pass2_confirmed_off_market'] = True
             entry['pass2_confirmed_at'] = today_str
             confirmed_off += 1
-        else:
-            # Got real data → clear any prior off-market flag (re-listed)
-            if entry.get('pass2_confirmed_off_market'):
-                entry.pop('pass2_confirmed_off_market', None)
-                entry.pop('pass2_confirmed_at', None)
-            # Also bump last_pass2 since we just confirmed presence
+        elif item and has_price:
+            # Detail page says on-market → clear any prior off-market flag
+            for k in ('off_market_date', 'pass2_confirmed_off_market',
+                      'pass2_confirmed_at'):
+                entry.pop(k, None)
             entry['last_pass2'] = today_str
             confirmed_active += 1
+        else:
+            inconclusive += 1   # no/blank data — don't flag on a single miss
 
-    print(f"  W7 results: {confirmed_active} still active, {confirmed_off} confirmed off-market")
+    print(f"  W7 results: {confirmed_active} still active, "
+          f"{confirmed_off} confirmed off-market, {inconclusive} inconclusive")
 
 
 def detect_delistings(db, ids_seen_by_type):

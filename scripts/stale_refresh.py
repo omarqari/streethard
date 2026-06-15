@@ -107,10 +107,9 @@ def apply_batch(db, items, batch_ids, listing_type, before):
     for lid in batch_ids:
         if str(lid) in returned_ids:
             ent = db.get(lid, {})
-            # A successful re-fetch is strong evidence of presence — clear any
-            # prior off-market flag (re-listed / was a false positive).
-            ent.pop("pass2_confirmed_off_market", None)
-            ent.pop("pass2_confirmed_at", None)
+            # Off-market state is now decided inside merge_pass2_into_db based
+            # on the detail page's offMarketAt date (W9) — do NOT clear or set
+            # the flag here. We only report price changes.
             aft, bef = ent.get("price"), before.get(lid)
             if bef and aft and bef != aft:
                 price_changes.append((lid, bef, aft, ent.get("address", "?")))
