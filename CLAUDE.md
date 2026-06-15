@@ -204,6 +204,24 @@ buckets. Full spec + 3-hat review in `BUILDINGS-FEATURE-PLAN.md`.
   tolerates API failure (nothing highlighted, app still works). Hash `#buildings`
   routes to the tab.
 
+### Building proper-names (`building_name`, Session 44)
+- Many buildings have a name ("The Seville" = 300 E 77th). The dedicated
+  actor field `building_name` is always null; the name lives in the actor's
+  **`slug`** field. `deslugify_building_name(slug)` in `pull.py` derives it.
+  **Rule:** a real name slug starts with a **letter** (`the-seville`,
+  `bristol-plaza`); an address slug starts with the **street number**
+  (`135-east-74th-street`, `530-park-avenue-new_york`) → suppressed (None), since
+  the address already shows. (The trailing `-new_york`/`-nyc`/`-manhattan` rule
+  alone was NOT enough — addresses take many slug forms.) Both normalizers emit
+  `building_name`; merge persists it; `generate_latest` carries it through.
+- **173 listings / 87 buildings** are named (backfilled 2026-06-15 via
+  `scripts/backfill_names.py`, phased `--submit`/`--collect`). The frontend shows
+  `building_name || building` as the primary label (Buildings tab, table rows,
+  cards) with the address on the subline; search matches `building_name` too.
+- New listings get names automatically going forward (slug captured in
+  Pass 2). To re-backfill after a normalizer change: `rm /tmp/bf_processed.json`
+  then `--submit 600` / `--collect`.
+
 ## Current Infrastructure State
 
 - Running Claude in Cowork mode — Claude calls APIs directly, no config files to edit

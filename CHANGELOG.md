@@ -4,6 +4,38 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-06-15 — Building proper-names from actor `slug` (Session 44 cont.)
+
+Show building names (e.g. "The Seville" for 300 East 77th) wherever buildings
+appear. The dedicated `building_name` actor field is always null, but the name
+lives in the actor's `slug` field, which we'd been dropping.
+
+- **`deslugify_building_name(slug)` in `pull.py`** — derives the name from the
+  slug. Discriminator (validated against the full backfill): a real name slug
+  **starts with a letter** ("the-seville", "bristol-plaza", "leighton-house");
+  an address slug **starts with the street number** ("135-east-74th-street",
+  "530-park-avenue-new_york", "1289-lexington") and is suppressed (→ None) since
+  the address already shows. The trailing-city-token rule (`-new_york`/`-nyc`/
+  `-manhattan`) alone was insufficient — addresses come in many slug shapes.
+  Both `normalize()` and `normalize_rental()` now emit `building_name`.
+- **Backfill:** `scripts/backfill_names.py` (phased `--submit`/`--collect` for
+  the sandbox) fetched slugs for all 514 listings. **173 listings across 87
+  buildings got proper names** (well beyond the ~22 StreetEasy already labeled by
+  name — e.g. The Promenade, The Siena, The Rio, Manhattan House previously
+  showed only addresses). 30 address-slugs that slipped past the first pass were
+  cleared by the start-with-letter rule. 2 listings (incl. the known 243 E 77th
+  #PHA dup) weren't returned by the actor; they keep their address and will pick
+  up a name on the next cron Pass 2.
+- **Frontend:** `building_name || building` is the primary label on the Buildings
+  tab (address drops to the subline), on listing table rows, and on cards. Both
+  the listing search and the Buildings search now match `building_name`. Verified
+  live: The Seville, The Promenade, The Siena, The Rio all render with names +
+  address sublines; address-only buildings unchanged.
+- Commit `26b8bd6573` (pull.py, backfill_names.py, index.html, db.json,
+  latest.json, dated archive).
+
+---
+
 ## 2026-06-15 — Buildings tab + targeted-building highlight (Session 44)
 
 New family-facing feature: mark "great buildings" once, see every listing in
