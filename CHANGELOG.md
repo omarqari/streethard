@@ -4,6 +4,27 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-06-15 — Buildings dedupe fixes + Target-buildings filter (Session 45 cont.)
+
+Three fixes after the architect/canonKey work surfaced edge cases (commit `4a08c68`).
+
+- **Phantom duplicate Buildings rows (Seville/Brompton/Chatham).** Cause: targets
+  starred *before* the canonical-key merge were stored under the address key
+  (`205e85thst`, `300e77thst`, `181e65thst`); after the merge the real row moved to
+  the name key, so the old target resurfaced as a second, zero-listing row. Fix:
+  `loadBuildingTargets()` now canonicalizes each stored key through `_bldgCanon`, and
+  the 3 orphan rows were deleted on the server (Seville migrated to `theseville`).
+  Targets now live only under canonical keys — one row per building.
+- **Empire (and all name-labeled buildings) now show the street address.**
+  `buildBuildingIndex` collected the `building` field for the subline (the name), never
+  the listing's real `address`. Now `address_label = mostCommon(b.addrs)` from
+  `l.address`, so "The Empire Condominium" shows "188 East 78th Street".
+- **`★ Target buildings` filter shipped.** A main-filter-bar checkbox (`#f-targets`)
+  that restricts the listing table/cards to buildings starred on the Buildings tab.
+  (Was in-progress local WIP; confirmed intended and now live.)
+
+---
+
 ## 2026-06-15 — Non-UES "featured" listings diagnosed (Session 45 cont.)
 
 Noticed non-UES listings in the app (e.g. The Lotus / 255 East 39th, 622 11th

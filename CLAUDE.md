@@ -105,7 +105,7 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Mobile table view (Session 33)**: `.table-wrap` is constrained to `max-width: 100vw` with `overflow-x: auto`; the table itself keeps `min-width: 900px` so cells stay legible and the user swipes horizontally to reach the rightmost columns. Body still has `overflow-x: hidden` so horizontal scroll is contained inside `.table-wrap`, not the page.
 - **Default sort**: Per tab — Inbox: Monthly Payment desc, Shortlist: OQ# asc, Archive: bucket_changed_at desc
 - **Text search**: Free-text search bar filters by building, address, unit, neighborhood, agent name/firm. Always visible in the filter bar — used constantly.
-- **Filters button + popover/sheet (Session 32)**: All other filter controls (Beds, Type, Price ≤, Monthly ≤, ✂ Price Cuts, 👁 Seen, Clear all) live behind a single **Filters** button. A blue count badge appears on the button when any filter is set. Filters apply live as the user changes them — no Apply button. **Desktop:** anchored popover that opens below the button, dismisses on outside-click or Escape. **Mobile (≤768px):** transforms into a **bottom sheet** — `position: fixed` at the viewport bottom, 58vh tall, drag handle, "Filters" + ✕ header, labeled rows (BEDS / TYPE / MAX PRICE / MAX MONTHLY), larger 14px controls, sticky footer with Clear all + a dark navy **Show N** primary button whose N updates live. Full-screen backdrop dims everything else; tap-to-close. Body scroll locked while open. Mode toggle (For Sale / Rent / Both) stays inline to the left of the Filters button on the same row.
+- **Filters button + popover/sheet (Session 32)**: All other filter controls (Beds, Type, Price ≤, Monthly ≤, ✂ Price Cuts, 👁 Seen, ★ Target buildings, Clear all) live behind a single **Filters** button. A blue count badge appears on the button when any filter is set. Filters apply live as the user changes them — no Apply button. **Desktop:** anchored popover that opens below the button, dismisses on outside-click or Escape. **Mobile (≤768px):** transforms into a **bottom sheet** — `position: fixed` at the viewport bottom, 58vh tall, drag handle, "Filters" + ✕ header, labeled rows (BEDS / TYPE / MAX PRICE / MAX MONTHLY), larger 14px controls, sticky footer with Clear all + a dark navy **Show N** primary button whose N updates live. Full-screen backdrop dims everything else; tap-to-close. Body scroll locked while open. Mode toggle (For Sale / Rent / Both) stays inline to the left of the Filters button on the same row.
 - **Price filter glyph**: Price and Monthly dropdowns use `≤` prefix on options (`≤ $3M`) instead of the older "Max Price" wording. Beds is an equality match, no glyph.
 - **Mortgage calculator** in header: Down Payment · Rate · Term — interactive, recalculates all rows instantly
 - **Row expansion**: Price History, Agent info, Payment Breakdown
@@ -258,6 +258,22 @@ surfaced, and curated buildings are tracked even with no listings. All in
   itself is untouched** (still the frozen DB key for `building_targets`) — canonKey
   is a thin layer on top. The Fifth↔5th and Park↔Park Ave merges are already handled
   inside buildingKey; canonKey only adds the name↔address pairs.
+- **Target keys are canonicalized on load (Session 45 fix).** `loadBuildingTargets()`
+  maps each stored `building_key` through `_bldgCanon` so a target saved under an
+  address key (pre-merge) collapses onto the canonical name key — otherwise the old
+  address-keyed target resurfaced as a phantom duplicate Buildings row (hit
+  Seville/Brompton/Chatham). The 3 orphaned server rows (`300e77thst`, `205e85thst`,
+  `181e65thst`) were cleaned up via the API; targets now live only under canonical
+  keys.
+- **Buildings subline uses the listing's real street `address`** (Session 45):
+  `buildBuildingIndex` collects `l.address` into `b.addrs` and `address_label =
+  mostCommon(b.addrs)` first, so name-labeled buildings (e.g. "The Empire
+  Condominium") show their street address ("188 East 78th Street") on the subline
+  instead of repeating the name.
+- **`★ Target buildings` filter (Session 45)** — a `#f-targets` checkbox in the main
+  filter bar that restricts the listing table/cards to buildings starred on the
+  Buildings tab (`passesActiveFilters` → `isTargetBuilding(l)`); counts toward the
+  Filters badge and Clear-all.
 
 ### Tracked architects (7, UES-only scope)
 Robert A.M. Stern (~11 bldgs), Rosario Candela (19 incl. 1 Sutton Place South),
