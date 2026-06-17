@@ -2021,10 +2021,10 @@ function renderFreshnessBanner(generatedAt) {
   const banner = document.getElementById('freshness-banner');
   if (!banner) return;
   if (!generatedAt) { banner.style.display = 'none'; return; }
-  // Parse date-only string in LOCAL time (not UTC). JS parses 'YYYY-MM-DD' as
-  // UTC midnight, which in US timezones falls the previous evening — making data
-  // from yesterday appear 2 days old. Splitting into parts uses local midnight.
-  const [_y, _m, _d] = generatedAt.split('-').map(Number);
+  // Parse date string in LOCAL time. Accept both 'YYYY-MM-DD' and full ISO
+  // timestamps ('YYYY-MM-DDTHH:MM:SSZ') — take only the date portion.
+  const datePart = generatedAt.split('T')[0];
+  const [_y, _m, _d] = datePart.split('-').map(Number);
   const daysAgo = Math.floor((Date.now() - new Date(_y, _m - 1, _d).getTime()) / 86400000);
   if (daysAgo < 2) { banner.style.display = 'none'; return; }
   banner.className = daysAgo >= 4 ? 'stale-error' : 'stale-warn';
