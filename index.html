@@ -2034,8 +2034,12 @@ async function loadBuildingTargets() {
     targetSet = new Set();
     targetMeta = {};
     (d.items || []).forEach(it => {
-      targetSet.add(it.building_key);
-      targetMeta[it.building_key] = { display_name: it.display_name, note: it.note };
+      // Canonicalize the stored key: targets saved before the alias-merge under an
+      // address key (e.g. "205e85thst") collapse onto the canonical name key
+      // ("thebrompton"), so a single building can't show as two targeted rows.
+      const ck = _bldgCanon[it.building_key] || it.building_key;
+      targetSet.add(ck);
+      if (!targetMeta[ck] || it.building_key === ck) targetMeta[ck] = { display_name: it.display_name, note: it.note };
     });
   } catch (e) {
     console.warn('Building targets unavailable:', e.message);
@@ -2161,10 +2165,11 @@ function buildBuildingIndex(listings) {
     const key = canonKey(l.building);
     if (!key) return;
     let b = idx[key];
-    if (!b) b = idx[key] = { key, names:{}, bnames:{}, nbhd:{}, years:{}, types:{}, count:0, sale:0, rent:0, prices:[], psf:[], listings:[] };
+    if (!b) b = idx[key] = { key, names:{}, bnames:{}, addrs:{}, nbhd:{}, years:{}, types:{}, count:0, sale:0, rent:0, prices:[], psf:[], listings:[] };
     b.count++;
     if (l.listing_type === 'rent') b.rent++; else b.sale++;
     if (l.building)      b.names[l.building] = (b.names[l.building]||0)+1;
+    if (l.address)       b.addrs[l.address] = (b.addrs[l.address]||0)+1;
     if (l.building_name) b.bnames[l.building_name] = (b.bnames[l.building_name]||0)+1;
     if (l.neighborhood) b.nbhd[l.neighborhood] = (b.nbhd[l.neighborhood]||0)+1;
     if (l.year_built)   b.years[l.year_built] = (b.years[l.year_built]||0)+1;
@@ -2174,8 +2179,11 @@ function buildBuildingIndex(listings) {
     b.listings.push(l);
   });
   Object.values(idx).forEach(b => {
-    // prettiest address = longest variant seen (e.g. "920 Park Avenue" > "920 Park")
-    b.address_label = Object.keys(b.names).sort((a,c) => c.length - a.length)[0] || b.key;
+    // Prefer the listing's real street address (so name-labeled buildings like
+    // "The Empire Condominium" show "188 East 78th Street" on the subline); fall
+    // back to the longest building-field label.
+    b.address_label = mostCommon(b.addrs)
+      || Object.keys(b.names).sort((a,c) => c.length - a.length)[0] || b.key;
     // proper building name (e.g. "The Seville") if any listing carries one; else null
     b.building_name = mostCommon(b.bnames) || null;
     // primary label: proper name when known, else the address
