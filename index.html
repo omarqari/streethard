@@ -2922,7 +2922,7 @@ function renderTable() {
       } else if (currentBucket === 'shortlist') {
         actionsHtml = `<button class="btn-archive" onclick="transitionBucket('${listing.id}','archive',event)">Archive</button>`;
       } else {
-        actionsHtml = `<button class="btn-inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button>`;
+        actionsHtml = `<button class="btn-inbox" onclick="transitionBucket('${listing.id}','inbox',event)">↩ Inbox</button><button class="btn-shortlist" onclick="transitionBucket('${listing.id}','shortlist',event)">★ Shortlist</button>`;
       }
     }
 
