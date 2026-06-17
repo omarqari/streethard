@@ -1709,8 +1709,21 @@ const ARCHITECT_PLACEHOLDERS = [
 // collapses to a single Buildings-tab row / target / architect match. Derived
 // from the name↔address pairs we already maintain above. buildingKey() itself is
 // left untouched (it's the frozen DB key); this is a thin layer on top of it.
+// Name↔address alias pairs for buildings where some listings carry the proper
+// name as `building` and others carry the street address. Add any new pair here
+// whenever a duplicate Buildings row is spotted.
+const BUILDING_ALIASES = [
+  { name: 'Brisbane House',            address: '1215 5th Avenue' },
+  { name: 'Cumberland House',          address: '30 East 62nd Street' },
+  { name: 'Evans Tower Condominium',   address: '171 East 84th Street' },
+  { name: 'Sherry Netherland',         address: '781 5th Avenue' },
+  { name: 'The Belaire',               address: '524 East 72nd Street' },
+  { name: 'The Clare',                 address: '301 East 61st Street' },
+  { name: 'The Verona',                address: '32 East 64th Street' },
+];
+
 const _bldgCanon = {};
-ARCHITECT_PLACEHOLDERS.forEach(p => {
+[...ARCHITECT_PLACEHOLDERS, ...BUILDING_ALIASES].forEach(p => {
   const nk = buildingKey(p.name), ak = buildingKey(p.address);
   if (nk && ak && nk !== ak) _bldgCanon[ak] = nk;   // canonical = proper-name key
 });
