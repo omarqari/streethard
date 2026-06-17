@@ -202,7 +202,13 @@ buckets. Full spec + 3-hat review in `BUILDINGS-FEATURE-PLAN.md`.
   highlight (`tr.target-bldg` / `.listing-card.v4.target-bldg` + `★ Target` pill)
   is read-only. `loadBuildingTargets()` is the 3rd fetch in `loadData` and
   tolerates API failure (nothing highlighted, app still works). Hash `#buildings`
-  routes to the tab.
+  routes to the tab. **Listings under an expanded building are clickable
+  (Session 46):** `navigateToListing(id)` switches to the listing's bucket,
+  forces table view, expands the row, and scrolls it into view. StreetEasy ↗
+  link still opens in a new tab (stopPropagation).
+- **Archive triage buttons (Session 46):** Archive rows in the table now show
+  both ↩ Inbox and ★ Shortlist buttons, matching card view (which already had
+  both). Previously table view only had ↩ Inbox.
 
 ### Building proper-names (`building_name`, Session 44)
 - Many buildings have a name ("The Seville" = 300 E 77th). The dedicated
@@ -251,13 +257,20 @@ surfaced, and curated buildings are tracked even with no listings. All in
   key is NOT already in the data. **Auto-converts to a normal row the moment a
   real listing appears.** So the full architect portfolio is always visible even
   with zero listings.
-- **`canonKey()` alias layer** (built from the `ARCHITECT_PLACEHOLDERS` name↔address
-  pairs): collapses the same physical building appearing under different labels
-  (e.g. "The Chatham" vs "181 East 65th Street") into ONE Buildings row / target /
-  architect match. Used in `buildBuildingIndex` and `isTargetBuilding`. **`buildingKey()`
-  itself is untouched** (still the frozen DB key for `building_targets`) — canonKey
-  is a thin layer on top. The Fifth↔5th and Park↔Park Ave merges are already handled
-  inside buildingKey; canonKey only adds the name↔address pairs.
+- **`canonKey()` alias layer** (built from both `ARCHITECT_PLACEHOLDERS` and
+  `BUILDING_ALIASES` name↔address pairs): collapses the same physical building
+  appearing under different labels (e.g. "The Clare" vs "301 East 61st Street")
+  into ONE Buildings row / target / architect match. Used in `buildBuildingIndex`
+  and `isTargetBuilding`. **`buildingKey()` itself is untouched** (still the frozen
+  DB key for `building_targets`) — canonKey is a thin layer on top. The Fifth↔5th
+  and Park↔Park Ave merges are already handled inside buildingKey; canonKey only
+  adds the name↔address pairs.
+- **`BUILDING_ALIASES`** (Session 46) — dedicated `{name, address}[]` for buildings
+  where some listings carry the proper name as `building` and others carry the street
+  address (no architect association needed). Seeded with 8 pairs: Brisbane House,
+  Cumberland House, Evans Tower Condominium, Sherry Netherland, The Belaire, The
+  Clare, The Verona, Azure / 333 East 91st. **When a duplicate Buildings row is
+  spotted, add one line here.**
 - **Target keys are canonicalized on load (Session 45 fix).** `loadBuildingTargets()`
   maps each stored `building_key` through `_bldgCanon` so a target saved under an
   address key (pre-merge) collapses onto the canonical name key — otherwise the old

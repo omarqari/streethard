@@ -4,6 +4,45 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-06-17 — Buildings UX + duplicate fixes + pipeline investigation (Session 46)
+
+### Features shipped
+- **★ Target buildings filter** — checkbox in main Filters popover restricts
+  Inbox/Shortlist/Archive to listings in starred buildings. Counts toward the
+  badge, respects Clear all, works on desktop and mobile. (`b60a351`)
+- **Click listing on Buildings tab → navigate to bucket** — each unit row under
+  an expanded building is now clickable. Clicking switches to the correct
+  Inbox/Shortlist/Archive tab, forces table view, expands the row, and scrolls
+  it into view. StreetEasy ↗ link still opens in a new tab. (`0182d06`)
+- **Archive → Shortlist direct button** — Archive rows in the table view now
+  show both ↩ Inbox and ★ Shortlist buttons (matching card view, which already
+  had both). (`5003826`)
+
+### Bug fixes
+- **Duplicate Buildings rows — `BUILDING_ALIASES`** — introduced a dedicated
+  `BUILDING_ALIASES` array (separate from `ARCHITECT_PLACEHOLDERS`) fed into
+  the same `_bldgCanon` map. Fixes 8 buildings where some listings carry the
+  proper name as `building` and others carry the street address: Brisbane House,
+  Cumberland House, Evans Tower, Sherry Netherland, The Belaire, The Clare, The
+  Verona, Azure / 333 East 91st. Pattern: add one line here whenever a duplicate
+  Buildings row is spotted. (`23208321`, `4da2dfd2`)
+- **The Empire Condominium year_built** — actor returned 0; patched to 2001 in
+  db.json and regenerated latest.json. (`00112f37`)
+- **Freshness banner NaN** — `renderFreshnessBanner()` split `generated_at` on
+  `-` expecting a date-only string, but manual latest.json regeneration emitted
+  a full ISO timestamp (`2026-06-17T05:17:53Z`). `T...` suffix now stripped
+  before parsing. (`1d1d611a`)
+
+### Pipeline investigation
+Manually triggered cron run (13:22 UTC) failed — Apify actor hit PerimeterX
+throttling, ran for the full 600s timeout, returned only 51/207 sale results.
+W5 cliff guard correctly blocked the merge. Confirmed one-off: all 4×/day
+scheduled runs that day were healthy (7 successful runs). `pipeline_health.json`
+confirmed current (50 records, newest-first, April 19 → June 17). No action
+needed; cron is healthy.
+
+---
+
 ## 2026-06-15 — Buildings dedupe fixes + Target-buildings filter (Session 45 cont.)
 
 Three fixes after the architect/canonKey work surfaced edge cases (commit `4a08c68`).
