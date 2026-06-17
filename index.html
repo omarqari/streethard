@@ -1446,6 +1446,7 @@ tr.target-bldg > td:first-child { box-shadow: inset 3px 0 0 #FF6000; }
         <div class="popover-row popover-checks">
           <label class="filter-check" title="Show only listings with price reductions"><input type="checkbox" id="f-cuts" onchange="applyFilters()"> ✂ Price Cuts</label>
           <label class="filter-check" title="Show only listings you've visited"><input type="checkbox" id="f-seen" onchange="applyFilters()"> 👁 Seen</label>
+          <label class="filter-check" title="Show only listings in buildings you've starred on the Buildings tab"><input type="checkbox" id="f-targets" onchange="applyFilters()"> ★ Target buildings</label>
         </div>
       </div>
       <div class="popover-footer">
@@ -2447,8 +2448,9 @@ function readActiveFilters() {
     type:     document.getElementById('f-type').value,
     maxPx:    parseFloat(document.getElementById('f-price').value) || 0,
     maxMo:    parseFloat(document.getElementById('f-monthly').value) || 0,
-    cutsOnly: document.getElementById('f-cuts').checked,
-    seenOnly: document.getElementById('f-seen').checked,
+    cutsOnly:     document.getElementById('f-cuts').checked,
+    seenOnly:     document.getElementById('f-seen').checked,
+    targetsOnly:  document.getElementById('f-targets').checked,
     searchRaw,
     searchQ:  searchRaw.toLowerCase(),
   };
@@ -2468,6 +2470,7 @@ function passesActiveFilters(l, f) {
   if (f.maxMo > 0 && calcMonthlyTotal(l) > f.maxMo) return false;
   if (f.cutsOnly && !priceSignals(l).hasCuts) return false;
   if (f.seenOnly && !getStatus(l.id).seen) return false;
+  if (f.targetsOnly && !isTargetBuilding(l)) return false;
   if (f.searchQ) {
     const haystack = [l.building, l.building_name, l.address, l.unit, l.neighborhood, l.agent_name, l.agent_firm]
       .filter(Boolean).join(' ').toLowerCase();
@@ -2608,7 +2611,7 @@ function applyFilters() {
   const f = readActiveFilters();
 
   const hasFilter = f.beds > 0 || f.type !== '' || f.maxPx > 0 || f.maxMo > 0
-                    || f.cutsOnly || f.seenOnly || f.searchRaw !== '';
+                    || f.cutsOnly || f.seenOnly || f.targetsOnly || f.searchRaw !== '';
   document.getElementById('clear-btn').style.display = hasFilter ? 'inline-block' : 'none';
 
   ['f-beds','f-type','f-price','f-monthly'].forEach(id => {
@@ -2628,6 +2631,7 @@ function applyFilters() {
   if (f.maxMo > 0) activeCount++;
   if (f.cutsOnly) activeCount++;
   if (f.seenOnly) activeCount++;
+  if (f.targetsOnly) activeCount++;
   const badge = document.getElementById('filter-badge');
   const toggleBtn = document.getElementById('filter-toggle-btn');
   if (activeCount > 0) {
@@ -2666,8 +2670,9 @@ function clearFilters() {
   document.getElementById('f-type').value    = '';
   document.getElementById('f-price').value   = '0';
   document.getElementById('f-monthly').value = '0';
-  document.getElementById('f-cuts').checked  = false;
-  document.getElementById('f-seen').checked  = false;
+  document.getElementById('f-cuts').checked    = false;
+  document.getElementById('f-seen').checked    = false;
+  document.getElementById('f-targets').checked = false;
   document.getElementById('f-search').value  = '';
   applyFilters();
 }
