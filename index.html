@@ -2318,7 +2318,7 @@ function renderBuildings() {
         const bk = getBucket(l.id);
         const unit = l.unit ? ' #' + String(l.unit).replace(/^#+/, '') : '';
         const px = l.listing_type === 'rent' ? (l.price ? fmtPrice(l.price) + '/mo' : '—') : fmtPrice(l.price);
-        return `<div class="bldg-unit-row">
+        return `<div class="bldg-unit-row" onclick="navigateToListing('${l.id}')" style="cursor:pointer;" title="View in ${bk}">
             <span class="bldg-unit-bucket ${bk}">${bk}</span>
             <span style="flex:1;">${l.address || b.display_name}${unit}</span>
             <span style="color:#555;">${px}</span>
@@ -2928,7 +2928,7 @@ function renderTable() {
 
     const isTarget = isTargetBuilding(listing);
     html += `
-      <tr class="${isExp ? 'row-expanded' : ''}${isStale ? ' row-stale' : ''}${isTarget ? ' target-bldg' : ''}" onclick="toggleExpand('${listing.id}')">
+      <tr class="${isExp ? 'row-expanded' : ''}${isStale ? ' row-stale' : ''}${isTarget ? ' target-bldg' : ''}" data-id="${listing.id}" onclick="toggleExpand('${listing.id}')">
         <td class="td-expand">${isExp ? '▾' : '▸'}</td>
         <td class="rank-cell rank-col" onclick="event.stopPropagation()">
           <span class="rank-val${oqR ? '' : ' empty'}" onclick="${canEdit ? `startEditRank(this,'${listing.id}','oq_rank')` : ''}" title="${canEdit ? 'Click to rank' : 'Set API key in Settings to rank'}">${oqR || '—'}</span>
@@ -3269,6 +3269,20 @@ function buildExpansion(listing) {
 function toggleExpand(id) {
   expandedId = expandedId === id ? null : id;
   renderTable();
+}
+
+// Navigate from the Buildings tab to a listing's bucket in table view, expanded.
+function navigateToListing(id) {
+  const bucket = getBucket(id);
+  setBucket(bucket);
+  setView('table');
+  expandedId = id;
+  applyFilters(); // re-renders table
+  // Scroll to the expanded row after render settles
+  requestAnimationFrame(() => {
+    const row = document.querySelector(`tr[data-id="${id}"]`);
+    if (row) row.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
 }
 
 // ─── View Toggle ─────────────────────────────────────────────────────
