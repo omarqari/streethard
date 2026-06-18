@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-06-18",
-  "listing_count": 523,
+  "listing_count": 524,
   "sale_count": 387,
-  "rental_count": 136,
+  "rental_count": 137,
   "delisted_count": 0,
   "run_cost_usd": 0.0,
   "mode": "both",
@@ -157,12 +157,12 @@
         }
       ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-03-03",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-18"
     },
     {
       "listing_type": "sale",
@@ -515,12 +515,12 @@
         }
       ],
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-12",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": "The Promenade"
     },
     {
@@ -900,7 +900,7 @@
       "price_per_sqft": 1653,
       "type": "condo",
       "year_built": 1996,
-      "days_on_market": 22,
+      "days_on_market": 23,
       "listed_date": "2026-05-26",
       "monthly_fees": 5503,
       "monthly_taxes": 2901,
@@ -1528,7 +1528,7 @@
         }
       ],
       "last_pass1": "2026-05-04",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-21"
     },
@@ -1835,7 +1835,7 @@
       "price_per_sqft": 2918,
       "type": "condo",
       "year_built": 1941,
-      "days_on_market": 121,
+      "days_on_market": 125,
       "monthly_fees": 2298,
       "monthly_taxes": null,
       "maintenance": null,
@@ -1864,7 +1864,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-13"
     },
@@ -2087,7 +2087,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-10-31"
     },
@@ -2494,12 +2494,12 @@
         }
       ],
       "last_pass1": "2026-05-28",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-12-15",
       "off_market_date": "2026-05-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": "Archive Lofts"
     },
     {
@@ -3139,7 +3139,7 @@
       "price_per_sqft": 3202,
       "type": "condo",
       "year_built": 1941,
-      "days_on_market": 209,
+      "days_on_market": 213,
       "monthly_fees": 2880,
       "monthly_taxes": 2390,
       "maintenance": null,
@@ -3168,7 +3168,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-11-17"
     },
@@ -3670,12 +3670,12 @@
         }
       ],
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-12",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": "The Promenade"
     },
     {
@@ -3788,7 +3788,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-17"
     },
@@ -3876,12 +3876,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-14",
       "off_market_date": "2026-04-27",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": "Manhattan House"
     },
     {
@@ -4077,7 +4077,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-03"
     },
@@ -5215,7 +5215,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-27"
     },
@@ -5438,12 +5438,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-09-09",
       "off_market_date": "2026-04-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": null
     },
     {
@@ -5790,7 +5790,7 @@
       "price_per_sqft": 2742,
       "type": "condo",
       "year_built": 1950,
-      "days_on_market": 102,
+      "days_on_market": 106,
       "monthly_fees": 2500,
       "monthly_taxes": 2577,
       "maintenance": null,
@@ -5819,7 +5819,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-03-04"
     },
@@ -6245,7 +6245,7 @@
       "price_per_sqft": 2708,
       "type": "condo",
       "year_built": 2019,
-      "days_on_market": 103,
+      "days_on_market": 107,
       "monthly_fees": 5412,
       "monthly_taxes": 3056,
       "maintenance": null,
@@ -6262,7 +6262,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-03-03",
       "building_name": null
@@ -6305,12 +6305,12 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-18",
       "off_market_date": "2026-06-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": "Viscaya Condominium"
     },
     {
@@ -6351,7 +6351,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-27"
     },
@@ -7029,12 +7029,12 @@
         }
       ],
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-11-14",
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-18"
     },
     {
       "listing_type": "sale",
@@ -7735,7 +7735,7 @@
       "price_per_sqft": 2700,
       "type": "condo",
       "year_built": 2013,
-      "days_on_market": 191,
+      "days_on_market": 192,
       "monthly_fees": 2916,
       "monthly_taxes": 2824,
       "maintenance": null,
@@ -7744,6 +7744,12 @@
       "agent_email": "myofficenyc@gmail.com",
       "agent_firm": "Natalia Harrison, LREB",
       "price_history": [
+        {
+          "date": "2026-06-15",
+          "price": 3780000,
+          "event": "OFF_MARKET",
+          "broker": "Natalia Harrison, LREB"
+        },
         {
           "date": "2026-02-07",
           "price": 3780000,
@@ -7758,10 +7764,13 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-12-05",
-      "building_name": "The Touraine"
+      "building_name": "The Touraine",
+      "off_market_date": "2026-06-15",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-06-18"
     },
     {
       "listing_type": "sale",
@@ -7974,7 +7983,7 @@
       "price_per_sqft": 1402,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 28,
+      "days_on_market": 29,
       "listed_date": "2026-05-20",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -8993,12 +9002,12 @@
         }
       ],
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-09",
       "off_market_date": "2026-05-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": "The Chatham"
     },
     {
@@ -9045,12 +9054,12 @@
         }
       ],
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-06",
       "off_market_date": "2026-05-31",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-18"
     },
     {
       "listing_type": "sale",
@@ -9242,7 +9251,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-03-07"
     },
@@ -9329,7 +9338,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-10-09",
       "building_name": null
@@ -9983,7 +9992,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-03-05"
     },
@@ -10962,7 +10971,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-09-03"
     },
@@ -11394,7 +11403,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-03-11"
     },
@@ -11618,7 +11627,7 @@
       "price_per_sqft": 2296,
       "type": "condo",
       "year_built": 1927,
-      "days_on_market": 123,
+      "days_on_market": 127,
       "monthly_fees": 2578,
       "monthly_taxes": 1704,
       "maintenance": null,
@@ -11641,7 +11650,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-11",
       "building_name": "Philip House"
@@ -11684,7 +11693,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-27"
     },
@@ -11824,7 +11833,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-20",
       "sqft_estimated": true,
@@ -11927,12 +11936,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-12-29",
       "off_market_date": "2026-05-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": "Carlton House"
     },
     {
@@ -11995,7 +12004,7 @@
       "price_per_sqft": 2515,
       "type": "coop",
       "year_built": 1951,
-      "days_on_market": 186,
+      "days_on_market": 190,
       "monthly_fees": 4562,
       "monthly_taxes": null,
       "maintenance": 4745,
@@ -12024,7 +12033,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-12-10",
       "building_name": "Carlton House"
@@ -12044,7 +12053,7 @@
       "price_per_sqft": 2325,
       "type": "condo",
       "year_built": 1973,
-      "days_on_market": 108,
+      "days_on_market": 112,
       "monthly_fees": 2972,
       "monthly_taxes": 2378,
       "maintenance": null,
@@ -12067,7 +12076,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-26",
       "building_name": "Park 900"
@@ -13682,7 +13691,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-12-19"
     },
@@ -14067,7 +14076,7 @@
         }
       ],
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-03-04",
       "sqft_estimated": true,
@@ -14112,7 +14121,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-02"
     },
@@ -14206,7 +14215,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-02"
     },
@@ -14264,7 +14273,7 @@
       "price_per_sqft": 1719,
       "type": "coop",
       "year_built": 1958,
-      "days_on_market": 220,
+      "days_on_market": 224,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 704,
@@ -14287,7 +14296,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-11-06",
       "building_name": "Cumberland House"
@@ -14336,12 +14345,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-11-05",
       "off_market_date": "2026-04-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-18"
     },
     {
       "listing_type": "sale",
@@ -14755,7 +14764,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-09-08"
     },
@@ -15627,12 +15636,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-21",
       "off_market_date": "2026-04-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-18"
     },
     {
       "listing_type": "sale",
@@ -15694,7 +15703,7 @@
       "price_per_sqft": 1719,
       "type": "coop",
       "year_built": 1922,
-      "days_on_market": 139,
+      "days_on_market": 143,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 6904,
@@ -15717,7 +15726,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-26",
       "sqft_estimated": true,
@@ -15813,7 +15822,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-06",
       "building_name": "Carnegie Park Condominium"
@@ -16658,7 +16667,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-03-17"
     },
@@ -16787,7 +16796,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-12"
     },
@@ -16829,12 +16838,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-29",
       "off_market_date": "2026-06-10",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-18"
     },
     {
       "listing_type": "sale",
@@ -16880,7 +16889,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-10-16"
     },
@@ -18181,7 +18190,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-13",
       "sqft_estimated": true,
@@ -18189,7 +18198,7 @@
       "sqft_estimate_note": "Room sum + 5% walls; blue exterior lines fragment polygon; guest suite + den; ~2,300 sqft",
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15"
+      "pass2_confirmed_at": "2026-06-18"
     },
     {
       "listing_type": "sale",
@@ -18229,7 +18238,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-10"
     },
@@ -18677,12 +18686,12 @@
         }
       ],
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-05",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": "Bridge Tower Place"
     },
     {
@@ -19076,7 +19085,7 @@
         }
       ],
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-12-05"
     },
@@ -19275,7 +19284,7 @@
       "price_per_sqft": 1630,
       "type": "condo",
       "year_built": 1951,
-      "days_on_market": 245,
+      "days_on_market": 248,
       "monthly_fees": 2127,
       "monthly_taxes": 1752,
       "maintenance": null,
@@ -19284,6 +19293,12 @@
       "agent_email": "caroline.holl@corcoran.com",
       "agent_firm": "Corcoran",
       "price_history": [
+        {
+          "date": "2026-06-17",
+          "price": 2195000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
         {
           "date": "2026-02-02",
           "price": 2195000,
@@ -19310,7 +19325,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2025-09-25",
       "building_name": "Manhattan House"
@@ -19517,12 +19532,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-29",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-15",
+      "pass2_confirmed_at": "2026-06-18",
       "building_name": "The Channel Club"
     },
     {
@@ -19576,7 +19591,7 @@
       "price_per_sqft": 1668,
       "type": "condo",
       "year_built": 2005,
-      "days_on_market": 114,
+      "days_on_market": 118,
       "monthly_fees": 2396,
       "monthly_taxes": 1645,
       "maintenance": null,
@@ -19599,7 +19614,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-20",
       "building_name": "The Laurel"
@@ -19811,7 +19826,7 @@
       "price_per_sqft": null,
       "type": "condo",
       "year_built": 1925,
-      "days_on_market": 112,
+      "days_on_market": 116,
       "monthly_fees": 1844,
       "monthly_taxes": 942,
       "maintenance": null,
@@ -19834,7 +19849,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-22"
     },
@@ -19937,7 +19952,7 @@
       "price_per_sqft": 1540,
       "type": "condo",
       "year_built": 1951,
-      "days_on_market": 136,
+      "days_on_market": 140,
       "monthly_fees": 2021,
       "monthly_taxes": 1722,
       "maintenance": null,
@@ -19966,7 +19981,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-01-29",
       "building_name": "Manhattan House"
@@ -20420,7 +20435,7 @@
       "price_per_sqft": 1079,
       "type": "coop",
       "year_built": 1928,
-      "days_on_market": 101,
+      "days_on_market": 105,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4621,
@@ -20443,7 +20458,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-03-05"
     },
@@ -20559,7 +20574,7 @@
       "price_per_sqft": 1373,
       "type": "condo",
       "year_built": 2005,
-      "days_on_market": 107,
+      "days_on_market": 111,
       "monthly_fees": 2225,
       "monthly_taxes": 2053,
       "maintenance": null,
@@ -20582,7 +20597,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-06-18",
       "status": "active",
       "listed_date": "2026-02-27",
       "building_name": "Cielo Condominium"
@@ -20973,7 +20988,7 @@
       "url": "https://streeteasy.com/rental/5049436",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "last_pass1": "2026-06-17",
+      "last_pass1": "2026-06-18",
       "days_on_market": 19,
       "building_name": "Maison 78"
     },
@@ -20992,7 +21007,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1910,
-      "days_on_market": 34,
+      "days_on_market": 36,
       "listed_date": "2026-05-13",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21018,7 +21033,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-17",
+      "last_pass1": "2026-06-18",
       "last_pass2": "2026-06-11",
       "status": "active"
     },
@@ -21280,7 +21295,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1984,
-      "days_on_market": 27,
+      "days_on_market": 31,
       "listed_date": "2026-05-18",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21506,6 +21521,46 @@
       "last_pass2": "2026-06-17",
       "status": "active",
       "building_name": "The Clare"
+    },
+    {
+      "listing_type": "rent",
+      "id": "5073767",
+      "url": "https://streeteasy.com/rental/5073767",
+      "building": "188 East 78th Street",
+      "building_name": "The Empire Condominium",
+      "address": "188 East 78th Street",
+      "unit": "#11A",
+      "neighborhood": "",
+      "price": 18000,
+      "sqft": 0,
+      "beds": 3,
+      "baths": 3.5,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": 0,
+      "days_on_market": 3,
+      "listed_date": "2026-06-15",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-06-15",
+          "price": 18000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-06-18",
+      "last_pass2": "2026-06-18",
+      "status": "active"
     },
     {
       "listing_type": "rent",
@@ -21750,7 +21805,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1928,
-      "days_on_market": 21,
+      "days_on_market": 23,
       "listed_date": "2026-05-26",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -22508,7 +22563,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-17",
+      "last_pass1": "2026-06-18",
       "last_pass2": "2026-06-06",
       "status": "active",
       "building_name": "The Duchess"
@@ -22851,7 +22906,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1927,
-      "days_on_market": 5,
+      "days_on_market": 6,
       "listed_date": "2026-06-12",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -23624,7 +23679,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1960,
-      "days_on_market": 16,
+      "days_on_market": 20,
       "listed_date": "2026-05-29",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24132,7 +24187,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": null,
-      "days_on_market": 41,
+      "days_on_market": 42,
       "listed_date": "2026-05-07",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24189,7 +24244,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": null,
-      "days_on_market": 36,
+      "days_on_market": 37,
       "listed_date": "2026-05-12",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24303,7 +24358,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1929,
-      "days_on_market": 30,
+      "days_on_market": 32,
       "listed_date": "2026-05-17",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24323,7 +24378,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-17",
+      "last_pass1": "2026-06-18",
       "last_pass2": "2026-05-22",
       "status": "active"
     },
@@ -24607,7 +24662,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2003,
-      "days_on_market": 15,
+      "days_on_market": 17,
       "listed_date": "2026-06-01",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25119,7 +25174,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1929,
-      "days_on_market": 1,
+      "days_on_market": 3,
       "listed_date": "2026-06-15",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25503,7 +25558,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1964,
-      "days_on_market": 0,
+      "days_on_market": 2,
       "listed_date": "2026-06-16",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25980,7 +26035,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2021,
-      "days_on_market": 0,
+      "days_on_market": 1,
       "listed_date": "2026-06-17",
       "monthly_fees": null,
       "monthly_taxes": null,
