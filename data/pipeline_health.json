@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-06-21",
+    "pass1_sale": 202,
+    "pass1_rent": 34,
+    "active": 531,
+    "delisted": 0,
+    "status": "ok"
+  },
+  {
     "date": "2026-06-20",
     "pass1_sale": 201,
     "pass1_rent": 32,
