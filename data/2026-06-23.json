@@ -1478,7 +1478,7 @@
         }
       ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-23",
       "building_name": "The Brompton"
@@ -1790,7 +1790,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-09"
     },
@@ -2203,61 +2203,6 @@
     },
     {
       "listing_type": "sale",
-      "id": "1804578",
-      "url": "https://streeteasy.com/sale/1804578",
-      "building": "Gracie Green at 427 East 90",
-      "address": "427 East 90th Street",
-      "unit": "PH11",
-      "neighborhood": "Yorkville",
-      "price": 4595000,
-      "sqft": 2414,
-      "beds": 3,
-      "baths": 2.5,
-      "price_per_sqft": 1903,
-      "type": "condo",
-      "year_built": 2021,
-      "days_on_market": 161,
-      "monthly_fees": 3755,
-      "monthly_taxes": 5713,
-      "maintenance": null,
-      "agent_name": "Yair Tavivian",
-      "agent_phone": "(212) 319-4109",
-      "agent_email": "ytavivian@elliman.com",
-      "agent_firm": "Douglas Elliman",
-      "price_history": [
-        {
-          "date": "2026-04-14",
-          "price": 4595000,
-          "event": "PRICE_DECREASE",
-          "broker": "Douglas Elliman"
-        },
-        {
-          "date": "2026-03-12",
-          "price": 4795000,
-          "event": "PRICE_DECREASE",
-          "broker": "Douglas Elliman"
-        },
-        {
-          "date": "2026-01-13",
-          "price": 4950000,
-          "event": "LISTED",
-          "broker": "Douglas Elliman"
-        },
-        {
-          "date": "2023-09-18",
-          "price": 5990000,
-          "event": "LISTED",
-          "broker": "Corcoran"
-        }
-      ],
-      "last_pass1": "2026-06-23",
-      "last_pass2": "2026-04-21",
-      "status": "active",
-      "listed_date": "2026-01-13",
-      "building_name": "Gracie Green at 427 East 90"
-    },
-    {
-      "listing_type": "sale",
       "id": "1803569",
       "url": "https://streeteasy.com/sale/1803569",
       "building": "305 East 61st Street",
@@ -2581,7 +2526,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-20"
     },
@@ -2623,7 +2568,7 @@
         }
       ],
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-19",
       "building_name": "The Seville"
@@ -2980,6 +2925,61 @@
     },
     {
       "listing_type": "sale",
+      "id": "1804578",
+      "url": "https://streeteasy.com/sale/1804578",
+      "building": "427 East 90th Street",
+      "address": "427 East 90th Street",
+      "unit": "#PH11",
+      "neighborhood": "",
+      "price": 4495000,
+      "sqft": 2414,
+      "beds": 3,
+      "baths": 2.5,
+      "price_per_sqft": 1862,
+      "type": "condo",
+      "year_built": 2021,
+      "days_on_market": 161,
+      "monthly_fees": 3904,
+      "monthly_taxes": 5401,
+      "maintenance": null,
+      "agent_name": "Yair Tavivian",
+      "agent_phone": "(212) 319-4109",
+      "agent_email": "ytavivian@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-06-23",
+          "price": 4495000,
+          "event": "",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-04-14",
+          "price": 4595000,
+          "event": "",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-03-12",
+          "price": 4795000,
+          "event": "",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-01-13",
+          "price": 4950000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
+      "last_pass1": "2026-06-23",
+      "last_pass2": "2026-06-23",
+      "status": "active",
+      "listed_date": "2026-01-13",
+      "building_name": "Gracie Green at 427 East 90"
+    },
+    {
+      "listing_type": "sale",
       "id": "1818078",
       "url": "https://streeteasy.com/sale/1818078",
       "building": "The Legacy",
@@ -3030,7 +3030,7 @@
       "price_per_sqft": 3135,
       "type": "coop",
       "year_built": 1951,
-      "days_on_market": 98,
+      "days_on_market": 99,
       "monthly_fees": 5639,
       "monthly_taxes": null,
       "maintenance": 5639,
@@ -3047,7 +3047,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-16",
       "building_name": "Carlton House"
@@ -3434,7 +3434,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-30"
     },
@@ -4054,7 +4054,7 @@
         }
       ],
       "last_pass1": "2026-05-13",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-17"
     },
@@ -4096,12 +4096,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-05",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-22"
+      "pass2_confirmed_at": "2026-06-23"
     },
     {
       "listing_type": "sale",
@@ -5394,7 +5394,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-31"
     },
@@ -5785,12 +5785,12 @@
         }
       ],
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-07",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-22"
+      "pass2_confirmed_at": "2026-06-23"
     },
     {
       "listing_type": "sale",
@@ -5875,7 +5875,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-26"
     },
@@ -5917,12 +5917,12 @@
         }
       ],
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-17",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-22"
+      "pass2_confirmed_at": "2026-06-23"
     },
     {
       "listing_type": "sale",
@@ -5962,7 +5962,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-16",
       "building_name": "The Verona"
@@ -6246,7 +6246,7 @@
       "price_per_sqft": 987,
       "type": "coop",
       "year_built": 1912,
-      "days_on_market": 62,
+      "days_on_market": 63,
       "listed_date": "2026-04-21",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -6264,7 +6264,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "description": "At the distinguished corner of Park Avenue and East 78th Street, within the elegant prewar cooperative 875 Park Avenue, this extraordinary 4,000+ square-foot maisonette presents a rare opportunity to create a grand Upper East Side residence while enjoying a level of flexibility seldom found in Park Avenue cooperatives.\n\nCurrently configured as a live-work residence with a medical office, Apartment 1C/1D occupies an elevated position above street level with 70 feet of frontage on Park Avenue and offers the privacy and scale of a townhouse paired with the prestige and services of a full-service Park Avenue building. The property features its own private entrance directly on Park Avenue, providing discreet access in addition to the building's full-service lobby entrance.\n\nBehind the doors lies a sprawling and highly adaptable floor plan capable of accommodating a variety of configurations. While the space is presently arranged to support a medical practice alongside residential quarters, the apartment may be reimagined as a magnificent full-floor residence with grand entertaining rooms, multiple bedrooms, a library, and expansive living and dining spaces befitting a classic Park Avenue lifestyle.\n\nThe maisonette's elevated position allows for excellent privacy while maintaining the scale and architectural presence associated with the finest prewar cooperatives. Generous proportions, abundant natural light, and flexible room divisions provide a blank canvas for architects and designers to craft a truly bespoke home.\n\nEnhancing the offering further, two separate staff rooms are also available for purchase. These additional spaces offer the possibility to expand the primary residence or create dedicated staff accommodations and may potentially be combined with the main apartment, subject to board approval.\n\nOpportunities of this scale and flexibility on Park Avenue are rare. A distinctive maisonette with private entry and remarkable adaptability, offering the chance to create a grand residence in one of the Upper East Side's most prestigious addresses.",
       "last_partial_pass2": "2026-05-02",
@@ -6674,7 +6674,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-30",
       "building_name": "Richmond Condominium"
@@ -7686,7 +7686,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-26"
     },
@@ -8010,7 +8010,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-08",
       "building_name": "The Harper"
@@ -8173,7 +8173,7 @@
         }
       ],
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-07"
     },
@@ -9304,7 +9304,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-20"
     },
@@ -9779,7 +9779,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-07",
       "building_name": "Park 900"
@@ -9870,7 +9870,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-02",
       "sqft_estimated": true,
@@ -9915,7 +9915,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-05"
     },
@@ -10795,7 +10795,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-08",
       "sqft_estimated": true,
@@ -10840,7 +10840,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-25",
       "sqft_estimated": true,
@@ -11109,7 +11109,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-02",
       "sqft_estimated": true,
@@ -11244,7 +11244,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-09"
     },
@@ -11286,7 +11286,7 @@
         }
       ],
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-06",
       "building_name": "Maison East"
@@ -11554,12 +11554,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-18",
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-22",
+      "pass2_confirmed_at": "2026-06-23",
       "building_name": "Manhattan House"
     },
     {
@@ -11645,12 +11645,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-23",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-22",
+      "pass2_confirmed_at": "2026-06-23",
       "building_name": "Carlton House"
     },
     {
@@ -12763,12 +12763,12 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-11",
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-22"
+      "pass2_confirmed_at": "2026-06-23"
     },
     {
       "listing_type": "sale",
@@ -12894,7 +12894,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-16"
     },
@@ -13199,7 +13199,7 @@
         }
       ],
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-13",
       "sqft_estimated": true,
@@ -13342,7 +13342,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-13"
     },
@@ -13471,7 +13471,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-06",
       "sqft_estimated": true,
@@ -14397,7 +14397,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-14"
     },
@@ -14817,7 +14817,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-13"
     },
@@ -15482,12 +15482,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-22"
+      "pass2_confirmed_at": "2026-06-23"
     },
     {
       "listing_type": "sale",
@@ -16345,7 +16345,7 @@
         }
       ],
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-18"
     },
@@ -17859,12 +17859,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-23",
       "off_market_date": "2026-05-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-22"
+      "pass2_confirmed_at": "2026-06-23"
     },
     {
       "listing_type": "sale",
@@ -18096,7 +18096,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-06"
     },
@@ -18452,7 +18452,7 @@
         }
       ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-24"
     },
@@ -18744,7 +18744,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1962,
-      "days_on_market": 83,
+      "days_on_market": 84,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4185,
@@ -18761,7 +18761,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-31"
     },
@@ -18803,7 +18803,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-16"
     },
@@ -18906,7 +18906,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1962,
-      "days_on_market": 81,
+      "days_on_market": 82,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 3569,
@@ -18929,7 +18929,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-02"
     },
@@ -19324,7 +19324,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1963,
-      "days_on_market": 74,
+      "days_on_market": 75,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 3846,
@@ -19341,7 +19341,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-09"
     },
@@ -19426,7 +19426,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-03"
     },
@@ -19576,7 +19576,7 @@
         }
       ],
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-25"
     },
@@ -19793,7 +19793,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-17"
     },
@@ -19835,12 +19835,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-22"
+      "pass2_confirmed_at": "2026-06-23"
     },
     {
       "listing_type": "sale",
@@ -19959,7 +19959,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-02"
     },
@@ -20001,7 +20001,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-23",
       "sqft_estimated": true,
@@ -20046,7 +20046,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-16"
     },
@@ -20094,7 +20094,7 @@
         }
       ],
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-12"
     },
@@ -20204,7 +20204,7 @@
       "price_per_sqft": 1079,
       "type": "coop",
       "year_built": 1928,
-      "days_on_market": 109,
+      "days_on_market": 110,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4621,
@@ -20227,7 +20227,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-05"
     },
@@ -20281,7 +20281,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-23",
       "building_name": "The Kingsley"
@@ -20301,7 +20301,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1922,
-      "days_on_market": 77,
+      "days_on_market": 78,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 3360,
@@ -20324,7 +20324,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-04-06"
     },
@@ -20392,7 +20392,7 @@
       "price_per_sqft": 1386,
       "type": "coop",
       "year_built": 1928,
-      "days_on_market": 104,
+      "days_on_market": 105,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 10391,
@@ -20415,7 +20415,7 @@
         }
       ],
       "last_pass1": "2026-05-05",
-      "last_pass2": "2026-06-22",
+      "last_pass2": "2026-06-23",
       "status": "active",
       "listed_date": "2026-03-10",
       "building_name": "Sherry Netherland"
@@ -22480,7 +22480,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-22",
+      "last_pass1": "2026-06-23",
       "last_pass2": "2026-06-23",
       "status": "active",
       "off_market_date": "2026-05-04",
@@ -23740,7 +23740,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1924,
-      "days_on_market": 11,
+      "days_on_market": 12,
       "listed_date": "2026-06-11",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -23982,7 +23982,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2001,
-      "days_on_market": 0,
+      "days_on_market": 1,
       "listed_date": "2026-06-22",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24224,7 +24224,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": null,
-      "days_on_market": 46,
+      "days_on_market": 47,
       "listed_date": "2026-05-07",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25681,7 +25681,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1959,
-      "days_on_market": 3,
+      "days_on_market": 4,
       "listed_date": "2026-06-19",
       "monthly_fees": null,
       "monthly_taxes": null,
