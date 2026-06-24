@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-06-24",
-  "listing_count": 536,
+  "listing_count": 537,
   "sale_count": 393,
-  "rental_count": 143,
+  "rental_count": 144,
   "delisted_count": 0,
   "run_cost_usd": 0.0,
   "mode": "both",
@@ -820,7 +820,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1907,
-      "days_on_market": 43,
+      "days_on_market": 44,
       "listed_date": "2026-05-11",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -900,7 +900,7 @@
       "price_per_sqft": 1653,
       "type": "condo",
       "year_built": 1996,
-      "days_on_market": 28,
+      "days_on_market": 29,
       "listed_date": "2026-05-26",
       "monthly_fees": 5503,
       "monthly_taxes": 2901,
@@ -928,7 +928,7 @@
     {
       "listing_type": "sale",
       "id": "1828296",
-      "url": "https://streeteasy.com/sale/1829938",
+      "url": "https://streeteasy.com/sale/1828296",
       "building": "188 East 76th Street",
       "address": "188 East 76th Street",
       "unit": "#5ABC",
@@ -949,14 +949,7 @@
       "agent_phone": null,
       "agent_email": "djohnson@elliman.com",
       "agent_firm": "Douglas Elliman",
-      "price_history": [
-        {
-          "date": "2026-05-26",
-          "price": 4995000,
-          "event": "LISTED",
-          "broker": "Compass"
-        }
-      ],
+      "price_history": [],
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
@@ -1499,7 +1492,7 @@
       "price_per_sqft": 1999,
       "type": "coop",
       "year_built": 1994,
-      "days_on_market": 7,
+      "days_on_market": 8,
       "listed_date": "2026-06-16",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -1906,7 +1899,7 @@
       "price_per_sqft": 2969,
       "type": "condo",
       "year_built": 1915,
-      "days_on_market": 63,
+      "days_on_market": 64,
       "listed_date": "2026-04-21",
       "monthly_fees": 3514,
       "monthly_taxes": 2199,
@@ -1924,7 +1917,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "description": "Perched on the 10th floor of this distinguished white-glove pre-war condominium, this beautifully appointed corner residence is bathed in natural light and offers a refined, contemporary aesthetic while preserving its classic architectural charm.\n\nA gracious entrance gallery welcomes you into the home, immediately conveying a sense of scale and elegance, with soaring 10-foot ceilings and beautifully proportioned rooms throughout.\n\nThe expansive, light-filled corner living room anchors the residence, offering a sophisticated blend of timeless charm and modern comfort. Rich, dark-stained hardwood floors add depth and contrast, while large windows invite abundant natural light and provide open city views. \n\nThoughtfully designed built-ins frame a charming fireplace, creating a warm and inviting focal point for both everyday living and entertaining.\nSeamlessly connected to the living room, the gracious dining room provides an elegant setting for entertaining. A generous window fills the space with natural light, while integrated millwork and shelving offer both display and storage.\n\nPrivately situated in the eastern wing, both bedrooms enjoy open eastern and southern exposures, filling the spaces with soft natural light. Each bedroom features an ensuite bathroom and generous closet space.\n\nThe sleek, efficiently designed kitchen offers a clean, modern aesthetic. Custom white cabinetry provides abundant storage, beautifully complemented by dark stone countertops, and the space is equipped with a washer and dryer for added convenience.\n\n525 Park Avenue is a premier 14-story pre-war condominium designed by the renowned architectural firm Schwartz & Gross and completed in 1915 in the Italian Palazzo style. Ideally situated on Park Avenue at 61st Street, in the heart of one of Manhattan\u2019s most prestigious and sought-after neighborhoods, the building offers full-service white-glove amenities and a level of privacy rarely found on Park Avenue.\n\nResidents enjoy immediate proximity to Central Park, as well as the city\u2019s finest restaurants, caf\u00e9s, boutiques, galleries, and world-class museums. The building is also notably flexible, permitting financing, LLC ownership, and purchases in trust.\n\nThere is a Working Capital Contribution equal to one month\u2019s common charges and real estate taxes payable by the purchaser.\n\nApartment 10D is also available for sale and could be a wonderful opportunity for a buyer seeking additional space.",
       "last_partial_pass2": "2026-05-02",
@@ -1945,7 +1938,7 @@
       "price_per_sqft": 2244,
       "type": "condo",
       "year_built": 2025,
-      "days_on_market": 46,
+      "days_on_market": 47,
       "listed_date": "2026-05-08",
       "monthly_fees": 2018,
       "monthly_taxes": 2076,
@@ -2443,12 +2436,12 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-16",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "The Parc V"
     },
     {
@@ -2672,7 +2665,7 @@
       "price_per_sqft": 2647,
       "type": "condo",
       "year_built": 2000,
-      "days_on_market": 60,
+      "days_on_market": 61,
       "listed_date": "2026-04-24",
       "monthly_fees": 3995,
       "monthly_taxes": 1896,
@@ -2690,7 +2683,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "description": "The Manhattan Residence of Robert A. M. Stern\n\nA rare and distinguished offering, this exceptional two-bedroom residence was the private home of the late, renowned architect Robert A. M. Stern. Defined by grand scale, refined detail, and serene outlooks, the apartment is graced with soaring 11-foot ceilings and dramatic floor-to-ceiling French windows overlooking one of Manhattan's most beautiful private landscaped gardens.\n\nA gracious 20-foot gallery creates a striking first impression and leads to an impressive 35-foot-long great room, where natural light pours in from three exposures. At its northern end, oversized French doors open onto a charming terrace-an idyllic setting for quiet moments or entertaining-enjoying tranquil garden views below.\n\nOccupying the south wing, the primary suite is a peaceful retreat, featuring a generous dressing room and an expansive en-suite bath. With its lovely western exposures over the garden, the suite is both sunlit and pin-drop quiet.\n\nAcross the gallery, a handsome library or study-lined with custom floor-to-ceiling bookshelves-offers flexibility as a guest bedroom, complemented by an adjacent full bath.\n\nThe beautifully proportioned, 17-foot windowed kitchen is appointed with abundant counter space and top-tier appliances from Miele, Thermador, and Sub-Zero.\n\nThe Chatham, a distinguished white-glove condominium designed by Robert A. M. Stern, offers residents an exceptional level of service and amenities, including a full-time doorman, concierge, state-of-the-art fitness center, and on-site garage. Ideally located in the heart of the Upper East Side, the finest dining, shopping, and cultural institutions are just moments away.",
       "last_partial_pass2": "2026-05-02",
@@ -3145,14 +3138,14 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "description": "Corner 2 bedroom w/ soaring ceilings\nThis sprawling, 1860 sqft residence features voluminous 19\u2019 ceilings and frames panoramic views of the Manhattan skyline to the North and West through floor-to-ceiling windows. The refined primary suite is equally spectacular with a spa inspired en suite bath and generously proportioned wardrobe.\n\nIn an era of luxury, Elena Frampton\u2019s interior creation gives way to the power of the unexpected. Tailored design is enriched with contrast and a layering of organic materials. A distinct spirit and style \u2013 together monumental, seductive and graciously proportioned with unparalleled, loft-like ceiling heights. Future-forward technology is woven throughout with high performance floor-to-ceiling windows, bespoke air systems and hydronic, radiant heated floors.\n\nPerfectly framed to inspire, the residences atop The Leyton offer the pinnacle of viewing pleasure. Glass corner living spaces, expansive windows and private outdoor terraces offer residents an unparalleled perspective above the Upper East Side. Northern and Western vistas capture the verdant green canopy of Central Park while Eastern views offer dramatic sunsets over the East River. By evening, lights glitter from the beaux-arts era Queensboro Bridge.\n\nSeamlessly connected to the lofty great room, the custom Poggenpohl kitchen evokes a clean, contemporary feeling. Rich personality is injected into the design scheme with polished marble countertops, sleek functionality and an integrated Gaggenau appliance suite. Every element of these gracious, well-appointed kitchens is curated for the culinary creative. The primary suite is thoughtfully oriented, ensuring dramatic sunrise to sunset exposures. Spacious walk-in wardrobes, an ensuite primary bathroom and radiant-heated floors throughout enhance the ambience of this haven. The distinctive powder room is lined with Aged Dark Nature slab walls and a marble mosaic floor, and accessorized with Fantini fixtures.\n\nSumptuous, out of the ordinary and dignified, The Leyton offers the luxury of comfort, up high. An extraordinary collection of 38 residences nestled in Manhattan\u2019s epicenter, overlooking Central Park, the East River and surrounding cityscape. With a highly visible location off East 63rd Street, The Leyton artfully nods to its landmark neighbors. Architect Manuel Glas applies classic Deco design, creating a distinctive urbane addition with stunning views and outdoor spaces in one of the most premiere neighborhoods in New York.\n\nAlexandra Champalimaud, revered for her palatial approach to designing the world\u2019s most renowned hotels, crafted the two levels of amenity spaces at The Leyton. Inspired by the Upper East Side\u2019s grande dame boutique hotels, The Leyton embeds a culture of service into every amenity experience beginning with the epically scaled 24-hour attended lobby.\n\nEncompassing the 24th floor, the Brandy Room offers a collection of indoor and outdoor entertaining spaces with sprawling 270-degree vistas of the city skyline. The Living Room features a chalet fireplace surrounded by rich seating and warm lighting leading to a cocktail terrace with Central Park views. Just off the Living Room, the Dining Room offers a table for ten and fully outfitted butler\u2019s pantry that can be reserved for private entertaining. Completing the Brandy Room experience, the sun drenched Solarium unfolds onto the Sun Terrace & Grille with East River views and an al fresco kitchen.\n\nDesigned for the ultimate personal fitness experience, the sunlit Studio pays mindful attention to detail and privacy. State of the art studio and conditioning equipment plus a dedicated stretching area provide and intimate centre for wellness.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "The Leyton"
     },
     {
@@ -4310,7 +4303,7 @@
       "price_per_sqft": 2484,
       "type": "condo",
       "year_built": 1951,
-      "days_on_market": 56,
+      "days_on_market": 57,
       "listed_date": "2026-04-28",
       "monthly_fees": 2662,
       "monthly_taxes": 2210,
@@ -4334,7 +4327,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "description": "PENTHOUSE E2103 | Manhattan House\r\n\r\nRARE OFFERING - This triple-mint penthouse -  part of The Penthouse Collection in the coveted and prestigious Manhattan House Condominium is the definition of elevated luxury\u2014offered for the first time since the sponsor sale. \r\n\r\nMasterfully designed by AD100 visionary Vicente Wolf, this exceptional home embodies quiet luxury at its highest level. Originally conceived as a two-bedroom, two-bath layout, it has been elegantly reimagined to feature a grand primary suite with an extra  bespoke dressing room\u2014 easily adaptable to a third bedroom or private office.\r\n\r\nRESIDENCE HIGHLIGHTS:\r\nBathed in natural light & surrounded by Manhattan skyline views\r\nNorthern & Southern Exposures\r\nPenthouses offer extra height 9 foot ceilings with integrated Lutron lighting system and recessed lighting. \r\nCustom millwork, built-ins, and exceptional dressing/closet space\r\nArt Deco wood-burning fireplace with bespoke stainless steel surround\r\nSpa-caliber primary bath with Waterworks soaking tub, Dornbracht fixtures, and custom bleached oak vanity\r\nDesigner kitchen with honed Basaltina countertops, custom oak & stainless cabinetry, and Wolf/Miele appliances \r\nIn-Unit Washer/Dryer\r\nWide-plank rift-cut white oak floors with custom gray stain and Basaltina inlays\r\nMotorized window treatments throughout\r\nOffered unfurnished, or with curated art and furniture priced separately.\r\nA storage unit is included in the sale! \r\n\r\nTHE MANHATTAN HOUSE:\r\nIconic and Prestigious Full-Service Luxury Living\r\nGrand glass-enclosed lobby with porte-coch\u00e8re arrival\r\nPrivate landscaped gardens\u2014among the largest in Manhattan\r\n24-hour doorman, concierge & resident manager\r\nThe Manhattan Club: ~10,000 sq ft rooftop lounge with sweeping skyline views\r\nState-of-the-art fitness center & on-site parking\r\nValet, dry cleaning, playroom, bike storage & additional storage\r\nParking in the building\r\n\r\nOffered unfurnished, or furnished with fine art and furniture priced separately.\r\nA storage unit is included in the sale! \r\n\r\nINTERESTED IN THE MANHATTAN HOUSE? - CONTACT DEVIN & KELLY - ON & OFF MARKET OPPORTUNITIES!",
       "last_partial_pass2": "2026-05-02",
@@ -4380,7 +4373,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "description": "Perfectly located on 72nd Street and Fifth Avenue, this splendid residence offers the rare and fortunate combination of gracefully-scaled pre-war sensibility and a highly sophisticated contemporary aesthetic.  Orchestrated by an Architectural Digest and NYT-featured designer, this meticulous and thoughtful renovation affords every modern convenience.\n\nAccessed via a semi-private elevator landing, a stylish rectangular Gallery with a graphically-patterned marble floor and paired sculptural ceiling leads to the expansive Living Room/Dining room with very high ceilings and glorious open southern outlooks over the gorgeous landmarked townhouses along East 72nd Street and glimpses of Central Park.  Nearby, there is a pristine chef\u2019s kitchen with quartzite counters, custom ash cabinetry, and a panoply of state-of-the-art Miele and Sub-Zero appliances.  An exquisite marble Powder Room and copious closets are accessible from the Galley.  \n\nBeyond, the private quarters are comprised of a Primary Bedroom suite, replete with a spacious Dressing Room with thoughtfully-designed custom fittings and an ample and very glamorous marble Bathroom featuring a separate tub and walk-in shower.  There is one additional Bedroom, a handsome marble bathroom, and a convenient Laundry Room.  \n\nThroughout, this perfectly-maintained, mint-condition apartment benefits from multiple-zone, remotely-operated HVAC, very high ceilings, impeccable new hardwood and marble floors, remote-control sheer and black-out shades, Lutron lighting and Sonos sound systems, and high-performance, acoustically-engineered windows. \n \nOriginally conceived in 1919 by Fred F. French Company and modified to its current design in 1959, 910 Fifth Avenue is a coveted white-glove cooperative with top services and amenities, as well as an ideal location just moments from Central Park.  Impeccable staffing includes a full-time doorman, porters, and a highly-regarded resident manager.   Residents enjoy a wide host of amenities, including a private fitness center, bicycle and pram storage, and a generously-reduced rate at the on-site parking garage.  Please note that 910 Fifth Avenue is a pet-free building.",
       "last_partial_pass2": "2026-05-02",
@@ -4980,7 +4973,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1960,
-      "days_on_market": 6,
+      "days_on_market": 7,
       "listed_date": "2026-06-17",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -5042,7 +5035,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-15",
       "building_name": null
@@ -5170,7 +5163,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -5259,7 +5252,7 @@
         }
       ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-18",
       "building_name": "Evans Tower Condominium"
@@ -5830,12 +5823,12 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-14",
       "off_market_date": "2026-05-19",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "sale",
@@ -6396,7 +6389,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -6454,7 +6447,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1929,
-      "days_on_market": 25,
+      "days_on_market": 26,
       "listed_date": "2026-05-29",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -6493,7 +6486,7 @@
       "price_per_sqft": 1328,
       "type": "condo",
       "year_built": 1986,
-      "days_on_market": 15,
+      "days_on_market": 16,
       "listed_date": "2026-06-08",
       "monthly_fees": 6870,
       "monthly_taxes": 4179,
@@ -6620,7 +6613,7 @@
       "price_per_sqft": 2390,
       "type": "condo",
       "year_built": 2023,
-      "days_on_market": 102,
+      "days_on_market": 103,
       "listed_date": "2026-03-13",
       "monthly_fees": 2509,
       "monthly_taxes": 2595,
@@ -7199,7 +7192,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "description": "THE APARTMENT \n\nDesigned in 1923 by Rosario Candela-the preeminent architect of New York's great apartment houses-1105 Park Avenue, Apartment 11B is a quintessential example of his enduring legacy of proportion, elegance, and quiet grandeur. It also reflects why discerning buyers will often wait years for the opportunity to acquire a Candela residence in estate condition-rather than inherit the compromises of a prior renovation.\n\nOffered for the first time in decades, this high-floor home is bathed in natural light, with four principal rooms (and two bathrooms) enjoying open views over Park Avenue- an exposure that has long made the \"B\" line particularly prized.\n\nThe layout is both classic and highly functional. A signature 29-foot gallery-one of Candela's most celebrated design elements-creates a striking entrance and an ideal setting for art and collections.\nThree generously scaled bedrooms are privately set apart from the entertaining rooms, which feel truly expansive with high ceilings, refined architectural detail, and a wood-burning fireplace. A rarely found 44-foot expanse from living room to dining room enhances both scale and flow.\n\nThe rear of the apartment offers meaningful flexibility, including the opportunity to reimagine the kitchen and adjoining staff room into a substantial eat-in kitchen tailored to today's lifestyle. A second generously sized staff room allows for a variety of additional uses, whether as a home office, expanded service area, or a well-appointed laundry room.\n\nTHE BUILDING \n\n1105 Park Avenue is one of Carnegie Hill's most distinguished prewar cooperatives, occupying a prime corner at 89th Street just moments from Central Park, Museum Mile, and the boutiques and restaurants of Madison Avenue, as well as a concentration of the city's finest schools.\n\nThe building offers the level of service and discretion expected of a classic Park Avenue address, with full-time doorman and concierge staff and a live-in resident manager. Amenities include a large fitness center, bicycle room, and private storage for each residence.\n\nOriginally constructed in 1923 and intimate in scale, the cooperative comprises just 57 residences across 14 floors. It permits financing of up to 50% and welcomes pets with Board approval. A 2% flip tax is paid by the purchaser. The building is managed by Brown Harris Stevens.",
       "last_partial_pass2": "2026-05-02",
@@ -7422,14 +7415,14 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "description": "SPONSOR SALE!! NO BOARD APPROVAL NEEDED!\n\nCrisp and contemporary, airy and elegant, this sophisticated, spacious two bedroom, two and a half bath residence blends the peerless elegance and thoughtful proportions of Manuel Glas Architects and the tailored, visionary interior design of Elena Frampton. Impressive ceiling heights, floor-to-ceiling windows and two outdoor terraces offer stunning city skyline views in this dignified residence in the heart of Lenox Hill.\n\nA handsome, welcoming foyer with exquisite herringbone white oak flooring and abundant closet space leads to an expansive great room drenched in natural light. Framed by a wall of east-facing windows, the seamlessly blended living space bathes in natural light all day. The great room is anchored by two North and South facing covered terraces with lovely Manhattan views. Clean lines and considered functionality define the custom Poggenpohl kitchen, with its huge marble waterfall island/breakfast bar and integrated Gaggenau appliances. A natural extension of the kitchen, another adjacent covered terrace faces east and north, allowing for daylong al fresco dining. With a custom marble mosaic floor and Aged Dark Nature marble slab walls, a custom powder room rounds out this unparalleled common area.\n\nThoughtfully tucked away, the private quarters embody the pinnacle of comfort and sophistication. Reached via a long hall of closet space, the palatial primary suite is bright but tranquil, thanks to floor-to-ceiling performance windows. The ensuite, marble-clad bathroom features dual vanity, a soaking tub and separate shower hydronic, radiant heat floors underfoot. The similarly spacious second bedroom offers ample storage space and a spa-like ensuite bathroom.\n\nSitting in the heart of Lenox Hill, The Leyton provides immediate access to the world-class dining, culture and shopping that the Upper East Side is famous for. Access to Central Park is on your doorstep, and public transportation options abound. Renowned for her palatial approach to the world\u2019s most luxurious hotels, two floors of entertaining space were designed by Alexandra Champalimaud, and offer indoor and outdoor dining and entertaining options with 270-degree skyline views.\n\nThe Leyton models a culture of service with a 24-hour attended lobby and a global concierge service available to service your every need. Amenities including a state-of-the-art fitness center, private storage, bicycle storage, a Paw Spa and a dedicated mail and package room are but a few of the luxuries included in this extraordinary building.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "The Leyton"
     },
     {
@@ -7875,7 +7868,7 @@
       "price_per_sqft": 1402,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 34,
+      "days_on_market": 35,
       "listed_date": "2026-05-20",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -7974,12 +7967,12 @@
         }
       ],
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-16",
       "off_market_date": "2026-05-27",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "sale",
@@ -8649,7 +8642,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -8668,7 +8661,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1924,
-      "days_on_market": 1,
+      "days_on_market": 2,
       "listed_date": "2026-06-22",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -8707,7 +8700,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1913,
-      "days_on_market": 201,
+      "days_on_market": 202,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 8629,
@@ -9081,7 +9074,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -9404,7 +9397,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -9462,7 +9455,7 @@
       "price_per_sqft": 1859,
       "type": "condo",
       "year_built": 1986,
-      "days_on_market": 15,
+      "days_on_market": 16,
       "listed_date": "2026-06-08",
       "monthly_fees": 2728,
       "monthly_taxes": 2124,
@@ -9502,7 +9495,7 @@
       "price_per_sqft": 1948,
       "type": "condo",
       "year_built": 2023,
-      "days_on_market": 588,
+      "days_on_market": 589,
       "listed_date": "2024-11-12",
       "monthly_fees": 2558,
       "monthly_taxes": 2645,
@@ -9548,7 +9541,7 @@
       "price_per_sqft": 2126,
       "type": "coop",
       "year_built": 1994,
-      "days_on_market": 64,
+      "days_on_market": 65,
       "monthly_fees": 6307,
       "monthly_taxes": null,
       "maintenance": 6288,
@@ -9686,7 +9679,7 @@
       "price_per_sqft": 2091,
       "type": "coop",
       "year_built": 1969,
-      "days_on_market": 15,
+      "days_on_market": 16,
       "listed_date": "2026-06-08",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -10157,7 +10150,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1924,
-      "days_on_market": 21,
+      "days_on_market": 22,
       "listed_date": "2026-06-02",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -10196,7 +10189,7 @@
       "price_per_sqft": 1366,
       "type": "condo",
       "year_built": 1987,
-      "days_on_market": 20,
+      "days_on_market": 21,
       "listed_date": "2026-06-03",
       "monthly_fees": 4398,
       "monthly_taxes": 3914,
@@ -10237,7 +10230,7 @@
       "price_per_sqft": 1685,
       "type": "condo",
       "year_built": 1967,
-      "days_on_market": 0,
+      "days_on_market": 1,
       "listed_date": "2026-06-23",
       "monthly_fees": 2845,
       "monthly_taxes": 2965,
@@ -10319,7 +10312,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1916,
-      "days_on_market": 22,
+      "days_on_market": 23,
       "listed_date": "2026-06-01",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -10631,7 +10624,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-12",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -10676,11 +10669,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "off_market_date": "2026-06-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "sale",
@@ -10736,7 +10729,7 @@
       "price_per_sqft": 1600,
       "type": "condo",
       "year_built": 1927,
-      "days_on_market": 12,
+      "days_on_market": 13,
       "listed_date": "2026-06-11",
       "monthly_fees": 3697,
       "monthly_taxes": 2680,
@@ -11005,7 +10998,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1958,
-      "days_on_market": 15,
+      "days_on_market": 16,
       "listed_date": "2026-06-08",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -11045,7 +11038,7 @@
       "price_per_sqft": 1690,
       "type": "condo",
       "year_built": 2009,
-      "days_on_market": 0,
+      "days_on_market": 1,
       "listed_date": "2026-06-23",
       "monthly_fees": 3216,
       "monthly_taxes": 2938,
@@ -11084,7 +11077,7 @@
       "price_per_sqft": 1390,
       "type": "condo",
       "year_built": 2005,
-      "days_on_market": 123,
+      "days_on_market": 124,
       "monthly_fees": 3073,
       "monthly_taxes": 3558,
       "maintenance": null,
@@ -11280,7 +11273,7 @@
       "price_per_sqft": 1524,
       "type": "coop",
       "year_built": 1954,
-      "days_on_market": 9,
+      "days_on_market": 10,
       "listed_date": "2026-06-14",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -11601,7 +11594,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "description": "Residence 8A at Carnegie Hill Tower presents a rare opportunity to own a masterfully reimagined home in one of Manhattan\u2019s most distinguished enclaves.\nThis pristine three-bedroom, two-and-a-half-bathroom residence has undergone a comprehensive, top-tier renovation, seamlessly blending timeless elegance with modern sophistication. Every element has been thoughtfully upgraded, including new electrical and plumbing systems, state-of-the-art HVAC, wide-plank flooring, floor-to-ceiling solid core doors, and integrated LED lighting with dimmable controls throughout. A discreet in-unit washer and dryer complete the home\u2019s modern conveniences.\nA gracious entry foyer sets the tone, featuring dual sets of custom closets and refined cove lighting. Beyond, a dramatic 25-by-24-foot great room unfolds, wrapped in a wall of glass with triple exposures to the south, east, and west. The result is extraordinary natural light throughout the day, complemented by open city vistas over prime Carnegie Hill and subtle glimpses of Central Park.\nThe open-concept kitchen has been meticulously redesigned for both everyday living and elegant entertaining, featuring a dining bar, a full suite of Miele appliances, striking quartzite countertops, and bespoke cabinetry of the highest quality.\nThe king-sized primary suite offers a tranquil retreat, complete with a generously proportioned walk-in closet and a spa-like en-suite bath with a large glass-enclosed shower. Two additional bedrooms are equally well-scaled and appointed, each offering excellent proportions, abundant closet space, and custom built-ins with integrated lighting. All closets throughout the residence have been fully customized. A private storage unit transfers with the sale.\nCarnegie Hill Tower is a full-service, 32-story luxury condominium that has recently completed a comprehensive renovation of all common areas, now reflecting the finish of a newly developed property. Residents enjoy an exceptional suite of amenities, including a beautifully landscaped terrace with multiple areas for dining, lounging, and entertaining, as well as a manicured lawn and barbecue facilities. The building also offers a striking lobby set within a serene interior atrium, a fully equipped fitness center, private storage, and on-site parking.\nIdeally positioned in Carnegie Hill, one of Manhattan\u2019s most enduring and refined neighborhoods, the residence is moments from Central Park, including the Great Lawn and the Jacqueline Kennedy Onassis Reservoir, as well as the cultural landmarks of Museum Mile such as the Metropolitan Museum of Art, Cooper Hewitt, Smithsonian Design Museum, and the Solomon R. Guggenheim Museum. The surrounding neighborhood offers a curated lifestyle of fine dining, boutique shopping, gourmet markets, and effortless access to the New York City Subway.\nIn a market where true craftsmanship and scale are increasingly rare, Residence 8A stands apart\u2014a home defined by light, proportion, and enduring luxury, representing Carnegie Hill living at its finest.",
       "last_partial_pass2": "2026-05-02",
@@ -11851,7 +11844,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -12930,7 +12923,7 @@
       "price_per_sqft": 1844,
       "type": "coop",
       "year_built": 1994,
-      "days_on_market": 1,
+      "days_on_market": 2,
       "listed_date": "2026-06-22",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -13089,7 +13082,7 @@
       "price_per_sqft": 1804,
       "type": "condo",
       "year_built": 1929,
-      "days_on_market": 16,
+      "days_on_market": 17,
       "listed_date": "2026-06-07",
       "monthly_fees": 2708,
       "monthly_taxes": 2069,
@@ -13614,7 +13607,7 @@
         }
       ],
       "last_pass1": "2026-05-13",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-20"
     },
@@ -13699,7 +13692,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -14058,7 +14051,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -14354,7 +14347,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1959,
-      "days_on_market": 22,
+      "days_on_market": 23,
       "listed_date": "2026-06-01",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -14393,7 +14386,7 @@
       "price_per_sqft": 965,
       "type": "coop",
       "year_built": 1929,
-      "days_on_market": 19,
+      "days_on_market": 20,
       "listed_date": "2026-06-04",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -14433,7 +14426,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1950,
-      "days_on_market": 8,
+      "days_on_market": 9,
       "listed_date": "2026-06-15",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -15139,7 +15132,7 @@
       "price_per_sqft": 1861,
       "type": "condo",
       "year_built": 1951,
-      "days_on_market": 22,
+      "days_on_market": 23,
       "listed_date": "2026-06-01",
       "monthly_fees": 2435,
       "monthly_taxes": 1996,
@@ -15242,14 +15235,14 @@
         }
       ],
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "description": "Come home to beloved Carnegie Park, and enjoy every 5 star living luxury Manhattan has to offer. This is a rare and coveted opportunity to combine a 1BR/1B with a 2BR/2B next door. Both 612 & 614 are for sale individually, but this would make possible a combination that would seamlessly create a 4BR/3B. All current floor plans for 612 & 614 and a rendering of the potential combination are procured with this listing.\n\nCarnegie Park truly is a special place to call home. Besides the most outstanding staff and Resident manager, services and amenities galore will make for a lavish lifestyle: 24H doorman, but also on site valet parking, a state-of-the art fitness center, a playroom, a spa like yoga center, bike storage, a VIP worthy entertainment lounge with catering kitchen and a 3-lane swimming pool opening onto a private half acre park. From the fully-landscaped rooftop terrace you can take in the breathtaking 360-degree view of Central Park, the East River and the ever changing Midtown skyline. You can also take advantage of a barbecue grill area.\n\nIn the luxurious comfort of both home, you will currently find:\n\n- Desirable loft-like vibes and spectacular oversize panoramic windows flooding the space with light.\n\n- A delightful open Western exposure with wonderful light all day and breathtaking sunsets.\n\n- Custom window treatments.\n\n- Stainless steel kitchen appliances highlighted by Caesarstone countertops.\n\n- Sumptuous bathrooms with marble and custom mosaic details\n\n- Ample closets.\n\n- And the ultimate convenience of a washer/dryer in both units!\n\nThe phenomenal and convenient location offers it all in this sought after neighborhood: Central Park, 4/5/6 and Q trains, crosstown bus to the West side, 92nd Street Y, Asphalt Green, post office, museums galore, fine dining, endless shopping (Whole Foods, Target).\n\nGet ready to create a sophisticated one of kind setting for your next chapter. This opportunity will not last, schedule your private showing now!",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
       "off_market_date": "2026-06-05",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "Carnegie Park Condominium"
     },
     {
@@ -15448,7 +15441,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -15678,7 +15671,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -15937,7 +15930,7 @@
       "price_per_sqft": 1494,
       "type": "condo",
       "year_built": 1986,
-      "days_on_market": 6,
+      "days_on_market": 7,
       "listed_date": "2026-06-17",
       "monthly_fees": 3384,
       "monthly_taxes": 1946,
@@ -16798,7 +16791,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
@@ -16819,7 +16812,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1963,
-      "days_on_market": 12,
+      "days_on_market": 13,
       "listed_date": "2026-06-11",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -17053,7 +17046,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -17837,7 +17830,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-15"
     },
@@ -17883,7 +17876,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -17901,7 +17894,7 @@
       "price_per_sqft": 1787,
       "type": "condo",
       "year_built": 2002,
-      "days_on_market": 18,
+      "days_on_market": 19,
       "listed_date": "2026-06-05",
       "monthly_fees": 1723,
       "monthly_taxes": 966,
@@ -18729,7 +18722,7 @@
       "price_per_sqft": 900,
       "type": "coop",
       "year_built": 1940,
-      "days_on_market": 15,
+      "days_on_market": 16,
       "listed_date": "2026-06-08",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -18809,7 +18802,7 @@
       "price_per_sqft": 1571,
       "type": "condo",
       "year_built": 1999,
-      "days_on_market": 4,
+      "days_on_market": 5,
       "listed_date": "2026-06-19",
       "monthly_fees": 2089,
       "monthly_taxes": 1811,
@@ -19236,11 +19229,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "sale",
@@ -19774,7 +19767,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active"
     },
     {
@@ -19792,7 +19785,7 @@
       "price_per_sqft": 1246,
       "type": "condo",
       "year_built": 1981,
-      "days_on_market": 21,
+      "days_on_market": 22,
       "listed_date": "2026-06-02",
       "monthly_fees": 2265,
       "monthly_taxes": 2609,
@@ -20545,7 +20538,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2019,
-      "days_on_market": 56,
+      "days_on_market": 57,
       "listed_date": "2026-04-28",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -20659,7 +20652,7 @@
         }
       ],
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-06"
     },
@@ -20678,7 +20671,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1965,
-      "days_on_market": 20,
+      "days_on_market": 21,
       "listed_date": "2026-06-03",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -20753,12 +20746,12 @@
         }
       ],
       "last_pass1": "2026-05-07",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2025-10-24",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "The Savoy"
     },
     {
@@ -20986,7 +20979,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1986,
-      "days_on_market": 62,
+      "days_on_market": 63,
       "listed_date": "2026-04-22",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21111,14 +21104,14 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "building_name": null,
       "off_market_date": "2026-06-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -21183,7 +21176,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2005,
-      "days_on_market": 43,
+      "days_on_market": 44,
       "listed_date": "2026-05-11",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21346,12 +21339,12 @@
         }
       ],
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2025-11-04",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -21472,7 +21465,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 0,
-      "days_on_market": 8,
+      "days_on_market": 9,
       "listed_date": "2026-06-15",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21915,7 +21908,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2026,
-      "days_on_market": 14,
+      "days_on_market": 15,
       "listed_date": "2026-06-09",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -22000,7 +21993,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1928,
-      "days_on_market": 18,
+      "days_on_market": 19,
       "listed_date": "2026-06-05",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -22264,7 +22257,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2005,
-      "days_on_market": 28,
+      "days_on_market": 29,
       "listed_date": "2026-05-26",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -22645,7 +22638,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2024,
-      "days_on_market": 18,
+      "days_on_market": 19,
       "listed_date": "2026-06-05",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -22763,12 +22756,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-23",
       "off_market_date": "2026-04-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "Citizen360 Condominium"
     },
     {
@@ -22928,7 +22921,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1986,
-      "days_on_market": 19,
+      "days_on_market": 20,
       "listed_date": "2026-06-04",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -23083,12 +23076,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-04-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "One East River Place"
     },
     {
@@ -23129,12 +23122,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-01",
       "off_market_date": "2026-05-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -23283,12 +23276,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "building_name": "Brooklyn Tower Rentals",
       "off_market_date": "2026-06-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -23482,12 +23475,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-10",
       "off_market_date": "2026-05-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -23539,12 +23532,12 @@
         }
       ],
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-02",
       "off_market_date": "2026-05-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": null
     },
     {
@@ -23585,12 +23578,12 @@
         }
       ],
       "last_pass1": "2026-05-30",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-05-31",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -23750,7 +23743,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1960,
-      "days_on_market": 25,
+      "days_on_market": 26,
       "listed_date": "2026-05-29",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24092,7 +24085,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2001,
-      "days_on_market": 1,
+      "days_on_market": 2,
       "listed_date": "2026-06-22",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24295,7 +24288,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1979,
-      "days_on_market": 16,
+      "days_on_market": 17,
       "listed_date": "2026-06-07",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24334,7 +24327,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": null,
-      "days_on_market": 47,
+      "days_on_market": 48,
       "listed_date": "2026-05-07",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24391,7 +24384,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": null,
-      "days_on_market": 42,
+      "days_on_market": 43,
       "listed_date": "2026-05-12",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24506,7 +24499,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1986,
-      "days_on_market": 5,
+      "days_on_market": 6,
       "listed_date": "2026-06-18",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24691,12 +24684,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2025-12-04",
       "off_market_date": "2026-05-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": null
     },
     {
@@ -24737,12 +24730,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-06",
       "off_market_date": "2026-04-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": null
     },
     {
@@ -24789,12 +24782,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-31",
       "off_market_date": "2026-05-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": null
     },
     {
@@ -24835,12 +24828,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-13",
       "off_market_date": "2026-04-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "Carnegie Park Condominium"
     },
     {
@@ -24858,7 +24851,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2003,
-      "days_on_market": 22,
+      "days_on_market": 23,
       "listed_date": "2026-06-01",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25018,12 +25011,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-11",
       "off_market_date": "2026-04-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "The Duchess"
     },
     {
@@ -25156,12 +25149,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-02",
       "off_market_date": "2026-05-03",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -25579,12 +25572,12 @@
         }
       ],
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-16",
       "off_market_date": "2026-05-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -25636,12 +25629,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-17",
       "off_market_date": "2026-05-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23",
+      "pass2_confirmed_at": "2026-06-24",
       "building_name": "Rivers Bend"
     },
     {
@@ -25760,7 +25753,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1964,
-      "days_on_market": 7,
+      "days_on_market": 8,
       "listed_date": "2026-06-16",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25800,7 +25793,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1959,
-      "days_on_market": 4,
+      "days_on_market": 5,
       "listed_date": "2026-06-19",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25839,7 +25832,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2022,
-      "days_on_market": 166,
+      "days_on_market": 167,
       "listed_date": "2026-01-08",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25860,7 +25853,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-12",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "building_name": "Brooklyn Tower Rentals"
     },
@@ -25879,7 +25872,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1979,
-      "days_on_market": 51,
+      "days_on_market": 52,
       "listed_date": "2026-05-03",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -26144,7 +26137,7 @@
       "last_pass2": "2026-05-27",
       "status": "active",
       "last_pass1": "2026-06-24",
-      "days_on_market": 34
+      "days_on_market": 35
     },
     {
       "listing_type": "rent",
@@ -27245,12 +27238,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2025-11-11",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -27443,6 +27436,46 @@
     },
     {
       "listing_type": "rent",
+      "id": "5082074",
+      "url": "https://streeteasy.com/rental/5082074",
+      "building": "222 East 34th Street",
+      "building_name": "The Anthem",
+      "address": "222 East 34th Street",
+      "unit": "#2425",
+      "neighborhood": "",
+      "price": 11000,
+      "sqft": 0,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": 2002,
+      "days_on_market": 0,
+      "listed_date": "2026-06-24",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "The Anthem NYC",
+      "price_history": [
+        {
+          "date": "2026-06-24",
+          "price": 11000,
+          "event": "LISTED",
+          "broker": "The Anthem NYC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-06-24",
+      "last_pass2": "2026-06-24",
+      "status": "active"
+    },
+    {
+      "listing_type": "rent",
       "id": "5007964",
       "url": "https://streeteasy.com/rental/5007964",
       "building": "26 East 63rd Street",
@@ -27563,7 +27596,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1928,
-      "days_on_market": 91,
+      "days_on_market": 92,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": null,
@@ -27586,7 +27619,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-24",
       "building_name": "Sherry Netherland"
@@ -27647,12 +27680,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-03-23",
       "off_market_date": "2026-05-03",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
@@ -27698,12 +27731,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-23",
+      "last_pass2": "2026-06-24",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-05-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-23"
+      "pass2_confirmed_at": "2026-06-24"
     },
     {
       "listing_type": "rent",
