@@ -20821,12 +20821,12 @@
         }
       ],
       "last_pass1": "2026-05-07",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-16",
       "off_market_date": "2026-05-07",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -21095,8 +21095,8 @@
       "url": "https://streeteasy.com/rental/5049436",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "last_pass1": "2026-06-26",
-      "days_on_market": 27,
+      "last_pass1": "2026-06-27",
+      "days_on_market": 28,
       "building_name": "Maison 78"
     },
     {
@@ -21288,11 +21288,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": null
     },
     {
@@ -21442,11 +21442,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-05-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -21582,11 +21582,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -21732,7 +21732,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "The Clare"
     },
@@ -21820,12 +21820,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-15",
       "off_market_date": "2026-05-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "Carlton House"
     },
     {
@@ -21909,12 +21909,12 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-18",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -21931,7 +21931,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2015,
-      "days_on_market": 22,
+      "days_on_market": 23,
       "listed_date": "2026-06-04",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21951,7 +21951,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-26",
+      "last_pass1": "2026-06-27",
       "last_pass2": "2026-06-06",
       "status": "active"
     },
@@ -21997,11 +21997,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-05-18",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": null
     },
     {
@@ -22091,11 +22091,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-12",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -22139,11 +22139,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-10",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-05-10",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "The Lucerne"
     },
     {
@@ -22264,12 +22264,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-17",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -22354,12 +22354,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-15",
       "off_market_date": "2026-04-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "The Duchess"
     },
     {
@@ -22410,11 +22410,11 @@
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "_partial_error": null,
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -22528,12 +22528,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "The Langdon",
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -23044,11 +23044,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-10",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "The Anthem"
     },
     {
@@ -23139,11 +23139,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -23160,7 +23160,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2002,
-      "days_on_market": 14,
+      "days_on_market": 15,
       "listed_date": "2026-06-12",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -23230,13 +23230,13 @@
         }
       ],
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "off_market_date": "2026-05-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "Merritt House"
     },
     {
@@ -23367,7 +23367,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "Carnegie Hill Tower"
     },
@@ -23552,14 +23552,14 @@
         }
       ],
       "last_pass1": "2026-05-04",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "building_name": "Two Sutton Place North",
       "off_market_date": "2026-05-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -23706,12 +23706,12 @@
         }
       ],
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-19",
       "off_market_date": "2026-05-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -24053,13 +24053,13 @@
       ],
       "agent_firm": "Howard Hanna NYC",
       "url": "https://streeteasy.com/rental/5048932",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "last_pass1": "2026-05-22",
       "days_on_market": 3,
       "off_market_date": "2026-05-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "Empire House"
     },
     {
@@ -24194,12 +24194,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-14",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "Bridge Tower Place",
       "off_market_date": "2026-06-17",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -24298,13 +24298,13 @@
         }
       ],
       "last_pass1": "2026-05-05",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "off_market_date": "2026-05-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -24390,11 +24390,11 @@
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "_partial_error": null,
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "Two Sutton Place North"
     },
     {
@@ -24423,6 +24423,12 @@
       "agent_firm": "Corcoran",
       "price_history": [
         {
+          "date": "2026-06-26",
+          "price": 14500,
+          "event": "RENTED",
+          "broker": "Corcoran"
+        },
+        {
           "date": "2026-05-28",
           "price": 14500,
           "event": "IN_CONTRACT",
@@ -24439,8 +24445,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-28",
-      "last_pass2": "2026-06-26",
-      "status": "active"
+      "last_pass2": "2026-06-27",
+      "status": "active",
+      "off_market_date": "2026-06-26",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -24530,11 +24539,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-05-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -24578,11 +24587,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "The Forum"
     },
     {
@@ -24639,12 +24648,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "The Frame Building",
       "off_market_date": "2026-06-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -24661,7 +24670,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1979,
-      "days_on_market": 18,
+      "days_on_market": 19,
       "listed_date": "2026-06-07",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -24681,7 +24690,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-26",
+      "last_pass1": "2026-06-27",
       "last_pass2": "2026-06-12",
       "status": "active"
     },
@@ -24738,7 +24747,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-26",
+      "last_pass1": "2026-06-27",
       "last_pass2": "2026-06-18",
       "status": "active"
     },
@@ -24847,14 +24856,14 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
       "sqft_estimate_note": "Duplex room sum (First Floor + Garden); built 1901; ~1,850 sqft interior",
       "off_market_date": "2026-06-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -24980,14 +24989,14 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "building_name": "Bridge Tower Place",
       "off_market_date": "2026-06-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -25244,7 +25253,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-06-26",
+      "last_pass1": "2026-06-27",
       "last_pass2": "2026-06-03",
       "status": "active"
     },
@@ -25290,7 +25299,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": null
     },
@@ -25416,7 +25425,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1997,
-      "days_on_market": 17,
+      "days_on_market": 18,
       "listed_date": "2026-06-08",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25462,7 +25471,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1997,
-      "days_on_market": 29,
+      "days_on_market": 30,
       "listed_date": "2026-05-27",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25576,12 +25585,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-20",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": null
     },
     {
@@ -25622,12 +25631,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-20",
       "off_market_date": "2026-04-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -25671,7 +25680,7 @@
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "_partial_error": null,
       "last_pass1": "2026-06-10",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "The Belaire"
     },
@@ -25729,11 +25738,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -25790,7 +25799,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1989,
-      "days_on_market": 25,
+      "days_on_market": 26,
       "listed_date": "2026-06-01",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25859,13 +25868,13 @@
         }
       ],
       "last_pass1": "2026-05-04",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "off_market_date": "2026-05-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "One Sutton Place North"
     },
     {
@@ -25910,11 +25919,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-13",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-05-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -26064,13 +26073,13 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "_is_partial": true,
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "The Lotus Nyc Midtown East"
     },
     {
@@ -26115,7 +26124,7 @@
       "_partial_reason": "HTML_LISTING_DETAIL_no_financial_data",
       "_partial_error": null,
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "The Forum"
     },
@@ -26429,12 +26438,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "One Sutton Place North",
       "off_market_date": "2026-06-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -26478,12 +26487,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-12",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "The Kenilworth",
       "off_market_date": "2026-06-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "id": "5048174",
@@ -26581,11 +26590,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "One East River Place"
     },
     {
@@ -26630,7 +26639,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active"
     },
     {
@@ -26670,13 +26679,13 @@
       ],
       "agent_firm": "J Garson LLC",
       "url": "https://streeteasy.com/rental/5048124",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "last_pass1": "2026-05-22",
       "days_on_market": 2,
       "off_market_date": "2026-05-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -27677,12 +27686,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-16",
       "off_market_date": "2026-05-06",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "Citizen360 Condominium"
     },
     {
@@ -27739,11 +27748,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "Yorkshire Towers"
     },
     {
@@ -27777,7 +27786,7 @@
       ],
       "agent_firm": "Douglas Elliman",
       "url": "https://streeteasy.com/rental/5046517",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "last_pass1": "2026-06-15",
       "days_on_market": 26
@@ -28288,12 +28297,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "listed_date": "2026-04-19",
       "off_market_date": "2026-05-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": null
     },
     {
@@ -28450,12 +28459,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": null,
       "off_market_date": "2026-06-19",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -28505,12 +28514,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-06",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": null,
       "off_market_date": "2026-06-19",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -28701,11 +28710,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -28749,7 +28758,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active"
     },
     {
@@ -28830,11 +28839,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -28884,11 +28893,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26",
+      "pass2_confirmed_at": "2026-06-27",
       "building_name": "Yorkshire Towers"
     },
     {
@@ -28945,11 +28954,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-10",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "off_market_date": "2026-05-18",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     },
     {
       "listing_type": "rent",
@@ -29005,12 +29014,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-06-26",
+      "last_pass2": "2026-06-27",
       "status": "active",
       "building_name": "One Museum Mile",
       "off_market_date": "2026-06-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-06-26"
+      "pass2_confirmed_at": "2026-06-27"
     }
   ],
   "sale_search_url": "https://streeteasy.com/for-sale/upper-east-side/price:2000000-5000000%7Cbeds:3-",
