@@ -4,6 +4,44 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-07-02 — Pipeline outage: Apify usage cap + Pages deploy failure; cron cut to 2×/day (Session 47)
+
+### Outage & root cause
+- **All cron runs failed Jun 30 → Jul 2** (runs #132–141, ~13s each). Root cause was
+  **not code**: the Apify account hit its custom monthly platform-usage limit
+  ($50 consumed in 11 days of the Jun 19–Jul 18 period, ~$4.50/day, nearly all
+  Actor runs). When capped, Apify returns **403 Forbidden on actor start**
+  (`POST /v2/acts/memo23~streeteasy-ppr/runs`) and pull.py exits 1 at Pass 1.
+- Omar raised the usage limit in Apify Console → Billing; re-ran #141 → success
+  in 6m20s, committed `146aac4` (556 listings: 404 sale, 152 rent).
+- **Diagnostic rule for the future: sudden 403s on actor start = check
+  console.apify.com/billing before touching code.**
+
+### Second failure stacked on top: GitHub Pages deploy
+- The fresh data committed, but **pages-build-deployment #319 failed twice** at
+  the deploy step with GitHub's transient "Deployment failed, try again later"
+  (build + artifact fine, DNS fine, githubstatus.com all green). Third attempt
+  (re-run failed jobs) deployed cleanly. Site then showed `Updated 2026-07-02`.
+- Symptom while stuck: freshness banner "Listings last updated 2 days ago"
+  even though db.json/latest.json in the repo were current — the *deployed*
+  latest.json was stale. Remedy: re-run the failed pages deploy from Actions.
+
+### Decision: refresh schedule cut 4×/day → 2×/day
+- `refresh.yml` cron changed from `0 0,6,12,18 * * *` to `0 0,12 * * *`
+  (00:00 & 12:00 UTC ≈ 8pm & 8am ET) to halve Apify burn (~$4.50/day →
+  ~$2.25/day, ~$65–70/mo). Commit `9a86d24`, edited via GitHub web UI.
+- Tradeoff accepted: new listings surface by morning/evening instead of within
+  ~6h. Manual `workflow_dispatch` runs remain available for one-off refreshes.
+
+### Open observations (not actioned)
+- A couple of **250 West 96th St** (UWS) sale listings are appearing in the UES
+  For Sale feed — search URL or actor may be leaking outside the neighborhood
+  boundary. Omar declined a fix for now.
+- `actions/checkout@v4` / `setup-python@v5` emit Node 20 deprecation warnings
+  (forced onto Node 24). Harmless; bump versions whenever convenient.
+
+---
+
 ## 2026-06-17 — Buildings UX + duplicate fixes + pipeline investigation (Session 46)
 
 ### Features shipped
