@@ -2,11 +2,10 @@ name: Refresh Listings
 
 on:
   schedule:
-    # Every 6 hours: 00:00, 06:00, 12:00, 18:00 UTC
-    # (≈ 8pm, 2am, 8am, 2pm ET in summer / EDT). 4×/day keeps new listings
-    # appearing within hours instead of next-morning. GitHub may delay
+    # Twice daily: 00:00 and 12:00 UTC (≈ 8pm & 8am ET in summer / EDT).
+    # Reduced from 4×/day (Jul 2026) to cut Apify costs. GitHub may delay
     # scheduled runs by a few minutes under load — that's expected.
-    - cron: "0 0,6,12,18 * * *"
+    - cron: "0 0,12 * * *"
   workflow_dispatch:
     inputs:
       mode:
