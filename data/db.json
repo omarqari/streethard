@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-07-09",
+  "last_updated": "2026-07-10",
   "stats": {
-    "total": 570,
+    "total": 574,
     "pass1_only": 2,
     "partial": 0,
-    "pass2_complete": 568,
-    "sale": 412,
-    "rent": 158,
+    "pass2_complete": 572,
+    "sale": 414,
+    "rent": 160,
     "delisted": 0
   },
   "listings": {
@@ -377,7 +377,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -415,7 +415,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -636,7 +636,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-30",
       "status": "active",
       "needs_refresh": false,
@@ -692,7 +692,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-19",
       "status": "active",
       "needs_refresh": false,
@@ -737,7 +737,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-10",
       "status": "active",
       "needs_refresh": false,
@@ -806,7 +806,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -927,7 +927,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -1225,7 +1225,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-20",
       "status": "active",
       "needs_refresh": false,
@@ -1437,7 +1437,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-20",
       "status": "active",
       "needs_refresh": false,
@@ -1541,7 +1541,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -1580,7 +1580,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -1686,7 +1686,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-23",
       "status": "active",
       "needs_refresh": false,
@@ -1791,7 +1791,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-29",
       "status": "active",
       "needs_refresh": false,
@@ -1836,13 +1836,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-16",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": "The Parc V"
     },
     "1822201": {
@@ -1877,7 +1877,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -2155,7 +2155,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-07",
       "status": "active",
       "needs_refresh": false,
@@ -2200,7 +2200,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -2250,7 +2250,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-08",
       "status": "active",
       "needs_refresh": false,
@@ -2300,7 +2300,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -2494,7 +2494,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -2544,7 +2544,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -2594,7 +2594,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -2964,7 +2964,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3047,7 +3047,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -3085,7 +3085,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3238,7 +3238,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3663,7 +3663,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3708,7 +3708,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-13",
       "status": "active",
       "needs_refresh": false,
@@ -3803,7 +3803,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3848,7 +3848,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-15",
@@ -3942,7 +3942,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3987,7 +3987,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-18",
@@ -4049,7 +4049,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-10",
       "status": "active",
       "needs_refresh": false,
@@ -4192,7 +4192,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-07-09",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-04"
@@ -4279,7 +4279,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false,
@@ -4333,7 +4333,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -4378,13 +4378,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-14",
       "off_market_date": "2026-05-19",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "1818431": {
       "listing_type": "sale",
@@ -4650,7 +4650,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -4838,7 +4838,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -5007,7 +5007,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -5176,7 +5176,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-14",
       "status": "active",
       "needs_refresh": false,
@@ -5214,7 +5214,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -5392,7 +5392,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -5588,7 +5588,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -5651,7 +5651,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-07",
       "status": "active",
       "needs_refresh": false,
@@ -5813,13 +5813,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-16",
       "off_market_date": "2026-05-27",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "1820772": {
       "listing_type": "sale",
@@ -6109,7 +6109,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -6154,7 +6154,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -6371,7 +6371,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -6569,7 +6569,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -6770,7 +6770,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-14",
       "status": "active",
       "needs_refresh": false,
@@ -6820,7 +6820,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-22",
       "status": "active",
       "needs_refresh": false,
@@ -6858,7 +6858,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -6896,7 +6896,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -7150,7 +7150,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-19",
       "status": "active",
       "needs_refresh": false,
@@ -7245,7 +7245,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -7290,7 +7290,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-13",
       "status": "active",
       "needs_refresh": false,
@@ -7344,7 +7344,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-07",
       "status": "active",
       "needs_refresh": false,
@@ -7401,7 +7401,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-24",
       "status": "active",
       "needs_refresh": false,
@@ -7535,7 +7535,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -7730,7 +7730,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-26",
       "status": "active",
       "needs_refresh": false,
@@ -7775,13 +7775,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-06",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2022-09-15",
       "off_market_date": "2026-05-18",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-06",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": "Barbizon63 Condominium"
     },
     "1812780": {
@@ -7873,7 +7873,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -8116,7 +8116,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-13",
       "status": "active",
       "needs_refresh": false,
@@ -8160,7 +8160,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-10",
       "status": "active",
       "needs_refresh": false,
@@ -8205,7 +8205,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -8250,7 +8250,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-16",
       "status": "active",
       "needs_refresh": false,
@@ -8667,7 +8667,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -8807,7 +8807,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -8977,7 +8977,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -9039,7 +9039,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -9281,7 +9281,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -9760,7 +9760,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-13",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-20"
@@ -9912,7 +9912,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false,
@@ -10128,7 +10128,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-10",
       "status": "active",
       "needs_refresh": false,
@@ -10400,7 +10400,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-03",
       "status": "active",
       "needs_refresh": false,
@@ -10474,7 +10474,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-30",
       "status": "active",
       "needs_refresh": false,
@@ -10931,7 +10931,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -11058,7 +11058,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -11230,7 +11230,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -11274,7 +11274,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -11336,7 +11336,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-02",
       "status": "active",
       "needs_refresh": false,
@@ -11579,7 +11579,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -11677,7 +11677,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -11765,7 +11765,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -11940,7 +11940,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -12488,7 +12488,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -12625,7 +12625,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-18",
       "status": "active",
       "needs_refresh": false,
@@ -12741,7 +12741,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -12785,7 +12785,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -12937,7 +12937,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -12982,7 +12982,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-15"
@@ -13138,16 +13138,16 @@
       "url": "https://streeteasy.com/sale/1784395",
       "building": "70 East 96th Street",
       "address": "70 East 96th Street",
-      "unit": "7B",
-      "neighborhood": "Carnegie Hill",
-      "price": 2300000,
+      "unit": "#7B",
+      "neighborhood": "",
+      "price": 2000000,
       "sqft": null,
       "beds": 3,
       "baths": 2.5,
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1929,
-      "days_on_market": 331,
+      "days_on_market": 337,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4682,
@@ -13157,9 +13157,15 @@
       "agent_firm": "Christie's International Real Estate Group, LLC",
       "price_history": [
         {
+          "date": "2026-07-09",
+          "price": 2000000,
+          "event": "",
+          "broker": "Christie's International Real Estate Group, LLC"
+        },
+        {
           "date": "2026-02-19",
           "price": 2300000,
-          "event": "PRICE_DECREASE",
+          "event": "",
           "broker": "Christie's International Real Estate Group, LLC"
         },
         {
@@ -13167,23 +13173,11 @@
           "price": 2549000,
           "event": "LISTED",
           "broker": "Christie's International Real Estate Group, LLC"
-        },
-        {
-          "date": "2012-12-26",
-          "price": null,
-          "event": "CLOSING",
-          "broker": "Closing record"
-        },
-        {
-          "date": "2012-12-26",
-          "price": null,
-          "event": "CLOSING",
-          "broker": "Closing record"
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
-      "last_pass2": "2026-04-21",
+      "last_pass1": "2026-07-10",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-08-06"
@@ -13537,7 +13531,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -13757,7 +13751,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -13855,7 +13849,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -14052,7 +14046,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-13",
@@ -14336,7 +14330,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -14776,7 +14770,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-13",
@@ -18389,7 +18383,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Welcome to Residence 8B at 1212 Fifth Avenue \u2014 a breathtaking triple-mint condominium where pre-war grandeur meets 21st-century luxury, with unobstructed Central Park views from every major room. Featured in House Beautiful as the building's model apartment, this three-bedroom, three-bath home was finished with upgrades well beyond the already stunning sponsor specifications.\n\nLiving/Dining Room: Step through the gracious entry foyer \u2014 finished in Venetian plaster \u2014 into a showstopping great room framed by sweeping views of Central Park, the Vanderbilt Gate, and the Conservatory Gardens. Soaring 9-foot beamed ceilings, plaster crown moldings, solid oak floors, and oversized tilt-and-turn windows make this space perfect for grand entertaining or quiet evenings above the treetops.\n\nKitchen: The open chef's kitchen features Caesarstone countertops, custom Italian cabinetry, and a powerhouse lineup of Bertazzoni, Viking, and Miele appliances. Dornbracht fixtures, a garbage disposer, and recessed LED lighting round out this sleek, functional space.\n\nPrimary Suite: A private sanctuary in its own south wing with direct park views and two custom walk-in closets. The extraordinary primary bath is clad in Bianco Dolomiti marble with radiant heated floors, a Kohler cast-iron Jacuzzi soaking tub, separate walk-in shower, and the legendary Kohler Numi toilet \u2014 recently serviced and unique to this model apartment. A custom Robern mirror cabinet with built-in television and music system adds another layer of luxury.\n\nSecond Bedroom / Home Office: A generous room with direct Central Park views, currently configured as a home office with a queen-size Resource Furniture Murphy bed for seamless guest conversion. A full hall bath with Robern illuminated mirror doubles as a powder room.\nThird Bedroom / Flex Room: Park views, twin Milano wall beds by Resource Furniture, and a full en-suite bath with Robern lighted mirror make this room endlessly versatile \u2014 guest room, children's room, or creative studio.\n\nLaundry: A dedicated closet with Miele washer and dryer \u2014 no trips to the basement, ever.\n\nAdditional Features: Individually controlled thermostats in every room, zoned heating and AC, custom-milled HVAC enclosures, and solid oak flooring throughout.\n\nThe Building: Designed by George and Edward Blum in 1925 and gut-renovated by S. Russell Groves, 1212 Fifth is the first classic pre-war building in NYC to earn LEED Gold certification. Full-service white-glove living includes a 24-hour attended lobby, concierge, live-in resident manager, residents' lounge, playroom, and 2,600 sq. ft. fitness center. Pool, terrace, screening room, and parking available at adjacent 1214 Fifth Avenue. International buyers, pied-\u00e0-terres, and pets welcome \u2014 no board approval required.",
@@ -18463,7 +18457,7 @@
       "price_per_sqft": 2484,
       "type": "condo",
       "year_built": 1951,
-      "days_on_market": 69,
+      "days_on_market": 72,
       "listed_date": "2026-04-28",
       "monthly_fees": 2662,
       "monthly_taxes": 2210,
@@ -18488,7 +18482,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "description": "PENTHOUSE E2103 | Manhattan House\r\n\r\nRARE OFFERING - This triple-mint penthouse -  part of The Penthouse Collection in the coveted and prestigious Manhattan House Condominium is the definition of elevated luxury\u2014offered for the first time since the sponsor sale. \r\n\r\nMasterfully designed by AD100 visionary Vicente Wolf, this exceptional home embodies quiet luxury at its highest level. Originally conceived as a two-bedroom, two-bath layout, it has been elegantly reimagined to feature a grand primary suite with an extra  bespoke dressing room\u2014 easily adaptable to a third bedroom or private office.\r\n\r\nRESIDENCE HIGHLIGHTS:\r\nBathed in natural light & surrounded by Manhattan skyline views\r\nNorthern & Southern Exposures\r\nPenthouses offer extra height 9 foot ceilings with integrated Lutron lighting system and recessed lighting. \r\nCustom millwork, built-ins, and exceptional dressing/closet space\r\nArt Deco wood-burning fireplace with bespoke stainless steel surround\r\nSpa-caliber primary bath with Waterworks soaking tub, Dornbracht fixtures, and custom bleached oak vanity\r\nDesigner kitchen with honed Basaltina countertops, custom oak & stainless cabinetry, and Wolf/Miele appliances \r\nIn-Unit Washer/Dryer\r\nWide-plank rift-cut white oak floors with custom gray stain and Basaltina inlays\r\nMotorized window treatments throughout\r\nOffered unfurnished, or with curated art and furniture priced separately.\r\nA storage unit is included in the sale! \r\n\r\nTHE MANHATTAN HOUSE:\r\nIconic and Prestigious Full-Service Luxury Living\r\nGrand glass-enclosed lobby with porte-coch\u00e8re arrival\r\nPrivate landscaped gardens\u2014among the largest in Manhattan\r\n24-hour doorman, concierge & resident manager\r\nThe Manhattan Club: ~10,000 sq ft rooftop lounge with sweeping skyline views\r\nState-of-the-art fitness center & on-site parking\r\nValet, dry cleaning, playroom, bike storage & additional storage\r\nParking in the building\r\n\r\nOffered unfurnished, or furnished with fine art and furniture priced separately.\r\nA storage unit is included in the sale! \r\n\r\nINTERESTED IN THE MANHATTAN HOUSE? - CONTACT DEVIN & KELLY - ON & OFF MARKET OPPORTUNITIES!",
       "last_partial_pass2": "2026-05-02",
@@ -18529,7 +18523,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Beautifully Renovated, 3,065 square foot, 5 Bedroom (Convertible 6 Bedroom) Condo on the Upper East Side for only $3.895m.\n\nThis designer home is an amazing value.  It's 1 of only 4 apartments for sale from East 65th to East 95th Street with at least 5 Bedrooms, priced under $4.2m, (and it's the only Condo)!\n\nYou will love this sprawling 9 room home featuring a Double-Wide Sunken Living Room, Formal Dining Room, Eat-in-Kitchen, a Den, 5 Bedrooms and 4 Bathrooms.\n\nEntertaining will be a pleasure in your Double-wide Living Room with nearly 10' Ceilings and Huge Windows.\n\nChefs will be wowed by this Top-of-the-Line Scavolini Kitchen.  It features a side-by-side 36\" Sub-Zero Refrigerator and Freezer, Miele Double Oven, Microwave & Dishwasher, Gaggenau 5-Burner Gas Cooktop, 60 Bottle Subzero Wine Refrigerator, Quartz Countertops and Backsplash, Tons of Counter Space, a Breakfast Bar, 2 Pantries and Slow-Closing Drawers.\n\nHosting dinner parties of 20 will be a breeze in your extra-large Dining Room.\n\nRelax and Recharge in your versatile Den that can also become a 6th Bedroom if you would like.\n\nThe Primary Bedroom is huge and boasts one of the largest walk-in closets you can find.   Additional closets, a Home Office area, and an En-Suite Bath complete this sanctuary.  Luxuriate in your Spa-like Primary Bath, with Floor-to-Ceiling Marble, Double Sinks, and a combination Shower/Deep Soaking Tub.\n\nThere are Four additional King-sized Bedrooms with ample storage and beautifully outfitted closets. \n\nAll Four Bathrooms are New Development quality and feature Waterworks Marble and high-end fixtures from Lacava, Kohler, Duravit, among others. \n\nA Washer & Dryer, High Ceilings, Oversized Windows, Oak Hardwood Floors, Solid Core Doors, Crown and Baseboard Moldings, an Entry Foyer, and a Gallery complete this stunning UES home.  \n\n*Please contact us for more details about this special apartment or to schedule a showing.\n\nThe Wakefield is an elegant Full-Service Condo with 24-Hour Doorman, Parking Garage, renovated hallways, new elevators, Storage For Rent, Bike Room and Laundry Room. This is a NON smoking building.\n\nGreat Upper East Side Location near Carl Schurz Park, the new 2nd Ave. Subway (83rd St. entrance), the 6 train on 77th St. and the 4 & 5 Express train on 86th St. Fantastic restaurants & amazing supermarkets line the neighborhood including Agata & Valentina, Citarella, Fairway, Whole Foods and Eli's.",
@@ -18570,7 +18564,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Experience the epitome of sophisticated urban living in this distinguished cooperative, Residence 7E on Fifth Avenue's Upper East Side.\n\nEnter this residence from a semi-private landing, a nice touch that offers you the luxury of privacy. This mint condition two-bedroom home boasts generously proportioned rooms, 9\" ceilings, a grand open living space for entertaining and dining. The kitchen opens on to a spacious dining area currently configured like a den or gathering room and features a built-in breakfast bar.\n\nThe Primary bedroom centered on a fireplace features two large walk-in closets and a marble en-suite bathroom. The second bedroom also has an en-suite bathroom. There is also a powder room connected the gracious entry for your guests. This apartment has a small staff room with a full en-suite bathroom.\n\nPurchase as a primary residence or Pied-a-Terre; International purchasers are welcome.\n\nOne of Fifth Avenue's premier White Glove buildings, the Parc V was designed by renowned architect, Emory Roth where residents enjoy the highest level of service, discretion and security. An exceptional full-service staff, 2 doormen on at all times & live-in superintendent provide unparalleled service. The lobby has undergone a complete renovation and rivals any building on Fifth Avenue. Mail and newspapers are delivered to your door on a daily basis. Maintenance includes all utilities.\n\nOf Special Note... This building has recently secured a premier tenant, Audemars Piguet which will establish its U.S. flagship store at this property on Fifth Avenue. A highly respected Swiss luxury watch purveyor, we are delighted to have them as our retail tenant.\n\nAmenities offered are a fitness center outfitted with machines and weights, individual storage facility and parking garage. Washer/dryers are permitted with board approval. Financing is 50%. Flip Tax is 2.5% of purchase price payable by Buyer. No pets please.\n\nThe nexus of culture, high-end retail and fine dining, 785 Fifth Avenue is in close proximity to Museum Mile and New York's most coveted retail boutiques and restaurants. The building is perfectly situated between The Sherry Netherlands, Cipriani and The Pierre, across from The Metropolitan Club and adjacent to The Plaza, Bergdorf Goodman, Louis Vuitton, Zegna, Prada and Harry Winston. And, for the best cuisine, Avra, Le Bibliotheque and Il Mulino are around the corner. Directly across the park is the Time Warner Center, Tavern on the Green and in the cultural heart of the westside, Lincoln Center.",
@@ -18667,7 +18661,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "description": "SPONSOR SALE!! NO BOARD APPROVAL NEEDED!\n\nCrisp and contemporary, airy and elegant, this sophisticated, spacious two bedroom, two and a half bath residence blends the peerless elegance and thoughtful proportions of Manuel Glas Architects and the tailored, visionary interior design of Elena Frampton. Impressive ceiling heights, floor-to-ceiling windows and two outdoor terraces offer stunning city skyline views in this dignified residence in the heart of Lenox Hill.\n\nA handsome, welcoming foyer with exquisite herringbone white oak flooring and abundant closet space leads to an expansive great room drenched in natural light. Framed by a wall of east-facing windows, the seamlessly blended living space bathes in natural light all day. The great room is anchored by two North and South facing covered terraces with lovely Manhattan views. Clean lines and considered functionality define the custom Poggenpohl kitchen, with its huge marble waterfall island/breakfast bar and integrated Gaggenau appliances. A natural extension of the kitchen, another adjacent covered terrace faces east and north, allowing for daylong al fresco dining. With a custom marble mosaic floor and Aged Dark Nature marble slab walls, a custom powder room rounds out this unparalleled common area.\n\nThoughtfully tucked away, the private quarters embody the pinnacle of comfort and sophistication. Reached via a long hall of closet space, the palatial primary suite is bright but tranquil, thanks to floor-to-ceiling performance windows. The ensuite, marble-clad bathroom features dual vanity, a soaking tub and separate shower hydronic, radiant heat floors underfoot. The similarly spacious second bedroom offers ample storage space and a spa-like ensuite bathroom.\n\nSitting in the heart of Lenox Hill, The Leyton provides immediate access to the world-class dining, culture and shopping that the Upper East Side is famous for. Access to Central Park is on your doorstep, and public transportation options abound. Renowned for her palatial approach to the world\u2019s most luxurious hotels, two floors of entertaining space were designed by Alexandra Champalimaud, and offer indoor and outdoor dining and entertaining options with 270-degree skyline views.\n\nThe Leyton models a culture of service with a 24-hour attended lobby and a global concierge service available to service your every need. Amenities including a state-of-the-art fitness center, private storage, bicycle storage, a Paw Spa and a dedicated mail and package room are but a few of the luxuries included in this extraordinary building.",
       "last_partial_pass2": "2026-05-02",
@@ -18675,7 +18669,7 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": "The Leyton"
     },
     "1825156": {
@@ -18718,7 +18712,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "description": "Corner 2 bedroom w/ soaring ceilings\nThis sprawling, 1860 sqft residence features voluminous 19\u2019 ceilings and frames panoramic views of the Manhattan skyline to the North and West through floor-to-ceiling windows. The refined primary suite is equally spectacular with a spa inspired en suite bath and generously proportioned wardrobe.\n\nIn an era of luxury, Elena Frampton\u2019s interior creation gives way to the power of the unexpected. Tailored design is enriched with contrast and a layering of organic materials. A distinct spirit and style \u2013 together monumental, seductive and graciously proportioned with unparalleled, loft-like ceiling heights. Future-forward technology is woven throughout with high performance floor-to-ceiling windows, bespoke air systems and hydronic, radiant heated floors.\n\nPerfectly framed to inspire, the residences atop The Leyton offer the pinnacle of viewing pleasure. Glass corner living spaces, expansive windows and private outdoor terraces offer residents an unparalleled perspective above the Upper East Side. Northern and Western vistas capture the verdant green canopy of Central Park while Eastern views offer dramatic sunsets over the East River. By evening, lights glitter from the beaux-arts era Queensboro Bridge.\n\nSeamlessly connected to the lofty great room, the custom Poggenpohl kitchen evokes a clean, contemporary feeling. Rich personality is injected into the design scheme with polished marble countertops, sleek functionality and an integrated Gaggenau appliance suite. Every element of these gracious, well-appointed kitchens is curated for the culinary creative. The primary suite is thoughtfully oriented, ensuring dramatic sunrise to sunset exposures. Spacious walk-in wardrobes, an ensuite primary bathroom and radiant-heated floors throughout enhance the ambience of this haven. The distinctive powder room is lined with Aged Dark Nature slab walls and a marble mosaic floor, and accessorized with Fantini fixtures.\n\nSumptuous, out of the ordinary and dignified, The Leyton offers the luxury of comfort, up high. An extraordinary collection of 38 residences nestled in Manhattan\u2019s epicenter, overlooking Central Park, the East River and surrounding cityscape. With a highly visible location off East 63rd Street, The Leyton artfully nods to its landmark neighbors. Architect Manuel Glas applies classic Deco design, creating a distinctive urbane addition with stunning views and outdoor spaces in one of the most premiere neighborhoods in New York.\n\nAlexandra Champalimaud, revered for her palatial approach to designing the world\u2019s most renowned hotels, crafted the two levels of amenity spaces at The Leyton. Inspired by the Upper East Side\u2019s grande dame boutique hotels, The Leyton embeds a culture of service into every amenity experience beginning with the epically scaled 24-hour attended lobby.\n\nEncompassing the 24th floor, the Brandy Room offers a collection of indoor and outdoor entertaining spaces with sprawling 270-degree vistas of the city skyline. The Living Room features a chalet fireplace surrounded by rich seating and warm lighting leading to a cocktail terrace with Central Park views. Just off the Living Room, the Dining Room offers a table for ten and fully outfitted butler\u2019s pantry that can be reserved for private entertaining. Completing the Brandy Room experience, the sun drenched Solarium unfolds onto the Sun Terrace & Grille with East River views and an al fresco kitchen.\n\nDesigned for the ultimate personal fitness experience, the sunlit Studio pays mindful attention to detail and privacy. State of the art studio and conditioning equipment plus a dedicated stretching area provide and intimate centre for wellness.",
       "last_partial_pass2": "2026-05-02",
@@ -18726,7 +18720,7 @@
       "needs_refresh": false,
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": "The Leyton"
     },
     "1824989": {
@@ -18768,7 +18762,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-24",
       "status": "active",
       "description": "First Showing Sunday, May 3 by appointment only.\n\nIn the heart of Lenox Hill, step into your own private garden retreat, where the rhythm of the City softens and everyday living feels effortlessly calm. This inviting three-bedroom, three-bathroom duplex offers the charm of townhouse living with the ease and simplicity of condominium ownership.\n\nSet on a quiet, tree-lined block, this special home unfolds across two full floor-through levels, creating a rare sense of space and privacy. As you enter, a welcoming marble-floored foyer leads into a grand living and dining area, where hardwood floors, soft recessed lighting, and tranquil views of your landscaped garden create a warm and inviting setting for both quiet evenings and lively gatherings. The full-sized eat-in kitchen features granite countertops, a tiled backsplash, and ample cabinetry, perfect for starting your mornings or unwinding at the end of the day. A full guest bathroom on this level adds everyday convenience.\n\nUpstairs, the home continues to feel both open and intimate, with a generous landing that easily transforms into a cozy sitting area or an inspiring home office. The primary bedroom is a true retreat, overlooking the serene south-facing garden, with more than enough space for a king-size bedroom set along with a comfortable lounging area. Two additional bedrooms offer flexibility for guests, family, or creative use, complemented by two full bathrooms and a spacious laundry room ready for your personal touch.\n\nThis boutique nine-unit condominium offers low monthly common charges of $961, is self-managed, and has a simple purchase application process. Call or email to schedule your appointment. \n\n3D Virtual Walkthrough available.",
@@ -18816,7 +18810,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "description": "Perfectly located on 72nd Street and Fifth Avenue, this splendid residence offers the rare and fortunate combination of gracefully-scaled pre-war sensibility and a highly sophisticated contemporary aesthetic.  Orchestrated by an Architectural Digest and NYT-featured designer, this meticulous and thoughtful renovation affords every modern convenience.\n\nAccessed via a semi-private elevator landing, a stylish rectangular Gallery with a graphically-patterned marble floor and paired sculptural ceiling leads to the expansive Living Room/Dining room with very high ceilings and glorious open southern outlooks over the gorgeous landmarked townhouses along East 72nd Street and glimpses of Central Park.  Nearby, there is a pristine chef\u2019s kitchen with quartzite counters, custom ash cabinetry, and a panoply of state-of-the-art Miele and Sub-Zero appliances.  An exquisite marble Powder Room and copious closets are accessible from the Galley.  \n\nBeyond, the private quarters are comprised of a Primary Bedroom suite, replete with a spacious Dressing Room with thoughtfully-designed custom fittings and an ample and very glamorous marble Bathroom featuring a separate tub and walk-in shower.  There is one additional Bedroom, a handsome marble bathroom, and a convenient Laundry Room.  \n\nThroughout, this perfectly-maintained, mint-condition apartment benefits from multiple-zone, remotely-operated HVAC, very high ceilings, impeccable new hardwood and marble floors, remote-control sheer and black-out shades, Lutron lighting and Sonos sound systems, and high-performance, acoustically-engineered windows. \n \nOriginally conceived in 1919 by Fred F. French Company and modified to its current design in 1959, 910 Fifth Avenue is a coveted white-glove cooperative with top services and amenities, as well as an ideal location just moments from Central Park.  Impeccable staffing includes a full-time doorman, porters, and a highly-regarded resident manager.   Residents enjoy a wide host of amenities, including a private fitness center, bicycle and pram storage, and a generously-reduced rate at the on-site parking garage.  Please note that 910 Fifth Avenue is a pet-free building.",
       "last_partial_pass2": "2026-05-02",
@@ -18910,7 +18904,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-24",
       "status": "active",
       "description": "The Marx Condominiums, a stunning new development, graces Manhattan\u2019s Upper East Side\u2014an iconic neighborhood renowned for its world-class museums, serene parks, high-end shopping, and refined dining. This is quintessential New York City living, where charm and sophistication meet.\n\nWelcome to Unit #2, a full-floor residence with private elevator access. This exquisite home boasts 3 generously sized bedrooms, 3 impeccably designed bathrooms, and a dedicated laundry room. The primary suite is a true sanctuary, complete with garden views where you can unwind and take in the city\u2019s energy from a serene vantage point.\n\nJust a few blocks from Central Park, the Guggenheim Museum, and the Q, 4, 5, and 6 subway lines, The Marx offers unparalleled convenience while maintaining a peaceful retreat on a quiet, tree-lined street. Designed by the esteemed Isaac & Stern Architects, the building\u2019s striking facade\u2014featuring ebonized metal and oversized casement windows\u2014seamlessly merges Art Deco inspiration with modern sensibilities. The architectural design not only reflects the neighborhood\u2019s storied charm but also elevates it with innovative materials and light-filled spaces.\n\nInside, every detail has been thoughtfully curated. The interiors exude understated elegance, with a palette of pearly whites and earthy neutrals complemented by luxurious white oak flooring, sleek porcelain finishes, and stainless steel accents. The Scandinavian-inspired kitchens are a chef\u2019s dream, equipped with top-tier appliances from brands like Asko, Kohler, and Viking. Bathrooms are equally indulgent, showcasing Kohler fixtures and custom teak millwork.\n\nTo top it all off, The Marx features a sprawling rooftop deck, where residents can soak in panoramic city views or host a BBQ in this tranquil escape above the bustling streets of New York City.\n\nThe Marx Condominiums redefine luxury living on the Upper East Side\u2014don\u2019t miss the chance to make this extraordinary residence your own.",
@@ -18952,7 +18946,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Brand new listing 3 bedrooms 3 bathrooms on a high floor with direct river and city views. Brilliant natural light, and breathtaking open views of the East River, bridges, and stunning cityscapes. 21HJ is an expansive southeastern corner apartment with a gracious layout brightened by walls of windows facing the river, and 2 private balconies (off the living room and primary suite) for the ultimate outdoor enjoyment. Beautiful hardwood floors and refined finishes grace the ambience throughout. Entertain in the large living room and serve cocktails on the balcony, while preparing meals in the spacious eat-in kitchen appointed for the chef. There's also a washer-dryer, and abundant closet space that includes a huge walk-in closet in the primary bedroom.\n\nBuilt in 1987, The Promenade at 530 East 76th Street is a distinguished dark-glass condominium nestled in a serene cul-de-sac by the East River. Amenities are extensive and unparalleled. Enjoy the services of an attentive 24-hour doorman, concierge, and live-in-superintendent. Work out in the state-of-the-art fitness center with a Pilates and yoga studio, rooftop running track with panoramic views, heated indoor pool, and soothing sauna and steam rooms. Additional highlights are a lounge, big party room, rooftop business center with a wet bar and catering kitchen, playroom, parking garage, bike room, maid and dry cleaning service, and storage for a fee. Pets are allowed.\n\nTopping the allure is the coveted address moments from John Jay Park across the street, the East River Promenade affording outdoor recreation along the waterfront, plus great restaurants, shops and other conveniences. Temporary assessment of $376.51 per month.",
@@ -19018,7 +19012,7 @@
       "price_per_sqft": 2647,
       "type": "condo",
       "year_built": 2000,
-      "days_on_market": 73,
+      "days_on_market": 76,
       "listed_date": "2026-04-24",
       "monthly_fees": 3995,
       "monthly_taxes": 1896,
@@ -19037,7 +19031,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "description": "The Manhattan Residence of Robert A. M. Stern\n\nA rare and distinguished offering, this exceptional two-bedroom residence was the private home of the late, renowned architect Robert A. M. Stern. Defined by grand scale, refined detail, and serene outlooks, the apartment is graced with soaring 11-foot ceilings and dramatic floor-to-ceiling French windows overlooking one of Manhattan's most beautiful private landscaped gardens.\n\nA gracious 20-foot gallery creates a striking first impression and leads to an impressive 35-foot-long great room, where natural light pours in from three exposures. At its northern end, oversized French doors open onto a charming terrace-an idyllic setting for quiet moments or entertaining-enjoying tranquil garden views below.\n\nOccupying the south wing, the primary suite is a peaceful retreat, featuring a generous dressing room and an expansive en-suite bath. With its lovely western exposures over the garden, the suite is both sunlit and pin-drop quiet.\n\nAcross the gallery, a handsome library or study-lined with custom floor-to-ceiling bookshelves-offers flexibility as a guest bedroom, complemented by an adjacent full bath.\n\nThe beautifully proportioned, 17-foot windowed kitchen is appointed with abundant counter space and top-tier appliances from Miele, Thermador, and Sub-Zero.\n\nThe Chatham, a distinguished white-glove condominium designed by Robert A. M. Stern, offers residents an exceptional level of service and amenities, including a full-time doorman, concierge, state-of-the-art fitness center, and on-site garage. Ideally located in the heart of the Upper East Side, the finest dining, shopping, and cultural institutions are just moments away.",
       "last_partial_pass2": "2026-05-02",
@@ -19078,7 +19072,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Simply stunning and sophisticated, this breathtaking triple corner residence has been carefully designed and combined  by the developer making it a Crown Jewel of this very desirable address!  The gracious entry foyer with beautiful flooring leads into this sprawling 4 bedrooms but currently configured as a 3 bedroom / 3 full marble bath home with an expansive  44\u201d living and dining area flooded with light!  Brilliant sun light pours in through floor-to-ceiling windows all day long and enjoy the cross breeze from the triple exposure. The floors are Brazilian Mahogany, the crown moldings and baseboard are very elegant with ceiling at 9.3\u2019 as are the custom cabinetry and closets throughout. The gourmet kitchen is windowed with granite countertops and flooring as well as a gorgeous onyx backsplash, 36\u201d sub-zero stainless-steel refrigerator, Viking gas range and twin Paykel dishwasher drawers. Captivating bright & open views to the West, East & North City skyline set the backdrop to this magnificent home with oversized picture windows all framed by custom Hunter-Douglas Silhouette shades.   The primary bedroom is flooded with natural light and has great Eastern Views and has a very generous number of closets and storage. The adjoining windowed bathroom also has a large window and spacious. The views are captivating not only during the day but beautiful at night with open and bright views to the East, West and North and serve as a backdrop to this magnificent home. The oversized picture windows are all complimented with custom Hunter Douglas Silhouette shades. Additionally, the Washer and Dryer is vented out which is rare. A private storage bin is included. Everything is in  move-in condition. Must be seen to appreciate the luxurious ambiance of this fabulous residence!\nPLEASE NOTE THE VERY LOW MONTHLY CHARGES FOR THIS LOVELY CONDO.\n\nRichmond Condominium is a full-service luxury building in the most sought-after area of the Upper Eastside. Residents are welcomed by a beautiful lobby and treated to white-glove service with a 24-hour doorman, concierge and live-in resident manager. This pet-friendly building has a beautifully landscaped 4000sf roof garden with barbecue grills for residents to enjoy!  A CONDO TO CALL WONDERFUL HOME!",
@@ -19120,7 +19114,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Transform this 3-bedroom, 2.5-bath condo into the home of your dreams. A long, elegant gallery welcomes you upon entry, setting a refined tone throughout. To the right, two well-proportioned bedrooms share a full bath, while the private primary suite occupies the opposite wing \u2014 a thoughtful layout that balances togetherness with privacy. A powder room and in-unit laundry are tucked discreetly into the common area for everyday convenience.\nPositioned on the rear corner of the building, the residence enjoys a peaceful reprieve from the rhythms of the city. The location is truly exceptional: just steps from Central Park, The Metropolitan Museum of Art, and the Solomon R. Guggenheim Museum. Pre-war elegance, full-service living, and a deeded storage unit complete this rare Upper East Side offering.",
@@ -19168,7 +19162,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "description": "Residence 8A at Carnegie Hill Tower presents a rare opportunity to own a masterfully reimagined home in one of Manhattan\u2019s most distinguished enclaves.\nThis pristine three-bedroom, two-and-a-half-bathroom residence has undergone a comprehensive, top-tier renovation, seamlessly blending timeless elegance with modern sophistication. Every element has been thoughtfully upgraded, including new electrical and plumbing systems, state-of-the-art HVAC, wide-plank flooring, floor-to-ceiling solid core doors, and integrated LED lighting with dimmable controls throughout. A discreet in-unit washer and dryer complete the home\u2019s modern conveniences.\nA gracious entry foyer sets the tone, featuring dual sets of custom closets and refined cove lighting. Beyond, a dramatic 25-by-24-foot great room unfolds, wrapped in a wall of glass with triple exposures to the south, east, and west. The result is extraordinary natural light throughout the day, complemented by open city vistas over prime Carnegie Hill and subtle glimpses of Central Park.\nThe open-concept kitchen has been meticulously redesigned for both everyday living and elegant entertaining, featuring a dining bar, a full suite of Miele appliances, striking quartzite countertops, and bespoke cabinetry of the highest quality.\nThe king-sized primary suite offers a tranquil retreat, complete with a generously proportioned walk-in closet and a spa-like en-suite bath with a large glass-enclosed shower. Two additional bedrooms are equally well-scaled and appointed, each offering excellent proportions, abundant closet space, and custom built-ins with integrated lighting. All closets throughout the residence have been fully customized. A private storage unit transfers with the sale.\nCarnegie Hill Tower is a full-service, 32-story luxury condominium that has recently completed a comprehensive renovation of all common areas, now reflecting the finish of a newly developed property. Residents enjoy an exceptional suite of amenities, including a beautifully landscaped terrace with multiple areas for dining, lounging, and entertaining, as well as a manicured lawn and barbecue facilities. The building also offers a striking lobby set within a serene interior atrium, a fully equipped fitness center, private storage, and on-site parking.\nIdeally positioned in Carnegie Hill, one of Manhattan\u2019s most enduring and refined neighborhoods, the residence is moments from Central Park, including the Great Lawn and the Jacqueline Kennedy Onassis Reservoir, as well as the cultural landmarks of Museum Mile such as the Metropolitan Museum of Art, Cooper Hewitt, Smithsonian Design Museum, and the Solomon R. Guggenheim Museum. The surrounding neighborhood offers a curated lifestyle of fine dining, boutique shopping, gourmet markets, and effortless access to the New York City Subway.\nIn a market where true craftsmanship and scale are increasingly rare, Residence 8A stands apart\u2014a home defined by light, proportion, and enduring luxury, representing Carnegie Hill living at its finest.",
       "last_partial_pass2": "2026-05-02",
@@ -19215,7 +19209,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Corner Pre-War Residence on Madison Avenue in the heart of Carnegie Hill\n\nProviding a wide corner footprint and impressive expanse along Madison Avenue, this vast approximately 3,000 square foot four-bedroom three and one half, right room residence offers a level of scale and proportion coupled with wonderful natural light and charming views that is increasingly difficult to find.\n\nA proper entry gallery sets a clear sense of arrival and anchors a classic split-wing layout. Original pre-war details carry throughout, including beamed ceilings, steel casement windows, and original restored hardwood floors laid in herringbone and parquet patterns- timeless elements that define the home's character.\n\nThe living room is the defining space- a large corner room facing Madison Avenue and 88th Street with windows on two exposures including a dramatic bay window with a built-in seat overlooking the Avenue. A full wall of custom floor-to-ceiling bookshelves, softly illuminated and accessed by a rolling library ladder, creates a striking architectural moment while adding both presence and function. The room is bright, well-proportioned, and quietly impressive, with clean southeastern light that transitions to a softer, cooler feel by afternoon.\n\nNearly 50 feet of living and dining space creates a natural entertaining flow, with a gracious formal dining room that connects seamlessly to the windowed in eat kitchen. The kitchen is well laid out with stainless steel appliances and cabinets, generous counter space, and room for a proper breakfast table, enjoying a bright morning feel and lovely start of the day. The formal dining room comfortably seats ten for dinner and is a delightful space for hosting large and small gatherings. A discreet powder room is a highly coveted amenity for guest use.\n\nThe northern wing is connected via a wide, hallway that joins the public and private domains. Four generous bedrooms, three full baths and a service kitchen/pantry space ideally converted into a windowed laundry room define the private wing. The primary suite is massive- the former living room of the H line apartment and most generous- and filled with morning light. Ample space for the addition of a windowed dressing room define this vast suite.\n\nStorage throughout is exceptional, with multiple closets lining the gallery and hallways. The entire home is graced with a timeless, subtle elegance. With the exception of one room, every single window faces the Avenue or Street- no compromised exposures.\n\nBuilt in 1937 and designed by William M. Dowling, this 16-story Art Deco cooperative offers a full-service experience with a 24-hour doorman, resident superintendent, stunning planted roof deck, new fitness room, central laundry, and storage. The lobby is redolent of the Carlyle Hotel and is the epitome of elegance. The building has 98 units across 16 floors. \n\nIdeally located between Madison and Fifth Avenue, moments from Central Park and neighboring the Guggenheim Museum. Subletting permitted after three years of ownership, subject to board approval (two out of every four years).  \n\nTemporary capital assessment of $1,070/month through October 2027 supporting major building improvements, including facade and hallway upgrades.  \n\nFlip tax of 2% of the purchase price, payable by the purchaser. Max Financing = 50% of Purchase Price.",
@@ -19256,7 +19250,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Condo Rules \u00b7 No Board Interview \u00b7 Immediate Subletting \u00b7 NOT a Land Lease\n\nAn architectural masterpiece in the sky, this rare penthouse combination of three residences offers an extraordinary canvas for modern living. With every detail thoughtfully curated, the home itself feels like a work of art\u2014where sweeping views, abundant natural light, and striking interiors converge to create a residence of remarkable beauty.\n\nSpanning 2,725 square feet inside and encircled by a 1,295-square-foot wraparound terrace, the residence is as much an experience as it is a home. Three distinct living rooms and dens invite grand entertaining or intimate retreats, while three oversized bedrooms\u2014with the flexibility to create up to five\u2014redefine what it means to live expansively in Manhattan. Two full kitchens and a separate wet bar add both drama and practicality, making this home equally suited to large gatherings or quiet evenings in.\n\nThroughout, custom-framed windows capture light from every direction\u2014North, South, and East\u2014while bespoke ceiling designs and tailored architectural details elevate each space with a sense of craftsmanship rarely found in modern residences. The views are panoramic and poetic: the shimmer of the East River, the rhythm of the skyline, and endless skies shifting with the city\u2019s energy.\n\nThe terrace frames the home with light and air while offering panoramic views of the river, skyline, and open skies. More than an extension of the interiors, it is an architectural feature that defines the residence\u2014an elevated landscape in the heart of Manhattan.\n\nThe Royal York provides the perfect frame for such a residence. A full-service Condop with the freedom of condo rules, it offers no board interview, immediate subletting, and is not a land lease. Life here is supported by every amenity: a 24-hour doorman, concierge, fitness center, bike room, storage, garage parking, discounted cable and internet, and half an acre of landscaped gardens\u2014rare breathing room in the heart of the city.",
@@ -19320,7 +19314,7 @@
       "price_per_sqft": 2969,
       "type": "condo",
       "year_built": 1915,
-      "days_on_market": 76,
+      "days_on_market": 79,
       "listed_date": "2026-04-21",
       "monthly_fees": 3514,
       "monthly_taxes": 2199,
@@ -19339,7 +19333,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "description": "Perched on the 10th floor of this distinguished white-glove pre-war condominium, this beautifully appointed corner residence is bathed in natural light and offers a refined, contemporary aesthetic while preserving its classic architectural charm.\n\nA gracious entrance gallery welcomes you into the home, immediately conveying a sense of scale and elegance, with soaring 10-foot ceilings and beautifully proportioned rooms throughout.\n\nThe expansive, light-filled corner living room anchors the residence, offering a sophisticated blend of timeless charm and modern comfort. Rich, dark-stained hardwood floors add depth and contrast, while large windows invite abundant natural light and provide open city views. \n\nThoughtfully designed built-ins frame a charming fireplace, creating a warm and inviting focal point for both everyday living and entertaining.\nSeamlessly connected to the living room, the gracious dining room provides an elegant setting for entertaining. A generous window fills the space with natural light, while integrated millwork and shelving offer both display and storage.\n\nPrivately situated in the eastern wing, both bedrooms enjoy open eastern and southern exposures, filling the spaces with soft natural light. Each bedroom features an ensuite bathroom and generous closet space.\n\nThe sleek, efficiently designed kitchen offers a clean, modern aesthetic. Custom white cabinetry provides abundant storage, beautifully complemented by dark stone countertops, and the space is equipped with a washer and dryer for added convenience.\n\n525 Park Avenue is a premier 14-story pre-war condominium designed by the renowned architectural firm Schwartz & Gross and completed in 1915 in the Italian Palazzo style. Ideally situated on Park Avenue at 61st Street, in the heart of one of Manhattan\u2019s most prestigious and sought-after neighborhoods, the building offers full-service white-glove amenities and a level of privacy rarely found on Park Avenue.\n\nResidents enjoy immediate proximity to Central Park, as well as the city\u2019s finest restaurants, caf\u00e9s, boutiques, galleries, and world-class museums. The building is also notably flexible, permitting financing, LLC ownership, and purchases in trust.\n\nThere is a Working Capital Contribution equal to one month\u2019s common charges and real estate taxes payable by the purchaser.\n\nApartment 10D is also available for sale and could be a wonderful opportunity for a buyer seeking additional space.",
       "last_partial_pass2": "2026-05-02",
@@ -19379,7 +19373,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "CITY MEETS COUNTRY!\nDIRECT PARK AND WATERFALL VIEWS!\n\nA Serene  Residence with Sweeping Park and Waterfall Views\n\nPositioned in one of Manhattan\u2019s most peaceful residential enclaves, 170 East End Avenue 2G offers an elegant blend of space, light, and tranquility. Spanning approximately 2,235 square feet, this gracious three bedroom, three and a half bath condominium features a refined layout designed for both everyday comfort and sophisticated entertaining.\n\nOversized windows frame direct views of the East RIver greenbelt and lush landscaped gardens below, creating a seamless connection to nature rarely found in city living. The interiors are generously scaled, with a thoughtful separation of public and private spaces, abundant closet storage, and refined modern finishes throughout.\n\nResidents enjoy a curated suite of amenities rarely matched in the neighborhood: a state-of-the-art fitness center, yoga studio, private squash court, resident lounge, media room, children\u2019s playroom, and landscaped garden. Electric car charging stations and bike storage add to everyday convenience to this full-service building with 24-hour concierge and attentive staff.\n\nLocated at the easternmost point of the Upper East Side, 170 East End Avenue 2G offers a discreet and elevated lifestyle just moments from Carl Schurz Park, top-tier private schools, and world-class medical institutions. With quiet streets, riverside paths, and cultural access all within reach, this is a rare opportunity to live expansively in a setting defined by privacy and poise.",
@@ -19462,7 +19456,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Now offering an elevated perspective, Residence 15B is a beautifully appointed, highest of it's kind, three-bedroom, two-and-a-half-bathroom home spanning approximately 1,700 square feet. \n\nThoughtfully designed interiors are framed by elegant picture moldings and White Oak herringbone floors, while oversized, triple-glazed windows draw in abundant southern and northern light throughout the day. The expansive living and dining area opens to a private balcony overlooking Central Park-an inviting extension of the home perfect for morning coffee or evening unwinding.\n\nThe open kitchen is both refined and functional, featuring custom Scavolini cabinetry, Carrara marble countertops, a fully integrated suite of Gaggenau appliances, and Waterworks fixtures.The serene primary suite offers generous proportions, dual custom closets, and a spa-quality en-suite bath finished in white marble. Highlights include a Scavolini vanity, custom jacuzzi tub, Robern medicine cabinets, radiant heated floors, and a towel warmer for added comfort.\n\nTwo additional bedrooms enjoy bright southern exposures and share a beautifully finished bathroom with marble walls, mosaic tile floors, a Scavolini vanity, and Circa lighting. A striking powder room clad in Nero Marquina marble adds a sophisticated touch.\n\nModern comforts include a residence-specific air purification system and an in-unit Samsung washer and fully vented gas dryer. Residence comes with additional storage unit. \n\nDesigned by Antonio Ventimiglia and S20M Milan, 126 East 86th Street is a boutique limestone condominium with just 28 residences, offering an intimate living experience complemented by full-service amenities. Residents enjoy an attended lobby, fitness center, spa with infrared and traditional saunas, library, children's playroom, music room, and a lounge with landscaped outdoor terrace and fireplaces.\n\nIdeally located between Park and Lexington Avenues, moments from Central Park, premier dining, shopping, and multiple subway lines.\n\nThere is a current monthly assessment of $776.27 until September 2026.",
@@ -19509,7 +19503,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-29",
       "status": "active",
       "description": "With the Azure\u2019s newly simplified and transparent long-term land lease now in place, the building has entered a new era of stability and value upside. Buyers today have a rare opportunity to acquire a residence at pricing levels that are still catching up to comparable Upper East Side condominiums, all while benefiting from predictable ownership costs and compelling future appreciation potential.\n\nWelcome to Residence 30AB at The Azure \u2014 an exceptional, loft-like four-bedroom, four-bathroom residence spanning over 3,000 square feet high above the city. Positioned on the 30th floor, this expansive corner home is wrapped in floor-to-ceiling glass, capturing breathtaking northern, eastern, and western exposures with iconic views of the East River, George Washington Bridge, RFK Bridge, and even Yankee Stadium \u2014 all bathed in brilliant natural light from sunrise to sunset.\n\nDesigned with both scale and sophistication in mind, the residence offers an expansive great room that seamlessly integrates living and dining, creating a dramatic setting for entertaining. A separate den or library provides flexibility as a media room, office, or additional lounge. The oversized, windowed eat-in kitchen is thoughtfully outfitted with sleek custom cabinetry, Caesarstone surfaces, and a full suite of premium Viking appliances \u2014 a refined yet highly functional space for everyday living and hosting.\n\nA well-conceived split-wing layout ensures optimal privacy, with two distinct bedroom corridors. Each of the four generously proportioned bedrooms features its own en-suite Italian marble bathroom, offering a refined and cohesive design throughout. The primary suite serves as a tranquil retreat, highlighted by sweeping views and a spa-inspired bath. Additional features include 10-foot ceilings, an in-unit washer and dryer and exceptional closet space.\n\nResidents of The Azure enjoy a full-service, white-glove experience with an extensive amenity suite, including 24-hour doorman and concierge service, a state-of-the-art fitness center, children\u2019s playroom, game room, resident lounge with private dining facilities, two landscaped rooftop terraces, bike storage, cold storage, and additional laundry facilities.\n\nIdeally located on the Upper East Side, the building offers seamless access to the Second Avenue Subway and the Soundview Ferry, along with proximity to Asphalt Green and Carl Schurz Park. Surrounded by some of the neighborhood\u2019s best dining, shopping, and schools, this residence presents a rare opportunity to own a true four-bedroom home defined by scale, light, and iconic New York City views. Pets are welcome.\nSome images were virtually staged.",
@@ -19557,7 +19551,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "description": "Come home to beloved Carnegie Park, and enjoy every 5 star living luxury Manhattan has to offer. This is a rare and coveted opportunity to combine a 1BR/1B with a 2BR/2B next door. Both 612 & 614 are for sale individually, but this would make possible a combination that would seamlessly create a 4BR/3B. All current floor plans for 612 & 614 and a rendering of the potential combination are procured with this listing.\n\nCarnegie Park truly is a special place to call home. Besides the most outstanding staff and Resident manager, services and amenities galore will make for a lavish lifestyle: 24H doorman, but also on site valet parking, a state-of-the art fitness center, a playroom, a spa like yoga center, bike storage, a VIP worthy entertainment lounge with catering kitchen and a 3-lane swimming pool opening onto a private half acre park. From the fully-landscaped rooftop terrace you can take in the breathtaking 360-degree view of Central Park, the East River and the ever changing Midtown skyline. You can also take advantage of a barbecue grill area.\n\nIn the luxurious comfort of both home, you will currently find:\n\n- Desirable loft-like vibes and spectacular oversize panoramic windows flooding the space with light.\n\n- A delightful open Western exposure with wonderful light all day and breathtaking sunsets.\n\n- Custom window treatments.\n\n- Stainless steel kitchen appliances highlighted by Caesarstone countertops.\n\n- Sumptuous bathrooms with marble and custom mosaic details\n\n- Ample closets.\n\n- And the ultimate convenience of a washer/dryer in both units!\n\nThe phenomenal and convenient location offers it all in this sought after neighborhood: Central Park, 4/5/6 and Q trains, crosstown bus to the West side, 92nd Street Y, Asphalt Green, post office, museums galore, fine dining, endless shopping (Whole Foods, Target).\n\nGet ready to create a sophisticated one of kind setting for your next chapter. This opportunity will not last, schedule your private showing now!",
       "last_partial_pass2": "2026-05-02",
@@ -19565,7 +19559,7 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-05",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": "Carnegie Park Condominium"
     },
     "1823012": {
@@ -19608,7 +19602,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "description": "THE APARTMENT \n\nDesigned in 1923 by Rosario Candela-the preeminent architect of New York's great apartment houses-1105 Park Avenue, Apartment 11B is a quintessential example of his enduring legacy of proportion, elegance, and quiet grandeur. It also reflects why discerning buyers will often wait years for the opportunity to acquire a Candela residence in estate condition-rather than inherit the compromises of a prior renovation.\n\nOffered for the first time in decades, this high-floor home is bathed in natural light, with four principal rooms (and two bathrooms) enjoying open views over Park Avenue- an exposure that has long made the \"B\" line particularly prized.\n\nThe layout is both classic and highly functional. A signature 29-foot gallery-one of Candela's most celebrated design elements-creates a striking entrance and an ideal setting for art and collections.\nThree generously scaled bedrooms are privately set apart from the entertaining rooms, which feel truly expansive with high ceilings, refined architectural detail, and a wood-burning fireplace. A rarely found 44-foot expanse from living room to dining room enhances both scale and flow.\n\nThe rear of the apartment offers meaningful flexibility, including the opportunity to reimagine the kitchen and adjoining staff room into a substantial eat-in kitchen tailored to today's lifestyle. A second generously sized staff room allows for a variety of additional uses, whether as a home office, expanded service area, or a well-appointed laundry room.\n\nTHE BUILDING \n\n1105 Park Avenue is one of Carnegie Hill's most distinguished prewar cooperatives, occupying a prime corner at 89th Street just moments from Central Park, Museum Mile, and the boutiques and restaurants of Madison Avenue, as well as a concentration of the city's finest schools.\n\nThe building offers the level of service and discretion expected of a classic Park Avenue address, with full-time doorman and concierge staff and a live-in resident manager. Amenities include a large fitness center, bicycle room, and private storage for each residence.\n\nOriginally constructed in 1923 and intimate in scale, the cooperative comprises just 57 residences across 14 floors. It permits financing of up to 50% and welcomes pets with Board approval. A 2% flip tax is paid by the purchaser. The building is managed by Brown Harris Stevens.",
       "last_partial_pass2": "2026-05-02",
@@ -19654,7 +19648,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Situated in the heart of Manhattan's coveted Gold Coast, Residence 5BC at 900 Park Avenue is a grand, sun-drenched three bedroom, three bathroom home boasting stunning views over Park Avenue. Originally architected by Annabelle Selldorf and recently updated in 2021, and beautifully laid out over approximately 1,890 square feet, this spectacular home boasts spacious rooms and a carefully considered separation of the private quarters from the entertaining spaces. \n\nA gracious foyer welcomes you into the home and leads directly into the corner great room with sweeping views over Park Avenue. The chef\u2019s eat-in kitchen features a suite of top-of-the-line appliances by Viking, SubZero, Wolf, and Gaggenau, elegant soapstone counters as well as endless glass cabinetry, and can be enclosed via pocket doors. A full bathroom, ample closets and a Bosch washer and dryer round out the offerings in the entertaining wing.\n\nOverlooking Park Avenue through a wall of windows, the palatial primary suite features floor to ceiling closets, a large walk-in closet, and an ensuite designed with Selldorf\u2019s signature glass tiles, a large soapstone soaking tub, a walk-in shower with dual showerhead and a double vanity. A second bedroom features a walk-in closet and an ensuite with a combined soaking tub and shower. The third bedroom could be a guest room or reappropriated as a media room/den.\n\nA full-service condominium building, The Park 900 boasts amenities and conveniences that include a 24-hour doorman and concierge staff, a newly renovated fitness center and residents\u2019 lounge, a convenient building driveway and an in-house garage.\n\nCentral Park, renowned boutiques and restaurants, the Metropolitan Museum of Art, and top-rated public and private schools are all just moments away.",
@@ -20234,7 +20228,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -20282,7 +20276,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-17",
       "status": "active",
       "needs_refresh": false
@@ -20329,7 +20323,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false
@@ -20511,7 +20505,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -20606,7 +20600,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -20648,7 +20642,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -20689,7 +20683,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -20794,7 +20788,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -20841,7 +20835,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -20888,7 +20882,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -20935,7 +20929,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -20982,7 +20976,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -21022,7 +21016,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-10",
       "status": "active",
       "needs_refresh": false
@@ -21076,7 +21070,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -21122,7 +21116,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -21170,7 +21164,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -21210,7 +21204,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -21251,7 +21245,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -21301,7 +21295,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -21349,7 +21343,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -21389,7 +21383,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -21484,7 +21478,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -21524,7 +21518,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -21571,7 +21565,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -21723,7 +21717,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1979,
-      "days_on_market": 66,
+      "days_on_market": 67,
       "listed_date": "2026-05-03",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21744,7 +21738,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-22",
       "status": "active",
       "needs_refresh": false
@@ -22143,7 +22137,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -22365,7 +22359,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -22411,7 +22405,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -22453,7 +22447,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -22501,7 +22495,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-09",
       "status": "active",
       "needs_refresh": false,
@@ -22550,7 +22544,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-12",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -22597,7 +22591,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -22643,7 +22637,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-11",
       "status": "active",
       "needs_refresh": false,
@@ -22767,7 +22761,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -22910,7 +22904,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-22",
       "status": "active",
       "needs_refresh": false,
@@ -22959,7 +22953,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -22999,7 +22993,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -23103,7 +23097,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -23242,7 +23236,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -23290,12 +23284,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-19",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-19",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "1828057": {
       "listing_type": "sale",
@@ -23333,7 +23327,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -23381,7 +23375,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-18",
       "status": "active",
       "needs_refresh": false
@@ -23476,7 +23470,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -23517,7 +23511,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -23559,7 +23553,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -23702,7 +23696,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -23743,7 +23737,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -24078,7 +24072,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -24166,12 +24160,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-19",
-      "last_pass2": "2026-07-09",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-09"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "1814537": {
       "listing_type": "sale",
@@ -24221,7 +24215,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-22",
       "status": "active",
       "needs_refresh": false
@@ -24292,7 +24286,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-22",
       "status": "active",
       "needs_refresh": false
@@ -24379,7 +24373,7 @@
       "data_quality": "pass2",
       "last_pass2": "2026-06-15",
       "status": "active",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "days_on_market": 40,
       "needs_refresh": false,
       "building_name": "Maison 78"
@@ -24779,7 +24773,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-08",
-      "last_pass2": "2026-07-09",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "building_name": "The Siena"
@@ -25069,7 +25063,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -25110,7 +25104,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -25151,7 +25145,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -25198,7 +25192,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-29",
       "status": "active",
       "needs_refresh": false,
@@ -25368,7 +25362,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1986,
-      "days_on_market": 77,
+      "days_on_market": 78,
       "listed_date": "2026-04-22",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25401,7 +25395,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-07",
       "status": "active",
       "needs_refresh": false,
@@ -25508,7 +25502,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-19",
       "status": "active",
       "needs_refresh": false,
@@ -25529,7 +25523,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1949,
-      "days_on_market": 39,
+      "days_on_market": 42,
       "listed_date": "2026-05-28",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25557,7 +25551,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -25687,7 +25681,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -25840,7 +25834,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -25881,7 +25875,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -25923,7 +25917,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -25977,12 +25971,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": "Yorkshire Towers"
     },
     "5055070": {
@@ -26063,7 +26057,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1960,
-      "days_on_market": 40,
+      "days_on_market": 41,
       "listed_date": "2026-05-29",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -26084,7 +26078,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-05-30",
       "status": "active",
       "needs_refresh": false
@@ -26176,7 +26170,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -26217,7 +26211,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -26332,7 +26326,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1989,
-      "days_on_market": 35,
+      "days_on_market": 36,
       "listed_date": "2026-06-01",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -26353,7 +26347,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-07",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-02",
       "status": "active",
       "needs_refresh": false
@@ -26401,12 +26395,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": null
     },
     "5054879": {
@@ -26672,7 +26666,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -26792,7 +26786,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2019,
-      "days_on_market": 71,
+      "days_on_market": 72,
       "listed_date": "2026-04-28",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -26813,7 +26807,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-19",
       "status": "active",
       "needs_refresh": false,
@@ -26834,7 +26828,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2003,
-      "days_on_market": 37,
+      "days_on_market": 38,
       "listed_date": "2026-06-01",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -26855,7 +26849,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-03",
       "status": "active",
       "needs_refresh": false
@@ -27027,13 +27021,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-22",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "building_name": "One Sutton Place North",
       "off_market_date": "2026-06-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5062867": {
       "listing_type": "rent",
@@ -27078,12 +27072,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-06",
-      "last_pass2": "2026-07-09",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-05-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-09",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": "Two Sutton Place North"
     },
     "5063304": {
@@ -27101,7 +27095,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2015,
-      "days_on_market": 34,
+      "days_on_market": 35,
       "listed_date": "2026-06-04",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -27122,7 +27116,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-06",
       "status": "active",
       "needs_refresh": false
@@ -27278,13 +27272,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-27",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "building_name": "The Duchess",
       "off_market_date": "2026-06-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5056382": {
       "listing_type": "rent",
@@ -27329,7 +27323,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "building_name": null
@@ -27377,12 +27371,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": "The Forum"
     },
     "5064108": {
@@ -27428,12 +27422,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5065026": {
       "listing_type": "rent",
@@ -27478,7 +27472,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -27518,7 +27512,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -27602,7 +27596,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -27649,7 +27643,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-09",
       "status": "active",
       "needs_refresh": false
@@ -27690,7 +27684,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -27738,7 +27732,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-10",
       "status": "active",
       "needs_refresh": false,
@@ -27793,13 +27787,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "building_name": "The Langdon",
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "4942783": {
       "listing_type": "rent",
@@ -27886,12 +27880,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5066424": {
       "listing_type": "rent",
@@ -28065,12 +28059,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-10",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "1831504": {
       "listing_type": "sale",
@@ -28108,7 +28102,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -28162,13 +28156,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "building_name": "Yorkshire Towers",
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5042200": {
       "listing_type": "rent",
@@ -28321,7 +28315,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -28445,7 +28439,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-12",
       "status": "active",
       "needs_refresh": false,
@@ -28494,12 +28488,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-12",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5071076": {
       "listing_type": "rent",
@@ -28516,7 +28510,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2002,
-      "days_on_market": 26,
+      "days_on_market": 27,
       "listed_date": "2026-06-12",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -28549,7 +28543,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-08",
       "status": "active",
       "needs_refresh": false,
@@ -28591,7 +28585,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-14",
       "status": "active",
       "needs_refresh": false,
@@ -28680,12 +28674,12 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass2": "2026-07-09",
+      "last_pass2": "2026-07-10",
       "needs_refresh": false,
       "status": "active",
       "off_market_date": "2026-04-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-09",
+      "pass2_confirmed_at": "2026-07-10",
       "building_name": null
     },
     "1833715": {
@@ -28724,7 +28718,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -28773,7 +28767,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
     },
@@ -28814,7 +28808,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-17",
       "status": "active",
       "needs_refresh": false
@@ -28863,12 +28857,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-17",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-17",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5074211": {
       "listing_type": "rent",
@@ -28920,12 +28914,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5073815": {
       "listing_type": "rent",
@@ -29006,7 +29000,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-18",
       "status": "active",
       "needs_refresh": false
@@ -29048,7 +29042,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-18",
       "status": "active",
       "needs_refresh": false
@@ -29090,7 +29084,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-18",
       "status": "active",
       "needs_refresh": false
@@ -29139,12 +29133,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-22",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5073767": {
       "listing_type": "rent",
@@ -29249,7 +29243,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-19",
       "status": "active",
       "needs_refresh": false
@@ -29270,7 +29264,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1986,
-      "days_on_market": 20,
+      "days_on_market": 21,
       "listed_date": "2026-06-18",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -29297,7 +29291,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-07",
       "status": "active",
       "needs_refresh": false
@@ -29346,12 +29340,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-21",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "5064974": {
       "listing_type": "rent",
@@ -29472,12 +29466,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-19",
-      "last_pass2": "2026-07-07",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-19",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-07"
+      "pass2_confirmed_at": "2026-07-10"
     },
     "1834595": {
       "listing_type": "sale",
@@ -29516,7 +29510,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-19",
       "status": "active",
       "needs_refresh": false
@@ -29537,7 +29531,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1959,
-      "days_on_market": 19,
+      "days_on_market": 20,
       "listed_date": "2026-06-19",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -29564,7 +29558,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -29606,7 +29600,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-23",
       "status": "active",
       "needs_refresh": false
@@ -29654,7 +29648,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -29702,7 +29696,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -29744,7 +29738,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-24",
       "status": "active",
       "needs_refresh": false
@@ -29786,7 +29780,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-24",
       "status": "active",
       "needs_refresh": false
@@ -29870,7 +29864,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-25",
       "status": "active",
       "needs_refresh": false
@@ -29930,7 +29924,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-09",
       "status": "active",
       "needs_refresh": false
@@ -29972,7 +29966,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-25",
       "status": "active",
       "needs_refresh": false
@@ -30056,7 +30050,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-26",
       "status": "active",
       "needs_refresh": false
@@ -30152,7 +30146,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-27",
       "status": "active",
       "needs_refresh": false
@@ -30200,7 +30194,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-08",
       "status": "active",
       "needs_refresh": false
@@ -30242,7 +30236,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-29",
       "status": "active",
       "needs_refresh": false
@@ -30284,7 +30278,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-29",
       "status": "active",
       "needs_refresh": false
@@ -30326,7 +30320,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-06-29",
       "status": "active",
       "needs_refresh": false
@@ -30410,7 +30404,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -30494,7 +30488,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -30638,7 +30632,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -30701,7 +30695,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1910,
-      "days_on_market": 8,
+      "days_on_market": 9,
       "listed_date": "2026-06-30",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -30728,7 +30722,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-09",
       "status": "active",
       "needs_refresh": false
@@ -30812,7 +30806,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-07",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false
@@ -30854,7 +30848,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-07",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false
@@ -30932,7 +30926,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-07",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false
@@ -31016,7 +31010,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false
@@ -31058,7 +31052,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false
@@ -31100,7 +31094,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-07",
       "status": "active",
       "needs_refresh": false
@@ -31121,7 +31115,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1938,
-      "days_on_market": 2,
+      "days_on_market": 3,
       "listed_date": "2026-07-06",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -31142,7 +31136,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-07",
       "status": "active",
       "needs_refresh": false
@@ -31184,7 +31178,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-08",
       "status": "active",
       "needs_refresh": false
@@ -31268,7 +31262,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
+      "last_pass1": "2026-07-10",
       "last_pass2": "2026-07-09",
       "status": "active",
       "needs_refresh": false
@@ -31310,13 +31304,181 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-09",
+      "last_pass1": "2026-07-10",
+      "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-05-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-09"
+      "pass2_confirmed_at": "2026-07-10"
+    },
+    "1836920": {
+      "listing_type": "sale",
+      "id": "1836920",
+      "url": "https://streeteasy.com/sale/1836920",
+      "building": "10 East 70th Street",
+      "building_name": null,
+      "address": "10 East 70th Street",
+      "unit": "#3A",
+      "neighborhood": "",
+      "price": 3000000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 3.5,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1962,
+      "days_on_market": 0,
+      "listed_date": "2026-07-09",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 6422,
+      "agent_name": "Christine Miller Martin",
+      "agent_phone": null,
+      "agent_email": "christine.martin@compass.com",
+      "agent_firm": null,
+      "price_history": [
+        {
+          "date": "2026-07-09",
+          "price": 3000000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-07-10",
+      "last_pass2": "2026-07-10",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1836973": {
+      "listing_type": "sale",
+      "id": "1836973",
+      "url": "https://streeteasy.com/sale/1836973",
+      "building": "1200 Fifth Avenue",
+      "building_name": null,
+      "address": "1200 Fifth Avenue",
+      "unit": "#4A",
+      "neighborhood": "",
+      "price": 5000000,
+      "sqft": 3700,
+      "beds": 5,
+      "baths": 4.0,
+      "price_per_sqft": 1351,
+      "type": "condo",
+      "year_built": 1928,
+      "days_on_market": 0,
+      "listed_date": "2026-07-09",
+      "monthly_fees": 6585,
+      "monthly_taxes": 5064,
+      "maintenance": null,
+      "agent_name": "Lisa Larson",
+      "agent_phone": null,
+      "agent_email": "lisa.larson@sothebys.realty",
+      "agent_firm": null,
+      "price_history": [
+        {
+          "date": "2026-07-09",
+          "price": 5000000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-07-10",
+      "last_pass2": "2026-07-10",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5097995": {
+      "listing_type": "rent",
+      "id": "5097995",
+      "url": "https://streeteasy.com/rental/5097995",
+      "building": "808 Lexington Avenue",
+      "building_name": null,
+      "address": "808 Lexington Avenue",
+      "unit": "#3",
+      "neighborhood": "",
+      "price": 19900,
+      "sqft": 1400,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": 1910,
+      "days_on_market": 0,
+      "listed_date": "2026-07-09",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Rove Travel LLC",
+      "price_history": [
+        {
+          "date": "2026-07-09",
+          "price": 19900,
+          "event": "LISTED",
+          "broker": "Rove Travel LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-07-10",
+      "last_pass2": "2026-07-10",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5097997": {
+      "listing_type": "rent",
+      "id": "5097997",
+      "url": "https://streeteasy.com/rental/5097997",
+      "building": "808 Lexington Avenue",
+      "building_name": null,
+      "address": "808 Lexington Avenue",
+      "unit": "#4",
+      "neighborhood": "",
+      "price": 17900,
+      "sqft": 1400,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": 1910,
+      "days_on_market": 0,
+      "listed_date": "2026-07-09",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Rove Travel LLC",
+      "price_history": [
+        {
+          "date": "2026-07-09",
+          "price": 17900,
+          "event": "LISTED",
+          "broker": "Rove Travel LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-07-10",
+      "last_pass2": "2026-07-10",
+      "status": "active",
+      "needs_refresh": false
     }
   }
 }
