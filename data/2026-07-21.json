@@ -1,8 +1,8 @@
 {
   "generated_at": "2026-07-21",
-  "listing_count": 606,
-  "sale_count": 424,
-  "rental_count": 182,
+  "listing_count": 609,
+  "sale_count": 425,
+  "rental_count": 184,
   "delisted_count": 0,
   "run_cost_usd": 0.0,
   "mode": "both",
@@ -166,6 +166,12 @@
       "agent_firm": "Compass",
       "price_history": [
         {
+          "date": "2026-07-17",
+          "price": 4999000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Compass"
+        },
+        {
           "date": "2026-05-14",
           "price": 4999000,
           "event": "TEMPORARILY_OFF_MARKET",
@@ -179,12 +185,12 @@
         }
       ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-03",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -549,12 +555,12 @@
         }
       ],
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-12",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14",
+      "pass2_confirmed_at": "2026-07-21",
       "building_name": "The Promenade"
     },
     {
@@ -1408,7 +1414,7 @@
         }
       ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-23",
       "building_name": "The Brompton"
@@ -1553,7 +1559,7 @@
       "price_per_sqft": 2918,
       "type": "condo",
       "year_built": 1941,
-      "days_on_market": 151,
+      "days_on_market": 158,
       "monthly_fees": 2298,
       "monthly_taxes": 2195,
       "maintenance": null,
@@ -1582,7 +1588,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-13"
     },
@@ -1611,6 +1617,12 @@
       "agent_firm": "Corcoran",
       "price_history": [
         {
+          "date": "2026-07-17",
+          "price": 4785000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Corcoran"
+        },
+        {
           "date": "2026-06-16",
           "price": 4785000,
           "event": "TEMPORARILY_OFF_MARKET",
@@ -1624,12 +1636,12 @@
         }
       ],
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-07",
       "off_market_date": "2026-06-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -3194,7 +3206,7 @@
       "price_per_sqft": 3135,
       "type": "coop",
       "year_built": 1951,
-      "days_on_market": 119,
+      "days_on_market": 127,
       "monthly_fees": 5639,
       "monthly_taxes": null,
       "maintenance": 5639,
@@ -3211,7 +3223,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-16",
       "building_name": "Carlton House"
@@ -3655,12 +3667,12 @@
         }
       ],
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-12",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14",
+      "pass2_confirmed_at": "2026-07-21",
       "building_name": "The Promenade"
     },
     {
@@ -3758,7 +3770,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-17"
     },
@@ -4065,7 +4077,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-03"
     },
@@ -4312,7 +4324,7 @@
         }
       ],
       "last_pass1": "2026-05-13",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-17"
     },
@@ -5928,7 +5940,7 @@
       "price_per_sqft": 2742,
       "type": "condo",
       "year_built": 1950,
-      "days_on_market": 131,
+      "days_on_market": 139,
       "monthly_fees": 2500,
       "monthly_taxes": 2577,
       "maintenance": null,
@@ -5957,7 +5969,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-04"
     },
@@ -6229,6 +6241,12 @@
       "agent_firm": "Brown Harris Stevens",
       "price_history": [
         {
+          "date": "2026-07-20",
+          "price": 3995000,
+          "event": "SOLD",
+          "broker": "Brown Harris Stevens"
+        },
+        {
           "date": "2026-04-30",
           "price": 3995000,
           "event": "IN_CONTRACT",
@@ -6242,10 +6260,13 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-16",
-      "building_name": "The Verona"
+      "building_name": "The Verona",
+      "off_market_date": "2026-07-20",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -6418,7 +6439,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-03",
       "building_name": null
@@ -6721,12 +6742,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-06",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "building_name": "Archive Lofts",
       "off_market_date": "2026-07-06",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -6809,6 +6830,89 @@
     },
     {
       "listing_type": "sale",
+      "id": "1838370",
+      "url": "https://streeteasy.com/sale/1838370",
+      "building": "110 East 71st Street",
+      "building_name": "Viscaya Condominium",
+      "address": "110 East 71st Street",
+      "unit": "#4",
+      "neighborhood": "",
+      "price": 3995000,
+      "sqft": 1650,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 2421,
+      "type": "condo",
+      "year_built": 1982,
+      "days_on_market": 110,
+      "listed_date": "2026-02-18",
+      "monthly_fees": 4708,
+      "monthly_taxes": 3331,
+      "maintenance": null,
+      "agent_name": "Carrie Chiang",
+      "agent_phone": null,
+      "agent_email": "ccc@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-07-17",
+          "price": 3990000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-07-21",
+      "last_pass2": "2026-07-21",
+      "status": "active",
+      "off_market_date": "2026-06-08",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-07-21"
+    },
+    {
+      "listing_type": "sale",
+      "id": "1839069",
+      "url": "https://streeteasy.com/sale/1839069",
+      "building": "343 East 74th Street",
+      "building_name": "The Forum",
+      "address": "343 East 74th Street",
+      "unit": "#PH4AB",
+      "neighborhood": "",
+      "price": 3995000,
+      "sqft": 2200,
+      "beds": 4,
+      "baths": 3.0,
+      "price_per_sqft": 1816,
+      "type": "coop",
+      "year_built": 1987,
+      "days_on_market": 0,
+      "listed_date": "2026-07-21",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 9339,
+      "agent_name": "David Banoun",
+      "agent_phone": null,
+      "agent_email": "dbanoun@essence-realty.com",
+      "agent_firm": "Essence Realty LLC",
+      "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 3995000,
+          "event": "LISTED",
+          "broker": "Essence Realty LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-07-21",
+      "last_pass2": "2026-07-21",
+      "status": "active"
+    },
+    {
+      "listing_type": "sale",
       "id": "1824980",
       "url": "https://streeteasy.com/sale/1824980",
       "building": "108 East 82nd Street",
@@ -6854,46 +6958,6 @@
       "off_market_date": "2026-07-13",
       "pass2_confirmed_off_market": true,
       "pass2_confirmed_at": "2026-07-21"
-    },
-    {
-      "listing_type": "sale",
-      "id": "1838370",
-      "url": "https://streeteasy.com/sale/1838370",
-      "building": "110 East 71st Street",
-      "building_name": "Viscaya Condominium",
-      "address": "110 East 71st Street",
-      "unit": "#4",
-      "neighborhood": "",
-      "price": 3990000,
-      "sqft": 1600,
-      "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": 2494,
-      "type": "condo",
-      "year_built": 1982,
-      "days_on_market": 1,
-      "listed_date": "2026-07-17",
-      "monthly_fees": 4708,
-      "monthly_taxes": 3331,
-      "maintenance": null,
-      "agent_name": "Carrie Chiang",
-      "agent_phone": null,
-      "agent_email": "ccc@corcoran.com",
-      "agent_firm": "Corcoran",
-      "price_history": [
-        {
-          "date": "2026-07-17",
-          "price": 3990000,
-          "event": "LISTED",
-          "broker": "Corcoran"
-        }
-      ],
-      "_is_partial": false,
-      "_partial_reason": null,
-      "_partial_error": null,
-      "last_pass1": "2026-07-21",
-      "last_pass2": "2026-07-19",
-      "status": "active"
     },
     {
       "listing_type": "sale",
@@ -7006,7 +7070,7 @@
       "price_per_sqft": 2390,
       "type": "condo",
       "year_built": 2023,
-      "days_on_market": 122,
+      "days_on_market": 130,
       "listed_date": "2026-03-13",
       "monthly_fees": 2509,
       "monthly_taxes": 2595,
@@ -7024,7 +7088,7 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "description": "1 FREE PARKING LICENSE INCLUDED WITH THIS RESIDENCE FOR A LIMITED TIME\n\nIMMEDIATE OCCUPANCY\n\nResidence 31C is a corner three-bedroom, two-bathroom home with powder room that offers sweeping northern and western views over the Hudson River, Riverside and Sakura Parks, and the iconic spire of Riverside Church. Boasting over 1,600 square feet of finely detailed living space, this residence features a gracious corner living and dining room that adjoins both a covered outdoor loggia space and a windowed kitchen that can be elegantly concealed behind a solid wood pocket door. The west-facing primary bedroom suite incorporates a 5-fixture bathroom with deep soaking tub and large glass-enclosed walk-in shower, and a walk-in closet. Two additional bedrooms share this residence's spectacular views over the Hudson River, as well as a conveniently located hall bath.\nDisplaying a refined finish palette hand-selected by Robert A.M. Stern Architects, all residences at Claremont Hall include a custom-designed solid wood entrance door with polished chrome hardware, wide plank European white oak flooring, expansive, high-performance windows, and up to 10' ceilings.\n\nSelect residences feature generous bay picture windows and Gothic-inspired arched windows. Kitchens at Claremont Hall feature custom Italian cabinetry in soothing Classic Bianco or Modern Grigio lacquer, topped by Calacatta Laza quartz countertops and backed by a ceramic tile backsplash and a paneled appliance package from Bosch, with a custom range hood with integrated spice shelf. Paneled wine refrigerators are included in select residences.\n\nPrimary baths are finished with Arabescato Cervaiole marble and feature marble mosaic tile flooring and custom sconces in polished chrome. Each primary bath includes a RAMSA-designed Italian walnut vanity with Arabescato Cervaiole marble countertop, polished chrome fixtures by Kallista, custom designed mirrored medicine cabinet by Robern, and water closet fixtures by Toto.\nSecondary baths are well appointed with marble mosaic tile flooring framed by Bianco Carrara border and ceramic tile surround, ceramic tile shower surround, custom vanities designed by RAMSA, Grigio Toscana marble countertops, and Kohler undermount sinks with polished chrome hardware from Purist by Kohler. Secondary baths also include oversized mirrored medicine cabinets with polished chrome frames by Robern, Kohler soaking tubs or showers with polished chrome Purist rain showerheads and hand-held sprayers by Kohler, and water closets by Toto.\nPowder rooms offer five-inch-wide European white oak flooring with Gothic-inspired wainscoting, custom Italian vanities designed by RAMSA with Nero Marquina marble countertops, RAMSA-designed Central Park West Collection fixtures by Kallista, custom oversized mirrors by Robern, polished chrome sconces, and water closet fixtures by Toto. Select homes feature private outdoor loggias or terraces. Each residence conveniently features a washer and dryer by Bosch.\n\nClaremont Hall's robust amenities span over three floors and include spaces for socializing, working, and relaxing. The experience is centered on the Refectory Pool, a grand historic dining hall transformed into a swimming and events space, featuring a 48' salt-water swimming pool. Claremont Hall is complete with a grand, double-height lobby, a Reading Room with Great Books Collection, a Gymnasium with Flex Space, the Little Castle playroom, media room, and a Residents' Lounge and Terrace overlooking tranquil Sakura Park. The building also features a concierge, handyman, porters, and a live-in resident manager, as well as a bicycle room, and the opportunity to purchase on-site parking and private storage.\n\nFOR A LIMITED TIME, SPONSOR WILL INCLUDE 1 FREE PARKING LICENSE WITH THIS RESIDENCE. The complete offering terms are in an offering plan available from Sponsor. File No. CD-20-0302. Sponsor: Broadway Community Owner LLC, c/o Lendlease, 200 Park Avenue, 9th Floor, NY, NY 10166",
       "last_partial_pass2": "2026-05-02",
@@ -8389,7 +8453,7 @@
       "baths": 3.0,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 45,
+      "days_on_market": 46,
       "listed_date": "2026-05-20",
       "maintenance": 4889,
       "agent_name": "diane johnson",
@@ -8665,7 +8729,7 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "description": "Experience elevated Upper East Side living at Bridge Tower. EXCEPTIONAL VALUE PRICED AT $1,050 PER SQUARE FOOT!\nResidence 4ABC is a rare, sprawling ~3,500 sq ft home that delivers the scale of a townhouse with the convenience of full-service luxury condominium living.\n\nThis exceptional five-bedroom, five-bath residence features 9-foot ceilings and triple exposures to the north, south, and west, filling the home with natural light throughout the day. The layout is thoughtfully designed with a clear separation between entertaining and private living spaces, offering both flow and discretion.\n\nThe bedroom wing is quietly tucked away from the main living areas, creating a true sense of retreat. The primary suite serves as a private sanctuary, complete with generous proportions, and a spa-like en-suite bath. Additional bedrooms are equally well-scaled, each offering flexibility for family living, guest accommodations, or dedicated home offices. Multiple bathrooms within the wing ensure both comfort and convenience, while the separation from the great room enhances privacy\u2014ideal for both everyday living and hosting.\n\nA grand great room anchors the home, complemented by a formal dining area and adaptable living spaces suited to a variety of lifestyles. High-end finishes include hardwood floors, central air, and an in-unit washer/dryer, while open city and skyline views add to the home\u2019s appeal.\n\nDesigned by Costa Kondylis & David Rockwell, Bridge Tower Place is one of the Upper East Side's premier condominiums. This pet-friendly building is replete with a welcoming lobby, 24-hour doorman & concierge, resident manager, parking garage, complimentary fitness center, roof deck, children's playroom, laundry room & bike storage.\n\nSituated in one of New York's City's most desirable neighborhoods Lenox Hill. Just moments from the East River Esplanade, residents can enjoy peaceful morning walks by the water.\nThe neighborhood offers many fine dining options, shopping, cultural venues, Central Park & easy access to the Ed Koch Queensboro Bridge, the FDR Drive, and a variety of public transportation options. Trader Joe's across the street & Whole Foods is steps away offering true convenience!",
       "last_partial_pass2": "2026-05-02",
@@ -9281,6 +9345,12 @@
       "agent_firm": "Compass",
       "price_history": [
         {
+          "date": "2026-07-21",
+          "price": 3450000,
+          "event": "SOLD",
+          "broker": "Compass"
+        },
+        {
           "date": "2026-05-23",
           "price": 3595000,
           "event": "NO_LONGER_AVAILABLE",
@@ -9300,12 +9370,12 @@
         }
       ],
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-09",
       "off_market_date": "2026-05-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14",
+      "pass2_confirmed_at": "2026-07-21",
       "building_name": "The Chatham"
     },
     {
@@ -9333,6 +9403,12 @@
       "agent_firm": "Compass",
       "price_history": [
         {
+          "date": "2026-07-17",
+          "price": 3595000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Compass"
+        },
+        {
           "date": "2026-05-31",
           "price": 3595000,
           "event": "TEMPORARILY_OFF_MARKET",
@@ -9352,12 +9428,12 @@
         }
       ],
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-06",
       "off_market_date": "2026-05-31",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -9623,7 +9699,7 @@
       "price_history": [
         {
           "date": "2026-07-03",
-          "price": 3500000,
+          "price": 3521587,
           "event": "SOLD",
           "broker": "SERHANT."
         },
@@ -9641,12 +9717,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-07",
       "off_market_date": "2026-07-03",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -10571,14 +10647,14 @@
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4892,
-      "agent_name": "Irina Sher",
+      "agent_name": "Celia Mastbaum",
       "agent_phone": "(212) 319-2303",
-      "agent_email": "irina.sher@elliman.com",
+      "agent_email": "celia.mastbaum@corcoran.com",
       "agent_firm": "Douglas Elliman",
       "price_history": [
         {
           "date": "2026-07-09",
-          "price": 3395000,
+          "price": 3200000,
           "event": "SOLD",
           "broker": "Douglas Elliman"
         },
@@ -10596,12 +10672,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-05",
       "off_market_date": "2026-07-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -10775,7 +10851,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-22",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active"
     },
     {
@@ -12133,7 +12209,7 @@
       "price_per_sqft": 2296,
       "type": "condo",
       "year_built": 1927,
-      "days_on_market": 152,
+      "days_on_market": 160,
       "monthly_fees": 2578,
       "monthly_taxes": 1757,
       "maintenance": null,
@@ -12156,7 +12232,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-11",
       "building_name": "Philip House"
@@ -12199,7 +12275,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-01-27"
     },
@@ -12333,12 +12409,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-18",
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14",
+      "pass2_confirmed_at": "2026-07-21",
       "building_name": "Manhattan House"
     },
     {
@@ -12385,7 +12461,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-20",
       "sqft_estimated": true,
@@ -12393,7 +12469,7 @@
       "sqft_estimate_note": "Room sum; image stretched (30% divergence); combined unit 16ABG; ~1,750 sqft",
       "off_market_date": "2026-07-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -12794,7 +12870,7 @@
       "price_per_sqft": 2325,
       "type": "condo",
       "year_built": 1973,
-      "days_on_market": 138,
+      "days_on_market": 140,
       "monthly_fees": 2972,
       "monthly_taxes": 2378,
       "maintenance": null,
@@ -12803,6 +12879,12 @@
       "agent_email": "mcohen@elliman.com",
       "agent_firm": "Douglas Elliman",
       "price_history": [
+        {
+          "date": "2026-07-16",
+          "price": 2995000,
+          "event": "IN_CONTRACT",
+          "broker": "Douglas Elliman"
+        },
         {
           "date": "2026-04-27",
           "price": 2995000,
@@ -12817,7 +12899,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-26",
       "building_name": "Park 900"
@@ -13072,12 +13154,12 @@
         }
       ],
       "last_pass1": "2026-06-26",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-02",
       "off_market_date": "2026-06-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -13896,7 +13978,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-16"
     },
@@ -13938,7 +14020,7 @@
         }
       ],
       "last_pass1": "2026-06-22",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-03"
     },
@@ -14159,7 +14241,7 @@
         }
       ],
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-16",
       "sqft_estimated": true,
@@ -14167,7 +14249,7 @@
       "sqft_estimate_note": "1220 Park Avenue 2C: pixel-method indicated 3,800 but adjusted down based on $/sqft sanity check (raw measurement gave $762/sqft, suspiciously low for Park Ave Carnegie Hill). Range 2,800-3,400.",
       "off_market_date": "2026-06-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -14674,7 +14756,7 @@
         }
       ],
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-04",
       "sqft_estimated": true,
@@ -14700,14 +14782,14 @@
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 3727,
-      "agent_name": "Louisa Gillen",
+      "agent_name": "Maggie Wu",
       "agent_phone": "(917) 306-3337",
-      "agent_email": "louisa@simplerealestatenyc.com",
+      "agent_email": "maggiewu@compass.com",
       "agent_firm": "Simple Real Estate",
       "price_history": [
         {
           "date": "2026-07-02",
-          "price": 2795000,
+          "price": 2680000,
           "event": "SOLD",
           "broker": "Simple Real Estate"
         },
@@ -14725,12 +14807,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-02",
       "off_market_date": "2026-07-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -15271,7 +15353,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-04-14"
     },
@@ -15706,7 +15788,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-13"
     },
@@ -15875,14 +15957,14 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "description": "Prime location! Renovated, beautiful, expansive 3 Bedroom with high ceilings in a Full Service Prewar Condominium on one of the most prime UES blocks located between Park and Madison Avenue. This spacious and grand apartment boasts South and East exposures and is accessed through a semi-private elevator landing. The attractive living room, with a wood burning fireplace, is entered through double french doors off of the inviting formal foyer. There is a renovated windowed kitchen, dining room, 3 spacious bedrooms with 3 just renovated en suite bathrooms. Additional features include gorgeous newly refinished hardwood floors throughout, high beamed ceilings, Central Air Conditioning, Washer/Dryer, custom built-ins, and plenty of storage.\n\n50 East 72nd Street is a full service building with a full time doorman and live-in superintendent. The building is located in the most elegant Upper East Side location and is moments from the Frick Collection, The Met Breuer, and world class\n\nMadison Avenue shopping. All that New York City has to offer is easily accessible by the nearby 6, Q, F Subway lines, a Citibike station in front of the building, and reliable crosstown bus service via the M72.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -17091,13 +17173,13 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-04-06",
       "building_name": "The Impala",
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -17321,7 +17403,7 @@
         }
       ],
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-18"
     },
@@ -17363,7 +17445,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-17"
     },
@@ -17625,12 +17707,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-01-29",
       "off_market_date": "2026-06-10",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14"
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -19170,7 +19252,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-10"
     },
@@ -19565,6 +19647,12 @@
       "agent_firm": "Winzone Realty Home Inc",
       "price_history": [
         {
+          "date": "2026-07-17",
+          "price": 2280000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Winzone Realty Home Inc"
+        },
+        {
           "date": "2026-05-26",
           "price": 2280000,
           "event": "TEMPORARILY_OFF_MARKET",
@@ -19584,12 +19672,12 @@
         }
       ],
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-05",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-14",
+      "pass2_confirmed_at": "2026-07-21",
       "building_name": "Bridge Tower Place"
     },
     {
@@ -19611,11 +19699,17 @@
       "monthly_fees": 3230,
       "monthly_taxes": 2018,
       "maintenance": null,
-      "agent_name": "Malorie Currier",
+      "agent_name": "Phyllis Goldberg",
       "agent_phone": "(917) 776-7522",
-      "agent_email": "malorie@page1properties.com",
+      "agent_email": "phyllis.goldberg@compass.com",
       "agent_firm": "Page 1 Properties",
       "price_history": [
+        {
+          "date": "2026-07-14",
+          "price": 2125000,
+          "event": "SOLD",
+          "broker": "Page 1 Properties"
+        },
         {
           "date": "2026-05-14",
           "price": 2250000,
@@ -19630,9 +19724,12 @@
         }
       ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
-      "listed_date": "2026-03-24"
+      "listed_date": "2026-03-24",
+      "off_market_date": "2026-07-14",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-07-21"
     },
     {
       "listing_type": "sale",
@@ -20574,7 +20671,7 @@
       "price_per_sqft": 1668,
       "type": "condo",
       "year_built": 2005,
-      "days_on_market": 143,
+      "days_on_market": 151,
       "monthly_fees": 2396,
       "monthly_taxes": 1645,
       "maintenance": null,
@@ -20597,7 +20694,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-20",
       "building_name": "The Laurel"
@@ -20818,7 +20915,7 @@
       "price_per_sqft": null,
       "type": "condo",
       "year_built": 1925,
-      "days_on_market": 142,
+      "days_on_market": 149,
       "monthly_fees": 1844,
       "monthly_taxes": 942,
       "maintenance": null,
@@ -20841,7 +20938,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-22"
     },
@@ -21019,7 +21116,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-01-29",
       "building_name": "Manhattan House"
@@ -21062,7 +21159,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-17"
     },
@@ -21375,7 +21472,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-16"
     },
@@ -21423,7 +21520,7 @@
         }
       ],
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-12"
     },
@@ -21488,7 +21585,7 @@
       "price_per_sqft": 1079,
       "type": "coop",
       "year_built": 1928,
-      "days_on_market": 130,
+      "days_on_market": 138,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4621,
@@ -21511,7 +21608,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-05"
     },
@@ -21712,7 +21809,7 @@
       "price_per_sqft": 1303,
       "type": "condo",
       "year_built": 2005,
-      "days_on_market": 137,
+      "days_on_market": 144,
       "monthly_fees": 2225,
       "monthly_taxes": 2053,
       "maintenance": null,
@@ -21741,7 +21838,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-02-27",
       "building_name": "Cielo Condominium"
@@ -21806,7 +21903,7 @@
       "price_per_sqft": 1386,
       "type": "coop",
       "year_built": 1928,
-      "days_on_market": 125,
+      "days_on_market": 133,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 10391,
@@ -21829,7 +21926,7 @@
         }
       ],
       "last_pass1": "2026-05-05",
-      "last_pass2": "2026-07-14",
+      "last_pass2": "2026-07-21",
       "status": "active",
       "listed_date": "2026-03-10",
       "building_name": "Sherry Netherland"
@@ -22220,6 +22317,46 @@
       "pass2_confirmed_off_market": true,
       "pass2_confirmed_at": "2026-07-19",
       "building_name": "The Savoy"
+    },
+    {
+      "listing_type": "rent",
+      "id": "5109284",
+      "url": "https://streeteasy.com/rental/5109284",
+      "building": "1735 York Avenue",
+      "building_name": "The Serrano",
+      "address": "1735 York Avenue",
+      "unit": "#PH38C",
+      "neighborhood": "",
+      "price": 19995,
+      "sqft": 0,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": 1986,
+      "days_on_market": 1,
+      "listed_date": "2026-07-20",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Sovereign Realty NYC",
+      "price_history": [
+        {
+          "date": "2026-07-20",
+          "price": 19995,
+          "event": "LISTED",
+          "broker": "Sovereign Realty NYC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-07-21",
+      "last_pass2": "2026-07-21",
+      "status": "active"
     },
     {
       "listing_type": "rent",
@@ -29209,6 +29346,46 @@
       "off_market_date": "2026-07-14",
       "pass2_confirmed_off_market": true,
       "pass2_confirmed_at": "2026-07-19"
+    },
+    {
+      "listing_type": "rent",
+      "id": "5109277",
+      "url": "https://streeteasy.com/rental/5109277",
+      "building": "250 East 73rd Street",
+      "building_name": null,
+      "address": "250 East 73rd Street",
+      "unit": "#4E",
+      "neighborhood": "",
+      "price": 11995,
+      "sqft": 1600,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": 1964,
+      "days_on_market": 1,
+      "listed_date": "2026-07-20",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "AZ REALTY NYC LLC",
+      "price_history": [
+        {
+          "date": "2026-07-20",
+          "price": 11995,
+          "event": "LISTED",
+          "broker": "AZ REALTY NYC LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-07-21",
+      "last_pass2": "2026-07-21",
+      "status": "active"
     },
     {
       "id": "5048174",
