@@ -51,7 +51,7 @@
         }
       ],
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-01-13"
     },
@@ -936,11 +936,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "off_market_date": "2026-06-25",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-20"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "sale",
@@ -1267,7 +1267,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "building_name": "Georgica Condominium"
     },
@@ -1700,7 +1700,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-07-22",
+      "last_pass1": "2026-07-24",
       "last_pass2": "2026-07-02",
       "status": "active"
     },
@@ -1860,7 +1860,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-09"
     },
@@ -1927,7 +1927,7 @@
       "price_per_sqft": 2047,
       "type": "condo",
       "year_built": 1986,
-      "days_on_market": 600,
+      "days_on_market": 605,
       "monthly_fees": 2712,
       "monthly_taxes": 5363,
       "maintenance": null,
@@ -1956,7 +1956,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2024-11-18",
       "building_name": "The Savoy"
@@ -2463,7 +2463,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-07-22",
+      "last_pass1": "2026-07-24",
       "last_pass2": "2026-07-02",
       "status": "active"
     },
@@ -3670,12 +3670,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-03-30",
       "off_market_date": "2026-07-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-20"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "sale",
@@ -5195,7 +5195,7 @@
         }
       ],
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-02-12"
     },
@@ -5723,7 +5723,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-03-31"
     },
@@ -6740,14 +6740,14 @@
         }
       ],
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "description": "OPEN HOUSES ARE BY APPOINTMENT ONLY. \n\nSouth-Facing Lenox Hill Townhouse with Private Elevator, Sunroom, and Flexible Mixed-Use Zoning\n\nWelcome to 197 East 76th Street \u2014 a sun-filled, south-facing townhouse offering an exceptional combination of elegance, space, and versatility in the heart of Lenox Hill. Spanning five stories with a private elevator, this beautifully maintained home features a rare sunroom and rooftop terrace, creating an ideal urban sanctuary.\n\nCurrently configured as a mixed-use property, the ground floor hosts a high-end chocolate boutique with a separate street entrance, providing an excellent opportunity for income generation. The residential entry is discreetly positioned off-street and includes space for a bike or stroller. Live upstairs while collecting rent below, create a live-work setup, or easily convert the home to a single-family residence.\n\nThe second floor boasts a gracious full-floor living room with a dramatic decorative fireplace, custom built-ins, a walk-in closet, and a powder room \u2014 perfect for entertaining. The third floor features a chef\u2019s kitchen with a Viking range, Sub-Zero refrigerator, Bosch dishwasher, and Miele washer/dryer. A pass-through opens into a refined dining room with a second decorative fireplace and four windows that flood the space with natural light.\n\nOn the fourth floor, you'll find two well-proportioned bedrooms, a full bath, and a shared walk-in closet. The fifth floor is dedicated to the expansive primary suite, offering two walk-in closets and an en-suite bathroom with a double vanity.\n\nThe crown jewel of the home is the top-floor sunroom, leading to a private rooftop terrace \u2014 an ideal spot for lounging or entertaining. This versatile space could also function as an additional bedroom suite, second living room, home office, or creative studio.\n\nThe lower level includes a half-bath, mechanicals, and ample storage for the retail tenant.\n\nAdditional highlights include:\n\nApprox. 2,400+ buildable square feet of unused FAR (consult your architect)\n\nElevator access from floors two through six\n\nFlexible zoning and excellent live-work potential\n\nPrime Location: Nestled between Central Park and John Jay Park, this townhouse is surrounded by iconic Upper East Side destinations including The Carlyle, The Mark, and Madison Avenue boutiques. Just moments from the 6 and Q trains, M79 crosstown bus, and beloved neighborhood favorites like JG Melon, Seamore\u2019s, Breads Bakery, and Van Leeuwen.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
       "off_market_date": "2026-06-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-20"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "sale",
@@ -7276,7 +7276,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-03-30",
       "building_name": "Richmond Condominium"
@@ -8330,7 +8330,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-03-26"
     },
@@ -8562,7 +8562,7 @@
       "baths": 3.0,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 48,
+      "days_on_market": 49,
       "listed_date": "2026-05-20",
       "maintenance": 4889,
       "agent_name": "diane johnson",
@@ -9738,7 +9738,7 @@
       "_is_partial": false,
       "_partial_reason": null,
       "_partial_error": null,
-      "last_pass1": "2026-07-22",
+      "last_pass1": "2026-07-24",
       "last_pass2": "2026-07-02",
       "status": "active"
     },
@@ -10328,7 +10328,7 @@
       "price_per_sqft": 1948,
       "type": "condo",
       "year_built": 2023,
-      "days_on_market": 614,
+      "days_on_market": 619,
       "listed_date": "2024-11-12",
       "monthly_fees": 2558,
       "monthly_taxes": 2645,
@@ -10352,7 +10352,7 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "description": "PLEASE INQUIRE FOR OUR PARKING INCENTIVE FOR THIS RESIDENCE\n\nIMMEDIATE OCCUPANCY\n\nOffering unobstructed views over the Hudson River and Riverside Park, abundant light and air, and an open layout that invites stylish entertaining and gracious everyday living, Residence 29F features three bedrooms, three bathrooms, and nearly 1,800 square feet of elegant living space. This residence is centered on a spacious, L-shaped living and dining room and open kitchen, all offering western sunset views, and includes a primary bedroom with a large 3-panel window, ensuite bath with double vanity, and extra-large walk-in closet. Also facing west is a well-proportioned second bedroom. The third bedroom occupies its own wing, with an ensuite bath that maximizes privacy.\n\nDisplaying a refined finish palette hand-selected by Robert A.M. Stern Architects, all residences at Claremont Hall include a custom-designed solid wood entrance door with polished chrome hardware, wide plank European white oak flooring, expansive, high-performance windows, and up to 10\" ceilings. Select residences feature generous bay picture windows and Gothic-inspired arched windows. Kitchens at Claremont Hall feature custom Italian cabinetry in soothing Classic Bianco or Modern Grigio lacquer, topped by Calacatta Laza quartz countertops and backed by a ceramic tile backsplash and a paneled appliance package from Bosch, with a custom range hood with integrated spice shelf. Paneled wine refrigerators are included in select residences.\n\nPrimary baths are finished with Arabescato Cervaiole marble and feature marble mosaic tile flooring and custom sconces in polished chrome. Each primary bath includes a RAMSA-designed Italian walnut vanity with Arabescato Cervaiole marble countertop, polished chrome fixtures by Kallista, custom designed mirrored medicine cabinet by Robern, and water closet fixtures by Toto.\nSecondary baths are well appointed with marble mosaic tile flooring framed by Bianco Carrara border and ceramic tile surround, ceramic tile shower surround, custom vanities designed by RAMSA, Grigio Toscana marble countertops, and Kohler undermount sinks with polished chrome hardware from Purist by Kohler. Secondary baths also include oversized mirrored medicine cabinets with polished chrome frames by Robern, Kohler soaking tubs or showers with polished chrome Purist rain showerheads and hand-held sprayers by Kohler, and water closets by Toto.\n\nClaremont Hall's robust amenities span over three floors and include spaces for socializing, working, and relaxing. The experience is centered on the Refectory Pool, a grand historic dining hall transformed into a swimming and events space, featuring a 48' salt-water swimming pool. Claremont Hall is complete with a grand, double-height lobby, a Reading Room with Great Books Collection, a Gymnasium with Flex Space, the Little Castle playroom, media room, and a Residents\" Lounge and Terrace overlooking tranquil Sakura Park. The building also features a concierge, handyman, porters, and a live-in resident manager, as well as a bicycle room, and the opportunity to purchase on-site parking and private storage.\n\nFOR A LIMITED TIME, PLEASE INQUIRE FOR OUR PARKING INCENTIVE FOR THIS RESIDENCE. Exclusive Sales and Marketing Agent: Corcoran Sunshine Marketing Group. The complete offering terms are in an offering plan available from Sponsor. File No. CD-20-0302. Sponsor: Broadway Community Owner LLC, c/o Lendlease, 200 Park Avenue, 9th Floor, New York, NY 10166. The sponsor makes no warranties except for those that may be set forth in the offering plan. Equal Housing Opportunity.",
       "last_partial_pass2": "2026-05-02",
@@ -10766,7 +10766,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-02",
       "sqft_estimated": true,
@@ -11288,7 +11288,7 @@
         }
       ],
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2025-03-26"
     },
@@ -12069,7 +12069,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-02",
       "sqft_estimated": true,
@@ -12246,7 +12246,7 @@
         }
       ],
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-06",
       "building_name": "Maison East"
@@ -13967,52 +13967,6 @@
     },
     {
       "listing_type": "sale",
-      "id": "1826682",
-      "url": "https://streeteasy.com/sale/1826682",
-      "building": "171 East 84th Street",
-      "address": "171 East 84th Street",
-      "unit": "#34E",
-      "neighborhood": "Upper East Side",
-      "price": 2995000,
-      "sqft": 1640,
-      "beds": 3,
-      "baths": 2.5,
-      "price_per_sqft": 1826,
-      "type": "condo",
-      "year_built": 1987,
-      "days_on_market": 67,
-      "listed_date": "2026-05-06",
-      "monthly_fees": 3014,
-      "monthly_taxes": 2517,
-      "maintenance": null,
-      "agent_name": "Robert E. Doernberg",
-      "agent_phone": "(917) 846-5177",
-      "agent_email": "rdoernberg@bhsusa.com",
-      "agent_firm": "Brown Harris Stevens",
-      "price_history": [
-        {
-          "date": "2026-05-26",
-          "price": 2995000,
-          "event": "",
-          "broker": "Brown Harris Stevens"
-        },
-        {
-          "date": "2026-05-06",
-          "price": 3200000,
-          "event": "LISTED",
-          "broker": "Brown Harris Stevens"
-        }
-      ],
-      "_is_partial": false,
-      "_partial_reason": null,
-      "_partial_error": null,
-      "last_pass1": "2026-07-24",
-      "last_pass2": "2026-06-15",
-      "status": "active",
-      "building_name": "Evans Tower Condominium"
-    },
-    {
-      "listing_type": "sale",
       "id": "1834938",
       "url": "https://streeteasy.com/sale/1834938",
       "building": "400 East 84th Street",
@@ -14742,7 +14696,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-06",
       "sqft_estimated": true,
@@ -14829,6 +14783,58 @@
       "description": "Transform this 3-bedroom, 2.5-bath condo into the home of your dreams. A long, elegant gallery welcomes you upon entry, setting a refined tone throughout. To the right, two well-proportioned bedrooms share a full bath, while the private primary suite occupies the opposite wing \u2014 a thoughtful layout that balances togetherness with privacy. A powder room and in-unit laundry are tucked discreetly into the common area for everyday convenience.\nPositioned on the rear corner of the building, the residence enjoys a peaceful reprieve from the rhythms of the city. The location is truly exceptional: just steps from Central Park, The Metropolitan Museum of Art, and the Solomon R. Guggenheim Museum. Pre-war elegance, full-service living, and a deeded storage unit complete this rare Upper East Side offering.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1
+    },
+    {
+      "listing_type": "sale",
+      "id": "1826682",
+      "url": "https://streeteasy.com/sale/1826682",
+      "building": "171 East 84th Street",
+      "address": "171 East 84th Street",
+      "unit": "#34E",
+      "neighborhood": "",
+      "price": 2850000,
+      "sqft": 1640,
+      "beds": 3,
+      "baths": 2.5,
+      "price_per_sqft": 1738,
+      "type": "condo",
+      "year_built": 1987,
+      "days_on_market": 79,
+      "listed_date": "2026-05-06",
+      "monthly_fees": 3014,
+      "monthly_taxes": 2517,
+      "maintenance": null,
+      "agent_name": "Robert E. Doernberg",
+      "agent_phone": "(917) 846-5177",
+      "agent_email": "rdoernberg@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-07-24",
+          "price": 2850000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-05-26",
+          "price": 2995000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 3200000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-07-24",
+      "last_pass2": "2026-07-24",
+      "status": "active",
+      "building_name": "Evans Tower Condominium"
     },
     {
       "listing_type": "sale",
@@ -16741,12 +16747,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-20"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "sale",
@@ -17285,12 +17291,12 @@
         }
       ],
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-08",
       "off_market_date": "2026-06-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-20"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "sale",
@@ -17482,7 +17488,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2025-01-10"
     },
@@ -18178,7 +18184,7 @@
         }
       ],
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2025-09-15"
     },
@@ -18563,7 +18569,7 @@
         }
       ],
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2025-07-21"
     },
@@ -19537,12 +19543,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-20"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "sale",
@@ -19582,13 +19588,13 @@
         }
       ],
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-03-19",
       "building_name": "Evans Tower Condominium",
       "off_market_date": "2026-06-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-20"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "sale",
@@ -20109,7 +20115,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1962,
-      "days_on_market": 111,
+      "days_on_market": 115,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4185,
@@ -20126,7 +20132,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-03-31"
     },
@@ -20300,7 +20306,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-02"
     },
@@ -20915,7 +20921,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-03"
     },
@@ -21945,7 +21951,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1922,
-      "days_on_market": 105,
+      "days_on_market": 108,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 3360,
@@ -21954,6 +21960,12 @@
       "agent_email": "kaiello@bhsusa.com",
       "agent_firm": "Brown Harris Stevens",
       "price_history": [
+        {
+          "date": "2026-07-23",
+          "price": 1995000,
+          "event": "IN_CONTRACT",
+          "broker": "Brown Harris Stevens"
+        },
         {
           "date": "2026-06-03",
           "price": 1995000,
@@ -21968,7 +21980,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-20",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "listed_date": "2026-04-06"
     },
@@ -22345,7 +22357,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "building_name": "St Tropez"
     },
@@ -23282,11 +23294,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -23620,7 +23632,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active"
     },
     {
@@ -24642,11 +24654,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -25499,11 +25511,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "off_market_date": "2026-06-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -25595,7 +25607,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "building_name": "One East River Place"
     },
@@ -26101,11 +26113,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "off_market_date": "2026-07-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -26573,11 +26585,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "off_market_date": "2026-07-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -26672,12 +26684,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-14",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "building_name": "Bridge Tower Place",
       "off_market_date": "2026-06-17",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -26789,11 +26801,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "off_market_date": "2026-07-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -26908,7 +26920,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "building_name": "La Bourgogne"
     },
@@ -27628,14 +27640,14 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
       "sqft_estimate_note": "Duplex room sum (First Floor + Garden); built 1901; ~1,850 sqft interior",
       "off_market_date": "2026-06-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -28188,7 +28200,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active"
     },
     {
@@ -29678,12 +29690,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-23",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "building_name": "The Serrano",
       "off_market_date": "2026-06-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -29710,6 +29722,12 @@
       "agent_email": null,
       "agent_firm": "Vector New York, LLC",
       "price_history": [
+        {
+          "date": "2026-07-23",
+          "price": 12000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Vector New York, LLC"
+        },
         {
           "date": "2026-06-22",
           "price": 12000,
@@ -29739,12 +29757,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "building_name": "One Sutton Place North",
       "off_market_date": "2026-06-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -29788,12 +29806,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-12",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "building_name": "The Kenilworth",
       "off_market_date": "2026-06-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -29995,11 +30013,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "off_market_date": "2026-06-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21",
+      "pass2_confirmed_at": "2026-07-24",
       "building_name": "One East River Place"
     },
     {
@@ -30074,6 +30092,12 @@
       "agent_firm": "Vector New York, LLC",
       "price_history": [
         {
+          "date": "2026-07-21",
+          "price": 11500,
+          "event": "RENTED",
+          "broker": "Vector New York, LLC"
+        },
+        {
           "date": "2026-07-13",
           "price": 11500,
           "event": "IN_CONTRACT",
@@ -30090,8 +30114,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-21",
-      "status": "active"
+      "last_pass2": "2026-07-24",
+      "status": "active",
+      "off_market_date": "2026-07-21",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -32666,11 +32693,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "off_market_date": "2026-06-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     },
     {
       "listing_type": "rent",
@@ -32908,12 +32935,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-24",
       "status": "active",
       "building_name": "One Museum Mile",
       "off_market_date": "2026-06-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-24"
     }
   ],
   "sale_search_url": "https://streeteasy.com/for-sale/upper-east-side/price:2000000-5000000%7Cbeds:3-",
