@@ -25,7 +25,7 @@
       "price_per_sqft": 2918,
       "type": "condo",
       "year_built": 1941,
-      "days_on_market": 158,
+      "days_on_market": 162,
       "monthly_fees": 2298,
       "monthly_taxes": 2195,
       "maintenance": null,
@@ -55,7 +55,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-13"
@@ -155,13 +155,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-03",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1806093": {
       "listing_type": "sale",
@@ -577,13 +577,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-12",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21",
+      "pass2_confirmed_at": "2026-07-25",
       "building_name": "The Promenade"
     },
     "1792113": {
@@ -1153,13 +1153,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-07",
       "off_market_date": "2026-06-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1819376": {
       "listing_type": "sale",
@@ -2746,13 +2746,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-12",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21",
+      "pass2_confirmed_at": "2026-07-25",
       "building_name": "The Promenade"
     },
     "1806052": {
@@ -2912,7 +2912,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-17"
@@ -3079,7 +3079,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-03"
@@ -3450,7 +3450,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-07-07"
@@ -4792,7 +4792,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-03",
@@ -6539,13 +6539,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-09",
       "off_market_date": "2026-05-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21",
+      "pass2_confirmed_at": "2026-07-25",
       "building_name": "The Chatham"
     },
     "1810114": {
@@ -6599,13 +6599,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-06",
       "off_market_date": "2026-05-31",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1813545": {
       "listing_type": "sale",
@@ -6652,13 +6652,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-07",
       "off_market_date": "2026-07-03",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1811788": {
       "listing_type": "sale",
@@ -7806,7 +7806,7 @@
       "price_per_sqft": 2296,
       "type": "condo",
       "year_built": 1927,
-      "days_on_market": 160,
+      "days_on_market": 164,
       "monthly_fees": 2578,
       "monthly_taxes": 1757,
       "maintenance": null,
@@ -7830,7 +7830,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-11",
@@ -7985,7 +7985,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-26",
@@ -8457,7 +8457,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-27"
@@ -8541,6 +8541,12 @@
       "agent_firm": "Corcoran",
       "price_history": [
         {
+          "date": "2026-07-23",
+          "price": 2975000,
+          "event": "SOLD",
+          "broker": "Corcoran"
+        },
+        {
           "date": "2026-07-12",
           "price": 3075000,
           "event": "OFF_MARKET",
@@ -8561,7 +8567,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-20",
@@ -8570,7 +8576,7 @@
       "sqft_estimate_note": "Room sum; image stretched (30% divergence); combined unit 16ABG; ~1,750 sqft",
       "off_market_date": "2026-07-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1817519": {
       "listing_type": "sale",
@@ -8896,13 +8902,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-26",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-02",
       "off_market_date": "2026-06-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1812453": {
       "listing_type": "sale",
@@ -9167,13 +9173,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-06-13",
       "off_market_date": "2026-07-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1716786": {
       "listing_type": "sale",
@@ -9562,7 +9568,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-22",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-03"
@@ -10156,7 +10162,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-04",
@@ -10268,13 +10274,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-02",
       "off_market_date": "2026-07-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1809797": {
       "listing_type": "sale",
@@ -10321,7 +10327,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-04",
@@ -10903,14 +10909,14 @@
       "address": "781 5th Avenue",
       "unit": "#1101",
       "neighborhood": "",
-      "price": 1995000,
+      "price": 1500000,
       "sqft": null,
       "beds": 2,
       "baths": 2.0,
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1928,
-      "days_on_market": 854,
+      "days_on_market": 859,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 20220,
@@ -10919,6 +10925,12 @@
       "agent_email": "mlorber@elliman.com",
       "agent_firm": "Douglas Elliman",
       "price_history": [
+        {
+          "date": "2026-07-21",
+          "price": 1500000,
+          "event": "",
+          "broker": "Douglas Elliman"
+        },
         {
           "date": "2026-06-29",
           "price": 1995000,
@@ -10976,7 +10988,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2024-03-18",
@@ -11219,13 +11231,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2024-11-08",
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1818866": {
       "listing_type": "sale",
@@ -11941,7 +11953,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2024-02-26"
@@ -12068,7 +12080,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-17"
@@ -12263,13 +12275,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-29",
       "off_market_date": "2026-06-10",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1796054": {
       "listing_type": "sale",
@@ -13268,7 +13280,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-10"
@@ -13324,13 +13336,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-05",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21",
+      "pass2_confirmed_at": "2026-07-25",
       "building_name": "Bridge Tower Place"
     },
     "1784395": {
@@ -14139,7 +14151,7 @@
       "price_per_sqft": 1668,
       "type": "condo",
       "year_built": 2005,
-      "days_on_market": 151,
+      "days_on_market": 155,
       "monthly_fees": 2396,
       "monthly_taxes": 1645,
       "maintenance": null,
@@ -14163,7 +14175,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-20",
@@ -14331,7 +14343,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2023-10-16"
@@ -14689,7 +14701,7 @@
       "price_per_sqft": 1303,
       "type": "condo",
       "year_built": 2005,
-      "days_on_market": 144,
+      "days_on_market": 148,
       "monthly_fees": 2225,
       "monthly_taxes": 2053,
       "maintenance": null,
@@ -14719,7 +14731,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-27",
@@ -14740,7 +14752,7 @@
       "price_per_sqft": null,
       "type": "condo",
       "year_built": 1925,
-      "days_on_market": 149,
+      "days_on_market": 153,
       "monthly_fees": 1844,
       "monthly_taxes": 942,
       "maintenance": null,
@@ -14764,7 +14776,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-22"
@@ -14877,7 +14889,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-29",
@@ -15249,13 +15261,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-21",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2024-03-05",
       "off_market_date": "2026-05-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-21",
+      "pass2_confirmed_at": "2026-07-25",
       "building_name": null
     },
     "5015416": {
@@ -24704,7 +24716,7 @@
       "agent_firm": "Stonehenge NYC LLC",
       "url": "https://streeteasy.com/rental/5049524",
       "data_quality": "pass2",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "last_pass1": "2026-06-26",
       "days_on_market": 36,
@@ -24712,7 +24724,7 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "5049436": {
       "id": "5049436",
@@ -24891,14 +24903,14 @@
       "agent_firm": "Global Real Estate Ventures Group LLC",
       "url": "https://streeteasy.com/rental/5048174",
       "data_quality": "pass2",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "last_pass1": "2026-06-24",
       "days_on_market": 35,
       "needs_refresh": false,
       "off_market_date": "2026-06-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "5048932": {
       "id": "5048932",
@@ -24932,14 +24944,14 @@
       "agent_firm": "Howard Hanna NYC",
       "url": "https://streeteasy.com/rental/5048932",
       "data_quality": "pass2",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "last_pass1": "2026-05-22",
       "days_on_market": 3,
       "needs_refresh": false,
       "off_market_date": "2026-05-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22",
+      "pass2_confirmed_at": "2026-07-25",
       "building_name": "Empire House"
     },
     "5050842": {
@@ -25312,7 +25324,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "building_name": "The Laurel"
@@ -25366,12 +25378,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-19",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1818569": {
       "listing_type": "sale",
@@ -28116,14 +28128,14 @@
       "address": "91 East End Avenue",
       "unit": "#A",
       "neighborhood": "",
-      "price": 2195000,
+      "price": 2150000,
       "sqft": 2500,
       "beds": 4,
       "baths": 3.5,
-      "price_per_sqft": 878,
+      "price_per_sqft": 860,
       "type": "coop",
       "year_built": 1940,
-      "days_on_market": 35,
+      "days_on_market": 47,
       "listed_date": "2026-06-08",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -28133,6 +28145,12 @@
       "agent_email": "lynne.mazin@compass.com",
       "agent_firm": null,
       "price_history": [
+        {
+          "date": "2026-07-25",
+          "price": 2150000,
+          "event": "",
+          "broker": "Compass"
+        },
         {
           "date": "2026-07-09",
           "price": 2195000,
@@ -28151,7 +28169,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-25",
-      "last_pass2": "2026-07-09",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false
     },
@@ -28948,12 +28966,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-08",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "5070542": {
       "listing_type": "rent",
@@ -29201,13 +29219,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-26",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "building_name": "The Fairfax",
       "off_market_date": "2026-06-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "5062725": {
       "listing_type": "rent",
@@ -29544,12 +29562,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1834365": {
       "listing_type": "sale",
@@ -30395,7 +30413,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2002,
-      "days_on_market": 27,
+      "days_on_market": 31,
       "listed_date": "2026-06-24",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -30417,7 +30435,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false
     },
@@ -31308,12 +31326,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "5087532": {
       "listing_type": "rent",
@@ -31413,12 +31431,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1830378": {
       "listing_type": "sale",
@@ -31653,7 +31671,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-07",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false
     },
@@ -31935,12 +31953,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "1837287": {
       "listing_type": "sale",
@@ -32440,12 +32458,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-22",
+      "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-22"
+      "pass2_confirmed_at": "2026-07-25"
     },
     "5100307": {
       "listing_type": "rent",
@@ -32859,7 +32877,7 @@
       "baths": 3.0,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 49,
+      "days_on_market": 50,
       "listed_date": "2026-05-20",
       "maintenance": 4889,
       "agent_name": "diane johnson",
