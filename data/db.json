@@ -533,7 +533,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-07",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-25"
@@ -869,7 +869,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-05-07",
@@ -1103,7 +1103,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-05-20"
@@ -3524,13 +3524,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-04-07",
       "off_market_date": "2026-06-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1797999": {
       "listing_type": "sale",
@@ -5220,13 +5220,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-06-17",
       "off_market_date": "2026-06-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1817776": {
       "listing_type": "sale",
@@ -5539,13 +5539,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-08-11",
       "off_market_date": "2026-04-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23",
+      "pass2_confirmed_at": "2026-07-27",
       "building_name": "The Promenade"
     },
     "1802131": {
@@ -7097,7 +7097,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-04-09"
@@ -9721,13 +9721,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-05-16",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23",
+      "pass2_confirmed_at": "2026-07-27",
       "building_name": "The Laurel"
     },
     "1820909": {
@@ -10495,7 +10495,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-09-15",
@@ -10762,13 +10762,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-04-10",
       "off_market_date": "2026-06-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1749237": {
       "listing_type": "sale",
@@ -10853,7 +10853,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1928,
-      "days_on_market": 819,
+      "days_on_market": 823,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 32296,
@@ -10895,7 +10895,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-26",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2024-04-25",
@@ -12230,7 +12230,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-07",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-19",
@@ -12411,14 +12411,14 @@
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 6582,
-      "agent_name": "Mark Blumenfeld",
+      "agent_name": "Alan Perez",
       "agent_phone": "(646) 460-6797",
-      "agent_email": "mark.blumenfeld@compass.com",
+      "agent_email": "alan@developmentmarketingteam.com",
       "agent_firm": "Compass",
       "price_history": [
         {
           "date": "2026-07-21",
-          "price": 2450000,
+          "price": 2400000,
           "event": "SOLD",
           "broker": "Compass"
         },
@@ -12449,13 +12449,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-05",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-05-10",
       "off_market_date": "2026-07-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1805766": {
       "listing_type": "sale",
@@ -18844,7 +18844,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-15",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "description": "Experience the epitome of sophisticated urban living in this distinguished cooperative, Residence 7E on Fifth Avenue's Upper East Side.\n\nEnter this residence from a semi-private landing, a nice touch that offers you the luxury of privacy. This mint condition two-bedroom home boasts generously proportioned rooms, 9\" ceilings, a grand open living space for entertaining and dining. The kitchen opens on to a spacious dining area currently configured like a den or gathering room and features a built-in breakfast bar.\n\nThe Primary bedroom centered on a fireplace features two large walk-in closets and a marble en-suite bathroom. The second bedroom also has an en-suite bathroom. There is also a powder room connected the gracious entry for your guests. This apartment has a small staff room with a full en-suite bathroom.\n\nPurchase as a primary residence or Pied-a-Terre; International purchasers are welcome.\n\nOne of Fifth Avenue's premier White Glove buildings, the Parc V was designed by renowned architect, Emory Roth where residents enjoy the highest level of service, discretion and security. An exceptional full-service staff, 2 doormen on at all times & live-in superintendent provide unparalleled service. The lobby has undergone a complete renovation and rivals any building on Fifth Avenue. Mail and newspapers are delivered to your door on a daily basis. Maintenance includes all utilities.\n\nOf Special Note... This building has recently secured a premier tenant, Audemars Piguet which will establish its U.S. flagship store at this property on Fifth Avenue. A highly respected Swiss luxury watch purveyor, we are delighted to have them as our retail tenant.\n\nAmenities offered are a fitness center outfitted with machines and weights, individual storage facility and parking garage. Washer/dryers are permitted with board approval. Financing is 50%. Flip Tax is 2.5% of purchase price payable by Buyer. No pets please.\n\nThe nexus of culture, high-end retail and fine dining, 785 Fifth Avenue is in close proximity to Museum Mile and New York's most coveted retail boutiques and restaurants. The building is perfectly situated between The Sherry Netherlands, Cipriani and The Pierre, across from The Metropolitan Club and adjacent to The Plaza, Bergdorf Goodman, Louis Vuitton, Zegna, Prada and Harry Winston. And, for the best cuisine, Avra, Le Bibliotheque and Il Mulino are around the corner. Directly across the park is the Time Warner Center, Tavern on the Green and in the cultural heart of the westside, Lincoln Center.",
       "last_partial_pass2": "2026-05-02",
@@ -20812,7 +20812,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-15",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -21335,12 +21335,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-15",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1826717": {
       "listing_type": "sale",
@@ -21977,12 +21977,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "5021704": {
       "listing_type": "rent",
@@ -23600,7 +23600,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-15",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -24025,7 +24025,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-26",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -24072,12 +24072,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-15",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1828953": {
       "listing_type": "sale",
@@ -24164,7 +24164,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -24418,7 +24418,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "Henderson House"
@@ -25267,12 +25267,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24",
+      "pass2_confirmed_at": "2026-07-27",
       "building_name": "One East River Place"
     },
     "5052919": {
@@ -25673,13 +25673,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "One Sutton Place North",
       "off_market_date": "2026-06-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "5049775": {
       "listing_type": "rent",
@@ -25882,12 +25882,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1830835": {
       "listing_type": "sale",
@@ -25952,7 +25952,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1949,
-      "days_on_market": 56,
+      "days_on_market": 60,
       "listed_date": "2026-05-28",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -25980,7 +25980,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -26027,7 +26027,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "Twelve Twelve Fifth Avenue"
@@ -26167,7 +26167,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-21",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -26481,13 +26481,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "One Museum Mile",
       "off_market_date": "2026-06-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "5056628": {
       "listing_type": "rent",
@@ -26573,13 +26573,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-12",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "The Kenilworth",
       "off_market_date": "2026-06-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1831320": {
       "listing_type": "sale",
@@ -26665,7 +26665,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-15",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "Manhattan House"
@@ -26713,7 +26713,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-26",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -26760,7 +26760,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-17",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -26911,13 +26911,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-14",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "Bridge Tower Place",
       "off_market_date": "2026-06-17",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "5043436": {
       "listing_type": "rent",
@@ -27082,12 +27082,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-11",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-23"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1831055": {
       "listing_type": "sale",
@@ -27179,7 +27179,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -27226,7 +27226,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-19",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -27356,7 +27356,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -27450,7 +27450,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-05",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "The Rio"
@@ -27654,6 +27654,12 @@
       "agent_firm": "Vector New York, LLC",
       "price_history": [
         {
+          "date": "2026-07-24",
+          "price": 15900,
+          "event": "RENTED",
+          "broker": "Vector New York, LLC"
+        },
+        {
           "date": "2026-07-13",
           "price": 15900,
           "event": "IN_CONTRACT",
@@ -27671,10 +27677,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
-      "building_name": "One East River Place"
+      "building_name": "One East River Place",
+      "off_market_date": "2026-07-24",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-07-27"
     },
     "5061223": {
       "listing_type": "rent",
@@ -27719,7 +27728,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "St Tropez"
@@ -28839,7 +28848,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-17",
-      "last_pass2": "2026-07-23",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -29180,7 +29189,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "building_name": "La Bourgogne"
@@ -29799,7 +29808,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -30030,12 +30039,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "5077406": {
       "listing_type": "rent",
@@ -30270,7 +30279,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false
     },
@@ -30735,12 +30744,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1830288": {
       "listing_type": "sale",
@@ -30972,12 +30981,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "5080540": {
       "listing_type": "rent",
@@ -31869,12 +31878,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-27",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-27"
     },
     "1836814": {
       "listing_type": "sale",
@@ -32886,7 +32895,7 @@
       "baths": 3.0,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 51,
+      "days_on_market": 52,
       "listed_date": "2026-05-20",
       "maintenance": 4889,
       "agent_name": "diane johnson",
