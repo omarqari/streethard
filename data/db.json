@@ -105,7 +105,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-13"
@@ -485,14 +485,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-08",
       "building_name": "Carnegie Tower",
       "off_market_date": "2026-06-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1817995": {
       "listing_type": "sale",
@@ -1200,7 +1200,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-09"
@@ -1315,7 +1315,7 @@
       "price_per_sqft": 2047,
       "type": "condo",
       "year_built": 1986,
-      "days_on_market": 605,
+      "days_on_market": 609,
       "monthly_fees": 2712,
       "monthly_taxes": 5363,
       "maintenance": null,
@@ -1345,7 +1345,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2024-11-18",
@@ -1506,13 +1506,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-10",
       "off_market_date": "2026-05-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24",
+      "pass2_confirmed_at": "2026-07-28",
       "building_name": null
     },
     "1799302": {
@@ -2699,13 +2699,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-30",
       "off_market_date": "2026-07-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1810931": {
       "listing_type": "sale",
@@ -2859,13 +2859,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-07",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1810860": {
       "listing_type": "sale",
@@ -3829,7 +3829,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-12"
@@ -4229,7 +4229,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-31"
@@ -5029,7 +5029,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-30",
@@ -5403,7 +5403,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-15"
@@ -5641,7 +5641,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-26"
@@ -5817,7 +5817,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-03-26"
@@ -5968,14 +5968,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-08",
       "building_name": "The Harper",
       "off_market_date": "2026-07-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1802386": {
       "listing_type": "sale",
@@ -6812,7 +6812,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-02",
@@ -7165,14 +7165,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-07",
       "building_name": "Park 900",
       "off_market_date": "2026-07-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1819673": {
       "listing_type": "sale",
@@ -7213,7 +7213,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-02",
@@ -7748,7 +7748,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-08",
@@ -8095,7 +8095,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-09"
@@ -8139,7 +8139,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-06",
@@ -9787,7 +9787,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-13"
@@ -9890,7 +9890,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-06",
@@ -10239,13 +10239,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-08",
       "off_market_date": "2026-06-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1809187": {
       "listing_type": "sale",
@@ -10851,7 +10851,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-01-10"
@@ -11719,13 +11719,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-06",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1804487": {
       "listing_type": "sale",
@@ -12405,7 +12405,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-09-15"
@@ -12807,7 +12807,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-07-21"
@@ -13432,14 +13432,14 @@
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 3667,
-      "agent_name": "Justin Duffy",
+      "agent_name": "Siobhan Hansen",
       "agent_phone": "(646) 438-1632",
-      "agent_email": "jduffy@bhsusa.com",
+      "agent_email": "siobhan.hansen@elliman.com",
       "agent_firm": "Brown Harris Stevens",
       "price_history": [
         {
           "date": "2026-07-15",
-          "price": 2295000,
+          "price": 2500000,
           "event": "SOLD",
           "broker": "Brown Harris Stevens"
         },
@@ -13458,13 +13458,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-06",
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1816986": {
       "listing_type": "sale",
@@ -13491,6 +13491,12 @@
       "agent_firm": "Brown Harris Stevens",
       "price_history": [
         {
+          "date": "2026-07-25",
+          "price": 2295000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Brown Harris Stevens"
+        },
+        {
           "date": "2026-06-24",
           "price": 2295000,
           "event": "TEMPORARILY_OFF_MARKET",
@@ -13505,14 +13511,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-19",
       "building_name": "Evans Tower Condominium",
       "off_market_date": "2026-06-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1786610": {
       "listing_type": "sale",
@@ -13831,7 +13837,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-02"
@@ -13851,7 +13857,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1962,
-      "days_on_market": 115,
+      "days_on_market": 119,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4185,
@@ -13869,7 +13875,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-31"
@@ -14149,7 +14155,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-06"
@@ -14307,14 +14313,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-13",
       "building_name": "The Concorde",
       "off_market_date": "2026-07-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1685555": {
       "listing_type": "sale",
@@ -14429,7 +14435,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1963,
-      "days_on_market": 105,
+      "days_on_market": 110,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 3846,
@@ -14447,7 +14453,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-09"
@@ -14491,7 +14497,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-03"
@@ -15049,7 +15055,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-13",
@@ -18885,7 +18891,7 @@
       "price_per_sqft": 1948,
       "type": "condo",
       "year_built": 2023,
-      "days_on_market": 619,
+      "days_on_market": 623,
       "listed_date": "2024-11-12",
       "monthly_fees": 2558,
       "monthly_taxes": 2645,
@@ -18910,7 +18916,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "description": "PLEASE INQUIRE FOR OUR PARKING INCENTIVE FOR THIS RESIDENCE\n\nIMMEDIATE OCCUPANCY\n\nOffering unobstructed views over the Hudson River and Riverside Park, abundant light and air, and an open layout that invites stylish entertaining and gracious everyday living, Residence 29F features three bedrooms, three bathrooms, and nearly 1,800 square feet of elegant living space. This residence is centered on a spacious, L-shaped living and dining room and open kitchen, all offering western sunset views, and includes a primary bedroom with a large 3-panel window, ensuite bath with double vanity, and extra-large walk-in closet. Also facing west is a well-proportioned second bedroom. The third bedroom occupies its own wing, with an ensuite bath that maximizes privacy.\n\nDisplaying a refined finish palette hand-selected by Robert A.M. Stern Architects, all residences at Claremont Hall include a custom-designed solid wood entrance door with polished chrome hardware, wide plank European white oak flooring, expansive, high-performance windows, and up to 10\" ceilings. Select residences feature generous bay picture windows and Gothic-inspired arched windows. Kitchens at Claremont Hall feature custom Italian cabinetry in soothing Classic Bianco or Modern Grigio lacquer, topped by Calacatta Laza quartz countertops and backed by a ceramic tile backsplash and a paneled appliance package from Bosch, with a custom range hood with integrated spice shelf. Paneled wine refrigerators are included in select residences.\n\nPrimary baths are finished with Arabescato Cervaiole marble and feature marble mosaic tile flooring and custom sconces in polished chrome. Each primary bath includes a RAMSA-designed Italian walnut vanity with Arabescato Cervaiole marble countertop, polished chrome fixtures by Kallista, custom designed mirrored medicine cabinet by Robern, and water closet fixtures by Toto.\nSecondary baths are well appointed with marble mosaic tile flooring framed by Bianco Carrara border and ceramic tile surround, ceramic tile shower surround, custom vanities designed by RAMSA, Grigio Toscana marble countertops, and Kohler undermount sinks with polished chrome hardware from Purist by Kohler. Secondary baths also include oversized mirrored medicine cabinets with polished chrome frames by Robern, Kohler soaking tubs or showers with polished chrome Purist rain showerheads and hand-held sprayers by Kohler, and water closets by Toto.\n\nClaremont Hall's robust amenities span over three floors and include spaces for socializing, working, and relaxing. The experience is centered on the Refectory Pool, a grand historic dining hall transformed into a swimming and events space, featuring a 48' salt-water swimming pool. Claremont Hall is complete with a grand, double-height lobby, a Reading Room with Great Books Collection, a Gymnasium with Flex Space, the Little Castle playroom, media room, and a Residents\" Lounge and Terrace overlooking tranquil Sakura Park. The building also features a concierge, handyman, porters, and a live-in resident manager, as well as a bicycle room, and the opportunity to purchase on-site parking and private storage.\n\nFOR A LIMITED TIME, PLEASE INQUIRE FOR OUR PARKING INCENTIVE FOR THIS RESIDENCE. Exclusive Sales and Marketing Agent: Corcoran Sunshine Marketing Group. The complete offering terms are in an offering plan available from Sponsor. File No. CD-20-0302. Sponsor: Broadway Community Owner LLC, c/o Lendlease, 200 Park Avenue, 9th Floor, New York, NY 10166. The sponsor makes no warranties except for those that may be set forth in the offering plan. Equal Housing Opportunity.",
       "last_partial_pass2": "2026-05-02",
@@ -20048,7 +20054,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "description": "OPEN HOUSES ARE BY APPOINTMENT ONLY. \n\nSouth-Facing Lenox Hill Townhouse with Private Elevator, Sunroom, and Flexible Mixed-Use Zoning\n\nWelcome to 197 East 76th Street \u2014 a sun-filled, south-facing townhouse offering an exceptional combination of elegance, space, and versatility in the heart of Lenox Hill. Spanning five stories with a private elevator, this beautifully maintained home features a rare sunroom and rooftop terrace, creating an ideal urban sanctuary.\n\nCurrently configured as a mixed-use property, the ground floor hosts a high-end chocolate boutique with a separate street entrance, providing an excellent opportunity for income generation. The residential entry is discreetly positioned off-street and includes space for a bike or stroller. Live upstairs while collecting rent below, create a live-work setup, or easily convert the home to a single-family residence.\n\nThe second floor boasts a gracious full-floor living room with a dramatic decorative fireplace, custom built-ins, a walk-in closet, and a powder room \u2014 perfect for entertaining. The third floor features a chef\u2019s kitchen with a Viking range, Sub-Zero refrigerator, Bosch dishwasher, and Miele washer/dryer. A pass-through opens into a refined dining room with a second decorative fireplace and four windows that flood the space with natural light.\n\nOn the fourth floor, you'll find two well-proportioned bedrooms, a full bath, and a shared walk-in closet. The fifth floor is dedicated to the expansive primary suite, offering two walk-in closets and an en-suite bathroom with a double vanity.\n\nThe crown jewel of the home is the top-floor sunroom, leading to a private rooftop terrace \u2014 an ideal spot for lounging or entertaining. This versatile space could also function as an additional bedroom suite, second living room, home office, or creative studio.\n\nThe lower level includes a half-bath, mechanicals, and ample storage for the retail tenant.\n\nAdditional highlights include:\n\nApprox. 2,400+ buildable square feet of unused FAR (consult your architect)\n\nElevator access from floors two through six\n\nFlexible zoning and excellent live-work potential\n\nPrime Location: Nestled between Central Park and John Jay Park, this townhouse is surrounded by iconic Upper East Side destinations including The Carlyle, The Mark, and Madison Avenue boutiques. Just moments from the 6 and Q trains, M79 crosstown bus, and beloved neighborhood favorites like JG Melon, Seamore\u2019s, Breads Bakery, and Van Leeuwen.",
       "last_partial_pass2": "2026-05-02",
@@ -20056,7 +20062,7 @@
       "needs_refresh": false,
       "off_market_date": "2026-06-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "5022439": {
       "listing_type": "rent",
@@ -24019,7 +24025,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "building_name": "Georgica Condominium"
@@ -25470,12 +25476,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-24",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-25",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-24"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1829968": {
       "listing_type": "sale",
@@ -29047,12 +29053,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-08",
-      "last_pass2": "2026-07-25",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-25"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "5070542": {
       "listing_type": "rent",
@@ -29309,13 +29315,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-06-26",
-      "last_pass2": "2026-07-25",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "building_name": "The Fairfax",
       "off_market_date": "2026-06-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-25"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "5062725": {
       "listing_type": "rent",
@@ -29652,12 +29658,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-25",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-25"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1834365": {
       "listing_type": "sale",
@@ -30518,7 +30524,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2002,
-      "days_on_market": 31,
+      "days_on_market": 34,
       "listed_date": "2026-06-24",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -30540,7 +30546,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-25",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false
     },
@@ -31196,7 +31202,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-27",
+      "last_pass1": "2026-07-28",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -31280,7 +31286,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-27",
+      "last_pass1": "2026-07-28",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -31328,7 +31334,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-07-27",
+      "last_pass1": "2026-07-28",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -31431,12 +31437,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-25",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-25"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "5087532": {
       "listing_type": "rent",
@@ -31536,12 +31542,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-25",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-25"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1830378": {
       "listing_type": "sale",
@@ -31776,7 +31782,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-07",
-      "last_pass2": "2026-07-25",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false
     },
@@ -32058,12 +32064,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-09",
-      "last_pass2": "2026-07-25",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-25"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "1837287": {
       "listing_type": "sale",
@@ -32563,12 +32569,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-25",
+      "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-25"
+      "pass2_confirmed_at": "2026-07-28"
     },
     "5100307": {
       "listing_type": "rent",
@@ -32982,7 +32988,7 @@
       "baths": 3.0,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 52,
+      "days_on_market": 53,
       "listed_date": "2026-05-20",
       "maintenance": 4889,
       "agent_name": "diane johnson",
