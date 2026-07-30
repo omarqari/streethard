@@ -230,7 +230,7 @@
         }
       ],
       "last_pass1": "2026-06-17",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-12"
     },
@@ -647,7 +647,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "building_name": null
     },
@@ -1137,7 +1137,7 @@
         }
       ],
       "last_pass1": "2026-05-04",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-21"
     },
@@ -1364,7 +1364,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active"
     },
     {
@@ -1550,13 +1550,13 @@
         }
       ],
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-06",
       "building_name": "Bristol Plaza",
       "off_market_date": "2026-06-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -1710,7 +1710,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-10-31"
     },
@@ -2181,12 +2181,12 @@
         }
       ],
       "last_pass1": "2026-05-28",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-12-15",
       "off_market_date": "2026-05-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26",
+      "pass2_confirmed_at": "2026-07-30",
       "building_name": "Archive Lofts"
     },
     {
@@ -2608,7 +2608,7 @@
         }
       ],
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-21"
     },
@@ -3765,12 +3765,12 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-13",
       "off_market_date": "2026-06-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -3971,12 +3971,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-14",
       "off_market_date": "2026-04-27",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26",
+      "pass2_confirmed_at": "2026-07-30",
       "building_name": "Manhattan House"
     },
     {
@@ -4270,7 +4270,7 @@
       "price_per_sqft": 3027,
       "type": "condo",
       "year_built": 1941,
-      "days_on_market": 251,
+      "days_on_market": 255,
       "monthly_fees": 2880,
       "monthly_taxes": 2390,
       "maintenance": null,
@@ -4305,7 +4305,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-11-17"
     },
@@ -5415,7 +5415,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-27"
     },
@@ -5644,12 +5644,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-09-09",
       "off_market_date": "2026-04-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26",
+      "pass2_confirmed_at": "2026-07-30",
       "building_name": null
     },
     {
@@ -5926,7 +5926,7 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-12"
     },
@@ -6629,7 +6629,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-27"
     },
@@ -7104,7 +7104,7 @@
         }
       ],
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-09-02"
     },
@@ -7239,11 +7239,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "off_market_date": "2026-07-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -7514,12 +7514,12 @@
         }
       ],
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-11-14",
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -8306,13 +8306,13 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-12-05",
       "building_name": "The Touraine",
       "off_market_date": "2026-06-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -8590,7 +8590,7 @@
       "baths": 3.0,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 54,
+      "days_on_market": 55,
       "listed_date": "2026-05-20",
       "maintenance": 4889,
       "agent_name": "diane johnson",
@@ -8793,12 +8793,12 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-02",
       "off_market_date": "2026-07-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -9228,12 +9228,12 @@
         }
       ],
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-08-26",
       "off_market_date": "2026-05-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -9977,13 +9977,13 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-10-09",
       "building_name": null,
       "off_market_date": "2026-07-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -11927,12 +11927,12 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2022-09-15",
       "off_market_date": "2026-05-18",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26",
+      "pass2_confirmed_at": "2026-07-30",
       "building_name": "Barbizon63 Condominium"
     },
     {
@@ -12378,7 +12378,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-03-11"
     },
@@ -12862,12 +12862,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-12-29",
       "off_market_date": "2026-05-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26",
+      "pass2_confirmed_at": "2026-07-30",
       "building_name": "Carlton House"
     },
     {
@@ -12970,7 +12970,7 @@
       "price_per_sqft": 2515,
       "type": "coop",
       "year_built": 1951,
-      "days_on_market": 228,
+      "days_on_market": 232,
       "monthly_fees": 4562,
       "monthly_taxes": null,
       "maintenance": 4745,
@@ -12999,7 +12999,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-12-10",
       "building_name": "Carlton House"
@@ -13535,7 +13535,7 @@
         }
       ],
       "last_pass1": "2026-06-14",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-09-08",
       "sqft_estimated": true,
@@ -13593,12 +13593,12 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-09-02",
       "off_market_date": "2026-05-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26",
+      "pass2_confirmed_at": "2026-07-30",
       "building_name": "The Clare"
     },
     {
@@ -14738,12 +14738,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-12-19",
       "off_market_date": "2026-06-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -15208,7 +15208,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-02-02"
     },
@@ -15282,6 +15282,12 @@
       "agent_firm": "Douglas Elliman",
       "price_history": [
         {
+          "date": "2026-07-26",
+          "price": 2750000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Douglas Elliman"
+        },
+        {
           "date": "2026-04-21",
           "price": 2750000,
           "event": "",
@@ -15295,10 +15301,13 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-11-06",
-      "building_name": "Cumberland House"
+      "building_name": "Cumberland House",
+      "off_market_date": "2026-07-26",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -15344,12 +15353,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-11-05",
       "off_market_date": "2026-04-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -15729,7 +15738,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-09-08"
     },
@@ -16285,7 +16294,7 @@
       "price_per_sqft": 1709,
       "type": "condo",
       "year_built": 2023,
-      "days_on_market": 192,
+      "days_on_market": 196,
       "listed_date": "2026-01-15",
       "monthly_fees": 2260,
       "monthly_taxes": 2336,
@@ -16303,7 +16312,7 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "description": "Now Offering 2 Years of Sponsor-Paid Common Charges at Claremont Hall\n\nIMMEDIATE OCCUPANCY\n\nResidence 11F is a 1,577 square-foot three-bedroom, three-bathroom home situated on Claremont Hall's tranquil northwest corner. Overlooking iconic Riverside Church, Sakura Park, Riverside Park, and Grant's Tomb, this home's open concept corner living and dining room incorporates four oversized windows, including one of the property's signature 8\" bay picture windows. The primary bedroom features an ensuite bath with double vanity and glass-enclosed walk-in shower, and a large walk-in-closet. Two additional bedrooms and two full baths complete this gracious residence.\n\nDisplaying a refined finish palette hand-selected by Robert A.M. Stern Architects, all residences at Claremont Hall include a custom-designed solid wood entrance door with polished chrome hardware, wide plank European white oak flooring, expansive, high-performance windows, and up to 10\" ceilings. Select residences feature generous bay picture windows and Gothic-inspired arched windows. Kitchens at Claremont Hall feature custom Italian cabinetry in soothing Classic Bianco or Modern Grigio lacquer, topped by Calacatta Laza quartz countertops and backed by a ceramic tile backsplash and a paneled appliance package from Bosch, with a custom range hood with integrated spice shelf. Paneled wine refrigerators are included in select residences.\n\nPrimary baths are finished with Arabescato Cervaiole marble and feature marble mosaic tile flooring and custom sconces in polished chrome. Each primary bath includes a RAMSA-designed Italian walnut vanity with Arabescato Cervaiole marble countertop, polished chrome fixtures by Kallista, custom designed mirrored medicine cabinet by Robern, and water closet fixtures by Toto.\n\nSecondary baths are well appointed with marble mosaic tile flooring framed by Bianco Carrara border and ceramic tile surround, ceramic tile shower surround, custom vanities designed by RAMSA, Grigio Toscana marble countertops, and Kohler undermount sinks with polished chrome hardware from Purist by Kohler. Secondary baths also include oversized mirrored medicine cabinets with polished chrome frames by Robern, Kohler soaking tubs or showers with polished chrome Purist rain showerheads and hand-held sprayers by Kohler, and water closets by Toto.\n\nClaremont Hall's robust amenities span over three floors and include spaces for socializing, working, and relaxing. The experience is centered on the Refectory Pool, a grand historic dining hall transformed into a swimming and events space, featuring a 48\" salt-water swimming pool. Claremont Hall is complete with a grand, double-height lobby, a Reading Room with Great Books Collection, a Gymnasium with Flex Space, the Little Castle playroom, media room, and a Residents\" Lounge and Terrace overlooking tranquil Sakura Park. The building also features a concierge, handyman, porters, and a live-in resident manager, as well as a bicycle room, and the opportunity to purchase on-site parking and private storage.\n\nFOR A LIMITED-TIME: BUYER RECEIVES TWO YEARS FREE COMMON CHARGES! Exclusive Sales and Marketing Agent: Corcoran Sunshine Marketing Group. The complete offering terms are in an offering plan available from Sponsor. File No. CD-20-0302. Sponsor: Broadway Community Owner LLC, c/o Lendlease, 200 Park Avenue, 9th Floor, New York, NY 10166. The sponsor makes no warranties except for those that may be set forth in the offering plan. Equal Housing Opportunity.",
       "last_partial_pass2": "2026-05-02",
@@ -16655,12 +16664,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-21",
       "off_market_date": "2026-04-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -16840,7 +16849,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-26",
       "sqft_estimated": true,
@@ -16848,7 +16857,7 @@
       "sqft_estimate_note": "29 East 64th Street 10C: pixel-method, calibrated off Living Room 24' wall. Range 1,500-1,700.",
       "off_market_date": "2026-07-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -16920,6 +16929,12 @@
       "agent_firm": "Compass",
       "price_history": [
         {
+          "date": "2026-07-26",
+          "price": 2600000,
+          "event": "SOLD",
+          "broker": "Compass"
+        },
+        {
           "date": "2026-05-11",
           "price": 2600000,
           "event": "IN_CONTRACT",
@@ -16939,10 +16954,13 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-06",
-      "building_name": "Carnegie Park Condominium"
+      "building_name": "Carnegie Park Condominium",
+      "off_market_date": "2026-07-26",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -17803,12 +17821,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-12",
       "off_market_date": "2026-06-25",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -17987,12 +18005,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-10-16",
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -18912,11 +18930,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "off_market_date": "2026-07-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -19799,12 +19817,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-08-27",
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -20200,12 +20218,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "building_name": "Yorkville Tower 2",
       "off_market_date": "2026-07-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "sale",
@@ -20363,7 +20381,7 @@
         }
       ],
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-12-05"
     },
@@ -20609,7 +20627,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2025-09-25",
       "building_name": "Manhattan House"
@@ -20898,12 +20916,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-01-29",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26",
+      "pass2_confirmed_at": "2026-07-30",
       "building_name": "The Channel Club"
     },
     {
@@ -22455,12 +22473,12 @@
         }
       ],
       "last_pass1": "2026-05-07",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-04-16",
       "off_market_date": "2026-05-07",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "rent",
@@ -24091,12 +24109,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-26",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "listed_date": "2026-04-15",
       "off_market_date": "2026-05-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-26",
+      "pass2_confirmed_at": "2026-07-30",
       "building_name": "Carlton House"
     },
     {
@@ -27429,11 +27447,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-07-27",
+      "last_pass2": "2026-07-30",
       "status": "active",
       "off_market_date": "2026-07-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-27"
+      "pass2_confirmed_at": "2026-07-30"
     },
     {
       "listing_type": "rent",
