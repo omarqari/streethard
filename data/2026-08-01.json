@@ -51,7 +51,7 @@
         }
       ],
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-01-13"
     },
@@ -858,11 +858,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "off_market_date": "2026-06-25",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -1189,7 +1189,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "building_name": "Georgica Condominium"
     },
@@ -1662,7 +1662,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-09"
     },
@@ -1778,7 +1778,7 @@
       "price_per_sqft": 2969,
       "type": "condo",
       "year_built": 1915,
-      "days_on_market": 97,
+      "days_on_market": 102,
       "listed_date": "2026-04-21",
       "monthly_fees": 3514,
       "monthly_taxes": 2199,
@@ -1796,7 +1796,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "description": "Perched on the 10th floor of this distinguished white-glove pre-war condominium, this beautifully appointed corner residence is bathed in natural light and offers a refined, contemporary aesthetic while preserving its classic architectural charm.\n\nA gracious entrance gallery welcomes you into the home, immediately conveying a sense of scale and elegance, with soaring 10-foot ceilings and beautifully proportioned rooms throughout.\n\nThe expansive, light-filled corner living room anchors the residence, offering a sophisticated blend of timeless charm and modern comfort. Rich, dark-stained hardwood floors add depth and contrast, while large windows invite abundant natural light and provide open city views. \n\nThoughtfully designed built-ins frame a charming fireplace, creating a warm and inviting focal point for both everyday living and entertaining.\nSeamlessly connected to the living room, the gracious dining room provides an elegant setting for entertaining. A generous window fills the space with natural light, while integrated millwork and shelving offer both display and storage.\n\nPrivately situated in the eastern wing, both bedrooms enjoy open eastern and southern exposures, filling the spaces with soft natural light. Each bedroom features an ensuite bathroom and generous closet space.\n\nThe sleek, efficiently designed kitchen offers a clean, modern aesthetic. Custom white cabinetry provides abundant storage, beautifully complemented by dark stone countertops, and the space is equipped with a washer and dryer for added convenience.\n\n525 Park Avenue is a premier 14-story pre-war condominium designed by the renowned architectural firm Schwartz & Gross and completed in 1915 in the Italian Palazzo style. Ideally situated on Park Avenue at 61st Street, in the heart of one of Manhattan\u2019s most prestigious and sought-after neighborhoods, the building offers full-service white-glove amenities and a level of privacy rarely found on Park Avenue.\n\nResidents enjoy immediate proximity to Central Park, as well as the city\u2019s finest restaurants, caf\u00e9s, boutiques, galleries, and world-class museums. The building is also notably flexible, permitting financing, LLC ownership, and purchases in trust.\n\nThere is a Working Capital Contribution equal to one month\u2019s common charges and real estate taxes payable by the purchaser.\n\nApartment 10D is also available for sale and could be a wonderful opportunity for a buyer seeking additional space.",
       "last_partial_pass2": "2026-05-02",
@@ -1895,12 +1895,12 @@
         }
       ],
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-10",
       "off_market_date": "2026-05-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28",
+      "pass2_confirmed_at": "2026-08-01",
       "building_name": null
     },
     {
@@ -2425,12 +2425,12 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-16",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28",
+      "pass2_confirmed_at": "2026-08-01",
       "building_name": "The Parc V"
     },
     {
@@ -2910,12 +2910,6 @@
       "agent_firm": "Corcoran",
       "price_history": [
         {
-          "date": "2026-06-30",
-          "price": 4495000,
-          "event": "TEMPORARILY_OFF_MARKET",
-          "broker": "Corcoran"
-        },
-        {
           "date": "2026-06-29",
           "price": 4495000,
           "event": "NO_LONGER_AVAILABLE",
@@ -2941,13 +2935,13 @@
         }
       ],
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-08",
       "building_name": "Carnegie Tower",
       "off_market_date": "2026-06-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -3674,12 +3668,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-03-30",
       "off_market_date": "2026-07-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -4696,7 +4690,7 @@
       "price_per_sqft": 2484,
       "type": "condo",
       "year_built": 1951,
-      "days_on_market": 90,
+      "days_on_market": 95,
       "listed_date": "2026-04-28",
       "monthly_fees": 2662,
       "monthly_taxes": 2210,
@@ -4720,7 +4714,7 @@
         }
       ],
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "description": "PENTHOUSE E2103 | Manhattan House\r\n\r\nRARE OFFERING - This triple-mint penthouse -  part of The Penthouse Collection in the coveted and prestigious Manhattan House Condominium is the definition of elevated luxury\u2014offered for the first time since the sponsor sale. \r\n\r\nMasterfully designed by AD100 visionary Vicente Wolf, this exceptional home embodies quiet luxury at its highest level. Originally conceived as a two-bedroom, two-bath layout, it has been elegantly reimagined to feature a grand primary suite with an extra  bespoke dressing room\u2014 easily adaptable to a third bedroom or private office.\r\n\r\nRESIDENCE HIGHLIGHTS:\r\nBathed in natural light & surrounded by Manhattan skyline views\r\nNorthern & Southern Exposures\r\nPenthouses offer extra height 9 foot ceilings with integrated Lutron lighting system and recessed lighting. \r\nCustom millwork, built-ins, and exceptional dressing/closet space\r\nArt Deco wood-burning fireplace with bespoke stainless steel surround\r\nSpa-caliber primary bath with Waterworks soaking tub, Dornbracht fixtures, and custom bleached oak vanity\r\nDesigner kitchen with honed Basaltina countertops, custom oak & stainless cabinetry, and Wolf/Miele appliances \r\nIn-Unit Washer/Dryer\r\nWide-plank rift-cut white oak floors with custom gray stain and Basaltina inlays\r\nMotorized window treatments throughout\r\nOffered unfurnished, or with curated art and furniture priced separately.\r\nA storage unit is included in the sale! \r\n\r\nTHE MANHATTAN HOUSE:\r\nIconic and Prestigious Full-Service Luxury Living\r\nGrand glass-enclosed lobby with porte-coch\u00e8re arrival\r\nPrivate landscaped gardens\u2014among the largest in Manhattan\r\n24-hour doorman, concierge & resident manager\r\nThe Manhattan Club: ~10,000 sq ft rooftop lounge with sweeping skyline views\r\nState-of-the-art fitness center & on-site parking\r\nValet, dry cleaning, playroom, bike storage & additional storage\r\nParking in the building\r\n\r\nOffered unfurnished, or furnished with fine art and furniture priced separately.\r\nA storage unit is included in the sale! \r\n\r\nINTERESTED IN THE MANHATTAN HOUSE? - CONTACT DEVIN & KELLY - ON & OFF MARKET OPPORTUNITIES!",
       "last_partial_pass2": "2026-05-02",
@@ -5208,7 +5202,7 @@
         }
       ],
       "last_pass1": "2026-06-25",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-02-12"
     },
@@ -5378,7 +5372,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-15",
       "building_name": null
@@ -5582,6 +5576,12 @@
       "agent_firm": "Compass",
       "price_history": [
         {
+          "date": "2026-08-01",
+          "price": 4150000,
+          "event": "SOLD",
+          "broker": "Compass"
+        },
+        {
           "date": "2026-05-14",
           "price": 4150000,
           "event": "IN_CONTRACT",
@@ -5595,10 +5595,13 @@
         }
       ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-18",
-      "building_name": "Evans Tower Condominium"
+      "building_name": "Evans Tower Condominium",
+      "off_market_date": "2026-08-01",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -5736,7 +5739,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-03-31"
     },
@@ -6178,12 +6181,12 @@
         }
       ],
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-07",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -6223,12 +6226,12 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-14",
       "off_market_date": "2026-05-19",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -7298,7 +7301,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-03-30",
       "building_name": "Richmond Condominium"
@@ -7884,11 +7887,54 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "description": "THE APARTMENT \n\nDesigned in 1923 by Rosario Candela-the preeminent architect of New York's great apartment houses-1105 Park Avenue, Apartment 11B is a quintessential example of his enduring legacy of proportion, elegance, and quiet grandeur. It also reflects why discerning buyers will often wait years for the opportunity to acquire a Candela residence in estate condition-rather than inherit the compromises of a prior renovation.\n\nOffered for the first time in decades, this high-floor home is bathed in natural light, with four principal rooms (and two bathrooms) enjoying open views over Park Avenue- an exposure that has long made the \"B\" line particularly prized.\n\nThe layout is both classic and highly functional. A signature 29-foot gallery-one of Candela's most celebrated design elements-creates a striking entrance and an ideal setting for art and collections.\nThree generously scaled bedrooms are privately set apart from the entertaining rooms, which feel truly expansive with high ceilings, refined architectural detail, and a wood-burning fireplace. A rarely found 44-foot expanse from living room to dining room enhances both scale and flow.\n\nThe rear of the apartment offers meaningful flexibility, including the opportunity to reimagine the kitchen and adjoining staff room into a substantial eat-in kitchen tailored to today's lifestyle. A second generously sized staff room allows for a variety of additional uses, whether as a home office, expanded service area, or a well-appointed laundry room.\n\nTHE BUILDING \n\n1105 Park Avenue is one of Carnegie Hill's most distinguished prewar cooperatives, occupying a prime corner at 89th Street just moments from Central Park, Museum Mile, and the boutiques and restaurants of Madison Avenue, as well as a concentration of the city's finest schools.\n\nThe building offers the level of service and discretion expected of a classic Park Avenue address, with full-time doorman and concierge staff and a live-in resident manager. Amenities include a large fitness center, bicycle room, and private storage for each residence.\n\nOriginally constructed in 1923 and intimate in scale, the cooperative comprises just 57 residences across 14 floors. It permits financing of up to 50% and welcomes pets with Board approval. A 2% flip tax is paid by the purchaser. The building is managed by Brown Harris Stevens.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1
+    },
+    {
+      "listing_type": "sale",
+      "id": "1840542",
+      "url": "https://streeteasy.com/sale/1840542",
+      "building": "524 East 72nd Street",
+      "building_name": "The Belaire",
+      "address": "524 East 72nd Street",
+      "unit": "#33CDE",
+      "neighborhood": "",
+      "price": 3850000,
+      "sqft": 2700,
+      "beds": 4,
+      "baths": 4.5,
+      "price_per_sqft": 1426,
+      "type": "condo",
+      "year_built": 1988,
+      "days_on_market": 71,
+      "listed_date": "2026-04-13",
+      "monthly_fees": 5766,
+      "monthly_taxes": 4324,
+      "maintenance": null,
+      "agent_name": "William Krooss-Tadas",
+      "agent_phone": null,
+      "agent_email": "williamkt@kw.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-07-31",
+          "price": 3795000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-08-01",
+      "last_pass2": "2026-08-01",
+      "status": "active",
+      "off_market_date": "2026-06-23",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -7928,7 +7974,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-15"
     },
@@ -8170,46 +8216,6 @@
     },
     {
       "listing_type": "sale",
-      "id": "1840542",
-      "url": "https://streeteasy.com/sale/1840542",
-      "building": "524 East 72nd Street",
-      "building_name": "The Belaire",
-      "address": "524 East 72nd Street",
-      "unit": "#33CDE",
-      "neighborhood": "",
-      "price": 3795000,
-      "sqft": 2700,
-      "beds": 4,
-      "baths": 4.5,
-      "price_per_sqft": 1406,
-      "type": "condo",
-      "year_built": 1988,
-      "days_on_market": 0,
-      "listed_date": "2026-07-31",
-      "monthly_fees": 6500,
-      "monthly_taxes": 4499,
-      "maintenance": null,
-      "agent_name": "Simona Stanica",
-      "agent_phone": null,
-      "agent_email": "simona.stanica@compass.com",
-      "agent_firm": "Compass",
-      "price_history": [
-        {
-          "date": "2026-07-31",
-          "price": 3795000,
-          "event": "LISTED",
-          "broker": "Compass"
-        }
-      ],
-      "_is_partial": false,
-      "_partial_reason": null,
-      "_partial_error": null,
-      "last_pass1": "2026-08-01",
-      "last_pass2": "2026-07-31",
-      "status": "active"
-    },
-    {
-      "listing_type": "sale",
       "id": "1817776",
       "url": "https://streeteasy.com/sale/1817776",
       "building": "1155 Park Avenue",
@@ -8407,7 +8413,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-03-26"
     },
@@ -8645,7 +8651,7 @@
       "baths": 3.0,
       "type": "coop",
       "year_built": 1910,
-      "days_on_market": 56,
+      "days_on_market": 57,
       "listed_date": "2026-05-20",
       "maintenance": 4889,
       "agent_name": "diane johnson",
@@ -8705,13 +8711,13 @@
         }
       ],
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-17",
       "building_name": "The Savoy",
       "off_market_date": "2026-06-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -8751,12 +8757,12 @@
         }
       ],
       "last_pass1": "2026-05-27",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-16",
       "off_market_date": "2026-05-27",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -8802,13 +8808,13 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-08",
       "building_name": "The Harper",
       "off_market_date": "2026-07-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -10770,13 +10776,13 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-07",
       "building_name": "Park 900",
       "off_market_date": "2026-07-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -10870,7 +10876,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-02",
       "sqft_estimated": true,
@@ -11838,7 +11844,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-08",
       "sqft_estimated": true,
@@ -12213,7 +12219,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-02",
       "sqft_estimated": true,
@@ -12348,7 +12354,7 @@
         }
       ],
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-09"
     },
@@ -12390,7 +12396,7 @@
         }
       ],
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-06",
       "building_name": "Maison East"
@@ -12607,7 +12613,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "description": "Residence 8A at Carnegie Hill Tower presents a rare opportunity to own a masterfully reimagined home in one of Manhattan\u2019s most distinguished enclaves.\nThis pristine three-bedroom, two-and-a-half-bathroom residence has undergone a comprehensive, top-tier renovation, seamlessly blending timeless elegance with modern sophistication. Every element has been thoughtfully upgraded, including new electrical and plumbing systems, state-of-the-art HVAC, wide-plank flooring, floor-to-ceiling solid core doors, and integrated LED lighting with dimmable controls throughout. A discreet in-unit washer and dryer complete the home\u2019s modern conveniences.\nA gracious entry foyer sets the tone, featuring dual sets of custom closets and refined cove lighting. Beyond, a dramatic 25-by-24-foot great room unfolds, wrapped in a wall of glass with triple exposures to the south, east, and west. The result is extraordinary natural light throughout the day, complemented by open city vistas over prime Carnegie Hill and subtle glimpses of Central Park.\nThe open-concept kitchen has been meticulously redesigned for both everyday living and elegant entertaining, featuring a dining bar, a full suite of Miele appliances, striking quartzite countertops, and bespoke cabinetry of the highest quality.\nThe king-sized primary suite offers a tranquil retreat, complete with a generously proportioned walk-in closet and a spa-like en-suite bath with a large glass-enclosed shower. Two additional bedrooms are equally well-scaled and appointed, each offering excellent proportions, abundant closet space, and custom built-ins with integrated lighting. All closets throughout the residence have been fully customized. A private storage unit transfers with the sale.\nCarnegie Hill Tower is a full-service, 32-story luxury condominium that has recently completed a comprehensive renovation of all common areas, now reflecting the finish of a newly developed property. Residents enjoy an exceptional suite of amenities, including a beautifully landscaped terrace with multiple areas for dining, lounging, and entertaining, as well as a manicured lawn and barbecue facilities. The building also offers a striking lobby set within a serene interior atrium, a fully equipped fitness center, private storage, and on-site parking.\nIdeally positioned in Carnegie Hill, one of Manhattan\u2019s most enduring and refined neighborhoods, the residence is moments from Central Park, including the Great Lawn and the Jacqueline Kennedy Onassis Reservoir, as well as the cultural landmarks of Museum Mile such as the Metropolitan Museum of Art, Cooper Hewitt, Smithsonian Design Museum, and the Solomon R. Guggenheim Museum. The surrounding neighborhood offers a curated lifestyle of fine dining, boutique shopping, gourmet markets, and effortless access to the New York City Subway.\nIn a market where true craftsmanship and scale are increasingly rare, Residence 8A stands apart\u2014a home defined by light, proportion, and enduring luxury, representing Carnegie Hill living at its finest.",
       "last_partial_pass2": "2026-05-02",
@@ -14485,7 +14491,7 @@
         }
       ],
       "last_pass1": "2026-07-20",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-16",
       "building_name": "Brisbane House"
@@ -14766,6 +14772,12 @@
       "agent_firm": "SERHANT.",
       "price_history": [
         {
+          "date": "2026-07-28",
+          "price": 2880000,
+          "event": "SOLD",
+          "broker": "SERHANT."
+        },
+        {
           "date": "2026-06-16",
           "price": 2880000,
           "event": "IN_CONTRACT",
@@ -14779,9 +14791,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
-      "listed_date": "2026-04-13"
+      "listed_date": "2026-04-13",
+      "off_market_date": "2026-07-28",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -14932,7 +14947,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-06",
       "sqft_estimated": true,
@@ -14977,7 +14992,7 @@
         }
       ],
       "last_pass1": "2026-05-13",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-20"
     },
@@ -16663,14 +16678,14 @@
         }
       ],
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "description": "Come home to beloved Carnegie Park, and enjoy every 5 star living luxury Manhattan has to offer. This is a rare and coveted opportunity to combine a 1BR/1B with a 2BR/2B next door. Both 612 & 614 are for sale individually, but this would make possible a combination that would seamlessly create a 4BR/3B. All current floor plans for 612 & 614 and a rendering of the potential combination are procured with this listing.\n\nCarnegie Park truly is a special place to call home. Besides the most outstanding staff and Resident manager, services and amenities galore will make for a lavish lifestyle: 24H doorman, but also on site valet parking, a state-of-the art fitness center, a playroom, a spa like yoga center, bike storage, a VIP worthy entertainment lounge with catering kitchen and a 3-lane swimming pool opening onto a private half acre park. From the fully-landscaped rooftop terrace you can take in the breathtaking 360-degree view of Central Park, the East River and the ever changing Midtown skyline. You can also take advantage of a barbecue grill area.\n\nIn the luxurious comfort of both home, you will currently find:\n\n- Desirable loft-like vibes and spectacular oversize panoramic windows flooding the space with light.\n\n- A delightful open Western exposure with wonderful light all day and breathtaking sunsets.\n\n- Custom window treatments.\n\n- Stainless steel kitchen appliances highlighted by Caesarstone countertops.\n\n- Sumptuous bathrooms with marble and custom mosaic details\n\n- Ample closets.\n\n- And the ultimate convenience of a washer/dryer in both units!\n\nThe phenomenal and convenient location offers it all in this sought after neighborhood: Central Park, 4/5/6 and Q trains, crosstown bus to the West side, 92nd Street Y, Asphalt Green, post office, museums galore, fine dining, endless shopping (Whole Foods, Target).\n\nGet ready to create a sophisticated one of kind setting for your next chapter. This opportunity will not last, schedule your private showing now!",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
       "off_market_date": "2026-06-05",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28",
+      "pass2_confirmed_at": "2026-08-01",
       "building_name": "Carnegie Park Condominium"
     },
     {
@@ -17001,12 +17016,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -17554,12 +17569,12 @@
         }
       ],
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-08",
       "off_market_date": "2026-06-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -19448,7 +19463,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-15"
     },
@@ -19852,12 +19867,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -19903,13 +19918,13 @@
         }
       ],
       "last_pass1": "2026-06-24",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-03-19",
       "building_name": "Evans Tower Condominium",
       "off_market_date": "2026-06-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -20430,7 +20445,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1962,
-      "days_on_market": 119,
+      "days_on_market": 123,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4185,
@@ -20447,7 +20462,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-03-31"
     },
@@ -20596,7 +20611,7 @@
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 3569,
-      "agent_name": "Louise Phillips",
+      "agent_name": "Louise Phillips Forbes",
       "agent_phone": "(212) 381-3329",
       "agent_email": "lphillips@bhsusa.com",
       "agent_firm": "Brown Harris Stevens",
@@ -20621,7 +20636,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-02"
     },
@@ -20972,13 +20987,13 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-13",
       "building_name": "The Concorde",
       "off_market_date": "2026-07-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-07-28"
+      "pass2_confirmed_at": "2026-08-01"
     },
     {
       "listing_type": "sale",
@@ -21140,7 +21155,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1963,
-      "days_on_market": 110,
+      "days_on_market": 114,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 3846,
@@ -21157,7 +21172,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-09"
     },
@@ -21242,7 +21257,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-03"
     },
@@ -21865,7 +21880,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-13",
       "building_name": "The Channel Club"
@@ -22252,7 +22267,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-01",
       "status": "active",
       "listed_date": "2026-04-06"
     },
