@@ -1343,7 +1343,7 @@ tr.target-bldg > td:first-child { box-shadow: inset 3px 0 0 #FF6000; }
   <span class="mtg-label">Monthly Payment Calculator</span>
   <div class="mtg-group">
     <label>Down</label>
-    <input type="text" id="down-input" value="$750,000" onchange="onMtgChange()" oninput="onMtgChange()">
+    <input type="text" id="down-input" value="$750,000" onchange="onMtgChange()" oninput="onMtgChange()" onblur="formatDownInput()">
   </div>
   <span class="mtg-sep">·</span>
   <div class="mtg-group">
@@ -1921,6 +1921,13 @@ function psfDeltaVsShortlist(listing) {
 
 function parseMtgInput(val) {
   return parseFloat(String(val).replace(/[$,]/g, '')) || 0;
+}
+// Reformat the Down Payment field back to "$X,XXX,XXX" on blur. oninput
+// leaves it as a raw number while the user is typing (so we don't fight
+// the caret), but leaving it unformatted after blur read as broken.
+function formatDownInput() {
+  const el = document.getElementById('down-input');
+  el.value = '$' + parseMtgInput(el.value).toLocaleString();
 }
 function median(arr) {
   if (!arr.length) return 0;
@@ -3291,12 +3298,15 @@ function navigateToListing(id) {
   setBucket(bucket);
   setView('table');
   expandedId = id;
-  applyFilters(); // re-renders table
-  // Scroll to the expanded row after render settles
-  requestAnimationFrame(() => {
-    const row = document.querySelector(`tr[data-id="${id}"]`);
-    if (row) row.scrollIntoView({ behavior: 'smooth', block: 'center' });
-  });
+  applyFilters(); // re-renders table synchronously
+  // Scroll to the expanded row. applyFilters() has already rebuilt the
+  // table by this point, so the row exists immediately — no need to defer
+  // via requestAnimationFrame. Instant (not smooth) scrolling on purpose:
+  // smooth-scroll and rAF callbacks can both get silently deferred/dropped
+  // depending on tab state, which left users landing on the right tab with
+  // the right row expanded far off-screen and no visible sign anything happened.
+  const row = document.querySelector(`tr[data-id="${id}"]`);
+  if (row) row.scrollIntoView({ behavior: 'auto', block: 'center' });
 }
 
 // ─── View Toggle ─────────────────────────────────────────────────────
