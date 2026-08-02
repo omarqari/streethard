@@ -107,8 +107,8 @@ Dark navy header (`#0E1730`), white card layout, blue links (`#3461D9`), orange 
 - **Default sort**: Per tab — Inbox: Monthly Payment desc, Shortlist: OQ# asc, Archive: bucket_changed_at desc
 - **Text search**: Free-text search bar filters by building, address, unit, neighborhood, agent name/firm. Always visible in the filter bar — used constantly.
 - **Filters button + popover/sheet (Session 32)**: All other filter controls (Beds, Type, Price ≤, Monthly ≤, ✂ Price Cuts, 👁 Seen, ★ Target buildings, Clear all) live behind a single **Filters** button. A blue count badge appears on the button when any filter is set. Filters apply live as the user changes them — no Apply button. **Desktop:** anchored popover that opens below the button, dismisses on outside-click or Escape. **Mobile (≤768px):** transforms into a **bottom sheet** — `position: fixed` at the viewport bottom, 58vh tall, drag handle, "Filters" + ✕ header, labeled rows (BEDS / TYPE / MAX PRICE / MAX MONTHLY), larger 14px controls, sticky footer with Clear all + a dark navy **Show N** primary button whose N updates live. Full-screen backdrop dims everything else; tap-to-close. Body scroll locked while open. Mode toggle (For Sale / Rent / Both) stays inline to the left of the Filters button on the same row.
-- **Price filter glyph**: Price and Monthly dropdowns use `≤` prefix on options (`≤ $3M`) instead of the older "Max Price" wording. Beds is an equality match, no glyph.
-- **Mortgage calculator** in header: Down Payment · Rate · Term — interactive, recalculates all rows instantly
+- **Price filter glyph**: Price and Monthly dropdowns use `≤` prefix on options (`≤ $3M`) instead of the older "Max Price" wording. Beds uses `N+` minimum-match semantics (`2+ beds`, `3+ beds`, `4+ beds`), not equality — corrected in Session 48 after a QA pass found the doc no longer matched the shipped filter.
+- **Mortgage calculator** in header: Down Payment · Rate · Term — interactive, recalculates all rows instantly. **Session 48 fix:** the Down Payment field lost its `$`/comma formatting once a family member edited it (e.g. typed `1000000`, tabbed away, field stayed `1000000` instead of reformatting to `$1,000,000`). `formatDownInput()` now runs `onblur` to reformat; typing itself is left unformatted (`oninput`) so the caret doesn't jump mid-edit. Fixed in commit `a73bd09`.
 - **Row expansion**: Price History, Agent info, Payment Breakdown
 - **Days Listed**: NEW/blue <7d, green 7–44d, yellow 45–120d, red 121d+
 - **Fees/Mo + % Fees columns (Session 37)**: Two sortable columns immediately right of Monthly Pmt. `Fees/Mo` = non-P&I carry costs (co-op: maintenance; condo/house: common charges + taxes). `% Fees` = round(fees/total_monthly×100). Both show `—` for rentals and pass1-only listings with no fee data. `calcFees()` and `calcFeesPct()` helpers in `index.html`. Card v4 shows a muted sub-line under the all-in total: `Fees/mo $X,XXX · N%`.
@@ -206,7 +206,16 @@ buckets. Full spec + 3-hat review in `BUILDINGS-FEATURE-PLAN.md`.
   routes to the tab. **Listings under an expanded building are clickable
   (Session 46):** `navigateToListing(id)` switches to the listing's bucket,
   forces table view, expands the row, and scrolls it into view. StreetEasy ↗
-  link still opens in a new tab (stopPropagation).
+  link still opens in a new tab (stopPropagation). **Session 48 fix:** the
+  scroll used `requestAnimationFrame` + `scrollIntoView({behavior:'smooth'})`,
+  both of which can silently no-op depending on tab/render state — users
+  landed on the right tab with the right row expanded but scrolled nowhere
+  near it (verified via QA: on Archive's 344 rows the row could render
+  ~16,000px down with zero visible feedback). Now scrolls synchronously
+  right after `applyFilters()` re-renders, with `behavior:'auto'` (instant)
+  instead of smooth, since the row already exists in the DOM by then and
+  instant scroll isn't dependent on the animation/compositor pipeline being
+  active. Fixed in commit `a73bd09`.
 - **Archive triage buttons (Session 46):** Archive rows in the table now show
   both ↩ Inbox and ★ Shortlist buttons, matching card view (which already had
   both). Previously table view only had ↩ Inbox.
@@ -405,6 +414,7 @@ This discards local state and syncs to exactly what's on remote. It is always sa
 - Never store the token in memory files, CLAUDE.md, or chat
 - The token is scoped to the `streethard` repo only (Contents read/write). **Does NOT have `actions:write`** — cannot trigger `workflow_dispatch` programmatically. To enable that, Omar must add `actions:write` to the token at GitHub → Settings → Developer settings → Fine-grained tokens. Until then, manual runs must be triggered via the GitHub Actions UI.
 - Token expires every 90 days; if auth fails, ask the user to rotate it at GitHub → Settings → Developer settings → Fine-grained tokens
+- **Status (2026-08-01, Session 48): the `.env` `GITHUB_TOKEN` is expired** — `scripts/git_push.py` fails with `401: Bad credentials`. Omar pushed the Session 48 fix manually from his own Terminal instead (`git add`/`commit`/`rebase origin/main`/`push`, using his own local git credentials — unrelated to this token). Next session needing `git_push.py` should expect this same 401 until the token is rotated; either rotate it first or fall back to asking Omar to push from Terminal.
 - **Never run `git commit`, `git push`, `git pull`, `git stash`, or any write-mode git command against the mounted .git directory**
 
 ## Days-on-Market — Field Reliability

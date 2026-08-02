@@ -4,6 +4,63 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-08-01 — Full QA pass on live site; two bug fixes shipped (Session 48)
+
+### QA pass (browser automation, streethard.omarqari.com)
+Ran a full pass across Inbox, Shortlist, Archive, Buildings, mobile viewport,
+and diagnostics.html using Claude in Chrome. Console and network clean
+throughout. Most documented features work exactly as spec'd: mortgage
+recalculation, price-history signal icons, off-market badges, target
+buildings, architect placeholders/search, mobile card-view auto-switch,
+bottom-sheet filters, sqft-estimate styling. Cross-checked the pipeline
+health data (Pass 1 coverage, W5 cliff guard, freshness) shown in
+diagnostics.html against a direct read of `data/pipeline_health.json` and
+`data/db.json` on origin — they agreed exactly; both sale and rent Pass 1
+discovery have run clean every day since at least Jul 19.
+
+### Bugs found and fixed (commit `a73bd09`)
+- **Buildings tab → listing click-through didn't scroll into view.**
+  `navigateToListing(id)` correctly switched tabs, forced table view, and
+  expanded the right row (confirmed via DOM inspection — `row-expanded`
+  class was present), but `requestAnimationFrame` + `scrollIntoView({behavior:
+  'smooth'})` silently failed to actually scroll. On Archive (344 rows) this
+  meant landing on the right tab with the right row expanded ~16,000px down
+  the page and zero visible sign anything happened. Root-caused via direct
+  testing: both rAF callbacks and smooth-scroll animations can no-op
+  depending on tab/render state, and the DOM is already correct
+  synchronously right after `applyFilters()` returns — no need to wait a
+  frame. Fix: scroll happens synchronously, `behavior: 'auto'` (instant)
+  instead of smooth.
+- **Mortgage calculator Down Payment field lost its `$`/comma formatting**
+  after being edited (typed `1000000`, tabbed away, stayed `1000000` instead
+  of reformatting to `$1,000,000`). Fix: `formatDownInput()` now runs
+  `onblur` to reformat the display value; live typing (`oninput`) is left
+  raw so the caret doesn't jump mid-edit.
+- Both fixes verified live post-deploy via browser automation (DOM/scroll
+  state inspected directly, not just visually).
+
+### Also found, not fixed (by request)
+- **UWS listings still leaking into the UES feed** — 3 active listings at
+  250 West 96th Street (Upper West Side) were sitting untriaged in Inbox
+  during the QA pass, plus more in Archive. This is the same issue logged
+  as an open backlog item in TASKS.md (`is_ues_address()` guard, never
+  built). Omar explicitly deferred this again this session — do not build
+  without being asked.
+- Doc correction only, no code change: CLAUDE.md described the Beds filter
+  as "equality match" — the shipped UI actually uses `N+` (2+/3+/4+ beds)
+  minimum-match semantics and works correctly against that label. Doc
+  updated to match reality.
+
+### Infra note
+- `scripts/git_push.py` failed with `401: Bad credentials` — the `.env`
+  `GITHUB_TOKEN` has expired (documented 90-day cycle). Omar pushed the fix
+  commit manually from his own Terminal instead. Local repo also had ~89
+  unpulled cron commits and a stale `.git/index.lock` from an earlier
+  interrupted process (removed per the documented Session 45 cleanup rule).
+  Token still needs rotating before `git_push.py` works again.
+
+---
+
 ## 2026-07-02 — Pipeline outage: Apify usage cap + Pages deploy failure; cron cut to 2×/day (Session 47)
 
 ### Outage & root cause
