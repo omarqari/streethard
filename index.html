@@ -1146,6 +1146,14 @@ tr.target-bldg > td:first-child { box-shadow: inset 3px 0 0 #FF6000; }
 /* ─── Mobile (≤768px) ─────────────────────────────────────────── */
 @media (max-width: 768px) {
 
+  /* iOS/Android auto-zoom on focus: any text input or textarea rendered
+     under 16px causes the browser to zoom the whole page in when tapped,
+     and it does NOT zoom back out on blur — this is what caused notes
+     edits (and rank inputs, search, mortgage fields) to leave the page
+     stuck zoomed in. Force 16px on every text-entry field at mobile
+     widths; desktop keeps its denser sizing untouched. */
+  input[type="text"], input[type="number"], textarea { font-size: 16px !important; }
+
   /* Switch to full-page scroll; only #main-header stays pinned */
   body { height: auto; min-height: 100dvh; overflow-y: auto; overflow-x: hidden; }
   #sticky-top { position: static; box-shadow: none; }

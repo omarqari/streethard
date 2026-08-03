@@ -39,6 +39,23 @@ discovery have run clean every day since at least Jul 19.
 - Both fixes verified live post-deploy via browser automation (DOM/scroll
   state inspected directly, not just visually).
 
+### Third fix, found by Omar after the above shipped: mobile auto-zoom on note edit
+- **Editing any text field on mobile (notes, rank inputs, search, mortgage
+  calc) left the page zoomed in and didn't zoom back out.** Root cause:
+  iOS/Android browsers auto-zoom the page on focus for any text `input` or
+  `textarea` rendered under 16px, and don't reverse it on blur. `.v4-notes`
+  (13px), `.v4-rank-input` (14px), `#f-search`, and the mortgage bar inputs
+  (13px) were all under that threshold on mobile. Fix: a single rule in the
+  `@media (max-width:768px)` block forces `font-size: 16px !important` on
+  every `input[type="text"]`, `input[type="number"]`, and `textarea`.
+  `!important` is needed because several of these already carry
+  component-specific font-size rules (`.v4-notes`, `.rank-input`, etc.)
+  with higher CSS specificity than a plain `textarea`/`input` selector —
+  confirmed via computed-style testing that a non-`!important` version
+  fixed the rank inputs but not the notes textarea. Verified 16px on
+  `.v4-notes`, `.v4-rank-input`, `#f-search`, `#down-input`, `#rate-input`,
+  `#term-input`, and `.exp-note-textarea` at a 606px viewport.
+
 ### Also found, not fixed (by request)
 - **UWS listings still leaking into the UES feed** — 3 active listings at
   250 West 96th Street (Upper West Side) were sitting untriaged in Inbox
