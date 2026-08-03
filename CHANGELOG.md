@@ -89,6 +89,26 @@ discovery have run clean every day since at least Jul 19.
   array, confirmed by checking the first rendered card after a table sort).
   Also verified on a 606px mobile viewport as an actual bottom sheet.
 
+### Fifth addition, requested by Omar: sticky sort (remember last choice per tab)
+- **Sort no longer resets to the hardcoded per-tab default (T6) every time
+  you switch tabs or reload.** Each bucket's last-picked `sortCol`/`sortDir`
+  is written to `localStorage` (`sh_sort_prefs`, one JSON blob keyed by
+  bucket) inside `sortBy()`, and `bucketSortDefault(bucket)` reads it back
+  in `setBucket()` and on initial page load — falling back to the original
+  T6 defaults (Inbox: Monthly Pmt desc, Shortlist: OQ# asc, Archive:
+  bucket_changed_at desc) for any bucket that's never been manually sorted.
+  So a bucket you've never touched still gets a sensible first-time default;
+  once you sort it, that choice sticks across tab switches and page reloads.
+- Deliberately **per-tab, not global** — Shortlist's OQ#-rank default stays
+  meaningful for a fresh visit even if Inbox was last sorted by Days Listed.
+  Wrapped in try/catch since `localStorage` can throw in some private-
+  browsing contexts; sort just isn't sticky there, nothing breaks.
+- Verified via live injection: sorted Inbox by Days Listed, switched to
+  Shortlist (still defaulted to OQ# asc, untouched), switched back to
+  Inbox (restored Days Listed desc, not reset to Monthly Pmt), confirmed
+  the value is actually sitting in `localStorage` (survives reload by
+  construction).
+
 ### Also found, not fixed (by request)
 - **UWS listings still leaking into the UES feed** — 3 active listings at
   250 West 96th Street (Upper West Side) were sitting untriaged in Inbox

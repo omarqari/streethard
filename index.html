@@ -1594,6 +1594,32 @@ let listingMode = 'sale'; // 'sale' | 'rent' | 'both'
 let sortCol = 'monthly';
 let sortDir = 'desc';
 let mtgCalcTimer = null;
+
+// Sticky sort: remember the last sort col/dir the user picked, per bucket,
+// in localStorage — so switching tabs or reloading restores it instead of
+// resetting to the hardcoded tab default every time. First-ever visit (or
+// any bucket the user hasn't touched yet) still falls back to the original
+// per-tab defaults (T6). Wrapped in try/catch since localStorage can throw
+// in some private-browsing contexts — sort just isn't sticky there.
+const SORT_PREF_KEY = 'sh_sort_prefs';
+function loadSortPrefs() {
+  try { return JSON.parse(localStorage.getItem(SORT_PREF_KEY)) || {}; }
+  catch (e) { return {}; }
+}
+function saveSortPref(bucket, col, dir) {
+  try {
+    const prefs = loadSortPrefs();
+    prefs[bucket] = { col, dir };
+    localStorage.setItem(SORT_PREF_KEY, JSON.stringify(prefs));
+  } catch (e) { /* private-browsing or storage disabled — not sticky, not fatal */ }
+}
+function bucketSortDefault(bucket) {
+  const saved = loadSortPrefs()[bucket];
+  if (saved && saved.col) return saved;
+  if (bucket === 'shortlist') return { col: 'oq_rank', dir: 'asc' };
+  if (bucket === 'archive')   return { col: 'archived_at', dir: 'desc' };
+  return { col: 'monthly', dir: 'desc' };
+}
 let targetSet = new Set();   // building_key set of targeted "great buildings" (shared family list)
 let targetMeta = {};         // building_key → { display_name, note }
 let expandedBldg = null;     // currently expanded building_key on the Buildings tab
@@ -2498,10 +2524,8 @@ function setBucket(bucket) {
   // Show/hide rank columns (only visible on shortlist)
   document.getElementById('table-view').classList.toggle('hide-ranks', bucket !== 'shortlist');
   document.getElementById('sort-popover').classList.toggle('hide-ranks', bucket !== 'shortlist');
-  // T6: Sort defaults per tab
-  if (bucket === 'shortlist')     { sortCol = 'oq_rank'; sortDir = 'asc'; }
-  else if (bucket === 'archive')  { sortCol = 'archived_at'; sortDir = 'desc'; }
-  else                            { sortCol = 'monthly'; sortDir = 'desc'; }
+  // T6: Sort defaults per tab (sticky — see bucketSortDefault())
+  { const d = bucketSortDefault(bucket); sortCol = d.col; sortDir = d.dir; }
   // Update sort arrow UI
   document.querySelectorAll('.sort-arrow').forEach(el => el.textContent = '');
   document.querySelectorAll('thead th').forEach(el => el.classList.remove('sort-active'));
@@ -2877,6 +2901,7 @@ function sortBy(col) {
   if (arrow) arrow.textContent = sortDir === 'desc' ? '↓' : '↑';
   if (th)    th.classList.add('sort-active');
   updateSortMenuUI();
+  saveSortPref(currentBucket, sortCol, sortDir);
   sortListings();
   render();
 }
@@ -3517,9 +3542,8 @@ if (['inbox', 'shortlist', 'archive'].includes(hashBucket)) {
 });
 document.getElementById('table-view').classList.toggle('hide-ranks', currentBucket !== 'shortlist');
 document.getElementById('sort-popover').classList.toggle('hide-ranks', currentBucket !== 'shortlist');
-// T6: Apply sort defaults on initial load based on hash
-if (currentBucket === 'shortlist')    { sortCol = 'oq_rank'; sortDir = 'asc'; }
-else if (currentBucket === 'archive') { sortCol = 'archived_at'; sortDir = 'desc'; }
+// T6: Apply sort defaults on initial load based on hash (sticky — see bucketSortDefault())
+{ const d0 = bucketSortDefault(currentBucket); sortCol = d0.col; sortDir = d0.dir; }
 {
   const initArrow = document.getElementById('arr-' + sortCol);
   const initTh    = document.getElementById('th-' + sortCol);
