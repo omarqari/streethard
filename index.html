@@ -265,6 +265,17 @@ a:hover { text-decoration: underline; }
 
 /* ─── Filters Popover ──────────────────────────────────────────── */
 .filter-wrap { position: relative; }
+.sort-wrap { position: relative; }
+.sort-btn-arrow { color: #FF6000; font-weight: 700; }
+.sort-row {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 8px 10px; border-radius: 6px; cursor: pointer;
+  font-size: 13px; color: #1a1a2e; transition: background 0.1s;
+}
+.sort-row:hover { background: #f5f7fb; }
+.sort-row.active { background: #eef2ff; font-weight: 500; }
+.sort-row-arrow { color: #3461D9; font-weight: 700; font-size: 13px; }
+.sort-popover.hide-ranks .sort-row-rank { display: none; }
 .filter-toggle-btn {
   display: inline-flex; align-items: center; gap: 5px;
   border: 1px solid #d0d5dd; border-radius: 20px;
@@ -1217,6 +1228,9 @@ tr.target-bldg > td:first-child { box-shadow: inset 3px 0 0 #FF6000; }
   #filter-bar { padding: 8px 16px; flex-wrap: wrap; gap: 6px; row-gap: 8px; }
   .mode-toggle { order: 1; }
   .filter-wrap { order: 2; margin-left: auto; }
+  .sort-wrap { order: 2; margin-left: 6px; }
+  .sort-row { padding: 12px 4px; font-size: 14px; }
+  .sort-row-arrow { font-size: 14px; }
   #f-search { order: 3; flex: 0 0 100%; width: 100%; }
   #f-search:focus { width: 100%; }
   .filter-spacer { display: none; }
@@ -1460,6 +1474,34 @@ tr.target-bldg > td:first-child { box-shadow: inset 3px 0 0 #FF6000; }
       <div class="popover-footer">
         <button class="clear-btn" id="clear-btn" onclick="clearFilters()">✕ Clear all</button>
         <button class="popover-primary-btn" onclick="toggleFiltersPopover(event)">Show <span id="show-count">—</span></button>
+      </div>
+    </div>
+  </div>
+  <div class="sort-wrap">
+    <button class="filter-toggle-btn" id="sort-toggle-btn" onclick="toggleSortPopover(event)" aria-expanded="false" aria-controls="sort-popover">
+      <span>Sort</span><span class="sort-btn-arrow" id="sort-btn-arrow"></span>
+    </button>
+    <div class="filter-popover sort-popover" id="sort-popover" hidden role="dialog" aria-label="Sort">
+      <div class="popover-handle" aria-hidden="true"></div>
+      <div class="popover-header">
+        <span class="popover-title">Sort</span>
+        <button class="popover-close" onclick="toggleSortPopover(event)" aria-label="Close sort">✕</button>
+      </div>
+      <div class="popover-body">
+        <div class="sort-row sort-row-rank" data-col="oq_rank" onclick="sortBy('oq_rank')"><span>OQ #</span><span class="sort-row-arrow" id="sarr-oq_rank"></span></div>
+        <div class="sort-row sort-row-rank" data-col="rq_rank" onclick="sortBy('rq_rank')"><span>RQ #</span><span class="sort-row-arrow" id="sarr-rq_rank"></span></div>
+        <div class="sort-row" data-col="monthly" onclick="sortBy('monthly')"><span>Monthly Pmt</span><span class="sort-row-arrow" id="sarr-monthly"></span></div>
+        <div class="sort-row" data-col="fees" onclick="sortBy('fees')"><span>Fees/Mo</span><span class="sort-row-arrow" id="sarr-fees"></span></div>
+        <div class="sort-row" data-col="feespct" onclick="sortBy('feespct')"><span>% Fees</span><span class="sort-row-arrow" id="sarr-feespct"></span></div>
+        <div class="sort-row" data-col="price" onclick="sortBy('price')"><span>Ask Price</span><span class="sort-row-arrow" id="sarr-price"></span></div>
+        <div class="sort-row" data-col="sqft" onclick="sortBy('sqft')"><span>SqFt</span><span class="sort-row-arrow" id="sarr-sqft"></span></div>
+        <div class="sort-row" data-col="beds" onclick="sortBy('beds')"><span>Beds / Baths</span><span class="sort-row-arrow" id="sarr-beds"></span></div>
+        <div class="sort-row" data-col="ppsqft" onclick="sortBy('ppsqft')"><span>Price/SqFt</span><span class="sort-row-arrow" id="sarr-ppsqft"></span></div>
+        <div class="sort-row" data-col="pmtsqft" onclick="sortBy('pmtsqft')"><span>PMT/SqFt</span><span class="sort-row-arrow" id="sarr-pmtsqft"></span></div>
+        <div class="sort-row" data-col="type" onclick="sortBy('type')"><span>Type</span><span class="sort-row-arrow" id="sarr-type"></span></div>
+        <div class="sort-row" data-col="year" onclick="sortBy('year')"><span>Yr Built</span><span class="sort-row-arrow" id="sarr-year"></span></div>
+        <div class="sort-row" data-col="days" onclick="sortBy('days')"><span>Days Listed</span><span class="sort-row-arrow" id="sarr-days"></span></div>
+        <div class="sort-row" data-col="building" onclick="sortBy('building')"><span>Building / Unit</span><span class="sort-row-arrow" id="sarr-building"></span></div>
       </div>
     </div>
   </div>
@@ -2455,6 +2497,7 @@ function setBucket(bucket) {
   });
   // Show/hide rank columns (only visible on shortlist)
   document.getElementById('table-view').classList.toggle('hide-ranks', bucket !== 'shortlist');
+  document.getElementById('sort-popover').classList.toggle('hide-ranks', bucket !== 'shortlist');
   // T6: Sort defaults per tab
   if (bucket === 'shortlist')     { sortCol = 'oq_rank'; sortDir = 'asc'; }
   else if (bucket === 'archive')  { sortCol = 'archived_at'; sortDir = 'desc'; }
@@ -2466,6 +2509,7 @@ function setBucket(bucket) {
   const th    = document.getElementById('th-' + sortCol);
   if (arrow) arrow.textContent = sortDir === 'desc' ? '↓' : '↑';
   if (th)    th.classList.add('sort-active');
+  updateSortMenuUI();
   expandedId = null;
   applyFilters();
 }
@@ -2719,6 +2763,7 @@ function clearFilters() {
 // Backdrop is mobile-only by CSS — DOM toggle is harmless on desktop.
 function toggleFiltersPopover(e) {
   if (e) e.stopPropagation();
+  closeSortPopover();
   const pop = document.getElementById('filter-popover');
   const btn = document.getElementById('filter-toggle-btn');
   const bdr = document.getElementById('filter-backdrop');
@@ -2743,6 +2788,49 @@ function closeFiltersPopover() {
   }
   document.body.classList.remove('sheet-open');
 }
+// Sort popover (desktop) / bottom sheet (mobile) — same pattern as Filters,
+// just a different trigger/panel pair sharing the one backdrop. Only one of
+// Filters/Sort is ever open at a time (each closes the other on open).
+function toggleSortPopover(e) {
+  if (e) e.stopPropagation();
+  closeFiltersPopover();
+  const pop = document.getElementById('sort-popover');
+  const btn = document.getElementById('sort-toggle-btn');
+  const bdr = document.getElementById('filter-backdrop');
+  const isOpen = !pop.hidden;
+  pop.hidden = isOpen;
+  if (bdr) bdr.hidden = isOpen;
+  btn.classList.toggle('open', !isOpen);
+  btn.setAttribute('aria-expanded', String(!isOpen));
+  document.body.classList.toggle('sheet-open', !isOpen);
+}
+function closeSortPopover() {
+  const pop = document.getElementById('sort-popover');
+  const btn = document.getElementById('sort-toggle-btn');
+  const bdr = document.getElementById('filter-backdrop');
+  if (pop) pop.hidden = true;
+  if (bdr) bdr.hidden = true;
+  if (btn) {
+    btn.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+  document.body.classList.remove('sheet-open');
+}
+// Reflects sortCol/sortDir onto the Sort menu: highlights the active row,
+// shows its arrow, and mirrors the arrow onto the Sort button itself so the
+// current direction is visible without opening the menu. Called from
+// sortBy(), setBucket() (tab defaults), and initial page load.
+function updateSortMenuUI() {
+  document.querySelectorAll('.sort-row-arrow').forEach(el => el.textContent = '');
+  document.querySelectorAll('.sort-row').forEach(el => el.classList.remove('active'));
+  const glyph = sortDir === 'desc' ? '↓' : '↑';
+  const rowArrow = document.getElementById('sarr-' + sortCol);
+  const row = document.querySelector(`.sort-row[data-col="${sortCol}"]`);
+  if (rowArrow) rowArrow.textContent = glyph;
+  if (row) row.classList.add('active');
+  const btnArrow = document.getElementById('sort-btn-arrow');
+  if (btnArrow) btnArrow.textContent = glyph;
+}
 // Outside-click (desktop popover) — anything not inside the sheet/popover
 // or the trigger button closes it. The mobile backdrop has its own click
 // handler below; both code paths converge on closeFiltersPopover().
@@ -2753,15 +2841,25 @@ document.addEventListener('click', (e) => {
   if (pop.contains(e.target) || btn.contains(e.target)) return;
   closeFiltersPopover();
 });
-// Tapping the backdrop closes the sheet (mobile bottom-sheet pattern).
+document.addEventListener('click', (e) => {
+  const pop = document.getElementById('sort-popover');
+  const btn = document.getElementById('sort-toggle-btn');
+  if (!pop || pop.hidden) return;
+  if (pop.contains(e.target) || btn.contains(e.target)) return;
+  closeSortPopover();
+});
+// Tapping the backdrop closes whichever sheet is open (mobile bottom-sheet
+// pattern). Both calls are no-ops on the sheet that's already closed.
 document.addEventListener('DOMContentLoaded', () => {
   const bdr = document.getElementById('filter-backdrop');
-  if (bdr) bdr.addEventListener('click', closeFiltersPopover);
+  if (bdr) bdr.addEventListener('click', () => { closeFiltersPopover(); closeSortPopover(); });
 });
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Escape') return;
   const pop = document.getElementById('filter-popover');
   if (pop && !pop.hidden) closeFiltersPopover();
+  const sortPop = document.getElementById('sort-popover');
+  if (sortPop && !sortPop.hidden) closeSortPopover();
 });
 
 // ─── Sort ────────────────────────────────────────────────────────────
@@ -2778,6 +2876,7 @@ function sortBy(col) {
   const th    = document.getElementById('th-' + col);
   if (arrow) arrow.textContent = sortDir === 'desc' ? '↓' : '↑';
   if (th)    th.classList.add('sort-active');
+  updateSortMenuUI();
   sortListings();
   render();
 }
@@ -3417,6 +3516,7 @@ if (['inbox', 'shortlist', 'archive'].includes(hashBucket)) {
   document.getElementById('tab-' + b).classList.toggle('active', b === currentBucket);
 });
 document.getElementById('table-view').classList.toggle('hide-ranks', currentBucket !== 'shortlist');
+document.getElementById('sort-popover').classList.toggle('hide-ranks', currentBucket !== 'shortlist');
 // T6: Apply sort defaults on initial load based on hash
 if (currentBucket === 'shortlist')    { sortCol = 'oq_rank'; sortDir = 'asc'; }
 else if (currentBucket === 'archive') { sortCol = 'archived_at'; sortDir = 'desc'; }
@@ -3426,6 +3526,7 @@ else if (currentBucket === 'archive') { sortCol = 'archived_at'; sortDir = 'desc
   if (initArrow) initArrow.textContent = sortDir === 'desc' ? '↓' : '↑';
   if (initTh)    initTh.classList.add('sort-active');
   // For inbox, sortCol is 'monthly' so initTh is found; for archive, sortCol is 'archived_at' which has no th — no header highlighted (expected)
+  updateSortMenuUI();
 }
 // Buildings is its own view (not a listing bucket); enter it if the hash asks.
 if (hashBucket === 'buildings') showBuildings();

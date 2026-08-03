@@ -56,6 +56,39 @@ discovery have run clean every day since at least Jul 19.
   `.v4-notes`, `.v4-rank-input`, `#f-search`, `#down-input`, `#rate-input`,
   `#term-input`, and `.exp-note-textarea` at a 606px viewport.
 
+### Fourth addition, requested by Omar: Sort control for Card view / mobile
+- **Gap, not a bug: table view already toggles asc/desc by tapping a column
+  header twice, but Card view (mobile's default view) had no sort control
+  at all.** Mobile users who never switch to Table view had no way to
+  change sort order.
+- **New "Sort" button** next to "Filters" in the filter bar, same treatment
+  on desktop and mobile: desktop opens an anchored popover, mobile opens a
+  bottom sheet — both reuse the existing `.filter-popover` CSS wholesale
+  (new `.sort-wrap`/`.sort-popover` wrapper, not a duplicated component) so
+  they're pixel-consistent with the Filters control for free. Tapping a
+  field sorts by it (desc first); tapping the already-active field flips
+  the arrow — calls the exact same `sortBy(col)` function the table headers
+  already use, so no new sort logic was written, only a new UI surface.
+  Opening either popover closes the other (mutual exclusivity); both share
+  the existing `#filter-backdrop` on mobile.
+- **Full field parity with the table columns** (Monthly Pmt, Fees/Mo,
+  % Fees, Ask Price, SqFt, Beds/Baths, Price/SqFt, PMT/SqFt, Type, Yr Built,
+  Days Listed, Building/Unit) plus OQ #/RQ #, gated to the Shortlist tab via
+  a new `.sort-popover.hide-ranks .sort-row-rank { display: none }` rule
+  toggled in `setBucket()` and on initial load — mirrors the existing
+  `.hide-ranks` toggle already used for the table's rank columns.
+- `updateSortMenuUI()` mirrors `sortCol`/`sortDir` onto the menu (highlights
+  the active row, shows its arrow) and onto the Sort button itself, so the
+  current direction is visible without opening the menu. Called from
+  `sortBy()`, `setBucket()` (tab defaults), and initial page load.
+- Mockup shown and approved before building (per the mockup-first practice
+  for non-trivial UI changes). Verified end-to-end via live DOM injection
+  on the deployed site before shipping: popover open/close, tap-to-sort,
+  asc/desc toggle, OQ#/RQ# visibility gating, and — importantly — that Card
+  view actually re-renders in the new sort order (shared `filteredListings`
+  array, confirmed by checking the first rendered card after a table sort).
+  Also verified on a 606px mobile viewport as an actual bottom sheet.
+
 ### Also found, not fixed (by request)
 - **UWS listings still leaking into the UES feed** — 3 active listings at
   250 West 96th Street (Upper West Side) were sitting untriaged in Inbox
