@@ -950,7 +950,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-23",
@@ -1878,7 +1878,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-20"
@@ -1902,14 +1902,14 @@
       "monthly_fees": 4118,
       "monthly_taxes": 2728,
       "maintenance": null,
-      "agent_name": "Amy Landy",
+      "agent_name": "Sean Jadidian",
       "agent_phone": "(212) 974-0740",
-      "agent_email": "amy@modlingroup.com",
+      "agent_email": "seanj@corcoran.com",
       "agent_firm": "Modlin Group",
       "price_history": [
         {
           "date": "2026-07-16",
-          "price": 4500000,
+          "price": 4050000,
           "event": "SOLD",
           "broker": "Modlin Group"
         },
@@ -1928,14 +1928,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-19",
       "building_name": "The Seville",
       "off_market_date": "2026-07-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1816146": {
       "listing_type": "sale",
@@ -2322,14 +2322,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-26",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-25",
       "building_name": "The Legacy",
       "off_market_date": "2026-06-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1816093": {
       "listing_type": "sale",
@@ -2370,14 +2370,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-16",
       "building_name": "Carlton House",
       "off_market_date": "2026-07-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1813798": {
       "listing_type": "sale",
@@ -2394,7 +2394,7 @@
       "price_per_sqft": 2742,
       "type": "condo",
       "year_built": 1950,
-      "days_on_market": 151,
+      "days_on_market": 155,
       "monthly_fees": 2500,
       "monthly_taxes": 2577,
       "maintenance": null,
@@ -2424,7 +2424,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-04"
@@ -3127,7 +3127,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-13",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-17"
@@ -3177,13 +3177,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-05",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1809750": {
       "listing_type": "sale",
@@ -4443,7 +4443,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-26"
@@ -4493,13 +4493,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-17",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1816047": {
       "listing_type": "sale",
@@ -4546,14 +4546,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-16",
       "building_name": "The Verona",
       "off_market_date": "2026-07-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1814620": {
       "listing_type": "sale",
@@ -5216,7 +5216,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-24"
@@ -5992,6 +5992,18 @@
       "agent_firm": "FIND Real Estate",
       "price_history": [
         {
+          "date": "2026-08-04",
+          "price": 3675000,
+          "event": "SOLD",
+          "broker": "FIND Real Estate"
+        },
+        {
+          "date": "2026-08-03",
+          "price": 3675000,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "FIND Real Estate"
+        },
+        {
           "date": "2026-05-21",
           "price": 3675000,
           "event": "IN_CONTRACT",
@@ -6006,10 +6018,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-07"
+      "listed_date": "2026-03-07",
+      "off_market_date": "2026-08-03",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1815418": {
       "listing_type": "sale",
@@ -6607,13 +6622,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-07",
       "off_market_date": "2026-07-03",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1811788": {
       "listing_type": "sale",
@@ -6808,7 +6823,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-20"
@@ -7215,13 +7230,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-05",
       "off_market_date": "2026-07-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1811321": {
       "listing_type": "sale",
@@ -7730,14 +7745,14 @@
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 4825,
-      "agent_name": "June L Gottlieb",
+      "agent_name": "Celeste Manice",
       "agent_phone": "(212) 439-4565",
-      "agent_email": "jgottlieb@cbwarburg.com",
+      "agent_email": "celeste.manice@corcoran.com",
       "agent_firm": "Coldwell Banker Warburg",
       "price_history": [
         {
           "date": "2026-07-30",
-          "price": 3250000,
+          "price": 3200000,
           "event": "SOLD",
           "broker": "Coldwell Banker Warburg"
         },
@@ -7756,7 +7771,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-25",
@@ -7765,7 +7780,7 @@
       "sqft_estimate_note": "55 East 87th Street 4JK: pixel-method, calibrated off Living Room 28'9\" wall. Range 2,400-2,700.",
       "off_market_date": "2026-07-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1810633": {
       "listing_type": "sale",
@@ -8495,13 +8510,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-18",
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02",
+      "pass2_confirmed_at": "2026-08-06",
       "building_name": "Manhattan House"
     },
     "1811766": {
@@ -8611,13 +8626,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-23",
       "off_market_date": "2026-06-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02",
+      "pass2_confirmed_at": "2026-08-06",
       "building_name": "Carlton House"
     },
     "1804279": {
@@ -9512,7 +9527,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-16"
@@ -9600,7 +9615,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-15",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-16",
@@ -9609,7 +9624,7 @@
       "sqft_estimate_note": "1220 Park Avenue 2C: pixel-method indicated 3,800 but adjusted down based on $/sqft sanity check (raw measurement gave $762/sqft, suspiciously low for Park Ave Carnegie Hill). Range 2,800-3,400.",
       "off_market_date": "2026-06-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1815706": {
       "listing_type": "sale",
@@ -9650,7 +9665,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-13",
@@ -10085,13 +10100,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-11",
       "off_market_date": "2026-06-11",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1822546": {
       "listing_type": "sale",
@@ -10177,7 +10192,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-31",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-04",
@@ -11054,13 +11069,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-14",
       "off_market_date": "2026-07-31",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1788842": {
       "listing_type": "sale",
@@ -11326,6 +11341,12 @@
       "agent_firm": "Olshan Realty",
       "price_history": [
         {
+          "date": "2026-08-04",
+          "price": 2695000,
+          "event": "SOLD",
+          "broker": "Olshan Realty"
+        },
+        {
           "date": "2026-05-07",
           "price": 2695000,
           "event": "IN_CONTRACT",
@@ -11340,10 +11361,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-03-13"
+      "listed_date": "2026-03-13",
+      "off_market_date": "2026-08-04",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1788462": {
       "listing_type": "sale",
@@ -11677,14 +11701,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-06",
       "building_name": "The Impala",
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1820150": {
       "listing_type": "sale",
@@ -12069,7 +12093,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-18"
@@ -12113,7 +12137,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-17"
@@ -13266,13 +13290,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-23",
       "off_market_date": "2026-05-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1810540": {
       "listing_type": "sale",
@@ -13654,13 +13678,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-24",
       "off_market_date": "2026-07-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1814032": {
       "listing_type": "sale",
@@ -13707,13 +13731,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-05",
       "off_market_date": "2026-07-27",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1789947": {
       "listing_type": "sale",
@@ -13952,7 +13976,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-16"
@@ -14690,13 +14714,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-25",
       "off_market_date": "2026-07-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1814882": {
       "listing_type": "sale",
@@ -14713,7 +14737,7 @@
       "price_per_sqft": 1386,
       "type": "coop",
       "year_built": 1928,
-      "days_on_market": 145,
+      "days_on_market": 149,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 10391,
@@ -14737,7 +14761,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-05",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-10",
@@ -14895,14 +14919,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-23",
       "building_name": "The Kingsley",
       "off_market_date": "2026-07-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1808948": {
       "listing_type": "sale",
@@ -15006,13 +15030,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-17",
       "off_market_date": "2026-07-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1816962": {
       "listing_type": "sale",
@@ -15059,13 +15083,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-06",
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1821469": {
       "listing_type": "sale",
@@ -15151,7 +15175,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-04-02"
@@ -15201,7 +15225,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-23",
@@ -15210,7 +15234,7 @@
       "sqft_estimate_note": "Room sum + 20% gross-up; polygon fragmented by blue dashed lines; ~1,650 sqft",
       "off_market_date": "2026-07-27",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-02"
+      "pass2_confirmed_at": "2026-08-06"
     },
     "1816036": {
       "listing_type": "sale",
@@ -15251,7 +15275,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-16"
@@ -15301,7 +15325,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-20",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-12"
@@ -19241,7 +19265,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "description": "Experience elevated Upper East Side living at Bridge Tower. EXCEPTIONAL VALUE PRICED AT $1,050 PER SQUARE FOOT!\nResidence 4ABC is a rare, sprawling ~3,500 sq ft home that delivers the scale of a townhouse with the convenience of full-service luxury condominium living.\n\nThis exceptional five-bedroom, five-bath residence features 9-foot ceilings and triple exposures to the north, south, and west, filling the home with natural light throughout the day. The layout is thoughtfully designed with a clear separation between entertaining and private living spaces, offering both flow and discretion.\n\nThe bedroom wing is quietly tucked away from the main living areas, creating a true sense of retreat. The primary suite serves as a private sanctuary, complete with generous proportions, and a spa-like en-suite bath. Additional bedrooms are equally well-scaled, each offering flexibility for family living, guest accommodations, or dedicated home offices. Multiple bathrooms within the wing ensure both comfort and convenience, while the separation from the great room enhances privacy\u2014ideal for both everyday living and hosting.\n\nA grand great room anchors the home, complemented by a formal dining area and adaptable living spaces suited to a variety of lifestyles. High-end finishes include hardwood floors, central air, and an in-unit washer/dryer, while open city and skyline views add to the home\u2019s appeal.\n\nDesigned by Costa Kondylis & David Rockwell, Bridge Tower Place is one of the Upper East Side's premier condominiums. This pet-friendly building is replete with a welcoming lobby, 24-hour doorman & concierge, resident manager, parking garage, complimentary fitness center, roof deck, children's playroom, laundry room & bike storage.\n\nSituated in one of New York's City's most desirable neighborhoods Lenox Hill. Just moments from the East River Esplanade, residents can enjoy peaceful morning walks by the water.\nThe neighborhood offers many fine dining options, shopping, cultural venues, Central Park & easy access to the Ed Koch Queensboro Bridge, the FDR Drive, and a variety of public transportation options. Trader Joe's across the street & Whole Foods is steps away offering true convenience!",
       "last_partial_pass2": "2026-05-02",
@@ -19675,7 +19699,7 @@
       "price_per_sqft": 987,
       "type": "coop",
       "year_built": 1912,
-      "days_on_market": 103,
+      "days_on_market": 107,
       "listed_date": "2026-04-21",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -19694,7 +19718,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "description": "At the distinguished corner of Park Avenue and East 78th Street, within the elegant prewar cooperative 875 Park Avenue, this extraordinary 4,000+ square-foot maisonette presents a rare opportunity to create a grand Upper East Side residence while enjoying a level of flexibility seldom found in Park Avenue cooperatives.\n\nCurrently configured as a live-work residence with a medical office, Apartment 1C/1D occupies an elevated position above street level with 70 feet of frontage on Park Avenue and offers the privacy and scale of a townhouse paired with the prestige and services of a full-service Park Avenue building. The property features its own private entrance directly on Park Avenue, providing discreet access in addition to the building's full-service lobby entrance.\n\nBehind the doors lies a sprawling and highly adaptable floor plan capable of accommodating a variety of configurations. While the space is presently arranged to support a medical practice alongside residential quarters, the apartment may be reimagined as a magnificent full-floor residence with grand entertaining rooms, multiple bedrooms, a library, and expansive living and dining spaces befitting a classic Park Avenue lifestyle.\n\nThe maisonette's elevated position allows for excellent privacy while maintaining the scale and architectural presence associated with the finest prewar cooperatives. Generous proportions, abundant natural light, and flexible room divisions provide a blank canvas for architects and designers to craft a truly bespoke home.\n\nEnhancing the offering further, two separate staff rooms are also available for purchase. These additional spaces offer the possibility to expand the primary residence or create dedicated staff accommodations and may potentially be combined with the main apartment, subject to board approval.\n\nOpportunities of this scale and flexibility on Park Avenue are rare. A distinctive maisonette with private entry and remarkable adaptability, offering the chance to create a grand residence in one of the Upper East Side's most prestigious addresses.",
       "last_partial_pass2": "2026-05-02",
@@ -19798,10 +19822,10 @@
       "price_per_sqft": 2390,
       "type": "condo",
       "year_built": 2023,
-      "days_on_market": 142,
+      "days_on_market": 146,
       "listed_date": "2026-03-13",
       "monthly_fees": 2509,
-      "monthly_taxes": 2595,
+      "monthly_taxes": 2700,
       "maintenance": null,
       "agent_name": "Claremont Hall Sales Office",
       "agent_phone": "(646) 845-7865",
@@ -19817,7 +19841,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-02",
+      "last_pass2": "2026-08-06",
       "status": "active",
       "description": "1 FREE PARKING LICENSE INCLUDED WITH THIS RESIDENCE FOR A LIMITED TIME\n\nIMMEDIATE OCCUPANCY\n\nResidence 31C is a corner three-bedroom, two-bathroom home with powder room that offers sweeping northern and western views over the Hudson River, Riverside and Sakura Parks, and the iconic spire of Riverside Church. Boasting over 1,600 square feet of finely detailed living space, this residence features a gracious corner living and dining room that adjoins both a covered outdoor loggia space and a windowed kitchen that can be elegantly concealed behind a solid wood pocket door. The west-facing primary bedroom suite incorporates a 5-fixture bathroom with deep soaking tub and large glass-enclosed walk-in shower, and a walk-in closet. Two additional bedrooms share this residence's spectacular views over the Hudson River, as well as a conveniently located hall bath.\nDisplaying a refined finish palette hand-selected by Robert A.M. Stern Architects, all residences at Claremont Hall include a custom-designed solid wood entrance door with polished chrome hardware, wide plank European white oak flooring, expansive, high-performance windows, and up to 10' ceilings.\n\nSelect residences feature generous bay picture windows and Gothic-inspired arched windows. Kitchens at Claremont Hall feature custom Italian cabinetry in soothing Classic Bianco or Modern Grigio lacquer, topped by Calacatta Laza quartz countertops and backed by a ceramic tile backsplash and a paneled appliance package from Bosch, with a custom range hood with integrated spice shelf. Paneled wine refrigerators are included in select residences.\n\nPrimary baths are finished with Arabescato Cervaiole marble and feature marble mosaic tile flooring and custom sconces in polished chrome. Each primary bath includes a RAMSA-designed Italian walnut vanity with Arabescato Cervaiole marble countertop, polished chrome fixtures by Kallista, custom designed mirrored medicine cabinet by Robern, and water closet fixtures by Toto.\nSecondary baths are well appointed with marble mosaic tile flooring framed by Bianco Carrara border and ceramic tile surround, ceramic tile shower surround, custom vanities designed by RAMSA, Grigio Toscana marble countertops, and Kohler undermount sinks with polished chrome hardware from Purist by Kohler. Secondary baths also include oversized mirrored medicine cabinets with polished chrome frames by Robern, Kohler soaking tubs or showers with polished chrome Purist rain showerheads and hand-held sprayers by Kohler, and water closets by Toto.\nPowder rooms offer five-inch-wide European white oak flooring with Gothic-inspired wainscoting, custom Italian vanities designed by RAMSA with Nero Marquina marble countertops, RAMSA-designed Central Park West Collection fixtures by Kallista, custom oversized mirrors by Robern, polished chrome sconces, and water closet fixtures by Toto. Select homes feature private outdoor loggias or terraces. Each residence conveniently features a washer and dryer by Bosch.\n\nClaremont Hall's robust amenities span over three floors and include spaces for socializing, working, and relaxing. The experience is centered on the Refectory Pool, a grand historic dining hall transformed into a swimming and events space, featuring a 48' salt-water swimming pool. Claremont Hall is complete with a grand, double-height lobby, a Reading Room with Great Books Collection, a Gymnasium with Flex Space, the Little Castle playroom, media room, and a Residents' Lounge and Terrace overlooking tranquil Sakura Park. The building also features a concierge, handyman, porters, and a live-in resident manager, as well as a bicycle room, and the opportunity to purchase on-site parking and private storage.\n\nFOR A LIMITED TIME, SPONSOR WILL INCLUDE 1 FREE PARKING LICENSE WITH THIS RESIDENCE. The complete offering terms are in an offering plan available from Sponsor. File No. CD-20-0302. Sponsor: Broadway Community Owner LLC, c/o Lendlease, 200 Park Avenue, 9th Floor, NY, NY 10166",
       "last_partial_pass2": "2026-05-02",
