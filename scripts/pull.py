@@ -62,7 +62,7 @@ PARTIAL_RETRY_DAYS   = 7     # if a listing came back partial (PX_api_v6 block),
 # See PIPELINE-RESILIENCE-PLAN.md (W1) for full rationale.
 SALE_URL = (
     "https://streeteasy.com/for-sale/upper-east-side"
-    "/price:2000000-5000000%7Cbeds:3-"
+    "/price:1000000-5000000%7Cbeds:3-"
 )
 RENTAL_URL = (
     "https://streeteasy.com/for-rent/upper-east-side"

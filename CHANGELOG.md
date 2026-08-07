@@ -4,6 +4,28 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-08-07 — Sale price floor lowered to $1M; Inbox default sort changed to newest-first (Session 49)
+
+- **Sale search price floor: $2M → $1M.** `scripts/pull.py`'s `SALE_URL` now
+  pulls `price:1000000-5000000|beds:3-` (was `price:2000000-5000000`).
+  Ceiling unchanged. Takes effect on the next scheduled cron run (2×/day),
+  not retroactively — existing db.json listings are untouched, new $1–2M
+  listings start flowing in on the next Pass 1.
+- **Inbox default sort changed from Monthly Pmt desc to Days Listed asc**
+  (most recently listed first), in both table and card view.
+  `bucketSortDefault('inbox')` fallback in `index.html` now returns
+  `{ col: 'days', dir: 'asc' }`. Shortlist (OQ# asc) and Archive
+  (bucket_changed_at desc) defaults unchanged. Still sticky (Session 48) —
+  this is only the first-visit fallback; a bucket the user has manually
+  sorted keeps that choice.
+- Verified live via browser automation: cleared `sh_sort_prefs` in
+  localStorage, called the real `setBucket('inbox')`, confirmed
+  `sortCol`/`sortDir`/header arrow/Sort-button arrow all agree (`days`/`asc`/`↑`),
+  and confirmed table and card view show the same top listing (515 East 72nd
+  Street, "NEW · 3d").
+
+---
+
 ## 2026-08-01 — Full QA pass on live site; two bug fixes shipped (Session 48)
 
 ### QA pass (browser automation, streethard.omarqari.com)

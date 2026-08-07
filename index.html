@@ -1618,7 +1618,9 @@ function bucketSortDefault(bucket) {
   if (saved && saved.col) return saved;
   if (bucket === 'shortlist') return { col: 'oq_rank', dir: 'asc' };
   if (bucket === 'archive')   return { col: 'archived_at', dir: 'desc' };
-  return { col: 'monthly', dir: 'desc' };
+  // Inbox default: most recently listed first. 'days' = days-since-listed
+  // (daysListed()), so ascending puts the smallest (newest) first.
+  return { col: 'days', dir: 'asc' };
 }
 let targetSet = new Set();   // building_key set of targeted "great buildings" (shared family list)
 let targetMeta = {};         // building_key → { display_name, note }
