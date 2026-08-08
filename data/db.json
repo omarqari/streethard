@@ -1,12 +1,12 @@
 {
-  "last_updated": "2026-08-07",
+  "last_updated": "2026-08-08",
   "stats": {
-    "total": 656,
+    "total": 691,
     "pass1_only": 2,
     "partial": 0,
-    "pass2_complete": 654,
-    "sale": 435,
-    "rent": 221,
+    "pass2_complete": 689,
+    "sale": 468,
+    "rent": 223,
     "delisted": 0
   },
   "listings": {
@@ -202,7 +202,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-17",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-12"
@@ -252,14 +252,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-06",
       "building_name": "Bristol Plaza",
       "off_market_date": "2026-06-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1794438": {
       "listing_type": "sale",
@@ -343,7 +343,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -564,7 +564,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-30",
       "status": "active",
       "needs_refresh": false,
@@ -734,7 +734,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -855,7 +855,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -906,7 +906,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-04",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-21"
@@ -1159,7 +1159,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-05-20",
       "status": "active",
       "needs_refresh": false,
@@ -1211,7 +1211,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-10-31"
@@ -1371,7 +1371,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-05-20",
       "status": "active",
       "needs_refresh": false,
@@ -1475,7 +1475,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -1514,7 +1514,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -1535,7 +1535,7 @@
       "price_per_sqft": 3027,
       "type": "condo",
       "year_built": 1941,
-      "days_on_market": 259,
+      "days_on_market": 263,
       "monthly_fees": 2880,
       "monthly_taxes": 2390,
       "maintenance": null,
@@ -1571,7 +1571,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-11-17"
@@ -1626,7 +1626,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-23",
       "status": "active",
       "needs_refresh": false,
@@ -1684,13 +1684,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-28",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-12-15",
       "off_market_date": "2026-05-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03",
+      "pass2_confirmed_at": "2026-08-08",
       "building_name": "Archive Lofts"
     },
     "1822675": {
@@ -1743,7 +1743,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-07-24",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-05",
       "status": "active",
       "needs_refresh": false,
@@ -1832,7 +1832,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -2119,7 +2119,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-05-07",
       "status": "active",
       "needs_refresh": false,
@@ -2171,7 +2171,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-21"
@@ -2220,7 +2220,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-08",
       "status": "active",
       "needs_refresh": false,
@@ -2270,7 +2270,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -2479,7 +2479,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -2529,7 +2529,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -2579,7 +2579,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -2737,13 +2737,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-13",
       "off_market_date": "2026-06-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1820301": {
       "listing_type": "sale",
@@ -2848,7 +2848,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-05-16",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-07",
       "status": "active",
       "needs_refresh": false,
@@ -2899,13 +2899,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-14",
       "off_market_date": "2026-04-27",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03",
+      "pass2_confirmed_at": "2026-08-08",
       "building_name": "Manhattan House"
     },
     "1791742": {
@@ -3044,7 +3044,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -3082,7 +3082,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3241,7 +3241,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3310,7 +3310,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-12"
@@ -3666,7 +3666,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3711,7 +3711,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-13",
       "status": "active",
       "needs_refresh": false,
@@ -3806,7 +3806,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -3882,6 +3882,12 @@
       "agent_firm": "Sotheby's International Realty",
       "price_history": [
         {
+          "date": "2026-08-04",
+          "price": 4195000,
+          "event": "SOLD",
+          "broker": "Sotheby's International Realty"
+        },
+        {
           "date": "2026-04-23",
           "price": 4195000,
           "event": "IN_CONTRACT",
@@ -3896,10 +3902,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-01-27"
+      "listed_date": "2026-01-27",
+      "off_market_date": "2026-08-04",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1768173": {
       "listing_type": "sale",
@@ -3945,7 +3954,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -4012,7 +4021,7 @@
       "building": "8 East 96th Street",
       "address": "8 East 96th Street",
       "unit": "10B/11B",
-      "neighborhood": "Carnegie Hill",
+      "neighborhood": "",
       "price": 3950000,
       "sqft": null,
       "beds": 4,
@@ -4020,7 +4029,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1928,
-      "days_on_market": 155,
+      "days_on_market": 179,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 7776,
@@ -4030,42 +4039,51 @@
       "agent_firm": "Sotheby's International Realty",
       "price_history": [
         {
+          "date": "2026-07-31",
+          "price": 3950000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Sotheby's International Realty"
+        },
+        {
           "date": "2026-05-05",
           "price": 3950000,
-          "event": "PRICE_DECREASE",
-          "broker": "Price decreased 5%"
+          "event": "",
+          "broker": "Sotheby's International Realty"
         },
         {
           "date": "2026-04-17",
           "price": 4150000,
-          "event": "PRICE_DECREASE",
-          "broker": "Price decreased 7%"
+          "event": "",
+          "broker": "Sotheby's International Realty"
         },
         {
           "date": "2026-03-25",
           "price": 4450000,
-          "event": "PRICE_DECREASE",
-          "broker": "Price decreased 6%"
+          "event": "",
+          "broker": "Sotheby's International Realty"
         },
         {
           "date": "2026-03-09",
           "price": 4750000,
-          "event": "PRICE_DECREASE",
-          "broker": "Price decreased 3%"
+          "event": "",
+          "broker": "Sotheby's International Realty"
         },
         {
           "date": "2026-02-02",
           "price": 4900000,
           "event": "LISTED",
-          "broker": "Listed by Sotheby's International Realty"
+          "broker": "Sotheby's International Realty"
         }
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-05-10",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
-      "listed_date": "2026-02-02"
+      "listed_date": "2026-02-02",
+      "off_market_date": "2026-07-31",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1789095": {
       "listing_type": "sale",
@@ -4210,7 +4228,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-08",
-      "last_pass2": "2026-08-07",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-04"
@@ -4297,7 +4315,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false,
@@ -4351,7 +4369,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -4683,7 +4701,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -4822,7 +4840,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-27"
@@ -4871,7 +4889,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -5071,13 +5089,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-03",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-11-14",
       "off_market_date": "2026-06-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1776741": {
       "listing_type": "sale",
@@ -5226,7 +5244,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -5509,14 +5527,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-12-05",
       "building_name": "The Touraine",
       "off_market_date": "2026-06-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1818474": {
       "listing_type": "sale",
@@ -5600,7 +5618,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -5663,7 +5681,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-07",
       "status": "active",
       "needs_refresh": false,
@@ -5932,13 +5950,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-02",
       "off_market_date": "2026-07-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1814483": {
       "listing_type": "sale",
@@ -6151,7 +6169,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -6203,7 +6221,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-26",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-12-04"
@@ -6635,7 +6653,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -6948,7 +6966,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -6986,7 +7004,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -7264,7 +7282,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-19",
       "status": "active",
       "needs_refresh": false,
@@ -7359,7 +7377,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -7381,7 +7399,7 @@
       "price_per_sqft": 1100,
       "type": "coop",
       "year_built": 1966,
-      "days_on_market": 153,
+      "days_on_market": 177,
       "monthly_fees": null,
       "monthly_taxes": null,
       "maintenance": 5870,
@@ -7390,6 +7408,12 @@
       "agent_email": "paul.zweben@compass.com",
       "agent_firm": "Compass",
       "price_history": [
+        {
+          "date": "2026-07-31",
+          "price": 3100000,
+          "event": "OFF_MARKET",
+          "broker": "Compass"
+        },
         {
           "date": "2026-06-12",
           "price": 3100000,
@@ -7405,14 +7429,17 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-06-13",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-04",
       "sqft_estimated": true,
       "sqft_estimate_method": "pixel_polygon",
       "sqft_estimate_note": "245 East 87th Street PH: pixel-method on Zweben Team plan; calibrated off Primary Bedroom 23'3\" \u00d7 19'7\". Polygon includes ~400 sqft of terraces (not counted as interior). Interior estimate ~3,000, range 2,700-3,300.",
-      "building_name": "The Mayflower"
+      "building_name": "The Mayflower",
+      "off_market_date": "2026-07-31",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1797135": {
       "listing_type": "sale",
@@ -7458,7 +7485,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-07",
       "status": "active",
       "needs_refresh": false,
@@ -7521,7 +7548,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
@@ -7859,7 +7886,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-26",
       "status": "active",
       "needs_refresh": false,
@@ -8008,7 +8035,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -8145,7 +8172,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-11"
@@ -8165,7 +8192,7 @@
       "price_per_sqft": 2515,
       "type": "coop",
       "year_built": 1951,
-      "days_on_market": 236,
+      "days_on_market": 240,
       "monthly_fees": 4562,
       "monthly_taxes": null,
       "maintenance": 4745,
@@ -8195,7 +8222,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-12-10",
@@ -8251,7 +8278,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-13",
       "status": "active",
       "needs_refresh": false,
@@ -8442,7 +8469,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-27"
@@ -8668,31 +8695,31 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-12-29",
       "off_market_date": "2026-05-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03",
+      "pass2_confirmed_at": "2026-08-08",
       "building_name": "Carlton House"
     },
     "1813145": {
       "listing_type": "sale",
       "id": "1813145",
       "url": "https://streeteasy.com/sale/1813145",
-      "building": "The Clare",
+      "building": "301 East 61st Street",
       "address": "301 East 61st Street",
-      "unit": "16A",
-      "neighborhood": "Lenox Hill",
+      "unit": "#16A",
+      "neighborhood": "",
       "price": 2995000,
       "sqft": 1958,
       "beds": 3,
       "baths": 3.5,
-      "price_per_sqft": 1529,
+      "price_per_sqft": 1530,
       "type": "condo",
       "year_built": 2017,
-      "days_on_market": 126,
+      "days_on_market": 150,
       "monthly_fees": 4728,
       "monthly_taxes": 3814,
       "maintenance": null,
@@ -8702,145 +8729,28 @@
       "agent_firm": "Compass",
       "price_history": [
         {
+          "date": "2026-07-31",
+          "price": 2995000,
+          "event": "OFF_MARKET",
+          "broker": "Compass"
+        },
+        {
           "date": "2026-03-03",
           "price": 2995000,
           "event": "LISTED",
           "broker": "Compass"
-        },
-        {
-          "date": "2025-10-09",
-          "price": 3100000,
-          "event": "DELISTED",
-          "broker": "Compass"
-        },
-        {
-          "date": "2025-05-30",
-          "price": 3100000,
-          "event": "PRICE_DECREASE",
-          "broker": "Compass"
-        },
-        {
-          "date": "2025-03-18",
-          "price": 3297000,
-          "event": "LISTED",
-          "broker": "Compass"
-        },
-        {
-          "date": "2023-11-27",
-          "price": 3297000,
-          "event": "DELISTED",
-          "broker": "Compass"
-        },
-        {
-          "date": "2023-09-21",
-          "price": 3297000,
-          "event": "PRICE_DECREASE",
-          "broker": "Compass"
-        },
-        {
-          "date": "2023-05-25",
-          "price": 3495000,
-          "event": "LISTED",
-          "broker": "Compass"
-        },
-        {
-          "date": "2023-05-22",
-          "price": 3495000,
-          "event": "DELISTED",
-          "broker": "Compass"
-        },
-        {
-          "date": "2023-03-30",
-          "price": 3495000,
-          "event": "PRICE_DECREASE",
-          "broker": "Compass"
-        },
-        {
-          "date": "2022-12-02",
-          "price": 3595000,
-          "event": "PRICE_DECREASE",
-          "broker": "Compass"
-        },
-        {
-          "date": "2022-10-24",
-          "price": 3795000,
-          "event": "LISTED",
-          "broker": "Compass"
-        },
-        {
-          "date": "2022-07-28",
-          "price": 3995000,
-          "event": "NO_LONGER_AVAILABLE",
-          "broker": "Compass"
-        },
-        {
-          "date": "2022-04-28",
-          "price": 3995000,
-          "event": "TEMPORARILY_OFF_MARKET",
-          "broker": "Compass"
-        },
-        {
-          "date": "2022-03-16",
-          "price": 3995000,
-          "event": "LISTED",
-          "broker": "Compass"
-        },
-        {
-          "date": "2019-03-15",
-          "price": 3995000,
-          "event": "SOLD",
-          "broker": "Halstead Real Estate"
-        },
-        {
-          "date": "2019-01-04",
-          "price": 3995000,
-          "event": "IN_CONTRACT",
-          "broker": "Halstead Real Estate"
-        },
-        {
-          "date": "2018-10-15",
-          "price": 3995000,
-          "event": "NO_LONGER_AVAILABLE",
-          "broker": "Halstead Real Estate"
-        },
-        {
-          "date": "2018-04-13",
-          "price": 3995000,
-          "event": "PRICE_DECREASE",
-          "broker": "Halstead Real Estate"
-        },
-        {
-          "date": "2018-04-01",
-          "price": 4195000,
-          "event": "LISTED",
-          "broker": "Halstead Real Estate"
-        },
-        {
-          "date": "2018-03-30",
-          "price": 4195000,
-          "event": "NO_LONGER_AVAILABLE",
-          "broker": "Halstead Real Estate"
-        },
-        {
-          "date": "2017-12-05",
-          "price": 4195000,
-          "event": "PRICE_DECREASE",
-          "broker": "Halstead Real Estate"
-        },
-        {
-          "date": "2017-06-16",
-          "price": 4500000,
-          "event": "LISTED",
-          "broker": "Halstead Real Estate"
         }
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-04-21",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-03-03",
-      "building_name": "The Clare"
+      "building_name": "The Clare",
+      "off_market_date": "2026-07-31",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1813213": {
       "listing_type": "sale",
@@ -9222,7 +9132,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -9464,7 +9374,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -9828,13 +9738,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-12-19",
       "off_market_date": "2026-06-30",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1820117": {
       "listing_type": "sale",
@@ -9937,14 +9847,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-09",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-11-06",
       "building_name": "Cumberland House",
       "off_market_date": "2026-07-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1823188": {
       "listing_type": "sale",
@@ -10041,7 +9951,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-02-02"
@@ -10407,7 +10317,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-16",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-26",
@@ -10416,7 +10326,7 @@
       "sqft_estimate_note": "29 East 64th Street 10C: pixel-method, calibrated off Living Room 24' wall. Range 1,500-1,700.",
       "off_market_date": "2026-07-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1799054": {
       "listing_type": "sale",
@@ -10463,13 +10373,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-11-05",
       "off_market_date": "2026-04-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1785836": {
       "listing_type": "sale",
@@ -10634,7 +10544,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-05-03",
       "status": "active",
       "needs_refresh": false,
@@ -10708,7 +10618,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-05-30",
       "status": "active",
       "needs_refresh": false,
@@ -10921,7 +10831,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-06-26",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false,
@@ -11488,7 +11398,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -11532,7 +11442,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -11654,13 +11564,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-21",
       "off_market_date": "2026-04-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1820020": {
       "listing_type": "sale",
@@ -11814,14 +11724,14 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-06",
       "building_name": "Carnegie Park Condominium",
       "off_market_date": "2026-07-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1818777": {
       "listing_type": "sale",
@@ -11861,7 +11771,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-21",
       "status": "active",
       "needs_refresh": false,
@@ -11959,7 +11869,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -12053,7 +11963,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -12186,7 +12096,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-23",
       "status": "active",
       "needs_refresh": false,
@@ -12240,13 +12150,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-12",
       "off_market_date": "2026-06-25",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1808807": {
       "listing_type": "sale",
@@ -12338,13 +12248,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-29",
       "off_market_date": "2026-06-10",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1796054": {
       "listing_type": "sale",
@@ -12758,7 +12668,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -12895,7 +12805,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-18",
       "status": "active",
       "needs_refresh": false,
@@ -13011,7 +12921,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -13055,7 +12965,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -13207,7 +13117,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -14026,7 +13936,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-05-15",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2025-12-05"
@@ -14069,7 +13979,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -14167,7 +14077,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -14474,13 +14384,13 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-29",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03",
+      "pass2_confirmed_at": "2026-08-08",
       "building_name": "The Channel Club"
     },
     "1820992": {
@@ -14663,7 +14573,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-04-21",
       "status": "active",
       "needs_refresh": false,
@@ -14985,7 +14895,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "listed_date": "2026-01-29",
@@ -18779,7 +18689,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-21",
       "status": "active",
       "description": "Welcome to Residence 8B at 1212 Fifth Avenue \u2014 a breathtaking triple-mint condominium where pre-war grandeur meets 21st-century luxury, with unobstructed Central Park views from every major room. Featured in House Beautiful as the building's model apartment, this three-bedroom, three-bath home was finished with upgrades well beyond the already stunning sponsor specifications.\n\nLiving/Dining Room: Step through the gracious entry foyer \u2014 finished in Venetian plaster \u2014 into a showstopping great room framed by sweeping views of Central Park, the Vanderbilt Gate, and the Conservatory Gardens. Soaring 9-foot beamed ceilings, plaster crown moldings, solid oak floors, and oversized tilt-and-turn windows make this space perfect for grand entertaining or quiet evenings above the treetops.\n\nKitchen: The open chef's kitchen features Caesarstone countertops, custom Italian cabinetry, and a powerhouse lineup of Bertazzoni, Viking, and Miele appliances. Dornbracht fixtures, a garbage disposer, and recessed LED lighting round out this sleek, functional space.\n\nPrimary Suite: A private sanctuary in its own south wing with direct park views and two custom walk-in closets. The extraordinary primary bath is clad in Bianco Dolomiti marble with radiant heated floors, a Kohler cast-iron Jacuzzi soaking tub, separate walk-in shower, and the legendary Kohler Numi toilet \u2014 recently serviced and unique to this model apartment. A custom Robern mirror cabinet with built-in television and music system adds another layer of luxury.\n\nSecond Bedroom / Home Office: A generous room with direct Central Park views, currently configured as a home office with a queen-size Resource Furniture Murphy bed for seamless guest conversion. A full hall bath with Robern illuminated mirror doubles as a powder room.\nThird Bedroom / Flex Room: Park views, twin Milano wall beds by Resource Furniture, and a full en-suite bath with Robern lighted mirror make this room endlessly versatile \u2014 guest room, children's room, or creative studio.\n\nLaundry: A dedicated closet with Miele washer and dryer \u2014 no trips to the basement, ever.\n\nAdditional Features: Individually controlled thermostats in every room, zoned heating and AC, custom-milled HVAC enclosures, and solid oak flooring throughout.\n\nThe Building: Designed by George and Edward Blum in 1925 and gut-renovated by S. Russell Groves, 1212 Fifth is the first classic pre-war building in NYC to earn LEED Gold certification. Full-service white-glove living includes a 24-hour attended lobby, concierge, live-in resident manager, residents' lounge, playroom, and 2,600 sq. ft. fitness center. Pool, terrace, screening room, and parking available at adjacent 1214 Fifth Avenue. International buyers, pied-\u00e0-terres, and pets welcome \u2014 no board approval required.",
@@ -18919,7 +18829,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Beautifully Renovated, 3,065 square foot, 5 Bedroom (Convertible 6 Bedroom) Condo on the Upper East Side for only $3.895m.\n\nThis designer home is an amazing value.  It's 1 of only 4 apartments for sale from East 65th to East 95th Street with at least 5 Bedrooms, priced under $4.2m, (and it's the only Condo)!\n\nYou will love this sprawling 9 room home featuring a Double-Wide Sunken Living Room, Formal Dining Room, Eat-in-Kitchen, a Den, 5 Bedrooms and 4 Bathrooms.\n\nEntertaining will be a pleasure in your Double-wide Living Room with nearly 10' Ceilings and Huge Windows.\n\nChefs will be wowed by this Top-of-the-Line Scavolini Kitchen.  It features a side-by-side 36\" Sub-Zero Refrigerator and Freezer, Miele Double Oven, Microwave & Dishwasher, Gaggenau 5-Burner Gas Cooktop, 60 Bottle Subzero Wine Refrigerator, Quartz Countertops and Backsplash, Tons of Counter Space, a Breakfast Bar, 2 Pantries and Slow-Closing Drawers.\n\nHosting dinner parties of 20 will be a breeze in your extra-large Dining Room.\n\nRelax and Recharge in your versatile Den that can also become a 6th Bedroom if you would like.\n\nThe Primary Bedroom is huge and boasts one of the largest walk-in closets you can find.   Additional closets, a Home Office area, and an En-Suite Bath complete this sanctuary.  Luxuriate in your Spa-like Primary Bath, with Floor-to-Ceiling Marble, Double Sinks, and a combination Shower/Deep Soaking Tub.\n\nThere are Four additional King-sized Bedrooms with ample storage and beautifully outfitted closets. \n\nAll Four Bathrooms are New Development quality and feature Waterworks Marble and high-end fixtures from Lacava, Kohler, Duravit, among others. \n\nA Washer & Dryer, High Ceilings, Oversized Windows, Oak Hardwood Floors, Solid Core Doors, Crown and Baseboard Moldings, an Entry Foyer, and a Gallery complete this stunning UES home.  \n\n*Please contact us for more details about this special apartment or to schedule a showing.\n\nThe Wakefield is an elegant Full-Service Condo with 24-Hour Doorman, Parking Garage, renovated hallways, new elevators, Storage For Rent, Bike Room and Laundry Room. This is a NON smoking building.\n\nGreat Upper East Side Location near Carl Schurz Park, the new 2nd Ave. Subway (83rd St. entrance), the 6 train on 77th St. and the 4 & 5 Express train on 86th St. Fantastic restaurants & amazing supermarkets line the neighborhood including Agata & Valentina, Citarella, Fairway, Whole Foods and Eli's.",
@@ -19176,7 +19086,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-24",
       "status": "active",
       "description": "First Showing Sunday, May 3 by appointment only.\n\nIn the heart of Lenox Hill, step into your own private garden retreat, where the rhythm of the City softens and everyday living feels effortlessly calm. This inviting three-bedroom, three-bathroom duplex offers the charm of townhouse living with the ease and simplicity of condominium ownership.\n\nSet on a quiet, tree-lined block, this special home unfolds across two full floor-through levels, creating a rare sense of space and privacy. As you enter, a welcoming marble-floored foyer leads into a grand living and dining area, where hardwood floors, soft recessed lighting, and tranquil views of your landscaped garden create a warm and inviting setting for both quiet evenings and lively gatherings. The full-sized eat-in kitchen features granite countertops, a tiled backsplash, and ample cabinetry, perfect for starting your mornings or unwinding at the end of the day. A full guest bathroom on this level adds everyday convenience.\n\nUpstairs, the home continues to feel both open and intimate, with a generous landing that easily transforms into a cozy sitting area or an inspiring home office. The primary bedroom is a true retreat, overlooking the serene south-facing garden, with more than enough space for a king-size bedroom set along with a comfortable lounging area. Two additional bedrooms offer flexibility for guests, family, or creative use, complemented by two full bathrooms and a spacious laundry room ready for your personal touch.\n\nThis boutique nine-unit condominium offers low monthly common charges of $961, is self-managed, and has a simple purchase application process. Call or email to schedule your appointment. \n\n3D Virtual Walkthrough available.",
@@ -19318,7 +19228,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-24",
       "status": "active",
       "description": "The Marx Condominiums, a stunning new development, graces Manhattan\u2019s Upper East Side\u2014an iconic neighborhood renowned for its world-class museums, serene parks, high-end shopping, and refined dining. This is quintessential New York City living, where charm and sophistication meet.\n\nWelcome to Unit #2, a full-floor residence with private elevator access. This exquisite home boasts 3 generously sized bedrooms, 3 impeccably designed bathrooms, and a dedicated laundry room. The primary suite is a true sanctuary, complete with garden views where you can unwind and take in the city\u2019s energy from a serene vantage point.\n\nJust a few blocks from Central Park, the Guggenheim Museum, and the Q, 4, 5, and 6 subway lines, The Marx offers unparalleled convenience while maintaining a peaceful retreat on a quiet, tree-lined street. Designed by the esteemed Isaac & Stern Architects, the building\u2019s striking facade\u2014featuring ebonized metal and oversized casement windows\u2014seamlessly merges Art Deco inspiration with modern sensibilities. The architectural design not only reflects the neighborhood\u2019s storied charm but also elevates it with innovative materials and light-filled spaces.\n\nInside, every detail has been thoughtfully curated. The interiors exude understated elegance, with a palette of pearly whites and earthy neutrals complemented by luxurious white oak flooring, sleek porcelain finishes, and stainless steel accents. The Scandinavian-inspired kitchens are a chef\u2019s dream, equipped with top-tier appliances from brands like Asko, Kohler, and Viking. Bathrooms are equally indulgent, showcasing Kohler fixtures and custom teak millwork.\n\nTo top it all off, The Marx features a sprawling rooftop deck, where residents can soak in panoramic city views or host a BBQ in this tranquil escape above the bustling streets of New York City.\n\nThe Marx Condominiums redefine luxury living on the Upper East Side\u2014don\u2019t miss the chance to make this extraordinary residence your own.",
@@ -19360,7 +19270,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Brand new listing 3 bedrooms 3 bathrooms on a high floor with direct river and city views. Brilliant natural light, and breathtaking open views of the East River, bridges, and stunning cityscapes. 21HJ is an expansive southeastern corner apartment with a gracious layout brightened by walls of windows facing the river, and 2 private balconies (off the living room and primary suite) for the ultimate outdoor enjoyment. Beautiful hardwood floors and refined finishes grace the ambience throughout. Entertain in the large living room and serve cocktails on the balcony, while preparing meals in the spacious eat-in kitchen appointed for the chef. There's also a washer-dryer, and abundant closet space that includes a huge walk-in closet in the primary bedroom.\n\nBuilt in 1987, The Promenade at 530 East 76th Street is a distinguished dark-glass condominium nestled in a serene cul-de-sac by the East River. Amenities are extensive and unparalleled. Enjoy the services of an attentive 24-hour doorman, concierge, and live-in-superintendent. Work out in the state-of-the-art fitness center with a Pilates and yoga studio, rooftop running track with panoramic views, heated indoor pool, and soothing sauna and steam rooms. Additional highlights are a lounge, big party room, rooftop business center with a wet bar and catering kitchen, playroom, parking garage, bike room, maid and dry cleaning service, and storage for a fee. Pets are allowed.\n\nTopping the allure is the coveted address moments from John Jay Park across the street, the East River Promenade affording outdoor recreation along the waterfront, plus great restaurants, shops and other conveniences. Temporary assessment of $376.51 per month.",
@@ -19384,10 +19294,10 @@
       "price_per_sqft": 1709,
       "type": "condo",
       "year_built": 2023,
-      "days_on_market": 200,
+      "days_on_market": 204,
       "listed_date": "2026-01-15",
       "monthly_fees": 2260,
-      "monthly_taxes": 2336,
+      "monthly_taxes": 2431,
       "maintenance": null,
       "agent_name": "Claremont Hall Sales Office",
       "agent_phone": "(646) 845-7865",
@@ -19403,7 +19313,7 @@
       ],
       "data_quality": "pass2",
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "description": "Now Offering 2 Years of Sponsor-Paid Common Charges at Claremont Hall\n\nIMMEDIATE OCCUPANCY\n\nResidence 11F is a 1,577 square-foot three-bedroom, three-bathroom home situated on Claremont Hall's tranquil northwest corner. Overlooking iconic Riverside Church, Sakura Park, Riverside Park, and Grant's Tomb, this home's open concept corner living and dining room incorporates four oversized windows, including one of the property's signature 8\" bay picture windows. The primary bedroom features an ensuite bath with double vanity and glass-enclosed walk-in shower, and a large walk-in-closet. Two additional bedrooms and two full baths complete this gracious residence.\n\nDisplaying a refined finish palette hand-selected by Robert A.M. Stern Architects, all residences at Claremont Hall include a custom-designed solid wood entrance door with polished chrome hardware, wide plank European white oak flooring, expansive, high-performance windows, and up to 10\" ceilings. Select residences feature generous bay picture windows and Gothic-inspired arched windows. Kitchens at Claremont Hall feature custom Italian cabinetry in soothing Classic Bianco or Modern Grigio lacquer, topped by Calacatta Laza quartz countertops and backed by a ceramic tile backsplash and a paneled appliance package from Bosch, with a custom range hood with integrated spice shelf. Paneled wine refrigerators are included in select residences.\n\nPrimary baths are finished with Arabescato Cervaiole marble and feature marble mosaic tile flooring and custom sconces in polished chrome. Each primary bath includes a RAMSA-designed Italian walnut vanity with Arabescato Cervaiole marble countertop, polished chrome fixtures by Kallista, custom designed mirrored medicine cabinet by Robern, and water closet fixtures by Toto.\n\nSecondary baths are well appointed with marble mosaic tile flooring framed by Bianco Carrara border and ceramic tile surround, ceramic tile shower surround, custom vanities designed by RAMSA, Grigio Toscana marble countertops, and Kohler undermount sinks with polished chrome hardware from Purist by Kohler. Secondary baths also include oversized mirrored medicine cabinets with polished chrome frames by Robern, Kohler soaking tubs or showers with polished chrome Purist rain showerheads and hand-held sprayers by Kohler, and water closets by Toto.\n\nClaremont Hall's robust amenities span over three floors and include spaces for socializing, working, and relaxing. The experience is centered on the Refectory Pool, a grand historic dining hall transformed into a swimming and events space, featuring a 48\" salt-water swimming pool. Claremont Hall is complete with a grand, double-height lobby, a Reading Room with Great Books Collection, a Gymnasium with Flex Space, the Little Castle playroom, media room, and a Residents\" Lounge and Terrace overlooking tranquil Sakura Park. The building also features a concierge, handyman, porters, and a live-in resident manager, as well as a bicycle room, and the opportunity to purchase on-site parking and private storage.\n\nFOR A LIMITED-TIME: BUYER RECEIVES TWO YEARS FREE COMMON CHARGES! Exclusive Sales and Marketing Agent: Corcoran Sunshine Marketing Group. The complete offering terms are in an offering plan available from Sponsor. File No. CD-20-0302. Sponsor: Broadway Community Owner LLC, c/o Lendlease, 200 Park Avenue, 9th Floor, New York, NY 10166. The sponsor makes no warranties except for those that may be set forth in the offering plan. Equal Housing Opportunity.",
       "last_partial_pass2": "2026-05-02",
@@ -19540,7 +19450,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Transform this 3-bedroom, 2.5-bath condo into the home of your dreams. A long, elegant gallery welcomes you upon entry, setting a refined tone throughout. To the right, two well-proportioned bedrooms share a full bath, while the private primary suite occupies the opposite wing \u2014 a thoughtful layout that balances togetherness with privacy. A powder room and in-unit laundry are tucked discreetly into the common area for everyday convenience.\nPositioned on the rear corner of the building, the residence enjoys a peaceful reprieve from the rhythms of the city. The location is truly exceptional: just steps from Central Park, The Metropolitan Museum of Art, and the Solomon R. Guggenheim Museum. Pre-war elegance, full-service living, and a deeded storage unit complete this rare Upper East Side offering.",
@@ -19682,7 +19592,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Condo Rules \u00b7 No Board Interview \u00b7 Immediate Subletting \u00b7 NOT a Land Lease\n\nAn architectural masterpiece in the sky, this rare penthouse combination of three residences offers an extraordinary canvas for modern living. With every detail thoughtfully curated, the home itself feels like a work of art\u2014where sweeping views, abundant natural light, and striking interiors converge to create a residence of remarkable beauty.\n\nSpanning 2,725 square feet inside and encircled by a 1,295-square-foot wraparound terrace, the residence is as much an experience as it is a home. Three distinct living rooms and dens invite grand entertaining or intimate retreats, while three oversized bedrooms\u2014with the flexibility to create up to five\u2014redefine what it means to live expansively in Manhattan. Two full kitchens and a separate wet bar add both drama and practicality, making this home equally suited to large gatherings or quiet evenings in.\n\nThroughout, custom-framed windows capture light from every direction\u2014North, South, and East\u2014while bespoke ceiling designs and tailored architectural details elevate each space with a sense of craftsmanship rarely found in modern residences. The views are panoramic and poetic: the shimmer of the East River, the rhythm of the skyline, and endless skies shifting with the city\u2019s energy.\n\nThe terrace frames the home with light and air while offering panoramic views of the river, skyline, and open skies. More than an extension of the interiors, it is an architectural feature that defines the residence\u2014an elevated landscape in the heart of Manhattan.\n\nThe Royal York provides the perfect frame for such a residence. A full-service Condop with the freedom of condo rules, it offers no board interview, immediate subletting, and is not a land lease. Life here is supported by every amenity: a 24-hour doorman, concierge, fitness center, bike room, storage, garage parking, discounted cable and internet, and half an acre of landscaped gardens\u2014rare breathing room in the heart of the city.",
@@ -19805,7 +19715,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "CITY MEETS COUNTRY!\nDIRECT PARK AND WATERFALL VIEWS!\n\nA Serene  Residence with Sweeping Park and Waterfall Views\n\nPositioned in one of Manhattan\u2019s most peaceful residential enclaves, 170 East End Avenue 2G offers an elegant blend of space, light, and tranquility. Spanning approximately 2,235 square feet, this gracious three bedroom, three and a half bath condominium features a refined layout designed for both everyday comfort and sophisticated entertaining.\n\nOversized windows frame direct views of the East RIver greenbelt and lush landscaped gardens below, creating a seamless connection to nature rarely found in city living. The interiors are generously scaled, with a thoughtful separation of public and private spaces, abundant closet storage, and refined modern finishes throughout.\n\nResidents enjoy a curated suite of amenities rarely matched in the neighborhood: a state-of-the-art fitness center, yoga studio, private squash court, resident lounge, media room, children\u2019s playroom, and landscaped garden. Electric car charging stations and bike storage add to everyday convenience to this full-service building with 24-hour concierge and attentive staff.\n\nLocated at the easternmost point of the Upper East Side, 170 East End Avenue 2G offers a discreet and elevated lifestyle just moments from Carl Schurz Park, top-tier private schools, and world-class medical institutions. With quiet streets, riverside paths, and cultural access all within reach, this is a rare opportunity to live expansively in a setting defined by privacy and poise.",
@@ -19888,7 +19798,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Now offering an elevated perspective, Residence 15B is a beautifully appointed, highest of it's kind, three-bedroom, two-and-a-half-bathroom home spanning approximately 1,700 square feet. \n\nThoughtfully designed interiors are framed by elegant picture moldings and White Oak herringbone floors, while oversized, triple-glazed windows draw in abundant southern and northern light throughout the day. The expansive living and dining area opens to a private balcony overlooking Central Park-an inviting extension of the home perfect for morning coffee or evening unwinding.\n\nThe open kitchen is both refined and functional, featuring custom Scavolini cabinetry, Carrara marble countertops, a fully integrated suite of Gaggenau appliances, and Waterworks fixtures.The serene primary suite offers generous proportions, dual custom closets, and a spa-quality en-suite bath finished in white marble. Highlights include a Scavolini vanity, custom jacuzzi tub, Robern medicine cabinets, radiant heated floors, and a towel warmer for added comfort.\n\nTwo additional bedrooms enjoy bright southern exposures and share a beautifully finished bathroom with marble walls, mosaic tile floors, a Scavolini vanity, and Circa lighting. A striking powder room clad in Nero Marquina marble adds a sophisticated touch.\n\nModern comforts include a residence-specific air purification system and an in-unit Samsung washer and fully vented gas dryer. Residence comes with additional storage unit. \n\nDesigned by Antonio Ventimiglia and S20M Milan, 126 East 86th Street is a boutique limestone condominium with just 28 residences, offering an intimate living experience complemented by full-service amenities. Residents enjoy an attended lobby, fitness center, spa with infrared and traditional saunas, library, children's playroom, music room, and a lounge with landscaped outdoor terrace and fireplaces.\n\nIdeally located between Park and Lexington Avenues, moments from Central Park, premier dining, shopping, and multiple subway lines.\n\nThere is a current monthly assessment of $776.27 until September 2026.",
@@ -19935,7 +19845,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-29",
       "status": "active",
       "description": "With the Azure\u2019s newly simplified and transparent long-term land lease now in place, the building has entered a new era of stability and value upside. Buyers today have a rare opportunity to acquire a residence at pricing levels that are still catching up to comparable Upper East Side condominiums, all while benefiting from predictable ownership costs and compelling future appreciation potential.\n\nWelcome to Residence 30AB at The Azure \u2014 an exceptional, loft-like four-bedroom, four-bathroom residence spanning over 3,000 square feet high above the city. Positioned on the 30th floor, this expansive corner home is wrapped in floor-to-ceiling glass, capturing breathtaking northern, eastern, and western exposures with iconic views of the East River, George Washington Bridge, RFK Bridge, and even Yankee Stadium \u2014 all bathed in brilliant natural light from sunrise to sunset.\n\nDesigned with both scale and sophistication in mind, the residence offers an expansive great room that seamlessly integrates living and dining, creating a dramatic setting for entertaining. A separate den or library provides flexibility as a media room, office, or additional lounge. The oversized, windowed eat-in kitchen is thoughtfully outfitted with sleek custom cabinetry, Caesarstone surfaces, and a full suite of premium Viking appliances \u2014 a refined yet highly functional space for everyday living and hosting.\n\nA well-conceived split-wing layout ensures optimal privacy, with two distinct bedroom corridors. Each of the four generously proportioned bedrooms features its own en-suite Italian marble bathroom, offering a refined and cohesive design throughout. The primary suite serves as a tranquil retreat, highlighted by sweeping views and a spa-inspired bath. Additional features include 10-foot ceilings, an in-unit washer and dryer and exceptional closet space.\n\nResidents of The Azure enjoy a full-service, white-glove experience with an extensive amenity suite, including 24-hour doorman and concierge service, a state-of-the-art fitness center, children\u2019s playroom, game room, resident lounge with private dining facilities, two landscaped rooftop terraces, bike storage, cold storage, and additional laundry facilities.\n\nIdeally located on the Upper East Side, the building offers seamless access to the Second Avenue Subway and the Soundview Ferry, along with proximity to Asphalt Green and Carl Schurz Park. Surrounded by some of the neighborhood\u2019s best dining, shopping, and schools, this residence presents a rare opportunity to own a true four-bedroom home defined by scale, light, and iconic New York City views. Pets are welcome.\nSome images were virtually staged.",
@@ -20080,7 +19990,7 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "description": "Situated in the heart of Manhattan's coveted Gold Coast, Residence 5BC at 900 Park Avenue is a grand, sun-drenched three bedroom, three bathroom home boasting stunning views over Park Avenue. Originally architected by Annabelle Selldorf and recently updated in 2021, and beautifully laid out over approximately 1,890 square feet, this spectacular home boasts spacious rooms and a carefully considered separation of the private quarters from the entertaining spaces. \n\nA gracious foyer welcomes you into the home and leads directly into the corner great room with sweeping views over Park Avenue. The chef\u2019s eat-in kitchen features a suite of top-of-the-line appliances by Viking, SubZero, Wolf, and Gaggenau, elegant soapstone counters as well as endless glass cabinetry, and can be enclosed via pocket doors. A full bathroom, ample closets and a Bosch washer and dryer round out the offerings in the entertaining wing.\n\nOverlooking Park Avenue through a wall of windows, the palatial primary suite features floor to ceiling closets, a large walk-in closet, and an ensuite designed with Selldorf\u2019s signature glass tiles, a large soapstone soaking tub, a walk-in shower with dual showerhead and a double vanity. A second bedroom features a walk-in closet and an ensuite with a combined soaking tub and shower. The third bedroom could be a guest room or reappropriated as a media room/den.\n\nA full-service condominium building, The Park 900 boasts amenities and conveniences that include a 24-hour doorman and concierge staff, a newly renovated fitness center and residents\u2019 lounge, a convenient building driveway and an in-house garage.\n\nCentral Park, renowned boutiques and restaurants, the Metropolitan Museum of Art, and top-rated public and private schools are all just moments away.",
@@ -20660,7 +20570,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -20708,7 +20618,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-17",
       "status": "active",
       "needs_refresh": false
@@ -20755,7 +20665,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false
@@ -21062,7 +20972,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-24",
       "status": "active",
       "needs_refresh": false,
@@ -21104,7 +21014,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -21596,7 +21506,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -21684,7 +21594,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -21725,7 +21635,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -21775,7 +21685,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -21843,7 +21753,7 @@
       "building": "1065 Park Avenue",
       "address": "1065 Park Avenue",
       "unit": "#10CD",
-      "neighborhood": "Carnegie Hill",
+      "neighborhood": "",
       "price": 2550000,
       "sqft": null,
       "beds": 3,
@@ -21851,7 +21761,7 @@
       "price_per_sqft": null,
       "type": "coop",
       "year_built": 1973,
-      "days_on_market": 66,
+      "days_on_market": 85,
       "listed_date": "2026-05-07",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -21861,6 +21771,12 @@
       "agent_email": "robert.varvara@compass.com",
       "agent_firm": "Compass",
       "price_history": [
+        {
+          "date": "2026-07-31",
+          "price": 2550000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Compass"
+        },
         {
           "date": "2026-05-07",
           "price": 2550000,
@@ -21873,9 +21789,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-08-08",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "off_market_date": "2026-07-31",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1824897": {
       "listing_type": "sale",
@@ -22070,13 +21989,13 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "building_name": "Yorkville Tower 2",
       "off_market_date": "2026-07-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1783654": {
       "listing_type": "sale",
@@ -23041,7 +22960,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-09",
       "status": "active",
       "needs_refresh": false,
@@ -23572,7 +23491,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -23676,7 +23595,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -23924,7 +23843,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -23972,7 +23891,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-18",
       "status": "active",
       "needs_refresh": false
@@ -24076,7 +23995,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -24117,7 +24036,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -24159,7 +24078,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -24358,7 +24277,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-31",
       "status": "active",
       "needs_refresh": false,
@@ -24720,7 +24639,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -24869,7 +24788,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-30",
       "status": "active",
       "needs_refresh": false
@@ -24946,7 +24865,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-30",
       "status": "active",
       "needs_refresh": false
@@ -25007,14 +24926,26 @@
       "unit": "#19B",
       "building": "356 East 78th Street",
       "neighborhood": "",
-      "price": 19900,
+      "price": 19450,
       "beds": 3,
       "baths": 2.0,
-      "sqft": null,
+      "sqft": 0,
       "price_per_sqft": null,
       "year_built": 2025,
       "listed_date": "2026-05-21",
       "price_history": [
+        {
+          "date": "2026-08-07",
+          "price": 19450,
+          "event": "",
+          "broker": "Greystar"
+        },
+        {
+          "date": "2026-06-16",
+          "price": 19900,
+          "event": "LISTED",
+          "broker": "Greystar"
+        },
         {
           "date": "2026-06-08",
           "price": 19900,
@@ -25031,10 +24962,10 @@
       "agent_firm": "Greystar",
       "url": "https://streeteasy.com/rental/5049436",
       "data_quality": "pass2",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-08-08",
       "status": "active",
-      "last_pass1": "2026-08-07",
-      "days_on_market": 44,
+      "last_pass1": "2026-08-08",
+      "days_on_market": 69,
       "needs_refresh": false,
       "building_name": "Maison 78"
     },
@@ -25433,7 +25364,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-08",
-      "last_pass2": "2026-08-07",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "building_name": "The Siena"
@@ -25744,7 +25675,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -25785,7 +25716,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -25826,7 +25757,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -25879,7 +25810,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-22",
       "status": "active",
       "needs_refresh": false,
@@ -26088,7 +26019,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-07",
       "status": "active",
       "needs_refresh": false,
@@ -26204,7 +26135,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-19",
       "status": "active",
       "needs_refresh": false,
@@ -26252,7 +26183,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-06-29",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-04",
       "status": "active",
       "needs_refresh": false
@@ -26392,7 +26323,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -26595,7 +26526,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -26637,7 +26568,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -26798,7 +26729,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-05-30",
       "status": "active",
       "needs_refresh": false
@@ -26890,7 +26821,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -27608,7 +27539,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-03",
       "status": "active",
       "needs_refresh": false
@@ -27879,12 +27810,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-06",
-      "last_pass2": "2026-08-07",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-05-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07",
+      "pass2_confirmed_at": "2026-08-08",
       "building_name": "Two Sutton Place North"
     },
     "5063304": {
@@ -27923,7 +27854,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-06",
       "status": "active",
       "needs_refresh": false
@@ -28343,7 +28274,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -28404,7 +28335,7 @@
       "building": "45 East 89th Street",
       "address": "45 East 89th Street",
       "unit": "#12E",
-      "neighborhood": "Carnegie Hill",
+      "neighborhood": "",
       "price": 3450000,
       "sqft": 1650,
       "beds": 3,
@@ -28412,7 +28343,7 @@
       "price_per_sqft": 2091,
       "type": "coop",
       "year_built": 1969,
-      "days_on_market": 35,
+      "days_on_market": 53,
       "listed_date": "2026-06-08",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -28422,6 +28353,12 @@
       "agent_email": "rachel.white@corcoran.com",
       "agent_firm": null,
       "price_history": [
+        {
+          "date": "2026-07-31",
+          "price": 3450000,
+          "event": "IN_CONTRACT",
+          "broker": "Corcoran"
+        },
         {
           "date": "2026-06-08",
           "price": 3450000,
@@ -28434,7 +28371,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-06-15",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false
     },
@@ -28486,7 +28423,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false
@@ -29188,7 +29125,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false,
@@ -29592,12 +29529,12 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass2": "2026-08-07",
+      "last_pass2": "2026-08-08",
       "needs_refresh": false,
       "status": "active",
       "off_market_date": "2026-04-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07",
+      "pass2_confirmed_at": "2026-08-08",
       "building_name": null
     },
     "1833715": {
@@ -29636,7 +29573,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-15",
       "status": "active",
       "needs_refresh": false
@@ -29726,7 +29663,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-17",
       "status": "active",
       "needs_refresh": false
@@ -29933,7 +29870,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-18",
       "status": "active",
       "needs_refresh": false
@@ -29975,7 +29912,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-18",
       "status": "active",
       "needs_refresh": false
@@ -30207,12 +30144,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-22",
-      "last_pass2": "2026-08-03",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-07-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-03"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "5077692": {
       "listing_type": "rent",
@@ -30485,7 +30422,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-19",
       "status": "active",
       "needs_refresh": false
@@ -30584,7 +30521,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-23",
       "status": "active",
       "needs_refresh": false
@@ -30686,7 +30623,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -30728,7 +30665,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-24",
       "status": "active",
       "needs_refresh": false
@@ -30791,7 +30728,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 2002,
-      "days_on_market": 34,
+      "days_on_market": 44,
       "listed_date": "2026-06-24",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -30813,7 +30750,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-07-28",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false
     },
@@ -30854,7 +30791,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-25",
       "status": "active",
       "needs_refresh": false
@@ -30956,7 +30893,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-25",
       "status": "active",
       "needs_refresh": false
@@ -31049,7 +30986,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-06-26",
       "status": "active",
       "needs_refresh": false
@@ -31472,7 +31409,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -31514,7 +31451,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -31556,7 +31493,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -31598,7 +31535,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -31646,7 +31583,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -31700,7 +31637,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-02",
       "status": "active",
       "needs_refresh": false
@@ -31805,7 +31742,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-29",
       "status": "active",
       "needs_refresh": false
@@ -32150,7 +32087,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false
@@ -32192,7 +32129,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-06",
       "status": "active",
       "needs_refresh": false
@@ -32342,7 +32279,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-08",
       "status": "active",
       "needs_refresh": false
@@ -32495,13 +32432,13 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
-      "last_pass2": "2026-08-07",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-05-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1836920": {
       "listing_type": "sale",
@@ -32540,7 +32477,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
@@ -32582,7 +32519,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-10",
       "status": "active",
       "needs_refresh": false
@@ -32868,7 +32805,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-14",
       "status": "active",
       "needs_refresh": false
@@ -32973,7 +32910,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-04",
       "status": "active",
       "needs_refresh": false
@@ -33261,7 +33198,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-19",
       "status": "active",
       "needs_refresh": false
@@ -33303,7 +33240,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-19",
       "status": "active",
       "needs_refresh": false
@@ -33345,13 +33282,13 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
-      "last_pass2": "2026-08-07",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-08",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1838534": {
       "listing_type": "sale",
@@ -33390,7 +33327,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-19",
       "status": "active",
       "needs_refresh": false
@@ -33428,12 +33365,12 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass2": "2026-08-07",
+      "last_pass2": "2026-08-08",
       "needs_refresh": false,
       "status": "active",
       "off_market_date": "2026-08-03",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "5101619": {
       "listing_type": "rent",
@@ -33444,14 +33381,14 @@
       "address": "208 East 73rd Street",
       "unit": "#4E",
       "neighborhood": "",
-      "price": 10200,
+      "price": 9900,
       "sqft": 0,
       "beds": 4,
       "baths": 2.0,
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1920,
-      "days_on_market": 14,
+      "days_on_market": 23,
       "listed_date": "2026-07-15",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -33461,6 +33398,12 @@
       "agent_email": null,
       "agent_firm": "HH Realty",
       "price_history": [
+        {
+          "date": "2026-07-31",
+          "price": 9900,
+          "event": "",
+          "broker": "HH Realty"
+        },
         {
           "date": "2026-07-29",
           "price": 10200,
@@ -33485,7 +33428,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-07-30",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false
     },
@@ -33607,7 +33550,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-19",
       "status": "active",
       "needs_refresh": false
@@ -33628,7 +33571,7 @@
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1957,
-      "days_on_market": 3,
+      "days_on_market": 16,
       "listed_date": "2026-07-15",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -33638,6 +33581,12 @@
       "agent_email": null,
       "agent_firm": "Stonehenge NYC LLC",
       "price_history": [
+        {
+          "date": "2026-07-31",
+          "price": 14800,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Stonehenge NYC LLC"
+        },
         {
           "date": "2026-07-15",
           "price": 14800,
@@ -33650,9 +33599,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-07-19",
+      "last_pass2": "2026-08-08",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "off_market_date": "2026-07-31",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-08"
     },
     "5104192": {
       "listing_type": "rent",
@@ -33826,7 +33778,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-19",
       "status": "active",
       "needs_refresh": false
@@ -33905,12 +33857,12 @@
         }
       ],
       "data_quality": "pass2",
-      "last_pass2": "2026-08-07",
+      "last_pass2": "2026-08-08",
       "needs_refresh": false,
       "status": "active",
       "off_market_date": "2026-05-15",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "5108110": {
       "listing_type": "rent",
@@ -33997,13 +33949,13 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
-      "last_pass2": "2026-08-07",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-09",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1838975": {
       "listing_type": "sale",
@@ -34042,7 +33994,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-21",
       "status": "active",
       "needs_refresh": false
@@ -34084,7 +34036,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-21",
       "status": "active",
       "needs_refresh": false
@@ -34126,7 +34078,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-21",
       "status": "active",
       "needs_refresh": false
@@ -34168,7 +34120,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-21",
       "status": "active",
       "needs_refresh": false
@@ -34249,7 +34201,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-21",
       "status": "active",
       "needs_refresh": false
@@ -34263,14 +34215,14 @@
       "address": "250 East 73rd Street",
       "unit": "#4E",
       "neighborhood": "",
-      "price": 11995,
+      "price": 11750,
       "sqft": 1600,
       "beds": 3,
       "baths": 3.0,
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1964,
-      "days_on_market": 1,
+      "days_on_market": 18,
       "listed_date": "2026-07-20",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -34280,6 +34232,12 @@
       "agent_email": null,
       "agent_firm": "AZ REALTY NYC LLC",
       "price_history": [
+        {
+          "date": "2026-08-07",
+          "price": 11750,
+          "event": "",
+          "broker": "AZ REALTY NYC LLC"
+        },
         {
           "date": "2026-07-20",
           "price": 11995,
@@ -34291,8 +34249,8 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
-      "last_pass2": "2026-07-21",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false
     },
@@ -34333,7 +34291,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-21",
       "status": "active",
       "needs_refresh": false
@@ -34381,7 +34339,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-05",
       "status": "active",
       "needs_refresh": false,
@@ -34480,7 +34438,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-22",
       "status": "active",
       "needs_refresh": false
@@ -34522,7 +34480,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-22",
       "status": "active",
       "needs_refresh": false
@@ -34571,12 +34529,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-25",
-      "last_pass2": "2026-08-07",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1838653": {
       "listing_type": "sale",
@@ -34705,7 +34663,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-23",
       "status": "active",
       "needs_refresh": false
@@ -34831,7 +34789,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-24",
       "status": "active",
       "needs_refresh": false
@@ -34873,7 +34831,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false
@@ -34915,7 +34873,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-25",
       "status": "active",
       "needs_refresh": false
@@ -34975,7 +34933,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-30",
       "status": "active",
       "needs_refresh": false
@@ -35017,7 +34975,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false
@@ -35059,7 +35017,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-28",
       "status": "active",
       "needs_refresh": false
@@ -35101,7 +35059,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-29",
       "status": "active",
       "needs_refresh": false
@@ -35157,14 +35115,14 @@
       "address": "985 5th Avenue",
       "unit": "#21B",
       "neighborhood": "",
-      "price": 17810,
+      "price": 30350,
       "sqft": 2030,
       "beds": 3,
       "baths": 4.0,
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1969,
-      "days_on_market": 29,
+      "days_on_market": 33,
       "listed_date": "2026-06-13",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -35174,6 +35132,36 @@
       "agent_email": null,
       "agent_firm": "The Blueground",
       "price_history": [
+        {
+          "date": "2026-08-06",
+          "price": 30350,
+          "event": "",
+          "broker": "The Blueground"
+        },
+        {
+          "date": "2026-08-04",
+          "price": 32150,
+          "event": "",
+          "broker": "The Blueground"
+        },
+        {
+          "date": "2026-08-02",
+          "price": 41670,
+          "event": "RENTED",
+          "broker": "The Blueground"
+        },
+        {
+          "date": "2026-08-01",
+          "price": 41670,
+          "event": "",
+          "broker": "The Blueground"
+        },
+        {
+          "date": "2026-07-31",
+          "price": 21150,
+          "event": "",
+          "broker": "The Blueground"
+        },
         {
           "date": "2026-07-29",
           "price": 17810,
@@ -35276,9 +35264,12 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-07-29",
+      "last_pass2": "2026-08-08",
       "status": "active",
-      "needs_refresh": false
+      "needs_refresh": false,
+      "off_market_date": "2026-08-02",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-08"
     },
     "1840032": {
       "listing_type": "sale",
@@ -35317,7 +35308,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-30",
       "status": "active",
       "needs_refresh": false
@@ -35359,7 +35350,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-30",
       "status": "active",
       "needs_refresh": false
@@ -35401,7 +35392,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-30",
       "status": "active",
       "needs_refresh": false
@@ -35695,7 +35686,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-31",
       "status": "active",
       "needs_refresh": false
@@ -35737,7 +35728,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-07-31",
       "status": "active",
       "needs_refresh": false
@@ -35753,12 +35744,12 @@
       "neighborhood": "",
       "price": 15000,
       "sqft": 1460,
-      "beds": 3,
+      "beds": 2,
       "baths": 2.0,
       "price_per_sqft": null,
       "type": "rental",
       "year_built": 1951,
-      "days_on_market": 0,
+      "days_on_market": 8,
       "listed_date": "2026-07-07",
       "monthly_fees": null,
       "monthly_taxes": null,
@@ -35798,7 +35789,7 @@
       "_partial_error": null,
       "data_quality": "pass2",
       "last_pass1": "2026-07-31",
-      "last_pass2": "2026-07-31",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false
     },
@@ -35839,13 +35830,13 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
-      "last_pass2": "2026-08-07",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-06-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "5120303": {
       "listing_type": "rent",
@@ -35884,7 +35875,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-01",
       "status": "active",
       "needs_refresh": false
@@ -35926,7 +35917,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-02",
       "status": "active",
       "needs_refresh": false
@@ -35968,7 +35959,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-02",
       "status": "active",
       "needs_refresh": false
@@ -36010,13 +36001,13 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
-      "last_pass2": "2026-08-07",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
       "status": "active",
       "needs_refresh": false,
       "off_market_date": "2026-05-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-07"
+      "pass2_confirmed_at": "2026-08-08"
     },
     "5122456": {
       "listing_type": "rent",
@@ -36097,7 +36088,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-04",
       "status": "active",
       "needs_refresh": false
@@ -36139,7 +36130,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-04",
       "status": "active",
       "needs_refresh": false
@@ -36181,7 +36172,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-05",
       "status": "active",
       "needs_refresh": false
@@ -36223,7 +36214,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-05",
       "status": "active",
       "needs_refresh": false
@@ -36265,7 +36256,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-05",
       "status": "active",
       "needs_refresh": false
@@ -36307,7 +36298,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-05",
       "status": "active",
       "needs_refresh": false
@@ -36349,7 +36340,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false
@@ -36391,7 +36382,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-06",
       "status": "active",
       "needs_refresh": false
@@ -36433,7 +36424,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-07",
       "status": "active",
       "needs_refresh": false
@@ -36475,7 +36466,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-07",
       "status": "active",
       "needs_refresh": false
@@ -36517,10 +36508,1699 @@
       "_partial_reason": null,
       "_partial_error": null,
       "data_quality": "pass2",
-      "last_pass1": "2026-08-07",
+      "last_pass1": "2026-08-08",
       "last_pass2": "2026-08-07",
       "status": "active",
       "needs_refresh": false
+    },
+    "1837291": {
+      "listing_type": "sale",
+      "id": "1837291",
+      "url": "https://streeteasy.com/sale/1837291",
+      "building": "1150 Park Avenue",
+      "building_name": null,
+      "address": "1150 Park Avenue",
+      "unit": "#1D",
+      "neighborhood": "",
+      "price": 1100000,
+      "sqft": 1500,
+      "beds": 7,
+      "baths": 2.0,
+      "price_per_sqft": 733,
+      "type": "coop",
+      "year_built": 1940,
+      "days_on_market": 121,
+      "listed_date": "2026-07-08",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 7726,
+      "agent_name": "Richard Naughtin",
+      "agent_phone": null,
+      "agent_email": "richard@richardnewyork.com",
+      "agent_firm": "RJN BROKERAGE LLC",
+      "price_history": [
+        {
+          "date": "2026-07-08",
+          "price": 1100000,
+          "event": "LISTED",
+          "broker": "RJN BROKERAGE LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1808524": {
+      "listing_type": "sale",
+      "id": "1808524",
+      "url": "https://streeteasy.com/sale/1808524",
+      "building": "301 East 64th Street",
+      "building_name": "The Regency East",
+      "address": "301 East 64th Street",
+      "unit": "#2G",
+      "neighborhood": "",
+      "price": 1149000,
+      "sqft": 1500,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": 766,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 192,
+      "listed_date": "2026-01-27",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 2913,
+      "agent_name": "Brian Philpott",
+      "agent_phone": null,
+      "agent_email": "brian.philpott@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-05-30",
+          "price": 1149000,
+          "event": "",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-04-08",
+          "price": 1249000,
+          "event": "",
+          "broker": "Corcoran"
+        },
+        {
+          "date": "2026-01-27",
+          "price": 1349000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1837425": {
+      "listing_type": "sale",
+      "id": "1837425",
+      "url": "https://streeteasy.com/sale/1837425",
+      "building": "190 East 72nd Street",
+      "building_name": null,
+      "address": "190 East 72nd Street",
+      "unit": "#19B",
+      "neighborhood": "",
+      "price": 1150000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1962,
+      "days_on_market": 29,
+      "listed_date": "2026-07-09",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 5280,
+      "agent_name": "Jacqueline Rosen",
+      "agent_phone": null,
+      "agent_email": "jrosen@sloanesquarenyc.com",
+      "agent_firm": "Sloane Square",
+      "price_history": [
+        {
+          "date": "2026-07-09",
+          "price": 1150000,
+          "event": "LISTED",
+          "broker": "Sloane Square"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1836650": {
+      "listing_type": "sale",
+      "id": "1836650",
+      "url": "https://streeteasy.com/sale/1836650",
+      "building": "1270 5th Avenue",
+      "building_name": null,
+      "address": "1270 5th Avenue",
+      "unit": "#8R",
+      "neighborhood": "",
+      "price": 1195000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1959,
+      "days_on_market": 32,
+      "listed_date": "2026-07-06",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 2449,
+      "agent_name": "Katie Cook",
+      "agent_phone": null,
+      "agent_email": "katie.cook@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-07-06",
+          "price": 1195000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1826941": {
+      "listing_type": "sale",
+      "id": "1826941",
+      "url": "https://streeteasy.com/sale/1826941",
+      "building": "205 East 63rd Street",
+      "building_name": null,
+      "address": "205 East 63rd Street",
+      "unit": "#2BA",
+      "neighborhood": "",
+      "price": 1250000,
+      "sqft": 2400,
+      "beds": 4,
+      "baths": 3.0,
+      "price_per_sqft": 521,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 88,
+      "listed_date": "2026-05-11",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 7447,
+      "agent_name": "Maria Carreras Kourepenos",
+      "agent_phone": null,
+      "agent_email": "mkourepenos@cbwarburg.com",
+      "agent_firm": "Coldwell Banker Warburg",
+      "price_history": [
+        {
+          "date": "2026-05-11",
+          "price": 1250000,
+          "event": "LISTED",
+          "broker": "Coldwell Banker Warburg"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1836222": {
+      "listing_type": "sale",
+      "id": "1836222",
+      "url": "https://streeteasy.com/sale/1836222",
+      "building": "1021 Park Avenue",
+      "building_name": null,
+      "address": "1021 Park Avenue",
+      "unit": "#GRE",
+      "neighborhood": "",
+      "price": 1250000,
+      "sqft": 1500,
+      "beds": 5,
+      "baths": 2.0,
+      "price_per_sqft": 833,
+      "type": "coop",
+      "year_built": 1929,
+      "days_on_market": 31,
+      "listed_date": "2026-07-07",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 7782,
+      "agent_name": "Scott Harris",
+      "agent_phone": null,
+      "agent_email": "scott@magneticre.com",
+      "agent_firm": "Magnetic",
+      "price_history": [
+        {
+          "date": "2026-07-07",
+          "price": 1250000,
+          "event": "LISTED",
+          "broker": "Magnetic"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1801237": {
+      "listing_type": "sale",
+      "id": "1801237",
+      "url": "https://streeteasy.com/sale/1801237",
+      "building": "27 East 65th Street",
+      "building_name": null,
+      "address": "27 East 65th Street",
+      "unit": "#9DE",
+      "neighborhood": "",
+      "price": 1295000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 3.5,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 249,
+      "listed_date": "2025-12-01",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 8928,
+      "agent_name": "Daniella Schlisser",
+      "agent_phone": null,
+      "agent_email": "dschlisser@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-05-21",
+          "price": 1295000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 1495000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2025-12-01",
+          "price": 1800000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1812199": {
+      "listing_type": "sale",
+      "id": "1812199",
+      "url": "https://streeteasy.com/sale/1812199",
+      "building": "345 East 73rd Street",
+      "building_name": null,
+      "address": "345 East 73rd Street",
+      "unit": "#4C",
+      "neighborhood": "",
+      "price": 1295000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1961,
+      "days_on_market": 47,
+      "listed_date": "2026-02-27",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 2832,
+      "agent_name": "Joseph Chaplin",
+      "agent_phone": null,
+      "agent_email": "joseph.chaplin@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-07-09",
+          "price": 1295000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-07-01",
+          "price": 1295000,
+          "event": "TEMPORARILY_OFF_MARKET",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-06-25",
+          "price": 1295000,
+          "event": "",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-06-25",
+          "price": 1350000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-03-11",
+          "price": 1350000,
+          "event": "IN_CONTRACT",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-02-27",
+          "price": 1350000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1840824": {
+      "listing_type": "sale",
+      "id": "1840824",
+      "url": "https://streeteasy.com/sale/1840824",
+      "building": "345 East 69th Street",
+      "building_name": null,
+      "address": "345 East 69th Street",
+      "unit": "#12F",
+      "neighborhood": "",
+      "price": 1295000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 3,
+      "listed_date": "2026-08-04",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3358,
+      "agent_name": "Caitlin Williams",
+      "agent_phone": null,
+      "agent_email": "caitlin.williams@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-08-04",
+          "price": 1295000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1808182": {
+      "listing_type": "sale",
+      "id": "1808182",
+      "url": "https://streeteasy.com/sale/1808182",
+      "building": "72 East 93rd Street",
+      "building_name": null,
+      "address": "72 East 93rd Street",
+      "unit": "#5",
+      "neighborhood": "",
+      "price": 1299000,
+      "sqft": 1450,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": 896,
+      "type": "coop",
+      "year_built": 1920,
+      "days_on_market": 193,
+      "listed_date": "2026-01-26",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 4091,
+      "agent_name": "Brian K. Lewis",
+      "agent_phone": null,
+      "agent_email": "showmebrian@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-02-19",
+          "price": 1299000,
+          "event": "",
+          "broker": "Compass"
+        },
+        {
+          "date": "2026-01-26",
+          "price": 1345000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1841555": {
+      "listing_type": "sale",
+      "id": "1841555",
+      "url": "https://streeteasy.com/sale/1841555",
+      "building": "175 East 62nd Street",
+      "building_name": null,
+      "address": "175 East 62nd Street",
+      "unit": "#7D",
+      "neighborhood": "",
+      "price": 1325000,
+      "sqft": 2300,
+      "beds": 4,
+      "baths": 4.0,
+      "price_per_sqft": 576,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 0,
+      "listed_date": "2026-08-07",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 8795,
+      "agent_name": "Jonathan Arnold",
+      "agent_phone": null,
+      "agent_email": "jon@whiteboxproperties.com",
+      "agent_firm": "Whitebox Properties LLC",
+      "price_history": [
+        {
+          "date": "2026-08-07",
+          "price": 1325000,
+          "event": "LISTED",
+          "broker": "Whitebox Properties LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1831962": {
+      "listing_type": "sale",
+      "id": "1831962",
+      "url": "https://streeteasy.com/sale/1831962",
+      "building": "517 East 77th Street",
+      "building_name": null,
+      "address": "517 East 77th Street",
+      "unit": "#4JI",
+      "neighborhood": "",
+      "price": 1350000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": null,
+      "days_on_market": 63,
+      "listed_date": "2026-06-05",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3217,
+      "agent_name": "Grace Miglio",
+      "agent_phone": null,
+      "agent_email": "grace.miglio@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-06-05",
+          "price": 1350000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1835675": {
+      "listing_type": "sale",
+      "id": "1835675",
+      "url": "https://streeteasy.com/sale/1835675",
+      "building": "27 East 65th Street",
+      "building_name": null,
+      "address": "27 East 65th Street",
+      "unit": "#5BC",
+      "neighborhood": "",
+      "price": 1395000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 42,
+      "listed_date": "2026-06-26",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 7575,
+      "agent_name": "Marc Palermo",
+      "agent_phone": null,
+      "agent_email": "marc.palermo@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-06-26",
+          "price": 1395000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1824718": {
+      "listing_type": "sale",
+      "id": "1824718",
+      "url": "https://streeteasy.com/sale/1824718",
+      "building": "1175 York Avenue",
+      "building_name": null,
+      "address": "1175 York Avenue",
+      "unit": "#8C",
+      "neighborhood": "",
+      "price": 1450000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1958,
+      "days_on_market": 101,
+      "listed_date": "2026-04-28",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3149,
+      "agent_name": "Michael Gidaly",
+      "agent_phone": null,
+      "agent_email": "michael.gidaly@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-07-18",
+          "price": 1450000,
+          "event": "",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-04-28",
+          "price": 1495000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1820315": {
+      "listing_type": "sale",
+      "id": "1820315",
+      "url": "https://streeteasy.com/sale/1820315",
+      "building": "405 East 63rd Street",
+      "building_name": null,
+      "address": "405 East 63rd Street",
+      "unit": "#4DE",
+      "neighborhood": "",
+      "price": 1495000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1957,
+      "days_on_market": 116,
+      "listed_date": "2026-04-13",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 4460,
+      "agent_name": "Daniela Kunen",
+      "agent_phone": null,
+      "agent_email": "dkunen@elliman.com",
+      "agent_firm": "Douglas Elliman",
+      "price_history": [
+        {
+          "date": "2026-04-13",
+          "price": 1495000,
+          "event": "LISTED",
+          "broker": "Douglas Elliman"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1773214": {
+      "listing_type": "sale",
+      "id": "1773214",
+      "url": "https://streeteasy.com/sale/1773214",
+      "building": "175 East 62nd Street",
+      "building_name": null,
+      "address": "175 East 62nd Street",
+      "unit": "#9D",
+      "neighborhood": "",
+      "price": 1499000,
+      "sqft": 2300,
+      "beds": 3,
+      "baths": 3.5,
+      "price_per_sqft": 652,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 437,
+      "listed_date": "2025-05-27",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 8795,
+      "agent_name": "David Mayer",
+      "agent_phone": null,
+      "agent_email": "davidmayer@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2025-08-06",
+          "price": 1499000,
+          "event": "",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-06-25",
+          "price": 1595000,
+          "event": "",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-05-27",
+          "price": 1695000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1837569": {
+      "listing_type": "sale",
+      "id": "1837569",
+      "url": "https://streeteasy.com/sale/1837569",
+      "building": "791 Park Avenue",
+      "building_name": null,
+      "address": "791 Park Avenue",
+      "unit": "#1C",
+      "neighborhood": "",
+      "price": 1500000,
+      "sqft": 2000,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 750,
+      "type": "coop",
+      "year_built": 1925,
+      "days_on_market": 448,
+      "listed_date": "2026-07-10",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 8478,
+      "agent_name": "Richard Naughtin",
+      "agent_phone": null,
+      "agent_email": "richard@richardnewyork.com",
+      "agent_firm": "RJN BROKERAGE LLC",
+      "price_history": [
+        {
+          "date": "2026-07-10",
+          "price": 1500000,
+          "event": "LISTED",
+          "broker": "RJN BROKERAGE LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1834030": {
+      "listing_type": "sale",
+      "id": "1834030",
+      "url": "https://streeteasy.com/sale/1834030",
+      "building": "425 East 63rd Street",
+      "building_name": null,
+      "address": "425 East 63rd Street",
+      "unit": "#W12EF",
+      "neighborhood": "",
+      "price": 1545000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1956,
+      "days_on_market": 52,
+      "listed_date": "2026-06-16",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3378,
+      "agent_name": "Jennifer Corcoran",
+      "agent_phone": null,
+      "agent_email": "jcorcoran@corenyc.com",
+      "agent_firm": "CORE",
+      "price_history": [
+        {
+          "date": "2026-08-03",
+          "price": 1545000,
+          "event": "",
+          "broker": "CORE"
+        },
+        {
+          "date": "2026-06-16",
+          "price": 1595000,
+          "event": "LISTED",
+          "broker": "CORE"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1834810": {
+      "listing_type": "sale",
+      "id": "1834810",
+      "url": "https://streeteasy.com/sale/1834810",
+      "building": "505 East 79th Street",
+      "building_name": "East River House",
+      "address": "505 East 79th Street",
+      "unit": "#3J",
+      "neighborhood": "",
+      "price": 1595000,
+      "sqft": 1630,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": 979,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 2,
+      "listed_date": "2026-08-05",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3930,
+      "agent_name": "Harry Frank",
+      "agent_phone": null,
+      "agent_email": "hfrankcpw@gmail.com",
+      "agent_firm": "Harrison Properties",
+      "price_history": [
+        {
+          "date": "2026-08-05",
+          "price": 1595000,
+          "event": "LISTED",
+          "broker": "Harrison Properties"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1826592": {
+      "listing_type": "sale",
+      "id": "1826592",
+      "url": "https://streeteasy.com/sale/1826592",
+      "building": "215 East 96th Street",
+      "building_name": "One Carnegie Hill",
+      "address": "215 East 96th Street",
+      "unit": "#41H",
+      "neighborhood": "",
+      "price": 1650000,
+      "sqft": 1704,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 968,
+      "type": "coop",
+      "year_built": 2005,
+      "days_on_market": 93,
+      "listed_date": "2026-05-06",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 7188,
+      "agent_name": "Cecilia Serrano",
+      "agent_phone": null,
+      "agent_email": "cserrano@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-07-15",
+          "price": 1650000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-05-06",
+          "price": 1780000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1828946": {
+      "listing_type": "sale",
+      "id": "1828946",
+      "url": "https://streeteasy.com/sale/1828946",
+      "building": "340 East 64th Street",
+      "building_name": "St Tropez",
+      "address": "340 East 64th Street",
+      "unit": "#17M",
+      "neighborhood": "",
+      "price": 1685000,
+      "sqft": 1255,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": 1343,
+      "type": "condo",
+      "year_built": 1965,
+      "days_on_market": 66,
+      "listed_date": "2026-06-02",
+      "monthly_fees": 1211,
+      "monthly_taxes": 1500,
+      "maintenance": null,
+      "agent_name": "Asher Alcobi",
+      "agent_phone": null,
+      "agent_email": "aa@peterashe.com",
+      "agent_firm": "Peter Ashe",
+      "price_history": [
+        {
+          "date": "2026-06-02",
+          "price": 1685000,
+          "event": "LISTED",
+          "broker": "Peter Ashe"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1810261": {
+      "listing_type": "sale",
+      "id": "1810261",
+      "url": "https://streeteasy.com/sale/1810261",
+      "building": "301 East 62nd Street",
+      "building_name": null,
+      "address": "301 East 62nd Street",
+      "unit": "#9HJ",
+      "neighborhood": "",
+      "price": 1695000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1959,
+      "days_on_market": 179,
+      "listed_date": "2026-02-09",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 2623,
+      "agent_name": "Shepard Skiff",
+      "agent_phone": null,
+      "agent_email": "sskiff@bhsusa.com",
+      "agent_firm": "Brown Harris Stevens",
+      "price_history": [
+        {
+          "date": "2026-06-24",
+          "price": 1695000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-05-13",
+          "price": 1795000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-04-21",
+          "price": 1895000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-03-16",
+          "price": 1995000,
+          "event": "",
+          "broker": "Brown Harris Stevens"
+        },
+        {
+          "date": "2026-02-09",
+          "price": 2150000,
+          "event": "LISTED",
+          "broker": "Brown Harris Stevens"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1801550": {
+      "listing_type": "sale",
+      "id": "1801550",
+      "url": "https://streeteasy.com/sale/1801550",
+      "building": "65 East 96th Street",
+      "building_name": null,
+      "address": "65 East 96th Street",
+      "unit": "#4B",
+      "neighborhood": "",
+      "price": 1749000,
+      "sqft": 1800,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": 972,
+      "type": "condo",
+      "year_built": 1924,
+      "days_on_market": 256,
+      "listed_date": "2025-11-24",
+      "monthly_fees": 2311,
+      "monthly_taxes": 2952,
+      "maintenance": null,
+      "agent_name": "Corey Klar",
+      "agent_phone": null,
+      "agent_email": "cklar@argentventures.com",
+      "agent_firm": "Argent Advisors LLC",
+      "price_history": [
+        {
+          "date": "2026-07-25",
+          "price": 1749000,
+          "event": "",
+          "broker": "Argent Advisors LLC"
+        },
+        {
+          "date": "2026-07-01",
+          "price": 1825000,
+          "event": "",
+          "broker": "Argent Advisors LLC"
+        },
+        {
+          "date": "2026-05-04",
+          "price": 1899000,
+          "event": "",
+          "broker": "Argent Advisors LLC"
+        },
+        {
+          "date": "2025-12-17",
+          "price": 1999000,
+          "event": "",
+          "broker": "Argent Advisors LLC"
+        },
+        {
+          "date": "2025-11-24",
+          "price": 2150000,
+          "event": "LISTED",
+          "broker": "Argent Advisors LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1795697": {
+      "listing_type": "sale",
+      "id": "1795697",
+      "url": "https://streeteasy.com/sale/1795697",
+      "building": "27 East 65th Street",
+      "building_name": null,
+      "address": "27 East 65th Street",
+      "unit": "#10BC",
+      "neighborhood": "",
+      "price": 1750000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 3.5,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1963,
+      "days_on_market": 293,
+      "listed_date": "2025-10-18",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 7697,
+      "agent_name": "Heema Khedr",
+      "agent_phone": null,
+      "agent_email": "heema@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-03-13",
+          "price": 1750000,
+          "event": "",
+          "broker": "Compass"
+        },
+        {
+          "date": "2025-10-18",
+          "price": 1950000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1825622": {
+      "listing_type": "sale",
+      "id": "1825622",
+      "url": "https://streeteasy.com/sale/1825622",
+      "building": "515 East 89th Street",
+      "building_name": null,
+      "address": "515 East 89th Street",
+      "unit": "#5DE",
+      "neighborhood": "",
+      "price": 1775000,
+      "sqft": 1600,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": 1109,
+      "type": "coop",
+      "year_built": 1942,
+      "days_on_market": 99,
+      "listed_date": "2026-04-30",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 4241,
+      "agent_name": "Rami Rabayah",
+      "agent_phone": null,
+      "agent_email": "rami@rabayah.net",
+      "agent_firm": "Rabayah LLC",
+      "price_history": [
+        {
+          "date": "2026-05-22",
+          "price": 1775000,
+          "event": "",
+          "broker": "Rabayah LLC"
+        },
+        {
+          "date": "2026-04-30",
+          "price": 1800000,
+          "event": "LISTED",
+          "broker": "Rabayah LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1823893": {
+      "listing_type": "sale",
+      "id": "1823893",
+      "url": "https://streeteasy.com/sale/1823893",
+      "building": "515 East 85th Street",
+      "building_name": null,
+      "address": "515 East 85th Street",
+      "unit": "#7A",
+      "neighborhood": "",
+      "price": 1800000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1962,
+      "days_on_market": 94,
+      "listed_date": "2026-05-05",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 4109,
+      "agent_name": "Judith Thorn",
+      "agent_phone": null,
+      "agent_email": "jthorn@cbwarburg.com",
+      "agent_firm": "Coldwell Banker Warburg",
+      "price_history": [
+        {
+          "date": "2026-06-25",
+          "price": 1800000,
+          "event": "",
+          "broker": "Coldwell Banker Warburg"
+        },
+        {
+          "date": "2026-05-05",
+          "price": 1895000,
+          "event": "LISTED",
+          "broker": "Coldwell Banker Warburg"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1802930": {
+      "listing_type": "sale",
+      "id": "1802930",
+      "url": "https://streeteasy.com/sale/1802930",
+      "building": "500 East 83rd Street",
+      "building_name": null,
+      "address": "500 East 83rd Street",
+      "unit": "#11B",
+      "neighborhood": "",
+      "price": 1850000,
+      "sqft": 1815,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": 1019,
+      "type": "coop",
+      "year_built": 1965,
+      "days_on_market": 242,
+      "listed_date": "2025-12-08",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 4211,
+      "agent_name": "Lawrence Treglia",
+      "agent_phone": null,
+      "agent_email": "lawrence.treglia@sothebys.realty",
+      "agent_firm": "Sotheby's International Realty",
+      "price_history": [
+        {
+          "date": "2026-05-18",
+          "price": 1850000,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-04-29",
+          "price": 1925000,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-04-08",
+          "price": 1990000,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-03-26",
+          "price": 2150000,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2025-12-08",
+          "price": 2250000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1811037": {
+      "listing_type": "sale",
+      "id": "1811037",
+      "url": "https://streeteasy.com/sale/1811037",
+      "building": "17 East 97th Street",
+      "building_name": null,
+      "address": "17 East 97th Street",
+      "unit": "#5A",
+      "neighborhood": "",
+      "price": 1850000,
+      "sqft": 1600,
+      "beds": 3,
+      "baths": 1.5,
+      "price_per_sqft": 1156,
+      "type": "coop",
+      "year_built": 1904,
+      "days_on_market": 149,
+      "listed_date": "2026-03-11",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 2137,
+      "agent_name": "Kelly Cole",
+      "agent_phone": null,
+      "agent_email": "kelly.cole@compass.com",
+      "agent_firm": "Compass",
+      "price_history": [
+        {
+          "date": "2026-07-13",
+          "price": 1850000,
+          "event": "",
+          "broker": "Compass"
+        },
+        {
+          "date": "2026-03-28",
+          "price": 1995000,
+          "event": "",
+          "broker": "Compass"
+        },
+        {
+          "date": "2026-03-11",
+          "price": 2100000,
+          "event": "LISTED",
+          "broker": "Compass"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1832235": {
+      "listing_type": "sale",
+      "id": "1832235",
+      "url": "https://streeteasy.com/sale/1832235",
+      "building": "219 East 83rd Street",
+      "building_name": null,
+      "address": "219 East 83rd Street",
+      "unit": "#2",
+      "neighborhood": "",
+      "price": 1875000,
+      "sqft": 1700,
+      "beds": 3,
+      "baths": 2.0,
+      "price_per_sqft": 1103,
+      "type": "coop",
+      "year_built": 1920,
+      "days_on_market": 63,
+      "listed_date": "2026-06-05",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 3260,
+      "agent_name": "Sandra Cohen",
+      "agent_phone": null,
+      "agent_email": "sandra.cohen@sothebys.realty",
+      "agent_firm": "Sotheby's International Realty",
+      "price_history": [
+        {
+          "date": "2026-06-19",
+          "price": 1875000,
+          "event": "",
+          "broker": "Sotheby's International Realty"
+        },
+        {
+          "date": "2026-06-05",
+          "price": 1995000,
+          "event": "LISTED",
+          "broker": "Sotheby's International Realty"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1809259": {
+      "listing_type": "sale",
+      "id": "1809259",
+      "url": "https://streeteasy.com/sale/1809259",
+      "building": "340 East 93rd Street",
+      "building_name": "Plymouth Tower",
+      "address": "340 East 93rd Street",
+      "unit": "#20CDE",
+      "neighborhood": "",
+      "price": 1895000,
+      "sqft": null,
+      "beds": 4,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "coop",
+      "year_built": 1980,
+      "days_on_market": 186,
+      "listed_date": "2026-02-02",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 4989,
+      "agent_name": "Denice Z Rich",
+      "agent_phone": null,
+      "agent_email": "denice@rareny.com",
+      "agent_firm": "Rich Associates Real Estate LLC",
+      "price_history": [
+        {
+          "date": "2026-05-14",
+          "price": 1895000,
+          "event": "",
+          "broker": "Rich Associates Real Estate LLC"
+        },
+        {
+          "date": "2026-04-16",
+          "price": 1995000,
+          "event": "",
+          "broker": "Rich Associates Real Estate LLC"
+        },
+        {
+          "date": "2026-02-02",
+          "price": 2095000,
+          "event": "LISTED",
+          "broker": "Rich Associates Real Estate LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1820047": {
+      "listing_type": "sale",
+      "id": "1820047",
+      "url": "https://streeteasy.com/sale/1820047",
+      "building": "40 East 80th Street",
+      "building_name": null,
+      "address": "40 East 80th Street",
+      "unit": "#PHB",
+      "neighborhood": "",
+      "price": 1900000,
+      "sqft": 2340,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 812,
+      "type": "coop",
+      "year_built": 1974,
+      "days_on_market": 123,
+      "listed_date": "2026-04-06",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": 16788,
+      "agent_name": "Norman Baker",
+      "agent_phone": null,
+      "agent_email": "normanbbaker@gmail.com",
+      "agent_firm": "Baker Realty Group",
+      "price_history": [
+        {
+          "date": "2026-05-14",
+          "price": 1900000,
+          "event": "",
+          "broker": "Baker Realty Group"
+        },
+        {
+          "date": "2026-05-14",
+          "price": 1000008,
+          "event": "",
+          "broker": "Baker Realty Group"
+        },
+        {
+          "date": "2026-05-11",
+          "price": 1000000,
+          "event": "",
+          "broker": "Baker Realty Group"
+        },
+        {
+          "date": "2026-04-06",
+          "price": 1350000,
+          "event": "LISTED",
+          "broker": "Baker Realty Group"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1821231": {
+      "listing_type": "sale",
+      "id": "1821231",
+      "url": "https://streeteasy.com/sale/1821231",
+      "building": "200 East 89th Street",
+      "building_name": null,
+      "address": "200 East 89th Street",
+      "unit": "#30D",
+      "neighborhood": "",
+      "price": 1995000,
+      "sqft": 1327,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 1503,
+      "type": "condo",
+      "year_built": 1987,
+      "days_on_market": 119,
+      "listed_date": "2026-04-10",
+      "monthly_fees": 1996,
+      "monthly_taxes": 1483,
+      "maintenance": null,
+      "agent_name": "Deanna Kory",
+      "agent_phone": null,
+      "agent_email": "dek@corcoran.com",
+      "agent_firm": "Corcoran",
+      "price_history": [
+        {
+          "date": "2026-04-10",
+          "price": 1995000,
+          "event": "LISTED",
+          "broker": "Corcoran"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "1841422": {
+      "listing_type": "sale",
+      "id": "1841422",
+      "url": "https://streeteasy.com/sale/1841422",
+      "building": "305 East 61st Street",
+      "building_name": "Archive Lofts",
+      "address": "305 East 61st Street",
+      "unit": "#702",
+      "neighborhood": "",
+      "price": 3895000,
+      "sqft": null,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "condo",
+      "year_built": 1900,
+      "days_on_market": 0,
+      "listed_date": "2026-08-07",
+      "monthly_fees": 3985,
+      "monthly_taxes": 3467,
+      "maintenance": null,
+      "agent_name": "Alexander Zakharin",
+      "agent_phone": null,
+      "agent_email": "alexander@serhant.com",
+      "agent_firm": "SERHANT.",
+      "price_history": [
+        {
+          "date": "2026-08-07",
+          "price": 3895000,
+          "event": "LISTED",
+          "broker": "SERHANT."
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5125863": {
+      "listing_type": "rent",
+      "id": "5125863",
+      "url": "https://streeteasy.com/rental/5125863",
+      "building": "244 East 78th Street",
+      "building_name": null,
+      "address": "244 East 78th Street",
+      "unit": "#4B1",
+      "neighborhood": "",
+      "price": 15000,
+      "sqft": 1900,
+      "beds": 5,
+      "baths": 3.0,
+      "price_per_sqft": null,
+      "type": "rental",
+      "year_built": 1910,
+      "days_on_market": 0,
+      "listed_date": "2026-08-07",
+      "monthly_fees": null,
+      "monthly_taxes": null,
+      "maintenance": null,
+      "agent_name": null,
+      "agent_phone": null,
+      "agent_email": null,
+      "agent_firm": "Rove Travel LLC",
+      "price_history": [
+        {
+          "date": "2026-08-07",
+          "price": 15000,
+          "event": "LISTED",
+          "broker": "Rove Travel LLC"
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "data_quality": "pass2",
+      "last_pass1": "2026-08-08",
+      "last_pass2": "2026-08-08",
+      "status": "active",
+      "needs_refresh": false
+    },
+    "5127160": {
+      "listing_type": "rent",
+      "id": "5127160",
+      "url": "https://streeteasy.com/rental/5127160",
+      "building": "233 East 60th Street",
+      "address": "233 East 60th Street",
+      "unit": "#1",
+      "neighborhood": "",
+      "price": 18750,
+      "sqft": 2500,
+      "beds": 3,
+      "baths": 2.5,
+      "type": "rental",
+      "year_built": 1910,
+      "days_on_market": 48,
+      "listed_date": "2026-05-13",
+      "agent_firm": "74 West Real Estate",
+      "price_history": [
+        {
+          "date": "2026-08-07",
+          "price": 18000,
+          "event": "LISTED",
+          "broker": "Living New York"
+        }
+      ],
+      "data_quality": "pass2",
+      "last_pass2": "2026-08-08",
+      "needs_refresh": false,
+      "status": "active",
+      "off_market_date": "2026-06-30",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-08"
     }
   }
 }
