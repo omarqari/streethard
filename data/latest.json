@@ -435,7 +435,7 @@
         }
       ],
       "last_pass1": "2026-07-07",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-03-25"
     },
@@ -605,11 +605,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-05"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -961,6 +961,12 @@
       "agent_firm": "Brown Harris Stevens",
       "price_history": [
         {
+          "date": "2026-08-06",
+          "price": 4950000,
+          "event": "SOLD",
+          "broker": "Brown Harris Stevens"
+        },
+        {
           "date": "2026-04-21",
           "price": 4950000,
           "event": "IN_CONTRACT",
@@ -980,12 +986,15 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-05-07",
       "sqft_estimated": true,
       "sqft_estimate_method": "floorplan_sum",
-      "sqft_estimate_note": "5-level townhouse room sum + 18% gross-up; multi-floor prevents pixel method; ~3,200 sqft"
+      "sqft_estimate_note": "5-level townhouse room sum + 18% gross-up; multi-floor prevents pixel method; ~3,200 sqft",
+      "off_market_date": "2026-08-06",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -2389,7 +2398,7 @@
         }
       ],
       "last_pass1": "2026-06-07",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-05-20"
     },
@@ -4135,13 +4144,13 @@
         }
       ],
       "last_pass1": "2026-07-28",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-09-22",
       "building_name": "Brisbane House",
       "off_market_date": "2026-07-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-05"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -7093,6 +7102,49 @@
     },
     {
       "listing_type": "sale",
+      "id": "1841422",
+      "url": "https://streeteasy.com/sale/1841422",
+      "building": "305 East 61st Street",
+      "building_name": "Archive Lofts",
+      "address": "305 East 61st Street",
+      "unit": "#702",
+      "neighborhood": "",
+      "price": 3995000,
+      "sqft": 2079,
+      "beds": 3,
+      "baths": 3.0,
+      "price_per_sqft": 1922,
+      "type": "condo",
+      "year_built": 1900,
+      "days_on_market": 39,
+      "listed_date": "2026-05-28",
+      "monthly_fees": 3985,
+      "monthly_taxes": 3467,
+      "maintenance": null,
+      "agent_name": "Archive Lofts",
+      "agent_phone": null,
+      "agent_email": "hello@archivelofts.com",
+      "agent_firm": "SERHANT.",
+      "price_history": [
+        {
+          "date": "2026-08-07",
+          "price": 3895000,
+          "event": "LISTED",
+          "broker": "SERHANT."
+        }
+      ],
+      "_is_partial": false,
+      "_partial_reason": null,
+      "_partial_error": null,
+      "last_pass1": "2026-08-10",
+      "last_pass2": "2026-08-10",
+      "status": "active",
+      "off_market_date": "2026-07-06",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-10"
+    },
+    {
+      "listing_type": "sale",
       "id": "1824980",
       "url": "https://streeteasy.com/sale/1824980",
       "building": "108 East 82nd Street",
@@ -7133,11 +7185,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-07-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -7641,12 +7693,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-06-17",
       "off_market_date": "2026-06-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-05"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -7816,46 +7868,6 @@
       "_partial_error": null,
       "last_pass1": "2026-08-10",
       "last_pass2": "2026-07-19",
-      "status": "active"
-    },
-    {
-      "listing_type": "sale",
-      "id": "1841422",
-      "url": "https://streeteasy.com/sale/1841422",
-      "building": "305 East 61st Street",
-      "building_name": "Archive Lofts",
-      "address": "305 East 61st Street",
-      "unit": "#702",
-      "neighborhood": "",
-      "price": 3895000,
-      "sqft": null,
-      "beds": 3,
-      "baths": 3.0,
-      "price_per_sqft": null,
-      "type": "condo",
-      "year_built": 1900,
-      "days_on_market": 0,
-      "listed_date": "2026-08-07",
-      "monthly_fees": 3985,
-      "monthly_taxes": 3467,
-      "maintenance": null,
-      "agent_name": "Alexander Zakharin",
-      "agent_phone": null,
-      "agent_email": "alexander@serhant.com",
-      "agent_firm": "SERHANT.",
-      "price_history": [
-        {
-          "date": "2026-08-07",
-          "price": 3895000,
-          "event": "LISTED",
-          "broker": "SERHANT."
-        }
-      ],
-      "_is_partial": false,
-      "_partial_reason": null,
-      "_partial_error": null,
-      "last_pass1": "2026-08-10",
-      "last_pass2": "2026-08-08",
       "status": "active"
     },
     {
@@ -8198,12 +8210,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-08-11",
       "off_market_date": "2026-04-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-05",
+      "pass2_confirmed_at": "2026-08-10",
       "building_name": "The Promenade"
     },
     {
@@ -9058,7 +9070,7 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "description": "Experience elevated Upper East Side living at Bridge Tower. EXCEPTIONAL VALUE PRICED AT $1,050 PER SQUARE FOOT!\nResidence 4ABC is a rare, sprawling ~3,500 sq ft home that delivers the scale of a townhouse with the convenience of full-service luxury condominium living.\n\nThis exceptional five-bedroom, five-bath residence features 9-foot ceilings and triple exposures to the north, south, and west, filling the home with natural light throughout the day. The layout is thoughtfully designed with a clear separation between entertaining and private living spaces, offering both flow and discretion.\n\nThe bedroom wing is quietly tucked away from the main living areas, creating a true sense of retreat. The primary suite serves as a private sanctuary, complete with generous proportions, and a spa-like en-suite bath. Additional bedrooms are equally well-scaled, each offering flexibility for family living, guest accommodations, or dedicated home offices. Multiple bathrooms within the wing ensure both comfort and convenience, while the separation from the great room enhances privacy\u2014ideal for both everyday living and hosting.\n\nA grand great room anchors the home, complemented by a formal dining area and adaptable living spaces suited to a variety of lifestyles. High-end finishes include hardwood floors, central air, and an in-unit washer/dryer, while open city and skyline views add to the home\u2019s appeal.\n\nDesigned by Costa Kondylis & David Rockwell, Bridge Tower Place is one of the Upper East Side's premier condominiums. This pet-friendly building is replete with a welcoming lobby, 24-hour doorman & concierge, resident manager, parking garage, complimentary fitness center, roof deck, children's playroom, laundry room & bike storage.\n\nSituated in one of New York's City's most desirable neighborhoods Lenox Hill. Just moments from the East River Esplanade, residents can enjoy peaceful morning walks by the water.\nThe neighborhood offers many fine dining options, shopping, cultural venues, Central Park & easy access to the Ed Koch Queensboro Bridge, the FDR Drive, and a variety of public transportation options. Trader Joe's across the street & Whole Foods is steps away offering true convenience!",
       "last_partial_pass2": "2026-05-02",
@@ -10446,7 +10458,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-06",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "building_name": "Carnegie Park Condominium"
     },
@@ -10728,7 +10740,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-04-09"
     },
@@ -10913,13 +10925,13 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-04-07",
       "building_name": "Park 900",
       "off_market_date": "2026-07-20",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-05"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -11013,7 +11025,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-04-02",
       "sqft_estimated": true,
@@ -11243,7 +11255,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-22",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active"
     },
     {
@@ -11990,7 +12002,7 @@
         }
       ],
       "last_pass1": "2026-05-11",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-04-08",
       "sqft_estimated": true,
@@ -12497,7 +12509,7 @@
         }
       ],
       "last_pass1": "2026-05-22",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-04-06",
       "building_name": "Maison East"
@@ -14800,12 +14812,12 @@
         }
       ],
       "last_pass1": "2026-05-14",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-05-16",
       "off_market_date": "2026-05-14",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-05",
+      "pass2_confirmed_at": "2026-08-10",
       "building_name": "The Laurel"
     },
     {
@@ -15069,7 +15081,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-04-06",
       "sqft_estimated": true,
@@ -15077,7 +15089,7 @@
       "sqft_estimate_note": "829 Park Avenue 10B: pixel-method on duplex plan; calibrated off upper-level Primary Bedroom 12'4\" \u00d7 14'4\". Range 1,600-1,900.",
       "off_market_date": "2026-08-04",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -15654,7 +15666,7 @@
         }
       ],
       "last_pass1": "2026-05-26",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-09-15",
       "sqft_estimated": true,
@@ -15735,12 +15747,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-04-10",
       "off_market_date": "2026-06-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-05"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -16541,14 +16553,14 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "description": "Prime location! Renovated, beautiful, expansive 3 Bedroom with high ceilings in a Full Service Prewar Condominium on one of the most prime UES blocks located between Park and Madison Avenue. This spacious and grand apartment boasts South and East exposures and is accessed through a semi-private elevator landing. The attractive living room, with a wood burning fireplace, is entered through double french doors off of the inviting formal foyer. There is a renovated windowed kitchen, dining room, 3 spacious bedrooms with 3 just renovated en suite bathrooms. Additional features include gorgeous newly refinished hardwood floors throughout, high beamed ceilings, Central Air Conditioning, Washer/Dryer, custom built-ins, and plenty of storage.\n\n50 East 72nd Street is a full service building with a full time doorman and live-in superintendent. The building is located in the most elegant Upper East Side location and is moments from the Frick Collection, The Met Breuer, and world class\n\nMadison Avenue shopping. All that New York City has to offer is easily accessible by the nearby 6, Q, F Subway lines, a Citibike station in front of the building, and reliable crosstown bus service via the M72.",
       "last_partial_pass2": "2026-05-02",
       "partial_pass2_count": 1,
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -17174,12 +17186,12 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-04-06",
       "off_market_date": "2026-04-28",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -17778,13 +17790,13 @@
         }
       ],
       "last_pass1": "2026-06-30",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-04-06",
       "building_name": "The Impala",
       "off_market_date": "2026-07-01",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -18750,12 +18762,12 @@
         }
       ],
       "last_pass1": "2026-05-05",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2025-05-10",
       "off_market_date": "2026-07-21",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-05"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "sale",
@@ -19648,7 +19660,7 @@
         }
       ],
       "last_pass1": "2026-07-07",
-      "last_pass2": "2026-08-05",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-02-19",
       "building_name": "The Royale"
@@ -21494,7 +21506,7 @@
         }
       ],
       "last_pass1": "2026-04-21",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-04-03"
     },
@@ -21786,7 +21798,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-29",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active"
     },
     {
@@ -22559,7 +22571,7 @@
         }
       ],
       "last_pass1": "2026-06-02",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "listed_date": "2026-04-06"
     },
@@ -25124,11 +25136,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-19",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-06-19",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -25750,6 +25762,18 @@
       "agent_firm": "Douglas Elliman",
       "price_history": [
         {
+          "date": "2026-08-08",
+          "price": 18500,
+          "event": "RENTED",
+          "broker": "Douglas Elliman"
+        },
+        {
+          "date": "2026-08-07",
+          "price": 18500,
+          "event": "NO_LONGER_AVAILABLE",
+          "broker": "Douglas Elliman"
+        },
+        {
           "date": "2026-07-13",
           "price": 18500,
           "event": "IN_CONTRACT",
@@ -25772,9 +25796,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-13",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
-      "building_name": "The Laurel"
+      "building_name": "The Laurel",
+      "off_market_date": "2026-08-07",
+      "pass2_confirmed_off_market": true,
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -25824,12 +25851,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-22",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "building_name": "Carnegie Hill Tower",
       "off_market_date": "2026-07-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -26504,14 +26531,14 @@
       ],
       "agent_firm": "Stonehenge NYC LLC",
       "url": "https://streeteasy.com/rental/5049524",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "last_pass1": "2026-06-26",
       "days_on_market": 36,
       "building_name": "Stonehenge 65",
       "off_market_date": "2026-06-26",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -26835,11 +26862,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-19",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-07-13",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -29020,7 +29047,7 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-14",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "building_name": "The Laurel"
     },
@@ -29788,13 +29815,13 @@
       ],
       "agent_firm": "Howard Hanna NYC",
       "url": "https://streeteasy.com/rental/5048932",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "last_pass1": "2026-05-22",
       "days_on_market": 3,
       "off_market_date": "2026-05-23",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06",
+      "pass2_confirmed_at": "2026-08-10",
       "building_name": "Empire House"
     },
     {
@@ -30017,12 +30044,12 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-15",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "building_name": "The Anthem",
       "off_market_date": "2026-07-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -31716,11 +31743,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-17",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-06-17",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -33008,11 +33035,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-29",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-07-02",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -33057,11 +33084,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-12",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-07-12",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -33811,13 +33838,13 @@
       ],
       "agent_firm": "Global Real Estate Ventures Group LLC",
       "url": "https://streeteasy.com/rental/5048174",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "last_pass1": "2026-06-24",
       "days_on_market": 35,
       "off_market_date": "2026-06-24",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -34209,11 +34236,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-06-22",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-06-22",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -34502,11 +34529,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-15",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-07-16",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
@@ -34597,11 +34624,11 @@
       "_partial_reason": null,
       "_partial_error": null,
       "last_pass1": "2026-07-29",
-      "last_pass2": "2026-08-06",
+      "last_pass2": "2026-08-10",
       "status": "active",
       "off_market_date": "2026-07-29",
       "pass2_confirmed_off_market": true,
-      "pass2_confirmed_at": "2026-08-06"
+      "pass2_confirmed_at": "2026-08-10"
     },
     {
       "listing_type": "rent",
