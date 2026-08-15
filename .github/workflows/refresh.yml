@@ -2,10 +2,13 @@ name: Refresh Listings
 
 on:
   schedule:
-    # Twice daily: 00:00 and 12:00 UTC (≈ 8pm & 8am ET in summer / EDT).
-    # Reduced from 4×/day (Jul 2026) to cut Apify costs. GitHub may delay
-    # scheduled runs by a few minutes under load — that's expected.
-    - cron: "0 0,12 * * *"
+    # Weekly: Sunday 00:00 UTC (≈ Saturday 8pm ET). Cut from 2×/day to
+    # 1×/week (Session 49, 2026-08-07) — Omar closed on his apartment, so
+    # StreetHard is now maintenance-only, not actively used for the hunt.
+    # Reduced from 4×/day (Jul 2026) to 2×/day, now to weekly to minimize
+    # Apify cost. GitHub may delay scheduled runs by a few minutes under
+    # load — that's expected.
+    - cron: "0 0 * * 0"
   workflow_dispatch:
     inputs:
       mode:

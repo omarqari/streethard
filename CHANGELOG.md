@@ -4,6 +4,21 @@ All notable decisions and events on this project, in reverse chronological order
 
 ---
 
+## 2026-08-07 — Omar closed on his apartment; cron cut to 1×/week (Session 49)
+
+Omar found and closed on his apartment — the active hunt is over. StreetHard
+moves from active-search tool to low-maintenance archive/reference. Cut
+`.github/workflows/refresh.yml`'s cron from 2×/day to 1×/week (Sunday 00:00
+UTC) to minimize ongoing Apify cost. Confirmed the W5 cliff guard's
+"rolling-7-day" baseline is actually a rolling-7-*run* baseline (counts the
+last 7 healthy entries in `pipeline_health.json`, not calendar days), so it
+degrades gracefully to a ~7-week window at weekly cadence instead of
+breaking. No other pipeline logic depends on daily cadence. `stale_cap`
+(60/run) and Pass 2 caps left unchanged — lower call volume at 1×/week makes
+them less relevant anyway.
+
+---
+
 ## 2026-08-07 — Sale price floor lowered to $1M; Inbox default sort changed to newest-first (Session 49)
 
 - **Sale search price floor: $2M → $1M.** `scripts/pull.py`'s `SALE_URL` now
